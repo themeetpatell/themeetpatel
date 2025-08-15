@@ -331,13 +331,16 @@ const UltraFooter = () => {
               Start your free trial today and see the difference.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-              <motion.button
+              <motion.a
+                href="https://startupos-one.vercel.app/signup"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="ultra-button px-8 py-4 text-lg"
               >
                 Start Free Trial
-              </motion.button>
+              </motion.a>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

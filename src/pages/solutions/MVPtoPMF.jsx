@@ -639,14 +639,17 @@ const MVPtoPMF = () => {
               ))}
             </div>
 
-            <motion.button
+            <motion.a
+              href="https://startupos-one.vercel.app/signup"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="ultra-button flex items-center space-x-2 mx-auto"
             >
               <Target className="w-5 h-5" />
               <span>Start Free Trial</span>
-            </motion.button>
+            </motion.a>
 
             <p className="text-white/50 text-sm mt-6">
               No credit card required • 14-day free trial • Cancel anytime

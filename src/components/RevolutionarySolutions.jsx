@@ -439,7 +439,10 @@ const RevolutionarySolutions = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
+              <motion.a
+                href="https://startupos-one.vercel.app/signup"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="ultra-button flex items-center space-x-2"
@@ -447,7 +450,7 @@ const RevolutionarySolutions = () => {
                 <Rocket className="w-5 h-5" />
                 <span>Start Free Trial</span>
                 <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               
               <motion.button
                 whileHover={{ scale: 1.05 }}

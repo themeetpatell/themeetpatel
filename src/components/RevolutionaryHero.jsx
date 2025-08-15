@@ -175,7 +175,10 @@ const RevolutionaryHero = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
         >
-          <motion.button
+          <motion.a
+            href="https://startupos-one.vercel.app/signup"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05, y: -3 }}
             whileTap={{ scale: 0.95 }}
             className="ultra-button flex items-center space-x-2 text-lg px-8 py-4"
@@ -183,7 +186,7 @@ const RevolutionaryHero = () => {
             <Rocket className="w-5 h-5" />
             <span>Start Your Startup</span>
             <ArrowRight className="w-5 h-5" />
-          </motion.button>
+          </motion.a>
 
           <motion.button
             whileHover={{ scale: 1.05 }}

@@ -444,7 +444,7 @@ const UltraNavigation = () => {
               >
                 Sign In
               </motion.button>
-              <Link to="/pricing">
+              <a href="https://startupos-one.vercel.app/" target="_blank" rel="noopener noreferrer">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -452,7 +452,7 @@ const UltraNavigation = () => {
                 >
                   Start Free Trial
                 </motion.button>
-              </Link>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -636,7 +636,7 @@ const UltraNavigation = () => {
                 >
                   Sign In
                 </motion.button>
-                <Link to="/pricing">
+                <a href="https://startupos-one.vercel.app/" target="_blank" rel="noopener noreferrer">
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -644,7 +644,7 @@ const UltraNavigation = () => {
                   >
                     Start Free Trial
                   </motion.button>
-                </Link>
+                </a>
               </div>
             </div>
           </motion.div>

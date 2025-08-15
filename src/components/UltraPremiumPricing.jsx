@@ -406,7 +406,10 @@ const UltraPremiumPricing = () => {
               </div>
 
               {/* CTA Button */}
-              <motion.button
+              <motion.a
+                href={plan.monthlyPrice ? "https://startupos-one.vercel.app/signup" : "#"}
+                target={plan.monthlyPrice ? "_blank" : undefined}
+                rel={plan.monthlyPrice ? "noopener noreferrer" : undefined}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className={`w-full py-4 rounded-full font-medium transition-all duration-200 ${
@@ -416,7 +419,7 @@ const UltraPremiumPricing = () => {
                 }`}
               >
                 {plan.monthlyPrice ? 'Start Free Trial' : 'Contact Sales'}
-              </motion.button>
+              </motion.a>
             </motion.div>
           ))}
         </div>
