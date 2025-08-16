@@ -24,56 +24,42 @@ import {
   Heart,
   Globe,
   Shield,
-  Sword
+  Sword,
+  Play,
+  ChevronDown,
+  ArrowUp,
+  CheckCircle,
+  BarChart3,
+  Target as TargetIcon,
+  Users as UsersIcon,
+  Zap as ZapIcon,
+  Flame,
+  Target as TargetIcon2,
+  Users as UsersIcon2,
+  Zap as ZapIcon2,
+  Building2
 } from 'lucide-react';
 
 const HomePage = () => {
   const [activeSection, setActiveSection] = useState('hero');
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
-  // STORY SECTIONS
-  const storySections = [
-    {
-      id: 'awakening',
-      icon: Lightbulb,
-      title: "The Awakening",
-      subtitle: "Every founder has a moment",
-      description: "You see a problem that needs solving. A vision that could change the world. But between that moment and reality lies a journey that most never complete.",
-      color: "from-purple-500 to-pink-500"
-    },
-    {
-      id: 'struggle',
-      icon: TrendingDown,
-      title: "The Struggle",
-      subtitle: "The valley of uncertainty",
-      description: "90% of startups fail. Not because the idea was bad, but because the journey is harder than anyone imagined. Resources are scarce, time is limited, and the market moves faster than you can adapt.",
-      color: "from-red-500 to-orange-500"
-    },
-    {
-      id: 'discovery',
-      icon: Eye,
-      title: "The Discovery",
-      subtitle: "Finding the right path",
-      description: "The founders who succeed discover something crucial: they need more than just passion. They need intelligence, guidance, and tools that grow with them.",
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
-      id: 'transformation',
-      icon: Sparkles,
-      title: "The Transformation",
-      subtitle: "Where magic happens",
-      description: "This is where StartupOS enters your story. We don't just give you tools - we become your AI co-founder, your strategic advisor, your growth engine.",
-      color: "from-green-500 to-emerald-500"
-    },
-    {
-      id: 'victory',
-      icon: Crown,
-      title: "The Victory",
-      subtitle: "Your success story",
-      description: "500+ startups have already written their success stories with StartupOS. $2.1B+ in funding raised. 100+ successful exits. Your story could be next.",
-      color: "from-yellow-500 to-orange-500"
-    }
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // HERO SECTION DATA
+  const heroStats = [
+    { number: "500+", label: "Startups", icon: Rocket, color: "from-blue-500 to-cyan-500" },
+    { number: "$2.1B+", label: "Funding Raised", icon: DollarSign, color: "from-blue-600 to-blue-800" },
+    { number: "100+", label: "Exits", icon: Crown, color: "from-blue-400 to-blue-600" },
+    { number: "4.9/5", label: "Rating", icon: Star, color: "from-cyan-500 to-blue-500" }
   ];
 
   // INNOVATION TOOLS
@@ -82,47 +68,77 @@ const HomePage = () => {
       icon: Cpu,
       title: "AI Co-Builders",
       description: "Your AI co-founder that never sleeps, never doubts, and always finds the best path forward.",
-      impact: "10x faster development"
+      impact: "10x faster development",
+      color: "from-blue-500 to-cyan-500"
     },
     {
       icon: Compass,
       title: "Stage-Aware Intelligence",
       description: "Knows exactly what you need at each stage of your journey - from idea to scale.",
-      impact: "Right strategy, right time"
+      impact: "Right strategy, right time",
+      color: "from-blue-600 to-blue-800"
     },
     {
       icon: Users,
       title: "Fractional CXOs",
       description: "Access to world-class leadership on demand, without the full-time commitment.",
-      impact: "Expert guidance when needed"
+      impact: "Expert guidance when needed",
+      color: "from-blue-400 to-blue-600"
     },
     {
       icon: Activity,
       title: "Real-Time Analytics",
-      description: "See what works instantly, not months later when it's too late to pivot.",
-      impact: "Instant insights, faster decisions"
+      description: "See your startup's heartbeat in real-time. Every metric, every trend, every opportunity.",
+      impact: "Data-driven decisions",
+      color: "from-cyan-500 to-blue-500"
+    },
+    {
+      icon: Building2,
+      title: "Mergers & Acquisitions",
+      description: "Navigate complex M&A deals with expert guidance, due diligence, and strategic execution.",
+      impact: "Maximize deal value",
+      color: "from-blue-500 to-indigo-600"
+    },
+    {
+      icon: Network,
+      title: "World-Class Community",
+      description: "Join 125K+ founders with premium features, expert mentors, and exclusive resources.",
+      impact: "Network & grow together",
+      color: "from-indigo-500 to-purple-600"
     }
   ];
 
+  // SUCCESS METRICS
+  const successMetrics = [
+    { metric: "10,000+", label: "Founders", description: "Trusted our platform", icon: UsersIcon, color: "from-blue-500 to-cyan-500" },
+    { metric: "$50M+", label: "Joint Revenue", description: "Generated through partnerships", icon: DollarSign, color: "from-blue-600 to-blue-800" },
+    { metric: "95%", label: "Success Rate", description: "Based on annual surveys", icon: CheckCircle, color: "from-blue-400 to-blue-600" },
+    { metric: "24/7", label: "AI Support", description: "Always available", icon: ZapIcon, color: "from-cyan-500 to-blue-500" }
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900">
-      {/* Hero Section - The Story Begins */}
+    <div className="min-h-screen bg-black text-white overflow-hidden">
+      {/* Hero Section - Revolutionary Storytelling */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Animated Story Particles */}
+        {/* Animated Background Grid */}
         <div className="absolute inset-0">
-          {Array.from({ length: 15 }).map((_, i) => (
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-900/10 to-black" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]" />
+          
+          {/* Floating Geometric Shapes */}
+          {Array.from({ length: 20 }).map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-3 h-3 bg-gradient-to-r from-purple-500/40 to-pink-500/40 rounded-full"
+              className="absolute w-2 h-2 bg-blue-500/30 rounded-full"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
               }}
               animate={{
-                y: [0, -300, 0],
-                x: [0, Math.random() * 200 - 100, 0],
-                scale: [0, 1.5, 0],
-                opacity: [0, 0.9, 0],
+                y: [0, -100, 0],
+                x: [0, Math.random() * 50 - 25, 0],
+                scale: [0, 1, 0],
+                opacity: [0, 0.8, 0],
               }}
               transition={{
                 duration: 8 + Math.random() * 4,
@@ -132,212 +148,323 @@ const HomePage = () => {
             />
           ))}
         </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Story Opening - Split Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
-            {/* Left Side - Story Introduction */}
-            <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="text-left"
-            >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-6 py-3 mb-8"
-              >
-                <Sparkles className="w-5 h-5 text-purple-400" />
-                <span className="text-purple-400 font-semibold">YOUR STARTUP STORY</span>
-              </motion.div>
-              
-              <h1 className="text-6xl md:text-8xl font-black text-white mb-6 leading-none">
-                <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-                  WRITE
-                </span>
-                <br />
-                <span className="text-white">
-                  YOUR
-                </span>
-                <br />
-                <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
-                  STORY
-                </span>
-              </h1>
-              
-              <p className="text-xl text-white/80 mb-8 leading-relaxed">
-                Every successful startup has a story. A journey from idea to impact. 
-                <br />
-                <span className="text-purple-400 font-semibold">What will your story be?</span>
-              </p>
-            </motion.div>
 
-            {/* Right Side - Floating Story Elements */}
+        {/* Main Hero Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Revolutionary Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="inline-flex items-center space-x-2 bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-full px-6 py-3 border border-red-500/30 mb-8"
+          >
             <motion.div
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 1 }}
-              className="relative"
+              animate={{ rotate: [0, 360] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
             >
-              {/* Floating Story Elements */}
-              <div className="relative h-96">
-                {[
-                  { icon: Lightbulb, color: "from-yellow-500 to-orange-500", delay: 0 },
-                  { icon: Rocket, color: "from-purple-500 to-pink-500", delay: 0.5 },
-                  { icon: Crown, color: "from-blue-500 to-cyan-500", delay: 1 },
-                  { icon: Star, color: "from-green-500 to-emerald-500", delay: 1.5 }
-                ].map((element, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: 1.5 + element.delay }}
-                    className="absolute"
-                    style={{
-                      left: `${25 + (index % 2) * 50}%`,
-                      top: `${20 + Math.floor(index / 2) * 60}%`,
-                    }}
-                  >
-                    <motion.div
-                      className={`w-20 h-20 rounded-full bg-gradient-to-r ${element.color} flex items-center justify-center shadow-2xl`}
-                      whileHover={{ scale: 1.2, rotate: 360 }}
-                      animate={{ 
-                        y: [0, -20, 0],
-                        rotate: [0, 10, -10, 0]
-                      }}
-                      transition={{ 
-                        duration: 4, 
-                        repeat: Infinity,
-                        delay: index * 0.5
-                      }}
-                    >
-                      <element.icon className="w-10 h-10 text-white" />
-                    </motion.div>
-                  </motion.div>
-                ))}
-              </div>
+              <TrendingDown className="w-5 h-5 text-red-400" />
             </motion.div>
-          </div>
+            <span className="text-red-400 font-medium">The Villains Are Winning</span>
+          </motion.div>
 
-          {/* CTA */}
+          {/* Main Headline - Revolutionary Storytelling */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 2 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            transition={{ duration: 1, delay: 0.2 }}
+            className="mb-12"
+          >
+            <h1 className="text-6xl md:text-8xl font-black leading-none mb-6">
+              <span className="text-white">THE</span>
+              <br />
+              <span className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
+                RESISTANCE
+              </span>
+              <br />
+              <span className="text-white text-5xl md:text-6xl">STARTS HERE</span>
+            </h1>
+            <p className="text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
+              90% of startups fail. Not because the idea was bad, but because the journey is harder than anyone imagined. 
+              <br />
+              <span className="text-red-400 font-semibold">The villains of failure, uncertainty, and resource scarcity are winning.</span>
+              <br />
+              <span className="text-blue-400 font-semibold">It's time to fight back with the ultimate startup arsenal.</span>
+            </p>
+          </motion.div>
+
+          {/* Interactive Stats Grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto"
+          >
+            {heroStats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                className="group cursor-pointer"
+              >
+                <motion.div
+                  className="bg-black/30 backdrop-blur-xl border border-blue-500/20 rounded-2xl p-6 hover:border-blue-500/40 transition-all duration-300"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                >
+                  <div className={`w-12 h-12 bg-gradient-to-r ${stat.color} rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                    <stat.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="text-3xl font-bold text-white mb-1 group-hover:text-blue-100 transition-colors">
+                    {stat.number}
+                  </div>
+                  <div className="text-white/70 text-sm group-hover:text-white/80 transition-colors">
+                    {stat.label}
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
           >
             <motion.a
               href="https://startupos-one.vercel.app/signup"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, y: -5 }}
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative overflow-hidden bg-gradient-to-r from-purple-600 to-pink-600 rounded-full px-10 py-5 text-white font-bold text-xl flex items-center space-x-3 shadow-2xl hover:shadow-purple-500/25 transition-all duration-300"
+              className="px-10 py-5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-xl rounded-2xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:from-blue-600 hover:to-cyan-600 flex items-center space-x-3"
             >
-              <motion.div
-                animate={{ rotate: [0, 360] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              >
-                <Rocket className="w-6 h-6" />
-              </motion.div>
-              <span>BEGIN YOUR STORY</span>
-              <motion.div
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1, repeat: Infinity }}
-              >
-                <ArrowRight className="w-6 h-6" />
-              </motion.div>
+              <Rocket className="w-6 h-6" />
+              <span>Join the Resistance</span>
             </motion.a>
+            
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-10 py-5 text-white/80 hover:text-white transition-colors duration-300 border-2 border-white/20 rounded-2xl hover:border-white/40 flex items-center space-x-3 group"
+            >
+              <Play className="w-6 h-6 group-hover:text-blue-400 transition-colors" />
+              <span>Watch Demo</span>
+            </motion.button>
+          </motion.div>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.2 }}
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          >
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="text-blue-400"
+            >
+              <ChevronDown className="w-8 h-8" />
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* The Journey - Story Sections */}
-      <section className="py-32 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* The Villains Section - Revolutionary Design */}
+      <section className="py-32 relative overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-red-900/10 via-black to-blue-900/10" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(239,68,68,0.1),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center mb-20"
           >
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
-              THE
+            <h2 className="text-5xl md:text-7xl font-black text-white mb-6">
+              MEET THE
               <br />
-              <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-                JOURNEY
+              <span className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
+                VILLAINS
               </span>
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              Every startup story follows a path. Here's how your story unfolds.
+              These are the forces that destroy startups. But every villain has a weakness.
             </p>
           </motion.div>
 
-          {/* Story Timeline - Vertical Flow */}
-          <div className="relative">
-            {/* Connecting Line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500/50 to-pink-500/50 transform -translate-x-1/2"></div>
-            
-            <div className="space-y-32">
-              {storySections.map((section, index) => (
+          {/* Villains Grid - Extraordinary Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Failure",
+                description: "The silent killer that claims 90% of startups",
+                weakness: "AI-powered guidance and stage-aware intelligence",
+                icon: TrendingDown,
+                color: "from-red-500 to-red-700",
+                animation: "pulse"
+              },
+              {
+                name: "Uncertainty",
+                description: "The fog that blinds founders from the right path",
+                weakness: "Real-time analytics and predictive insights",
+                icon: Eye,
+                color: "from-orange-500 to-orange-700",
+                animation: "bounce"
+              },
+              {
+                name: "Resource Scarcity",
+                description: "The limitation that forces premature decisions",
+                weakness: "Fractional CXOs and ecosystem access",
+                icon: DollarSign,
+                color: "from-yellow-500 to-yellow-700",
+                animation: "shake"
+              }
+            ].map((villain, index) => (
+              <motion.div
+                key={villain.name}
+                initial={{ opacity: 0, y: 100, rotateY: -90 }}
+                whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+                transition={{ duration: 1, delay: index * 0.3 }}
+                className="group cursor-pointer"
+              >
                 <motion.div
-                  key={section.id}
-                  initial={{ opacity: 0, y: 100 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.3 }}
-                  className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                  className="relative bg-black/50 backdrop-blur-xl border border-red-500/30 rounded-3xl p-8 hover:border-red-400/50 transition-all duration-500"
+                  whileHover={{ 
+                    scale: 1.05, 
+                    rotateY: 5,
+                    boxShadow: "0 25px 50px -12px rgba(239, 68, 68, 0.25)"
+                  }}
+                  animate={{
+                    y: [0, -10, 0],
+                    rotateZ: [0, 1, -1, 0]
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    delay: index * 0.5
+                  }}
                 >
-                  {/* Icon Side */}
-                  <div className="flex-1 flex justify-center relative">
-                    <motion.div
-                      className={`w-40 h-40 rounded-full bg-gradient-to-r ${section.color} flex items-center justify-center shadow-2xl relative z-10`}
-                      whileHover={{ scale: 1.1, rotate: 360 }}
-                      animate={{ 
-                        scale: [1, 1.05, 1],
-                        rotate: [0, 5, -5, 0]
-                      }}
-                      transition={{ 
-                        duration: 4, 
-                        repeat: Infinity,
-                        delay: index * 0.5
-                      }}
-                    >
-                      <section.icon className="w-20 h-20 text-white" />
-                    </motion.div>
-                    
-                    {/* Glow Effect */}
-                    <motion.div
-                      className={`absolute inset-0 w-40 h-40 rounded-full bg-gradient-to-r ${section.color} blur-2xl opacity-30`}
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.3, 0.6, 0.3],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        delay: index * 0.5,
-                      }}
-                    />
+                  {/* Glowing Background */}
+                  <div className={`absolute inset-0 bg-gradient-to-r ${villain.color} opacity-5 rounded-3xl blur-xl`} />
+                  
+                  {/* Icon */}
+                  <div className={`w-20 h-20 bg-gradient-to-r ${villain.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <villain.icon className="w-10 h-10 text-white" />
                   </div>
+                  
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-red-300 transition-colors">
+                    {villain.name}
+                  </h3>
+                  <p className="text-white/70 mb-6 leading-relaxed">
+                    {villain.description}
+                  </p>
+                  
+                  <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
+                    <p className="text-red-400 font-semibold text-sm">
+                      <span className="text-white/60">Weakness: </span>
+                      {villain.weakness}
+                    </p>
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                  {/* Content Side */}
-                  <div className="flex-1 text-center max-w-2xl">
+      {/* The Destruction Section - Revolutionary Timeline */}
+      <section className="py-32 relative overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-red-900/5 to-black" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(239,68,68,0.05),transparent_50%)]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-5xl md:text-7xl font-black text-white mb-6">
+              WITNESS THE
+              <br />
+              <span className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
+                DESTRUCTION
+              </span>
+            </h2>
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+              This is what happens when startups face the villains alone. The statistics don't lie.
+            </p>
+          </motion.div>
+
+          {/* Destruction Timeline - Extraordinary Design */}
+          <div className="relative">
+            {/* Central Timeline Line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-red-500 via-orange-500 to-red-500 h-full" />
+            
+            <div className="space-y-16">
+              {[
+                {
+                  stage: "Idea Stage",
+                  failure: "70%",
+                  description: "Never get past the initial concept",
+                  icon: Lightbulb,
+                  color: "from-red-400 to-red-600"
+                },
+                {
+                  stage: "MVP Stage", 
+                  failure: "85%",
+                  description: "Fail to find product-market fit",
+                  icon: Rocket,
+                  color: "from-orange-400 to-orange-600"
+                },
+                {
+                  stage: "Growth Stage",
+                  failure: "90%",
+                  description: "Can't scale without proper systems",
+                  icon: TrendingUp,
+                  color: "from-red-500 to-red-700"
+                },
+                {
+                  stage: "Scale Stage",
+                  failure: "95%",
+                  description: "Operations collapse under pressure",
+                  icon: Users,
+                  color: "from-red-600 to-red-800"
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={item.stage}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1, delay: index * 0.2 }}
+                  className={`relative flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                >
+                  {/* Timeline Node */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-r from-red-500 to-orange-500 rounded-full border-4 border-black shadow-2xl z-10" />
+                  
+                  {/* Content Card */}
+                  <div className={`w-5/12 ${index % 2 === 0 ? 'pr-16' : 'pl-16'}`}>
                     <motion.div
-                      initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.3 + 0.2 }}
+                      className="bg-black/50 backdrop-blur-xl border border-red-500/20 rounded-2xl p-8 hover:border-red-400/40 transition-all duration-300"
+                      whileHover={{ scale: 1.02, y: -5 }}
                     >
-                      <div className="text-sm text-purple-400 font-semibold mb-3 tracking-wider uppercase">
-                        {section.subtitle}
+                      <div className={`w-16 h-16 bg-gradient-to-r ${item.color} rounded-xl flex items-center justify-center mb-6`}>
+                        <item.icon className="w-8 h-8 text-white" />
                       </div>
-                      <h3 className="text-5xl font-black text-white mb-6 leading-tight">
-                        {section.title}
-                      </h3>
-                      <p className="text-xl text-white/80 leading-relaxed">
-                        {section.description}
-                      </p>
+                      <h3 className="text-2xl font-bold text-white mb-3">{item.stage}</h3>
+                      <div className="text-4xl font-black text-red-400 mb-2">{item.failure}</div>
+                      <p className="text-white/80 leading-relaxed">{item.description}</p>
                     </motion.div>
                   </div>
                 </motion.div>
@@ -347,309 +474,240 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* The Tools - Innovation Arsenal */}
-      <section className="py-32 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* The Painkiller Section - Revolutionary Arsenal */}
+      <section className="py-32 relative overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-900/10 to-black" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center mb-20"
           >
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
+            <h2 className="text-5xl md:text-7xl font-black text-white mb-6">
               YOUR
               <br />
               <span className="bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
-                INNOVATION ARSENAL
+                PAINKILLER
               </span>
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              These aren't just tools. They're your companions on the journey to success.
+              This is StartupOS. The revolutionary platform that turns startup failure into startup success.
             </p>
           </motion.div>
 
-          {/* Wave-Based Arsenal Layout */}
-          <div className="relative">
-            {/* Central Energy Core */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center shadow-2xl"
-            >
+          {/* Innovation Arsenal - Revolutionary Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {innovationTools.map((tool, index) => (
               <motion.div
-                animate={{ rotate: [0, 360] }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                key={tool.title}
+                initial={{ opacity: 0, y: 100, rotateY: -90 }}
+                whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+                transition={{ duration: 1, delay: index * 0.2 }}
+                className="group cursor-pointer"
               >
-                <Shield className="w-32 h-32 text-white" />
-              </motion.div>
-              
-              {/* Pulsing Rings */}
-              <motion.div
-                className="absolute inset-0 rounded-full border-2 border-blue-500/30"
-                animate={{
-                  scale: [1, 1.5, 1],
-                  opacity: [0.5, 0, 0.5],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                }}
-              />
-              <motion.div
-                className="absolute inset-0 rounded-full border-2 border-cyan-500/30"
-                animate={{
-                  scale: [1, 2, 1],
-                  opacity: [0.3, 0, 0.3],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  delay: 1,
-                }}
-              />
-            </motion.div>
-
-            {/* Floating Arsenal Elements */}
-            <div className="relative h-96">
-              {innovationTools.map((tool, index) => {
-                const angle = (index * 90) * (Math.PI / 180);
-                const radius = 200;
-                const x = Math.cos(angle) * radius;
-                const y = Math.sin(angle) * radius;
-
-                return (
-                  <motion.div
-                    key={tool.title}
-                    initial={{ opacity: 0, scale: 0 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 1 + index * 0.3 }}
-                    className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                    style={{
-                      transform: `translate(${x}px, ${y}px)`,
-                    }}
-                  >
-                    <motion.div
-                      className="w-40 h-40 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center shadow-2xl"
-                      whileHover={{ scale: 1.3, rotate: 360 }}
-                      animate={{ 
-                        rotate: [0, 360],
-                        scale: [1, 1.1, 1]
-                      }}
-                      transition={{ 
-                        duration: 10, 
-                        repeat: Infinity,
-                        delay: index * 0.5
-                      }}
-                    >
-                      <tool.icon className="w-20 h-20 text-white" />
-                    </motion.div>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Wave-Based Info Display */}
-          <div className="mt-32 relative">
-            {/* Wave Background */}
-            <div className="absolute inset-0">
-              <svg className="w-full h-32" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path
-                  d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-                  opacity=".25"
-                  className="fill-purple-500"
-                />
-                <path
-                  d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.26,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
-                  opacity=".5"
-                  className="fill-pink-500"
-                />
-                <path
-                  d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
-                  className="fill-blue-500"
-                />
-              </svg>
-            </div>
-
-            {/* Floating Info Elements */}
-            <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {innovationTools.map((tool, index) => (
                 <motion.div
-                  key={tool.title}
-                  initial={{ opacity: 0, y: 100 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.2 }}
-                  className="relative group"
+                  className="relative bg-black/50 backdrop-blur-xl border border-blue-500/30 rounded-3xl p-8 hover:border-blue-400/50 transition-all duration-500"
+                  whileHover={{ 
+                    scale: 1.05, 
+                    rotateY: 5,
+                    boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.25)"
+                  }}
+                  animate={{
+                    y: [0, -10, 0],
+                    rotateZ: [0, 1, -1, 0]
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    delay: index * 0.5
+                  }}
                 >
-                  {/* Floating Background */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-full blur-2xl"
-                    animate={{
-                      scale: [1, 1.2, 1],
-                      opacity: [0.3, 0.6, 0.3],
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      delay: index * 0.5,
-                    }}
-                  />
+                  {/* Glowing Background */}
+                  <div className={`absolute inset-0 bg-gradient-to-r ${tool.color} opacity-5 rounded-3xl blur-xl`} />
                   
-                  {/* Content Container */}
-                  <div className="relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl border border-blue-500/30 rounded-full p-8 text-center group-hover:border-blue-400/50 transition-all duration-300">
-                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-100 transition-colors duration-300">
-                      {tool.title}
-                    </h3>
-                    <p className="text-white/70 mb-6 leading-relaxed group-hover:text-white/80 transition-colors duration-300">
-                      {tool.description}
-                    </p>
-                    <div className="text-blue-400 font-semibold text-lg group-hover:text-blue-300 transition-colors duration-300">
+                  {/* Icon */}
+                  <div className={`w-20 h-20 bg-gradient-to-r ${tool.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <tool.icon className="w-10 h-10 text-white" />
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-100 transition-colors">
+                    {tool.title}
+                  </h3>
+                  <p className="text-white/70 mb-6 leading-relaxed">
+                    {tool.description}
+                  </p>
+                  
+                  <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
+                    <p className="text-blue-400 font-semibold text-sm">
+                      <span className="text-white/60">Impact: </span>
                       {tool.impact}
-                    </div>
+                    </p>
                   </div>
                 </motion.div>
-              ))}
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Victory CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="text-center mt-20"
+          >
+            <div className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/30 rounded-3xl p-12">
+              <h3 className="text-3xl font-bold text-white mb-6">
+                Ready to Join the Resistance?
+              </h3>
+              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+                Stop fighting the villains alone. Join thousands of founders who've already chosen the winning side.
+              </p>
+              <motion.a
+                href="https://startupos-one.vercel.app/signup"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center space-x-3 px-10 py-5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-xl rounded-2xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:from-blue-600 hover:to-cyan-600"
+              >
+                <Shield className="w-6 h-6" />
+                <span>Join the Resistance</span>
+              </motion.a>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Success Metrics - Revolutionary Design */}
+      <section className="py-32 relative overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-900/15 to-black" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
+              PROVEN
+              <br />
+              <span className="bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
+                SUCCESS
+              </span>
+            </h2>
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+              Our platform has already helped thousands of founders achieve their dreams.
+            </p>
+          </motion.div>
+
+          {/* Revolutionary Metrics Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {successMetrics.map((metric, index) => (
+              <motion.div
+                key={metric.label}
+                initial={{ opacity: 0, y: 30, scale: 0.8 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                className="group cursor-pointer"
+              >
+                <motion.div
+                  className="bg-black/30 backdrop-blur-xl border border-blue-500/20 rounded-2xl p-8 text-center hover:border-blue-500/40 transition-all duration-300"
+                  whileHover={{ scale: 1.05, y: -10, rotateY: 5 }}
+                >
+                  <div className={`w-16 h-16 bg-gradient-to-r ${metric.color} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <metric.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="text-4xl font-bold text-white mb-2 group-hover:text-blue-100 transition-colors">
+                    {metric.metric}
+                  </div>
+                  <p className="text-white font-semibold mb-2 group-hover:text-blue-200 transition-colors">
+                    {metric.label}
+                  </p>
+                  <p className="text-white/60 text-sm group-hover:text-white/80 transition-colors">
+                    {metric.description}
+                  </p>
+                </motion.div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* The Call - Your Story Awaits */}
-      <section className="py-32 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Final CTA Section - Revolutionary Victory */}
+      <section className="py-32 relative overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-900/20 to-black" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.15),transparent_50%)]" />
+        </div>
+
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            {/* Animated Story Background */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <motion.div
-                className="w-96 h-96 rounded-full border-2 border-purple-500/20"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-              />
-              <motion.div
-                className="absolute w-80 h-80 rounded-full border-2 border-pink-500/20"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
-              />
-              <motion.div
-                className="absolute w-64 h-64 rounded-full border-2 border-blue-500/20"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-              />
-              
-              {/* Floating Particles */}
-              {Array.from({ length: 8 }).map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
-                  style={{
-                    left: `${20 + (i * 10)}%`,
-                    top: `${30 + Math.sin(i * 0.8) * 40}%`,
-                  }}
-                  animate={{
-                    scale: [0, 1, 0],
-                    opacity: [0, 1, 0],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    delay: i * 0.4,
-                  }}
-                />
-              ))}
-            </div>
-
-            <div className="relative z-10">
+            {/* Animated Background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/15 via-cyan-500/15 to-blue-500/15 rounded-3xl blur-3xl" />
+            
+            {/* Main Content */}
+            <div className="relative bg-black/50 backdrop-blur-xl rounded-3xl p-16 text-center border border-blue-500/20">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-6 py-3 mb-8"
+                className="mb-8"
               >
-                <Sparkles className="w-5 h-5 text-purple-400" />
-                <span className="text-purple-400 font-semibold">YOUR STORY AWAITS</span>
+                <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Rocket className="w-12 h-12 text-white" />
+                </div>
+                <h2 className="text-4xl font-bold text-white mb-4">
+                  Ready to Build the Future?
+                </h2>
+                <p className="text-xl text-white/80 mb-8 leading-relaxed max-w-2xl mx-auto">
+                  Join thousands of founders who are already building tomorrow's unicorns with StartupOS.
+                </p>
               </motion.div>
-              
-              <h2 className="text-5xl md:text-6xl font-black text-white mb-8">
-                YOUR STORY
-                <br />
-                <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 bg-clip-text text-transparent">
-                  AWAITS
-                </span>
-              </h2>
-              
-              <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">
-                Join 500+ founders who have already written their success stories. 
-                <br />
-                <span className="text-purple-400 font-semibold">Your story could be next.</span>
-              </p>
 
-              {/* Success Stories - Floating Cards */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-                {[
-                  { number: "500+", label: "Stories Written", color: "from-purple-500 to-pink-500" },
-                  { number: "$2.1B+", label: "Funding Raised", color: "from-blue-500 to-cyan-500" },
-                  { number: "100+", label: "Successful Exits", color: "from-green-500 to-emerald-500" },
-                  { number: "4.9/5", label: "Founder Rating", color: "from-yellow-500 to-orange-500" }
-                ].map((metric, index) => (
-                  <motion.div
-                    key={metric.label}
-                    initial={{ opacity: 0, y: 50, scale: 0.8 }}
-                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="relative group"
-                  >
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-2xl blur-lg"
-                      animate={{
-                        scale: [1, 1.05, 1],
-                        opacity: [0.3, 0.6, 0.3],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        delay: index * 0.2,
-                      }}
-                    />
-                    <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl border border-purple-500/20 rounded-2xl p-6 text-center group-hover:border-purple-400/40 transition-all duration-300">
-                      <div className={`text-4xl font-black text-white mb-2 bg-gradient-to-r ${metric.color} bg-clip-text text-transparent`}>
-                        {metric.number}
-                      </div>
-                      <div className="text-white/70 font-medium text-sm">
-                        {metric.label}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              <motion.a
-                href="https://startupos-one.vercel.app/signup"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05, y: -5 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center space-x-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full px-12 py-6 text-white font-bold text-2xl shadow-2xl hover:shadow-purple-500/25 transition-all duration-300"
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
               >
-                <motion.div
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                <motion.a
+                  href="https://startupos-one.vercel.app/signup"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-10 py-5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-xl rounded-2xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:from-blue-600 hover:to-cyan-600 flex items-center space-x-3"
                 >
-                  <Rocket className="w-8 h-8" />
-                </motion.div>
-                <span>WRITE YOUR STORY</span>
-                <motion.div
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1, repeat: Infinity }}
+                  <Rocket className="w-6 h-6" />
+                  <span>Start Building Now</span>
+                </motion.a>
+                
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-10 py-5 text-white/80 hover:text-white transition-colors duration-300 border-2 border-white/20 rounded-2xl hover:border-white/40 flex items-center space-x-3 group"
                 >
-                  <ArrowRight className="w-8 h-8" />
-                </motion.div>
-              </motion.a>
+                  <Play className="w-6 h-6 group-hover:text-blue-400 transition-colors" />
+                  <span>Learn More</span>
+                </motion.button>
+              </motion.div>
             </div>
           </motion.div>
         </div>

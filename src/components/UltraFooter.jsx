@@ -111,17 +111,15 @@ const UltraFooter = () => {
       items: [
         { name: "Blog", href: "/blog" },
         { name: "Case Studies", href: "/case-studies" },
-        { name: "Webinars", href: "/webinars" },
-        { name: "Documentation", href: "/docs" },
-        { name: "API Reference", href: "/api" }
+        { name: "Webinars", href: "/webinars" }
       ]
     },
     {
       title: "Company",
       items: [
         { name: "About", href: "/about" },
+        { name: "About Founder", href: "/meet" },
         { name: "Careers", href: "/careers" },
-        { name: "Press", href: "/press" },
         { name: "Contact", href: "/contact" },
         { name: "Partners", href: "/partners" }
       ]
@@ -129,12 +127,9 @@ const UltraFooter = () => {
   ];
 
   const socialLinks = [
-    { name: "Twitter", icon: Twitter, href: "https://twitter.com/startupos", color: "hover:text-blue-400" },
-    { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/company/startupos", color: "hover:text-blue-600" },
-    { name: "Facebook", icon: Facebook, href: "https://facebook.com/startupos", color: "hover:text-blue-500" },
-    { name: "Instagram", icon: Instagram, href: "https://instagram.com/startupos", color: "hover:text-pink-500" },
-    { name: "YouTube", icon: Youtube, href: "https://youtube.com/startupos", color: "hover:text-red-500" },
-    { name: "GitHub", icon: Github, href: "https://github.com/startupos", color: "hover:text-gray-400" }
+    { name: "Twitter", icon: Twitter, href: "https://x.com/the_startupos", color: "hover:text-blue-400" },
+    { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/company/the-startupos/", color: "hover:text-blue-600" },
+    { name: "Instagram", icon: Instagram, href: "http://instagram.com/thestartupos/", color: "hover:text-pink-500" }
   ];
 
   const stats = [
@@ -160,7 +155,7 @@ const UltraFooter = () => {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Link to="/" className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-emerald-500 rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
                       <Rocket className="w-7 h-7 text-white" />
                     </div>
                     <span className="text-3xl font-bold ultra-text-gradient">StartupOS</span>

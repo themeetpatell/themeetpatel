@@ -18,11 +18,11 @@ const PersonalPage = () => {
     company: "StartupOS",
     location: "Ahmedabad, India",
     email: "meet@startupos.com",
-    linkedin: "https://linkedin.com/in/themeetpatel",
-    twitter: "https://twitter.com/the_meetpatel",
-    github: "https://github.com/themeetpatel",
-    instagram: "https://instagram.com/the.meetpatell",
-    youtube: "https://youtube.com/@themeetpatel",
+    linkedin: "https://www.linkedin.com/company/the-startupos/",
+    twitter: "https://x.com/the_startupos",
+    github: "https://github.com/startupos",
+    instagram: "http://instagram.com/thestartupos/",
+    youtube: "https://youtube.com/@thestartupos",
     
     bio: "Serial entrepreneur and startup ecosystem builder with over 8 years of experience in building and scaling technology companies. Passionate about helping startups succeed through innovative solutions and strategic guidance.",
     
@@ -131,7 +131,7 @@ const PersonalPage = () => {
         name: "StartupOS Platform",
         description: "Comprehensive startup ecosystem platform with 50+ integrated tools and services.",
         tech: ["React", "Node.js", "AWS", "MongoDB"],
-        link: "https://startupos.com",
+        link: "https://www.startupos.in",
         status: "Live"
       }
     ],
@@ -186,7 +186,7 @@ const PersonalPage = () => {
     <div className="min-h-screen pt-16 ultra-gradient-bg">
       {/* Hero Section */}
       <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-emerald-900/20 to-slate-900" />
+                                <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-blue-900/20 to-slate-900" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -197,7 +197,7 @@ const PersonalPage = () => {
           >
             {/* Profile Image */}
             <div className="mb-8">
-              <div className="w-32 h-32 mx-auto bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full flex items-center justify-center mb-6">
+                                      <div className="w-32 h-32 mx-auto bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mb-6">
                 <span className="text-white text-4xl font-bold">MP</span>
               </div>
             </div>
@@ -254,7 +254,7 @@ const PersonalPage = () => {
                 onClick={() => setIsContactFormOpen(true)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-emerald-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-emerald-600 transition-colors"
+                className="bg-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors"
               >
                 Get In Touch
               </motion.button>
@@ -283,7 +283,7 @@ const PersonalPage = () => {
                 whileTap={{ scale: 0.95 }}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 whitespace-nowrap ${
                   activeTab === tab.id
-                    ? 'bg-emerald-500 text-white'
+                    ? 'bg-blue-500 text-white'
                     : 'text-white/60 hover:text-white hover:bg-white/10'
                 }`}
               >
@@ -331,7 +331,7 @@ const PersonalPage = () => {
                       <h3 className="text-xl font-semibold text-white mb-4">Interests</h3>
                       <div className="flex flex-wrap gap-2 mb-8">
                         {personalInfo.interests.map((interest, index) => (
-                          <span key={index} className="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-sm">
+                          <span key={index} className="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm">
                             {interest}
                           </span>
                         ))}
@@ -339,15 +339,15 @@ const PersonalPage = () => {
                       <h3 className="text-xl font-semibold text-white mb-4">Quick Stats</h3>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="bg-white/5 rounded-lg p-4 text-center">
-                          <div className="text-2xl font-bold text-emerald-400">8+</div>
+                          <div className="text-2xl font-bold text-blue-400">8+</div>
                           <div className="text-white/60 text-sm">Years Experience</div>
                         </div>
                         <div className="bg-white/5 rounded-lg p-4 text-center">
-                          <div className="text-2xl font-bold text-emerald-400">50+</div>
+                          <div className="text-2xl font-bold text-blue-400">50+</div>
                           <div className="text-white/60 text-sm">Startups Mentored</div>
                         </div>
                         <div className="bg-white/5 rounded-lg p-4 text-center">
-                          <div className="text-2xl font-bold text-emerald-400">$10M+</div>
+                          <div className="text-2xl font-bold text-blue-400">$10M+</div>
                           <div className="text-white/60 text-sm">Revenue Generated</div>
                         </div>
                         <div className="bg-white/5 rounded-lg p-4 text-center">

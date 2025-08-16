@@ -124,7 +124,7 @@ const JobDetailPage = () => {
     const mockJob = {
       id: id || 'senior-frontend-developer',
       title: "Senior Frontend Developer",
-      company: "StartupOS",
+      companyName: "StartupOS",
       location: "San Francisco, CA (Hybrid)",
       type: "Full-time",
       experience: "3-5 years",
@@ -207,7 +207,7 @@ const JobDetailPage = () => {
         industry: "SaaS / Startup Ecosystem",
         founded: "2022",
         location: "San Francisco, CA",
-        website: "https://startupos.com",
+        website: "https://www.startupos.in",
         logo: "/api/placeholder/100/100"
       },
       team: {

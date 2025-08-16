@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Handshake, 
   Globe, 
@@ -102,11 +102,119 @@ import {
   CornerUpLeft,
   CornerUpRight,
   CornerDownLeft,
-  CornerDownRight
+  CornerDownRight,
+  Building2,
+  User,
+  MapPin,
+  Globe2,
+  Briefcase,
+  Award,
+  Zap
 } from 'lucide-react';
 
 const PartnersPage = () => {
   const [selectedPartnershipType, setSelectedPartnershipType] = useState('All');
+  const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState({
+    companyName: '',
+    contactName: '',
+    email: '',
+    phone: '',
+    website: '',
+    companySize: '',
+    industry: '',
+    partnershipType: '',
+    description: '',
+    benefits: '',
+    requirements: '',
+    timeline: '',
+    budget: '',
+    additionalInfo: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      // Simulate API call to database
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Here you would typically send data to your backend/database
+      console.log('Partner application submitted:', formData);
+      
+      // Store in localStorage as a simple database simulation
+      const existingApplications = JSON.parse(localStorage.getItem('partnerApplications') || '[]');
+      const newApplication = {
+        id: Date.now(),
+        ...formData,
+        submittedAt: new Date().toISOString(),
+        status: 'pending'
+      };
+      existingApplications.push(newApplication);
+      localStorage.setItem('partnerApplications', JSON.stringify(existingApplications));
+      
+      setSubmitSuccess(true);
+      setFormData({
+        companyName: '',
+        contactName: '',
+        email: '',
+        phone: '',
+        website: '',
+        companySize: '',
+        industry: '',
+        partnershipType: '',
+        description: '',
+        benefits: '',
+        requirements: '',
+        timeline: '',
+        budget: '',
+        additionalInfo: ''
+      });
+      
+      setTimeout(() => {
+        setSubmitSuccess(false);
+        setShowForm(false);
+      }, 3000);
+      
+    } catch (error) {
+      setSubmitError('Failed to submit application. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const resetForm = () => {
+    setFormData({
+      companyName: '',
+      contactName: '',
+      email: '',
+      phone: '',
+      website: '',
+      companySize: '',
+      industry: '',
+      partnershipType: '',
+      description: '',
+      benefits: '',
+      requirements: '',
+      timeline: '',
+      budget: '',
+      additionalInfo: ''
+    });
+    setSubmitError('');
+  };
 
   const partnershipTypes = [
     { name: 'All', count: 4 },
@@ -327,16 +435,15 @@ const PartnersPage = () => {
               Together, we can create more value for founders worldwide.
             </p>
 
-            <Link to="/contact">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="ultra-button flex items-center space-x-2 mx-auto"
-              >
-                <Handshake className="w-5 h-5" />
-                <span>Apply for Partnership</span>
-              </motion.button>
-            </Link>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowForm(true)}
+              className="ultra-button flex items-center space-x-2 mx-auto"
+            >
+              <Handshake className="w-5 h-5" />
+              <span>Apply for Partnership</span>
+            </motion.button>
           </motion.div>
 
           {/* Partnership Types Filter */}
@@ -546,48 +653,560 @@ const PartnersPage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Partners Application Form */}
       <section className="py-20 relative">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="ultra-glass rounded-3xl p-12 text-center border border-green-500/20"
+            className="text-center mb-16"
           >
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Ready to Partner with Us?
+            <h2 className="text-4xl font-bold text-white mb-6">
+              Apply for Partnership
             </h2>
-            <p className="text-xl text-white/70 mb-8">
-              Join our ecosystem and help us revolutionize how startups build, scale, and succeed. 
-              Let's create something amazing together.
+            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+              Ready to join our ecosystem? Fill out the application below and our partnership team will get back to you within 48 hours.
             </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-              <Link to="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="ultra-button flex items-center space-x-2"
-                >
-                  <Handshake className="w-5 h-5" />
-                  <span>Apply for Partnership</span>
-                </motion.button>
-              </Link>
-              
-              <Link to="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 text-white/80 hover:text-white transition-colors"
-                >
-                  <span>Contact Partnership Team</span>
-                </motion.button>
-              </Link>
-            </div>
           </motion.div>
+
+          {/* Form Toggle */}
+          <div className="text-center mb-12">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowForm(!showForm)}
+              className="ultra-button flex items-center space-x-2 mx-auto"
+            >
+              {showForm ? (
+                <>
+                  <XCircle className="w-5 h-5" />
+                  <span>Hide Application Form</span>
+                </>
+              ) : (
+                <>
+                  <Handshake className="w-5 h-5" />
+                  <span>Show Application Form</span>
+                </>
+              )}
+            </motion.button>
+          </div>
+
+          {/* Application Form */}
+          <AnimatePresence>
+            {showForm && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.5 }}
+                className="ultra-glass rounded-3xl p-8 border border-green-500/20"
+              >
+                {submitSuccess ? (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-center py-12"
+                  >
+                    <div className="w-20 h-20 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle className="w-12 h-12 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4">Application Submitted!</h3>
+                    <p className="text-white/70 text-lg mb-6">
+                      Thank you for your partnership application. Our team will review your submission and contact you within 48 hours.
+                    </p>
+                    <div className="text-green-400 font-semibold">
+                      Application ID: {Date.now()}
+                    </div>
+                  </motion.div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-8">
+                    {/* Company Information */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                      <div className="space-y-4">
+                        <h3 className="text-xl font-bold text-white mb-4 flex items-center space-x-2">
+                          <Building2 className="w-5 h-5 text-green-400" />
+                          <span>Company Information</span>
+                        </h3>
+                        
+                        <div>
+                          <label className="block text-white font-medium mb-2">Company Name *</label>
+                          <input
+                            type="text"
+                            name="companyName"
+                            value={formData.companyName}
+                            onChange={handleInputChange}
+                            required
+                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-green-400 transition-colors"
+                            placeholder="Enter your company name"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-white font-medium mb-2">Website</label>
+                          <input
+                            type="url"
+                            name="website"
+                            value={formData.website}
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-green-400 transition-colors"
+                            placeholder="https://yourcompany.com"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-white font-medium mb-2">Company Size *</label>
+                          <select
+                            name="companySize"
+                            value={formData.companySize}
+                            onChange={handleInputChange}
+                            required
+                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-green-400 transition-colors"
+                          >
+                            <option value="">Select company size</option>
+                            <option value="1-10">1-10 employees</option>
+                            <option value="11-50">11-50 employees</option>
+                            <option value="51-200">51-200 employees</option>
+                            <option value="201-1000">201-1000 employees</option>
+                            <option value="1000+">1000+ employees</option>
+                          </select>
+                        </div>
+
+                        <div>
+                          <label className="block text-white font-medium mb-2">Industry *</label>
+                          <select
+                            name="industry"
+                            value={formData.industry}
+                            onChange={handleInputChange}
+                            required
+                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-green-400 transition-colors"
+                          >
+                            <option value="">Select industry</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Healthcare">Healthcare</option>
+                            <option value="Education">Education</option>
+                            <option value="E-commerce">E-commerce</option>
+                            <option value="Consulting">Consulting</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Other">Other</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      {/* Contact Information */}
+                      <div className="space-y-4">
+                        <h3 className="text-xl font-bold text-white mb-4 flex items-center space-x-2">
+                          <User className="w-5 h-5 text-green-400" />
+                          <span>Contact Information</span>
+                        </h3>
+                        
+                        <div>
+                          <label className="block text-white font-medium mb-2">Contact Name *</label>
+                          <input
+                            type="text"
+                            name="contactName"
+                            value={formData.contactName}
+                            onChange={handleInputChange}
+                            required
+                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-green-400 transition-colors"
+                            placeholder="Enter contact person name"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-white font-medium mb-2">Email *</label>
+                          <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            required
+                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-green-400 transition-colors"
+                            placeholder="contact@company.com"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-white font-medium mb-2">Phone</label>
+                          <input
+                            type="tel"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-green-400 transition-colors"
+                            placeholder="+1 (555) 123-4567"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-white font-medium mb-2">Partnership Type *</label>
+                          <select
+                            name="partnershipType"
+                            value={formData.partnershipType}
+                            onChange={handleInputChange}
+                            required
+                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-green-400 transition-colors"
+                          >
+                            <option value="">Select partnership type</option>
+                            <option value="Strategic Partner">Strategic Partner</option>
+                            <option value="Technology Partner">Technology Partner</option>
+                            <option value="Service Partner">Service Partner</option>
+                            <option value="Channel Partner">Channel Partner</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Partnership Details */}
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-bold text-white mb-4 flex items-center space-x-2">
+                        <Handshake className="w-5 h-5 text-green-400" />
+                        <span>Partnership Details</span>
+                      </h3>
+                      
+                      <div>
+                        <label className="block text-white font-medium mb-2">Company Description *</label>
+                        <textarea
+                          name="description"
+                          value={formData.description}
+                          onChange={handleInputChange}
+                          required
+                          rows={4}
+                          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-green-400 transition-colors"
+                          placeholder="Tell us about your company, mission, and what you do..."
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-white font-medium mb-2">Proposed Benefits *</label>
+                        <textarea
+                          name="benefits"
+                          value={formData.benefits}
+                          onChange={handleInputChange}
+                          required
+                          rows={3}
+                          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-green-400 transition-colors"
+                          placeholder="What benefits can you bring to StartupOS and our users?"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-white font-medium mb-2">Your Requirements</label>
+                        <textarea
+                          name="requirements"
+                          value={formData.requirements}
+                          onChange={handleInputChange}
+                          rows={3}
+                          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-green-400 transition-colors"
+                          placeholder="What do you need from StartupOS for this partnership?"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Timeline & Budget */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-white font-medium mb-2">Expected Timeline</label>
+                        <select
+                          name="timeline"
+                          value={formData.timeline}
+                          onChange={handleInputChange}
+                          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-green-400 transition-colors"
+                        >
+                          <option value="">Select timeline</option>
+                          <option value="Immediate">Immediate</option>
+                          <option value="1-3 months">1-3 months</option>
+                          <option value="3-6 months">3-6 months</option>
+                          <option value="6-12 months">6-12 months</option>
+                          <option value="12+ months">12+ months</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-white font-medium mb-2">Budget Range</label>
+                        <select
+                          name="budget"
+                          value={formData.budget}
+                          onChange={handleInputChange}
+                          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-green-400 transition-colors"
+                        >
+                          <option value="">Select budget range</option>
+                          <option value="$0 - $10K">$0 - $10K</option>
+                          <option value="$10K - $50K">$10K - $50K</option>
+                          <option value="$50K - $100K">$50K - $100K</option>
+                          <option value="$100K - $500K">$100K - $500K</option>
+                          <option value="$500K+">$500K+</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* Additional Information */}
+                    <div>
+                      <label className="block text-white font-medium mb-2">Additional Information</label>
+                      <textarea
+                        name="additionalInfo"
+                        value={formData.additionalInfo}
+                        onChange={handleInputChange}
+                        rows={4}
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-green-400 transition-colors"
+                        placeholder="Any additional information you'd like to share..."
+                      />
+                    </div>
+
+                    {/* Error Message */}
+                    {submitError && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="bg-red-500/10 border border-red-500/20 rounded-xl p-4 text-red-400 text-center"
+                      >
+                        {submitError}
+                      </motion.div>
+                    )}
+
+                    {/* Form Actions */}
+                    <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 pt-6">
+                      <motion.button
+                        type="button"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={resetForm}
+                        className="px-8 py-4 text-white/80 hover:text-white transition-colors border border-white/20 rounded-xl hover:border-white/40"
+                      >
+                        Reset Form
+                      </motion.button>
+                      
+                      <motion.button
+                        type="submit"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        disabled={isSubmitting}
+                        className="ultra-button flex items-center space-x-2 px-8 py-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <RefreshCw className="w-5 h-5 animate-spin" />
+                            <span>Submitting...</span>
+                          </>
+                          ) : (
+                          <>
+                            <Zap className="w-5 h-5" />
+                            <span>Submit Application</span>
+                          </>
+                        )}
+                      </motion.button>
+                    </div>
+                  </form>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
+
+      {/* Admin Panel - View Applications */}
+      <section className="py-20 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-white mb-6">
+              Partnership Applications
+            </h2>
+            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+              View and manage partnership applications from our database.
+            </p>
+          </motion.div>
+
+          <div className="ultra-glass rounded-3xl p-8 border border-green-500/20">
+            <PartnershipApplicationsViewer />
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+// Partnership Applications Viewer Component
+const PartnershipApplicationsViewer = () => {
+  const [applications, setApplications] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Load applications from localStorage (simulating database)
+    const loadApplications = () => {
+      try {
+        const stored = localStorage.getItem('partnerApplications');
+        if (stored) {
+          setApplications(JSON.parse(stored));
+        }
+      } catch (error) {
+        console.error('Error loading applications:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadApplications();
+    
+    // Listen for storage changes (when new applications are added)
+    const handleStorageChange = () => loadApplications();
+    window.addEventListener('storage', handleStorageChange);
+    
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
+
+  const updateApplicationStatus = (id, newStatus) => {
+    const updatedApplications = applications.map(app => 
+      app.id === id ? { ...app, status: newStatus } : app
+    );
+    setApplications(updatedApplications);
+    localStorage.setItem('partnerApplications', JSON.stringify(updatedApplications));
+  };
+
+  const deleteApplication = (id) => {
+    const updatedApplications = applications.filter(app => app.id !== id);
+    setApplications(updatedApplications);
+    localStorage.setItem('partnerApplications', JSON.stringify(updatedApplications));
+  };
+
+  if (loading) {
+    return (
+      <div className="text-center py-12">
+        <RefreshCw className="w-8 h-8 text-green-400 animate-spin mx-auto mb-4" />
+        <p className="text-white/70">Loading applications...</p>
+      </div>
+    );
+  }
+
+  if (applications.length === 0) {
+    return (
+      <div className="text-center py-12">
+        <Database className="w-16 h-16 text-white/30 mx-auto mb-4" />
+        <h3 className="text-xl font-bold text-white mb-2">No Applications Yet</h3>
+        <p className="text-white/70">Partnership applications will appear here once submitted.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h3 className="text-xl font-bold text-white">
+          Total Applications: {applications.length}
+        </h3>
+        <div className="text-sm text-white/60">
+          Last updated: {new Date().toLocaleString()}
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+        {applications.map((application) => (
+          <motion.div
+            key={application.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-white/5 border border-white/10 rounded-xl p-6 space-y-4"
+          >
+            {/* Header */}
+            <div className="flex items-start justify-between">
+              <div>
+                <h4 className="text-lg font-bold text-white">{application.companyName}</h4>
+                <p className="text-green-400 font-semibold text-sm">{application.partnershipType}</p>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                  application.status === 'pending' ? 'bg-yellow-500/20 text-yellow-400' :
+                  application.status === 'approved' ? 'bg-green-500/20 text-green-400' :
+                  application.status === 'rejected' ? 'bg-red-500/20 text-red-400' :
+                  'bg-gray-500/20 text-gray-400'
+                }`}>
+                  {application.status}
+                </span>
+              </div>
+            </div>
+
+            {/* Contact Info */}
+            <div className="space-y-2">
+              <div className="flex items-center space-x-2 text-sm text-white/70">
+                <User className="w-4 h-4" />
+                <span>{application.contactName}</span>
+              </div>
+              <div className="flex items-center space-x-2 text-sm text-white/70">
+                <Mail className="w-4 h-4" />
+                <span>{application.email}</span>
+              </div>
+              {application.phone && (
+                <div className="flex items-center space-x-2 text-sm text-white/70">
+                  <Phone className="w-4 h-4" />
+                  <span>{application.phone}</span>
+                </div>
+              )}
+            </div>
+
+            {/* Company Details */}
+            <div className="space-y-2">
+              <div className="flex items-center space-x-2 text-sm text-white/70">
+                <Building2 className="w-4 h-4" />
+                <span>{application.companySize} • {application.industry}</span>
+              </div>
+              {application.website && (
+                <div className="flex items-center space-x-2 text-sm text-white/70">
+                  <Globe2 className="w-4 h-4" />
+                  <a 
+                    href={application.website} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-blue-400 hover:text-blue-300 transition-colors"
+                  >
+                    {application.website}
+                  </a>
+                </div>
+              )}
+            </div>
+
+            {/* Description Preview */}
+            <div>
+              <p className="text-white/80 text-sm line-clamp-3">
+                {application.description}
+              </p>
+            </div>
+
+            {/* Submitted Date */}
+            <div className="text-xs text-white/50">
+              Submitted: {new Date(application.submittedAt).toLocaleDateString()}
+            </div>
+
+            {/* Actions */}
+            <div className="flex items-center space-x-2 pt-4 border-t border-white/10">
+              <select
+                value={application.status}
+                onChange={(e) => updateApplicationStatus(application.id, e.target.value)}
+                className="flex-1 px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-green-400"
+              >
+                <option value="pending">Pending</option>
+                <option value="approved">Approved</option>
+                <option value="rejected">Rejected</option>
+                <option value="under-review">Under Review</option>
+              </select>
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => deleteApplication(application.id)}
+                className="px-3 py-2 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 hover:bg-red-500/30 transition-colors"
+                title="Delete Application"
+              >
+                <Trash2 className="w-4 h-4" />
+              </motion.button>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 };

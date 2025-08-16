@@ -59,7 +59,7 @@ const RevolutionarySolutions = () => {
       title: "Execution System Layer",
       subtitle: "Structured operating workflows",
       icon: Zap,
-      gradient: "from-purple-500 to-pink-500",
+      gradient: "from-blue-600 to-blue-800",
       description: "Stage-aware task flows (idea → seed → scale)",
       features: [
         "Playbooks, KPIs, OKRs, progress dashboards",
@@ -79,7 +79,7 @@ const RevolutionarySolutions = () => {
       title: "Leadership Network Layer",
       subtitle: "Fractional CXOs, advisors, experts",
       icon: Users,
-      gradient: "from-green-500 to-emerald-500",
+      gradient: "from-blue-400 to-blue-600",
       description: "Smart-matching to founders by need, stage, goals",
       features: [
         "Scoped outcome-based contracts",

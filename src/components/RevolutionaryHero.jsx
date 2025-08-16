@@ -31,10 +31,10 @@ const RevolutionaryHero = () => {
   }, []);
 
   const stats = [
-    { icon: Rocket, value: "500+", label: "Startups Growing", color: "from-blue-400 to-blue-600" },
-    { icon: TrendingUp, value: "100+", label: "Systems", color: "from-purple-400 to-purple-600" },
-    { icon: Users, value: "10000+", label: "Community Members", color: "from-pink-400 to-pink-600" },
-    { icon: Star, value: "4.9/5", label: "User Rating", color: "from-green-400 to-green-600" }
+    { icon: Rocket, value: "500+", label: "Startups Growing", color: "from-blue-500 to-cyan-500" },
+    { icon: TrendingUp, value: "100+", label: "Systems", color: "from-blue-600 to-blue-800" },
+    { icon: Users, value: "10000+", label: "Community Members", color: "from-blue-400 to-blue-600" },
+    { icon: Star, value: "4.9/5", label: "User Rating", color: "from-cyan-500 to-blue-500" }
   ];
 
   const features = [
