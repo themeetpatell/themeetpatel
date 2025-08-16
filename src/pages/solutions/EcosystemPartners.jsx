@@ -357,10 +357,10 @@ const EcosystemPartners = () => {
                     <h4 className="text-red-400 font-semibold mb-2">❌ Wrong Approach</h4>
                     <p className="text-white/70 text-sm">{decision.wrong}</p>
                   </div>
-                  <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4">
-                    <h4 className="text-green-400 font-semibold mb-2">✅ Right Approach</h4>
-                    <p className="text-white/70 text-sm">{decision.right}</p>
-                  </div>
+                                                          <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4">
+                      <h4 className="text-blue-400 font-semibold mb-2">✅ Right Approach</h4>
+                      <p className="text-white/70 text-sm">{decision.right}</p>
+                    </div>
                 </div>
               </motion.div>
             ))}
@@ -401,9 +401,9 @@ const EcosystemPartners = () => {
                   <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3">
                     <p className="text-red-400 font-semibold text-sm">Impact: {mistake.impact}</p>
                   </div>
-                  <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-3">
-                    <p className="text-green-400 font-semibold text-sm">Solution: {mistake.solution}</p>
-                  </div>
+                                                          <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
+                      <p className="text-blue-400 font-semibold text-sm">Solution: {mistake.solution}</p>
+                    </div>
                 </div>
               </motion.div>
             ))}

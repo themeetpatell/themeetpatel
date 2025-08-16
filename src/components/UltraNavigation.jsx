@@ -198,7 +198,7 @@ const UltraNavigation = () => {
           scale: navScale,
           filter: `blur(${navBlur}px)`
         }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 ${
           scrolled 
             ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' 
             : 'bg-transparent'
@@ -288,7 +288,7 @@ const UltraNavigation = () => {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 20, scale: 0.95 }}
                       transition={{ duration: 0.3, type: "spring", bounce: 0.2 }}
-                      className="absolute top-full left-0 mt-2 w-80 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden"
+                      className="absolute top-full left-0 mt-2 w-80 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-[9998]"
                     >
                       <div className="p-6 space-y-4">
                         {solutions.map((solution, index) => (
@@ -348,7 +348,7 @@ const UltraNavigation = () => {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 20, scale: 0.95 }}
                       transition={{ duration: 0.3, type: "spring", bounce: 0.2 }}
-                      className="absolute top-full left-0 mt-2 w-80 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden"
+                      className="absolute top-full left-0 mt-2 w-80 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-[9998]"
                     >
                       <div className="p-6 space-y-4">
                         {features.map((feature, index) => (
@@ -408,7 +408,7 @@ const UltraNavigation = () => {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 20, scale: 0.95 }}
                       transition={{ duration: 0.3, type: "spring", bounce: 0.2 }}
-                      className="absolute top-full left-0 mt-2 w-80 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden"
+                      className="absolute top-full left-0 mt-2 w-80 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-[9998]"
                     >
                       <div className="p-6 space-y-4">
                         {resources.map((resource, index) => (
@@ -536,7 +536,7 @@ const UltraNavigation = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed top-20 left-0 right-0 z-40 lg:hidden bg-black/95 backdrop-blur-xl border-b border-white/10 overflow-hidden"
+            className="fixed top-20 left-0 right-0 z-[9997] lg:hidden bg-black/95 backdrop-blur-xl border-b border-white/10 overflow-hidden"
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
               <div className="grid grid-cols-1 gap-8">

@@ -358,7 +358,7 @@ const PMFtoScale = () => {
     <div className="min-h-screen pt-16 ultra-gradient-bg">
       {/* Hero Section */}
       <section className="py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-purple-900/20 to-slate-900" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-blue-900/20 to-slate-900" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -371,10 +371,10 @@ const PMFtoScale = () => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full px-6 py-3 mb-8"
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full px-6 py-3 mb-8"
             >
-              <TrendingUp className="w-5 h-5 text-purple-400" />
-              <span className="text-purple-400 font-medium">PMF to Scale</span>
+              <TrendingUp className="w-5 h-5 text-blue-400" />
+              <span className="text-blue-400 font-medium">PMF to Scale</span>
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
@@ -412,7 +412,7 @@ const PMFtoScale = () => {
             <h2 className="text-4xl font-bold text-white mb-6">
               {stageOverview.title}
             </h2>
-            <p className="text-2xl text-purple-400 font-semibold mb-4">
+            <p className="text-xl text-blue-400 font-semibold mb-4">
               {stageOverview.subtitle}
             </p>
             <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed">
@@ -429,7 +429,7 @@ const PMFtoScale = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="ultra-glass p-6 rounded-xl text-center"
               >
-                <stat.icon className="w-8 h-8 text-purple-400 mx-auto mb-3" />
+                <stat.icon className="w-8 h-8 text-blue-400 mx-auto mb-3" />
                 <div className="text-2xl font-bold text-white mb-2">{stat.number}</div>
                 <p className="text-white/70 text-sm">{stat.label}</p>
               </motion.div>
@@ -477,10 +477,10 @@ const PMFtoScale = () => {
                         <h4 className="text-red-400 font-semibold mb-2">❌ Wrong Approach</h4>
                         <p className="text-white/80 text-sm">{system.wrong}</p>
                       </div>
-                      <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-4">
-                        <h4 className="text-purple-400 font-semibold mb-2">✅ Right Approach</h4>
-                        <p className="text-white/80 text-sm">{system.right}</p>
-                      </div>
+                                              <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4">
+                          <h4 className="text-blue-400 font-semibold mb-2">✅ Right Approach</h4>
+                          <p className="text-white/80 text-sm">{system.right}</p>
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -524,8 +524,8 @@ const PMFtoScale = () => {
                   <p className="text-white/80 text-sm">{mistake.impact}</p>
                 </div>
                 
-                <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-4">
-                  <h4 className="text-purple-400 font-semibold mb-2">StartupOS Solution:</h4>
+                                  <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4">
+                  <h4 className="text-blue-400 font-semibold mb-2">StartupOS Solution:</h4>
                   <p className="text-white/80 text-sm">{mistake.solution}</p>
                 </div>
               </motion.div>
@@ -558,9 +558,9 @@ const PMFtoScale = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="ultra-glass p-8 rounded-xl border border-purple-500/20"
+                className="ultra-glass p-8 rounded-xl border border-blue-500/20"
               >
-                <advantage.icon className="w-12 h-12 text-purple-400 mb-6" />
+                                  <advantage.icon className="w-12 h-12 text-blue-400 mb-6" />
                 <h3 className="text-2xl font-bold text-white mb-4">{advantage.title}</h3>
                 <p className="text-white/70 mb-6">{advantage.description}</p>
                 

@@ -222,7 +222,7 @@ const ScaleToExit = () => {
     <div className="min-h-screen pt-16 ultra-gradient-bg">
       {/* Hero Section */}
       <section className="py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-purple-900/20 to-slate-900" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-blue-900/20 to-slate-900" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -235,10 +235,10 @@ const ScaleToExit = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center space-x-2 bg-purple-500/10 border border-purple-500/20 rounded-full px-6 py-3 mb-8"
+              className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-6 py-3 mb-8"
             >
-              <Crown className="w-5 h-5 text-purple-400" />
-              <span className="text-purple-400 font-semibold">Exit Stage</span>
+              <Crown className="w-5 h-5 text-blue-400" />
+              <span className="text-blue-400 font-semibold">Exit Stage</span>
             </motion.div>
             
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
@@ -291,7 +291,7 @@ const ScaleToExit = () => {
                 transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
                 className="ultra-glass p-6 rounded-xl text-center"
               >
-                <stat.icon className="w-8 h-8 text-purple-400 mx-auto mb-3" />
+                <stat.icon className="w-8 h-8 text-blue-400 mx-auto mb-3" />
                 <div className="text-2xl font-bold text-white mb-1">{stat.number}</div>
                 <p className="text-white/60 text-sm">{stat.label}</p>
               </motion.div>
@@ -312,7 +312,7 @@ const ScaleToExit = () => {
             <h2 className="text-4xl font-bold text-white mb-6">
               {stageOverview.title}
             </h2>
-            <p className="text-xl text-purple-400 font-semibold mb-4">
+            <p className="text-xl text-blue-400 font-semibold mb-4">
               {stageOverview.subtitle}
             </p>
             <p className="text-lg text-white/70 max-w-4xl mx-auto leading-relaxed">
@@ -348,7 +348,7 @@ const ScaleToExit = () => {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="ultra-glass p-8 rounded-xl"
               >
-                <decision.icon className="w-12 h-12 text-purple-400 mb-6" />
+                <decision.icon className="w-12 h-12 text-blue-400 mb-6" />
                 <h3 className="text-2xl font-bold text-white mb-4">{decision.title}</h3>
                 <p className="text-white/70 mb-6">{decision.description}</p>
                 
@@ -357,8 +357,8 @@ const ScaleToExit = () => {
                     <h4 className="text-red-400 font-semibold mb-2">❌ Wrong Approach</h4>
                     <p className="text-white/70 text-sm">{decision.wrong}</p>
                   </div>
-                  <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4">
-                    <h4 className="text-green-400 font-semibold mb-2">✅ Right Approach</h4>
+                                      <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4">
+                    <h4 className="text-blue-400 font-semibold mb-2">✅ Right Approach</h4>
                     <p className="text-white/70 text-sm">{decision.right}</p>
                   </div>
                 </div>
@@ -401,9 +401,9 @@ const ScaleToExit = () => {
                   <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3">
                     <p className="text-red-400 font-semibold text-sm">Impact: {mistake.impact}</p>
                   </div>
-                  <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-3">
-                    <p className="text-green-400 font-semibold text-sm">Solution: {mistake.solution}</p>
-                  </div>
+                                                          <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
+                      <p className="text-blue-400 font-semibold text-sm">Solution: {mistake.solution}</p>
+                    </div>
                 </div>
               </motion.div>
             ))}
@@ -480,12 +480,12 @@ const ScaleToExit = () => {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="ultra-glass p-8 rounded-xl text-center"
               >
-                <Trophy className="w-12 h-12 text-purple-400 mx-auto mb-6" />
+                <Trophy className="w-12 h-12 text-blue-400 mx-auto mb-6" />
                 <h3 className="text-xl font-bold text-white mb-2">{story.founder}</h3>
-                <p className="text-purple-400 font-semibold mb-4">{story.company}</p>
+                <p className="text-blue-400 font-semibold mb-4">{story.company}</p>
                 <p className="text-white/70 mb-4 text-sm leading-relaxed">{story.story}</p>
-                <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-3">
-                  <p className="text-purple-400 font-semibold text-sm">{story.result}</p>
+                <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
+                  <p className="text-blue-400 font-semibold text-sm">{story.result}</p>
                 </div>
               </motion.div>
             ))}
@@ -549,12 +549,12 @@ const ScaleToExit = () => {
               {pricing.plan}
             </h2>
             <div className="text-4xl font-bold text-white mb-2">{pricing.price}</div>
-            <p className="text-purple-400 font-semibold mb-8">{pricing.savings}</p>
+            <p className="text-blue-400 font-semibold mb-8">{pricing.savings}</p>
             
             <div className="space-y-3 mb-8">
               {pricing.features.map((feature, index) => (
                 <div key={index} className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
                   <span className="text-white/80 text-sm">{feature}</span>
                 </div>
               ))}

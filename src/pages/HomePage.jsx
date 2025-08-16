@@ -119,7 +119,7 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Hero Section - Revolutionary Storytelling */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         {/* Animated Background Grid */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-900/10 to-black" />
@@ -156,7 +156,7 @@ const HomePage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="inline-flex items-center space-x-2 bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-full px-6 py-3 border border-red-500/30 mb-8"
+            className="inline-flex items-center space-x-2 bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-full px-6 py-3 border border-red-500/30 mb-8 mt-8"
           >
             <motion.div
               animate={{ rotate: [0, 360] }}
@@ -292,7 +292,7 @@ const HomePage = () => {
               MEET THE
               <br />
               <span className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
-                VILLAINS
+                DESTRUCTORS
               </span>
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
@@ -493,7 +493,7 @@ const HomePage = () => {
               YOUR
               <br />
               <span className="bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
-                PAINKILLER
+                ARSENAL
               </span>
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
