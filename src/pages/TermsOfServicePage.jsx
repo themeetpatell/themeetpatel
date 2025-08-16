@@ -84,7 +84,7 @@ import {
 } from 'lucide-react';
 
 const TermsOfServicePage = () => {
-  const lastUpdated = "January 15, 2024";
+  const lastUpdated = "August 20, 2025";
 
   return (
     <div className="min-h-screen pt-16 ultra-gradient-bg">
@@ -103,7 +103,7 @@ const TermsOfServicePage = () => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full px-6 py-3 mb-8"
+              className="policy-badge inline-flex items-center space-x-2 rounded-full px-6 py-3 mb-8"
             >
               <FileText className="w-5 h-5 text-blue-400" />
               <span className="text-blue-400 font-medium">Legal & Compliance</span>
@@ -140,9 +140,9 @@ const TermsOfServicePage = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="ultra-glass p-8 rounded-xl"
+            className="policy-content p-8 rounded-xl"
           >
-            <div className="prose prose-invert prose-lg max-w-none">
+            <div className="policy-content max-w-none">
               <h2>1. Acceptance of Terms</h2>
               <p>By accessing and using StartupOS ("the Service"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
 
@@ -262,19 +262,19 @@ const TermsOfServicePage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <h4 className="text-white font-semibold mb-2">Email</h4>
-                    <p className="text-white/70">legal@startupos.com</p>
+                    <p className="text-white/70">aarivbizz@gmail.com</p>
                   </div>
                   <div>
                     <h4 className="text-white font-semibold mb-2">Address</h4>
-                    <p className="text-white/70">123 Innovation Street<br />San Francisco, CA 94105</p>
+                    <p className="text-white/70">Dubai Marina<br />Dubai, United Arab Emirates</p>
                   </div>
                   <div>
                     <h4 className="text-white font-semibold mb-2">Phone</h4>
-                    <p className="text-white/70">+1 (555) 123-4567</p>
+                    <p className="text-white/70">+971 54 574 1414</p>
                   </div>
                   <div>
                     <h4 className="text-white font-semibold mb-2">General Support</h4>
-                    <p className="text-white/70">support@startupos.com</p>
+                    <p className="text-white/70">aarivbizz@gmail.com</p>
                   </div>
                 </div>
               </div>

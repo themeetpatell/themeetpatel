@@ -39,6 +39,7 @@ import CoBuilderPlayground from './pages/CoBuilderPlayground';
 import JobDetailPage from './pages/JobDetailPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
+import CookiePolicyPage from './pages/CookiePolicyPage';
 import PersonalPage from './pages/PersonalPage';
 
 
@@ -75,9 +76,9 @@ function App() {
           <Route path="/co-builder-playground" element={<CoBuilderPlayground />} />
           
           {/* Template Pages - Add these as needed */}
-          <Route path="/privacy" element={<PrivacyPolicyPage />} />
-          <Route path="/terms" element={<TermsOfServicePage />} />
-          <Route path="/cookies" element={<div className="min-h-screen pt-16 ultra-gradient-bg flex items-center justify-center"><h1 className="text-4xl font-bold text-white">Cookie Policy</h1></div>} />
+                  <Route path="/privacy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms" element={<TermsOfServicePage />} />
+                <Route path="/cookies" element={<CookiePolicyPage />} />
           <Route path="/jobs/:id" element={<JobDetailPage />} />
           
           {/* Solution Pages */}

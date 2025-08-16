@@ -37,7 +37,8 @@ import {
   Target as TargetIcon2,
   Users as UsersIcon2,
   Zap as ZapIcon2,
-  Building2
+  Building2,
+  MessageCircle
 } from 'lucide-react';
 
 const HomePage = () => {
@@ -56,9 +57,9 @@ const HomePage = () => {
 
   // HERO SECTION DATA
   const heroStats = [
-    { number: "500+", label: "Startups", icon: Rocket, color: "from-blue-500 to-cyan-500" },
-    { number: "$2.1B+", label: "Funding Raised", icon: DollarSign, color: "from-blue-600 to-blue-800" },
-    { number: "100+", label: "Exits", icon: Crown, color: "from-blue-400 to-blue-600" },
+    { number: "50+", label: "Startups", icon: Rocket, color: "from-blue-500 to-cyan-500" },
+    { number: "1000+", label: "Community Audience", icon: DollarSign, color: "from-blue-600 to-blue-800" },
+    { number: "200+", label: "Founders", icon: Crown, color: "from-blue-400 to-blue-600" },
     { number: "4.9/5", label: "Rating", icon: Star, color: "from-cyan-500 to-blue-500" }
   ];
 
@@ -110,9 +111,9 @@ const HomePage = () => {
 
   // SUCCESS METRICS
   const successMetrics = [
-    { metric: "10,000+", label: "Founders", description: "Trusted our platform", icon: UsersIcon, color: "from-blue-500 to-cyan-500" },
-    { metric: "$50M+", label: "Joint Revenue", description: "Generated through partnerships", icon: DollarSign, color: "from-blue-600 to-blue-800" },
-    { metric: "95%", label: "Success Rate", description: "Based on annual surveys", icon: CheckCircle, color: "from-blue-400 to-blue-600" },
+    { metric: "1,000+", label: "Audience", description: "Trusted our community", icon: UsersIcon, color: "from-blue-500 to-cyan-500" },
+    { metric: "$50+", label: "Startups", description: "Trusted our platform", icon: DollarSign, color: "from-blue-600 to-blue-800" },
+    { metric: "95%", label: "Success Rate", description: "Based on surveys", icon: CheckCircle, color: "from-blue-400 to-blue-600" },
     { metric: "24/7", label: "AI Support", description: "Always available", icon: ZapIcon, color: "from-cyan-500 to-blue-500" }
   ];
 
@@ -164,7 +165,7 @@ const HomePage = () => {
             >
               <TrendingDown className="w-5 h-5 text-red-400" />
             </motion.div>
-            <span className="text-red-400 font-medium">The Villains Are Winning</span>
+            <span className="text-red-400 font-medium">9 out of 10 startups fail</span>
           </motion.div>
 
           {/* Main Headline - Revolutionary Storytelling */}
@@ -178,7 +179,7 @@ const HomePage = () => {
               <span className="text-white">THE</span>
               <br />
               <span className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
-                RESISTANCE
+                STARTUP SHOW
               </span>
               <br />
               <span className="text-white text-5xl md:text-6xl">STARTS HERE</span>
@@ -186,7 +187,7 @@ const HomePage = () => {
             <p className="text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
               90% of startups fail. Not because the idea was bad, but because the journey is harder than anyone imagined. 
               <br />
-              <span className="text-red-400 font-semibold">The villains of failure, uncertainty, and resource scarcity are winning.</span>
+              <span className="text-red-400 font-semibold">The causes of failure, uncertainty, and resource scarcity are winning.</span>
               <br />
               <span className="text-blue-400 font-semibold">It's time to fight back with the ultimate startup arsenal.</span>
             </p>
@@ -241,7 +242,7 @@ const HomePage = () => {
               className="px-10 py-5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-xl rounded-2xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:from-blue-600 hover:to-cyan-600 flex items-center space-x-3"
             >
               <Rocket className="w-6 h-6" />
-              <span>Join the Resistance</span>
+              <span>Join the Arena</span>
             </motion.a>
             
             <motion.button
@@ -249,8 +250,8 @@ const HomePage = () => {
               whileTap={{ scale: 0.95 }}
               className="px-10 py-5 text-white/80 hover:text-white transition-colors duration-300 border-2 border-white/20 rounded-2xl hover:border-white/40 flex items-center space-x-3 group"
             >
-              <Play className="w-6 h-6 group-hover:text-blue-400 transition-colors" />
-              <span>Watch Demo</span>
+              <MessageCircle className="w-6 h-6 group-hover:text-blue-400 transition-colors" />
+              <span>Join the Community</span>
             </motion.button>
           </motion.div>
 
@@ -292,16 +293,16 @@ const HomePage = () => {
               MEET THE
               <br />
               <span className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
-                DESTRUCTORS
+                DESTROYERS
               </span>
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              These are the forces that destroy startups. But every villain has a weakness.
+              These are the forces that destroy startups. But every problem has a weakness.
             </p>
           </motion.div>
 
           {/* Villains Grid - Extraordinary Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 name: "Failure",
@@ -325,6 +326,30 @@ const HomePage = () => {
                 weakness: "Fractional CXOs and ecosystem access",
                 icon: DollarSign,
                 color: "from-yellow-500 to-yellow-700",
+                animation: "shake"
+              },
+              {
+                name: "Lack of Focus",
+                description: "The distraction that scatters startup energy",
+                weakness: "Stage-aware gamification and AI prioritization",
+                icon: Target,
+                color: "from-purple-500 to-purple-700",
+                animation: "pulse"
+              },
+              {
+                name: "Poor Execution",
+                description: "The gap between strategy and implementation",
+                weakness: "AI Co-Builders and execution frameworks",
+                icon: Zap,
+                color: "from-indigo-500 to-indigo-700",
+                animation: "bounce"
+              },
+              {
+                name: "Weak Network",
+                description: "The isolation that limits growth opportunities",
+                weakness: "World-class community and ecosystem partnerships",
+                icon: Network,
+                color: "from-cyan-500 to-cyan-700",
                 animation: "shake"
               }
             ].map((villain, index) => (
@@ -554,31 +579,90 @@ const HomePage = () => {
             ))}
           </div>
 
-          {/* Victory CTA */}
+
+        </div>
+      </section>
+
+      {/* WhatsApp Community Section */}
+      <section className="py-24 relative overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-900/30 to-black" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.2),transparent_50%)]" />
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="text-center mt-20"
+            transition={{ duration: 0.8 }}
+            className="relative"
           >
-            <div className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/30 rounded-3xl p-12">
-              <h3 className="text-3xl font-bold text-white mb-6">
-                Ready to Join the Resistance?
-              </h3>
-              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-                Stop fighting the villains alone. Join thousands of founders who've already chosen the winning side.
-              </p>
-              <motion.a
-                href="https://startupos-one.vercel.app/signup"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center space-x-3 px-10 py-5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-xl rounded-2xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:from-blue-600 hover:to-cyan-600"
+            {/* Animated Background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 via-emerald-500/20 to-green-500/20 rounded-3xl blur-3xl" />
+            
+            {/* Main Content */}
+            <div className="relative bg-black/60 backdrop-blur-xl rounded-3xl p-16 text-center border border-green-500/30">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="mb-8"
               >
-                <Shield className="w-6 h-6" />
-                <span>Join the Resistance</span>
-              </motion.a>
+                <div className="w-24 h-24 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Users className="w-12 h-12 text-white" />
+                </div>
+                <h2 className="text-4xl font-bold text-white mb-4">
+                  🚀 Join the StartupOS Community
+                </h2>
+                <p className="text-xl text-white/80 mb-8 leading-relaxed max-w-3xl mx-auto">
+                  We're building the StartupOS space for founders, operators, and startup talent — live AMAs, execution frameworks, insider resources, and real collaboration.
+                </p>
+                <p className="text-lg text-green-400 font-semibold mb-8">
+                  Tap in, build faster, scale smarter.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
+              >
+                <motion.a
+                  href="https://chat.whatsapp.com/FXo00jnKmTzEOMK3c6f3AB?mode=ems_wa_c"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-12 py-5 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold text-xl rounded-2xl shadow-2xl hover:shadow-green-500/25 transition-all duration-300 hover:from-green-600 hover:to-emerald-600 flex items-center space-x-3"
+                >
+                  <MessageCircle className="w-6 h-6" />
+                  <span>Join WhatsApp Community</span>
+                </motion.a>
+
+              </motion.div>
+
+              {/* Community Stats */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.9 }}
+                className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8"
+              >
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-green-400 mb-2">250+</div>
+                  <p className="text-white/70">Active Members</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-green-400 mb-2">24/7</div>
+                  <p className="text-white/70">Community Support</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-green-400 mb-2">10+</div>
+                  <p className="text-white/70">Events</p>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -644,77 +728,11 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Final CTA Section - Revolutionary Victory */}
-      <section className="py-32 relative overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-900/20 to-black" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.15),transparent_50%)]" />
-        </div>
 
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative"
-          >
-            {/* Animated Background */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/15 via-cyan-500/15 to-blue-500/15 rounded-3xl blur-3xl" />
-            
-            {/* Main Content */}
-            <div className="relative bg-black/50 backdrop-blur-xl rounded-3xl p-16 text-center border border-blue-500/20">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="mb-8"
-              >
-                <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Rocket className="w-12 h-12 text-white" />
-                </div>
-                <h2 className="text-4xl font-bold text-white mb-4">
-                  Ready to Build the Future?
-                </h2>
-                <p className="text-xl text-white/80 mb-8 leading-relaxed max-w-2xl mx-auto">
-                  Join thousands of founders who are already building tomorrow's unicorns with StartupOS.
-                </p>
-              </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
-              >
-                <motion.a
-                  href="https://startupos-one.vercel.app/signup"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-10 py-5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-xl rounded-2xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:from-blue-600 hover:to-cyan-600 flex items-center space-x-3"
-                >
-                  <Rocket className="w-6 h-6" />
-                  <span>Start Building Now</span>
-                </motion.a>
-                
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-10 py-5 text-white/80 hover:text-white transition-colors duration-300 border-2 border-white/20 rounded-2xl hover:border-white/40 flex items-center space-x-3 group"
-                >
-                  <Play className="w-6 h-6 group-hover:text-blue-400 transition-colors" />
-                  <span>Learn More</span>
-                </motion.button>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+
     </div>
   );
 };
 
 export default HomePage;
-

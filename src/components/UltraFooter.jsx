@@ -68,7 +68,8 @@ import {
   CornerUpRight,
   CornerDownLeft,
   CornerDownRight,
-  DollarSign
+  DollarSign,
+  User
 } from 'lucide-react';
 
 const UltraFooter = () => {
@@ -133,10 +134,10 @@ const UltraFooter = () => {
   ];
 
   const stats = [
-    { number: "10,000+", label: "Founders", icon: Users },
-    { number: "$2B+", label: "Raised", icon: DollarSign },
-    { number: "500+", label: "Success Stories", icon: Award },
-    { number: "95%", label: "Success Rate", icon: CheckCircle }
+    { number: "1,000+", label: "Founders", icon: Users },
+    { number: "100+", label: "Startups", icon: DollarSign },
+    { number: "50+", label: "AI Co-Builders", icon: Award },
+    { number: "100+", label: "CXOs", icon: User }
   ];
 
   return (
@@ -259,7 +260,7 @@ const UltraFooter = () => {
               {/* Copyright & Links */}
               <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-8">
                 <p className="text-white/60 text-sm">
-                  © 2024 StartupOS. All rights reserved.
+                  © 2025 StartupOS. All rights reserved.
                 </p>
                 <div className="flex items-center space-x-6">
                   <motion.div
@@ -316,36 +317,7 @@ const UltraFooter = () => {
         </div>
 
         {/* Bottom CTA Section */}
-        <div className="border-t border-white/10 py-12">
-          <div className="text-center space-y-6">
-            <h2 className="text-3xl font-bold text-white">
-              Ready to Build Your Startup?
-            </h2>
-            <p className="text-white/70 text-lg max-w-2xl mx-auto">
-              Join 10,000+ founders who are building the future with StartupOS. 
-              Start your free trial today and see the difference.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-              <motion.a
-                href="https://startupos-one.vercel.app/signup"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="ultra-button px-8 py-4 text-lg"
-              >
-                Start Free Trial
-              </motion.a>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 text-white/80 hover:text-white transition-colors text-lg"
-              >
-                Schedule Demo
-              </motion.button>
-            </div>
-          </div>
-        </div>
+       
       </div>
 
       {/* Floating Elements */}

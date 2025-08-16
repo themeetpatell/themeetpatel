@@ -84,7 +84,7 @@ import {
 } from 'lucide-react';
 
 const PrivacyPolicyPage = () => {
-  const lastUpdated = "January 15, 2024";
+  const lastUpdated = "August 20, 2025";
 
   return (
     <div className="min-h-screen pt-16 ultra-gradient-bg">
@@ -103,10 +103,10 @@ const PrivacyPolicyPage = () => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full px-6 py-3 mb-8"
+              className="policy-badge inline-flex items-center space-x-2 rounded-full px-6 py-3 mb-8"
             >
-              <Shield className="w-5 h-5 text-purple-400" />
-              <span className="text-purple-400 font-medium">Privacy & Security</span>
+              <Shield className="w-5 h-5 text-blue-400" />
+              <span className="text-blue-400 font-medium">Privacy & Security</span>
             </motion.div>
 
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -140,9 +140,9 @@ const PrivacyPolicyPage = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="ultra-glass p-8 rounded-xl"
+            className="policy-content p-8 rounded-xl"
           >
-            <div className="prose prose-invert prose-lg max-w-none">
+            <div className="policy-content max-w-none">
               <h2>1. Information We Collect</h2>
               <p>We collect information you provide directly to us, such as when you create an account, use our services, or contact us for support.</p>
               
@@ -271,23 +271,23 @@ const PrivacyPolicyPage = () => {
               <h2>9. Contact Us</h2>
               <p>If you have any questions about this privacy policy or our data practices, please contact us:</p>
               
-              <div className="bg-white/10 rounded-lg p-6 mt-6">
+              <div className="policy-contact rounded-lg p-6 mt-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <h4 className="text-white font-semibold mb-2">Email</h4>
-                    <p className="text-white/70">privacy@startupos.com</p>
+                    <p className="text-white/70">aarivbizz@gmail.com</p>
                   </div>
                   <div>
                     <h4 className="text-white font-semibold mb-2">Address</h4>
-                    <p className="text-white/70">123 Innovation Street<br />San Francisco, CA 94105</p>
+                    <p className="text-white/70">Dubai Marina<br /> Dubai, United Arab Emirates</p>
                   </div>
                   <div>
                     <h4 className="text-white font-semibold mb-2">Phone</h4>
-                    <p className="text-white/70">+1 (555) 123-4567</p>
+                    <p className="text-white/70">+971 54 574 1414</p>
                   </div>
                   <div>
                     <h4 className="text-white font-semibold mb-2">Data Protection Officer</h4>
-                    <p className="text-white/70">dpo@startupos.com</p>
+                    <p className="text-white/70">aarivbizz@gmail.com</p>
                   </div>
                 </div>
               </div>
@@ -310,7 +310,7 @@ const PrivacyPolicyPage = () => {
                 <li>Right to non-discrimination for exercising your privacy rights</li>
               </ul>
 
-              <div className="bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-lg p-6 mt-8 border border-purple-500/20">
+              <div className="policy-notice rounded-lg p-6 mt-8">
                 <div className="flex items-start space-x-3">
                   <Info className="w-6 h-6 text-purple-400 mt-1 flex-shrink-0" />
                   <div>
@@ -345,7 +345,7 @@ const PrivacyPolicyPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="ultra-glass p-6 rounded-xl cursor-pointer"
+              className="policy-card p-6 rounded-xl cursor-pointer"
             >
               <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mb-4">
                 <FileText className="w-6 h-6 text-white" />
@@ -364,7 +364,7 @@ const PrivacyPolicyPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="ultra-glass p-6 rounded-xl cursor-pointer"
+              className="policy-card p-6 rounded-xl cursor-pointer"
             >
               <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mb-4">
                 <Shield className="w-6 h-6 text-white" />
@@ -383,7 +383,7 @@ const PrivacyPolicyPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="ultra-glass p-6 rounded-xl cursor-pointer"
+              className="policy-card p-6 rounded-xl cursor-pointer"
             >
               <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-4">
                 <Settings className="w-6 h-6 text-white" />

@@ -772,6 +772,99 @@ const EcosystemAccess = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* WhatsApp Community Section */}
+      <section className="py-24 relative overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-emerald-900/30 to-slate-900" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.2),transparent_50%)]" />
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
+            {/* Animated Background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 via-emerald-500/20 to-green-500/20 rounded-3xl blur-3xl" />
+            
+            {/* Main Content */}
+            <div className="relative bg-slate-900/60 backdrop-blur-xl rounded-3xl p-16 text-center border border-emerald-500/30">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="mb-8"
+              >
+                <div className="w-24 h-24 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Users className="w-12 h-12 text-white" />
+                </div>
+                <h2 className="text-4xl font-bold text-white mb-4">
+                  🚀 Join the StartupOS Community
+                </h2>
+                <p className="text-xl text-white/80 mb-8 leading-relaxed max-w-3xl mx-auto">
+                  We're building the most trusted space for founders, operators, and startup talent — live AMAs, execution frameworks, insider resources, and real collaboration.
+                </p>
+                <p className="text-lg text-emerald-400 font-semibold mb-8">
+                  Tap in, build faster, scale smarter.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
+              >
+                <motion.a
+                  href="https://chat.whatsapp.com/FXo00jnKmTzEOMK3c6f3AB?mode=ems_wa_c"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-12 py-5 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold text-xl rounded-2xl shadow-2xl hover:shadow-green-500/25 transition-all duration-300 hover:from-green-600 hover:to-emerald-600 flex items-center space-x-3"
+                >
+                  <MessageSquare className="w-6 h-6" />
+                  <span>Join WhatsApp Community</span>
+                </motion.a>
+                
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-10 py-5 text-white/80 hover:text-white transition-colors duration-300 border-2 border-white/20 rounded-2xl hover:border-white/40 flex items-center space-x-3 group"
+                >
+                  <Users className="w-6 h-6 group-hover:text-emerald-400 transition-colors" />
+                  <span>Learn More</span>
+                </motion.button>
+              </motion.div>
+
+              {/* Community Stats */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.9 }}
+                className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8"
+              >
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-emerald-400 mb-2">125K+</div>
+                  <p className="text-white/70">Active Members</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-emerald-400 mb-2">24/7</div>
+                  <p className="text-white/70">Community Support</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-emerald-400 mb-2">500+</div>
+                  <p className="text-white/70">Daily Conversations</p>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 };
