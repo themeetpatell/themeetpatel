@@ -36,6 +36,7 @@ import {
   FileText,
   ExternalLink
 } from 'lucide-react';
+import WaitlistForm from '../../components/WaitlistForm';
 
 const ScaleToExit = () => {
   const stageOverview = {
@@ -560,17 +561,13 @@ const ScaleToExit = () => {
               ))}
             </div>
 
-            <motion.a
-              href="https://startupos-one.vercel.app/signup"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="ultra-button flex items-center space-x-2 mx-auto"
-            >
-              <Crown className="w-5 h-5" />
-              <span>Start Exit Planning</span>
-            </motion.a>
+            <div className="mx-auto">
+              <WaitlistForm 
+                variant="primary"
+                size="default"
+                className="flex items-center space-x-2 mx-auto"
+              />
+            </div>
 
             <p className="text-white/50 text-sm mt-6">
               No credit card required • 14-day free trial • Cancel anytime

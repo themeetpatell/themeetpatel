@@ -24,6 +24,7 @@ import {
   Building2,
   Network
 } from 'lucide-react';
+import WaitlistForm from './WaitlistForm';
 import '../App.css';
 
 const UltraNavigation = () => {
@@ -473,24 +474,18 @@ const UltraNavigation = () => {
 
             {/* CTA Buttons */}
             <div className="hidden lg:flex items-center space-x-4">
-              <motion.button
+              <motion.a
+                href="https://app.startupos.in"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-6 py-3 text-white/80 hover:text-white transition-colors duration-300 font-medium"
               >
                 Sign In
-              </motion.button>
-              
-              <motion.a
-                href="https://startupos-one.vercel.app/signup"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:from-blue-600 hover:to-cyan-600"
-              >
-                Start Free Trial
               </motion.a>
+              
+              <WaitlistForm variant="primary" size="default" />
             </div>
 
             {/* Mobile Menu Button */}
@@ -679,22 +674,19 @@ const UltraNavigation = () => {
 
               {/* Mobile CTA Buttons */}
               <div className="space-y-4 pt-6 border-t border-white/10">
-                <motion.button
+                <motion.a
+                  href="https://app.startupos.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full text-white/80 hover:text-white transition-colors"
+                  className="w-full text-white/80 hover:text-white transition-colors block text-center py-3"
                 >
                   Sign In
-                </motion.button>
-                <a href="https://startupos-one.vercel.app/signup" target="_blank" rel="noopener noreferrer">
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="ultra-button w-full"
-                  >
-                    Start Free Trial
-                  </motion.button>
-                </a>
+                </motion.a>
+                <div className="w-full">
+                  <WaitlistForm variant="primary" size="large" className="w-full" />
+                </div>
               </div>
             </div>
           </motion.div>

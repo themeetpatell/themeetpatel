@@ -71,6 +71,7 @@ import {
   DollarSign,
   User
 } from 'lucide-react';
+import WaitlistForm from './WaitlistForm';
 
 const UltraFooter = () => {
   const [email, setEmail] = useState('');

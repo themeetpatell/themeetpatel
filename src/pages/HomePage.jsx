@@ -40,6 +40,7 @@ import {
   Building2,
   MessageCircle
 } from 'lucide-react';
+import WaitlistForm from '../components/WaitlistForm';
 
 const HomePage = () => {
   const [activeSection, setActiveSection] = useState('hero');
@@ -233,17 +234,11 @@ const HomePage = () => {
             transition={{ duration: 1, delay: 0.8 }}
             className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
           >
-            <motion.a
-              href="https://startupos-one.vercel.app/signup"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-10 py-5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-xl rounded-2xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:from-blue-600 hover:to-cyan-600 flex items-center space-x-3"
-            >
-              <Rocket className="w-6 h-6" />
-              <span>Join the Arena</span>
-            </motion.a>
+            <WaitlistForm 
+              variant="primary" 
+              size="large" 
+              className="px-10 py-5 text-xl font-bold"
+            />
             
             <motion.button
               whileHover={{ scale: 1.05, y: -2 }}

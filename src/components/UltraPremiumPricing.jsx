@@ -19,6 +19,7 @@ import {
   ChevronDown,
   ChevronUp
 } from 'lucide-react';
+import WaitlistForm from './WaitlistForm';
 import '../App.css';
 
 const UltraPremiumPricing = () => {
@@ -406,20 +407,25 @@ const UltraPremiumPricing = () => {
               </div>
 
               {/* CTA Button */}
-              <motion.a
-                href={plan.monthlyPrice ? "https://startupos-one.vercel.app/signup" : "#"}
-                target={plan.monthlyPrice ? "_blank" : undefined}
-                rel={plan.monthlyPrice ? "noopener noreferrer" : undefined}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className={`w-full py-4 rounded-full font-medium transition-all duration-200 ${
-                  plan.popular
-                    ? 'ultra-button shadow-lg shadow-blue-500/25'
-                    : 'border border-white/20 text-white hover:bg-white/10'
-                }`}
-              >
-                {plan.monthlyPrice ? 'Start Free Trial' : 'Contact Sales'}
-              </motion.a>
+              {plan.monthlyPrice ? (
+                <WaitlistForm 
+                  variant={plan.popular ? "primary" : "outline"}
+                  size="default"
+                  className={`w-full py-4 rounded-full font-medium transition-all duration-200 ${
+                    plan.popular
+                      ? 'shadow-lg shadow-blue-500/25'
+                      : ''
+                  }`}
+                />
+              ) : (
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-4 border border-white/20 rounded-full text-white hover:bg-white/10 transition-all duration-200 font-medium"
+                >
+                  Contact Sales
+                </motion.button>
+              )}
             </motion.div>
           ))}
         </div>
@@ -595,14 +601,11 @@ const UltraPremiumPricing = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="ultra-button flex items-center space-x-2 shadow-lg shadow-blue-500/25"
-              >
-                <Rocket className="w-5 h-5" />
-                <span>Start Free Trial</span>
-              </motion.button>
+              <WaitlistForm 
+                variant="primary"
+                size="default"
+                className="flex items-center space-x-2 shadow-lg shadow-blue-500/25"
+              />
               
               <motion.button
                 whileHover={{ scale: 1.05 }}

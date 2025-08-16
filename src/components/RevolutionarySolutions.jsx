@@ -19,6 +19,7 @@ import {
   Network
 } from 'lucide-react';
 import innovationImage from '../assets/innovation-lab.jpg';
+import WaitlistForm from './WaitlistForm';
 import '../App.css';
 
 const RevolutionarySolutions = () => {
@@ -439,18 +440,11 @@ const RevolutionarySolutions = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a
-                href="https://startupos-one.vercel.app/signup"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="ultra-button flex items-center space-x-2"
-              >
-                <Rocket className="w-5 h-5" />
-                <span>Start Free Trial</span>
-                <ArrowRight className="w-5 h-5" />
-              </motion.a>
+              <WaitlistForm 
+                variant="primary"
+                size="default"
+                className="flex items-center space-x-2"
+              />
               
               <motion.button
                 whileHover={{ scale: 1.05 }}
