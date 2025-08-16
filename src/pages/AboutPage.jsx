@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { Users, Target, Zap, Globe, Award, Heart, Brain, Rocket } from 'lucide-react';
 import meetPatelImage from '../assets/themeetpatel.jpeg';
 import drashtySoniImage from '../assets/drashty.jpg';
+import YashviSoniImage from '../assets/Yashvi.jpg';
 import '../App.css';
 
 const AboutPage = () => {
@@ -24,15 +25,15 @@ const AboutPage = () => {
       role: "CTO & Co-Founder", 
       bio: "Tech visionary with 4+ years building scalable systems and AI-powered solutions. Former senior engineer at multiple unicorn startups. Expert in turning complex technical challenges into elegant, user-friendly solutions that scale from 0 to millions.",
       image: drashtySoniImage,
-      achievements: ["100+ systems architected", "5M+ users served", "99.9% uptime maintained"],
+      achievements: ["100+ systems architected", "10K+ users served", "99.9% uptime maintained"],
       quote: "Great technology should be invisible - it just works."
     },
           {
-        name: "To be announced",
+        name: "Yashvi Soni",
         role: "Chief Community Officer", 
         bio: "Community builder and startup ecosystem expert with 6+ years growing vibrant founder communities. Former head of community at top accelerators. Passionate about connecting founders with the resources, mentors, and networks they need to succeed.",
-        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
-        achievements: ["5,000+ founders connected", "100+ events organized", "95% community satisfaction"],
+        image: YashviSoniImage,
+        achievements: ["500+ founders connected", "10+ events organized", "95% community satisfaction"],
         quote: "The best startup advice comes from founders who've been there."
       },
       {

@@ -59,7 +59,7 @@ const HomePage = () => {
   // HERO SECTION DATA
   const heroStats = [
     { number: "50+", label: "Startups", icon: Rocket, color: "from-blue-500 to-cyan-500" },
-    { number: "1000+", label: "Community Audience", icon: DollarSign, color: "from-blue-600 to-blue-800" },
+    { number: "1000+", label: "Community Audience", icon: Building2, color: "from-blue-600 to-blue-800" },
     { number: "200+", label: "Founders", icon: Crown, color: "from-blue-400 to-blue-600" },
     { number: "4.9/5", label: "Rating", icon: Star, color: "from-cyan-500 to-blue-500" }
   ];
@@ -104,7 +104,7 @@ const HomePage = () => {
     {
       icon: Network,
       title: "World-Class Community",
-      description: "Join 125K+ founders with premium features, expert mentors, and exclusive resources.",
+      description: "Join 10K+ founders with premium features, expert mentors, and exclusive resources.",
       impact: "Network & grow together",
       color: "from-indigo-500 to-purple-600"
     }

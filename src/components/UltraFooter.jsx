@@ -72,10 +72,13 @@ import {
   User
 } from 'lucide-react';
 import WaitlistForm from './WaitlistForm';
+import BlogDashboard from './BlogDashboard';
+
 
 const UltraFooter = () => {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [showBlogDashboard, setShowBlogDashboard] = useState(false);
 
   const handleSubscribe = (e) => {
     e.preventDefault();
@@ -123,7 +126,8 @@ const UltraFooter = () => {
         { name: "About Founder", href: "/meet" },
         { name: "Careers", href: "/careers" },
         { name: "Contact", href: "/contact" },
-        { name: "Partners", href: "/partners" }
+        { name: "Partners", href: "/partners" },
+        { name: "Manage Blogs", href: "#", onClick: () => setShowBlogDashboard(true) }
       ]
     }
   ];
@@ -155,12 +159,15 @@ const UltraFooter = () => {
             <div className="space-y-8">
               {/* Brand */}
               <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <Link to="/" className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
-                      <Rocket className="w-7 h-7 text-white" />
+                <div className="flex items-center">
+                  <Link to="/" className="flex items-center">
+                    <div className="w-24 h-14 rounded-xl flex items-center justify-center overflow-hidden">
+                      <img 
+                        src="/src/assets/logo.png" 
+                        alt="Startup-Center" 
+                        className="w-full h-full object-cover"
+                      />
                     </div>
-                    <span className="text-3xl font-bold ultra-text-gradient">StartupOS</span>
                   </Link>
                 </div>
                 <p className="text-white/70 text-lg max-w-md leading-relaxed">
@@ -242,12 +249,21 @@ const UltraFooter = () => {
                       key={item.name}
                       whileHover={{ x: 5 }}
                     >
-                      <Link
-                        to={item.href}
-                        className="block text-white/60 hover:text-white transition-colors text-sm"
-                      >
-                        {item.name}
-                      </Link>
+                      {item.onClick ? (
+                        <button
+                          onClick={item.onClick}
+                          className="block text-white/60 hover:text-white transition-colors text-sm text-left w-full"
+                        >
+                          {item.name}
+                        </button>
+                      ) : (
+                        <Link
+                          to={item.href}
+                          className="block text-white/60 hover:text-white transition-colors text-sm"
+                        >
+                          {item.name}
+                        </Link>
+                      )}
                     </motion.div>
                   ))}
                 </div>
@@ -326,6 +342,12 @@ const UltraFooter = () => {
       <div className="absolute top-40 right-20 w-1 h-1 bg-blue-400 rounded-full opacity-40 animate-pulse delay-1000" />
       <div className="absolute bottom-40 left-20 w-1 h-1 bg-purple-400 rounded-full opacity-50 animate-pulse delay-2000" />
       <div className="absolute bottom-20 right-10 w-2 h-2 bg-emerald-400 rounded-full opacity-30 animate-pulse delay-1500" />
+
+      {/* Blog Dashboard */}
+      <BlogDashboard
+        isOpen={showBlogDashboard}
+        onClose={() => setShowBlogDashboard(false)}
+      />
     </footer>
   );
 };

@@ -25,6 +25,8 @@ import {
   Network
 } from 'lucide-react';
 import WaitlistForm from './WaitlistForm';
+import BlogDashboard from './BlogDashboard';
+
 import '../App.css';
 
 const UltraNavigation = () => {
@@ -33,6 +35,7 @@ const UltraNavigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [showBlogDashboard, setShowBlogDashboard] = useState(false);
   const navRef = useRef(null);
   const { scrollY } = useScroll();
 
@@ -244,20 +247,18 @@ const UltraNavigation = () => {
               whileHover={{ scale: 1.05 }}
               className="flex items-center space-x-3"
             >
-              <Link to="/" className="flex items-center space-x-3 group">
+              <Link to="/" className="flex items-center group">
                 <motion.div
-                  className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-2xl"
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
+                  className="w-24 h-14 rounded-xl flex items-center justify-center shadow-2xl overflow-hidden"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <Rocket className="w-7 h-7 text-white" />
+                  <img 
+                    src="/src/assets/logo.png" 
+                    alt="StartupOS Logo" 
+                    className="w-full h-full object-cover"
+                  />
                 </motion.div>
-                <motion.span 
-                  className="text-3xl font-black text-white group-hover:text-blue-400 transition-colors duration-300"
-                  whileHover={{ x: 5 }}
-                >
-                  StartupOS
-                </motion.span>
               </Link>
             </motion.div>
 
@@ -674,6 +675,8 @@ const UltraNavigation = () => {
 
               {/* Mobile CTA Buttons */}
               <div className="space-y-4 pt-6 border-t border-white/10">
+
+                
                 <motion.a
                   href="https://app.startupos.in"
                   target="_blank"
@@ -684,6 +687,7 @@ const UltraNavigation = () => {
                 >
                   Sign In
                 </motion.a>
+                
                 <div className="w-full">
                   <WaitlistForm variant="primary" size="large" className="w-full" />
                 </div>
@@ -706,6 +710,7 @@ const UltraNavigation = () => {
           />
         )}
       </AnimatePresence>
+
     </>
   );
 };
