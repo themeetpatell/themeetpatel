@@ -6,6 +6,7 @@ import {
   ExternalLink, CheckCircle, Award, Star, TrendingUp, Zap,
   BookOpen, Heart, Calendar, Clock, Eye, MessageSquare, ArrowRight, X, Send
 } from 'lucide-react';
+import SEOHead from '../components/SEOHead';
 
 const AboutPage = () => {
   const [activeTab, setActiveTab] = useState('about');
@@ -27,7 +28,7 @@ const AboutPage = () => {
     
     bio: "Serial entrepreneur and startup ecosystem builder with over 8 years of experience in building and scaling technology companies. Passionate about helping startups succeed through innovative solutions and strategic guidance.",
     
-    about: "The Meet Patel is a visionary entrepreneur and startup ecosystem builder based in Dubai, UAE. With over 8 years of experience in the technology sector, he has successfully founded and scaled multiple startups, helping hundreds of entrepreneurs build successful businesses. His expertise spans across product development, growth marketing, fundraising, and team building. Through StartupOS, he's creating a comprehensive platform that empowers startups at every stage of their journey.",
+    about: "The Meet Patel is a visionary entrepreneur and startup ecosystem builder based in Dubai, UAE. With over 8 years of experience in the technology sector, he has successfully founded and scaled multiple startups, helping hundreds of entrepreneurs build successful businesses. His expertise spans across product development, growth marketing, fundraising, and team building.",
     
     experience: [
       {
@@ -37,9 +38,14 @@ const AboutPage = () => {
         timeSpent: "1 year 10+ months",
         description: "Learning, experimenting, building, and scaling Finanshels.com - The movement towards making businesses smarter with their money.",
         achievements: [
-          "Leading strategic initiatives for business intelligence and financial optimization",
-          "Driving innovation in fintech solutions for business growth",
-          "Building scalable systems for financial management and analytics"
+          "Strategic Leadership & Turnaround: Transitioned from Product Consultant to Interim COO, leading company-wide restructuring. Established HR, Marketing, Branding, Ops, and Engineering functions from scratch, hired all Heads, and built scalable systems that grew revenue by 40% in 8 months.",
+          "Fundraising & Investor Readiness: Key role in $1.5M USD fundraising due diligence and investor processes, ensuring operational and compliance readiness.",
+          "Operational Excellence: Introduced SOPs, OKR/KPI frameworks, and cross-functional processes, improving efficiency by 50% and aligning the org for scale.",
+          "Organizational Growth: Scaled HR from 1 to 4 and company size from 34 to 97 in 6 months, lifting retention by 20% and embedding a high-performance culture.",
+          "Product & Tech Foundations: Built Product & Engineering from ground-up; defined product strategy, roadmaps, and UI/UX systems that became the base for scalable delivery.",
+          "Systems & Automation: Drove CRM migrations (HubSpot/Pipedrive → Zoho), built dashboards, automated workflows, WhatsApp bots, AI calling, and subscription optimizations, cutting costs and boosting funnel conversions.",
+          "GTM & Growth Execution: Launched Corporate Tax Portal (AED 99 entry), designed referral/affiliate loops, cross-selling campaigns, and community-first GTMs.",
+          "Cost Optimization & Partnerships: Negotiated SaaS/vendor contracts (HubSpot, Ziwo, Wati, Brightcall), saving 6-figure annual costs. Rolled out Partner Portals (Kiflo, Zoho) and onboarded 50+ partners, scaling distribution channels."
         ]
       },
       {
@@ -49,7 +55,7 @@ const AboutPage = () => {
         timeSpent: "2 years 2 month",
         description: "Managed multiple startups, including Studenthub, Plugn, Tamr, and provided strategic consulting for sold startups like Pogi and theCapital.",
         achievements: [
-          "Strategic Financial Turnaround: Turned a loss-making enterprise into a profitable one through increased revenue streams and achieved strategic cost reductions by 35%",
+          "Strategic Financial Management: Turned a loss-making enterprise into a profitable one through increased revenue streams and achieved strategic cost reductions by 35%",
           "Operational Excellence: Improved team productivity by 40% by implementing 30+ tools like Jira, Slack, Zapier, Mixpanel, CRM systems, and Adobe Suite",
           "Expansion & Alliances: Played a pivotal role in expansion efforts, engaging in investments, acquisitions, and forging corporate alliances",
           "Process Enhancement: Developed and implemented 25+ policies, SOPs and procedures that reduced operational bottlenecks by 30%",
@@ -464,8 +470,102 @@ const AboutPage = () => {
     { id: 'mentorship', label: 'Mentorship', icon: Users }
   ];
 
+  // Structured Data for About Page
+  const aboutStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About The Meet Patel - Serial Entrepreneur & Startup Ecosystem Builder",
+    "description": "Learn about The Meet Patel's journey as a serial entrepreneur, his experience building startups, and his expertise in business operations, product development, and startup ecosystem building.",
+    "url": "https://themeetpatel.com/about",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "The Meet Patel",
+      "alternateName": ["Meet Patel", "themeetpatel"],
+      "jobTitle": "Serial Entrepreneur & Startup Ecosystem Builder",
+      "description": "Serial entrepreneur and startup ecosystem builder with over 8 years of experience in building and scaling technology companies.",
+      "url": "https://themeetpatel.com",
+      "image": "https://themeetpatel.com/meet-patel-profile.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dubai",
+        "addressRegion": "Dubai",
+        "addressCountry": "AE"
+      },
+      "email": "the.meetll@gmail.com",
+      "telephone": "+971-XX-XXXXXXX",
+      "sameAs": [
+        "https://www.linkedin.com/in/themeetpatel/",
+        "https://x.com/the_meetpatel",
+        "https://github.com/themeetpatell",
+        "http://instagram.com/the.meetpatell/",
+        "https://youtube.com/@themeetpatel"
+      ],
+      "knowsAbout": [
+        "Entrepreneurship",
+        "Startup Ecosystem Building",
+        "Business Operations",
+        "Product Development",
+        "Startup Scaling",
+        "Business Strategy",
+        "Operations Management",
+        "Startup Leadership",
+        "Business Growth",
+        "Startup Mentoring"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Serial Entrepreneur",
+        "description": "Building and scaling multiple technology startups",
+        "occupationLocation": {
+          "@type": "City",
+          "name": "Dubai, UAE"
+        }
+      },
+      "alumniOf": [
+        {
+          "@type": "Organization",
+          "name": "Kingstorm Automations Pvt Ltd"
+        },
+        {
+          "@type": "Organization",
+          "name": "Incsmart Technologies LLP"
+        },
+        {
+          "@type": "Organization",
+          "name": "Plugn"
+        }
+      ]
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://themeetpatel.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About",
+          "item": "https://themeetpatel.com/about"
+        }
+      ]
+    }
+  };
+
   return (
     <div className="min-h-screen pt-16 ultra-gradient-bg">
+      <SEOHead 
+        title="About The Meet Patel - Serial Entrepreneur & Startup Ecosystem Builder"
+        description="Learn about The Meet Patel's journey as a serial entrepreneur with 8+ years experience building and scaling startups. Discover his expertise in business operations, product development, and startup ecosystem building. Founder of StartupOS, ZeroHuman, and MealVerse."
+        keywords="About The Meet Patel, Meet Patel biography, themeetpatel story, serial entrepreneur journey, startup ecosystem builder, business operations expert, StartupOS founder story, ZeroHuman founder, MealVerse founder, Dubai entrepreneur, startup mentor background, business consultant experience, product development expert, startup scaling expert, entrepreneurship journey, startup advisor background, business strategy expert, operations management expert, startup leadership experience"
+        canonical="/about"
+        ogImage="/about-og-image.jpg"
+        structuredData={aboutStructuredData}
+      />
+      
       {/* Hero Section */}
       <section ref={heroRef} className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-teal-900/20 to-slate-900" />

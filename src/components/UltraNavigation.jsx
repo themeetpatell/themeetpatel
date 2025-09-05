@@ -9,7 +9,8 @@ import {
   Mail,
   BookOpen,
   Home,
-  FileText
+  FileText,
+  Settings
 } from 'lucide-react';
 
 import '../App.css';
@@ -69,9 +70,19 @@ const UltraNavigation = () => {
       icon: Briefcase
     },
     {
+      title: "Systems",
+      href: "/systems",
+      icon: Settings
+    },
+    {
       title: "Blog",
       href: "/blog",
       icon: BookOpen
+    },
+    {
+      title: "Contact",
+      href: "/contact",
+      icon: Mail
     }
   ];
 

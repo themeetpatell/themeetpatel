@@ -94,11 +94,12 @@ const UltraFooter = () => {
   return (
     <footer className="bg-black relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(59,130,246,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(147,197,253,0.1),transparent_50%)]" />
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(59,130,246,0.15),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(147,51,234,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.05),transparent_50%)]" />
       </div>
-
+      
       <div className="relative z-10">
         {/* Main Footer Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -126,19 +127,19 @@ const UltraFooter = () => {
                 {/* Contact Info */}
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3 text-gray-300">
-                    <Mail className="w-4 h-4 text-indigo-400" />
-                    <a href={`mailto:${contactInfo.email}`} className="hover:text-indigo-300 transition-colors">
+                    <Mail className="w-4 h-4 text-blue-400" />
+                    <a href={`mailto:${contactInfo.email}`} className="hover:text-blue-300 transition-colors">
                       {contactInfo.email}
                     </a>
                   </div>
                   <div className="flex items-center space-x-3 text-gray-300">
-                    <Phone className="w-4 h-4 text-indigo-400" />
-                    <a href={`tel:${contactInfo.phone}`} className="hover:text-indigo-300 transition-colors">
+                    <Phone className="w-4 h-4 text-blue-400" />
+                    <a href={`tel:${contactInfo.phone}`} className="hover:text-blue-300 transition-colors">
                       {contactInfo.phone}
                     </a>
                   </div>
                   <div className="flex items-center space-x-3 text-gray-300">
-                    <MapPin className="w-4 h-4 text-indigo-400" />
+                    <MapPin className="w-4 h-4 text-blue-400" />
                     <span>{contactInfo.location}</span>
                   </div>
                 </div>
@@ -161,7 +162,7 @@ const UltraFooter = () => {
                         target={link.external ? "_blank" : "_self"}
                         rel={link.external ? "noopener noreferrer" : ""}
                         whileHover={{ x: 5 }}
-                        className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors group"
+                        className="flex items-center space-x-2 text-gray-400 hover:text-blue-400 transition-colors group"
                       >
                         <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                         <span>{link.name}</span>
@@ -179,7 +180,7 @@ const UltraFooter = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <h3 className="text-lg font-semibold text-gray-800 mb-6">{footerSections.writing.title}</h3>
+                <h3 className="text-lg font-semibold text-white mb-6">{footerSections.writing.title}</h3>
                 <ul className="space-y-3">
                   {footerSections.writing.links.map((link, index) => (
                     <li key={index}>
@@ -188,7 +189,7 @@ const UltraFooter = () => {
                         target={link.external ? "_blank" : "_self"}
                         rel={link.external ? "noopener noreferrer" : ""}
                         whileHover={{ x: 5 }}
-                        className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors group"
+                        className="flex items-center space-x-2 text-gray-400 hover:text-blue-400 transition-colors group"
                       >
                         <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                         <span>{link.name}</span>
@@ -206,7 +207,7 @@ const UltraFooter = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                <h3 className="text-lg font-semibold text-gray-800 mb-6">{footerSections.connect.title}</h3>
+                <h3 className="text-lg font-semibold text-white mb-6">{footerSections.connect.title}</h3>
                 <ul className="space-y-3">
                   {footerSections.connect.links.map((link, index) => (
                     <li key={index}>
@@ -215,7 +216,7 @@ const UltraFooter = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         whileHover={{ x: 5 }}
-                        className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors group"
+                        className="flex items-center space-x-2 text-gray-400 hover:text-blue-400 transition-colors group"
                       >
                         <link.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
                         <span>{link.name}</span>
@@ -225,18 +226,18 @@ const UltraFooter = () => {
                 </ul>
               </motion.div>
             </div>
-          </div>
+              </div>
 
           {/* Newsletter Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-16 pt-8 border-t border-blue-200/30"
+            className="mt-16 pt-8 border-t border-white/10"
           >
             <div className="max-w-2xl mx-auto text-center">
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">Stay Updated</h3>
-              <p className="text-gray-600 mb-8">
+              <h3 className="text-2xl font-bold text-white mb-4">Stay Updated</h3>
+              <p className="text-gray-300 mb-8">
                 Get notified about new articles, projects, and insights from my entrepreneurial journey.
               </p>
               
@@ -256,14 +257,14 @@ const UltraFooter = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="flex-1 px-4 py-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 placeholder-gray-500"
+                    className="flex-1 px-4 py-3 bg-black/50 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400"
                     required
                   />
                   <motion.button
                     type="submit"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2"
+                    className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 flex items-center justify-center space-x-2"
                   >
                     <Send className="w-4 h-4" />
                     <span>Subscribe</span>
@@ -278,7 +279,7 @@ const UltraFooter = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-16 pt-8 border-t border-blue-200/30"
+            className="mt-16 pt-8 border-t border-white/10"
           >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {achievements.map((achievement, index) => (
@@ -289,42 +290,42 @@ const UltraFooter = () => {
                   transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
                   className="text-center"
                 >
-                  <div className={`w-12 h-12 mx-auto mb-3 ${achievement.color} bg-opacity-10 rounded-full flex items-center justify-center`}>
+                  <div className={`w-12 h-12 mx-auto mb-3 ${achievement.color} bg-opacity-20 rounded-full flex items-center justify-center`}>
                     <achievement.icon className={`w-6 h-6 ${achievement.color}`} />
-                  </div>
-                  <p className="text-sm font-medium text-gray-700">{achievement.text}</p>
-                </motion.div>
-              ))}
             </div>
-          </motion.div>
-        </div>
+                  <p className="text-sm font-medium text-gray-300">{achievement.text}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+          </div>
 
         {/* Bottom Bar */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700">
+        <div className="bg-gradient-to-r from-gray-900 to-black border-t border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-              <div className="flex items-center space-x-2 text-white/90">
+              <div className="flex items-center space-x-2 text-gray-300">
                 <span>© 2024 The Meet Patel. Made with</span>
                 <Heart className="w-4 h-4 text-red-400 fill-current" />
                 <span>in India</span>
               </div>
-              
+
               <div className="flex items-center space-x-6">
-                <Link to="/about" className="text-white/80 hover:text-white transition-colors text-sm">
+                <Link to="/about" className="text-gray-400 hover:text-white transition-colors text-sm">
                   About
                 </Link>
-                <Link to="/contact" className="text-white/80 hover:text-white transition-colors text-sm">
+                <Link to="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">
                   Contact
                 </Link>
-                <Link to="/blog" className="text-white/80 hover:text-white transition-colors text-sm">
+                <Link to="/blog" className="text-gray-400 hover:text-white transition-colors text-sm">
                   Blog
                 </Link>
                 <a 
                   href="https://www.linkedin.com/company/the-startupos/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-white/80 hover:text-white transition-colors text-sm"
-                >
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
+                  >
                   LinkedIn
                 </a>
               </div>
@@ -336,4 +337,4 @@ const UltraFooter = () => {
   );
 };
 
-export default UltraFooter;
+export default UltraFooter; 

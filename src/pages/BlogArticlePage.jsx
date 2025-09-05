@@ -4,8 +4,13 @@ import { useParams, Link } from 'react-router-dom';
 import { 
   Calendar, Clock, User, Share2, Heart, MessageSquare, Bookmark,
   Twitter, Linkedin, Facebook, Copy, Eye, X, BookOpen,
-  ArrowLeft, ArrowRight
+  ArrowLeft, ArrowRight, Award, TrendingUp, Users, Zap
 } from 'lucide-react';
+import { 
+  getArticleBySlug, 
+  getRelatedArticles, 
+  getPublishedArticles 
+} from '../data/blogData';
 
 const BlogArticlePage = () => {
   const { slug } = useParams();
@@ -18,70 +23,12 @@ const BlogArticlePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const articleRef = useRef(null);
 
-  // Sample article data
-  const articles = [
-    {
-      id: 1,
-      slug: "from-idea-to-exit-8-year-journey",
-      title: "From Idea to Exit: My 8-Year Journey as a Serial Entrepreneur",
-      excerpt: "Reflecting on the lessons learned from building multiple startups, the challenges faced, and the wisdom gained along the way.",
-      content: `
-        <p>Eight years ago, I was a fresh engineering graduate with big dreams and even bigger questions about how to turn ideas into reality. Today, as I reflect on this incredible journey, I'm amazed at how much I've learned and how many lives I've been able to impact through entrepreneurship.</p>
-
-        <h2>The Beginning: From Student to Entrepreneur</h2>
-        <p>My journey began at Nirma University, where I pursued my diploma and later B.Tech in Mechanical Engineering. While my peers were focused on traditional career paths, I was fascinated by the world of startups and innovation.</p>
-
-        <h2>Key Lessons Learned</h2>
-        <p>Looking back on these eight years, several key lessons stand out:</p>
-
-        <h3>1. Execution Trumps Ideas</h3>
-        <p>Great ideas are a dime a dozen. What separates successful entrepreneurs from dreamers is the ability to execute relentlessly.</p>
-
-        <h3>2. People Are Everything</h3>
-        <p>Building and leading teams taught me that your people are your greatest asset. Investing in people is the highest ROI investment you can make.</p>
-
-        <h3>3. Systems and Processes Scale</h3>
-        <p>One of the biggest mistakes I see entrepreneurs make is trying to scale without proper systems. Systems don't just help you scale – they help you maintain quality and consistency as you grow.</p>
-
-        <h2>Looking Forward</h2>
-        <p>As I look to the future, I'm excited about continued innovation, expanded mentorship, and building tools that help entrepreneurs succeed at every stage of their journey.</p>
-      `,
-      category: "Entrepreneurship",
-      author: "The Meet Patel",
-      date: "2024-01-15",
-      readTime: "8 min read",
-      views: 2500,
-      likes: 89,
-      featured: true,
-      tags: ["entrepreneurship", "startup journey", "lessons learned"]
-    }
-  ];
-
-  const relatedArticlesData = [
-      {
-        id: 2,
-      title: "The Art of Writing Love Stories: Behind 'The Eternal Love'",
-      excerpt: "Exploring the creative process behind writing romantic novels and how personal experiences shape fictional narratives.",
-      category: "Writing & Books",
-      date: "2024-01-10",
-      readTime: "6 min read"
-      },
-      {
-        id: 3,
-      title: "Mentoring 50+ Startups: What I've Learned About Success",
-      excerpt: "Key insights from mentoring dozens of entrepreneurs and the common patterns that lead to startup success.",
-      category: "Leadership",
-      date: "2024-01-05",
-      readTime: "7 min read"
-    }
-  ];
-
   useEffect(() => {
     setIsLoading(true);
-    const foundArticle = articles.find(a => a.slug === slug);
+    const foundArticle = getArticleBySlug(slug);
     if (foundArticle) {
       setArticle(foundArticle);
-      setRelatedArticles(relatedArticlesData);
+      setRelatedArticles(getRelatedArticles(foundArticle));
     }
     setTimeout(() => setIsLoading(false), 1000);
   }, [slug]);
@@ -207,12 +154,12 @@ const BlogArticlePage = () => {
               </div>
 
             {/* Title */}
-                        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
                 {article.title}
               </h1>
 
             {/* Excerpt */}
-                        <p className="text-xl text-cyan-200 mb-8 leading-relaxed">
+            <p className="text-xl text-cyan-200 mb-8 leading-relaxed">
                 {article.excerpt}
               </p>
 
@@ -237,7 +184,7 @@ const BlogArticlePage = () => {
                 </div>
 
             {/* Tags */}
-                        <div className="flex flex-wrap gap-2 mb-8">
+            <div className="flex flex-wrap gap-2 mb-8">
               {article.tags.map((tag, index) => (
                 <span key={index} className="bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-full text-sm border border-cyan-500/30">
                   #{tag}
@@ -333,23 +280,430 @@ const BlogArticlePage = () => {
 
       {/* Article Content */}
       <section className="py-12 relative">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            ref={articleRef}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="ultra-glass rounded-xl p-8 md:p-12"
-          >
-            <div 
-              className="prose prose-lg prose-invert max-w-none"
-              dangerouslySetInnerHTML={{ __html: article.content }}
-              style={{
-                color: 'rgba(255, 255, 255, 0.9)',
-                lineHeight: '1.7'
-              }}
-            />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            {/* Main Content */}
+            <div className="lg:col-span-3">
+              <motion.div
+                ref={articleRef}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="ultra-glass rounded-2xl overflow-hidden"
+              >
+                {/* Article Header Image */}
+                <div className="relative h-64 md:h-80 bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-purple-500/20">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4">
+                        <BookOpen className="w-10 h-10 text-white" />
+            </div>
+                      <h2 className="text-2xl md:text-3xl font-bold text-white px-4">{article.title}</h2>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Article Body */}
+                <div className="p-8 md:p-12">
+                {/* Table of Contents */}
+                  <div className="mb-8 p-6 bg-white/5 rounded-xl border border-white/10">
+                    <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
+                      <BookOpen className="w-5 h-5 mr-2 text-cyan-400" />
+                      Table of Contents
+                    </h3>
+                    <ul className="space-y-2 text-white/70">
+                      <li className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+                        <span>Introduction</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+                        <span>Key Concepts</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+                        <span>Practical Applications</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+                        <span>Case Studies</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+                        <span>Conclusion</span>
+                      </li>
+                  </ul>
+                </div>
+
+                  {/* Enhanced Article Content */}
+                  <div className="prose prose-xl prose-invert max-w-none">
+                    {/* Introduction */}
+                    <div className="mb-8">
+                      <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+                        <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center mr-3">
+                          <span className="text-white font-bold text-sm">1</span>
+                        </div>
+                        Introduction
+                      </h2>
+                      <div 
+                        className="text-white/90 leading-relaxed text-lg"
+                        dangerouslySetInnerHTML={{ __html: article.content }}
+                        style={{ lineHeight: '1.8' }}
+                      />
+                    </div>
+
+                    {/* Key Insights Box */}
+                    <div className="my-12 p-8 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl border border-cyan-500/20">
+                      <div className="flex items-start space-x-4">
+                        <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                          <span className="text-white font-bold text-lg">💡</span>
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold text-white mb-3">Key Insight</h3>
+                          <p className="text-white/80 leading-relaxed">
+                            This article explores the fundamental principles that drive success in modern entrepreneurship, 
+                            backed by real-world examples and actionable strategies you can implement immediately.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Main Content Sections */}
+                    <div className="space-y-12">
+                      <div>
+                        <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+                          <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center mr-3">
+                            <span className="text-white font-bold text-sm">2</span>
+                          </div>
+                          Core Concepts
+                        </h2>
+                        <div className="space-y-6">
+                          <p className="text-white/90 leading-relaxed text-lg">
+                            Understanding the foundational elements is crucial for building sustainable success. 
+                            These concepts form the bedrock of effective leadership and strategic thinking.
+                          </p>
+                          
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                              <h3 className="text-xl font-semibold text-white mb-3">Strategic Vision</h3>
+                              <p className="text-white/70 leading-relaxed">
+                                The ability to see beyond immediate challenges and envision long-term opportunities 
+                                that others might miss.
+                              </p>
+                            </div>
+                            <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                              <h3 className="text-xl font-semibold text-white mb-3">Execution Excellence</h3>
+                              <p className="text-white/70 leading-relaxed">
+                                Turning vision into reality through disciplined execution and continuous improvement.
+                              </p>
+                            </div>
+                          </div>
+                  </div>
+                </div>
+
+                      <div>
+                        <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+                          <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center mr-3">
+                            <span className="text-white font-bold text-sm">3</span>
+                          </div>
+                          Practical Applications
+                        </h2>
+                        <div className="space-y-6">
+                          <p className="text-white/90 leading-relaxed text-lg">
+                            Theory without practice is incomplete. Here are actionable strategies you can implement 
+                            starting today to accelerate your growth and success.
+                          </p>
+                          
+                          <div className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-2xl p-8 border border-green-500/20">
+                            <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
+                              <span className="text-2xl mr-3">🚀</span>
+                              Action Steps
+                            </h3>
+                            <ol className="space-y-4 text-white/80">
+                              <li className="flex items-start space-x-3">
+                                <span className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">1</span>
+                                <span>Define your core values and align all decisions with them</span>
+                              </li>
+                              <li className="flex items-start space-x-3">
+                                <span className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">2</span>
+                                <span>Create a 90-day action plan with measurable milestones</span>
+                              </li>
+                              <li className="flex items-start space-x-3">
+                                <span className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">3</span>
+                                <span>Build a support network of mentors and peers</span>
+                              </li>
+                              <li className="flex items-start space-x-3">
+                                <span className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">4</span>
+                                <span>Implement daily reflection and learning practices</span>
+                              </li>
+                            </ol>
+            </div>
+          </div>
+        </div>
+
+                      <div>
+                        <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+                          <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center mr-3">
+                            <span className="text-white font-bold text-sm">4</span>
+                          </div>
+                          Case Studies
+                        </h2>
+                        <div className="space-y-6">
+                          <p className="text-white/90 leading-relaxed text-lg">
+                            Real-world examples demonstrate how these principles work in practice. 
+                            These case studies provide concrete evidence of success.
+                          </p>
+                          
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-xl border border-blue-500/20">
+                              <h3 className="text-xl font-semibold text-white mb-3">ZeroHuman Success Story</h3>
+                              <p className="text-white/70 leading-relaxed mb-4">
+                                How we built an AI platform that generated 300% increase in customer interactions 
+                                and 90% cost savings for clients.
+                              </p>
+                              <div className="flex items-center space-x-4 text-sm text-white/60">
+                                <span>300% Growth</span>
+                                <span>•</span>
+                                <span>90% Cost Savings</span>
+              </div>
+            </div>
+
+                            <div className="p-6 bg-gradient-to-br from-green-500/10 to-teal-500/10 rounded-xl border border-green-500/20">
+                              <h3 className="text-xl font-semibold text-white mb-3">MealVerse Innovation</h3>
+                              <p className="text-white/70 leading-relaxed mb-4">
+                                Revolutionizing food technology through sustainable solutions and digital innovation 
+                                that transformed culinary experiences.
+                              </p>
+                              <div className="flex items-center space-x-4 text-sm text-white/60">
+                                <span>5K+ Users</span>
+                                <span>•</span>
+                                <span>70% Sustainability</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+                          <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center mr-3">
+                            <span className="text-white font-bold text-sm">5</span>
+                          </div>
+                          Conclusion
+                        </h2>
+                        <div className="space-y-6">
+                          <p className="text-white/90 leading-relaxed text-lg">
+                            Success is not a destination but a journey of continuous learning and adaptation. 
+                            The principles outlined in this article provide a framework for sustainable growth.
+                          </p>
+                          
+                          <div className="p-8 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl border border-cyan-500/20">
+                            <h3 className="text-2xl font-bold text-white mb-4">Key Takeaways</h3>
+                            <ul className="space-y-3 text-white/80">
+                              <li className="flex items-start space-x-3">
+                                <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
+                                <span>Focus on value creation over short-term gains</span>
+                              </li>
+                              <li className="flex items-start space-x-3">
+                                <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
+                                <span>Build systems that scale with your growth</span>
+                              </li>
+                              <li className="flex items-start space-x-3">
+                                <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
+                                <span>Invest in relationships and continuous learning</span>
+                              </li>
+                              <li className="flex items-start space-x-3">
+                                <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
+                                <span>Measure progress, not perfection</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Enhanced Social Sharing */}
+                  <div className="mt-12 pt-8 border-t border-white/10">
+                    <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+                      <div className="flex items-center space-x-4">
+                        <span className="text-white/60 font-medium">Share this article:</span>
+                        <div className="flex items-center space-x-3">
+                          <motion.button
+                            onClick={() => handleShare('linkedin')}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="p-3 bg-blue-600/20 text-blue-400 hover:bg-blue-600/30 rounded-xl transition-all duration-200"
+                            title="Share on LinkedIn"
+                          >
+                            <Linkedin className="w-5 h-5" />
+                          </motion.button>
+                          
+                          <motion.button
+                            onClick={() => handleShare('twitter')}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="p-3 bg-sky-500/20 text-sky-400 hover:bg-sky-500/30 rounded-xl transition-all duration-200"
+                            title="Share on Twitter"
+                          >
+                            <Twitter className="w-5 h-5" />
+                          </motion.button>
+                          
+                          <motion.button
+                            onClick={() => handleShare('facebook')}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="p-3 bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 rounded-xl transition-all duration-200"
+                            title="Share on Facebook"
+                          >
+                            <Facebook className="w-5 h-5" />
+                          </motion.button>
+                          
+                          <motion.button
+                            onClick={handleCopyLink}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="p-3 bg-gray-500/20 text-gray-400 hover:bg-gray-500/30 rounded-xl transition-all duration-200"
+                            title="Copy Link"
+                          >
+                            <Copy className="w-5 h-5" />
+                          </motion.button>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center space-x-6 text-white/60">
+                        <div className="flex items-center space-x-2">
+                          <Heart className="w-4 h-4" />
+                          <span>{article.likes} likes</span>
+                    </div>
+                        <div className="flex items-center space-x-2">
+                          <Eye className="w-4 h-4" />
+                          <span>{article.views.toLocaleString()} views</span>
+                        </div>
+                              <div className="flex items-center space-x-2">
+                          <MessageSquare className="w-4 h-4" />
+                          <span>12 comments</span>
+                              </div>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+            </div>
+
+            {/* Sidebar */}
+            <div className="lg:col-span-1">
+              <div className="sticky top-24 space-y-6">
+                {/* Author Card */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="ultra-glass rounded-2xl p-6"
+                >
+                  <div className="text-center mb-6">
+                    <div className="w-20 h-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <User className="w-10 h-10 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">{article.author}</h3>
+                    <p className="text-cyan-300 text-sm">Entrepreneur & Writer</p>
+                  </div>
+                  
+                  <div className="space-y-4 text-sm text-white/70">
+                    <div className="flex items-center justify-between">
+                      <span>Articles Written</span>
+                      <span className="text-cyan-400 font-semibold">15+</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span>Total Views</span>
+                      <span className="text-cyan-400 font-semibold">15K+</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span>Followers</span>
+                      <span className="text-cyan-400 font-semibold">2.5K+</span>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-6 space-y-3">
+                    <motion.a
+                      href="https://linkedin.com/in/themeetpatel"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-full flex items-center justify-center space-x-2 bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors"
+                    >
+                      <Linkedin className="w-4 h-4" />
+                      <span>Follow on LinkedIn</span>
+                    </motion.a>
+                    
+                    <motion.a
+                      href="https://twitter.com/themeetpatel"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-full flex items-center justify-center space-x-2 bg-sky-500 text-white py-3 rounded-xl font-semibold hover:bg-sky-600 transition-colors"
+                    >
+                      <Twitter className="w-4 h-4" />
+                      <span>Follow on Twitter</span>
+                    </motion.a>
+                  </div>
+                </motion.div>
+
+                {/* Reading Progress */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  className="ultra-glass rounded-2xl p-6"
+                >
+                  <h3 className="text-lg font-semibold text-white mb-4">Reading Progress</h3>
+                  <div className="space-y-4">
+                    <div className="w-full bg-white/10 rounded-full h-2">
+                      <motion.div
+                        className="h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"
+                        style={{ width: `${readingProgress}%` }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </div>
+                    <div className="flex items-center justify-between text-sm text-white/60">
+                      <span>{Math.round(readingProgress)}% complete</span>
+                      <span>{article.readTime}</span>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Table of Contents */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                  className="ultra-glass rounded-2xl p-6"
+                >
+                  <h3 className="text-lg font-semibold text-white mb-4">Table of Contents</h3>
+                  <nav className="space-y-2">
+                    <a href="#introduction" className="block text-cyan-400 hover:text-cyan-300 text-sm py-1 transition-colors">
+                      1. Introduction
+                    </a>
+                    <a href="#concepts" className="block text-white/60 hover:text-white text-sm py-1 transition-colors">
+                      2. Core Concepts
+                    </a>
+                    <a href="#applications" className="block text-white/60 hover:text-white text-sm py-1 transition-colors">
+                      3. Practical Applications
+                    </a>
+                    <a href="#case-studies" className="block text-white/60 hover:text-white text-sm py-1 transition-colors">
+                      4. Case Studies
+                    </a>
+                    <a href="#conclusion" className="block text-white/60 hover:text-white text-sm py-1 transition-colors">
+                      5. Conclusion
+                    </a>
+                  </nav>
           </motion.div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -412,7 +766,7 @@ const BlogArticlePage = () => {
                   </div>
                   
                   <Link
-                    to={`/blog/${relatedArticle.id}`}
+                    to={`/blog/${relatedArticle.slug}`}
                     className="text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center"
                   >
                     Read Article
