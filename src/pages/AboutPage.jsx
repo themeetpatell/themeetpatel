@@ -565,7 +565,7 @@ const AboutPage = () => {
         ogImage="/about-og-image.jpg"
         structuredData={aboutStructuredData}
       />
-      
+
       {/* Hero Section */}
       <section ref={heroRef} className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-teal-900/20 to-slate-900" />

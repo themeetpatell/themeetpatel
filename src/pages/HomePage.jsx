@@ -8,6 +8,9 @@ import {
   MapPin, Phone, MessageSquare, Clock, Eye, ChevronRight, Briefcase
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import meetPatelImage from '../assets/themeetpatel.jpeg';
+import meetPatelImage2 from '../assets/the meet patel.jpeg';
+import logoImage from '../assets/logo for themeetpatel.png';
 
 const HomePage = () => {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
@@ -327,8 +330,12 @@ const HomePage = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="mb-12"
             >
-              <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 via-purple-600 to-blue-700 rounded-full flex items-center justify-center mb-8 shadow-2xl">
-                <span className="text-white text-4xl font-bold">MP</span>
+              <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 via-purple-600 to-blue-700 rounded-full flex items-center justify-center mb-8 shadow-2xl overflow-hidden">
+                <img
+                  src={logoImage}
+                  alt="The Meet Patel Logo"
+                  className="w-20 h-20 object-contain"
+                />
               </div>
           </motion.div>
 
@@ -484,8 +491,8 @@ const HomePage = () => {
             >
               <div className="relative z-10">
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop&crop=face"
-                  alt="Meet Patel - Professional Photo"
+                  src={meetPatelImage}
+                  alt="The Meet Patel - Serial Entrepreneur & Startup Ecosystem Builder"
                   className="w-full h-96 object-cover rounded-3xl shadow-2xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-3xl"></div>
@@ -927,10 +934,13 @@ const HomePage = () => {
             transition={{ duration: 0.8 }}
               className="relative order-2 lg:order-1"
             >
-              <div className="apple-glass rounded-3xl p-8 aspect-square flex items-center justify-center">
-                <div className="w-64 h-64 bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500 rounded-2xl flex items-center justify-center">
-                  <span className="text-white text-6xl">🏆</span>
-                </div>
+              <div className="relative rounded-3xl aspect-square overflow-hidden shadow-2xl">
+                <img
+                  src={meetPatelImage2}
+                  alt="The Meet Patel - Recognition & Impact"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 </div>
               </motion.div>
 

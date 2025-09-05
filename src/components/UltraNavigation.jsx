@@ -12,6 +12,7 @@ import {
   FileText,
   Settings
 } from 'lucide-react';
+import logoImage from '../assets/logo for themeetpatel.png';
 
 import '../App.css';
 
@@ -123,11 +124,15 @@ const UltraNavigation = () => {
             >
               <Link to="/" className="flex items-center group">
                 <motion.div
-                  className="w-10 h-10 bg-gradient-to-r from-cyan-400 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg"
+                  className="w-10 h-10 rounded-2xl flex items-center justify-center shadow-lg overflow-hidden"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <span className="text-white text-lg font-semibold">MP</span>
+                  <img
+                    src={logoImage}
+                    alt="The Meet Patel Logo"
+                    className="w-full h-full object-contain"
+                  />
                 </motion.div>
                 <span className="ml-3 text-white text-lg font-semibold group-hover:text-cyan-400 transition-colors">
                   The Meet Patel

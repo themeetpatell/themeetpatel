@@ -23,6 +23,7 @@ import {
   Briefcase,
   User
 } from 'lucide-react';
+import logoImage from '../assets/logo for themeetpatel.png';
 
 const UltraFooter = () => {
   const [email, setEmail] = useState('');
@@ -84,12 +85,6 @@ const UltraFooter = () => {
     location: "Ahmedabad, India"
   };
 
-  const achievements = [
-    { icon: Award, text: "Forbes 30 Under 30", color: "text-yellow-500" },
-    { icon: Users, text: "50+ Startups Mentored", color: "text-blue-500" },
-    { icon: BookOpen, text: "2 Books Published", color: "text-purple-500" },
-    { icon: Globe, text: "8+ Years Experience", color: "text-green-500" }
-  ];
 
   return (
     <footer className="bg-black relative overflow-hidden">
@@ -114,8 +109,12 @@ const UltraFooter = () => {
               >
                 <div>
                   <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
-                      <span className="text-white text-xl font-bold">MP</span>
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center overflow-hidden">
+                      <img
+                        src={logoImage}
+                        alt="The Meet Patel Logo"
+                        className="w-8 h-8 object-contain"
+                      />
                     </div>
                     <h3 className="text-2xl font-bold text-white">The Meet Patel</h3>
                   </div>
@@ -273,32 +272,7 @@ const UltraFooter = () => {
               )}
             </div>
           </motion.div>
-
-          {/* Achievements Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-16 pt-8 border-t border-white/10"
-          >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {achievements.map((achievement, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-                  className="text-center"
-                >
-                  <div className={`w-12 h-12 mx-auto mb-3 ${achievement.color} bg-opacity-20 rounded-full flex items-center justify-center`}>
-                    <achievement.icon className={`w-6 h-6 ${achievement.color}`} />
-            </div>
-                  <p className="text-sm font-medium text-gray-300">{achievement.text}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-          </div>
+        </div>
 
         {/* Bottom Bar */}
         <div className="bg-gradient-to-r from-gray-900 to-black border-t border-white/10">
@@ -322,10 +296,10 @@ const UltraFooter = () => {
                 </Link>
                 <a 
                   href="https://www.linkedin.com/company/the-startupos/" 
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors text-sm"
-                  >
+                >
                   LinkedIn
                 </a>
               </div>
