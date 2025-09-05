@@ -119,16 +119,11 @@
   }
 }
 
-/* Ultra-Premium Custom Styles - 100X Better than Apple */
+/* Ultra-Premium Design System - Robin Egg Blue & Black Olive Palette */
 
 /* Revolutionary Gradient Backgrounds */
 .ultra-gradient-bg {
-  background: linear-gradient(135deg, 
-    #0f0f23 0%, 
-    #1a1a3e 25%, 
-    #2d1b69 50%, 
-    #4c1d95 75%, 
-    #7c3aed 100%);
+  background: linear-gradient(135deg, #2E3830 0%, #1a1a1a 50%, #2E3830 100%);
   position: relative;
   overflow: hidden;
 }
@@ -140,29 +135,127 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-              radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
-  animation: gradientShift 20s ease-in-out infinite;
+  background: radial-gradient(circle at 20% 30%, rgba(79, 201, 204, 0.1) 0%, transparent 60%),
+              radial-gradient(circle at 80% 70%, rgba(79, 201, 204, 0.05) 0%, transparent 60%),
+              radial-gradient(circle at 50% 50%, rgba(79, 201, 204, 0.03) 0%, transparent 60%);
+  animation: subtleGlow 12s ease-in-out infinite;
 }
 
-@keyframes gradientShift {
+@keyframes subtleGlow {
   0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
-  50% { opacity: 0.8; transform: scale(1.1) rotate(180deg); }
+  50% { opacity: 0.7; transform: scale(1.02) rotate(180deg); }
 }
 
-/* Ultra-Premium Text Gradients */
-.ultra-text-gradient {
-  background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: textShimmer 3s ease-in-out infinite;
+/* Sophisticated Typography System */
+.apple-heading-1 {
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #4FC9CC;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
 }
 
-@keyframes textShimmer {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+.apple-heading-2 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #4FC9CC;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+}
+
+.apple-body {
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #e5e7eb;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+}
+
+.apple-caption {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #a1a1aa;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+}
+
+/* Sophisticated Glass Morphism */
+.apple-glass {
+  background: rgba(46, 56, 48, 0.8);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(79, 201, 204, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.apple-glass:hover {
+  background: rgba(46, 56, 48, 0.9);
+  border-color: rgba(79, 201, 204, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(79, 201, 204, 0.2);
+}
+
+/* Sophisticated Buttons */
+.apple-button-primary {
+  background: linear-gradient(135deg, #4FC9CC 0%, #2E3830 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 16px;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 10px 25px rgba(79, 201, 204, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.apple-button-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.apple-button-primary:hover::before {
+  left: 100%;
+}
+
+.apple-button-primary:hover {
+  background: linear-gradient(135deg, #2E3830 0%, #4FC9CC 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(79, 201, 204, 0.4);
+}
+
+.apple-button-secondary {
+  background: rgba(46, 56, 48, 0.8);
+  color: #4FC9CC;
+  border: 1px solid rgba(79, 201, 204, 0.3);
+  border-radius: 16px;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(10px);
+}
+
+.apple-button-secondary:hover {
+  background: rgba(46, 56, 48, 0.9);
+  border-color: rgba(79, 201, 204, 0.5);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 /* Revolutionary Floating Particles */
@@ -178,18 +271,18 @@
   position: absolute;
   width: 4px;
   height: 4px;
-  background: radial-gradient(circle, #60a5fa 0%, transparent 70%);
+  background: radial-gradient(circle, #3b82f6 0%, transparent 70%);
   border-radius: 50%;
   animation: float 15s infinite linear;
 }
 
 .particle:nth-child(2n) {
-  background: radial-gradient(circle, #a855f7 0%, transparent 70%);
+  background: radial-gradient(circle, #60a5fa 0%, transparent 70%);
   animation-duration: 20s;
 }
 
 .particle:nth-child(3n) {
-  background: radial-gradient(circle, #ec4899 0%, transparent 70%);
+  background: radial-gradient(circle, #93c5fd 0%, transparent 70%);
   animation-duration: 25s;
 }
 
@@ -210,20 +303,20 @@
   }
 }
 
-/* Ultra-Premium Glass Morphism - New 3-Color Theme */
+/* Ultra-Premium Glass Morphism - Modern Blue Theme */
 .ultra-glass {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(15, 23, 42, 0.8);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(59, 130, 246, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .ultra-glass:hover {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(15, 23, 42, 0.9);
   transform: translateY(-5px);
-  box-shadow: 0 35px 65px rgba(59, 130, 246, 0.2);
-  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 35px 65px rgba(59, 130, 246, 0.2), 0 0 0 1px rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
 }
 
 /* Policy Page Specific Styles */

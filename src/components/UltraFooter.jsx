@@ -1,84 +1,32 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
-  Rocket, 
   Mail, 
   Phone, 
   MapPin, 
-  Globe, 
-  Twitter, 
   Linkedin, 
-  Facebook, 
+  Twitter, 
+  Github, 
   Instagram, 
   Youtube,
-  Github,
-  MessageSquare,
+  ArrowRight,
   Heart,
-  Star,
+  Send,
+  MessageSquare,
+  Calendar,
+  Clock,
+  Globe,
   Award,
   Users,
-  Target,
-  TrendingUp,
-  Sparkles,
-  Crown,
   BookOpen,
-  FileText,
-  Video,
-  Calendar,
-  Bell,
-  Settings,
-  HelpCircle,
-  Shield,
-  Lock,
-  Eye,
-  Zap,
-  CheckCircle,
-  ArrowRight,
-  ExternalLink,
-  Download,
-  Upload,
-  RefreshCw,
-  RotateCw,
-  ZoomIn,
-  ZoomOut,
-  Home,
-  Grid,
-  List,
-  ThumbsUp,
-  ThumbsDown,
-  Smile,
-  Frown,
-  Meh,
-  Gift,
-  ShoppingCart,
-  CreditCard,
-  Wallet,
-  Banknote,
-  Coins,
-  TrendingDown,
-  ArrowUp,
-  ArrowDown,
-  ArrowLeft,
-  ChevronUp,
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-  CornerUpLeft,
-  CornerUpRight,
-  CornerDownLeft,
-  CornerDownRight,
-  DollarSign,
+  Briefcase,
   User
 } from 'lucide-react';
-import WaitlistForm from './WaitlistForm';
-import BlogDashboard from './BlogDashboard';
-
 
 const UltraFooter = () => {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
-  const [showBlogDashboard, setShowBlogDashboard] = useState(false);
 
   const handleSubscribe = (e) => {
     e.preventDefault();
@@ -89,267 +37,303 @@ const UltraFooter = () => {
     }
   };
 
-  const footerSections = [
-    {
-      title: "Product",
-      items: [
-        { name: "AI Co-Builders", href: "/features/ai-co-builders" },
-        { name: "Stage Aware Gamification", href: "/features/stage-aware-gamification" },
-        { name: "Ecosystem Access", href: "/features/ecosystem-access" },
-        { name: "Mergers & Acquisition", href: "/features/mergers-acquisition" },
-        { name: "Real-time Analytics", href: "/features/real-time-analytics" },
-        { name: "Fractional CXOs", href: "/features/fractional-cxos" }
+  const footerSections = {
+    personal: {
+      title: "The Meet Patel",
+      description: "Serial entrepreneur, author, and mentor passionate about helping others succeed in their journey.",
+      links: [
+        { name: "About Me", href: "/about", icon: User },
+        { name: "My Story", href: "/about", icon: BookOpen },
+        { name: "Portfolio", href: "/portfolio", icon: Briefcase },
+        { name: "Contact", href: "/contact", icon: MessageSquare }
       ]
     },
-    {
-      title: "Solutions",
-      items: [
-        { name: "Idea to MVP", href: "/solutions/idea-to-mvp" },
-        { name: "MVP to PMF", href: "/solutions/mvp-to-pmf" },
-        { name: "PMF to Scale", href: "/solutions/pmf-to-scale" },
-        { name: "Scale to Exit", href: "/solutions/scale-to-exit" },
-        { name: "Startup Ecosystem", href: "/solutions/ecosystem" }
+    projects: {
+      title: "Projects & Ventures",
+      links: [
+        { name: "StartupOS", href: "https://www.startupos.in", external: true },
+        { name: "Finanshels.com", href: "https://finanshels.com", external: true },
+        { name: "StudentHub", href: "#", external: false },
+        { name: "TorchIt", href: "#", external: false }
       ]
     },
-    {
-      title: "Resources",
-      items: [
-        { name: "Blog", href: "/blog" },
-        { name: "Case Studies", href: "/case-studies" },
-        { name: "Webinars", href: "/webinars" }
+    writing: {
+      title: "Writing & Books",
+      links: [
+        { name: "The Eternal Love", href: "#", external: false },
+        { name: "The Endless Devotion", href: "#", external: false },
+        { name: "Blog Articles", href: "/blog", external: false },
+        { name: "Writing Process", href: "/blog", external: false }
       ]
     },
-    {
-      title: "Company",
-      items: [
-        { name: "About", href: "/about" },
-        { name: "About Founder", href: "/meet" },
-        { name: "Careers", href: "/careers" },
-        { name: "Contact", href: "/contact" },
-        { name: "Partners", href: "/partners" },
-        { name: "Manage Blogs", href: "#", onClick: () => setShowBlogDashboard(true) }
+    connect: {
+      title: "Connect With Me",
+      links: [
+        { name: "LinkedIn", href: "https://www.linkedin.com/company/the-startupos/", external: true, icon: Linkedin },
+        { name: "Twitter", href: "https://x.com/the_startupos", external: true, icon: Twitter },
+        { name: "GitHub", href: "https://github.com/startupos", external: true, icon: Github },
+        { name: "Instagram", href: "http://instagram.com/thestartupos/", external: true, icon: Instagram },
+        { name: "YouTube", href: "https://youtube.com/@thestartupos", external: true, icon: Youtube }
       ]
     }
-  ];
+  };
 
-  const socialLinks = [
-    { name: "Twitter", icon: Twitter, href: "https://x.com/the_startupos", color: "hover:text-blue-400" },
-    { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/company/the-startupos/", color: "hover:text-blue-600" },
-    { name: "Instagram", icon: Instagram, href: "http://instagram.com/thestartupos/", color: "hover:text-pink-500" }
-  ];
+  const contactInfo = {
+    email: "meet@startupos.com",
+    phone: "+91 98 2434 1414",
+    location: "Ahmedabad, India"
+  };
 
-  const stats = [
-    { number: "1,000+", label: "Founders", icon: Users },
-    { number: "100+", label: "Startups", icon: DollarSign },
-    { number: "50+", label: "AI Co-Builders", icon: Award },
-    { number: "100+", label: "CXOs", icon: User }
+  const achievements = [
+    { icon: Award, text: "Forbes 30 Under 30", color: "text-yellow-500" },
+    { icon: Users, text: "50+ Startups Mentored", color: "text-blue-500" },
+    { icon: BookOpen, text: "2 Books Published", color: "text-purple-500" },
+    { icon: Globe, text: "8+ Years Experience", color: "text-green-500" }
   ];
 
   return (
-    <footer className="relative bg-slate-900 border-t border-white/10">
+    <footer className="bg-black relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-800/50 to-slate-900" />
-      
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Footer Content */}
-        <div className="py-20">
-          {/* Top Section with Stats */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            {/* Left Column - Brand & Newsletter */}
-            <div className="space-y-8">
-              {/* Brand */}
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <Link to="/" className="flex items-center">
-                    <div className="w-24 h-14 rounded-xl flex items-center justify-center overflow-hidden">
-                      <img 
-                        src="/src/assets/logo.png" 
-                        alt="Startup-Center" 
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </Link>
-                </div>
-                <p className="text-white/70 text-lg max-w-md leading-relaxed">
-                  The ultimate platform for founders. Build, validate, and scale your startup with AI-powered guidance and proven frameworks.
-                </p>
-              </div>
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(59,130,246,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(147,197,253,0.1),transparent_50%)]" />
+      </div>
 
-              {/* Newsletter */}
-              <div className="space-y-4">
-                <h3 className="text-white font-semibold text-lg">Stay Updated</h3>
-                <p className="text-white/60 text-sm">Get the latest insights, strategies, and success stories delivered to your inbox.</p>
-                
-                <form onSubmit={handleSubscribe} className="flex space-x-3">
+      <div className="relative z-10">
+        {/* Main Footer Content */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            {/* Personal Section */}
+            <div className="lg:col-span-1">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="space-y-6"
+              >
+                <div>
+                  <div className="flex items-center space-x-3 mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
+                      <span className="text-white text-xl font-bold">MP</span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white">The Meet Patel</h3>
+                  </div>
+                  <p className="text-gray-300 leading-relaxed">
+                    {footerSections.personal.description}
+                  </p>
+                </div>
+
+                {/* Contact Info */}
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3 text-gray-300">
+                    <Mail className="w-4 h-4 text-indigo-400" />
+                    <a href={`mailto:${contactInfo.email}`} className="hover:text-indigo-300 transition-colors">
+                      {contactInfo.email}
+                    </a>
+                  </div>
+                  <div className="flex items-center space-x-3 text-gray-300">
+                    <Phone className="w-4 h-4 text-indigo-400" />
+                    <a href={`tel:${contactInfo.phone}`} className="hover:text-indigo-300 transition-colors">
+                      {contactInfo.phone}
+                    </a>
+                  </div>
+                  <div className="flex items-center space-x-3 text-gray-300">
+                    <MapPin className="w-4 h-4 text-indigo-400" />
+                    <span>{contactInfo.location}</span>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Projects Section */}
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                <h3 className="text-lg font-semibold text-white mb-6">{footerSections.projects.title}</h3>
+                <ul className="space-y-3">
+                  {footerSections.projects.links.map((link, index) => (
+                    <li key={index}>
+                      <motion.a
+                        href={link.href}
+                        target={link.external ? "_blank" : "_self"}
+                        rel={link.external ? "noopener noreferrer" : ""}
+                        whileHover={{ x: 5 }}
+                        className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors group"
+                      >
+                        <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                        <span>{link.name}</span>
+                      </motion.a>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </div>
+
+            {/* Writing Section */}
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <h3 className="text-lg font-semibold text-gray-800 mb-6">{footerSections.writing.title}</h3>
+                <ul className="space-y-3">
+                  {footerSections.writing.links.map((link, index) => (
+                    <li key={index}>
+                      <motion.a
+                        href={link.href}
+                        target={link.external ? "_blank" : "_self"}
+                        rel={link.external ? "noopener noreferrer" : ""}
+                        whileHover={{ x: 5 }}
+                        className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors group"
+                      >
+                        <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                        <span>{link.name}</span>
+                      </motion.a>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </div>
+
+            {/* Connect Section */}
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                <h3 className="text-lg font-semibold text-gray-800 mb-6">{footerSections.connect.title}</h3>
+                <ul className="space-y-3">
+                  {footerSections.connect.links.map((link, index) => (
+                    <li key={index}>
+                      <motion.a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ x: 5 }}
+                        className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors group"
+                      >
+                        <link.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                        <span>{link.name}</span>
+                      </motion.a>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Newsletter Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-16 pt-8 border-t border-blue-200/30"
+          >
+            <div className="max-w-2xl mx-auto text-center">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">Stay Updated</h3>
+              <p className="text-gray-600 mb-8">
+                Get notified about new articles, projects, and insights from my entrepreneurial journey.
+              </p>
+              
+              {isSubscribed ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex items-center justify-center space-x-2 text-green-600"
+                >
+                  <Heart className="w-5 h-5 fill-current" />
+                  <span className="font-medium">Thank you for subscribing!</span>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-green-400 transition-colors"
+                    className="flex-1 px-4 py-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 placeholder-gray-500"
+                    required
                   />
                   <motion.button
+                    type="submit"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    type="submit"
-                    className="ultra-button px-6 py-3"
+                    className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2"
                   >
-                    Subscribe
+                    <Send className="w-4 h-4" />
+                    <span>Subscribe</span>
                   </motion.button>
                 </form>
-
-                <AnimatePresence>
-                  {isSubscribed && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      className="flex items-center space-x-2 text-green-400 text-sm"
-                    >
-                      <CheckCircle className="w-4 h-4" />
-                      <span>Successfully subscribed!</span>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+              )}
             </div>
+          </motion.div>
 
-            {/* Right Column - Stats */}
-            <div className="grid grid-cols-2 gap-6">
-              {stats.map((stat, index) => (
+          {/* Achievements Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-16 pt-8 border-t border-blue-200/30"
+          >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {achievements.map((achievement, index) => (
                 <motion.div
-                  key={stat.label}
+                  key={index}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="ultra-glass p-6 rounded-xl text-center"
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                  className="text-center"
                 >
-                  <stat.icon className="w-8 h-8 text-green-400 mx-auto mb-3" />
-                  <div className="text-2xl font-bold text-white mb-1">{stat.number}</div>
-                  <p className="text-white/60 text-sm">{stat.label}</p>
+                  <div className={`w-12 h-12 mx-auto mb-3 ${achievement.color} bg-opacity-10 rounded-full flex items-center justify-center`}>
+                    <achievement.icon className={`w-6 h-6 ${achievement.color}`} />
+                  </div>
+                  <p className="text-sm font-medium text-gray-700">{achievement.text}</p>
                 </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
+        </div>
 
-          {/* Links Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {footerSections.map((section, sectionIndex) => (
-              <motion.div
-                key={section.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: sectionIndex * 0.1 }}
-                className="space-y-4"
-              >
-                <h3 className="text-white font-semibold text-lg">{section.title}</h3>
-                <div className="space-y-3">
-                  {section.items.map((item, itemIndex) => (
-                    <motion.div
-                      key={item.name}
-                      whileHover={{ x: 5 }}
-                    >
-                      {item.onClick ? (
-                        <button
-                          onClick={item.onClick}
-                          className="block text-white/60 hover:text-white transition-colors text-sm text-left w-full"
-                        >
-                          {item.name}
-                        </button>
-                      ) : (
-                        <Link
-                          to={item.href}
-                          className="block text-white/60 hover:text-white transition-colors text-sm"
-                        >
-                          {item.name}
-                        </Link>
-                      )}
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Bottom Section */}
-          <div className="border-t border-white/10 pt-8">
-            <div className="flex flex-col lg:flex-row items-center justify-between space-y-6 lg:space-y-0">
-              {/* Copyright & Links */}
-              <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-8">
-                <p className="text-white/60 text-sm">
-                  © 2025 StartupOS. All rights reserved.
-                </p>
-                <div className="flex items-center space-x-6">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <Link
-                      to="/privacy"
-                      className="text-white/60 hover:text-white transition-colors text-sm"
-                    >
-                      Privacy Policy
-                    </Link>
-                  </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <Link
-                      to="/terms"
-                      className="text-white/60 hover:text-white transition-colors text-sm"
-                    >
-                      Terms of Service
-                    </Link>
-                  </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <Link
-                      to="/cookies"
-                      className="text-white/60 hover:text-white transition-colors text-sm"
-                    >
-                      Cookie Policy
-                    </Link>
-                  </motion.div>
-                </div>
+        {/* Bottom Bar */}
+        <div className="bg-gradient-to-r from-blue-600 to-blue-700">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+              <div className="flex items-center space-x-2 text-white/90">
+                <span>© 2024 The Meet Patel. Made with</span>
+                <Heart className="w-4 h-4 text-red-400 fill-current" />
+                <span>in India</span>
               </div>
-
-              {/* Social Links */}
-              <div className="flex items-center space-x-4">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`w-10 h-10 bg-white/5 hover:bg-white/10 rounded-xl flex items-center justify-center text-white/60 transition-all duration-200 ${social.color}`}
-                  >
-                    <social.icon className="w-5 h-5" />
-                  </motion.a>
-                ))}
+              
+              <div className="flex items-center space-x-6">
+                <Link to="/about" className="text-white/80 hover:text-white transition-colors text-sm">
+                  About
+                </Link>
+                <Link to="/contact" className="text-white/80 hover:text-white transition-colors text-sm">
+                  Contact
+                </Link>
+                <Link to="/blog" className="text-white/80 hover:text-white transition-colors text-sm">
+                  Blog
+                </Link>
+                <a 
+                  href="https://www.linkedin.com/company/the-startupos/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-white/80 hover:text-white transition-colors text-sm"
+                >
+                  LinkedIn
+                </a>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Bottom CTA Section */}
-       
       </div>
-
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-10 w-2 h-2 bg-green-400 rounded-full opacity-60 animate-pulse" />
-      <div className="absolute top-40 right-20 w-1 h-1 bg-blue-400 rounded-full opacity-40 animate-pulse delay-1000" />
-      <div className="absolute bottom-40 left-20 w-1 h-1 bg-purple-400 rounded-full opacity-50 animate-pulse delay-2000" />
-      <div className="absolute bottom-20 right-10 w-2 h-2 bg-emerald-400 rounded-full opacity-30 animate-pulse delay-1500" />
-
-      {/* Blog Dashboard */}
-      <BlogDashboard
-        isOpen={showBlogDashboard}
-        onClose={() => setShowBlogDashboard(false)}
-      />
     </footer>
   );
 };
 
-export default UltraFooter; 
+export default UltraFooter;
