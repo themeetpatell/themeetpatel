@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://themeetpatel.com/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/og-image.jpg</image:loc>
+      <image:title>The Meet Patel - Serial Entrepreneur</image:title>
+      <image:caption>Meet The Meet Patel - Serial entrepreneur and startup ecosystem builder</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- About Page -->
+  <url>
+    <loc>https://themeetpatel.com/about</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/meet-patel-about.jpg</image:loc>
+      <image:title>About The Meet Patel</image:title>
+      <image:caption>Learn about The Meet Patel's journey as a serial entrepreneur</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Portfolio Page -->
+  <url>
+    <loc>https://themeetpatel.com/portfolio</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/portfolio-showcase.jpg</image:loc>
+      <image:title>The Meet Patel Portfolio</image:title>
+      <image:caption>Explore The Meet Patel's portfolio of startups and projects</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Systems Page -->
+  <url>
+    <loc>https://themeetpatel.com/systems</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/systems-built.jpg</image:loc>
+      <image:title>Systems Built by The Meet Patel</image:title>
+      <image:caption>Discover the systems, processes, and frameworks built by The Meet Patel</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Blog Page -->
+  <url>
+    <loc>https://themeetpatel.com/blog</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/blog-articles.jpg</image:loc>
+      <image:title>The Meet Patel Blog</image:title>
+      <image:caption>Read insights and articles by The Meet Patel on entrepreneurship and startups</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Contact Page -->
+  <url>
+    <loc>https://themeetpatel.com/contact</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/contact-info.jpg</image:loc>
+      <image:title>Contact The Meet Patel</image:title>
+      <image:caption>Get in touch with The Meet Patel for business inquiries</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Blog Articles -->
+  <url>
+    <loc>https://themeetpatel.com/blog/building-startup-ecosystem</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/blog/startup-ecosystem.jpg</image:loc>
+      <image:title>Building a Thriving Startup Ecosystem</image:title>
+      <image:caption>How to create an environment where startups can flourish and grow sustainably</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://themeetpatel.com/blog/scaling-operations-efficiency</loc>
+    <lastmod>2024-01-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/blog/operations-scaling.jpg</image:loc>
+      <image:title>Scaling Operations for Maximum Efficiency</image:title>
+      <image:caption>Proven strategies for scaling your business operations without losing quality</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://themeetpatel.com/blog/leadership-remote-teams</loc>
+    <lastmod>2024-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/blog/remote-leadership.jpg</image:loc>
+      <image:title>Leading Remote Teams to Success</image:title>
+      <image:caption>Essential leadership principles for managing distributed teams effectively</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- System Detail Pages -->
+  <url>
+    <loc>https://themeetpatel.com/systems/startupos</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/systems/startupos-preview.jpg</image:loc>
+      <image:title>StartupOS - Revolutionary Operating System for Startups</image:title>
+      <image:caption>Complete startup development platform helping entrepreneurs build, launch, and scale their ventures</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://themeetpatel.com/systems/zerohuman</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/systems/zerohuman-preview.jpg</image:loc>
+      <image:title>ZeroHuman - AI-Powered Automation Platform</image:title>
+      <image:caption>AI-powered automation platform for business processes and workflow optimization</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://themeetpatel.com/systems/mealverse</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/systems/mealverse-preview.jpg</image:loc>
+      <image:title>MealVerse - Food Technology Platform</image:title>
+      <image:caption>Food technology platform revolutionizing meal planning and delivery services</image:caption>
+    </image:image>
+  </url>
+  
+</urlset>
