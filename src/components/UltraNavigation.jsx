@@ -13,6 +13,7 @@ import {
   Settings
 } from 'lucide-react';
 import logoImage from '../assets/logo for themeetpatel.png';
+import { trackButtonClick, trackExternalLink } from '../utils/analytics';
 
 import '../App.css';
 
@@ -225,7 +226,10 @@ const UltraNavigation = () => {
                         <Link
                       to={item.href}
                       className="flex items-center space-x-3 p-4 rounded-xl hover:bg-white/5 transition-all duration-300 group"
-                          onClick={() => setIsOpen(false)}
+                          onClick={() => {
+                            setIsOpen(false);
+                            trackButtonClick(`nav_${item.title.toLowerCase()}`, 'mobile_menu');
+                          }}
                         >
                       <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
                         <item.icon className="w-5 h-5 text-white" />
@@ -247,7 +251,10 @@ const UltraNavigation = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="w-full bg-gradient-to-r from-cyan-400 to-teal-500 text-white rounded-lg font-medium hover:from-cyan-500 hover:to-teal-600 transition-colors block text-center py-3"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    setIsOpen(false);
+                    trackButtonClick('get_in_touch', 'mobile_menu');
+                  }}
                 >
                   Get In Touch
                 </motion.a>
