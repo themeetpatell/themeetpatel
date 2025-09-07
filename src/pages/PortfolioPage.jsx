@@ -66,7 +66,7 @@ const PortfolioPage = () => {
       category: "social",
       status: "Pre-Launch",
       tech: ["React Native", "Node.js", "MongoDB", "AWS", "Real-time Chat", "Matching Algorithm"],
-      liveUrl: null,
+      liveUrl: "https://mindmate-amber.vercel.app",
       githubUrl: null,
       featured: false,
       metrics: {
