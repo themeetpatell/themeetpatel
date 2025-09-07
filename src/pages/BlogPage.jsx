@@ -97,7 +97,7 @@ const BlogPage = () => {
   return (
     <div className="min-h-screen pt-16 ultra-gradient-bg">
       {/* Hero Section */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="py-12 sm:py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-teal-900/20 to-slate-900" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -112,7 +112,7 @@ const BlogPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-6xl md:text-8xl font-bold text-white mb-4"
+                className="text-3xl sm:text-6xl md:text-8xl font-bold text-white mb-3 sm:mb-4"
               >
                 My Blog
               </motion.h1>
@@ -120,30 +120,30 @@ const BlogPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mb-6"
+                className="w-16 sm:w-24 h-0.5 sm:h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mb-4 sm:mb-6"
               />
             </div>
-            <p className="text-2xl text-cyan-200 mb-8 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-2xl text-cyan-200 mb-6 sm:mb-8 max-w-3xl mx-auto px-4 sm:px-0">
               Thoughts on entrepreneurship, personal growth, writing, and the journey of building meaningful things.
             </p>
             
             {/* Quick Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-              <div className="bg-white/5 rounded-lg p-4">
-                <div className="text-3xl font-bold text-blue-400">{allArticles.length}</div>
-                <div className="text-white/60 text-sm">Articles</div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 max-w-4xl mx-auto">
+              <div className="bg-white/5 rounded-lg p-3 sm:p-4">
+                <div className="text-2xl sm:text-3xl font-bold text-blue-400">{allArticles.length}</div>
+                <div className="text-white/60 text-xs sm:text-sm">Articles</div>
               </div>
-              <div className="bg-white/5 rounded-lg p-4">
-                <div className="text-3xl font-bold text-emerald-400">25K+</div>
-                <div className="text-white/60 text-sm">Total Views</div>
+              <div className="bg-white/5 rounded-lg p-3 sm:p-4">
+                <div className="text-2xl sm:text-3xl font-bold text-emerald-400">25K+</div>
+                <div className="text-white/60 text-xs sm:text-sm">Total Views</div>
               </div>
-              <div className="bg-white/5 rounded-lg p-4">
-                <div className="text-3xl font-bold text-purple-400">1.2K+</div>
-                <div className="text-white/60 text-sm">Likes</div>
+              <div className="bg-white/5 rounded-lg p-3 sm:p-4">
+                <div className="text-2xl sm:text-3xl font-bold text-purple-400">1.2K+</div>
+                <div className="text-white/60 text-xs sm:text-sm">Likes</div>
               </div>
-              <div className="bg-white/5 rounded-lg p-4">
-                <div className="text-3xl font-bold text-orange-400">6</div>
-                <div className="text-white/60 text-sm">Categories</div>
+              <div className="bg-white/5 rounded-lg p-3 sm:p-4">
+                <div className="text-2xl sm:text-3xl font-bold text-orange-400">6</div>
+                <div className="text-white/60 text-xs sm:text-sm">Categories</div>
               </div>
             </div>
           </motion.div>
@@ -151,35 +151,35 @@ const BlogPage = () => {
       </section>
 
             {/* Search and Filter */}
-      <section className="py-8 relative">
+      <section className="py-6 sm:py-8 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row gap-4 mb-8">
+          <div className="flex flex-col md:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/40 w-5 h-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/40 w-4 h-4 sm:w-5 sm:h-5" />
                 <input
                   type="text"
                   placeholder="Search articles..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full bg-white/5 border border-white/10 rounded-lg pl-8 sm:pl-10 pr-4 py-2.5 sm:py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
                 />
               </div>
 
-            <div className="flex items-center space-x-2 overflow-x-auto">
+            <div className="flex items-center space-x-1 sm:space-x-2 overflow-x-auto pb-2">
                 {categories.map((category) => (
                   <motion.button
                     key={category.name}
                   onClick={() => setSelectedCategory(category.name)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 whitespace-nowrap ${
+                  className={`flex items-center space-x-1 sm:space-x-2 px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all duration-300 whitespace-nowrap ${
                       selectedCategory === category.name
                         ? 'bg-blue-500 text-white'
                       : 'bg-white/10 text-white/60 hover:text-white hover:bg-white/20'
                     }`}
                   >
-                    <category.icon className="w-4 h-4" />
-                  <span className="text-sm font-medium">{category.name}</span>
+                    <category.icon className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <span className="text-xs sm:text-sm font-medium">{category.name}</span>
                   <span className="text-xs opacity-70">({category.count})</span>
                   </motion.button>
                 ))}

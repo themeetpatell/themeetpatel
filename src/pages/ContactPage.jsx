@@ -283,7 +283,7 @@ Please add me to the community!`;
   return (
     <div className="min-h-screen pt-16 ultra-gradient-bg">
       {/* Hero Section */}
-      <section ref={heroRef} className="py-32 relative overflow-hidden">
+      <section ref={heroRef} className="py-12 sm:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-teal-900/20 to-slate-900" />
         
         {/* Background Elements */}
@@ -307,12 +307,12 @@ Please add me to the community!`;
               transition={{ duration: 0.8, delay: 0.2 }}
               className="mb-8"
             >
-              <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 tracking-tight">
+              <h1 className="text-3xl sm:text-6xl md:text-8xl font-bold text-white mb-4 sm:mb-6 tracking-tight">
                 Let's <span className="bg-gradient-to-r from-cyan-400 via-teal-400 to-blue-400 bg-clip-text text-transparent">Connect</span>
               </h1>
               
               {/* Decorative Line */}
-              <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-teal-400 mx-auto rounded-full"></div>
+              <div className="w-16 sm:w-24 h-0.5 sm:h-1 bg-gradient-to-r from-cyan-400 to-teal-400 mx-auto rounded-full"></div>
             </motion.div>
 
             {/* Subtitle */}
@@ -320,7 +320,7 @@ Please add me to the community!`;
               initial={{ opacity: 0, y: 20 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl text-cyan-200 mb-12 max-w-4xl mx-auto leading-relaxed"
+              className="text-lg sm:text-xl md:text-2xl text-cyan-200 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed px-4 sm:px-0"
             >
               I'm always excited to meet new people, share experiences, and explore opportunities for collaboration. 
               <span className="block mt-2 text-white/80">
@@ -333,27 +333,27 @@ Please add me to the community!`;
               initial={{ opacity: 0, y: 30 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0"
             >
               <motion.a
                 href="#contact-form"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative inline-flex items-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-cyan-500/20 overflow-hidden"
+                className="group relative inline-flex items-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-cyan-500/20 overflow-hidden w-full sm:w-auto"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-teal-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <Mail className="w-6 h-6 mr-3 relative z-10" />
+                <Mail className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 relative z-10" />
                 <span className="relative z-10">Send a Message</span>
-                <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 sm:ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
               </motion.a>
 
               <motion.button
                 onClick={handleJoinCommunity}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative inline-flex items-center bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/30 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 overflow-hidden"
+                className="group relative inline-flex items-center bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/30 text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-2xl transition-all duration-300 overflow-hidden w-full sm:w-auto"
               >
-                <MessageSquare className="w-6 h-6 mr-3 relative z-10" />
+                <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 relative z-10" />
                 <span className="relative z-10">Join Community</span>
               </motion.button>
             </motion.div>
@@ -363,19 +363,19 @@ Please add me to the community!`;
               initial={{ opacity: 0, y: 20 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="mt-16 flex flex-wrap justify-center items-center gap-8 text-white/60"
+              className="mt-12 sm:mt-16 flex flex-wrap justify-center items-center gap-4 sm:gap-8 text-white/60"
             >
               <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span className="text-sm">24h Response Time</span>
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" />
+                <span className="text-xs sm:text-sm">24h Response Time</span>
               </div>
               <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span className="text-sm">Free Consultation</span>
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" />
+                <span className="text-xs sm:text-sm">Free Consultation</span>
               </div>
               <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span className="text-sm">Confidential & Secure</span>
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" />
+                <span className="text-xs sm:text-sm">Confidential & Secure</span>
               </div>
             </motion.div>
           </motion.div>

@@ -459,7 +459,7 @@ Please add me to the community!`;
       />
       
       {/* Hero Section - Apple Style */}
-      <section ref={heroRef} className="pt-20 pb-32 relative overflow-hidden">
+      <section ref={heroRef} className="pt-16 sm:pt-20 pb-20 sm:pb-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/20 to-black" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -474,13 +474,13 @@ Please add me to the community!`;
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mb-12"
+              className="mb-8 sm:mb-12"
             >
-              <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 via-purple-600 to-blue-700 rounded-full flex items-center justify-center mb-8 shadow-2xl overflow-hidden">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto bg-gradient-to-br from-blue-500 via-purple-600 to-blue-700 rounded-full flex items-center justify-center mb-6 sm:mb-8 shadow-2xl overflow-hidden">
                 <img
                   src={logoImage}
                   alt="The Meet Patel Logo"
-                  className="w-20 h-20 object-contain"
+                  className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
                 />
               </div>
           </motion.div>
@@ -499,13 +499,13 @@ Please add me to the community!`;
               <div className="absolute top-1/2 -right-8 w-5 h-5 bg-purple-600/20 rounded-full blur-sm"></div>
               
               <div className="relative">
-                <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
+                <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-2 sm:mb-4 tracking-tight">
                   Meet The
             </h1>
-                <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent mb-6 tracking-tight relative">
+                <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent mb-4 sm:mb-6 tracking-tight relative">
                   Meet Patel
                   {/* Underline Effect */}
-                  <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 rounded-full opacity-60"></div>
+                  <div className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-0.5 sm:h-1 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 rounded-full opacity-60"></div>
                 </h1>
               </div>
           </motion.div>
@@ -516,15 +516,17 @@ Please add me to the community!`;
               transition={{ duration: 0.6, delay: 0.8 }}
               className="mb-8"
             >
-              <p className="text-2xl md:text-3xl text-gray-300 mb-4 font-light">
+              <p className="text-lg sm:text-2xl md:text-3xl text-gray-300 mb-3 sm:mb-4 font-light">
                 {personalInfo.title}
               </p>
-              <div className="flex items-center justify-center space-x-2 text-lg text-white/60">
-                <MapPin className="w-5 h-5" />
-                <span>{personalInfo.location}</span>
-                <span>•</span>
+              <div className="flex flex-col sm:flex-row items-center justify-center space-y-1 sm:space-y-0 sm:space-x-2 text-sm sm:text-lg text-white/60">
+                <div className="flex items-center space-x-2">
+                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span>{personalInfo.location}</span>
+                </div>
+                <span className="hidden sm:inline">•</span>
                 <span>A Startup Guy</span>
-                <span>•</span>
+                <span className="hidden sm:inline">•</span>
                 <span>System Builder</span>
               </div>
           </motion.div>
@@ -533,7 +535,7 @@ Please add me to the community!`;
               initial={{ opacity: 0, y: 20 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 1.0 }}
-              className="text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8"
+              className="text-base sm:text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed mb-6 sm:mb-8 px-4 sm:px-0"
             >
               A Startup Guy and <Link to="/about" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 font-medium">System builder</Link> with over 8 years of experience in building and scaling technology companies. Passionate about helping startups succeed through innovative solutions and strategic guidance. Explore my <Link to="/portfolio" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 font-medium">portfolio of successful ventures</Link> and <Link to="/systems" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 font-medium">proven business systems</Link>.
             </motion.div>
@@ -543,27 +545,27 @@ Please add me to the community!`;
               initial={{ opacity: 0, y: 20 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 1.2 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12"
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-8 sm:mb-12 px-4 sm:px-0"
             >
               <motion.a
                 href="/about"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative bg-gradient-to-r from-blue-500 via-purple-600 to-blue-700 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:from-blue-600 hover:via-purple-700 hover:to-blue-800 transition-all duration-300 flex items-center space-x-3 shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 overflow-hidden"
+                className="group relative bg-gradient-to-r from-blue-500 via-purple-600 to-blue-700 text-white px-6 sm:px-10 py-3 sm:py-5 rounded-2xl font-bold text-base sm:text-lg hover:from-blue-600 hover:via-purple-700 hover:to-blue-800 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 overflow-hidden w-full sm:w-auto"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                 <span className="relative z-10">Discover My Journey</span>
-                <ArrowRight className="w-6 h-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
               </motion.a>
               
               <motion.a
                 href="/contact"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative bg-white/5 backdrop-blur-sm text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white/10 transition-all duration-300 flex items-center space-x-3 border-2 border-white/20 hover:border-white/40 shadow-xl hover:shadow-2xl overflow-hidden"
+                className="group relative bg-white/5 backdrop-blur-sm text-white px-6 sm:px-10 py-3 sm:py-5 rounded-2xl font-bold text-base sm:text-lg hover:bg-white/10 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 border-2 border-white/20 hover:border-white/40 shadow-xl hover:shadow-2xl overflow-hidden w-full sm:w-auto"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <MessageSquare className="w-6 h-6 relative z-10 group-hover:scale-110 transition-transform duration-300" />
+                <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 relative z-10 group-hover:scale-110 transition-transform duration-300" />
                 <span className="relative z-10">Start a Conversation</span>
               </motion.a>
           </motion.div>
@@ -573,9 +575,9 @@ Please add me to the community!`;
       </section>
 
       {/* About Section */}
-      <section className="py-32 relative">
+      <section className="py-16 sm:py-32 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 items-center">
                 <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -583,14 +585,14 @@ Please add me to the community!`;
               className="space-y-8"
             >
               <div>
-                <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+                <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-4 sm:mb-6 tracking-tight">
                   About Me
                 </h2>
-                <p className="text-xl text-cyan-200 mb-6">
+                <p className="text-lg sm:text-xl text-cyan-200 mb-4 sm:mb-6">
                   I help founders build, scale, and stabilize
                 </p>
                   </div>
-              <p className="text-lg text-gray-300 leading-relaxed mb-6">
+              <p className="text-base sm:text-lg text-gray-300 leading-relaxed mb-4 sm:mb-6">
                 Fixing broken systems, designing smart strategies, and transforming chaos into clarity and growth. A generalist with range who connects dots across people, products, processes, and performance — fast.
               </p>
               
@@ -732,23 +734,23 @@ Please add me to the community!`;
       </section>
 
       {/* Systems Section */}
-      <section className="py-32 relative">
+      <section className="py-16 sm:py-32 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-16"
           >
-            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-4 sm:mb-6 tracking-tight">
               Systems Built
             </h2>
-            <p className="text-xl text-cyan-200 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-cyan-200 max-w-3xl mx-auto px-4 sm:px-0">
               Comprehensive frameworks, processes, and systems I've developed to help startups scale efficiently.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
             {[
               {
                 name: "StartupOS Framework",

@@ -101,8 +101,8 @@ const UltraFooter = () => {
       
       <div className="relative z-10">
         {/* Main Footer Content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 sm:gap-12">
             {/* Personal Section */}
             <div className="lg:col-span-1">
               <motion.div
@@ -120,7 +120,7 @@ const UltraFooter = () => {
                         className="w-8 h-8 object-contain"
                       />
                     </div>
-                    <h3 className="text-2xl font-bold text-white">The Meet Patel</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white">The Meet Patel</h3>
                   </div>
                   <p className="text-gray-300 leading-relaxed">
                     {footerSections.personal.description}

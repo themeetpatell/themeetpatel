@@ -105,44 +105,44 @@ const SystemsPage = () => {
       </section>
 
       {/* Category Filter */}
-      <section className="py-12 relative">
+      <section className="py-8 sm:py-12 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-12"
+            className="mb-8 sm:mb-12"
           >
-            <h2 className="text-4xl font-bold text-white mb-6 text-center">All Systems</h2>
-            <p className="text-xl text-cyan-200 text-center max-w-3xl mx-auto mb-8">
+            <h2 className="text-2xl sm:text-4xl font-bold text-white mb-4 sm:mb-6 text-center">All Systems</h2>
+            <p className="text-lg sm:text-xl text-cyan-200 text-center max-w-3xl mx-auto mb-6 sm:mb-8 px-4 sm:px-0">
               Browse through all systems organized by category and industry
             </p>
 
             {/* Search Bar */}
-            <div className="max-w-2xl mx-auto mb-8">
+            <div className="max-w-2xl mx-auto mb-6 sm:mb-8">
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/40 w-5 h-5" />
+                <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-white/40 w-4 h-4 sm:w-5 sm:h-5" />
                 <input
                   type="text"
                   placeholder="Search systems, descriptions, or tags..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-white/10 border border-white/20 rounded-xl pl-12 pr-12 py-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                  className="w-full bg-white/10 border border-white/20 rounded-xl pl-10 sm:pl-12 pr-10 sm:pr-12 py-3 sm:py-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery('')}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/40 hover:text-white transition-colors"
+                    className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 text-white/40 hover:text-white transition-colors"
                   >
-                    <X className="w-5 h-5" />
+                    <X className="w-4 h-4 sm:w-5 sm:h-5" />
                   </button>
                 )}
               </div>
             </div>
 
             {/* Results Counter */}
-            <div className="text-center mb-8">
-              <p className="text-white/60">
+            <div className="text-center mb-6 sm:mb-8">
+              <p className="text-white/60 text-sm sm:text-base">
                 Showing {filteredSystems.length} of {systems.length} systems
                 {searchQuery && (
                   <span className="text-cyan-400"> for "{searchQuery}"</span>
@@ -151,7 +151,7 @@ const SystemsPage = () => {
             </div>
 
             {/* Category Tabs */}
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12">
               {categories.map((category) => {
                 const Icon = category.icon;
                 return (
@@ -160,15 +160,16 @@ const SystemsPage = () => {
                     onClick={() => setSelectedCategory(category.id)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                    className={`flex items-center space-x-1 sm:space-x-2 px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 text-sm sm:text-base ${
                       selectedCategory === category.id
                         ? 'bg-cyan-400 text-white shadow-lg shadow-cyan-400/25'
                         : 'bg-white/10 text-white/70 hover:bg-white/20 hover:text-white'
                     }`}
                   >
-                    <Icon className="w-5 h-5" />
-                    <span>{category.label}</span>
-                    <span className="bg-white/20 text-white/80 px-2 py-1 rounded-full text-xs">
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <span className="hidden sm:inline">{category.label}</span>
+                    <span className="sm:hidden">{category.label.split(' ')[0]}</span>
+                    <span className="bg-white/20 text-white/80 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-xs">
                       {category.count}
                     </span>
                   </motion.button>
@@ -178,7 +179,7 @@ const SystemsPage = () => {
           </motion.div>
 
           {/* Systems Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
             {filteredSystems.map((system, index) => (
               <motion.div
                 key={system.id}

@@ -362,7 +362,7 @@ const PortfolioPage = () => {
   return (
     <div className="min-h-screen pt-16 ultra-gradient-bg">
       {/* Hero Section */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="py-12 sm:py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-teal-900/20 to-slate-900" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -372,30 +372,30 @@ const PortfolioPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-4 sm:mb-6">
               My Portfolio
             </h1>
-            <p className="text-2xl text-cyan-200 mb-8 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-2xl text-cyan-200 mb-6 sm:mb-8 max-w-3xl mx-auto px-4 sm:px-0">
               A collection of projects, ventures, and creative works that showcase my journey as an entrepreneur, startup builder, and writer.
             </p>
             
             {/* Quick Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-              <div className="bg-white/5 rounded-lg p-4">
-                <div className="text-3xl font-bold text-blue-400">8+</div>
-                <div className="text-white/60 text-sm">Years Experience</div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 max-w-4xl mx-auto">
+              <div className="bg-white/5 rounded-lg p-3 sm:p-4">
+                <div className="text-2xl sm:text-3xl font-bold text-blue-400">8+</div>
+                <div className="text-white/60 text-xs sm:text-sm">Years Experience</div>
               </div>
-              <div className="bg-white/5 rounded-lg p-4">
-                <div className="text-3xl font-bold text-blue-400">10+</div>
-                <div className="text-white/60 text-sm">Startups Mentored</div>
+              <div className="bg-white/5 rounded-lg p-3 sm:p-4">
+                <div className="text-2xl sm:text-3xl font-bold text-blue-400">10+</div>
+                <div className="text-white/60 text-xs sm:text-sm">Startups Mentored</div>
               </div>
-              <div className="bg-white/5 rounded-lg p-4">
-                <div className="text-3xl font-bold text-blue-400">300+</div>
-                <div className="text-white/60 text-sm">Team Members Led</div>
+              <div className="bg-white/5 rounded-lg p-3 sm:p-4">
+                <div className="text-2xl sm:text-3xl font-bold text-blue-400">300+</div>
+                <div className="text-white/60 text-xs sm:text-sm">Team Members Led</div>
               </div>
-              <div className="bg-white/5 rounded-lg p-4">
-                <div className="text-3xl font-bold text-blue-400">2</div>
-                <div className="text-white/60 text-sm">Books Published</div>
+              <div className="bg-white/5 rounded-lg p-3 sm:p-4">
+                <div className="text-2xl sm:text-3xl font-bold text-blue-400">2</div>
+                <div className="text-white/60 text-xs sm:text-sm">Books Published</div>
               </div>
             </div>
           </motion.div>
@@ -403,21 +403,21 @@ const PortfolioPage = () => {
       </section>
 
       {/* Featured Projects */}
-      <section className="py-20 relative">
+      <section className="py-12 sm:py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-16"
+            className="mb-8 sm:mb-16"
           >
-            <h2 className="text-4xl font-bold text-white mb-4 text-center">Featured Projects</h2>
-            <p className="text-white/70 text-center max-w-3xl mx-auto text-lg">
+            <h2 className="text-2xl sm:text-4xl font-bold text-white mb-3 sm:mb-4 text-center">Featured Projects</h2>
+            <p className="text-white/70 text-center max-w-3xl mx-auto text-base sm:text-lg px-4 sm:px-0">
               From AI-powered platforms to sustainable solutions, these projects represent my journey of building technology that transforms industries and empowers communities.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
             {featuredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -512,44 +512,44 @@ const PortfolioPage = () => {
       </section>
 
       {/* All Projects Section */}
-      <section className="py-20 relative">
+      <section className="py-12 sm:py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-12"
+            className="mb-8 sm:mb-12"
           >
-            <h2 className="text-4xl font-bold text-white mb-8 text-center">All Projects</h2>
+            <h2 className="text-2xl sm:text-4xl font-bold text-white mb-6 sm:mb-8 text-center">All Projects</h2>
             
             {/* Search and Filter */}
-            <div className="flex flex-col md:flex-row gap-4 mb-8">
+            <div className="flex flex-col md:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
               <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/40 w-5 h-5" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/40 w-4 h-4 sm:w-5 sm:h-5" />
                 <input
                   type="text"
                   placeholder="Search projects..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg pl-8 sm:pl-10 pr-4 py-2.5 sm:py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
                 />
               </div>
               
-              <div className="flex items-center space-x-2 overflow-x-auto">
+              <div className="flex items-center space-x-1 sm:space-x-2 overflow-x-auto pb-2">
                 {categories.map((category) => (
                   <motion.button
                     key={category.id}
                     onClick={() => setActiveFilter(category.id)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 whitespace-nowrap ${
+                    className={`flex items-center space-x-1 sm:space-x-2 px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all duration-300 whitespace-nowrap ${
                       activeFilter === category.id
                         ? 'bg-blue-500 text-white'
                         : 'bg-white/10 text-white/60 hover:text-white hover:bg-white/20'
                     }`}
                   >
-                    <category.icon className="w-4 h-4" />
-                    <span className="text-sm font-medium">{category.label}</span>
+                    <category.icon className="w-3 h-3 sm:w-4 sm:h-4" />
+                    <span className="text-xs sm:text-sm font-medium">{category.label}</span>
                   </motion.button>
                 ))}
               </div>
@@ -563,7 +563,7 @@ const PortfolioPage = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
             >
               {filteredProjects.map((project, index) => (
                 <motion.div

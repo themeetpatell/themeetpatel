@@ -605,7 +605,7 @@ const AboutPage = () => {
       />
 
       {/* Hero Section */}
-      <section ref={heroRef} className="py-20 relative overflow-hidden">
+      <section ref={heroRef} className="py-12 sm:py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-teal-900/20 to-slate-900" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -616,8 +616,8 @@ const AboutPage = () => {
             className="text-center"
           >
             {/* Profile Image */}
-            <div className="mb-8">
-              <div className="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-4 border-cyan-400/20 shadow-2xl">
+            <div className="mb-6 sm:mb-8">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full overflow-hidden mb-4 sm:mb-6 border-4 border-cyan-400/20 shadow-2xl">
                 <img 
                   src={logoImage} 
                   alt="The Meet Patel" 
@@ -627,36 +627,36 @@ const AboutPage = () => {
             </div>
 
             {/* Name and Title */}
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-3 sm:mb-4">
               {personalInfo.name}
             </h1>
-            <p className="text-2xl text-cyan-200 mb-6">
+            <p className="text-lg sm:text-2xl text-cyan-200 mb-4 sm:mb-6">
               {personalInfo.title} at {personalInfo.company}
             </p>
-            <p className="text-lg text-white/60 mb-8 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg text-white/60 mb-6 sm:mb-8 max-w-3xl mx-auto px-4 sm:px-0">
               {personalInfo.bio}
             </p>
 
             {/* Location and Contact */}
-            <div className="flex items-center justify-center space-x-6 text-white/60 mb-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-6 text-white/60 mb-6 sm:mb-8">
               <div className="flex items-center space-x-2">
-                <MapPin className="w-5 h-5" />
-                <span>{personalInfo.location}</span>
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="text-sm sm:text-base">{personalInfo.location}</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Mail className="w-5 h-5" />
-                <span>{personalInfo.email}</span>
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="text-sm sm:text-base">{personalInfo.email}</span>
               </div>
             </div>
 
 
             {/* CTA Buttons */}
-            <div className="flex items-center justify-center space-x-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4">
               <motion.button
                 onClick={() => setIsContactFormOpen(true)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-cyan-400 to-teal-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-cyan-500 hover:to-teal-600 transition-colors"
+                className="bg-gradient-to-r from-cyan-400 to-teal-500 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-semibold hover:from-cyan-500 hover:to-teal-600 transition-colors w-full sm:w-auto"
               >
                 Get In Touch
               </motion.button>
@@ -664,7 +664,7 @@ const AboutPage = () => {
                 href="/blog"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white/10 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/20 transition-colors"
+                className="bg-white/10 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-white/20 transition-colors w-full sm:w-auto"
               >
                 Read My Blog
               </motion.a>
@@ -674,23 +674,23 @@ const AboutPage = () => {
       </section>
 
       {/* Navigation Tabs */}
-      <section className="py-8 relative">
+      <section className="py-4 sm:py-8 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center space-x-1 ultra-glass rounded-xl p-2 overflow-x-auto">
+          <div className="flex items-center justify-center space-x-1 ultra-glass rounded-xl p-1 sm:p-2 overflow-x-auto">
             {tabs.map((tab) => (
               <motion.button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 whitespace-nowrap ${
+                className={`flex items-center space-x-1 sm:space-x-2 px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all duration-300 whitespace-nowrap text-xs sm:text-sm ${
                   activeTab === tab.id
                     ? 'bg-gradient-to-r from-cyan-400 to-teal-500 text-white'
                     : 'text-white/60 hover:text-white hover:bg-white/10'
                 }`}
               >
-                <tab.icon className="w-4 h-4" />
-                <span className="text-sm font-medium">{tab.label}</span>
+                <tab.icon className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="text-xs sm:text-sm font-medium">{tab.label}</span>
               </motion.button>
             ))}
           </div>
