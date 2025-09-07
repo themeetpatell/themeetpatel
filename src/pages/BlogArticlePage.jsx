@@ -307,222 +307,14 @@ const BlogArticlePage = () => {
 
                 {/* Article Body */}
                 <div className="p-8 md:p-12">
-                {/* Table of Contents */}
-                  <div className="mb-8 p-6 bg-white/5 rounded-xl border border-white/10">
-                    <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
-                      <BookOpen className="w-5 h-5 mr-2 text-cyan-400" />
-                      Table of Contents
-                    </h3>
-                    <ul className="space-y-2 text-white/70">
-                      <li className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                        <span>Introduction</span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                        <span>Key Concepts</span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                        <span>Practical Applications</span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                        <span>Case Studies</span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                        <span>Conclusion</span>
-                      </li>
-                  </ul>
-                </div>
 
-                  {/* Enhanced Article Content */}
+                  {/* Article Content */}
                   <div className="prose prose-xl prose-invert max-w-none">
-                    {/* Introduction */}
-                    <div className="mb-8">
-                      <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
-                        <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center mr-3">
-                          <span className="text-white font-bold text-sm">1</span>
-                        </div>
-                        Introduction
-                      </h2>
-                      <div 
-                        className="text-white/90 leading-relaxed text-lg"
-                        dangerouslySetInnerHTML={{ __html: article.content }}
-                        style={{ lineHeight: '1.8' }}
-                      />
-                    </div>
-
-                    {/* Key Insights Box */}
-                    <div className="my-12 p-8 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl border border-cyan-500/20">
-                      <div className="flex items-start space-x-4">
-                        <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                          <span className="text-white font-bold text-lg">💡</span>
-                        </div>
-                        <div>
-                          <h3 className="text-xl font-bold text-white mb-3">Key Insight</h3>
-                          <p className="text-white/80 leading-relaxed">
-                            This article explores the fundamental principles that drive success in modern entrepreneurship, 
-                            backed by real-world examples and actionable strategies you can implement immediately.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Main Content Sections */}
-                    <div className="space-y-12">
-                      <div>
-                        <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
-                          <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center mr-3">
-                            <span className="text-white font-bold text-sm">2</span>
-                          </div>
-                          Core Concepts
-                        </h2>
-                        <div className="space-y-6">
-                          <p className="text-white/90 leading-relaxed text-lg">
-                            Understanding the foundational elements is crucial for building sustainable success. 
-                            These concepts form the bedrock of effective leadership and strategic thinking.
-                          </p>
-                          
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="p-6 bg-white/5 rounded-xl border border-white/10">
-                              <h3 className="text-xl font-semibold text-white mb-3">Strategic Vision</h3>
-                              <p className="text-white/70 leading-relaxed">
-                                The ability to see beyond immediate challenges and envision long-term opportunities 
-                                that others might miss.
-                              </p>
-                            </div>
-                            <div className="p-6 bg-white/5 rounded-xl border border-white/10">
-                              <h3 className="text-xl font-semibold text-white mb-3">Execution Excellence</h3>
-                              <p className="text-white/70 leading-relaxed">
-                                Turning vision into reality through disciplined execution and continuous improvement.
-                              </p>
-                            </div>
-                          </div>
-                  </div>
-                </div>
-
-                      <div>
-                        <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
-                          <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center mr-3">
-                            <span className="text-white font-bold text-sm">3</span>
-                          </div>
-                          Practical Applications
-                        </h2>
-                        <div className="space-y-6">
-                          <p className="text-white/90 leading-relaxed text-lg">
-                            Theory without practice is incomplete. Here are actionable strategies you can implement 
-                            starting today to accelerate your growth and success.
-                          </p>
-                          
-                          <div className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-2xl p-8 border border-green-500/20">
-                            <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
-                              <span className="text-2xl mr-3">🚀</span>
-                              Action Steps
-                            </h3>
-                            <ol className="space-y-4 text-white/80">
-                              <li className="flex items-start space-x-3">
-                                <span className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">1</span>
-                                <span>Define your core values and align all decisions with them</span>
-                              </li>
-                              <li className="flex items-start space-x-3">
-                                <span className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">2</span>
-                                <span>Create a 90-day action plan with measurable milestones</span>
-                              </li>
-                              <li className="flex items-start space-x-3">
-                                <span className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">3</span>
-                                <span>Build a support network of mentors and peers</span>
-                              </li>
-                              <li className="flex items-start space-x-3">
-                                <span className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">4</span>
-                                <span>Implement daily reflection and learning practices</span>
-                              </li>
-                            </ol>
-            </div>
-          </div>
-        </div>
-
-                      <div>
-                        <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
-                          <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center mr-3">
-                            <span className="text-white font-bold text-sm">4</span>
-                          </div>
-                          Case Studies
-                        </h2>
-                        <div className="space-y-6">
-                          <p className="text-white/90 leading-relaxed text-lg">
-                            Real-world examples demonstrate how these principles work in practice. 
-                            These case studies provide concrete evidence of success.
-                          </p>
-                          
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-xl border border-blue-500/20">
-                              <h3 className="text-xl font-semibold text-white mb-3">ZeroHuman Success Story</h3>
-                              <p className="text-white/70 leading-relaxed mb-4">
-                                How we built an AI platform that generated 300% increase in customer interactions 
-                                and 90% cost savings for clients.
-                              </p>
-                              <div className="flex items-center space-x-4 text-sm text-white/60">
-                                <span>300% Growth</span>
-                                <span>•</span>
-                                <span>90% Cost Savings</span>
-              </div>
-            </div>
-
-                            <div className="p-6 bg-gradient-to-br from-green-500/10 to-teal-500/10 rounded-xl border border-green-500/20">
-                              <h3 className="text-xl font-semibold text-white mb-3">MealVerse Innovation</h3>
-                              <p className="text-white/70 leading-relaxed mb-4">
-                                Revolutionizing food technology through sustainable solutions and digital innovation 
-                                that transformed culinary experiences.
-                              </p>
-                              <div className="flex items-center space-x-4 text-sm text-white/60">
-                                <span>5K+ Users</span>
-                                <span>•</span>
-                                <span>70% Sustainability</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div>
-                        <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
-                          <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center mr-3">
-                            <span className="text-white font-bold text-sm">5</span>
-                          </div>
-                          Conclusion
-                        </h2>
-                        <div className="space-y-6">
-                          <p className="text-white/90 leading-relaxed text-lg">
-                            Success is not a destination but a journey of continuous learning and adaptation. 
-                            The principles outlined in this article provide a framework for sustainable growth.
-                          </p>
-                          
-                          <div className="p-8 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl border border-cyan-500/20">
-                            <h3 className="text-2xl font-bold text-white mb-4">Key Takeaways</h3>
-                            <ul className="space-y-3 text-white/80">
-                              <li className="flex items-start space-x-3">
-                                <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                                <span>Focus on value creation over short-term gains</span>
-                              </li>
-                              <li className="flex items-start space-x-3">
-                                <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                                <span>Build systems that scale with your growth</span>
-                              </li>
-                              <li className="flex items-start space-x-3">
-                                <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                                <span>Invest in relationships and continuous learning</span>
-                              </li>
-                              <li className="flex items-start space-x-3">
-                                <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                                <span>Measure progress, not perfection</span>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <div 
+                      className="text-white/90 leading-relaxed text-lg"
+                      dangerouslySetInnerHTML={{ __html: article.content }}
+                      style={{ lineHeight: '1.8' }}
+                    />
                   </div>
 
                   {/* Enhanced Social Sharing */}
@@ -676,31 +468,32 @@ const BlogArticlePage = () => {
                   </div>
                 </motion.div>
 
-                {/* Table of Contents */}
+                {/* Article Stats */}
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 }}
                   className="ultra-glass rounded-2xl p-6"
                 >
-                  <h3 className="text-lg font-semibold text-white mb-4">Table of Contents</h3>
-                  <nav className="space-y-2">
-                    <a href="#introduction" className="block text-cyan-400 hover:text-cyan-300 text-sm py-1 transition-colors">
-                      1. Introduction
-                    </a>
-                    <a href="#concepts" className="block text-white/60 hover:text-white text-sm py-1 transition-colors">
-                      2. Core Concepts
-                    </a>
-                    <a href="#applications" className="block text-white/60 hover:text-white text-sm py-1 transition-colors">
-                      3. Practical Applications
-                    </a>
-                    <a href="#case-studies" className="block text-white/60 hover:text-white text-sm py-1 transition-colors">
-                      4. Case Studies
-                    </a>
-                    <a href="#conclusion" className="block text-white/60 hover:text-white text-sm py-1 transition-colors">
-                      5. Conclusion
-                    </a>
-                  </nav>
+                  <h3 className="text-lg font-semibold text-white mb-4">Article Stats</h3>
+                  <div className="space-y-3 text-sm text-white/70">
+                    <div className="flex items-center justify-between">
+                      <span>Reading Time</span>
+                      <span className="text-cyan-400 font-semibold">{article.readTime}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span>Views</span>
+                      <span className="text-cyan-400 font-semibold">{article.views.toLocaleString()}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span>Likes</span>
+                      <span className="text-cyan-400 font-semibold">{article.likes}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span>Category</span>
+                      <span className="text-cyan-400 font-semibold">{article.category}</span>
+                    </div>
+                  </div>
           </motion.div>
               </div>
             </div>
