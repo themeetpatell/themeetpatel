@@ -80,11 +80,6 @@ const UltraNavigation = () => {
       title: "Blog",
       href: "/blog",
       icon: BookOpen
-    },
-    {
-      title: "Contact",
-      href: "/contact",
-      icon: Mail
     }
   ];
 
@@ -129,7 +124,7 @@ const UltraNavigation = () => {
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <img
+                  <img 
                     src={logoImage}
                     alt="The Meet Patel Logo"
                     className="w-full h-full object-contain"

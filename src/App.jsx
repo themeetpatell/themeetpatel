@@ -19,6 +19,9 @@ import SystemsPage from './pages/SystemsPage';
 import SystemDetailPage from './pages/SystemDetailPage';
 import BlogPage from './pages/BlogPage';
 import BlogArticlePage from './pages/BlogArticlePage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import CookiePolicyPage from './pages/CookiePolicyPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
 
 // Component to track page views
 function PageTracker() {
@@ -57,6 +60,11 @@ function App() {
           {/* Blog Pages */}
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogArticlePage />} />
+          
+          {/* Legal Pages */}
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/cookie-policy" element={<CookiePolicyPage />} />
+          <Route path="/terms-of-service" element={<TermsOfServicePage />} />
         </Routes>
         
         <UltraFooter />

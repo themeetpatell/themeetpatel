@@ -21,7 +21,9 @@ import {
   Users,
   BookOpen,
   Briefcase,
-  User
+  User,
+  FolderOpen,
+  Settings
 } from 'lucide-react';
 import logoImage from '../assets/logo for themeetpatel.png';
 import { trackButtonClick, trackSocialClick, trackEmailClick, trackFormSubmission } from '../utils/analytics';
@@ -55,28 +57,28 @@ const UltraFooter = () => {
       title: "Projects & Ventures",
       links: [
         { name: "StartupOS", href: "https://www.startupos.in", external: true },
-        { name: "Finanshels.com", href: "https://finanshels.com", external: true },
-        { name: "StudentHub", href: "https://www.studenthub.co", external: false },
-        { name: "TorchIt", href: "https://www.mytorchit.com", external: false }
+        { name: "Zerohuman", href: "https://www.zerohuman.co", external: true },
+        { name: "Mealverse", href: "https://www.mealverse.in", external: true },
+        { name: "Finanshels.com", href: "https://finanshels.com", external: true }
       ]
     },
     writing: {
       title: "Writing & Books",
       links: [
-        { name: "The Eternal Love", href: "#", external: false },
+        { name: "The Eternal Love", href: "/The Eternal Love by The Meet Patel.pdf", external: false },
         { name: "The Endless Devotion", href: "#", external: false },
         { name: "Blog Articles", href: "/blog", external: false },
-        { name: "Writing Process", href: "/blog", external: false }
+        { name: "Linkedin Newsletter", href: "https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7323218198735015937", external: true }
       ]
     },
-    connect: {
-      title: "Connect With Me",
+    navigation: {
+      title: "Quick Navigation",
       links: [
-        { name: "LinkedIn", href: "https://www.linkedin.com/in/themeetpatel/", external: true, icon: Linkedin },
-        { name: "Twitter", href: "https://x.com/the_themeetpatel", external: true, icon: Twitter },
-        { name: "GitHub", href: "https://github.com/themeetpatell", external: true, icon: Github },
-        { name: "Instagram", href: "http://instagram.com/the.meetpatell/", external: true, icon: Instagram },
-        { name: "YouTube", href: "https://youtube.com/@themeetpatel", external: true, icon: Youtube }
+        { name: "About", href: "/about", external: false, icon: User },
+        { name: "Portfolio", href: "/portfolio", external: false, icon: FolderOpen },
+        { name: "Systems", href: "/systems", external: false, icon: Award },
+        { name: "Blog", href: "/blog", external: false, icon: BookOpen },
+        { name: "Contact", href: "/contact", external: false, icon: MessageSquare }
       ]
     }
   };
@@ -211,28 +213,40 @@ const UltraFooter = () => {
               </motion.div>
             </div>
 
-            {/* Connect Section */}
+            {/* Navigation Section */}
             <div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                <h3 className="text-lg font-semibold text-white mb-6">{footerSections.connect.title}</h3>
+                <h3 className="text-lg font-semibold text-white mb-6">{footerSections.navigation.title}</h3>
                 <ul className="space-y-3">
-                  {footerSections.connect.links.map((link, index) => (
+                  {footerSections.navigation.links.map((link, index) => (
                     <li key={index}>
-                      <motion.a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ x: 5 }}
-                        className="flex items-center space-x-2 text-gray-400 hover:text-blue-400 transition-colors group"
-                        onClick={() => trackSocialClick(link.name.toLowerCase())}
-                      >
-                        <link.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                        <span>{link.name}</span>
-                      </motion.a>
+                      <motion.div whileHover={{ x: 5 }}>
+                        {link.external ? (
+                          <a
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center space-x-2 text-gray-400 hover:text-cyan-400 transition-colors group"
+                            onClick={() => trackButtonClick(`footer_${link.name.toLowerCase()}`, 'footer_navigation')}
+                          >
+                            <link.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                            <span>{link.name}</span>
+                          </a>
+                        ) : (
+                          <Link
+                            to={link.href}
+                            className="flex items-center space-x-2 text-gray-400 hover:text-cyan-400 transition-colors group"
+                            onClick={() => trackButtonClick(`footer_${link.name.toLowerCase()}`, 'footer_navigation')}
+                          >
+                            <link.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                            <span>{link.name}</span>
+                          </Link>
+                        )}
+                      </motion.div>
                     </li>
                   ))}
                 </ul>
@@ -292,29 +306,30 @@ const UltraFooter = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
               <div className="flex items-center space-x-2 text-gray-300">
-                <span>© 2024 The Meet Patel. Made with</span>
+                <span>© 2025 The Meet Patel. Made with</span>
                 <Heart className="w-4 h-4 text-red-400 fill-current" />
                 <span>in Dubai, UAE</span>
           </div>
 
                 <div className="flex items-center space-x-6">
-                <Link to="/about" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  About
+                <Link to="/privacy-policy" className="text-gray-400 hover:text-white transition-colors text-sm">
+                      Privacy Policy
                     </Link>
-                <Link to="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Contact
+                <Link to="/cookie-policy" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  Cookie Policy
                     </Link>
-                <Link to="/blog" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Blog
+                <Link to="/terms-of-service" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  Terms of Service
                     </Link>
-                <a 
-                  href="https://www.linkedin.com/in/themeetpatel/" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors text-sm"
+                {process.env.NODE_ENV === 'development' && (
+                  <Link 
+                    to="/blog?admin=true" 
+                    className="flex items-center space-x-1 text-gray-400 hover:text-white transition-colors text-sm"
                   >
-                  LinkedIn
-                </a>
+                    <Settings className="w-4 h-4" />
+                    <span>Manage Blog</span>
+                  </Link>
+                )}
               </div>
             </div>
           </div>

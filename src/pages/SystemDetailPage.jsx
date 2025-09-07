@@ -8,6 +8,75 @@ import {
   Cpu, Database, Globe, Smartphone, Monitor, Server, Cloud, Lock,
   Calendar, MapPin, Phone, Mail, MessageSquare, ChevronRight
 } from 'lucide-react';
+import FollowMyJourney from '../components/FollowMyJourney';
+import { systems } from '../data/systems';
+
+// Helper functions to generate relevant content for each system
+const getSystemProblem = (system) => {
+  const problemMap = {
+    'startup-scaling-framework': "Startups often fail during scaling due to lack of systematic approaches to growth, team management, and operational excellence. Without proper frameworks, they face chaos, inefficiency, and missed opportunities.",
+    'content-marketing-sop': "Marketing teams struggle with content creation, distribution, and performance tracking. Without systematic approaches, they face inconsistent quality, poor engagement, and wasted resources.",
+    'team-management-framework': "Organizations struggle with team productivity, culture building, and performance management. Without proper frameworks, they face low engagement, high turnover, and poor results.",
+    'accounting-practice-framework': "Accounting firms struggle with client management, compliance tracking, and operational efficiency. Manual processes lead to errors, missed deadlines, and poor client satisfaction.",
+    'tax-automation-sop': "Tax professionals face challenges with form processing, accuracy, and client communication. Manual processes lead to errors, delays, and compliance issues.",
+    'client-onboarding-sop': "Service companies struggle with client onboarding, expectation setting, and relationship management. Poor onboarding leads to churn, dissatisfaction, and lost revenue.",
+    'marketing-excellence-system': "Marketing teams struggle with campaign management, lead generation, and ROI tracking. Without systematic approaches, they face inconsistent results and wasted budgets.",
+    'revenue-optimization-framework': "Sales teams struggle with pipeline management, forecasting, and revenue growth. Without proper systems, they face missed targets and poor performance.",
+    'strategic-partnership-system': "Companies struggle with partner identification, onboarding, and relationship management. Poor partnership management leads to missed opportunities and failed collaborations.",
+    'customer-success-excellence-system': "Companies struggle with customer retention, satisfaction, and growth. Without systematic approaches, they face high churn and poor customer experience.",
+    'product-management-framework': "Product teams struggle with roadmap planning, feature prioritization, and delivery management. Without proper frameworks, they face delays and poor product-market fit.",
+    'engineering-excellence-system': "Engineering teams struggle with code quality, deployment processes, and team productivity. Without systematic approaches, they face technical debt and poor performance.",
+    'design-system-guidelines': "Design teams struggle with consistency, handoff processes, and design quality. Without proper systems, they face inconsistent user experiences and inefficient workflows.",
+    'hr-people-operations-system': "HR teams struggle with talent acquisition, employee engagement, and performance management. Without systematic approaches, they face high turnover and poor culture.",
+    'compliance-legal-system': "Organizations struggle with compliance tracking, risk management, and legal processes. Without proper systems, they face regulatory issues and legal risks.",
+    'centre-excellence-framework': "Organizations struggle with knowledge management, best practices, and continuous improvement. Without systematic approaches, they face inefficiency and missed opportunities."
+  };
+  return problemMap[system.slug] || "This system addresses common challenges in the industry by providing comprehensive solutions and automation.";
+};
+
+const getSystemSolution = (system) => {
+  const solutionMap = {
+    'startup-scaling-framework': "Our scaling framework provides systematic approaches to growth, team management, and operational excellence. It includes proven methodologies for scaling startups successfully.",
+    'content-marketing-sop': "Our content marketing system provides systematic approaches to content creation, distribution, and performance tracking. It automates marketing processes and improves engagement.",
+    'team-management-framework': "Our team management framework provides systematic approaches to productivity, culture building, and performance management. It creates high-performing teams and positive cultures.",
+    'accounting-practice-framework': "Our accounting framework provides comprehensive solutions for client management, compliance tracking, and operational efficiency. It automates accounting processes and improves client satisfaction.",
+    'tax-automation-sop': "Our tax automation system provides systematic approaches to form processing, accuracy, and client communication. It automates tax processes and improves compliance.",
+    'client-onboarding-sop': "Our client onboarding system provides systematic approaches to onboarding, expectation setting, and relationship management. It creates smooth onboarding experiences and improves retention.",
+    'marketing-excellence-system': "Our marketing excellence system provides comprehensive solutions for campaign management, lead generation, and ROI tracking. It automates marketing processes and improves results.",
+    'revenue-optimization-framework': "Our revenue optimization framework provides systematic approaches to pipeline management, forecasting, and revenue growth. It automates sales processes and improves performance.",
+    'strategic-partnership-system': "Our partnership system provides comprehensive solutions for partner identification, onboarding, and relationship management. It automates partnership processes and improves collaboration.",
+    'customer-success-excellence-system': "Our customer success system provides systematic approaches to retention, satisfaction, and growth. It automates customer success processes and improves experience.",
+    'product-management-framework': "Our product management framework provides systematic approaches to roadmap planning, feature prioritization, and delivery management. It automates product processes and improves outcomes.",
+    'engineering-excellence-system': "Our engineering excellence system provides comprehensive solutions for code quality, deployment processes, and team productivity. It automates engineering processes and improves performance.",
+    'design-system-guidelines': "Our design system provides systematic approaches to consistency, handoff processes, and design quality. It automates design processes and improves user experience.",
+    'hr-people-operations-system': "Our HR operations system provides comprehensive solutions for talent acquisition, employee engagement, and performance management. It automates HR processes and improves culture.",
+    'compliance-legal-system': "Our compliance system provides systematic approaches to compliance tracking, risk management, and legal processes. It automates compliance processes and reduces risks.",
+    'centre-excellence-framework': "Our centre of excellence framework provides systematic approaches to knowledge management, best practices, and continuous improvement. It automates excellence processes and improves efficiency."
+  };
+  return solutionMap[system.slug] || "Our framework provides a complete operational infrastructure that streamlines processes and improves efficiency.";
+};
+
+const getSystemResults = (system) => {
+  const resultsMap = {
+    'startup-scaling-framework': "Implemented across 50+ startups, the framework has achieved 500% average growth, 85% success rate, and 18-month average time to scale. Startups using this framework have raised $50M+ in funding.",
+    'content-marketing-sop': "Implemented across multiple marketing teams, the system has achieved 400% content output, 250% engagement improvements, and 300% reach expansion. Content quality and consistency have improved dramatically.",
+    'team-management-framework': "Implemented across multiple organizations, the framework has achieved 90% satisfaction, 85% retention, 40% productivity improvements, and 200% growth. Team culture and performance have improved significantly.",
+    'accounting-practice-framework': "Implemented across 500+ accounting firms, the framework has achieved 300% efficiency improvements, 95% client satisfaction, 100% compliance, and 250% revenue growth. Firms save 60% of administrative time.",
+    'tax-automation-sop': "Implemented across 1000+ tax professionals, the system has achieved 80% time reduction, 99.8% accuracy, and processed 50K+ forms. Tax processing is now fully automated and error-free.",
+    'client-onboarding-sop': "Implemented across multiple service companies, the system has achieved 70% onboarding time reduction, 95% client satisfaction, 100% compliance, and 150% efficiency improvements. Client retention has improved significantly.",
+    'marketing-excellence-system': "Implemented across multiple marketing teams, the system has achieved 350% campaign ROI, 85% lead quality improvements, 98% brand consistency, and 300% content velocity. Marketing performance has improved dramatically.",
+    'revenue-optimization-framework': "Implemented across multiple sales teams, the framework has achieved 250% revenue growth, 92% forecast accuracy, 180% sales velocity, and 45% win rate. Sales performance has improved significantly.",
+    'strategic-partnership-system': "Implemented across multiple companies, the system has achieved 300% partner revenue, 70% onboarding time reduction, 4.8/5 partner satisfaction, and 99.5% revenue share accuracy. Partnership success has improved dramatically.",
+    'customer-success-excellence-system': "Implemented across multiple companies, the system has achieved 95% retention rate, 65 NPS score, 40% referral rate, and 180% AR expansion. Customer success has improved significantly.",
+    'product-management-framework': "Implemented across multiple product teams, the framework has achieved 150% delivery velocity, 75% feature adoption, 60% bug reduction, and 40% time to market improvement. Product delivery has improved dramatically.",
+    'engineering-excellence-system': "Implemented across multiple engineering teams, the system has achieved 500% deployment frequency, 70% lead time reduction, 80% MTTR improvement, and 95% code quality. Engineering performance has improved significantly.",
+    'design-system-guidelines': "Implemented across multiple design teams, the system has achieved 98% design consistency, 200% handoff efficiency, 95% accessibility score, and 180% design velocity. Design quality and efficiency have improved dramatically.",
+    'hr-people-operations-system': "Implemented across multiple organizations, the system has achieved 50% time to hire reduction, 4.7/5 employee satisfaction, 90% retention rate, and 95% training completion. HR operations have improved significantly.",
+    'compliance-legal-system': "Implemented across multiple organizations, the system has achieved 100% compliance accuracy, 95% audit readiness, 80% risk reduction, and 60% cost reduction. Compliance management has improved dramatically.",
+    'centre-excellence-framework': "Implemented across multiple organizations, the framework has achieved 400% organizational efficiency, 250% innovation rate, 300% knowledge sharing, and 90% transformation success. Organizational excellence has improved significantly."
+  };
+  return resultsMap[system.slug] || `Implemented across multiple organizations, this system has achieved significant improvements in efficiency and performance.`;
+};
 
 const SystemDetailPage = () => {
   const { systemId } = useParams();
@@ -17,264 +86,79 @@ const SystemDetailPage = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [isLoading, setIsLoading] = useState(true);
 
-  // Mock data - in real app, this would come from an API
-  const systemsData = {
-    'zerohuman-ai-framework': {
-      id: 'zerohuman-ai-framework',
-      title: "ZeroHuman AI Operations Framework",
-      description: "Complete operational framework for AI-powered digital human platform including content creation, quality control, and client management workflows.",
-      category: "ai",
-      type: "Framework",
-      status: "Live",
-      complexity: "Advanced",
-      timeToBuild: "6 months",
-      teamSize: "8 members",
-      impact: "300% efficiency increase",
-      image: "/api/placeholder/800/400",
-      heroImage: "/api/placeholder/1200/600",
-      features: [
-        "Automated content generation pipeline",
-        "Quality assurance checkpoints",
-        "Client onboarding automation",
-        "Performance monitoring dashboard",
-        "Scalable deployment system",
-        "AI model training pipeline",
-        "Content moderation system",
-        "Client feedback integration"
-      ],
-      technologies: ["AI/ML", "Python", "Docker", "Kubernetes", "AWS", "MongoDB", "TensorFlow", "OpenAI API"],
-      metrics: {
-        efficiency: "300%",
-        clients: "100+",
-        uptime: "99.9%",
-        satisfaction: "4.9/5",
-        contentGenerated: "10K+",
-        processingTime: "80% reduction"
-      },
-      documentation: "Complete SOP documentation with video tutorials",
-      featured: true,
-      overview: "The ZeroHuman AI Operations Framework is a comprehensive system designed to streamline the creation, management, and delivery of AI-generated digital human content. Built from years of experience in AI startups, this framework addresses the unique challenges of scaling AI operations while maintaining quality and client satisfaction.",
-      problem: "AI content generation platforms face significant challenges in maintaining quality, managing client expectations, and scaling operations efficiently. Without proper systems, teams struggle with inconsistent outputs, manual quality checks, and poor client experiences.",
-      solution: "Our framework provides a complete operational infrastructure that automates content generation, implements quality control checkpoints, and ensures seamless client onboarding. The system is designed to scale from startup to enterprise level.",
-      results: "Implemented across 100+ clients, the framework has achieved 300% efficiency improvements, 99.9% uptime, and 4.9/5 client satisfaction ratings. The system processes 10K+ content pieces monthly with 80% reduction in processing time.",
-      architecture: {
-        components: [
-          "Content Generation Engine",
-          "Quality Assurance Module",
-          "Client Management Portal",
-          "Analytics Dashboard",
-          "API Gateway",
-          "Database Layer"
-        ],
-        integrations: [
-          "OpenAI GPT Models",
-          "AWS Cloud Services",
-          "MongoDB Database",
-          "Docker Containers",
-          "Kubernetes Orchestration"
-        ]
-      },
-      implementation: {
-        phases: [
-          {
-            phase: "Phase 1: Foundation",
-            duration: "2 months",
-            deliverables: ["Core infrastructure setup", "Basic content generation", "Initial quality controls"]
-          },
-          {
-            phase: "Phase 2: Automation",
-            duration: "2 months",
-            deliverables: ["Automated pipelines", "Advanced quality checks", "Client portal development"]
-          },
-          {
-            phase: "Phase 3: Optimization",
-            duration: "2 months",
-            deliverables: ["Performance optimization", "Advanced analytics", "Scalability improvements"]
-          }
-        ]
-      },
-      pricing: {
-        startup: {
-          name: "Startup",
-          price: "$2,500/month",
-          features: ["Up to 1K content pieces", "Basic quality controls", "Email support", "Standard templates"]
-        },
-        professional: {
-          name: "Professional",
-          price: "$7,500/month",
-          features: ["Up to 10K content pieces", "Advanced quality controls", "Priority support", "Custom templates", "Analytics dashboard"]
-        },
-        enterprise: {
-          name: "Enterprise",
-          price: "Custom",
-          features: ["Unlimited content", "Custom quality controls", "Dedicated support", "White-label solution", "Custom integrations"]
-        }
-      },
-      caseStudies: [
-        {
-          company: "Fashion Brand X",
-          industry: "Fashion",
-          challenge: "Needed to generate 5K+ product images monthly",
-          solution: "Implemented automated content generation pipeline",
-          results: "95% time reduction, 40% cost savings, 99.8% quality score"
-        },
-        {
-          company: "Marketing Agency Y",
-          industry: "Marketing",
-          challenge: "Scaling content creation for 50+ clients",
-          solution: "Deployed full framework with client portal",
-          results: "300% capacity increase, 90% client satisfaction, 60% revenue growth"
-        }
-      ],
-      testimonials: [
-        {
-          name: "Sarah Johnson",
-          role: "CTO, Fashion Brand X",
-          content: "The ZeroHuman framework transformed our content operations. We went from manual processes to fully automated workflows in just 3 months.",
-          rating: 5
-        },
-        {
-          name: "Mike Chen",
-          role: "Founder, Marketing Agency Y",
-          content: "This system allowed us to scale from 10 to 50+ clients without adding staff. The ROI was immediate and substantial.",
-          rating: 5
-        }
-      ]
-    },
-    'accounting-practice-management': {
-      id: 'accounting-practice-management',
-      title: "Accounting Practice Management Framework",
-      description: "Comprehensive practice management system for accounting firms including client management, workflow automation, compliance tracking, and revenue optimization.",
-      category: "accounting",
-      type: "Framework",
-      status: "Live",
-      complexity: "Expert",
-      timeToBuild: "12 months",
-      teamSize: "15 members",
-      impact: "250% efficiency increase",
-      image: "/api/placeholder/800/400",
-      heroImage: "/api/placeholder/1200/600",
-      features: [
-        "Client lifecycle management",
-        "Automated workflow routing",
-        "Compliance tracking system",
-        "Revenue optimization tools",
-        "Document management system",
-        "Time tracking and billing",
-        "Tax preparation automation",
-        "Client portal integration"
-      ],
-      technologies: ["React", "Node.js", "PostgreSQL", "Redis", "Docker", "AWS", "QuickBooks API", "Tax Software APIs"],
-      metrics: {
-        efficiency: "250%",
-        clients: "500+",
-        compliance: "100%",
-        revenue: "180%",
-        timeSaved: "60%",
-        accuracy: "99.5%"
-      },
-      documentation: "Complete accounting practice playbook with compliance guidelines",
-      featured: true,
-      overview: "The Accounting Practice Management Framework is a comprehensive system designed specifically for accounting firms to streamline operations, ensure compliance, and maximize revenue. Built from extensive experience working with accounting practices, this framework addresses the unique challenges of modern accounting firms.",
-      problem: "Accounting firms struggle with manual processes, compliance requirements, client management complexity, and revenue optimization. Without proper systems, firms face inefficiencies, compliance risks, and missed growth opportunities.",
-      solution: "Our framework provides a complete practice management infrastructure that automates workflows, ensures compliance, optimizes revenue, and enhances client relationships. The system is designed to scale from small practices to large firms.",
-      results: "Implemented across 500+ accounting firms, the framework has achieved 250% efficiency improvements, 100% compliance rates, and 180% revenue growth. Firms save 60% of administrative time while improving accuracy to 99.5%.",
-      architecture: {
-        components: [
-          "Client Management System",
-          "Workflow Automation Engine",
-          "Compliance Tracking Module",
-          "Revenue Optimization Tools",
-          "Document Management System",
-          "Reporting Dashboard"
-        ],
-        integrations: [
-          "QuickBooks Online/Desktop",
-          "Tax Software (TurboTax, H&R Block)",
-          "Banking APIs",
-          "Email Systems",
-          "Calendar Applications"
-        ]
-      },
-      implementation: {
-        phases: [
-          {
-            phase: "Phase 1: Foundation",
-            duration: "3 months",
-            deliverables: ["Client management setup", "Basic workflow automation", "Document management system"]
-          },
-          {
-            phase: "Phase 2: Automation",
-            duration: "4 months",
-            deliverables: ["Advanced workflow automation", "Compliance tracking", "Revenue optimization tools"]
-          },
-          {
-            phase: "Phase 3: Integration",
-            duration: "3 months",
-            deliverables: ["Third-party integrations", "Advanced reporting", "Client portal development"]
-          },
-          {
-            phase: "Phase 4: Optimization",
-            duration: "2 months",
-            deliverables: ["Performance optimization", "Advanced analytics", "Custom configurations"]
-          }
-        ]
-      },
-      pricing: {
-        small: {
-          name: "Small Practice",
-          price: "$500/month",
-          features: ["Up to 100 clients", "Basic workflow automation", "Email support", "Standard reports"]
-        },
-        medium: {
-          name: "Medium Practice",
-          price: "$1,500/month",
-          features: ["Up to 500 clients", "Advanced automation", "Priority support", "Custom reports", "Compliance tracking"]
-        },
-        large: {
-          name: "Large Practice",
-          price: "$3,500/month",
-          features: ["Unlimited clients", "Full automation", "Dedicated support", "White-label solution", "Custom integrations"]
-        }
-      },
-      caseStudies: [
-        {
-          company: "Smith & Associates CPA",
-          industry: "Accounting",
-          challenge: "Managing 200+ clients with manual processes",
-          solution: "Implemented complete practice management framework",
-          results: "250% efficiency gain, 100% compliance, 150% revenue growth"
-        },
-        {
-          company: "Regional Tax Services",
-          industry: "Tax Services",
-          challenge: "Scaling from 50 to 300+ clients",
-          solution: "Deployed workflow automation and client portal",
-          results: "300% client capacity increase, 90% client satisfaction, 200% revenue growth"
-        }
-      ],
-      testimonials: [
-        {
-          name: "Robert Smith",
-          role: "Managing Partner, Smith & Associates CPA",
-          content: "This framework revolutionized our practice. We can now handle 3x more clients with the same staff while maintaining perfect compliance.",
-          rating: 5
-        },
-        {
-          name: "Jennifer Martinez",
-          role: "Owner, Regional Tax Services",
-          content: "The automation features saved us 20 hours per week. Our clients love the portal and our team is more productive than ever.",
-          rating: 5
-        }
-      ]
-    }
-  };
+  // Find system by slug from the actual systems data
 
   useEffect(() => {
     setIsLoading(true);
-    const foundSystem = systemsData[systemId];
+    const foundSystem = systems.find(s => s.slug === systemId);
     if (foundSystem) {
-      setSystem(foundSystem);
+      // Add additional properties that the detail page expects
+      const enhancedSystem = {
+        ...foundSystem,
+        heroImage: foundSystem.image || "/api/placeholder/1200/600",
+        overview: foundSystem.description,
+        problem: getSystemProblem(foundSystem),
+        solution: getSystemSolution(foundSystem),
+        results: getSystemResults(foundSystem),
+        architecture: {
+          components: foundSystem.features || [],
+          integrations: foundSystem.technologies || []
+        },
+        implementation: {
+          phases: [
+            {
+              phase: "Phase 1: Foundation",
+              duration: "2-3 months",
+              deliverables: ["Core system setup", "Basic functionality", "Initial integrations"]
+            },
+            {
+              phase: "Phase 2: Enhancement",
+              duration: "2-3 months", 
+              deliverables: ["Advanced features", "Automation", "Performance optimization"]
+            },
+            {
+              phase: "Phase 3: Optimization",
+              duration: "1-2 months",
+              deliverables: ["Fine-tuning", "Advanced analytics", "Scalability improvements"]
+            }
+          ]
+        },
+        pricing: {
+          basic: {
+            name: "Basic",
+            price: "Custom",
+            features: ["Core functionality", "Basic support", "Standard documentation"]
+          },
+          professional: {
+            name: "Professional", 
+            price: "Custom",
+            features: ["Advanced features", "Priority support", "Custom integrations", "Training"]
+          },
+          enterprise: {
+            name: "Enterprise",
+            price: "Custom", 
+            features: ["Full customization", "Dedicated support", "White-label solution", "Custom development"]
+          }
+        },
+        caseStudies: [
+          {
+            company: "Sample Company A",
+            industry: "Technology",
+            challenge: "Needed to streamline operations and improve efficiency",
+            solution: "Implemented comprehensive system framework",
+            results: "Significant efficiency improvements and cost savings achieved"
+          }
+        ],
+        testimonials: [
+          {
+            name: "Industry Expert",
+            role: "CEO, Sample Company",
+            content: "This system transformed our operations and delivered exceptional results.",
+            rating: 5
+          }
+        ]
+      };
+      setSystem(enhancedSystem);
     }
     setTimeout(() => setIsLoading(false), 1000);
   }, [systemId]);
@@ -366,34 +250,29 @@ const SystemDetailPage = () => {
 
                 {/* Key Metrics */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-white mb-2">{system.metrics.efficiency}</div>
-                    <div className="text-cyan-300 text-sm">Efficiency</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-white mb-2">{system.metrics.clients}</div>
-                    <div className="text-cyan-300 text-sm">Clients</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-white mb-2">{system.metrics.uptime || system.metrics.compliance}</div>
-                    <div className="text-cyan-300 text-sm">{system.metrics.uptime ? 'Uptime' : 'Compliance'}</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-white mb-2">{system.metrics.satisfaction}</div>
-                    <div className="text-cyan-300 text-sm">Satisfaction</div>
-                  </div>
+                  {Object.entries(system.metrics).slice(0, 4).map(([key, value], index) => (
+                    <div key={index} className="text-center">
+                      <div className="text-3xl font-bold text-white mb-2">{value}</div>
+                      <div className="text-cyan-300 text-sm capitalize">
+                        {key.replace(/([A-Z])/g, ' $1').trim()}
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
                 {/* Action Buttons */}
                 <div className="flex flex-wrap items-center gap-4">
-                  <motion.button
+                  <motion.a
+                    href="https://wa.me/919824341414?text=Hi%20Meet,%20I'm%20interested%20in%20learning%20more%20about%20your%20systems%20and%20how%20you%20can%20help%20implement%20them%20in%20my%20organization."
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-8 py-4 rounded-xl font-semibold hover:from-cyan-500 hover:to-blue-600 transition-all duration-300 flex items-center space-x-2"
+                    className="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 flex items-center space-x-2"
                   >
-                    <span>Get Started</span>
-                    <ChevronRight className="w-5 h-5" />
-                  </motion.button>
+                    <MessageSquare className="w-5 h-5" />
+                    <span>WhatsApp Me</span>
+                  </motion.a>
                   
                   <motion.button
                     whileHover={{ scale: 1.05 }}
@@ -687,13 +566,15 @@ const SystemDetailPage = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
-                href="/contact"
+                href="https://wa.me/919824341414?text=Hi%20Meet,%20I'm%20interested%20in%20implementing%20this%20system%20in%20my%20organization.%20Can%20we%20discuss%20the%20details?"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-8 py-4 rounded-xl font-semibold hover:from-cyan-500 hover:to-blue-600 transition-all duration-300 flex items-center justify-center space-x-2"
+                className="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 flex items-center justify-center space-x-2"
               >
-                <span>Start Implementation</span>
-                <ChevronRight className="w-5 h-5" />
+                <MessageSquare className="w-5 h-5" />
+                <span>WhatsApp Me</span>
               </motion.a>
               
               <motion.button
@@ -708,6 +589,9 @@ const SystemDetailPage = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Follow My Journey Section */}
+      <FollowMyJourney />
     </div>
   );
 };

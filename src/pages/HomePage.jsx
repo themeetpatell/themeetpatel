@@ -5,9 +5,11 @@ import {
   Target, Users, TrendingUp, BookOpen, Mail, Send, X, CheckCircle,
   Linkedin, Twitter, Github, Instagram, Youtube, ExternalLink,
   Award, Heart, Zap, Star, ArrowRight, Play, Quote, Calendar,
-  MapPin, Phone, MessageSquare, Clock, Eye, ChevronRight, Briefcase
+  MapPin, Phone, MessageSquare, Clock, Eye, ChevronRight, Briefcase,
+  BookOpen as Medium, Calendar as Calendly
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import FollowMyJourney from '../components/FollowMyJourney';
 import meetPatelImage from '../assets/themeetpatel.jpeg';
 import meetPatelImage2 from '../assets/the meet patel.jpeg';
 import logoImage from '../assets/logo for themeetpatel.png';
@@ -17,21 +19,115 @@ const HomePage = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    countryCode: '+971',
+    whatsapp: '',
     subject: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isCommunityFormOpen, setIsCommunityFormOpen] = useState(false);
+  const [communityFormData, setCommunityFormData] = useState({
+    linkedinId: '',
+    email: '',
+    whatsapp: '',
+    businessName: '',
+    role: '',
+    reason: ''
+  });
   
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef, { once: true });
+
+  const countryCodes = [
+    { code: '+971', country: 'UAE', flag: '🇦🇪' },
+    { code: '+91', country: 'India', flag: '🇮🇳' },
+    { code: '+1', country: 'USA/Canada', flag: '🇺🇸' },
+    { code: '+44', country: 'UK', flag: '🇬🇧' },
+    { code: '+49', country: 'Germany', flag: '🇩🇪' },
+    { code: '+33', country: 'France', flag: '🇫🇷' },
+    { code: '+39', country: 'Italy', flag: '🇮🇹' },
+    { code: '+34', country: 'Spain', flag: '🇪🇸' },
+    { code: '+31', country: 'Netherlands', flag: '🇳🇱' },
+    { code: '+41', country: 'Switzerland', flag: '🇨🇭' },
+    { code: '+43', country: 'Austria', flag: '🇦🇹' },
+    { code: '+46', country: 'Sweden', flag: '🇸🇪' },
+    { code: '+47', country: 'Norway', flag: '🇳🇴' },
+    { code: '+45', country: 'Denmark', flag: '🇩🇰' },
+    { code: '+358', country: 'Finland', flag: '🇫🇮' },
+    { code: '+32', country: 'Belgium', flag: '🇧🇪' },
+    { code: '+351', country: 'Portugal', flag: '🇵🇹' },
+    { code: '+30', country: 'Greece', flag: '🇬🇷' },
+    { code: '+48', country: 'Poland', flag: '🇵🇱' },
+    { code: '+420', country: 'Czech Republic', flag: '🇨🇿' },
+    { code: '+36', country: 'Hungary', flag: '🇭🇺' },
+    { code: '+40', country: 'Romania', flag: '🇷🇴' },
+    { code: '+359', country: 'Bulgaria', flag: '🇧🇬' },
+    { code: '+385', country: 'Croatia', flag: '🇭🇷' },
+    { code: '+386', country: 'Slovenia', flag: '🇸🇮' },
+    { code: '+421', country: 'Slovakia', flag: '🇸🇰' },
+    { code: '+370', country: 'Lithuania', flag: '🇱🇹' },
+    { code: '+371', country: 'Latvia', flag: '🇱🇻' },
+    { code: '+372', country: 'Estonia', flag: '🇪🇪' },
+    { code: '+353', country: 'Ireland', flag: '🇮🇪' },
+    { code: '+61', country: 'Australia', flag: '🇦🇺' },
+    { code: '+64', country: 'New Zealand', flag: '🇳🇿' },
+    { code: '+27', country: 'South Africa', flag: '🇿🇦' },
+    { code: '+55', country: 'Brazil', flag: '🇧🇷' },
+    { code: '+54', country: 'Argentina', flag: '🇦🇷' },
+    { code: '+56', country: 'Chile', flag: '🇨🇱' },
+    { code: '+57', country: 'Colombia', flag: '🇨🇴' },
+    { code: '+52', country: 'Mexico', flag: '🇲🇽' },
+    { code: '+51', country: 'Peru', flag: '🇵🇪' },
+    { code: '+58', country: 'Venezuela', flag: '🇻🇪' },
+    { code: '+86', country: 'China', flag: '🇨🇳' },
+    { code: '+81', country: 'Japan', flag: '🇯🇵' },
+    { code: '+82', country: 'South Korea', flag: '🇰🇷' },
+    { code: '+65', country: 'Singapore', flag: '🇸🇬' },
+    { code: '+60', country: 'Malaysia', flag: '🇲🇾' },
+    { code: '+66', country: 'Thailand', flag: '🇹🇭' },
+    { code: '+63', country: 'Philippines', flag: '🇵🇭' },
+    { code: '+62', country: 'Indonesia', flag: '🇮🇩' },
+    { code: '+84', country: 'Vietnam', flag: '🇻🇳' },
+    { code: '+90', country: 'Turkey', flag: '🇹🇷' },
+    { code: '+966', country: 'Saudi Arabia', flag: '🇸🇦' },
+    { code: '+965', country: 'Kuwait', flag: '🇰🇼' },
+    { code: '+973', country: 'Bahrain', flag: '🇧🇭' },
+    { code: '+974', country: 'Qatar', flag: '🇶🇦' },
+    { code: '+968', country: 'Oman', flag: '🇴🇲' },
+    { code: '+961', country: 'Lebanon', flag: '🇱🇧' },
+    { code: '+962', country: 'Jordan', flag: '🇯🇴' },
+    { code: '+972', country: 'Israel', flag: '🇮🇱' },
+    { code: '+20', country: 'Egypt', flag: '🇪🇬' },
+    { code: '+212', country: 'Morocco', flag: '🇲🇦' },
+    { code: '+213', country: 'Algeria', flag: '🇩🇿' },
+    { code: '+216', country: 'Tunisia', flag: '🇹🇳' },
+    { code: '+218', country: 'Libya', flag: '🇱🇾' },
+    { code: '+249', country: 'Sudan', flag: '🇸🇩' },
+    { code: '+251', country: 'Ethiopia', flag: '🇪🇹' },
+    { code: '+254', country: 'Kenya', flag: '🇰🇪' },
+    { code: '+234', country: 'Nigeria', flag: '🇳🇬' },
+    { code: '+233', country: 'Ghana', flag: '🇬🇭' },
+    { code: '+27', country: 'South Africa', flag: '🇿🇦' },
+    { code: '+7', country: 'Russia', flag: '🇷🇺' },
+    { code: '+380', country: 'Ukraine', flag: '🇺🇦' },
+    { code: '+375', country: 'Belarus', flag: '🇧🇾' },
+    { code: '+374', country: 'Armenia', flag: '🇦🇲' },
+    { code: '+995', country: 'Georgia', flag: '🇬🇪' },
+    { code: '+994', country: 'Azerbaijan', flag: '🇦🇿' },
+    { code: '+998', country: 'Uzbekistan', flag: '🇺🇿' },
+    { code: '+7', country: 'Kazakhstan', flag: '🇰🇿' },
+    { code: '+996', country: 'Kyrgyzstan', flag: '🇰🇬' },
+    { code: '+992', country: 'Tajikistan', flag: '🇹🇯' },
+    { code: '+993', country: 'Turkmenistan', flag: '🇹🇲' }
+  ];
 
   const personalInfo = {
     name: "The Meet Patel",
     title: "Business • Operations • Product • Growth",
     location: "Dubai, UAE",
     email: "the.meetll@gmail.com",
-    bio: "Serial entrepreneur and startup ecosystem builder with over 8 years of experience in building and scaling technology companies. Passionate about helping startups succeed through innovative solutions and strategic guidance.",
+    bio: "A Startup ecosystem builder with over 8 years of experience in building and scaling technology companies. Passionate about helping startups succeed through innovative solutions and strategic guidance.",
     
     projects: [
       {
@@ -42,31 +138,31 @@ const HomePage = () => {
       },
       {
         name: "Finanshels.com",
-        description: "Financial management platform for small businesses with automated bookkeeping and reporting.",
+        description: "Financial management platform for small businesses with automated bookkeeping and taxes.",
         category: "Fintech",
         year: "2022"
       },
       {
         name: "StudentHub",
-        description: "Educational technology platform connecting students with mentors and resources.",
+        description: "Recruitment technology platform connecting students with jobs and resources and companies with students.",
         category: "EdTech",
         year: "2021"
       },
       {
         name: "ZeroHuman",
-        description: "AI-powered automation platform for business processes and workflow optimization.",
+        description: "AI-powered automation platform for Modelling industry and media creation.",
         category: "AI",
         year: "2024"
       },
       {
         name: "MealVerse",
-        description: "Food technology platform revolutionizing meal planning and delivery services.",
+        description: "Food technology platform revolutionizing home-cooked meal planning and delivery services.",
         category: "FoodTech",
         year: "2024"
       },
       {
         name: "TorchIt",
-        description: "Mobile application for skill development and professional networking.",
+        description: "An assis-tech startup helping differently-abled people with smart devices.",
         category: "Mobile",
         year: "2020"
       }
@@ -77,7 +173,9 @@ const HomePage = () => {
       { label: "Twitter", href: "https://x.com/the_meetpatel", icon: Twitter },
       { label: "GitHub", href: "https://github.com/themeetpatell", icon: Github },
       { label: "Instagram", href: "http://instagram.com/the.meetpatell/", icon: Instagram },
-      { label: "YouTube", href: "https://youtube.com/@themeetpatel", icon: Youtube }
+      { label: "YouTube", href: "https://youtube.com/@themeetpatel", icon: Youtube },
+      { label: "Medium", href: "https://medium.com/@themeetpatel", icon: Medium },
+      { label: "Calendly", href: "https://calendly.com/themeetpatell/quick-connect", icon: Calendly }
     ]
   };
 
@@ -144,7 +242,7 @@ const HomePage = () => {
       genre: "Romance",
       status: "Published",
       coverColor: "from-pink-400 via-purple-500 to-blue-500",
-      readLink: "#",
+      readLink: "/The Eternal Love by The Meet Patel.pdf",
       requestLink: "#"
     },
     {
@@ -222,6 +320,53 @@ const HomePage = () => {
     });
   };
 
+  const handleCommunityInputChange = (e) => {
+    setCommunityFormData({
+      ...communityFormData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleJoinCommunity = () => {
+    setIsCommunityFormOpen(true);
+  };
+
+  const handleCommunitySubmit = async (e) => {
+    e.preventDefault();
+    
+    // Create WhatsApp message with form data
+    const message = `Hi Meet! I want to join the StartupOS WhatsApp community.
+
+Here are my details:
+• LinkedIn: ${communityFormData.linkedinId}
+• Email: ${communityFormData.email}
+• WhatsApp: ${communityFormData.whatsapp}
+• Business: ${communityFormData.businessName}
+• Role: ${communityFormData.role}
+• Reason: ${communityFormData.reason}
+
+Please add me to the community!`;
+
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Open WhatsApp with pre-filled message
+    window.open(`https://wa.me/919824341414?text=${encodedMessage}`, '_blank');
+    
+    // Close the form
+    setIsCommunityFormOpen(false);
+    
+    // Reset form data
+    setCommunityFormData({
+      linkedinId: '',
+      email: '',
+      whatsapp: '',
+      businessName: '',
+      role: '',
+      reason: ''
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -231,7 +376,7 @@ const HomePage = () => {
     
     setIsSubmitting(false);
     setIsSubmitted(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setFormData({ name: '', email: '', countryCode: '+971', whatsapp: '', subject: '', message: '' });
     
     // Reset success message after 3 seconds
     setTimeout(() => setIsSubmitted(false), 3000);
@@ -241,17 +386,17 @@ const HomePage = () => {
   const homepageStructuredData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "The Meet Patel - Serial Entrepreneur | Startup Ecosystem Builder",
-    "description": "Meet The Meet Patel - Serial entrepreneur with 8+ years experience building and scaling startups. Founder of StartupOS, ZeroHuman, MealVerse. Expert in business operations, product development, and startup ecosystem building.",
-    "url": "https://themeetpatel.com",
+    "name": "The Meet Patel - A Startup Guy | Head of Business Excellence",
+    "description": "Meet The Meet Patel - A Startup Guy with 8+ years experience building and scaling startups. Founder of StartupOS, ZeroHuman, MealVerse. Expert in business operations, product development, and startup ecosystem building.",
+    "url": "https://themeetpatel.in",
     "mainEntity": {
       "@type": "Person",
       "name": "The Meet Patel",
       "alternateName": ["Meet Patel", "themeetpatel"],
-      "jobTitle": "Serial Entrepreneur & Startup Ecosystem Builder",
-      "description": "Serial entrepreneur and startup ecosystem builder with over 8 years of experience in building and scaling technology companies.",
-      "url": "https://themeetpatel.com",
-      "image": "https://themeetpatel.com/meet-patel-profile.jpg",
+      "jobTitle": "Head of Business Excellence & A Startup Guy",
+      "description": "A startup ecosystem builder with over 8 years of experience in building and scaling technology companies.",
+      "url": "https://themeetpatel.in",
+      "image": "https://themeetpatel.in/meet-patel-profile.jpg",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Dubai",
@@ -264,7 +409,8 @@ const HomePage = () => {
         "https://x.com/the_meetpatel",
         "https://github.com/themeetpatell",
         "http://instagram.com/the.meetpatell/",
-        "https://youtube.com/@themeetpatel"
+        "https://youtube.com/@themeetpatel",
+        "https://medium.com/@themeetpatel"
       ],
       "knowsAbout": [
         "Entrepreneurship",
@@ -280,7 +426,7 @@ const HomePage = () => {
       ],
       "hasOccupation": {
         "@type": "Occupation",
-        "name": "Serial Entrepreneur",
+        "name": "Head of Business Excellence",
         "description": "Building and scaling multiple technology startups",
         "occupationLocation": {
           "@type": "City",
@@ -295,7 +441,7 @@ const HomePage = () => {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://themeetpatel.com"
+          "item": "https://themeetpatel.in"
         }
       ]
     }
@@ -304,8 +450,8 @@ const HomePage = () => {
   return (
     <div className="min-h-screen ultra-gradient-bg">
       <SEOHead 
-        title="The Meet Patel - Serial Entrepreneur | Startup Ecosystem Builder | Business Operations Expert"
-        description="Meet The Meet Patel - Serial entrepreneur with 8+ years experience building and scaling startups. Founder of StartupOS, ZeroHuman, MealVerse. Expert in business operations, product development, and startup ecosystem building. Based in Dubai, UAE."
+        title="The Meet Patel - A Startup Guy | Business Excellence | Business Operations Expert"
+        description="Meet The Meet Patel - A Startup Guy with 8+ years experience building and scaling startups. Founder of StartupOS, ZeroHuman, MealVerse. Expert in business operations, product development, and startup ecosystem building. Based in Dubai, UAE."
         keywords="The Meet Patel, Meet Patel, themeetpatel, serial entrepreneur, startup ecosystem builder, business operations expert, StartupOS founder, ZeroHuman founder, MealVerse founder, startup mentor, Dubai entrepreneur, business consultant, product development expert, startup scaling, business growth, entrepreneurship, startup advisor, business strategy, operations management, startup leadership"
         canonical="/"
         ogImage="/og-image.jpg"
@@ -377,9 +523,9 @@ const HomePage = () => {
                 <MapPin className="w-5 h-5" />
                 <span>{personalInfo.location}</span>
                 <span>•</span>
-                <span>Serial Entrepreneur</span>
+                <span>A Startup Guy</span>
                 <span>•</span>
-                <span>Startup Ecosystem Builder</span>
+                <span>System Builder</span>
               </div>
           </motion.div>
 
@@ -389,7 +535,7 @@ const HomePage = () => {
               transition={{ duration: 0.6, delay: 1.0 }}
               className="text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8"
             >
-              Serial entrepreneur and <Link to="/about" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 font-medium">startup ecosystem builder</Link> with over 8 years of experience in building and scaling technology companies. Passionate about helping startups succeed through innovative solutions and strategic guidance. Explore my <Link to="/portfolio" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 font-medium">portfolio of successful ventures</Link> and <Link to="/systems" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 font-medium">proven business systems</Link>.
+              A Startup Guy and <Link to="/about" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 font-medium">System builder</Link> with over 8 years of experience in building and scaling technology companies. Passionate about helping startups succeed through innovative solutions and strategic guidance. Explore my <Link to="/portfolio" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 font-medium">portfolio of successful ventures</Link> and <Link to="/systems" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 font-medium">proven business systems</Link>.
             </motion.div>
 
             {/* Call to Action Buttons */}
@@ -441,14 +587,35 @@ const HomePage = () => {
                   About Me
                 </h2>
                 <p className="text-xl text-cyan-200 mb-6">
-                  Serial Entrepreneur & Startup Ecosystem Builder
+                  I help founders build, scale, and stabilize
                 </p>
                   </div>
-              <p className="text-lg text-gray-300 leading-relaxed">
-                From a curious mechanical engineer to a serial entrepreneur, my journey has been about pushing boundaries and creating impact. I've built multiple successful ventures and helped countless entrepreneurs turn their dreams into reality.
+              <p className="text-lg text-gray-300 leading-relaxed mb-6">
+                Fixing broken systems, designing smart strategies, and transforming chaos into clarity and growth. A generalist with range who connects dots across people, products, processes, and performance — fast.
               </p>
-              <p className="text-lg text-gray-300 leading-relaxed">
-                What started as a simple curiosity about how businesses work has evolved into a mission to help other entrepreneurs succeed. Through every challenge, every success, and every failure, I've learned that the most powerful tool an entrepreneur can have is the right mindset and the willingness to learn.
+              
+              {/* Key Strengths */}
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-gray-300">Diagnosing messy problems, fast</p>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-gray-300">Building scalable systems that don't break under pressure</p>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-gray-300">Leading from the front in high-stakes, rapid-growth environments</p>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-gray-300">Saying the hard truths when they matter most</p>
+                </div>
+              </div>
+
+              <p className="text-lg text-gray-300 leading-relaxed mb-6">
+                Founders trust me to push when needed, pivot when smart, and double down when it counts. I'm also a student of psychology, user-led growth, and storytelling.
               </p>
               
               {/* Stats */}
@@ -492,7 +659,7 @@ const HomePage = () => {
               <div className="relative z-10">
                 <img
                   src={meetPatelImage}
-                  alt="The Meet Patel - Serial Entrepreneur & Startup Ecosystem Builder"
+                  alt="The Meet Patel - A Startup Guy & System Builder"
                   className="w-full h-96 object-cover rounded-3xl shadow-2xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-3xl"></div>
@@ -670,7 +837,7 @@ const HomePage = () => {
             <div className="inline-flex items-center space-x-3 mb-6">
               <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-teal-500 rounded-xl flex items-center justify-center shadow-lg">
                 <BookOpen className="w-6 h-6 text-white" />
-              </div>
+                  </div>
               <h2 className="text-5xl md:text-6xl font-bold text-white tracking-tight">
                 Latest Insights
             </h2>
@@ -809,9 +976,9 @@ const HomePage = () => {
                     <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
                   </motion.a>
                   </div>
-                </motion.div>
-              ))}
-            </div>
+              </motion.div>
+            ))}
+          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -846,7 +1013,7 @@ const HomePage = () => {
             className="text-center mb-20"
           >
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-              Love Stories Written by Me
+              Books Written
             </h2>
             <p className="text-xl text-cyan-200 max-w-3xl mx-auto leading-relaxed">
               Here's something special for you to freshen up! Few Love stories written by me 😲
@@ -855,10 +1022,10 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {books.map((book, index) => (
-              <motion.div
+                <motion.div
                 key={book.title}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 className="apple-glass rounded-3xl p-8 group hover:scale-105 transition-all duration-500"
               >
@@ -916,10 +1083,10 @@ const HomePage = () => {
                         <span className="relative z-10">Get Early Access</span>
                       </motion.button>
                     )}
+                      </div>
                   </div>
-                  </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
           </div>
         </div>
       </section>
@@ -941,10 +1108,10 @@ const HomePage = () => {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                </div>
+        </div>
               </motion.div>
 
-              <motion.div
+          <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -954,7 +1121,7 @@ const HomePage = () => {
                 Recognition & Impact
             </h2>
               <p className="text-xl text-cyan-200 leading-relaxed">
-                From Forbes 30 Under 30 to mentoring 50+ startups, my work has been recognized and has created real impact.
+                From mechanical engineer to mentoring 10+ startups as business expert, my work has been recognized and has created real impact.
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {achievements.map((achievement, index) => (
@@ -992,14 +1159,14 @@ const HomePage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-              Let's Create Something Amazing
+              Let's Create Magic Together
                 </h2>
             <p className="text-xl text-cyan-200 max-w-3xl mx-auto leading-relaxed">
               Ready to start your entrepreneurial journey or need guidance on your current venture? I'd love to hear from you.
                 </p>
               </motion.div>
 
-              <motion.div
+                <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -1034,6 +1201,37 @@ const HomePage = () => {
                 </div>
               
               <div>
+                <label className="block text-white/80 text-sm mb-2 font-medium">WhatsApp Number</label>
+                <div className="flex gap-2">
+                  <div className="relative">
+                    <select
+                      name="countryCode"
+                      value={formData.countryCode}
+                      onChange={handleInputChange}
+                      className="bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 appearance-none cursor-pointer min-w-[120px]"
+                    >
+                      {countryCodes.map((country) => (
+                        <option key={country.code} value={country.code} className="bg-gray-800 text-white">
+                          {country.flag} {country.code}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                      <ChevronRight className="w-4 h-4 text-white/40 rotate-90" />
+            </div>
+        </div>
+                  <input
+                    type="tel"
+                    name="whatsapp"
+                    value={formData.whatsapp}
+                    onChange={handleInputChange}
+                    className="flex-1 bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                    placeholder="98 2434 1414"
+                  />
+                </div>
+                  </div>
+                  
+              <div>
                 <label className="block text-white/80 text-sm mb-2 font-medium">Subject *</label>
                 <input
                   type="text"
@@ -1044,8 +1242,8 @@ const HomePage = () => {
                   className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
                   placeholder="What's this about?"
                 />
-            </div>
-              
+        </div>
+
               <div>
                 <label className="block text-white/80 text-sm mb-2 font-medium">Message *</label>
                 <textarea
@@ -1057,7 +1255,7 @@ const HomePage = () => {
                   className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 resize-none"
                   placeholder="Tell me about your project, question, or how I can help you..."
                 />
-        </div>
+                  </div>
 
               <motion.button
                 type="submit"
@@ -1090,7 +1288,7 @@ const HomePage = () => {
             {/* Success Message */}
             <AnimatePresence>
               {isSubmitted && (
-          <motion.div
+              <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
@@ -1100,41 +1298,286 @@ const HomePage = () => {
                   <span className="text-green-300">
                     Thank you! Your message has been sent successfully. I'll get back to you within 24 hours.
               </span>
-          </motion.div>
+                </motion.div>
               )}
             </AnimatePresence>
+              </motion.div>
+        </div>
+      </section>
+
+      {/* WhatsApp Community Section */}
+      <section className="py-20 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Join Our StartupOS Community</h2>
+            <p className="text-xl text-cyan-200 max-w-3xl mx-auto leading-relaxed">
+              Connect with fellow entrepreneurs, get exclusive insights, and be part of a thriving startup ecosystem.
+            </p>
+          </motion.div>
+
+              <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="apple-glass rounded-3xl p-8 md:p-12 text-center relative overflow-hidden"
+          >
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute top-10 left-10 w-20 h-20 bg-cyan-400 rounded-full"></div>
+              <div className="absolute bottom-10 right-10 w-32 h-32 bg-teal-400 rounded-full"></div>
+              <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-blue-400 rounded-full"></div>
+                </div>
+
+            <div className="relative z-10">
+              {/* WhatsApp Icon */}
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6"
+              >
+                <MessageSquare className="w-10 h-10 text-white" />
+              </motion.div>
+
+              {/* Community Stats */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+              <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                  className="text-center"
+                >
+                  <div className="text-3xl font-bold text-cyan-400 mb-2">500+</div>
+                  <div className="text-white/70">Active Members</div>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                  className="text-center"
+                >
+                  <div className="text-3xl font-bold text-cyan-400 mb-2">50+</div>
+                  <div className="text-white/70">Daily Discussions</div>
+              </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.7 }}
+                  className="text-center"
+                >
+                  <div className="text-3xl font-bold text-cyan-400 mb-2">24/7</div>
+                  <div className="text-white/70">Support & Networking</div>
+                </motion.div>
+              </div>
+
+              {/* Community Benefits */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="mb-8"
+              >
+                <h3 className="text-2xl font-bold text-white mb-6">What You'll Get:</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-4xl mx-auto">
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
+                    <span className="text-white/80">Exclusive startup insights and market trends</span>
+                </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
+                    <span className="text-white/80">Direct access to industry experts and mentors</span>
+                </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
+                    <span className="text-white/80">Networking opportunities with fellow entrepreneurs</span>
+                </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
+                    <span className="text-white/80">Early access to funding opportunities and partnerships</span>
+            </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
+                    <span className="text-white/80">Periodic masterclasses and Q&A sessions</span>
+        </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
+                    <span className="text-white/80">Job opportunities and talent referrals</span>
+        </div>
+                </div>
+              </motion.div>
+
+              {/* CTA Button */}
+              <motion.button
+                onClick={handleJoinCommunity}
+                initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.9 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative inline-flex items-center bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-green-500/20 overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <MessageSquare className="w-6 h-6 mr-3 relative z-10" />
+                <span className="relative z-10">Join StartupOS Community</span>
+                <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+              </motion.button>
+
+              {/* Additional Info */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 1.0 }}
+                className="text-white/60 text-sm mt-4"
+              >
+                Free to join • No spam • Instant access to 500+ entrepreneurs
+              </motion.p>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Social Links Section */}
-      <section className="py-20 relative">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Follow My Journey Section */}
+      <FollowMyJourney />
+
+      {/* Community Form Modal */}
+      <AnimatePresence>
+        {isCommunityFormOpen && (
               <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <h2 className="text-3xl font-bold text-white mb-8">Follow My Journey</h2>
-            <div className="flex items-center justify-center space-x-6">
-              {personalInfo.socialLinks.map((social) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center text-white/60 hover:text-white hover:bg-white/20 transition-all duration-300"
-                >
-                  <social.icon className="w-6 h-6" />
-                </motion.a>
-            ))}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => setIsCommunityFormOpen(false)}
+              >
+                <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.3 }}
+              className="apple-glass rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-2">Join StartupOS Community</h3>
+                  <p className="text-white/70">Tell us about yourself to get started</p>
                   </div>
-                </motion.div>
+                <button
+                  onClick={() => setIsCommunityFormOpen(false)}
+                  className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white/60 hover:text-white hover:bg-white/20 transition-all duration-300"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+                  </div>
+
+              {/* Form */}
+              <form onSubmit={handleCommunitySubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-white/80 text-sm mb-2 font-medium">LinkedIn Profile URL *</label>
+                    <input
+                      type="url"
+                      name="linkedinId"
+                      value={communityFormData.linkedinId}
+                      onChange={handleCommunityInputChange}
+                      required
+                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                      placeholder="https://linkedin.com/in/yourprofile"
+                    />
+          </div>
+                  <div>
+                    <label className="block text-white/80 text-sm mb-2 font-medium">Email Address *</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={communityFormData.email}
+                      onChange={handleCommunityInputChange}
+                      required
+                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                      placeholder="your@email.com"
+                    />
         </div>
-      </section>
+                </div>
+
+                <div>
+                  <label className="block text-white/80 text-sm mb-2 font-medium">WhatsApp Number *</label>
+                  <input
+                    type="tel"
+                    name="whatsapp"
+                    value={communityFormData.whatsapp}
+                    onChange={handleCommunityInputChange}
+                    required
+                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                    placeholder="+91 98 2434 1414"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-white/80 text-sm mb-2 font-medium">Business/Company Name *</label>
+                    <input
+                      type="text"
+                      name="businessName"
+                      value={communityFormData.businessName}
+                      onChange={handleCommunityInputChange}
+                      required
+                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                      placeholder="Your company or startup name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-white/80 text-sm mb-2 font-medium">Your Role *</label>
+                    <input
+                      type="text"
+                      name="role"
+                      value={communityFormData.role}
+                      onChange={handleCommunityInputChange}
+                      required
+                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                      placeholder="Founder, CEO, Developer, etc."
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-white/80 text-sm mb-2 font-medium">Why do you want to join our community? *</label>
+                  <textarea
+                    name="reason"
+                    value={communityFormData.reason}
+                    onChange={handleCommunityInputChange}
+                    required
+                    rows={4}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 resize-none"
+                    placeholder="Tell us about your goals, what you're working on, or how you'd like to contribute to the community..."
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center space-x-3"
+                >
+                  <MessageSquare className="w-5 h-5" />
+                  <span>Send Application via WhatsApp</span>
+                </motion.button>
+              </form>
+
+              {/* Footer Note */}
+              <p className="text-white/60 text-sm mt-4 text-center">
+                Your information will be sent to Meet via WhatsApp for community approval
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

@@ -5,67 +5,63 @@ import {
   Linkedin, Twitter, Github, Instagram, Youtube, ExternalLink,
   CheckCircle, Star, Users, Award, Heart, Zap, Globe, Coffee,
   Briefcase, BookOpen, Mic, FileText, ArrowRight, ChevronRight,
-  Copy, Check, Share2, Download, Calendar as CalendarIcon
+  Copy, Check, Share2, Download, Calendar as CalendarIcon, BookOpen as Medium
 } from 'lucide-react';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    countryCode: '+971',
+    whatsapp: '',
     subject: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [copiedItem, setCopiedItem] = useState(null);
+  const [isCommunityFormOpen, setIsCommunityFormOpen] = useState(false);
+  const [communityFormData, setCommunityFormData] = useState({
+    linkedinId: '',
+    email: '',
+    whatsapp: '',
+    businessName: '',
+    role: '',
+    reason: ''
+  });
   
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef, { once: true });
 
   const contactInfo = {
-    email: "meet@startupos.com",
+    email: "the.meetpatell@gmail.com",
     phone: "+91 98 2434 1414",
-    phone2: "+971 50 495 4698",
-    location: "Ahmedabad, India",
-    location2: "In5, Dubai, UAE",
-    linkedin: "https://www.linkedin.com/company/the-startupos/",
-    twitter: "https://x.com/the_startupos",
-    github: "https://github.com/startupos",
-    instagram: "http://instagram.com/thestartupos/",
-    youtube: "https://youtube.com/@thestartupos",
-    website: "https://www.startupos.in"
+    phone2: "+91 98 2434 1414",
+    location: "Dubai, UAE",
+    location2: "Ahmedabad, India",
+    linkedin: "https://www.linkedin.com/in/themeetpatel/",
+    twitter: "https://x.com/the_meetpatel",
+    github: "https://github.com/themeetpatell",
+    instagram: "http://instagram.com/the.meetpatell/",
+    youtube: "https://youtube.com/@themeetpatel",
+    medium: "https://medium.com/@themeetpatel",
+    whatsapp: "https://wa.me/919824341414",
+    calendly: "https://calendly.com/themeetpatell/quick-connect",
   };
 
-  const quickStats = [
-    {
-      number: "24h",
-      label: "Response Time",
-      icon: Clock,
-      color: "from-cyan-400 to-teal-500",
-      description: "Average response time for emails"
-    },
-    {
-      number: "50+",
-      label: "Startups Mentored",
-      icon: Users,
-      color: "from-teal-400 to-cyan-500",
-      description: "Successful startup mentoring"
-    },
-    {
-      number: "200+",
-      label: "Entrepreneurs Helped",
-      icon: Heart,
-      color: "from-emerald-400 to-teal-500",
-      description: "Entrepreneurs guided to success"
-    },
-    {
-      number: "85%",
-      label: "Success Rate",
-      icon: Award,
-      color: "from-cyan-300 to-emerald-400",
-      description: "Mentorship success rate"
-    }
+  const countryCodes = [
+    { flag: '🇦🇪', code: '+971', country: 'UAE' },
+    { flag: '🇮🇳', code: '+91', country: 'India' },
+    { flag: '🇺🇸', code: '+1', country: 'USA' },
+    { flag: '🇬🇧', code: '+44', country: 'UK' },
+    { flag: '🇨🇦', code: '+1', country: 'Canada' },
+    { flag: '🇦🇺', code: '+61', country: 'Australia' },
+    { flag: '🇸🇬', code: '+65', country: 'Singapore' },
+    { flag: '🇩🇪', code: '+49', country: 'Germany' },
+    { flag: '🇫🇷', code: '+33', country: 'France' },
+    { flag: '🇯🇵', code: '+81', country: 'Japan' }
   ];
+
 
   const contactMethods = [
     {
@@ -78,11 +74,11 @@ const ContactPage = () => {
       priority: "high"
     },
     {
-      title: "Call Me",
+      title: "WhatsApp Me",
       description: "For urgent matters or if you prefer a direct conversation",
-      icon: Phone,
-      value: contactInfo.phone,
-      action: `tel:${contactInfo.phone}`,
+      icon: MessageSquare,
+      value: "WhatsApp Chat",
+      action: contactInfo.whatsapp,
       color: "from-green-500 to-emerald-500",
       priority: "high"
     },
@@ -99,7 +95,7 @@ const ContactPage = () => {
       title: "Twitter",
       description: "Follow me for daily insights and quick interactions",
       icon: Twitter,
-      value: "@the_startupos",
+      value: "@the_meetpatel",
       action: contactInfo.twitter,
       color: "from-sky-400 to-blue-500",
       priority: "medium"
@@ -108,7 +104,7 @@ const ContactPage = () => {
       title: "Instagram",
       description: "Behind-the-scenes content and personal updates",
       icon: Instagram,
-      value: "@thestartupos",
+      value: "@the.meetpatell",
       action: contactInfo.instagram,
       color: "from-pink-500 to-rose-500",
       priority: "low"
@@ -121,6 +117,33 @@ const ContactPage = () => {
       action: contactInfo.youtube,
       color: "from-red-500 to-red-600",
       priority: "low"
+    },
+    {
+      title: "GitHub",
+      description: "View my code repositories and open source contributions",
+      icon: Github,
+      value: "GitHub Profile",
+      action: contactInfo.github,
+      color: "from-gray-600 to-gray-800",
+      priority: "medium"
+    },
+    {
+      title: "Medium",
+      description: "Read my articles and insights on entrepreneurship",
+      icon: Medium,
+      value: "Medium Profile",
+      action: contactInfo.medium,
+      color: "from-green-500 to-green-700",
+      priority: "medium"
+    },
+    {
+      title: "Calendly",
+      description: "Schedule a meeting or consultation at your convenience",
+      icon: Calendar,
+      value: "Book a Meeting",
+      action: contactInfo.calendly,
+      color: "from-blue-400 to-blue-600",
+      priority: "high"
     }
   ];
 
@@ -187,6 +210,51 @@ const ContactPage = () => {
     });
   };
 
+  const handleCommunityInputChange = (e) => {
+    setCommunityFormData({
+      ...communityFormData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleJoinCommunity = () => {
+    setIsCommunityFormOpen(true);
+  };
+
+  const handleCommunitySubmit = async (e) => {
+    e.preventDefault();
+    
+    // Create WhatsApp message with form data
+    const message = `Hi Meet! I want to join the StartupOS WhatsApp community.
+
+Here are my details:
+• LinkedIn: ${communityFormData.linkedinId}
+• Email: ${communityFormData.email}
+• WhatsApp: ${communityFormData.whatsapp}
+• Business: ${communityFormData.businessName}
+• Role: ${communityFormData.role}
+• Reason: ${communityFormData.reason}
+
+Please add me to the community!`;
+
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Open WhatsApp with pre-filled message
+    window.open(`https://wa.me/919824341414?text=${encodedMessage}`, '_blank');
+    
+    // Reset form and close modal
+    setCommunityFormData({
+      linkedinId: '',
+      email: '',
+      whatsapp: '',
+      businessName: '',
+      role: '',
+      reason: ''
+    });
+    setIsCommunityFormOpen(false);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -196,7 +264,7 @@ const ContactPage = () => {
     
     setIsSubmitting(false);
     setIsSubmitted(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setFormData({ name: '', email: '', countryCode: '+971', whatsapp: '', subject: '', message: '' });
     
     // Reset success message after 3 seconds
     setTimeout(() => setIsSubmitted(false), 3000);
@@ -215,48 +283,101 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen pt-16 ultra-gradient-bg">
       {/* Hero Section */}
-      <section ref={heroRef} className="py-20 relative overflow-hidden">
+      <section ref={heroRef} className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-teal-900/20 to-slate-900" />
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Background Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-20 w-32 h-32 bg-cyan-400 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-40 h-40 bg-teal-400 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-blue-400 rounded-full blur-2xl"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-              Let's Connect
-            </h1>
-            <p className="text-2xl text-cyan-200 mb-8 max-w-3xl mx-auto leading-relaxed">
-              I'm always excited to meet new people, share experiences, and explore opportunities for collaboration.
-            </p>
-            
-            {/* Quick Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-12">
-              {quickStats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
+            {/* Main Title */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isHeroInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mb-8"
+            >
+              <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 tracking-tight">
+                Let's <span className="bg-gradient-to-r from-cyan-400 via-teal-400 to-blue-400 bg-clip-text text-transparent">Connect</span>
+              </h1>
+              
+              {/* Decorative Line */}
+              <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-teal-400 mx-auto rounded-full"></div>
+            </motion.div>
+
+            {/* Subtitle */}
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.2 + index * 0.1 }}
-                  className="apple-glass p-6 text-center group hover:scale-105 transition-all duration-300"
-                >
-                  <div className={`w-12 h-12 bg-gradient-to-r ${stat.color} rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <stat.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="text-2xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
-                    {stat.number}
-                  </div>
-                  <div className="apple-caption mb-1">
-                    {stat.label}
-                  </div>
-                  <div className="text-xs text-white/50">
-                    {stat.description}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl md:text-2xl text-cyan-200 mb-12 max-w-4xl mx-auto leading-relaxed"
+            >
+              I'm always excited to meet new people, share experiences, and explore opportunities for collaboration. 
+              <span className="block mt-2 text-white/80">
+                Let's build something amazing together.
+              </span>
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            >
+              <motion.a
+                href="#contact-form"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative inline-flex items-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-cyan-500/20 overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-teal-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <Mail className="w-6 h-6 mr-3 relative z-10" />
+                <span className="relative z-10">Send a Message</span>
+                <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+              </motion.a>
+
+              <motion.button
+                onClick={handleJoinCommunity}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative inline-flex items-center bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/30 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 overflow-hidden"
+              >
+                <MessageSquare className="w-6 h-6 mr-3 relative z-10" />
+                <span className="relative z-10">Join Community</span>
+              </motion.button>
+            </motion.div>
+
+            {/* Trust Indicators */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="mt-16 flex flex-wrap justify-center items-center gap-8 text-white/60"
+            >
+              <div className="flex items-center space-x-2">
+                <CheckCircle className="w-5 h-5 text-green-400" />
+                <span className="text-sm">24h Response Time</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <CheckCircle className="w-5 h-5 text-green-400" />
+                <span className="text-sm">Free Consultation</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <CheckCircle className="w-5 h-5 text-green-400" />
+                <span className="text-sm">Confidential & Secure</span>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -488,7 +609,7 @@ const ContactPage = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 relative">
+      <section id="contact-form" className="py-20 relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -535,6 +656,37 @@ const ContactPage = () => {
                       />
                     </div>
                   </div>
+
+              <div>
+                <label className="block text-white/80 text-sm mb-2 font-medium">WhatsApp Number</label>
+                <div className="flex gap-2">
+                  <div className="relative">
+                    <select
+                      name="countryCode"
+                      value={formData.countryCode}
+                      onChange={handleInputChange}
+                      className="bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 appearance-none cursor-pointer min-w-[120px]"
+                    >
+                      {countryCodes.map((country) => (
+                        <option key={country.code} value={country.code} className="bg-gray-800 text-white">
+                          {country.flag} {country.code}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                      <ChevronRight className="w-4 h-4 text-white/40" />
+                    </div>
+                  </div>
+                  <input
+                    type="tel"
+                    name="whatsapp"
+                    value={formData.whatsapp}
+                    onChange={handleInputChange}
+                    className="flex-1 bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                    placeholder="98 2434 1414"
+                  />
+                </div>
+              </div>
 
                     <div>
                 <label className="block text-white/80 text-sm mb-2 font-medium">Subject *</label>
@@ -610,7 +762,7 @@ const ContactPage = () => {
       {/* Social Media Section */}
       <section className="py-20 relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+            <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -622,14 +774,15 @@ const ContactPage = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-6">
             {[
-              { icon: Linkedin, href: contactInfo.linkedin, label: 'LinkedIn', color: 'hover:text-blue-400', followers: '5K+' },
-              { icon: Twitter, href: contactInfo.twitter, label: 'Twitter', color: 'hover:text-sky-400', followers: '2K+' },
-              { icon: Github, href: contactInfo.github, label: 'GitHub', color: 'hover:text-gray-400', followers: '1K+' },
-              { icon: Instagram, href: contactInfo.instagram, label: 'Instagram', color: 'hover:text-pink-400', followers: '3K+' },
-              { icon: Youtube, href: contactInfo.youtube, label: 'YouTube', color: 'hover:text-red-400', followers: '500+' },
-              { icon: Globe, href: contactInfo.website, label: 'Website', color: 'hover:text-cyan-400', followers: '10K+' }
+              { icon: Linkedin, href: contactInfo.linkedin, label: 'LinkedIn', color: 'hover:text-blue-400' },
+              { icon: Twitter, href: contactInfo.twitter, label: 'Twitter', color: 'hover:text-sky-400' },
+              { icon: Github, href: contactInfo.github, label: 'GitHub', color: 'hover:text-gray-400' },
+              { icon: Instagram, href: contactInfo.instagram, label: 'Instagram', color: 'hover:text-pink-400' },
+              { icon: Youtube, href: contactInfo.youtube, label: 'YouTube', color: 'hover:text-red-400' },
+              { icon: Medium, href: contactInfo.medium, label: 'Medium', color: 'hover:text-green-400' },
+              { icon: Calendar, href: contactInfo.calendly, label: 'Calendly', color: 'hover:text-blue-400' }
             ].map((social, index) => (
               <motion.a
                 key={social.label}
@@ -650,13 +803,258 @@ const ContactPage = () => {
                   {social.label}
                 </h3>
                 <p className="text-white/60 text-sm">
-                  {social.followers} followers
+                  Follow
                 </p>
               </motion.a>
             ))}
           </div>
         </div>
       </section>
+
+      {/* WhatsApp Community Section */}
+      <section className="py-20 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Join Our StartupOS Community</h2>
+            <p className="text-xl text-cyan-200 max-w-3xl mx-auto leading-relaxed">
+              Connect with fellow entrepreneurs, get exclusive insights, and be part of a thriving startup ecosystem.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="apple-glass rounded-3xl p-8 md:p-12 text-center relative overflow-hidden"
+          >
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute top-10 left-10 w-20 h-20 bg-cyan-400 rounded-full"></div>
+              <div className="absolute bottom-10 right-10 w-32 h-32 bg-teal-400 rounded-full"></div>
+              <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-blue-400 rounded-full"></div>
+            </div>
+
+            <div className="relative z-10">
+              {/* WhatsApp Icon */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6"
+              >
+                <MessageSquare className="w-10 h-10 text-green-400" />
+              </motion.div>
+
+              {/* Stats */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
+              >
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-white mb-2">500+</div>
+                  <div className="text-white/60 text-sm">Active Members</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-white mb-2">50+</div>
+                  <div className="text-white/60 text-sm">Daily Insights</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-white mb-2">24/7</div>
+                  <div className="text-white/60 text-sm">Support</div>
+                </div>
+              </motion.div>
+
+              {/* Benefits */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                className="mb-8"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    <span className="text-white/80">Exclusive startup insights</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    <span className="text-white/80">Networking opportunities</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    <span className="text-white/80">Direct access to mentors</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    <span className="text-white/80">Early access to resources</span>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* CTA Button */}
+              <motion.button
+                onClick={handleJoinCommunity}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.9 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative inline-flex items-center bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-green-500/20 overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <MessageSquare className="w-6 h-6 mr-3 relative z-10" />
+                <span className="relative z-10">Join StartupOS Community</span>
+                <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+              </motion.button>
+
+              {/* Additional Info */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 1.0 }}
+                className="text-white/60 text-sm mt-4"
+              >
+                Free to join • No spam • Instant access to 500+ entrepreneurs
+              </motion.p>
+          </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Community Form Modal */}
+      <AnimatePresence>
+        {isCommunityFormOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+            onClick={() => setIsCommunityFormOpen(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="bg-gray-900/95 backdrop-blur-xl border border-white/10 rounded-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-2">Join StartupOS Community</h3>
+                  <p className="text-white/70">Tell us about yourself to get started</p>
+                </div>
+                <button
+                  onClick={() => setIsCommunityFormOpen(false)}
+                  className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white/60 hover:text-white hover:bg-white/20 transition-all duration-300"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Form */}
+              <form onSubmit={handleCommunitySubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-white/80 text-sm mb-2 font-medium">LinkedIn Profile URL *</label>
+                    <input
+                      type="url"
+                      name="linkedinId"
+                      value={communityFormData.linkedinId}
+                      onChange={handleCommunityInputChange}
+                      required
+                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                      placeholder="https://linkedin.com/in/yourprofile"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-white/80 text-sm mb-2 font-medium">Email Address *</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={communityFormData.email}
+                      onChange={handleCommunityInputChange}
+                      required
+                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-white/80 text-sm mb-2 font-medium">WhatsApp Number *</label>
+                  <input
+                    type="tel"
+                    name="whatsapp"
+                    value={communityFormData.whatsapp}
+                    onChange={handleCommunityInputChange}
+                    required
+                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                    placeholder="+91 98 2434 1414"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-white/80 text-sm mb-2 font-medium">Business/Company Name *</label>
+                    <input
+                      type="text"
+                      name="businessName"
+                      value={communityFormData.businessName}
+                      onChange={handleCommunityInputChange}
+                      required
+                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                      placeholder="Your company name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-white/80 text-sm mb-2 font-medium">Your Role *</label>
+                    <input
+                      type="text"
+                      name="role"
+                      value={communityFormData.role}
+                      onChange={handleCommunityInputChange}
+                      required
+                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                      placeholder="Founder, CEO, etc."
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-white/80 text-sm mb-2 font-medium">Why do you want to join? *</label>
+                  <textarea
+                    name="reason"
+                    value={communityFormData.reason}
+                    onChange={handleCommunityInputChange}
+                    required
+                    rows={4}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 resize-none"
+                    placeholder="Tell us about your goals and what you hope to gain from the community..."
+                  />
+                </div>
+
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2"
+                >
+                  <MessageSquare className="w-5 h-5" />
+                  <span>Join Community via WhatsApp</span>
+                </motion.button>
+              </form>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

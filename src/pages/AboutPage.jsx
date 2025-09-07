@@ -7,6 +7,8 @@ import {
   BookOpen, Heart, Calendar, Clock, Eye, MessageSquare, ArrowRight, X, Send
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import FollowMyJourney from '../components/FollowMyJourney';
+import logoImage from '../assets/logo for themeetpatel.png';
 
 const AboutPage = () => {
   const [activeTab, setActiveTab] = useState('about');
@@ -15,20 +17,32 @@ const AboutPage = () => {
   const isHeroInView = useInView(heroRef, { once: true });
 
   const personalInfo = {
-    name: "The Meet Patel",
-    title: "Founder & CEO",
-    company: "StartupOS",
-    location: "Ahmedabad, India",
-    email: "meet@startupos.com",
-    linkedin: "https://www.linkedin.com/company/the-startupos/",
-    twitter: "https://x.com/the_startupos",
-    github: "https://github.com/startupos",
-    instagram: "http://instagram.com/thestartupos/",
-    youtube: "https://youtube.com/@thestartupos",
+    name: "Meet Patel",
+    title: "Head of Business Excellence",
+    company: "Finanshels.com",
+    location: "Dubai, UAE",
+    email: "the.meetpatel@gmail.com",
+    linkedin: "https://www.linkedin.com/in/themeetpatel",
+    twitter: "https://x.com/the_meetpatel",
+    github: "https://github.com/themeetpatell",
+    instagram: "http://instagram.com/the.meetpatell/",
+    youtube: "https://youtube.com/@themeetpatell",
     
     bio: "Serial entrepreneur and startup ecosystem builder with over 8 years of experience in building and scaling technology companies. Passionate about helping startups succeed through innovative solutions and strategic guidance.",
     
-    about: "The Meet Patel is a visionary entrepreneur and startup ecosystem builder based in Dubai, UAE. With over 8 years of experience in the technology sector, he has successfully founded and scaled multiple startups, helping hundreds of entrepreneurs build successful businesses. His expertise spans across product development, growth marketing, fundraising, and team building.",
+    about: [
+      "Over the past few years, I've served as Head of Business Excellence and Chief of Staff at Finanshels.com, where I drove a company-wide restructuring that lifted revenue by 40% in 8 months, led a $1.5M fundraising round, and launched high-impact GTM initiatives including an AI-powered tax portal.",
+      "My career spans FinTech, E-commerce, HRTech, and SaaS across India, UAE, and MENA—building and scaling teams, designing execution systems, and leading product and market strategies that deliver measurable growth."
+    ],
+    
+    interests: [
+      "Product Management",
+      "Growth & Design", 
+      "Business Strategy",
+      "HR & Headhunting",
+      "Strategic Partnerships",
+      "Writing"
+    ],
     
     experience: [
       {
@@ -122,7 +136,7 @@ const AboutPage = () => {
     
     education: [
       {
-        institution: "Nirma University",
+        institution: "Parul University",
         degree: "B Tech in Mechanical Engineering",
         duration: "2015 - 2018",
         description: "Graduated with honors, specialized in Mechanical engineering and entrepreneurship."
@@ -162,7 +176,7 @@ const AboutPage = () => {
         description: "A romantic novel exploring the depths of unconditional love and sacrifice. Set against a backdrop of timeless romance, this story captures the essence of true love that gives everything without expecting anything in return.",
         genre: "Romance",
         status: "Published",
-        readLink: "#",
+        readLink: "/The Eternal Love by The Meet Patel.pdf",
         requestLink: "#"
       },
       {
@@ -179,14 +193,34 @@ const AboutPage = () => {
     
     achievements: [
       {
-        title: "Two Fiction Books",
-        year: "2025",
-        description: "Written two love story books called- ‘The Eternal Love’ and ‘The Endless Devotion’ "
+        title: "Best New Joiner Award",
+        year: "April 2024",
+        description: "Recognized as the best new joiner at Finanshels for exceptional performance and quick adaptation to company culture"
+      },
+      {
+        title: "Star Performer of the Month",
+        year: "Dec 2024",
+        description: "Awarded Star Performer of the Month at Finanshels for outstanding contributions and exceeding performance expectations"
+      },
+      {
+        title: "Best Creative Innovator Award",
+        year: "Feb 2025",
+        description: "Received Best Creative Innovator Award at Finanshels for innovative solutions and creative problem-solving approaches"
       },
       {
         title: "National Level Presentation Winner",
-        year: "2015",
+        year: "Aug 2014",
         description: "Won national level poster presentation & elocution competition while in Nirma University"
+      },
+      {
+        title: "Two Fiction Books",
+        year: "2025",
+        description: "Written two love story books called- 'The Eternal Love' and 'The Endless Devotion' "
+      },
+      {
+        title: "2 Failed Startups During BTech",
+        year: "2016-2019",
+        description: "Founded and led two startups during BTech - Incsmart Technologies LLP (smart energy meters) and Kingstorm Automations (smart home & agriculture automation). Both ventures provided valuable learning experiences in entrepreneurship, team management, and product development."
       }
     ],
     
@@ -206,9 +240,9 @@ const AboutPage = () => {
         status: "Live"
       },
       {
-        name: "StartupOS Platform",
+        name: "StartupOS",
         description: "Comprehensive startup ecosystem platform with 50+ integrated tools and services.",
-        tech: ["React", "Node.js", "AWS", "MongoDB"],
+        tech: ["Mergers & Acquisitions", "Networking", "OS for Startups", "Web Platform"],
         link: "https://www.startupos.in",
         status: "Live"
       },
@@ -251,6 +285,12 @@ const AboutPage = () => {
         event: "Headstart Pitching",
         year: "2023",
         topic: "The Future of Startup Ecosystems",
+        location: "Ahmedabad, India"
+      },
+      {
+        event: "IIM A Startup Summit",
+        year: "2019",
+        topic: "The Smart Home Trends in India",
         location: "Ahmedabad, India"
       }
     ],
@@ -444,13 +484,11 @@ const AboutPage = () => {
     ],
     
     mentorship: {
-      startups: 50,
-      entrepreneurs: 200,
+      startups: "10+",
+      entrepreneurs: "50+",
       successRate: "85%",
-      focus: ["Product Strategy", "Growth Marketing", "Fundraising", "Team Building"]
-    },
-    
-    interests: ["Technology", "Entrepreneurship", "Innovation", "Mentoring", "Reading", "Travel", "Fitness"]
+      focus: ["Product & Growth", "Design & Marketing", "Systems & Processes", "People & Culture"]
+    }
   };
 
   const handleContactSubmit = (e) => {
@@ -476,15 +514,15 @@ const AboutPage = () => {
     "@type": "AboutPage",
     "name": "About The Meet Patel - Serial Entrepreneur & Startup Ecosystem Builder",
     "description": "Learn about The Meet Patel's journey as a serial entrepreneur, his experience building startups, and his expertise in business operations, product development, and startup ecosystem building.",
-    "url": "https://themeetpatel.com/about",
+    "url": "https://themeetpatel.in/about",
     "mainEntity": {
       "@type": "Person",
       "name": "The Meet Patel",
       "alternateName": ["Meet Patel", "themeetpatel"],
       "jobTitle": "Serial Entrepreneur & Startup Ecosystem Builder",
       "description": "Serial entrepreneur and startup ecosystem builder with over 8 years of experience in building and scaling technology companies.",
-      "url": "https://themeetpatel.com",
-      "image": "https://themeetpatel.com/meet-patel-profile.jpg",
+      "url": "https://themeetpatel.in",
+      "image": "https://themeetpatel.in/logo for themeetpatel.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Dubai",
@@ -543,13 +581,13 @@ const AboutPage = () => {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://themeetpatel.com"
+          "item": "https://themeetpatel.in"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "About",
-          "item": "https://themeetpatel.com/about"
+          "item": "https://themeetpatel.in/about"
         }
       ]
     }
@@ -562,7 +600,7 @@ const AboutPage = () => {
         description="Learn about The Meet Patel's journey as a serial entrepreneur with 8+ years experience building and scaling startups. Discover his expertise in business operations, product development, and startup ecosystem building. Founder of StartupOS, ZeroHuman, and MealVerse."
         keywords="About The Meet Patel, Meet Patel biography, themeetpatel story, serial entrepreneur journey, startup ecosystem builder, business operations expert, StartupOS founder story, ZeroHuman founder, MealVerse founder, Dubai entrepreneur, startup mentor background, business consultant experience, product development expert, startup scaling expert, entrepreneurship journey, startup advisor background, business strategy expert, operations management expert, startup leadership experience"
         canonical="/about"
-        ogImage="/about-og-image.jpg"
+        ogImage="/logo for themeetpatel.png"
         structuredData={aboutStructuredData}
       />
 
@@ -579,8 +617,12 @@ const AboutPage = () => {
           >
             {/* Profile Image */}
             <div className="mb-8">
-              <div className="w-32 h-32 mx-auto bg-gradient-to-r from-cyan-400 to-teal-500 rounded-full flex items-center justify-center mb-6">
-                <span className="text-white text-4xl font-bold">MP</span>
+              <div className="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-4 border-cyan-400/20 shadow-2xl">
+                <img 
+                  src={logoImage} 
+                  alt="The Meet Patel" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
 
@@ -607,28 +649,6 @@ const AboutPage = () => {
               </div>
             </div>
 
-            {/* Social Links */}
-            <div className="flex items-center justify-center space-x-4 mb-8">
-              {[
-                { icon: Linkedin, href: personalInfo.linkedin, label: 'LinkedIn' },
-                { icon: Twitter, href: personalInfo.twitter, label: 'Twitter' },
-                { icon: Github, href: personalInfo.github, label: 'GitHub' },
-                { icon: Instagram, href: personalInfo.instagram, label: 'Instagram' },
-                { icon: Youtube, href: personalInfo.youtube, label: 'YouTube' }
-              ].map((social) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white/60 hover:text-white hover:bg-white/20 transition-all duration-300"
-                >
-                  <social.icon className="w-6 h-6" />
-                </motion.a>
-              ))}
-            </div>
 
             {/* CTA Buttons */}
             <div className="flex items-center justify-center space-x-4">
@@ -694,9 +714,13 @@ const AboutPage = () => {
                   <h2 className="text-3xl font-bold text-white mb-6">About Me</h2>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div>
-                      <p className="text-white/80 text-lg leading-relaxed mb-6">
-                        {personalInfo.about}
-                      </p>
+                      <div className="space-y-4 mb-6">
+                        {personalInfo.about.map((paragraph, index) => (
+                          <p key={index} className="text-white/80 text-lg leading-relaxed">
+                            {paragraph}
+                          </p>
+                        ))}
+                      </div>
                       <div className="space-y-4">
                         <h3 className="text-xl font-semibold text-white mb-4">Education</h3>
                         {personalInfo.education.map((edu, index) => (
@@ -712,11 +736,18 @@ const AboutPage = () => {
                     <div>
                       <h3 className="text-xl font-semibold text-white mb-4">Interests</h3>
                       <div className="flex flex-wrap gap-2 mb-8">
-                        {personalInfo.interests.map((interest, index) => (
-                          <span key={index} className="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-sm">
-                            {interest}
-                          </span>
-                        ))}
+                        {(() => {
+                          console.log('Interests data:', personalInfo.interests);
+                          return personalInfo.interests && personalInfo.interests.length > 0 ? (
+                            personalInfo.interests.map((interest, index) => (
+                              <span key={index} className="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-sm">
+                                {interest}
+                              </span>
+                            ))
+                          ) : (
+                            <p className="text-white/60">No interests defined</p>
+                          );
+                        })()}
                       </div>
                       <h3 className="text-xl font-semibold text-white mb-4">Quick Stats</h3>
                       <div className="grid grid-cols-2 gap-4">
@@ -725,12 +756,12 @@ const AboutPage = () => {
                           <div className="text-white/60 text-sm">Years Experience</div>
                         </div>
                         <div className="bg-white/5 rounded-lg p-4 text-center">
-                          <div className="text-2xl font-bold text-cyan-400">15+</div>
+                          <div className="text-2xl font-bold text-cyan-400">10+</div>
                           <div className="text-white/60 text-sm">Startups Mentored</div>
                         </div>
                         <div className="bg-white/5 rounded-lg p-4 text-center">
-                          <div className="text-2xl font-bold text-cyan-400">2+</div>
-                          <div className="text-white/60 text-sm">Books Written</div>
+                          <div className="text-2xl font-bold text-cyan-400">2</div>
+                          <div className="text-white/60 text-sm">Books Published</div>
                         </div>
                         <div className="bg-white/5 rounded-lg p-4 text-center">
                           <div className="text-2xl font-bold text-emerald-400">300+</div>
@@ -902,7 +933,7 @@ const AboutPage = () => {
               {/* Books Section */}
               {activeTab === 'books' && (
                 <div className="ultra-glass rounded-xl p-8">
-                  <h2 className="text-3xl font-bold text-white mb-8">Love Stories Written by Me</h2>
+                  <h2 className="text-3xl font-bold text-white mb-8">Books Written</h2>
                   <p className="text-white/70 text-lg mb-8 text-center">
                     Here's something special for you to freshen up! Few Love stories written by me 😲
                   </p>
@@ -946,13 +977,16 @@ const AboutPage = () => {
                           
                           <div className="flex space-x-3">
                             {book.status === 'Published' ? (
-                              <motion.button
+                              <motion.a
+                                href={book.readLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="flex-1 bg-cyan-500 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-cyan-600 transition-colors"
+                                className="flex-1 bg-cyan-500 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-cyan-600 transition-colors text-center block"
                               >
                                 Read Now
-                              </motion.button>
+                              </motion.a>
                             ) : (
                               <motion.button
                                 whileHover={{ scale: 1.05 }}
@@ -976,25 +1010,6 @@ const AboutPage = () => {
                       <p>📍 In5, Dubai, UAE</p>
                     </div>
                     
-                    <div className="mt-8">
-                      <h4 className="text-lg font-semibold text-white mb-4">Subscribe My Newsletter:</h4>
-                      <div className="flex justify-center space-x-4">
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="bg-cyan-500 text-white py-2 px-6 rounded-lg font-medium hover:bg-cyan-600 transition-colors"
-                        >
-                          Subscribe
-                        </motion.button>
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="bg-gray-600 text-white py-2 px-6 rounded-lg font-medium hover:bg-gray-700 transition-colors"
-                        >
-                          Subscribe
-                        </motion.button>
-                      </div>
-                    </div>
                   </div>
                 </div>
               )}
@@ -1223,6 +1238,9 @@ const AboutPage = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Follow My Journey Section */}
+      <FollowMyJourney />
     </div>
   );
 };

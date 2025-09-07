@@ -11,6 +11,7 @@ import {
   getRelatedArticles, 
   getPublishedArticles 
 } from '../data/blogData';
+import FollowMyJourney from '../components/FollowMyJourney';
 
 const BlogArticlePage = () => {
   const { slug } = useParams();
@@ -810,6 +811,9 @@ const BlogArticlePage = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Follow My Journey Section */}
+      <FollowMyJourney />
     </div>
   );
 };

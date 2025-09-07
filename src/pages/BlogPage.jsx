@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { 
   Search, 
   Filter, 
@@ -39,12 +39,24 @@ import {
 } from '../data/blogData';
 import BlogDashboard from '../components/BlogDashboard';
 import BlogPublishingGuide from '../components/BlogPublishingGuide';
+import FollowMyJourney from '../components/FollowMyJourney';
 
 const BlogPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [showDashboard, setShowDashboard] = useState(false);
   const [showGuide, setShowGuide] = useState(false);
+  const location = useLocation();
+
+  // Check for admin query parameter and open dashboard
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    if (urlParams.get('admin') === 'true' && process.env.NODE_ENV === 'development') {
+      setShowDashboard(true);
+      // Clean up the URL by removing the query parameter
+      window.history.replaceState({}, '', '/blog');
+    }
+  }, [location.search]);
 
   // Get data from blog system
   const allArticles = getPublishedArticles();
@@ -95,30 +107,21 @@ const BlogPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <div className="flex items-center justify-between mb-6">
-              <h1 className="text-5xl md:text-7xl font-bold text-white">
+            <div className="text-center mb-8">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-6xl md:text-8xl font-bold text-white mb-4"
+              >
                 My Blog
-            </h1>
-              <div className="flex items-center space-x-2">
-                <motion.button
-                  onClick={() => setShowGuide(true)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="hidden md:flex items-center space-x-2 px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-colors"
-                >
-                  <BookOpen className="w-4 h-4" />
-                  <span>How to Publish</span>
-                </motion.button>
-                <motion.button
-                  onClick={() => setShowDashboard(true)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="hidden md:flex items-center space-x-2 px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-colors"
-                >
-                  <Settings className="w-4 h-4" />
-                  <span>Manage Blog</span>
-                </motion.button>
-              </div>
+              </motion.h1>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mb-6"
+              />
             </div>
             <p className="text-2xl text-cyan-200 mb-8 max-w-3xl mx-auto">
               Thoughts on entrepreneurship, personal growth, writing, and the journey of building meaningful things.
@@ -131,15 +134,15 @@ const BlogPage = () => {
                 <div className="text-white/60 text-sm">Articles</div>
               </div>
               <div className="bg-white/5 rounded-lg p-4">
-                <div className="text-3xl font-bold text-emerald-400">15K+</div>
+                <div className="text-3xl font-bold text-emerald-400">25K+</div>
                 <div className="text-white/60 text-sm">Total Views</div>
               </div>
               <div className="bg-white/5 rounded-lg p-4">
-                <div className="text-3xl font-bold text-purple-400">800+</div>
+                <div className="text-3xl font-bold text-purple-400">1.2K+</div>
                 <div className="text-white/60 text-sm">Likes</div>
               </div>
               <div className="bg-white/5 rounded-lg p-4">
-                <div className="text-3xl font-bold text-orange-400">5</div>
+                <div className="text-3xl font-bold text-orange-400">6</div>
                 <div className="text-white/60 text-sm">Categories</div>
               </div>
             </div>
@@ -418,6 +421,9 @@ const BlogPage = () => {
       {showGuide && (
         <BlogPublishingGuide onClose={() => setShowGuide(false)} />
       )}
+
+      {/* Follow My Journey Section */}
+      <FollowMyJourney />
     </div>
   );
 };
