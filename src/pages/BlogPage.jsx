@@ -134,12 +134,12 @@ const BlogPage = () => {
                 <div className="text-white/60 text-xs sm:text-sm">Articles</div>
               </div>
               <div className="bg-white/5 rounded-lg p-3 sm:p-4">
-                <div className="text-2xl sm:text-3xl font-bold text-emerald-400">25K+</div>
-                <div className="text-white/60 text-xs sm:text-sm">Total Views</div>
+                <div className="text-2xl sm:text-3xl font-bold text-emerald-400">100K+</div>
+                <div className="text-white/60 text-xs sm:text-sm">Total Reach</div>
               </div>
               <div className="bg-white/5 rounded-lg p-3 sm:p-4">
-                <div className="text-2xl sm:text-3xl font-bold text-purple-400">1.2K+</div>
-                <div className="text-white/60 text-xs sm:text-sm">Likes</div>
+                <div className="text-2xl sm:text-3xl font-bold text-purple-400">5.5K+</div>
+                <div className="text-white/60 text-xs sm:text-sm">Followers</div>
               </div>
               <div className="bg-white/5 rounded-lg p-3 sm:p-4">
                 <div className="text-2xl sm:text-3xl font-bold text-orange-400">6</div>
@@ -201,7 +201,7 @@ const BlogPage = () => {
             <p className="text-white/70">My most popular and impactful pieces</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {featuredArticles.map((article, index) => (
               <motion.div
                 key={article.id}
@@ -216,7 +216,12 @@ const BlogPage = () => {
                       <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
                         <BookOpen className="w-8 h-8 text-white" />
                       </div>
-                      <h3 className="text-lg font-bold text-white">{article.title}</h3>
+                      <Link 
+                        to={`/blog/${article.slug}`}
+                        className="text-lg font-bold text-white hover:text-blue-400 transition-colors duration-200"
+                      >
+                        {article.title}
+                      </Link>
                     </div>
                   </div>
                   <div className="absolute top-4 left-4">
@@ -226,25 +231,29 @@ const BlogPage = () => {
                   </div>
                 </div>
                 
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   <div className="flex items-center space-x-2 mb-3">
                     <span className="bg-white/10 text-white/60 px-2 py-1 rounded text-xs">
                       {article.category}
                     </span>
                   </div>
                   
-                  <h3 className="text-lg font-semibold text-white mb-3 line-clamp-2">
+                  <Link 
+                    to={`/blog/${article.slug}`}
+                    className="text-base sm:text-lg font-semibold text-white mb-3 line-clamp-2 hover:text-blue-400 transition-colors duration-200 block"
+                  >
                     {article.title}
-                  </h3>
+                  </Link>
                   <p className="text-white/70 text-sm mb-4 line-clamp-3">
                     {article.excerpt}
                   </p>
                   
-                  <div className="flex items-center justify-between text-white/50 text-xs mb-4">
-                    <div className="flex items-center space-x-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between text-white/50 text-xs mb-4 space-y-2 sm:space-y-0">
+                    <div className="flex items-center space-x-3 sm:space-x-4">
                       <span className="flex items-center space-x-1">
                         <Calendar className="w-3 h-3" />
-                        <span>{formatDate(article.date)}</span>
+                        <span className="hidden sm:inline">{formatDate(article.date)}</span>
+                        <span className="sm:hidden">{new Date(article.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
                       </span>
                       <span className="flex items-center space-x-1">
                         <Clock className="w-3 h-3" />
@@ -292,7 +301,7 @@ const BlogPage = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {filteredArticles.map((article, index) => (
               <motion.div
                 key={article.id}
@@ -307,7 +316,12 @@ const BlogPage = () => {
                       <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-2">
                         <BookOpen className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-sm font-bold text-white line-clamp-2">{article.title}</h3>
+                      <Link 
+                        to={`/blog/${article.slug}`}
+                        className="text-sm font-bold text-white line-clamp-2 hover:text-blue-400 transition-colors duration-200"
+                      >
+                        {article.title}
+                      </Link>
                     </div>
                   </div>
                   {article.featured && (
@@ -326,9 +340,12 @@ const BlogPage = () => {
                     </span>
                   </div>
                   
-                  <h3 className="text-sm font-semibold text-white mb-2 line-clamp-2">
+                  <Link 
+                    to={`/blog/${article.slug}`}
+                    className="text-sm font-semibold text-white mb-2 line-clamp-2 hover:text-blue-400 transition-colors duration-200 block"
+                  >
                     {article.title}
-                  </h3>
+                  </Link>
                   <p className="text-white/70 text-xs mb-3 line-clamp-2">
                     {article.excerpt}
                   </p>

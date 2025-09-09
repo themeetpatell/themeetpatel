@@ -26,15 +26,6 @@ const HomePage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isCommunityFormOpen, setIsCommunityFormOpen] = useState(false);
-  const [communityFormData, setCommunityFormData] = useState({
-    linkedinId: '',
-    email: '',
-    whatsapp: '',
-    businessName: '',
-    role: '',
-    reason: ''
-  });
   
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef, { once: true });
@@ -320,52 +311,6 @@ const HomePage = () => {
     });
   };
 
-  const handleCommunityInputChange = (e) => {
-    setCommunityFormData({
-      ...communityFormData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleJoinCommunity = () => {
-    setIsCommunityFormOpen(true);
-  };
-
-  const handleCommunitySubmit = async (e) => {
-    e.preventDefault();
-    
-    // Create WhatsApp message with form data
-    const message = `Hi Meet! I want to join the StartupOS WhatsApp community.
-
-Here are my details:
-• LinkedIn: ${communityFormData.linkedinId}
-• Email: ${communityFormData.email}
-• WhatsApp: ${communityFormData.whatsapp}
-• Business: ${communityFormData.businessName}
-• Role: ${communityFormData.role}
-• Reason: ${communityFormData.reason}
-
-Please add me to the community!`;
-
-    // Encode message for URL
-    const encodedMessage = encodeURIComponent(message);
-    
-    // Open WhatsApp with pre-filled message
-    window.open(`https://wa.me/919824341414?text=${encodedMessage}`, '_blank');
-    
-    // Close the form
-    setIsCommunityFormOpen(false);
-    
-    // Reset form data
-    setCommunityFormData({
-      linkedinId: '',
-      email: '',
-      whatsapp: '',
-      businessName: '',
-      role: '',
-      reason: ''
-    });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -537,7 +482,7 @@ Please add me to the community!`;
               transition={{ duration: 0.6, delay: 1.0 }}
               className="text-base sm:text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed mb-6 sm:mb-8 px-4 sm:px-0"
             >
-              A Startup Guy and <Link to="/about" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 font-medium">System builder</Link> with over 8 years of experience in building and scaling technology companies. Passionate about helping startups succeed through innovative solutions and strategic guidance. Explore my <Link to="/portfolio" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 font-medium">portfolio of successful ventures</Link> and <Link to="/systems" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 font-medium">proven business systems</Link>.
+              A Startup Guy and <Link to="/about" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 font-medium">System builder</Link> with over 8 years of experience in building and scaling startups. <br /> I work with founders and teams to design business systems that don't break under pressure. <br /> Explore my <Link to="/portfolio" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 font-medium">portfolio of successful ventures</Link> and <Link to="/systems" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 font-medium">proven business systems</Link>.
             </motion.div>
 
             {/* Call to Action Buttons */}
@@ -593,7 +538,7 @@ Please add me to the community!`;
                 </p>
                   </div>
               <p className="text-base sm:text-lg text-gray-300 leading-relaxed mb-4 sm:mb-6">
-                Fixing broken systems, designing smart strategies, and transforming chaos into clarity and growth. A generalist with range who connects dots across people, products, processes, and performance — fast.
+              Startups rarely move in straight lines. They bend, break, and demand decisions when the clock is ticking. A generalist with range who connects dots across people, products, processes, and performance.
               </p>
               
               {/* Key Strengths */}
@@ -867,12 +812,13 @@ Please add me to the community!`;
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {blogPosts.map((post, index) => (
-          <motion.div
+              <motion.a
                 key={post.slug}
+                href={`/blog/${post.slug}`}
                 initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="apple-glass rounded-2xl overflow-hidden group hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/20"
+                className="apple-glass rounded-2xl overflow-hidden group hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/20 block"
               >
                 {/* Enhanced Header with Gradient */}
                 <div className={`w-full h-48 bg-gradient-to-br ${post.color} relative overflow-hidden`}>
@@ -921,13 +867,14 @@ Please add me to the community!`;
                   </p>
                   
                   {/* Social Sharing Options */}
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between mb-4" onClick={(e) => e.stopPropagation()}>
                     <div className="flex items-center space-x-3">
                       <motion.button
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         className="p-2 text-white/50 hover:text-blue-400 hover:bg-blue-500/10 rounded-lg transition-all duration-200"
                         title="Share on LinkedIn"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <Linkedin className="w-4 h-4" />
                       </motion.button>
@@ -937,6 +884,7 @@ Please add me to the community!`;
                         whileTap={{ scale: 0.9 }}
                         className="p-2 text-white/50 hover:text-sky-400 hover:bg-sky-500/10 rounded-lg transition-all duration-200"
                         title="Share on Twitter"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <Twitter className="w-4 h-4" />
                       </motion.button>
@@ -946,6 +894,7 @@ Please add me to the community!`;
                         whileTap={{ scale: 0.9 }}
                         className="p-2 text-white/50 hover:text-green-400 hover:bg-green-500/10 rounded-lg transition-all duration-200"
                         title="Share on WhatsApp"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <MessageSquare className="w-4 h-4" />
                       </motion.button>
@@ -955,6 +904,7 @@ Please add me to the community!`;
                         whileTap={{ scale: 0.9 }}
                         className="p-2 text-white/50 hover:text-gray-400 hover:bg-gray-500/10 rounded-lg transition-all duration-200"
                         title="Copy Link"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <ExternalLink className="w-4 h-4" />
                       </motion.button>
@@ -966,19 +916,13 @@ Please add me to the community!`;
                     </div>
         </div>
 
-                  {/* Read More Button */}
-                  <motion.a
-                    href={`/blog/${post.slug}`}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="group relative inline-flex items-center justify-center w-full py-4 bg-gradient-to-r from-cyan-400/20 to-teal-500/20 hover:from-cyan-400/30 hover:to-teal-500/30 text-cyan-400 hover:text-cyan-300 font-bold rounded-xl border border-cyan-400/30 hover:border-cyan-400/50 transition-all duration-300 overflow-hidden"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <span className="relative z-10">Read Full Article</span>
-                    <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-                  </motion.a>
+                  {/* Read More Indicator */}
+                  <div className="flex items-center justify-center py-4 text-cyan-400 hover:text-cyan-300 font-bold rounded-xl border border-cyan-400/30 hover:border-cyan-400/50 transition-all duration-300 group">
+                    <span>Read Full Article</span>
+                    <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
                   </div>
-              </motion.div>
+                  </div>
+              </motion.a>
             ))}
           </div>
 
@@ -1414,8 +1358,8 @@ Please add me to the community!`;
               </motion.div>
 
               {/* CTA Button */}
-              <motion.button
-                onClick={handleJoinCommunity}
+              <motion.a
+                href="/community"
                 initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.9 }}
@@ -1427,7 +1371,7 @@ Please add me to the community!`;
                 <MessageSquare className="w-6 h-6 mr-3 relative z-10" />
                 <span className="relative z-10">Join StartupOS Community</span>
                 <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-              </motion.button>
+              </motion.a>
 
               {/* Additional Info */}
               <motion.p
@@ -1446,140 +1390,6 @@ Please add me to the community!`;
       {/* Follow My Journey Section */}
       <FollowMyJourney />
 
-      {/* Community Form Modal */}
-      <AnimatePresence>
-        {isCommunityFormOpen && (
-              <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            onClick={() => setIsCommunityFormOpen(false)}
-              >
-                <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ duration: 0.3 }}
-              className="apple-glass rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Header */}
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Join StartupOS Community</h3>
-                  <p className="text-white/70">Tell us about yourself to get started</p>
-                  </div>
-                <button
-                  onClick={() => setIsCommunityFormOpen(false)}
-                  className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white/60 hover:text-white hover:bg-white/20 transition-all duration-300"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-                  </div>
-
-              {/* Form */}
-              <form onSubmit={handleCommunitySubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-white/80 text-sm mb-2 font-medium">LinkedIn Profile URL *</label>
-                    <input
-                      type="url"
-                      name="linkedinId"
-                      value={communityFormData.linkedinId}
-                      onChange={handleCommunityInputChange}
-                      required
-                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
-                      placeholder="https://linkedin.com/in/yourprofile"
-                    />
-          </div>
-                  <div>
-                    <label className="block text-white/80 text-sm mb-2 font-medium">Email Address *</label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={communityFormData.email}
-                      onChange={handleCommunityInputChange}
-                      required
-                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
-                      placeholder="your@email.com"
-                    />
-        </div>
-                </div>
-
-                <div>
-                  <label className="block text-white/80 text-sm mb-2 font-medium">WhatsApp Number *</label>
-                  <input
-                    type="tel"
-                    name="whatsapp"
-                    value={communityFormData.whatsapp}
-                    onChange={handleCommunityInputChange}
-                    required
-                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
-                    placeholder="+91 98 2434 1414"
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-white/80 text-sm mb-2 font-medium">Business/Company Name *</label>
-                    <input
-                      type="text"
-                      name="businessName"
-                      value={communityFormData.businessName}
-                      onChange={handleCommunityInputChange}
-                      required
-                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
-                      placeholder="Your company or startup name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-white/80 text-sm mb-2 font-medium">Your Role *</label>
-                    <input
-                      type="text"
-                      name="role"
-                      value={communityFormData.role}
-                      onChange={handleCommunityInputChange}
-                      required
-                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
-                      placeholder="Founder, CEO, Developer, etc."
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-white/80 text-sm mb-2 font-medium">Why do you want to join our community? *</label>
-                  <textarea
-                    name="reason"
-                    value={communityFormData.reason}
-                    onChange={handleCommunityInputChange}
-                    required
-                    rows={4}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 resize-none"
-                    placeholder="Tell us about your goals, what you're working on, or how you'd like to contribute to the community..."
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center space-x-3"
-                >
-                  <MessageSquare className="w-5 h-5" />
-                  <span>Send Application via WhatsApp</span>
-                </motion.button>
-              </form>
-
-              {/* Footer Note */}
-              <p className="text-white/60 text-sm mt-4 text-center">
-                Your information will be sent to Meet via WhatsApp for community approval
-              </p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };

@@ -19,6 +19,7 @@ import SystemsPage from './pages/SystemsPage';
 import SystemDetailPage from './pages/SystemDetailPage';
 import BlogPage from './pages/BlogPage';
 import BlogArticlePage from './pages/BlogArticlePage';
+import CommunityPage from './pages/CommunityPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import CookiePolicyPage from './pages/CookiePolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
@@ -56,6 +57,7 @@ function App() {
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/systems" element={<SystemsPage />} />
           <Route path="/systems/:systemId" element={<SystemDetailPage />} />
+          <Route path="/community" element={<CommunityPage />} />
           
           {/* Blog Pages */}
           <Route path="/blog" element={<BlogPage />} />

@@ -28,11 +28,11 @@ const AboutPage = () => {
     instagram: "http://instagram.com/the.meetpatell/",
     youtube: "https://youtube.com/@themeetpatell",
     
-    bio: "Serial entrepreneur and startup ecosystem builder with over 8 years of experience in building and scaling technology companies. Passionate about helping startups succeed through innovative solutions and strategic guidance.",
+    bio: "I’m Meet Patel — a builder who works with founders to design smarter systems, stronger strategies, and startups that scale with clarity.",
     
     about: [
-      "Over the past few years, I've served as Head of Business Excellence and Chief of Staff at Finanshels.com, where I drove a company-wide restructuring that lifted revenue by 40% in 8 months, led a $1.5M fundraising round, and launched high-impact GTM initiatives including an AI-powered tax portal.",
-      "My career spans FinTech, E-commerce, HRTech, and SaaS across India, UAE, and MENA—building and scaling teams, designing execution systems, and leading product and market strategies that deliver measurable growth."
+      "Over the past few years, I as Head of Business Excellence and Chief of Staff at Finanshels.com, where I drove a company-wide restructuring that lifted revenue by 40% in 8 months, led a $1.5M fundraising round, and launched high-impact GTM initiatives including an AI-powered tax portal.",
+      "My career spans FinTech, E-commerce, HRTech, and SaaS across India, UAE & GCC — building and scaling teams, designing execution systems, and leading product and market strategies that deliver measurable growth."
     ],
     
     interests: [
@@ -41,7 +41,9 @@ const AboutPage = () => {
       "Business Strategy",
       "HR & Headhunting",
       "Strategic Partnerships",
-      "Writing"
+      "Travelling",
+      "Writing",
+      "Cricket & Football"
     ],
     
     experience: [

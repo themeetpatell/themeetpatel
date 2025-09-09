@@ -306,14 +306,18 @@ const BlogArticlePage = () => {
                 </div>
 
                 {/* Article Body */}
-                <div className="p-8 md:p-12">
+                <div className="p-8 md:p-12 lg:p-16">
 
                   {/* Article Content */}
                   <div className="prose prose-xl prose-invert max-w-none">
                     <div 
                       className="text-white/90 leading-relaxed text-lg"
                       dangerouslySetInnerHTML={{ __html: article.content }}
-                      style={{ lineHeight: '1.8' }}
+                      style={{ 
+                        lineHeight: '1.8',
+                        marginTop: '2rem',
+                        marginBottom: '2rem'
+                      }}
                     />
                   </div>
 
@@ -406,15 +410,15 @@ const BlogArticlePage = () => {
                   <div className="space-y-4 text-sm text-white/70">
                     <div className="flex items-center justify-between">
                       <span>Articles Written</span>
-                      <span className="text-cyan-400 font-semibold">15+</span>
+                      <span className="text-cyan-400 font-semibold">{getPublishedArticles().length}+</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span>Total Views</span>
-                      <span className="text-cyan-400 font-semibold">15K+</span>
+                      <span>Total Reach</span>
+                      <span className="text-cyan-400 font-semibold">100K+</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span>Followers</span>
-                      <span className="text-cyan-400 font-semibold">2.5K+</span>
+                      <span className="text-cyan-400 font-semibold">5.5K+</span>
                     </div>
                   </div>
                   

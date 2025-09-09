@@ -73,7 +73,7 @@ const BlogDashboard = ({ onClose }) => {
     });
   };
 
-  const totalViews = articles.reduce((sum, article) => sum + article.views, 0);
+  const totalViews = 100000; // 100K+ total reach
   const totalLikes = articles.reduce((sum, article) => sum + article.likes, 0);
   const featuredCount = articles.filter(article => article.featured).length;
 
@@ -140,8 +140,8 @@ const BlogDashboard = ({ onClose }) => {
                   <Eye className="w-5 h-5 text-green-400" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">{totalViews.toLocaleString()}</div>
-                  <div className="text-white/60 text-sm">Total Views</div>
+                  <div className="text-2xl font-bold text-white">100K+</div>
+                  <div className="text-white/60 text-sm">Total Reach</div>
                 </div>
               </div>
             </div>

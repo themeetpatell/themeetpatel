@@ -10,7 +10,8 @@ import {
   BookOpen,
   Home,
   FileText,
-  Settings
+  Settings,
+  Users
 } from 'lucide-react';
 import logoImage from '../assets/logo for themeetpatel.png';
 import { trackButtonClick, trackExternalLink } from '../utils/analytics';
@@ -75,6 +76,11 @@ const UltraNavigation = () => {
       title: "Systems",
       href: "/systems",
       icon: Settings
+    },
+    {
+      title: "Community",
+      href: "/community",
+      icon: Users
     },
     {
       title: "Blog",
