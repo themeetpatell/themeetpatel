@@ -7,6 +7,7 @@ import {
   Briefcase, BookOpen, Mic, FileText, ArrowRight, ChevronRight,
   Copy, Check, Share2, Download, Calendar as CalendarIcon, BookOpen as Medium
 } from 'lucide-react';
+import { submitContactFormData, submitCommunityFormData } from '../services/formService';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -19,8 +20,11 @@ const ContactPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
   const [copiedItem, setCopiedItem] = useState(null);
   const [isCommunityFormOpen, setIsCommunityFormOpen] = useState(false);
+  const [isCommunitySubmitting, setIsCommunitySubmitting] = useState(false);
+  const [communitySubmitError, setCommunitySubmitError] = useState(null);
   const [communityFormData, setCommunityFormData] = useState({
     linkedinId: '',
     email: '',
@@ -223,9 +227,16 @@ const ContactPage = () => {
 
   const handleCommunitySubmit = async (e) => {
     e.preventDefault();
+    setIsCommunitySubmitting(true);
+    setCommunitySubmitError(null);
     
-    // Create WhatsApp message with form data
-    const message = `Hi Meet! I want to join the StartupOS WhatsApp community.
+    try {
+      // Submit to Google Sheets and other services
+      const result = await submitCommunityFormData(communityFormData);
+      
+      if (result.success) {
+        // Create WhatsApp message with form data
+        const message = `Hi Meet! I want to join the StartupOS WhatsApp community.
 
 Here are my details:
 • LinkedIn: ${communityFormData.linkedinId}
@@ -237,37 +248,59 @@ Here are my details:
 
 Please add me to the community!`;
 
-    // Encode message for URL
-    const encodedMessage = encodeURIComponent(message);
-    
-    // Open WhatsApp with pre-filled message
-    window.open(`https://wa.me/919824341414?text=${encodedMessage}`, '_blank');
-    
-    // Reset form and close modal
-    setCommunityFormData({
-      linkedinId: '',
-      email: '',
-      whatsapp: '',
-      businessName: '',
-      role: '',
-      reason: ''
-    });
-    setIsCommunityFormOpen(false);
+        // Encode message for URL
+        const encodedMessage = encodeURIComponent(message);
+        
+        // Open WhatsApp with pre-filled message
+        window.open(`https://wa.me/919824341414?text=${encodedMessage}`, '_blank');
+        
+        // Reset form and close modal
+        setCommunityFormData({
+          linkedinId: '',
+          email: '',
+          whatsapp: '',
+          businessName: '',
+          role: '',
+          reason: ''
+        });
+        setIsCommunityFormOpen(false);
+      } else {
+        setCommunitySubmitError('Failed to submit form. Please try again or contact us directly.');
+        console.error('Community form submission failed:', result.errors);
+      }
+    } catch (error) {
+      setCommunitySubmitError('An error occurred. Please try again.');
+      console.error('Community form submission error:', error);
+    } finally {
+      setIsCommunitySubmitting(false);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', countryCode: '+971', whatsapp: '', subject: '', message: '' });
-    
-    // Reset success message after 3 seconds
-    setTimeout(() => setIsSubmitted(false), 3000);
+    try {
+      // Submit to Google Sheets and other services
+      const result = await submitContactFormData(formData);
+      
+      if (result.success) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', countryCode: '+971', whatsapp: '', subject: '', message: '' });
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        setSubmitError('Failed to submit form. Please try again or contact us directly.');
+        console.error('Contact form submission failed:', result.errors);
+      }
+    } catch (error) {
+      setSubmitError('An error occurred. Please try again.');
+      console.error('Contact form submission error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const copyToClipboard = async (text, item) => {
@@ -755,6 +788,23 @@ Please add me to the community!`;
                 </motion.div>
               )}
             </AnimatePresence>
+
+            {/* Error Message */}
+            <AnimatePresence>
+              {submitError && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  className="mt-6 p-4 bg-red-500/20 border border-red-500/30 rounded-xl flex items-center space-x-3"
+                >
+                  <X className="w-5 h-5 text-red-400 flex-shrink-0" />
+                  <span className="text-red-300">
+                    {submitError}
+                  </span>
+                </motion.div>
+              )}
+            </AnimatePresence>
             </motion.div>
         </div>
       </section>
@@ -1043,18 +1093,41 @@ Please add me to the community!`;
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2"
+                  disabled={isCommunitySubmitting}
+                  whileHover={{ scale: isCommunitySubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isCommunitySubmitting ? 1 : 0.98 }}
+                  className={`w-full py-4 px-6 rounded-xl font-bold transition-all duration-300 flex items-center justify-center space-x-2 ${
+                    isCommunitySubmitting
+                      ? 'bg-gray-500 cursor-not-allowed'
+                      : 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700'
+                  }`}
                 >
-                  <MessageSquare className="w-5 h-5" />
-                  <span>Join Community via WhatsApp</span>
+                  {isCommunitySubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <span>Submitting...</span>
+                    </>
+                  ) : (
+                    <>
+                      <MessageSquare className="w-5 h-5" />
+                      <span>Join Community via WhatsApp</span>
+                    </>
+                  )}
                 </motion.button>
+
+                {/* Community Form Error Message */}
+                {communitySubmitError && (
+                  <div className="mt-4 p-3 bg-red-500/20 border border-red-500/30 rounded-xl flex items-center space-x-2">
+                    <X className="w-4 h-4 text-red-400 flex-shrink-0" />
+                    <span className="text-red-300 text-sm">{communitySubmitError}</span>
+                  </div>
+                )}
               </form>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
     </div>
   );
 };

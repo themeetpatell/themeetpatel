@@ -6,9 +6,12 @@ import {
   Linkedin, Twitter, Github, Instagram, Youtube
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { submitCommunityFormData } from '../services/formService';
 
 const CommunityPage = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
   const [formData, setFormData] = useState({
     linkedinId: '',
     email: '',
@@ -27,9 +30,16 @@ const CommunityPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError(null);
     
-    // Create WhatsApp message with form data
-    const message = `Hi Meet! I want to join the StartupOS WhatsApp community.
+    try {
+      // Submit to Google Sheets and other services
+      const result = await submitCommunityFormData(formData);
+      
+      if (result.success) {
+        // Create WhatsApp message with form data
+        const message = `Hi Meet! I want to join the StartupOS WhatsApp community.
 
 Here are my details:
 • LinkedIn: ${formData.linkedinId}
@@ -41,24 +51,34 @@ Here are my details:
 
 Please add me to the community!`;
 
-    // Encode message for URL
-    const encodedMessage = encodeURIComponent(message);
-    
-    // Open WhatsApp with pre-filled message
-    window.open(`https://wa.me/919824341414?text=${encodedMessage}`, '_blank');
-    
-    // Close the form
-    setIsFormOpen(false);
-    
-    // Reset form data
-    setFormData({
-      linkedinId: '',
-      email: '',
-      whatsapp: '',
-      businessName: '',
-      role: '',
-      reason: ''
-    });
+        // Encode message for URL
+        const encodedMessage = encodeURIComponent(message);
+        
+        // Open WhatsApp with pre-filled message
+        window.open(`https://wa.me/919824341414?text=${encodedMessage}`, '_blank');
+        
+        // Close the form
+        setIsFormOpen(false);
+        
+        // Reset form data
+        setFormData({
+          linkedinId: '',
+          email: '',
+          whatsapp: '',
+          businessName: '',
+          role: '',
+          reason: ''
+        });
+      } else {
+        setSubmitError('Failed to submit form. Please try again or contact us directly.');
+        console.error('Community form submission failed:', result.errors);
+      }
+    } catch (error) {
+      setSubmitError('An error occurred. Please try again.');
+      console.error('Community form submission error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const communityStats = [
@@ -501,13 +521,35 @@ Please add me to the community!`;
                 {/* Submit Button */}
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center space-x-3"
+                  disabled={isSubmitting}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                  className={`w-full py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg flex items-center justify-center space-x-3 ${
+                    isSubmitting
+                      ? 'bg-gray-500 cursor-not-allowed'
+                      : 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 hover:shadow-xl hover:shadow-green-500/20'
+                  }`}
                 >
-                  <MessageSquare className="w-5 h-5" />
-                  <span>Send Application via WhatsApp</span>
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <span>Submitting...</span>
+                    </>
+                  ) : (
+                    <>
+                      <MessageSquare className="w-5 h-5" />
+                      <span>Send Application via WhatsApp</span>
+                    </>
+                  )}
                 </motion.button>
+
+                {/* Error Message */}
+                {submitError && (
+                  <div className="mt-4 p-3 bg-red-500/20 border border-red-500/30 rounded-xl flex items-center space-x-2">
+                    <X className="w-4 h-4 text-red-400 flex-shrink-0" />
+                    <span className="text-red-300 text-sm">{submitError}</span>
+                  </div>
+                )}
               </form>
 
               {/* Footer Note */}
