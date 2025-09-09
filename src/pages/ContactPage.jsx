@@ -8,6 +8,7 @@ import {
   Copy, Check, Share2, Download, Calendar as CalendarIcon, BookOpen as Medium
 } from 'lucide-react';
 import { submitContactFormData, submitCommunityFormData } from '../services/formService';
+import ProductionDebug from '../components/ProductionDebug';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -1128,6 +1129,8 @@ Please add me to the community!`;
         )}
       </AnimatePresence>
 
+      {/* Production Debug - Remove after fixing */}
+      <ProductionDebug />
     </div>
   );
 };

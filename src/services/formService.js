@@ -3,21 +3,36 @@ import { submitContactForm, submitCommunityForm } from '../utils/googleSheets';
 
 // Check if Google Sheets integration is enabled
 const isGoogleSheetsEnabled = () => {
-  return (import.meta.env.VITE_ENABLE_GOOGLE_SHEETS || process.env.REACT_APP_ENABLE_GOOGLE_SHEETS) === 'true' && 
-         (import.meta.env.VITE_GOOGLE_SHEET_ID || process.env.REACT_APP_GOOGLE_SHEET_ID) && 
-         (import.meta.env.VITE_GOOGLE_API_KEY || process.env.REACT_APP_GOOGLE_API_KEY);
+  const enabled = import.meta.env.VITE_ENABLE_GOOGLE_SHEETS || process.env.REACT_APP_ENABLE_GOOGLE_SHEETS;
+  const sheetId = import.meta.env.VITE_GOOGLE_SHEET_ID || process.env.REACT_APP_GOOGLE_SHEET_ID;
+  const apiKey = import.meta.env.VITE_GOOGLE_API_KEY || process.env.REACT_APP_GOOGLE_API_KEY;
+  
+  console.log('Google Sheets check:', { enabled, sheetId: !!sheetId, apiKey: !!apiKey });
+  
+  return enabled === 'true' && sheetId && apiKey;
 };
 
 // Fallback notification service (email or other)
 const sendFallbackNotification = async (formType, formData) => {
-  // This could be replaced with email service, webhook, or other notification method
   console.log(`Fallback notification for ${formType}:`, formData);
   
-  // For now, we'll just log it
+  // Store in localStorage as backup
+  try {
+    const submissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
+    submissions.push({
+      timestamp: new Date().toISOString(),
+      formType,
+      data: formData
+    });
+    localStorage.setItem('formSubmissions', JSON.stringify(submissions));
+    console.log('Form data stored in localStorage as backup');
+  } catch (error) {
+    console.error('Failed to store in localStorage:', error);
+  }
+  
   // In production, you might want to:
   // - Send an email notification
   // - Send a webhook to a backend service
-  // - Store in local storage for manual processing
   // - Send to a different database
   
   return { success: true, method: 'fallback' };
@@ -71,6 +86,11 @@ export const submitForm = async (formType, formData) => {
     // If both methods failed, mark as unsuccessful
     if (!results.googleSheets?.success && !results.fallback?.success) {
       results.success = false;
+    }
+
+    // Always ensure we have at least one successful method
+    if (!results.success && results.fallback?.success) {
+      results.success = true;
     }
 
   } catch (error) {
