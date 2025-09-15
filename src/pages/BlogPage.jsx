@@ -32,6 +32,7 @@ import {
   FileText,
   X
 } from 'lucide-react';
+import SEOHead from '../components/SEOHead';
 import { 
   getPublishedArticles, 
   getFeaturedArticles, 
@@ -94,8 +95,71 @@ const BlogPage = () => {
     });
   };
 
+  // Structured Data for Blog Page
+  const blogStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "The Meet Patel's Blog - Startup Insights & Business Strategy",
+    "description": "Read insights on entrepreneurship, startup building, business strategy, and operations management from serial entrepreneur The Meet Patel. Expert advice on startup scaling, business growth, and startup ecosystem building.",
+    "url": "https://themeetpatel.com/blog",
+    "author": {
+      "@type": "Person",
+      "name": "The Meet Patel",
+      "alternateName": ["Meet Patel", "themeetpatel"],
+      "jobTitle": "Serial Entrepreneur & Startup Ecosystem Builder",
+      "description": "Serial entrepreneur with 8+ years experience building and scaling technology companies",
+      "url": "https://themeetpatel.com",
+      "image": "https://themeetpatel.com/logo for themeetpatel.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dubai",
+        "addressRegion": "Dubai",
+        "addressCountry": "AE"
+      },
+      "email": "the.meetll@gmail.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/themeetpatel/",
+        "https://x.com/the_meetpatel",
+        "https://github.com/themeetpatell",
+        "http://instagram.com/the.meetpatell/",
+        "https://youtube.com/@themeetpatel"
+      ]
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "The Meet Patel"
+    },
+    "inLanguage": "en-US",
+    "copyrightYear": "2024",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://themeetpatel.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://themeetpatel.com/blog"
+        }
+      ]
+    }
+  };
+
   return (
     <div className="min-h-screen pt-16 ultra-gradient-bg">
+      <SEOHead 
+        title="Blog - The Meet Patel's Startup Insights & Business Strategy"
+        description="Read insights on entrepreneurship, startup building, business strategy, and operations management from serial entrepreneur The Meet Patel. Expert advice on startup scaling, business growth, and startup ecosystem building."
+        keywords="Blog The Meet Patel, Meet Patel blog, themeetpatel insights, startup blog, entrepreneurship blog, business strategy blog, startup scaling blog, business operations blog, startup ecosystem blog, business growth blog, startup mentoring blog, Dubai entrepreneur blog, serial entrepreneur insights, startup building blog, business development blog, product management blog, startup leadership blog, business strategy insights, operations management blog, startup advice blog"
+        canonical="/blog"
+        ogImage="/blog-preview.jpg"
+        structuredData={blogStructuredData}
+      />
       {/* Hero Section */}
       <section className="py-12 sm:py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-teal-900/20 to-slate-900" />

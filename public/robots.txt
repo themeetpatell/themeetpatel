@@ -1,24 +1,52 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://themeetpatel.com/sitemap.xml
+# Allow all search engines to crawl all content
+User-agent: Googlebot
+Allow: /
 
-# Crawl-delay
-Crawl-delay: 1
+User-agent: Bingbot
+Allow: /
 
-# Disallow admin areas (if any)
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Disallow admin or private areas (if any)
 Disallow: /admin/
 Disallow: /private/
-Disallow: /_next/
-Disallow: /api/
+Disallow: /api/private/
 
-# Allow important pages
+# Allow all other content
 Allow: /about
-Allow: /portfolio
 Allow: /blog
+Allow: /community
 Allow: /contact
+Allow: /portfolio
 Allow: /systems
+Allow: /privacy-policy
+Allow: /terms-of-service
+Allow: /cookie-policy
 
-# Host
-Host: https://themeetpatel.com
+# Sitemap location
+Sitemap: https://themeetpatel.com/sitemap.xml
+
+# Crawl delay (optional - helps prevent overloading server)
+Crawl-delay: 1

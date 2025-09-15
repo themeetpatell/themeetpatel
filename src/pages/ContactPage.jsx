@@ -7,6 +7,7 @@ import {
   Briefcase, BookOpen, Mic, FileText, ArrowRight, ChevronRight,
   Copy, Check, Share2, Download, Calendar as CalendarIcon, BookOpen as Medium
 } from 'lucide-react';
+import SEOHead from '../components/SEOHead';
 import { submitContactFormData, submitCommunityFormData } from '../services/formService';
 import ProductionDebug from '../components/ProductionDebug';
 
@@ -314,8 +315,66 @@ Please add me to the community!`;
     }
   };
 
+  // Structured Data for Contact Page
+  const contactStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact The Meet Patel - Serial Entrepreneur & Startup Mentor",
+    "description": "Get in touch with The Meet Patel for business opportunities, startup mentorship, and collaboration. Contact information, social media links, and direct communication channels for entrepreneurs and business professionals.",
+    "url": "https://themeetpatel.com/contact",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "The Meet Patel",
+      "alternateName": ["Meet Patel", "themeetpatel"],
+      "jobTitle": "Serial Entrepreneur & Startup Ecosystem Builder",
+      "description": "Serial entrepreneur with 8+ years experience building and scaling technology companies",
+      "url": "https://themeetpatel.com",
+      "image": "https://themeetpatel.com/logo for themeetpatel.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dubai",
+        "addressRegion": "Dubai",
+        "addressCountry": "AE"
+      },
+      "email": "the.meetll@gmail.com",
+      "telephone": "+971-XX-XXXXXXX",
+      "sameAs": [
+        "https://www.linkedin.com/in/themeetpatel/",
+        "https://x.com/the_meetpatel",
+        "https://github.com/themeetpatell",
+        "http://instagram.com/the.meetpatell/",
+        "https://youtube.com/@themeetpatel"
+      ]
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://themeetpatel.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact",
+          "item": "https://themeetpatel.com/contact"
+        }
+      ]
+    }
+  };
+
   return (
     <div className="min-h-screen pt-16 ultra-gradient-bg">
+      <SEOHead 
+        title="Contact The Meet Patel - Serial Entrepreneur & Startup Mentor"
+        description="Get in touch with The Meet Patel for business opportunities, startup mentorship, and collaboration. Contact information, social media links, and direct communication channels for entrepreneurs and business professionals."
+        keywords="Contact The Meet Patel, Meet Patel contact, themeetpatel contact, startup mentor contact, business consultant contact, serial entrepreneur contact, Dubai entrepreneur contact, startup advisor contact, business strategy consultant, operations management consultant, startup leadership mentor, business growth consultant, startup ecosystem contact, business development contact, product management consultant, startup scaling mentor"
+        canonical="/contact"
+        ogImage="/contact-preview.jpg"
+        structuredData={contactStructuredData}
+      />
       {/* Hero Section */}
       <section ref={heroRef} className="py-12 sm:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-teal-900/20 to-slate-900" />

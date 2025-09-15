@@ -5,6 +5,7 @@ import {
   Award, TrendingUp, Users, Zap, Target, CheckCircle,
   Filter, Search, Calendar, Tag, ShoppingCart, Radio, Cpu, BookOpen
 } from 'lucide-react';
+import SEOHead from '../components/SEOHead';
 import FollowMyJourney from '../components/FollowMyJourney';
 
 const PortfolioPage = () => {
@@ -359,8 +360,79 @@ const PortfolioPage = () => {
 
   const featuredProjects = projects.filter(project => project.featured);
 
+  // Structured Data for Portfolio Page
+  const portfolioStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Portfolio - The Meet Patel's Startup Ventures and Projects",
+    "description": "Explore The Meet Patel's comprehensive portfolio of successful startups, technology ventures, and innovative projects. From StartupOS to ZeroHuman, discover 8+ years of entrepreneurial achievements.",
+    "url": "https://themeetpatel.com/portfolio",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "The Meet Patel",
+      "alternateName": ["Meet Patel", "themeetpatel"],
+      "jobTitle": "Serial Entrepreneur & Startup Ecosystem Builder",
+      "description": "Serial entrepreneur with 8+ years experience building and scaling technology companies",
+      "url": "https://themeetpatel.com",
+      "image": "https://themeetpatel.com/logo for themeetpatel.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dubai",
+        "addressRegion": "Dubai",
+        "addressCountry": "AE"
+      },
+      "email": "the.meetll@gmail.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/themeetpatel/",
+        "https://x.com/the_meetpatel",
+        "https://github.com/themeetpatell",
+        "http://instagram.com/the.meetpatell/",
+        "https://youtube.com/@themeetpatel"
+      ]
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://themeetpatel.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Portfolio",
+          "item": "https://themeetpatel.com/portfolio"
+        }
+      ]
+    },
+    "hasPart": projects.map(project => ({
+      "@type": "CreativeWork",
+      "name": project.title,
+      "description": project.description,
+      "url": project.liveUrl,
+      "creator": {
+        "@type": "Person",
+        "name": "The Meet Patel"
+      },
+      "keywords": project.tech.join(", "),
+      "genre": project.category,
+      "dateCreated": "2024",
+      "inLanguage": "en-US"
+    }))
+  };
+
   return (
     <div className="min-h-screen pt-16 ultra-gradient-bg">
+      <SEOHead 
+        title="Portfolio - The Meet Patel's Startup Ventures and Projects"
+        description="Explore The Meet Patel's comprehensive portfolio of successful startups, technology ventures, and innovative projects. From StartupOS to ZeroHuman, discover 8+ years of entrepreneurial achievements and business growth expertise."
+        keywords="Portfolio The Meet Patel, Meet Patel projects, themeetpatel ventures, StartupOS portfolio, ZeroHuman portfolio, MealVerse portfolio, startup ventures, technology projects, business portfolio, entrepreneurial achievements, startup ecosystem projects, business growth projects, Dubai entrepreneur portfolio, serial entrepreneur projects, startup building portfolio, business operations projects, product development portfolio, startup scaling projects, business strategy portfolio, operations management projects, startup leadership portfolio"
+        canonical="/portfolio"
+        ogImage="/portfolio-preview.jpg"
+        structuredData={portfolioStructuredData}
+      />
       {/* Hero Section */}
       <section className="py-12 sm:py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-teal-900/20 to-slate-900" />

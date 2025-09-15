@@ -7,6 +7,7 @@ import {
   BookOpen, Shield, Rocket, BarChart3, Cpu, Database,
   Globe, Smartphone, Monitor, Server, Cloud, Lock, Search, X
 } from 'lucide-react';
+import SEOHead from '../components/SEOHead';
 import FollowMyJourney from '../components/FollowMyJourney';
 import { systems } from '../data/systems';
 
@@ -54,8 +55,79 @@ const SystemsPage = () => {
     return categoryMatch && searchMatch && tagMatch;
   });
 
+  // Structured Data for Systems Page
+  const systemsStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Systems Built - The Meet Patel's Business Operations & Startup Systems",
+    "description": "Discover comprehensive business systems, processes, SOPs, workflows, and frameworks built by The Meet Patel across multiple ventures. From StartupOS to operational excellence systems for 10+ startups.",
+    "url": "https://themeetpatel.com/systems",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "The Meet Patel",
+      "alternateName": ["Meet Patel", "themeetpatel"],
+      "jobTitle": "Serial Entrepreneur & Business Operations Expert",
+      "description": "Serial entrepreneur and business operations expert with 8+ years experience building scalable systems and processes",
+      "url": "https://themeetpatel.com",
+      "image": "https://themeetpatel.com/logo for themeetpatel.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dubai",
+        "addressRegion": "Dubai",
+        "addressCountry": "AE"
+      },
+      "email": "the.meetll@gmail.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/themeetpatel/",
+        "https://x.com/the_meetpatel",
+        "https://github.com/themeetpatell",
+        "http://instagram.com/the.meetpatell/",
+        "https://youtube.com/@themeetpatel"
+      ]
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://themeetpatel.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Systems",
+          "item": "https://themeetpatel.com/systems"
+        }
+      ]
+    },
+    "hasPart": systems.map(system => ({
+      "@type": "SoftwareApplication",
+      "name": system.title,
+      "description": system.description,
+      "applicationCategory": system.type,
+      "operatingSystem": "Web",
+      "creator": {
+        "@type": "Person",
+        "name": "The Meet Patel"
+      },
+      "keywords": system.technologies.join(", "),
+      "dateCreated": "2024",
+      "inLanguage": "en-US"
+    }))
+  };
+
   return (
     <div className="min-h-screen pt-16 ultra-gradient-bg">
+      <SEOHead 
+        title="Systems Built - The Meet Patel's Business Operations & Startup Systems"
+        description="Discover comprehensive business systems, processes, SOPs, workflows, and frameworks built by The Meet Patel across multiple ventures. From StartupOS to operational excellence systems for 10+ startups and business growth strategies."
+        keywords="Systems The Meet Patel, Meet Patel business systems, themeetpatel processes, StartupOS systems, business operations systems, startup processes, SOPs frameworks, business workflows, operational excellence, startup scaling systems, business strategy systems, operations management, startup leadership systems, business growth systems, Dubai entrepreneur systems, serial entrepreneur processes, startup ecosystem systems, business development systems, product management systems, startup mentoring systems"
+        canonical="/systems"
+        ogImage="/systems-preview.jpg"
+        structuredData={systemsStructuredData}
+      />
       {/* Hero Section */}
       <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-teal-900/20 to-slate-900" />
