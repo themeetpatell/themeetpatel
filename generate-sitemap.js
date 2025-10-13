@@ -8,6 +8,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { blogArticles } from './src/data/blogData.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -131,74 +132,17 @@ const staticPages = [
   }
 ];
 
-// Blog articles (you can expand this list as you add more articles)
-const blogArticles = [
-  {
-    url: '/blog/startup-ecosystem-building',
-    priority: '0.6',
+// Generate blog articles from blogData.js
+const blogArticleUrls = blogArticles
+  .filter(article => article.published)
+  .map(article => ({
+    url: `/blog/${article.slug}`,
+    priority: article.featured ? '0.8' : '0.6',
     changefreq: 'monthly',
-    lastmod: currentDate,
-    images: [
-      {
-        loc: `${baseUrl}/blog/startup-ecosystem-building.jpg`,
-        title: 'Startup Ecosystem Building - Insights by The Meet Patel',
-        caption: 'Learn how to build successful startup ecosystems from The Meet Patel\'s experience'
-      }
-    ]
-  },
-  {
-    url: '/blog/business-operations-expertise',
-    priority: '0.6',
-    changefreq: 'monthly',
-    lastmod: currentDate,
-    images: [
-      {
-        loc: `${baseUrl}/blog/business-operations-expertise.jpg`,
-        title: 'Business Operations Expertise - The Meet Patel\'s Guide',
-        caption: 'Master business operations with insights from serial entrepreneur The Meet Patel'
-      }
-    ]
-  },
-  {
-    url: '/blog/startup-scaling-strategies',
-    priority: '0.6',
-    changefreq: 'monthly',
-    lastmod: currentDate,
-    images: [
-      {
-        loc: `${baseUrl}/blog/startup-scaling-strategies.jpg`,
-        title: 'Startup Scaling Strategies - The Meet Patel\'s Experience',
-        caption: 'Proven startup scaling strategies from The Meet Patel\'s 8+ years of experience'
-      }
-    ]
-  },
-  {
-    url: '/blog/entrepreneurship-lessons',
-    priority: '0.6',
-    changefreq: 'monthly',
-    lastmod: currentDate,
-    images: [
-      {
-        loc: `${baseUrl}/blog/entrepreneurship-lessons.jpg`,
-        title: 'Entrepreneurship Lessons - The Meet Patel\'s Journey',
-        caption: 'Key entrepreneurship lessons learned from The Meet Patel\'s startup journey'
-      }
-    ]
-  },
-  {
-    url: '/blog/product-management-guide',
-    priority: '0.6',
-    changefreq: 'monthly',
-    lastmod: currentDate,
-    images: [
-      {
-        loc: `${baseUrl}/blog/product-management-guide.jpg`,
-        title: 'Product Management Guide - The Meet Patel\'s Expertise',
-        caption: 'Comprehensive product management guide from serial entrepreneur The Meet Patel'
-      }
-    ]
-  }
-];
+    lastmod: article.date || currentDate,
+    title: article.title,
+    excerpt: article.excerpt
+  }));
 
 // System detail pages
 const systemPages = [
@@ -276,25 +220,12 @@ function generateSitemap() {
   });
 
   // Add blog articles
-  blogArticles.forEach(article => {
+  blogArticleUrls.forEach(article => {
     sitemap += `  <url>
     <loc>${baseUrl}${article.url}</loc>
     <lastmod>${article.lastmod}</lastmod>
     <changefreq>${article.changefreq}</changefreq>
-    <priority>${article.priority}</priority>`;
-    
-    if (article.images) {
-      article.images.forEach(image => {
-        sitemap += `
-    <image:image>
-      <image:loc>${image.loc}</image:loc>
-      <image:title>${image.title}</image:title>
-      <image:caption>${image.caption}</image:caption>
-    </image:image>`;
-      });
-    }
-    
-    sitemap += `
+    <priority>${article.priority}</priority>
   </url>
 `;
   });
@@ -336,7 +267,8 @@ function writeSitemap() {
   try {
     fs.writeFileSync(sitemapPath, sitemap, 'utf8');
     console.log('✅ Sitemap generated successfully at:', sitemapPath);
-    console.log(`📊 Total URLs: ${staticPages.length + blogArticles.length + systemPages.length}`);
+    console.log(`📊 Total URLs: ${staticPages.length + blogArticleUrls.length + systemPages.length}`);
+    console.log(`📝 Blog articles: ${blogArticleUrls.length}`);
   } catch (error) {
     console.error('❌ Error generating sitemap:', error);
   }
