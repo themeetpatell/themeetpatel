@@ -4,7 +4,7 @@
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
     <loc>https://themeetpatel.com/</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -15,7 +15,7 @@
   </url>
   <url>
     <loc>https://themeetpatel.com/about</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://themeetpatel.com/portfolio</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -37,7 +37,7 @@
   </url>
   <url>
     <loc>https://themeetpatel.com/systems</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -48,7 +48,7 @@
   </url>
   <url>
     <loc>https://themeetpatel.com/blog</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -59,7 +59,7 @@
   </url>
   <url>
     <loc>https://themeetpatel.com/community</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -70,7 +70,7 @@
   </url>
   <url>
     <loc>https://themeetpatel.com/contact</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -81,80 +81,199 @@
   </url>
   <url>
     <loc>https://themeetpatel.com/privacy-policy</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://themeetpatel.com/terms-of-service</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://themeetpatel.com/cookie-policy</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://themeetpatel.com/blog/startup-ecosystem-building</loc>
-    <lastmod>2025-09-15</lastmod>
+    <loc>https://themeetpatel.com/blog/from-idea-to-exit-8-year-journey</loc>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://themeetpatel.com/blog/startup-ecosystem-building.jpg</image:loc>
-      <image:title>Startup Ecosystem Building - Insights by The Meet Patel</image:title>
-      <image:caption>Learn how to build successful startup ecosystems from The Meet Patel's experience</image:caption>
-    </image:image>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://themeetpatel.com/blog/business-operations-expertise</loc>
-    <lastmod>2025-09-15</lastmod>
+    <loc>https://themeetpatel.com/blog/art-of-writing-love-stories-eternal-love</loc>
+    <lastmod>2024-01-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://themeetpatel.com/blog/business-operations-expertise.jpg</image:loc>
-      <image:title>Business Operations Expertise - The Meet Patel's Guide</image:title>
-      <image:caption>Master business operations with insights from serial entrepreneur The Meet Patel</image:caption>
-    </image:image>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://themeetpatel.com/blog/startup-scaling-strategies</loc>
-    <lastmod>2025-09-15</lastmod>
+    <loc>https://themeetpatel.com/blog/mentoring-50-startups-success-lessons</loc>
+    <lastmod>2024-01-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://themeetpatel.com/blog/startup-scaling-strategies.jpg</image:loc>
-      <image:title>Startup Scaling Strategies - The Meet Patel's Experience</image:title>
-      <image:caption>Proven startup scaling strategies from The Meet Patel's 8+ years of experience</image:caption>
-    </image:image>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://themeetpatel.com/blog/entrepreneurship-lessons</loc>
-    <lastmod>2025-09-15</lastmod>
+    <loc>https://themeetpatel.com/blog/building-finanshels-business-intelligence</loc>
+    <lastmod>2023-12-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://themeetpatel.com/blog/entrepreneurship-lessons.jpg</image:loc>
-      <image:title>Entrepreneurship Lessons - The Meet Patel's Journey</image:title>
-      <image:caption>Key entrepreneurship lessons learned from The Meet Patel's startup journey</image:caption>
-    </image:image>
   </url>
   <url>
-    <loc>https://themeetpatel.com/blog/product-management-guide</loc>
-    <lastmod>2025-09-15</lastmod>
+    <loc>https://themeetpatel.com/blog/power-of-authentic-storytelling-business</loc>
+    <lastmod>2023-12-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://themeetpatel.com/blog/product-management-guide.jpg</image:loc>
-      <image:title>Product Management Guide - The Meet Patel's Expertise</image:title>
-      <image:caption>Comprehensive product management guide from serial entrepreneur The Meet Patel</image:caption>
-    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/scaling-studenthub-50k-users</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/writing-romance-novels-tech-entrepreneur</loc>
+    <lastmod>2023-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/forbes-30-under-30-experience</loc>
+    <lastmod>2023-12-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/building-startupos-ecosystem-entrepreneurs</loc>
+    <lastmod>2023-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/endless-devotion-writing-sequel-success</loc>
+    <lastmod>2023-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/leading-250-employees-team-management</loc>
+    <lastmod>2023-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/torchit-global-impact-assistive-technology</loc>
+    <lastmod>2023-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/art-balancing-multiple-ventures</loc>
+    <lastmod>2023-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/why-i-mentor-joy-helping-others-succeed</loc>
+    <lastmod>2023-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/future-entrepreneurship-india</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/startupos-mental-model-command-dont-cope</loc>
+    <lastmod>2025-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/startup-blindspots-build-people-before-product</loc>
+    <lastmod>2025-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/art-of-war-business-winning-strategies-startups</loc>
+    <lastmod>2025-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/clarity-scales-strategy-every-founder-needs</loc>
+    <lastmod>2025-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/nextjs-react-framework-scales-startups</loc>
+    <lastmod>2025-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/django-python-framework-rapid-startup-development</loc>
+    <lastmod>2025-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/laravel-php-framework-powers-modern-startups</loc>
+    <lastmod>2025-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/expressjs-nodejs-framework-building-fast-apis</loc>
+    <lastmod>2025-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/ruby-on-rails-framework-launched-thousand-startups</loc>
+    <lastmod>2025-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/spring-boot-java-framework-enterprise-ready-startups</loc>
+    <lastmod>2025-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/flutter-cross-platform-framework-mobile-first-startups</loc>
+    <lastmod>2025-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/vuejs-progressive-framework-agile-development-teams</loc>
+    <lastmod>2025-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/aspnet-core-microsoft-framework-scalable-applications</loc>
+    <lastmod>2025-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/fastapi-modern-python-framework-high-performance-apis</loc>
+    <lastmod>2025-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://themeetpatel.com/systems/startupos</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -165,7 +284,7 @@
   </url>
   <url>
     <loc>https://themeetpatel.com/systems/business-operations-framework</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -176,7 +295,7 @@
   </url>
   <url>
     <loc>https://themeetpatel.com/systems/startup-scaling-process</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
