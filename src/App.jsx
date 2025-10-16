@@ -11,6 +11,7 @@ import { initGA, trackPageView } from './utils/analytics';
 import UltraNavigation from './components/UltraNavigation';
 import UltraFooter from './components/UltraFooter';
 import SEOPerformance from './components/SEOPerformance';
+import SubstackSubscriptionModal from './components/SubstackSubscriptionModal';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -73,6 +74,7 @@ function App() {
         
         <UltraFooter />
         <SEOPerformance />
+        <SubstackSubscriptionModal />
         <Analytics />
         <SpeedInsights />
       </div>

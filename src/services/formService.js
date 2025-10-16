@@ -1,22 +1,70 @@
-// Form submission service with Google Sheets integration
-import { submitContactForm, submitCommunityForm } from '../utils/googleSheets';
+import emailjs from '@emailjs/browser';
 
-// Check if Google Sheets integration is enabled
-const isGoogleSheetsEnabled = () => {
-  const enabled = import.meta.env.VITE_ENABLE_GOOGLE_SHEETS || process.env.REACT_APP_ENABLE_GOOGLE_SHEETS;
-  const sheetId = import.meta.env.VITE_GOOGLE_SHEET_ID || process.env.REACT_APP_GOOGLE_SHEET_ID;
-  const apiKey = import.meta.env.VITE_GOOGLE_API_KEY || process.env.REACT_APP_GOOGLE_API_KEY;
-  
-  console.log('Google Sheets check:', { enabled, sheetId: !!sheetId, apiKey: !!apiKey });
-  
-  return enabled === 'true' && sheetId && apiKey;
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+// Initialize EmailJS
+if (EMAILJS_PUBLIC_KEY) {
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+}
+
+const isEmailJSConfigured = () => {
+  return !!(EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY);
 };
 
-// Fallback notification service (email or other)
-const sendFallbackNotification = async (formType, formData) => {
-  console.log(`Fallback notification for ${formType}:`, formData);
-  
-  // Store in localStorage as backup
+const sendEmailNotification = async (formType, formData) => {
+  if (!isEmailJSConfigured()) {
+    console.warn('EmailJS not configured. Check environment variables.');
+    return { success: false, error: 'Email service not configured' };
+  }
+
+  try {
+    let emailParams = {
+      to_email: 'the.meetpatell@gmail.com',
+      from_name: formData.name || 'Anonymous',
+      form_type: formType.toUpperCase(),
+      timestamp: new Date().toLocaleString(),
+    };
+
+    if (formType === 'contact') {
+      emailParams = {
+        ...emailParams,
+        name: formData.name,
+        email: formData.email,
+        phone: `${formData.countryCode} ${formData.whatsapp}`,
+        subject: formData.subject,
+        message: formData.message,
+        reply_to: formData.email,
+      };
+    } else if (formType === 'community') {
+      emailParams = {
+        ...emailParams,
+        linkedin: formData.linkedinId,
+        email: formData.email,
+        whatsapp: formData.whatsapp,
+        business_name: formData.businessName,
+        role: formData.role,
+        reason: formData.reason,
+        reply_to: formData.email,
+      };
+    }
+
+    const response = await emailjs.send(
+      EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_ID,
+      emailParams
+    );
+
+    console.log('Email sent successfully:', response);
+    return { success: true, method: 'email', response };
+  } catch (error) {
+    console.error('Email sending failed:', error);
+    return { success: false, error: error.message };
+  }
+};
+
+const storeFallbackData = async (formType, formData) => {
   try {
     const submissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
     submissions.push({
@@ -26,70 +74,49 @@ const sendFallbackNotification = async (formType, formData) => {
     });
     localStorage.setItem('formSubmissions', JSON.stringify(submissions));
     console.log('Form data stored in localStorage as backup');
+    return { success: true, method: 'localStorage' };
   } catch (error) {
     console.error('Failed to store in localStorage:', error);
+    return { success: false, error: error.message };
   }
-  
-  // In production, you might want to:
-  // - Send an email notification
-  // - Send a webhook to a backend service
-  // - Send to a different database
-  
-  return { success: true, method: 'fallback' };
 };
 
-// Enhanced form submission with error handling and fallbacks
 export const submitForm = async (formType, formData) => {
   const results = {
-    googleSheets: null,
-    fallback: null,
+    email: null,
+    localStorage: null,
     success: false,
     errors: []
   };
 
   try {
-    // Try Google Sheets integration first
-    if (isGoogleSheetsEnabled()) {
-      try {
-        if (formType === 'contact') {
-          results.googleSheets = await submitContactForm(formData);
-        } else if (formType === 'community') {
-          results.googleSheets = await submitCommunityForm(formData);
-        }
-        
-        if (results.googleSheets?.success) {
-          results.success = true;
-          console.log(`${formType} form submitted to Google Sheets successfully`);
-        } else {
-          results.errors.push(`Google Sheets error: ${results.googleSheets?.error}`);
-        }
-      } catch (error) {
-        results.errors.push(`Google Sheets error: ${error.message}`);
-        console.error('Google Sheets submission failed:', error);
-      }
-    } else {
-      console.log('Google Sheets integration disabled or not configured');
-    }
-
-    // Always try fallback method
+    // Try sending email first
     try {
-      results.fallback = await sendFallbackNotification(formType, formData);
-      if (results.fallback?.success) {
+      results.email = await sendEmailNotification(formType, formData);
+      if (results.email?.success) {
         results.success = true;
-        console.log(`${formType} form submitted via fallback method`);
+        console.log(`${formType} form emailed to the.meetpatell@gmail.com successfully`);
+      } else {
+        results.errors.push(`Email error: ${results.email?.error}`);
       }
     } catch (error) {
-      results.errors.push(`Fallback error: ${error.message}`);
-      console.error('Fallback submission failed:', error);
+      results.errors.push(`Email error: ${error.message}`);
+      console.error('Email submission failed:', error);
     }
 
-    // If both methods failed, mark as unsuccessful
-    if (!results.googleSheets?.success && !results.fallback?.success) {
-      results.success = false;
+    // Always store in localStorage as backup
+    try {
+      results.localStorage = await storeFallbackData(formType, formData);
+      if (results.localStorage?.success) {
+        console.log(`${formType} form backed up to localStorage`);
+      }
+    } catch (error) {
+      results.errors.push(`localStorage error: ${error.message}`);
+      console.error('localStorage backup failed:', error);
     }
 
-    // Always ensure we have at least one successful method
-    if (!results.success && results.fallback?.success) {
+    // If email failed but localStorage succeeded, still mark as success
+    if (!results.email?.success && results.localStorage?.success) {
       results.success = true;
     }
 
@@ -144,27 +171,25 @@ export const formatFormDataForLogging = (formType, formData) => {
   return baseData;
 };
 
-// Debug function to test Google Sheets connection
-export const testGoogleSheetsConnection = async () => {
-  if (!isGoogleSheetsEnabled()) {
+export const testEmailConnection = async () => {
+  if (!isEmailJSConfigured()) {
     return {
       success: false,
-      error: 'Google Sheets integration not enabled or not configured'
+      error: 'EmailJS not configured. Check environment variables.'
     };
   }
 
   try {
-    // Test with minimal data
     const testData = {
       name: 'Test User',
       email: 'test@example.com',
       countryCode: '+1',
       whatsapp: '1234567890',
-      subject: 'Test Subject',
-      message: 'Test message'
+      subject: 'Test Email Connection',
+      message: 'This is a test message to verify email configuration.'
     };
 
-    const result = await submitContactForm(testData);
+    const result = await sendEmailNotification('contact', testData);
     return result;
   } catch (error) {
     return {

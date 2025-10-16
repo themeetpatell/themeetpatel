@@ -12,6 +12,7 @@ import {
   getPublishedArticles 
 } from '../data/blogData';
 import FollowMyJourney from '../components/FollowMyJourney';
+import SEOHead from '../components/SEOHead';
 
 const BlogArticlePage = () => {
   const { slug } = useParams();
@@ -100,26 +101,75 @@ const BlogArticlePage = () => {
 
   if (!article) {
     return (
-      <div className="min-h-screen pt-16 ultra-gradient-bg flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-            <X className="w-8 h-8 text-white" />
+      <>
+        <SEOHead 
+          title="Article Not Found"
+          description="The article you're looking for doesn't exist on The Meet Patel's blog."
+          canonical={`/blog/${slug}`}
+        />
+        <div className="min-h-screen pt-16 ultra-gradient-bg flex items-center justify-center">
+          <div className="text-center">
+            <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <X className="w-8 h-8 text-white" />
+            </div>
+            <h2 className="text-2xl font-bold text-white mb-2">Article Not Found</h2>
+            <p className="text-white/70 mb-6">The article you're looking for doesn't exist.</p>
+            <Link
+              to="/blog"
+              className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors"
+            >
+              Back to Blog
+            </Link>
           </div>
-          <h2 className="text-2xl font-bold text-white mb-2">Article Not Found</h2>
-          <p className="text-white/70 mb-6">The article you're looking for doesn't exist.</p>
-          <Link
-            to="/blog"
-            className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors"
-          >
-            Back to Blog
-          </Link>
         </div>
-      </div>
+      </>
     );
   }
 
+  // Generate structured data for article
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": article.title,
+    "description": article.excerpt,
+    "image": `https://themeetpatel.com/blog/${article.slug}.jpg`,
+    "author": {
+      "@type": "Person",
+      "name": article.author,
+      "url": "https://themeetpatel.com/about"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "The Meet Patel",
+      "url": "https://themeetpatel.com"
+    },
+    "datePublished": article.date,
+    "dateModified": article.date,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://themeetpatel.com/blog/${article.slug}`
+    },
+    "keywords": article.tags.join(', '),
+    "articleSection": article.category,
+    "wordCount": article.content.split(' ').length,
+    "timeRequired": article.readTime
+  };
+
   return (
-    <div className="min-h-screen pt-16 ultra-gradient-bg">
+    <>
+      <SEOHead 
+        title={article.title}
+        description={article.excerpt}
+        keywords={`${article.tags.join(', ')}, ${article.category}, The Meet Patel blog, ${article.author}`}
+        canonical={`/blog/${article.slug}`}
+        ogImage={`/blog/${article.slug}.jpg`}
+        ogType="article"
+        articleAuthor={article.author}
+        articlePublishedTime={article.date}
+        articleModifiedTime={article.date}
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen pt-16 ultra-gradient-bg">
       {/* Reading Progress Bar */}
       <div className="fixed top-16 left-0 right-0 h-1 bg-white/10 z-40">
         <motion.div
@@ -612,6 +662,7 @@ const BlogArticlePage = () => {
       {/* Follow My Journey Section */}
       <FollowMyJourney />
     </div>
+    </>
   );
 };
 

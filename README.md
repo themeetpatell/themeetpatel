@@ -47,6 +47,10 @@ cd startupos-revolutionary
 # Install dependencies
 pnpm install
 
+# Configure environment variables
+cp env.example .env
+# Edit .env and add your EmailJS credentials
+
 # Start development server
 pnpm run dev
 
@@ -55,6 +59,24 @@ pnpm run build
 
 # Preview production build
 pnpm run preview
+```
+
+### Email Configuration
+
+This project uses EmailJS to send form submissions directly to your email. To set it up:
+
+1. **See detailed setup guide**: `EMAILJS_SETUP.md`
+2. **Quick setup**:
+   - Create free account at [EmailJS](https://www.emailjs.com/)
+   - Add email service and create template
+   - Copy credentials to `.env` file
+   - All form submissions will be sent to `the.meetpatell@gmail.com`
+
+**Environment variables needed:**
+```env
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
 ```
 
 ## 📁 Project Structure

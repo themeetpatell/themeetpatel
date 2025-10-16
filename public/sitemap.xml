@@ -4,51 +4,216 @@
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
     <loc>https://themeetpatel.com/</loc>
-    <lastmod>2025-09-15</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://themeetpatel.com/og-image.jpg</image:loc>
-      <image:title>The Meet Patel - Serial Entrepreneur | Startup Ecosystem Builder</image:title>
-      <image:caption>Meet The Meet Patel - Serial entrepreneur with 8+ years experience building and scaling startups</image:caption>
+      <image:title>The Meet Patel - Serial Entrepreneur | StartupOS Founder | BiggBizz Creator</image:title>
+      <image:caption>The Meet Patel - Serial entrepreneur, StartupOS founder, BiggBizz creator with 8+ years experience building and scaling startups</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://themeetpatel.com/about</loc>
-    <lastmod>2025-09-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
     <image:image>
       <image:loc>https://themeetpatel.com/meet-patel-profile.jpg</image:loc>
-      <image:title>About The Meet Patel - Serial Entrepreneur</image:title>
-      <image:caption>Learn about The Meet Patel's entrepreneurial journey and startup ecosystem building expertise</image:caption>
+      <image:title>About The Meet Patel - Serial Entrepreneur | StartupOS Founder | BiggBizz Creator</image:title>
+      <image:caption>Learn about The Meet Patel's entrepreneurial journey, StartupOS creation, and BiggBizz development expertise</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/the-meet-patel</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/the-meet-patel-profile.jpg</image:loc>
+      <image:title>The Meet Patel - Serial Entrepreneur | StartupOS | BiggBizz</image:title>
+      <image:caption>The Meet Patel - Serial entrepreneur, StartupOS founder, BiggBizz creator, and startup ecosystem builder</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/themeetpatel</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/themeetpatel-profile.jpg</image:loc>
+      <image:title>themeetpatel - Serial Entrepreneur | StartupOS | BiggBizz</image:title>
+      <image:caption>themeetpatel - The Meet Patel's personal brand, StartupOS platform, and BiggBizz ventures</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/startupos</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/startupos-main.jpg</image:loc>
+      <image:title>StartupOS - The Meet Patel's Startup Management Platform</image:title>
+      <image:caption>StartupOS by The Meet Patel - Complete startup management and operations platform for entrepreneurs</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/biggdate</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/biggdate-main.jpg</image:loc>
+      <image:title>BiggDate - The Meet Patel's Dating Platform for Entrepreneurs</image:title>
+      <image:caption>BiggDate by The Meet Patel - Dating platform specifically designed for founders and entrepreneurs</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/biggbizz</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/biggbizz-main.jpg</image:loc>
+      <image:title>BiggBizz - The Meet Patel's Business Platform</image:title>
+      <image:caption>BiggBizz by The Meet Patel - Comprehensive business platform for entrepreneurs and startups</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://themeetpatel.com/portfolio</loc>
-    <lastmod>2025-09-15</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
       <image:loc>https://themeetpatel.com/portfolio-preview.jpg</image:loc>
-      <image:title>Portfolio - The Meet Patel's Startup Ventures</image:title>
-      <image:caption>Explore The Meet Patel's portfolio of successful startups and business ventures</image:caption>
+      <image:title>Portfolio - The Meet Patel's Startup Ventures | StartupOS | BiggBizz | BiggDate</image:title>
+      <image:caption>Explore The Meet Patel's portfolio including StartupOS, BiggBizz, BiggDate, and other successful startup ventures</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/startups</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/startups-main.jpg</image:loc>
+      <image:title>Startups - The Meet Patel's Startup Ventures and Mentorship</image:title>
+      <image:caption>The Meet Patel's startup ventures, mentorship programs, and startup ecosystem building expertise</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/business-strategy</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/business-strategy-main.jpg</image:loc>
+      <image:title>Business Strategy - The Meet Patel's Strategic Consulting</image:title>
+      <image:caption>Business strategy consulting and advisory services by The Meet Patel for startups and entrepreneurs</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/serial-entrepreneur</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/serial-entrepreneur-main.jpg</image:loc>
+      <image:title>Serial Entrepreneur - The Meet Patel's Journey</image:title>
+      <image:caption>The Meet Patel's journey as a serial entrepreneur, building multiple successful startups and ventures</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/startup-mentor</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/startup-mentor-main.jpg</image:loc>
+      <image:title>Startup Mentor - The Meet Patel's Mentorship Program</image:title>
+      <image:caption>The Meet Patel's startup mentorship program, guiding entrepreneurs and startup founders to success</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/dubai-entrepreneur</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/dubai-entrepreneur-main.jpg</image:loc>
+      <image:title>Dubai Entrepreneur - The Meet Patel in UAE</image:title>
+      <image:caption>The Meet Patel - Dubai-based serial entrepreneur, startup ecosystem builder, and business consultant</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://themeetpatel.com/systems</loc>
-    <lastmod>2025-09-15</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://themeetpatel.com/systems-preview.jpg</image:loc>
-      <image:title>StartupOS - Business Systems by The Meet Patel</image:title>
-      <image:caption>Discover StartupOS and business systems developed by The Meet Patel</image:caption>
+      <image:title>StartupOS - Business Systems by The Meet Patel | StartupOS Platform</image:title>
+      <image:caption>Discover StartupOS and business systems developed by The Meet Patel for startup management and operations</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/startup-ecosystem-builder</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/startup-ecosystem-builder-main.jpg</image:loc>
+      <image:title>Startup Ecosystem Builder - The Meet Patel</image:title>
+      <image:caption>The Meet Patel as a startup ecosystem builder, creating platforms and communities for entrepreneurs</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/business-operations-expert</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/business-operations-expert-main.jpg</image:loc>
+      <image:title>Business Operations Expert - The Meet Patel</image:title>
+      <image:caption>The Meet Patel as a business operations expert, helping startups scale and optimize their operations</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/product-development-expert</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/product-development-expert-main.jpg</image:loc>
+      <image:title>Product Development Expert - The Meet Patel</image:title>
+      <image:caption>The Meet Patel as a product development expert, building innovative products and platforms</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/startup-scaling-expert</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/startup-scaling-expert-main.jpg</image:loc>
+      <image:title>Startup Scaling Expert - The Meet Patel</image:title>
+      <image:caption>The Meet Patel as a startup scaling expert, helping startups grow from idea to exit</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/business-consultant</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/business-consultant-main.jpg</image:loc>
+      <image:title>Business Consultant - The Meet Patel</image:title>
+      <image:caption>The Meet Patel as a business consultant, providing strategic advice and guidance to entrepreneurs</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://themeetpatel.com/blog</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -59,7 +224,7 @@
   </url>
   <url>
     <loc>https://themeetpatel.com/community</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -70,7 +235,7 @@
   </url>
   <url>
     <loc>https://themeetpatel.com/contact</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -81,25 +246,47 @@
   </url>
   <url>
     <loc>https://themeetpatel.com/privacy-policy</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-09-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://themeetpatel.com/terms-of-service</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-09-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://themeetpatel.com/cookie-policy</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-09-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://themeetpatel.com/blog/from-idea-to-exit-8-year-journey</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/blog/from-idea-to-exit-8-year-journey.jpg</image:loc>
+      <image:title>From Idea to Exit: My 8-Year Journey as a Serial Entrepreneur</image:title>
+      <image:caption>Reflecting on the lessons learned from building multiple startups and the wisdom gained along the way</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/art-of-writing-love-stories-eternal-love</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/blog/art-of-writing-love-stories-eternal-love.jpg</image:loc>
+      <image:title>The Art of Writing Love Stories: Behind The Eternal Love</image:title>
+      <image:caption>Discover the creative process behind writing romantic novels and storytelling</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://themeetpatel.com/blog/startup-ecosystem-building</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -110,7 +297,7 @@
   </url>
   <url>
     <loc>https://themeetpatel.com/blog/business-operations-expertise</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -121,7 +308,7 @@
   </url>
   <url>
     <loc>https://themeetpatel.com/blog/startup-scaling-strategies</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -132,7 +319,7 @@
   </url>
   <url>
     <loc>https://themeetpatel.com/blog/entrepreneurship-lessons</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -143,7 +330,7 @@
   </url>
   <url>
     <loc>https://themeetpatel.com/blog/product-management-guide</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -153,8 +340,96 @@
     </image:image>
   </url>
   <url>
+    <loc>https://themeetpatel.com/blog/startup-funding-guide</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/blog/startup-funding-guide.jpg</image:loc>
+      <image:title>Startup Funding Guide - The Meet Patel's Experience</image:title>
+      <image:caption>Complete guide to startup funding and investor relations from serial entrepreneur The Meet Patel</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/team-building-startups</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/blog/team-building-startups.jpg</image:loc>
+      <image:title>Team Building for Startups - The Meet Patel's Method</image:title>
+      <image:caption>Learn how to build and scale high-performing teams in startup environments</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/blog/digital-marketing-strategies</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/blog/digital-marketing-strategies.jpg</image:loc>
+      <image:title>Digital Marketing Strategies for Startups - The Meet Patel</image:title>
+      <image:caption>Effective digital marketing strategies for startup growth and customer acquisition</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/systems/startup-scaling-framework</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/systems/startup-scaling-framework.jpg</image:loc>
+      <image:title>Startup Scaling & Growth Framework - The Meet Patel</image:title>
+      <image:caption>Comprehensive framework for scaling startups from early stage to growth phase</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/systems/content-marketing-sop</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/systems/content-marketing-sop.jpg</image:loc>
+      <image:title>Content Creation & Marketing System - The Meet Patel</image:title>
+      <image:caption>Comprehensive content marketing system including creation workflows and distribution strategies</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/systems/customer-success-workflow</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/systems/customer-success-workflow.jpg</image:loc>
+      <image:title>Customer Success & Retention Workflow - The Meet Patel</image:title>
+      <image:caption>Proven customer success workflow for improving retention and satisfaction</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/systems/hr-recruitment-system</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/systems/hr-recruitment-system.jpg</image:loc>
+      <image:title>HR & Recruitment Management System - The Meet Patel</image:title>
+      <image:caption>Complete HR and recruitment system for startup team building</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themeetpatel.com/systems/financial-tracking-system</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://themeetpatel.com/systems/financial-tracking-system.jpg</image:loc>
+      <image:title>Financial Tracking & Reporting System - The Meet Patel</image:title>
+      <image:caption>Advanced financial tracking and reporting system for startup financial management</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://themeetpatel.com/systems/startupos</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -165,7 +440,7 @@
   </url>
   <url>
     <loc>https://themeetpatel.com/systems/business-operations-framework</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -176,7 +451,7 @@
   </url>
   <url>
     <loc>https://themeetpatel.com/systems/startup-scaling-process</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
