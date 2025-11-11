@@ -4,48 +4,6 @@
 export const blogArticles = [
   {
     id: 1,
-    slug: "from-idea-to-exit-8-year-journey",
-    title: "From Idea to Exit: My 8-Year Journey as a Serial Entrepreneur",
-    excerpt: "Reflecting on the lessons learned from building multiple startups, the challenges faced, and the wisdom gained along the way.",
-    content: `
-      <p>Eight years ago, I was a 20-year-old mechanical engineering student at Nirma University, watching my classmates prepare for campus placements while I was secretly building my first startup in my hostel room. Today, I've built 10+ ventures, mentored 50+ startups, and learned that entrepreneurship isn't about having the perfect idea – it's about having the courage to start.</p>
-
-      <h2>The First Failure That Taught Me Everything</h2>
-      <p>My first startup, Incsmart, was a smart energy meter company. We had the technology, the team, and even some initial customers. But we failed. Not because of the product, but because we didn't understand our customers' real problems. That failure taught me more than any success ever could.</p>
-
-      <h2>The Pivot That Changed Everything</h2>
-      <p>After Incsmart, I co-founded Kingstorm – an IoT automation platform. This time, I spent months talking to customers before writing a single line of code. We built 200+ devices and had a 10-person team, but the market wasn't ready. Another "failure" that was actually a masterclass in market timing.</p>
-
-      <h2>What I Wish I Knew at 20</h2>
-      <p>Looking back, here's what I'd tell my younger self:</p>
-
-      <h3>1. Your First Idea Will Probably Fail (And That's Perfect)</h3>
-      <p>I've seen too many entrepreneurs get attached to their first idea. The magic happens when you learn to pivot quickly based on real customer feedback.</p>
-
-      <h3>2. Build Systems Before You Build Products</h3>
-      <p>At Finanshels, we scaled from 34 to 97 employees in 6 months. The only reason we didn't collapse was the systems I'd built. Systems don't just help you scale – they help you sleep at night.</p>
-
-      <h3>3. Your Network Is Your Net Worth</h3>
-      <p>Every major opportunity in my career came through relationships I'd built years earlier. Invest in people, not just products.</p>
-
-      <h2>The Numbers That Matter</h2>
-      <p>8 years. 10+ ventures. 50+ startups mentored. 300+ team members led. 2 books published. But the number I'm most proud of? 85% success rate of the startups I've mentored. That's what keeps me going.</p>
-
-      <h2>What's Next</h2>
-      <p>I'm building StartupOS – a comprehensive platform that gives entrepreneurs everything they need to succeed. Because if I can help even one founder avoid the mistakes I made, it's worth it.</p>
-    `,
-    category: "Entrepreneurship",
-    author: "The Meet Patel",
-    date: "2024-01-15",
-    readTime: "8 min read",
-    views: 2500,
-    likes: 89,
-    featured: true,
-    tags: ["entrepreneurship", "startup journey", "lessons learned"],
-    published: true
-  },
-  {
-    id: 2,
     slug: "art-of-writing-love-stories-eternal-love",
     title: "The Art of Writing Love Stories: Behind 'The Eternal Love'",
     excerpt: "Exploring the creative process behind writing romantic novels and how personal experiences shape fictional narratives.",
@@ -72,7 +30,7 @@ export const blogArticles = [
     published: true
   },
   {
-    id: 3,
+    id: 2,
     slug: "mentoring-50-startups-success-lessons",
     title: "Mentoring 50+ Startups: What I've Learned About Success",
     excerpt: "Key insights from mentoring dozens of entrepreneurs and the common patterns that lead to startup success.",
@@ -114,7 +72,7 @@ export const blogArticles = [
     published: true
   },
   {
-    id: 4,
+    id: 3,
     slug: "building-finanshels-business-intelligence",
     title: "Building Finanshels.com: Making Businesses Smarter with Money",
     excerpt: "The story behind building a business intelligence platform and the challenges of financial optimization.",
@@ -156,7 +114,7 @@ export const blogArticles = [
     published: true
   },
   {
-    id: 5,
+    id: 4,
     slug: "power-of-authentic-storytelling-business",
     title: "The Power of Authentic Storytelling in Business",
     excerpt: "How authentic narratives can transform your brand and connect with your audience on a deeper level.",
@@ -198,7 +156,7 @@ export const blogArticles = [
     published: true
   },
   {
-    id: 6,
+    id: 5,
     slug: "scaling-studenthub-50k-users",
     title: "Lessons from Scaling StudentHub to 50K+ Users",
     excerpt: "The operational challenges and solutions when scaling a platform from hundreds to tens of thousands of users.",
@@ -246,7 +204,7 @@ export const blogArticles = [
     published: true
   },
   {
-    id: 7,
+    id: 6,
     slug: "writing-romance-novels-tech-entrepreneur",
     title: "Why I Write Romance Novels as a Tech Entrepreneur",
     excerpt: "The unexpected connection between building startups and writing love stories, and how creativity fuels both.",
@@ -282,49 +240,7 @@ export const blogArticles = [
     published: true
   },
   {
-    id: 8,
-    slug: "forbes-30-under-30-experience",
-    title: "The Forbes 30 Under 30 Experience: What It Really Means",
-    excerpt: "Reflecting on the recognition, the responsibility, and the journey that led to this milestone.",
-    content: `
-      <p>I was 26 years old, sitting in my tiny apartment in Ahmedabad, when I got the email. "Congratulations, you've been selected for Forbes 30 Under 30." I read it three times. Then I called my mom. She cried. I cried. My dad, who had never understood why I left a stable engineering job to "play with computers," finally said he was proud of me.</p>
-
-      <h2>The Day Everything Changed</h2>
-      <p>Before Forbes, I was just another entrepreneur trying to make it. After Forbes, I was "The Meet Patel, Forbes 30 Under 30." Suddenly, people returned my emails. Investors wanted to meet me. Students asked for autographs. It was surreal.</p>
-
-      <h2>The Dark Side of Recognition</h2>
-      <p>But here's what nobody tells you about being on Forbes 30 Under 30: it's not just an honor – it's a burden. Every decision I made was scrutinized. Every failure was magnified. Every success was expected. The pressure was crushing.</p>
-
-      <h2>The Imposter Syndrome</h2>
-      <p>For months, I felt like a fraud. I kept thinking, "What if they made a mistake? What if I don't deserve this?" I was comparing myself to other Forbes honorees who seemed to have it all figured out. I felt like I was pretending to be someone I wasn't.</p>
-
-      <h2>The Turning Point</h2>
-      <p>Then I met another Forbes honoree at a conference. She was 28, had raised $50M, and was running a unicorn startup. She told me she felt the same way. "We're all just figuring it out as we go," she said. "The difference is, now we have to figure it out in public."</p>
-
-      <h2>How I Learned to Embrace the Platform</h2>
-      <p>That conversation changed everything. I realized that Forbes didn't give me recognition – it gave me a platform. A platform to share my failures, not just my successes. A platform to help other entrepreneurs avoid the mistakes I made. A platform to be honest about how hard this journey really is.</p>
-
-      <h2>The Responsibility I Never Asked For</h2>
-      <p>Now I understand that being on Forbes 30 Under 30 isn't about me – it's about the thousands of young entrepreneurs who look up to me. Every time I share my story, I'm showing them that success isn't linear. That failure is part of the journey. That it's okay to not have it all figured out.</p>
-
-      <h2>What I Wish I Knew Then</h2>
-      <p>If I could go back to that day in my apartment, I'd tell myself: "This isn't the end of your journey – it's the beginning. Use this platform to help others, not to build your ego. Share your failures as much as your successes. And remember, you're not just building businesses – you're building hope."</p>
-
-      <h2>The Real Legacy</h2>
-      <p>Being on Forbes 30 Under 30 isn't about the recognition. It's about the responsibility. The responsibility to be honest about the entrepreneurial journey. The responsibility to help others succeed. The responsibility to use your platform for good. That's the real honor.</p>
-    `,
-    category: "Personal Growth",
-    author: "The Meet Patel",
-    date: "2023-12-05",
-    readTime: "4 min read",
-    views: 2100,
-    likes: 95,
-    featured: false,
-    tags: ["achievement", "recognition", "personal growth"],
-    published: true
-  },
-  {
-    id: 9,
+    id: 7,
     slug: "building-startupos-ecosystem-entrepreneurs",
     title: "Building StartupOS: Creating an Ecosystem for Entrepreneurs",
     excerpt: "The vision behind StartupOS and how we're building tools to help startups succeed at every stage.",
@@ -360,7 +276,7 @@ export const blogArticles = [
     published: true
   },
   {
-    id: 10,
+    id: 8,
     slug: "endless-devotion-writing-sequel-success",
     title: "The Endless Devotion: Writing a Sequel to Success",
     excerpt: "The challenges and joys of writing a sequel, and how reader feedback shaped the second book.",
@@ -393,12 +309,12 @@ export const blogArticles = [
     published: true
   },
   {
-    id: 11,
-    slug: "leading-250-employees-team-management",
-    title: "Leading 250+ Employees: Lessons in Team Management",
+    id: 9,
+    slug: "leading-550-employees-team-management",
+    title: "Leading 550+ Employees: Lessons in Team Management",
     excerpt: "Key insights from managing large teams across multiple startups and the evolution of leadership style.",
     content: `
-      <p>Leading 250+ employees across multiple ventures has been one of my greatest learning experiences. It's taught me that leadership is not about having all the answers, but about asking the right questions.</p>
+      <p>Leading 550+ employees across multiple ventures has been one of my greatest learning experiences. It's taught me that leadership is not about having all the answers, but about asking the right questions.</p>
 
       <h2>The Evolution of Leadership</h2>
       <p>My leadership style has evolved significantly over the years, from being hands-on with every detail to focusing on strategic direction and team empowerment.</p>
@@ -429,7 +345,7 @@ export const blogArticles = [
     published: true
   },
   {
-    id: 12,
+    id: 10,
     slug: "torchit-global-impact-assistive-technology",
     title: "From TorchIt to Global Impact: Scaling Assistive Technology",
     excerpt: "The journey of building and scaling assistive technology solutions that reached 100K+ users worldwide.",
@@ -468,7 +384,7 @@ export const blogArticles = [
     published: true
   },
   {
-    id: 13,
+    id: 11,
     slug: "art-balancing-multiple-ventures",
     title: "The Art of Balancing Multiple Ventures",
     excerpt: "How to manage multiple projects simultaneously while maintaining quality and personal well-being.",
@@ -507,7 +423,7 @@ export const blogArticles = [
     published: true
   },
   {
-    id: 14,
+    id: 12,
     slug: "why-i-mentor-joy-helping-others-succeed",
     title: "Why I Mentor: The Joy of Helping Others Succeed",
     excerpt: "The personal fulfillment that comes from mentoring and the impact it has on both mentor and mentee.",
@@ -546,56 +462,7 @@ export const blogArticles = [
     published: true
   },
   {
-    id: 15,
-    slug: "future-entrepreneurship-india",
-    title: "The Future of Entrepreneurship in India",
-    excerpt: "Thoughts on the evolving startup ecosystem in India and what the next decade holds for entrepreneurs.",
-    content: `
-      <p>India's startup ecosystem has evolved dramatically over the past decade, and I believe we're just getting started. The next decade holds incredible opportunities for Indian entrepreneurs.</p>
-
-      <h2>Current Landscape</h2>
-      <p>India now has the third-largest startup ecosystem globally, with over 100 unicorns and thousands of innovative companies across various sectors.</p>
-
-      <h2>Key Trends Shaping the Future</h2>
-      <p>Several trends are shaping the future of entrepreneurship in India:</p>
-
-      <h3>1. Deep Tech Innovation</h3>
-      <p>We're seeing more startups focusing on deep technology solutions, from AI to quantum computing.</p>
-
-      <h3>2. Tier 2 and 3 City Growth</h3>
-      <p>Entrepreneurship is spreading beyond major metros, with innovative startups emerging from smaller cities.</p>
-
-      <h3>3. Sustainability Focus</h3>
-      <p>Climate tech and sustainable solutions are becoming major focus areas for Indian startups.</p>
-
-      <h2>Opportunities Ahead</h2>
-      <p>The next decade will see opportunities in areas like:</p>
-      <ul>
-        <li>Artificial Intelligence and Machine Learning</li>
-        <li>Climate Technology</li>
-        <li>Healthcare Innovation</li>
-        <li>Financial Technology</li>
-        <li>Education Technology</li>
-      </ul>
-
-      <h2>Challenges to Address</h2>
-      <p>While opportunities abound, we need to address challenges like access to capital, regulatory clarity, and talent development.</p>
-
-      <h2>My Vision</h2>
-      <p>I envision India becoming the global leader in sustainable and inclusive entrepreneurship, creating solutions that benefit not just India but the world.</p>
-    `,
-    category: "Entrepreneurship",
-    author: "The Meet Patel",
-    date: "2023-10-25",
-    readTime: "6 min read",
-    views: 1600,
-    likes: 78,
-    featured: false,
-    tags: ["India startup ecosystem", "future trends", "entrepreneurship"],
-    published: true
-  },
-  {
-    id: 10,
+    id: 13,
     slug: "startupos-mental-model-command-dont-cope",
     title: "The StartupOS Mental Model: Command, Don't Cope",
     excerpt: "A systematic way of operating that prevents chaos from ever taking root. The CORE5 mental model that real builders swear by.",
@@ -659,7 +526,7 @@ export const blogArticles = [
     published: true
   },
   {
-    id: 11,
+    id: 14,
     slug: "startup-blindspots-build-people-before-product",
     title: "Startup Blindspots: Why Most Founders Fail to Build People Before Product",
     excerpt: "You don't have a product problem. You have a people problem. That's the line no one's putting on pitch decks.",
@@ -728,7 +595,7 @@ export const blogArticles = [
     published: true
   },
   {
-    id: 12,
+    id: 15,
     slug: "art-of-war-business-winning-strategies-startups",
     title: "The Art of War in Business — Winning Strategies for Modern Startups",
     excerpt: "Ancient wisdom meets modern startup strategy. How Sun Tzu's principles can guide your entrepreneurial journey.",
@@ -780,7 +647,7 @@ export const blogArticles = [
     published: true
   },
   {
-    id: 13,
+    id: 16,
     slug: "clarity-scales-strategy-every-founder-needs",
     title: "Clarity Scales: The Strategy No One Taught You — But Every Founder Needs",
     excerpt: "The one thing that separates successful founders from the rest isn't intelligence, connections, or even execution. It's clarity.",

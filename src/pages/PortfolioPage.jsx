@@ -60,14 +60,14 @@ const PortfolioPage = () => {
 
     {
       id: 3,
-      title: "Mindmate",
-      description: "Dating app specifically designed for founders and entrepreneurs to connect with like-minded individuals who understand the startup journey.",
-      longDescription: "A specialized dating platform that brings together founders, entrepreneurs, and startup enthusiasts. Features include founder verification, startup journey sharing, networking opportunities, and compatibility matching based on entrepreneurial mindset and lifestyle preferences.",
+      title: "BiggDate",
+      description: "A co-foundership building and startup creation platform. Entrepreneurs connect, build startups together, and upon successful establishment, they receive a visa to StartupOS.",
+      longDescription: "A co-foundership building and startup creation platform that brings together entrepreneurs to connect, build startups together, and upon successful establishment, they receive a visa to StartupOS - the comprehensive startup ecosystem platform with 50+ integrated tools and services.",
       image: "/api/placeholder/600/400",
       category: "social",
       status: "Pre-Launch",
-      tech: ["React Native", "Node.js", "MongoDB", "AWS", "Real-time Chat", "Matching Algorithm"],
-      liveUrl: "https://mindmate-amber.vercel.app",
+      tech: ["Co-foundership", "Startup Creation", "Entrepreneurship Tools", "Web Platform", "StartupOS"],
+      liveUrl: "https://biggdate.com",
       githubUrl: null,
       featured: false,
       metrics: {
@@ -76,9 +76,9 @@ const PortfolioPage = () => {
         matches: "10+"
       },
       achievements: [
-        "Founder-Focused Dating Platform",
-        "Entrepreneur Community Building",
-        "Startup Journey Integration"
+        "Co-foundership Building Platform",
+        "Startup Creation Focus",
+        "StartupOS Visa Program"
       ]
     },
     {
@@ -541,7 +541,7 @@ const PortfolioPage = () => {
           >
             {/* Search Bar */}
             <div className="max-w-2xl mx-auto mb-6 sm:mb-8">
-              <div className="relative">
+                <div className="relative">
                 <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-purple-400 w-4 h-4 sm:w-5 sm:h-5" />
                 <input
                   type="text"
@@ -569,8 +569,8 @@ const PortfolioPage = () => {
                   <span className="text-purple-600"> for "{searchTerm}"</span>
                 )}
               </p>
-            </div>
-
+              </div>
+              
             {/* Category Tabs */}
             <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
               {categories.map((category) => {
@@ -642,15 +642,15 @@ const PortfolioPage = () => {
                       </div>
                     </div>
                     <div className="absolute top-3 right-3">
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                        project.status === 'Live' ? 'bg-green-500/20 text-green-400' :
-                        project.status === 'Closed' ? 'bg-red-500/20 text-red-400' :
-                        project.status === 'Strategized' ? 'bg-purple-600/20 text-purple-500' :
-                        project.status === 'Exited' ? 'bg-purple-500/20 text-purple-400' :
-                        project.status === 'Pre-Launch' ? 'bg-yellow-500/20 text-yellow-400' :
-                        project.status === 'In Development' ? 'bg-purple-600/20 text-purple-500' :
-                        project.status === 'Acquired' ? 'bg-purple-500/20 text-purple-400' :
-                        'bg-orange-500/20 text-orange-400'
+                      <span className={`px-3 py-1.5 rounded-full text-xs font-semibold shadow-md ${
+                        project.status === 'Live' ? 'bg-green-500/30 text-green-600 border border-green-400/50' :
+                        project.status === 'Closed' ? 'bg-red-500/30 text-red-600 border border-red-400/50' :
+                        project.status === 'Strategized' ? 'bg-purple-600/30 text-purple-700 border border-purple-500/50' :
+                        project.status === 'Exited' ? 'bg-purple-500/30 text-purple-700 border border-purple-400/50' :
+                        project.status === 'Pre-Launch' ? 'bg-yellow-500/40 text-yellow-700 border border-yellow-400/60 shadow-lg' :
+                        project.status === 'In Development' ? 'bg-purple-600/30 text-purple-700 border border-purple-500/50' :
+                        project.status === 'Acquired' ? 'bg-purple-500/30 text-purple-700 border border-purple-400/50' :
+                        'bg-orange-500/30 text-orange-600 border border-orange-400/50'
                       }`}>
                         {project.status}
                       </span>
@@ -660,15 +660,18 @@ const PortfolioPage = () => {
                   <div className="p-4">
                     <p className="text-gray-700 text-sm mb-3 line-clamp-2">{project.description}</p>
                     
-                    <div className="flex flex-wrap gap-1 mb-3">
-                      {project.tech.slice(0, 3).map((tech, idx) => (
-                        <span key={idx} className="bg-purple-100 text-gray-600 px-2 py-1 rounded text-xs">
+                    <div className="flex items-center gap-1.5 mb-3 overflow-x-auto scrollbar-hide">
+                      <span className="bg-purple-200 text-purple-700 px-2 py-1 rounded text-xs font-medium whitespace-nowrap flex-shrink-0">
+                        {categories.find(cat => cat.id === project.category)?.label || project.category}
+                      </span>
+                      {project.tech.slice(0, 2).map((tech, idx) => (
+                        <span key={idx} className="bg-purple-100 text-gray-600 px-2 py-1 rounded text-xs whitespace-nowrap flex-shrink-0">
                           {tech}
                         </span>
                       ))}
-                      {project.tech.length > 3 && (
-                        <span className="bg-purple-100 text-gray-600 px-2 py-1 rounded text-xs">
-                          +{project.tech.length - 3}
+                      {project.tech.length > 2 && (
+                        <span className="bg-purple-100 text-gray-600 px-2 py-1 rounded text-xs whitespace-nowrap flex-shrink-0">
+                          +{project.tech.length - 2}
                         </span>
                       )}
                     </div>

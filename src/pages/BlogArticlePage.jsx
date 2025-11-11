@@ -18,7 +18,6 @@ const BlogArticlePage = () => {
   const { slug } = useParams();
   const [article, setArticle] = useState(null);
   const [relatedArticles, setRelatedArticles] = useState([]);
-  const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [showShareMenu, setShowShareMenu] = useState(false);
   const [readingProgress, setReadingProgress] = useState(0);
@@ -112,11 +111,11 @@ const BlogArticlePage = () => {
             <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
               <X className="w-8 h-8 text-white" />
             </div>
-            <h2 className="text-2xl font-bold text-white mb-2">Article Not Found</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Article Not Found</h2>
             <p className="text-gray-600 mb-6">The article you're looking for doesn't exist.</p>
             <Link
               to="/blogs"
-              className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
+              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-colors"
             >
               Back to Blog
             </Link>
@@ -244,7 +243,7 @@ const BlogArticlePage = () => {
             {/* Back Button */}
             <Link
               to="/blogs"
-              className="inline-flex items-center space-x-2 text-gray-600 hover:text-white transition-colors mb-8"
+              className="inline-flex items-center space-x-2 text-gray-600 hover:text-purple-600 transition-colors mb-8"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Blog</span>
@@ -252,13 +251,13 @@ const BlogArticlePage = () => {
 
             {/* Category */}
             <div className="mb-4">
-              <span className="bg-purple-600/20 text-purple-500 px-3 py-1 rounded-full text-sm font-medium">
+              <span className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium">
                   {article.category}
                 </span>
               </div>
 
             {/* Title */}
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
                 {article.title}
               </h1>
 
@@ -268,7 +267,7 @@ const BlogArticlePage = () => {
               </p>
 
             {/* Meta Information */}
-            <div className="flex flex-wrap items-center gap-6 text-purple-500 mb-8">
+            <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-8">
               <div className="flex items-center space-x-2">
                 <User className="w-4 h-4" />
                 <span>{article.author}</span>
@@ -290,7 +289,7 @@ const BlogArticlePage = () => {
             {/* Tags */}
             <div className="flex flex-wrap gap-2 mb-8">
               {article.tags.map((tag, index) => (
-                <span key={index} className="bg-purple-600/20 text-purple-500 px-3 py-1 rounded-full text-sm border border-purple-600/30">
+                <span key={index} className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm border border-purple-200/50">
                   #{tag}
                                 </span>
                             ))}
@@ -299,27 +298,13 @@ const BlogArticlePage = () => {
             {/* Action Buttons */}
             <div className="flex items-center space-x-4">
                   <motion.button
-                onClick={() => setIsLiked(!isLiked)}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
-                      isLiked 
-                        ? 'bg-red-500/20 text-red-400' 
-                        : 'bg-purple-100 text-gray-600 hover:text-white hover:bg-white/20'
-                    }`}
-                  >
-                <Heart className={`w-4 h-4 ${isLiked ? 'fill-current' : ''}`} />
-                <span>{isLiked ? article.likes + 1 : article.likes}</span>
-                  </motion.button>
-
-                  <motion.button
                 onClick={() => setIsBookmarked(!isBookmarked)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
                       isBookmarked 
-                    ? 'bg-purple-600/20 text-purple-500' 
-                        : 'bg-purple-100 text-gray-600 hover:text-white hover:bg-white/20'
+                    ? 'bg-purple-500/20 text-purple-600 border border-purple-300/50' 
+                        : 'bg-purple-100 text-gray-600 hover:text-purple-600 hover:bg-purple-50 border border-purple-200/50'
                     }`}
                   >
                 <Bookmark className={`w-4 h-4 ${isBookmarked ? 'fill-current' : ''}`} />
@@ -331,7 +316,7 @@ const BlogArticlePage = () => {
                       onClick={() => setShowShareMenu(!showShareMenu)}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                  className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-purple-100 text-gray-600 hover:text-white hover:bg-white/20 transition-colors"
+                  className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-purple-100 text-gray-600 hover:text-purple-600 hover:bg-purple-50 border border-purple-200/50 transition-colors"
                     >
                   <Share2 className="w-4 h-4" />
                   <span>Share</span>
@@ -343,35 +328,35 @@ const BlogArticlePage = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="absolute top-full left-0 mt-2 bg-white/95 backdrop-blur-xl border border-purple-200/50 rounded-lg p-2 min-w-[200px] z-50"
+                      className="absolute top-full left-0 mt-2 bg-white/95 backdrop-blur-xl border border-purple-200/50 rounded-xl p-2 min-w-[200px] z-50 shadow-lg"
                     >
                             <button
                               onClick={() => handleShare('twitter')}
-                        className="w-full flex items-center space-x-3 px-3 py-2 rounded hover:bg-purple-50 transition-colors text-left"
+                        className="w-full flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-purple-50 transition-colors text-left"
                             >
                         <Twitter className="w-4 h-4 text-purple-500" />
-                        <span className="text-white">Twitter</span>
+                        <span className="text-gray-900">Twitter</span>
                             </button>
                             <button
                               onClick={() => handleShare('linkedin')}
-                        className="w-full flex items-center space-x-3 px-3 py-2 rounded hover:bg-purple-50 transition-colors text-left"
+                        className="w-full flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-purple-50 transition-colors text-left"
                             >
                         <Linkedin className="w-4 h-4 text-purple-500" />
-                        <span className="text-white">LinkedIn</span>
+                        <span className="text-gray-900">LinkedIn</span>
                             </button>
                             <button
                               onClick={() => handleShare('facebook')}
-                        className="w-full flex items-center space-x-3 px-3 py-2 rounded hover:bg-purple-50 transition-colors text-left"
+                        className="w-full flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-purple-50 transition-colors text-left"
                             >
                         <Facebook className="w-4 h-4 text-purple-500" />
-                        <span className="text-white">Facebook</span>
+                        <span className="text-gray-900">Facebook</span>
                             </button>
                             <button
                         onClick={handleCopyLink}
-                        className="w-full flex items-center space-x-3 px-3 py-2 rounded hover:bg-purple-50 transition-colors text-left"
+                        className="w-full flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-purple-50 transition-colors text-left"
                             >
                         <Copy className="w-4 h-4 text-gray-600" />
-                        <span className="text-white">Copy Link</span>
+                        <span className="text-gray-900">Copy Link</span>
                             </button>
                         </motion.div>
                       )}
@@ -393,17 +378,16 @@ const BlogArticlePage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="ultra-glass rounded-2xl overflow-hidden"
+                className="bg-white/30 backdrop-blur-md rounded-2xl overflow-hidden border border-purple-200/50"
               >
                 {/* Article Header Image */}
-                <div className="relative h-64 md:h-80 bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-purple-500/20">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <div className="relative h-64 md:h-80 bg-gradient-to-br from-purple-100 via-pink-100 to-purple-50">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="w-20 h-20 bg-purple-100 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4">
+                      <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                         <BookOpen className="w-10 h-10 text-white" />
             </div>
-                      <h2 className="text-2xl md:text-3xl font-bold text-white px-4">{article.title}</h2>
+                      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 px-4">{article.title}</h2>
                     </div>
                   </div>
                 </div>
@@ -412,9 +396,9 @@ const BlogArticlePage = () => {
                 <div className="p-8 md:p-12 lg:p-16">
 
                   {/* Article Content */}
-                  <div className="prose prose-xl prose-invert max-w-none">
+                  <div className="prose prose-xl max-w-none">
                     <div 
-                      className="text-white/90 leading-relaxed text-lg"
+                      className="text-gray-700 leading-relaxed text-lg"
                       dangerouslySetInnerHTML={{ __html: article.content }}
                       style={{ 
                         lineHeight: '1.8',
@@ -428,13 +412,13 @@ const BlogArticlePage = () => {
                   <div className="mt-12 pt-8 border-t border-purple-200/50">
                     <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
                       <div className="flex items-center space-x-4">
-                        <span className="text-gray-600 font-medium">Share this article:</span>
+                        <span className="text-gray-700 font-medium">Share this article:</span>
                         <div className="flex items-center space-x-3">
                           <motion.button
                             onClick={() => handleShare('linkedin')}
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
-                            className="p-3 bg-blue-600/20 text-purple-500 hover:bg-purple-700/30 rounded-xl transition-all duration-200"
+                            className="p-3 bg-blue-600/20 text-blue-600 hover:bg-blue-600/30 rounded-xl transition-all duration-200 border border-blue-200/50"
                             title="Share on LinkedIn"
                           >
                             <Linkedin className="w-5 h-5" />
@@ -444,7 +428,7 @@ const BlogArticlePage = () => {
                             onClick={() => handleShare('twitter')}
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
-                            className="p-3 bg-sky-500/20 text-sky-400 hover:bg-sky-500/30 rounded-xl transition-all duration-200"
+                            className="p-3 bg-sky-500/20 text-sky-600 hover:bg-sky-500/30 rounded-xl transition-all duration-200 border border-sky-200/50"
                             title="Share on Twitter"
                           >
                             <Twitter className="w-5 h-5" />
@@ -454,7 +438,7 @@ const BlogArticlePage = () => {
                             onClick={() => handleShare('facebook')}
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
-                            className="p-3 bg-purple-600/20 text-purple-500 hover:bg-purple-600/30 rounded-xl transition-all duration-200"
+                            className="p-3 bg-purple-600/20 text-purple-600 hover:bg-purple-600/30 rounded-xl transition-all duration-200 border border-purple-200/50"
                             title="Share on Facebook"
                           >
                             <Facebook className="w-5 h-5" />
@@ -464,7 +448,7 @@ const BlogArticlePage = () => {
                             onClick={handleCopyLink}
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
-                            className="p-3 bg-gray-500/20 text-gray-400 hover:bg-gray-500/30 rounded-xl transition-all duration-200"
+                            className="p-3 bg-gray-500/20 text-gray-600 hover:bg-gray-500/30 rounded-xl transition-all duration-200 border border-gray-200/50"
                             title="Copy Link"
                           >
                             <Copy className="w-5 h-5" />
@@ -474,17 +458,9 @@ const BlogArticlePage = () => {
                       
                       <div className="flex items-center space-x-6 text-gray-600">
                         <div className="flex items-center space-x-2">
-                          <Heart className="w-4 h-4" />
-                          <span>{article.likes} likes</span>
-                    </div>
-                        <div className="flex items-center space-x-2">
                           <Eye className="w-4 h-4" />
                           <span>{article.views.toLocaleString()} views</span>
                         </div>
-                              <div className="flex items-center space-x-2">
-                          <MessageSquare className="w-4 h-4" />
-                          <span>12 comments</span>
-                              </div>
                             </div>
                             </div>
                           </div>
@@ -500,17 +476,17 @@ const BlogArticlePage = () => {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="ultra-glass rounded-2xl p-6"
+                  className="bg-white/30 backdrop-blur-md rounded-2xl p-6 border border-purple-200/50"
                 >
                   <div className="text-center mb-6">
-                    <div className="w-20 h-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                       <User className="w-10 h-10 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-2">{article.author}</h3>
-                    <p className="text-purple-500 text-sm">Entrepreneur & Writer</p>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{article.author}</h3>
+                    <p className="text-purple-600 text-sm">Entrepreneur & Writer</p>
                   </div>
                   
-                  <div className="space-y-4 text-sm text-gray-600">
+                  <div className="space-y-4 text-sm text-gray-600 mb-6">
                     <div className="flex items-center justify-between">
                       <span>Articles Written</span>
                       <span className="text-purple-600 font-semibold">{getPublishedArticles().length}+</span>
@@ -525,14 +501,14 @@ const BlogArticlePage = () => {
                     </div>
                   </div>
                   
-                  <div className="mt-6 space-y-3">
+                  <div className="space-y-3">
                     <motion.a
                       href="https://linkedin.com/in/themeetpatel"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-full flex items-center justify-center space-x-2 bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors"
+                      className="w-full flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-colors shadow-lg shadow-blue-200/50"
                     >
                       <Linkedin className="w-4 h-4" />
                       <span>Follow on LinkedIn</span>
@@ -544,7 +520,7 @@ const BlogArticlePage = () => {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-full flex items-center justify-center space-x-2 bg-sky-500 text-white py-3 rounded-xl font-semibold hover:bg-sky-600 transition-colors"
+                      className="w-full flex items-center justify-center space-x-2 bg-gradient-to-r from-sky-500 to-sky-600 text-white py-3 rounded-xl font-semibold hover:from-sky-600 hover:to-sky-700 transition-colors shadow-lg shadow-sky-200/50"
                     >
                       <Twitter className="w-4 h-4" />
                       <span>Follow on Twitter</span>
@@ -557,13 +533,13 @@ const BlogArticlePage = () => {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  className="ultra-glass rounded-2xl p-6"
+                  className="bg-white/30 backdrop-blur-md rounded-2xl p-6 border border-purple-200/50"
                 >
-                  <h3 className="text-lg font-semibold text-white mb-4">Reading Progress</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Reading Progress</h3>
                   <div className="space-y-4">
                     <div className="w-full bg-purple-100 rounded-full h-2">
                       <motion.div
-                        className="h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"
+                        className="h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
                         style={{ width: `${readingProgress}%` }}
                         transition={{ duration: 0.3 }}
                       />
@@ -580,9 +556,9 @@ const BlogArticlePage = () => {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 }}
-                  className="ultra-glass rounded-2xl p-6"
+                  className="bg-white/30 backdrop-blur-md rounded-2xl p-6 border border-purple-200/50"
                 >
-                  <h3 className="text-lg font-semibold text-white mb-4">Article Stats</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Article Stats</h3>
                   <div className="space-y-3 text-sm text-gray-600">
                     <div className="flex items-center justify-between">
                       <span>Reading Time</span>
@@ -591,10 +567,6 @@ const BlogArticlePage = () => {
                     <div className="flex items-center justify-between">
                       <span>Views</span>
                       <span className="text-purple-600 font-semibold">{article.views.toLocaleString()}</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span>Likes</span>
-                      <span className="text-purple-600 font-semibold">{article.likes}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span>Category</span>
@@ -617,7 +589,7 @@ const BlogArticlePage = () => {
             transition={{ duration: 0.6 }}
             className="mb-12"
           >
-            <h2 className="text-3xl font-bold text-white mb-6">Related Articles</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Related Articles</h2>
             <p className="text-gray-600">Continue exploring more insights and stories</p>
           </motion.div>
 
@@ -628,7 +600,7 @@ const BlogArticlePage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="ultra-glass rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300"
+                className="bg-white/30 backdrop-blur-md rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300 border border-purple-200/50"
               >
                 <div className="relative">
                   <div className="h-48 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
@@ -636,26 +608,26 @@ const BlogArticlePage = () => {
                       <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-2">
                         <BookOpen className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-sm font-bold text-white line-clamp-2">{relatedArticle.title}</h3>
+                      <h3 className="text-sm font-bold text-purple-600 line-clamp-2 px-4">{relatedArticle.title}</h3>
                     </div>
                   </div>
                 </div>
                 
                 <div className="p-6">
                   <div className="flex items-center space-x-2 mb-3">
-                    <span className="bg-purple-100 text-gray-600 px-2 py-1 rounded text-xs">
+                    <span className="bg-purple-100 text-purple-600 px-2 py-1 rounded text-xs">
                       {relatedArticle.category}
                     </span>
                   </div>
                   
-                  <h3 className="text-lg font-semibold text-white mb-3 line-clamp-2">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3 line-clamp-2">
                     {relatedArticle.title}
                   </h3>
                   <p className="text-gray-600 text-sm mb-4 line-clamp-3">
                     {relatedArticle.excerpt}
                   </p>
                   
-                  <div className="flex items-center justify-between text-white/50 text-xs mb-4">
+                  <div className="flex items-center justify-between text-gray-500 text-xs mb-4">
                     <span className="flex items-center space-x-1">
                       <Calendar className="w-3 h-3" />
                       <span>{formatDate(relatedArticle.date)}</span>
@@ -668,7 +640,7 @@ const BlogArticlePage = () => {
                   
                   <Link
                     to={`/blogs/${relatedArticle.slug}`}
-                    className="text-purple-500 hover:text-blue-300 text-sm font-medium flex items-center"
+                    className="text-purple-600 hover:text-purple-700 text-sm font-medium flex items-center"
                   >
                     Read Article
                     <ArrowRight className="w-4 h-4 ml-1" />
@@ -687,22 +659,22 @@ const BlogArticlePage = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="ultra-glass rounded-xl p-8"
+            className="bg-white/30 backdrop-blur-md border border-purple-200/50 rounded-xl p-8"
           >
-            <h2 className="text-3xl font-bold text-white mb-4">Enjoyed this article?</h2>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Enjoyed this article?</h2>
+            <p className="text-xl text-gray-700 mb-8 leading-relaxed">
               Subscribe to get notified when I publish new articles about entrepreneurship, personal growth, and writing.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 bg-white/80 border border-purple-200/50 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 bg-white/80 border border-purple-200/50 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors flex items-center justify-center space-x-2"
+                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-colors flex items-center justify-center space-x-2 shadow-lg shadow-purple-200/50"
               >
                 <MessageSquare className="w-5 h-5" />
                 <span>Subscribe</span>

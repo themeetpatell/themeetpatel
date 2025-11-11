@@ -11,7 +11,7 @@ const PrivacyPolicyPage = () => {
         title="Privacy Policy - The Meet Patel"
         description="Privacy Policy for The Meet Patel's personal website. Learn how we collect, use, and protect your personal information."
         keywords="privacy policy, data protection, personal information, GDPR, privacy rights"
-        canonical="https://themeetpatel.in/privacy-policy"
+        canonical="https://themeetpatel.com/privacy-policy"
       />
 
       {/* Header */}

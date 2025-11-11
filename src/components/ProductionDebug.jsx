@@ -6,9 +6,6 @@ const ProductionDebug = () => {
 
   const checkEnvironment = () => {
     setEnvVars({
-      VITE_GOOGLE_SHEET_ID: import.meta.env.VITE_GOOGLE_SHEET_ID,
-      VITE_GOOGLE_API_KEY: import.meta.env.VITE_GOOGLE_API_KEY,
-      VITE_ENABLE_GOOGLE_SHEETS: import.meta.env.VITE_ENABLE_GOOGLE_SHEETS,
       NODE_ENV: import.meta.env.MODE,
       BASE_URL: import.meta.env.BASE_URL
     });

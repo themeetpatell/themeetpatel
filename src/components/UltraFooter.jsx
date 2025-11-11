@@ -55,7 +55,8 @@ const UltraFooter = () => {
     projects: {
       title: "Projects & Ventures",
       links: [
-        { name: "StartupOS", href: "https://www.startupos.in", external: true },
+        { name: "BiggDate", href: "https://www.biggdate.com", external: true },
+        { name: "BiggBizz", href: "https://www.biggbizz.com", external: true },
         { name: "Zerohuman", href: "https://www.zerohuman.co", external: true },
         { name: "Mealverse", href: "https://www.mealverse.in", external: true },
         { name: "Finanshels.com", href: "https://finanshels.com", external: true }

@@ -322,45 +322,43 @@ const BlogPage = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {filteredArticles.map((article, index) => (
               <motion.div
                 key={article.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-white/30 backdrop-blur-md border border-purple-200/50 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300"
+                className="bg-white/30 backdrop-blur-md border border-purple-200/50 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300 mx-3 sm:mx-4"
               >
                 <div className="relative">
-                  <div className="h-40 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-2">
-                        <BookOpen className="w-6 h-6 text-white" />
-                      </div>
-                      <Link 
-                        to={`/blogs/${article.slug}`}
-                        className="text-sm font-bold text-purple-600 line-clamp-2 hover:text-purple-700 transition-colors duration-200"
-                      >
-                        {article.title}
-                      </Link>
+                  <div className="h-40 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center relative overflow-hidden">
+                    {/* Decorative Pattern */}
+                    <div className="absolute inset-0 opacity-10">
+                      <div className="absolute top-0 left-0 w-32 h-32 bg-purple-500 rounded-full blur-3xl"></div>
+                      <div className="absolute bottom-0 right-0 w-32 h-32 bg-pink-500 rounded-full blur-3xl"></div>
                     </div>
-                  </div>
-                  {article.featured && (
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-purple-600/20 text-purple-600 px-2 py-1 rounded-full text-xs font-medium">
-                        Featured
+                    <div className="text-center relative z-10">
+                      <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mx-auto shadow-lg">
+                        <BookOpen className="w-8 h-8 text-white" />
+                      </div>
+                    </div>
+                    {article.featured && (
+                      <div className="absolute top-3 left-3 z-10">
+                        <span className="bg-purple-600/20 text-purple-600 px-2 py-1 rounded-full text-xs font-medium border border-purple-300/50">
+                          Featured
+                        </span>
+                      </div>
+                    )}
+                    <div className="absolute top-3 right-3 z-10">
+                      <span className="bg-white/80 backdrop-blur-sm text-purple-600 px-2 py-1 rounded-lg text-xs font-semibold shadow-sm">
+                        {article.category}
                       </span>
                     </div>
-                  )}
+                  </div>
                 </div>
                 
                 <div className="p-4">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <span className="bg-purple-100 text-gray-600 px-2 py-1 rounded text-xs">
-                      {article.category}
-                    </span>
-                  </div>
-                  
                   <Link 
                     to={`/blogs/${article.slug}`}
                     className="text-sm font-semibold text-gray-900 mb-2 line-clamp-2 hover:text-purple-600 transition-colors duration-200 block"
@@ -387,10 +385,6 @@ const BlogPage = () => {
                       <span className="flex items-center space-x-1">
                         <Eye className="w-3 h-3" />
                         <span>{article.views}</span>
-                      </span>
-                      <span className="flex items-center space-x-1">
-                        <Heart className="w-3 h-3" />
-                        <span>{article.likes}</span>
                       </span>
                     </div>
                     <Link

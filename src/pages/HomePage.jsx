@@ -121,10 +121,10 @@ const HomePage = () => {
   ];
 
   const personalInfo = {
-    name: "The Meet Patel",
+    name: "Meet Patel",
     title: "Business • Operations • Product • Growth",
     location: "Dubai, UAE",
-    email: "the.meetll@gmail.com",
+    email: "the.meetpatell@gmail.com",
     bio: "A Startup ecosystem builder with over 8 years of experience in building and scaling technology companies. Passionate about helping startups succeed through innovative solutions and strategic guidance.",
     
     projects: [
@@ -138,7 +138,7 @@ const HomePage = () => {
         name: "Finanshels.com",
         description: "Financial management platform for small businesses with automated bookkeeping and taxes.",
         category: "Fintech",
-        year: "2022"
+        year: "2023"
       },
       {
         name: "StudentHub",
@@ -191,7 +191,7 @@ const HomePage = () => {
       color: "from-purple-400 to-pink-500"
     },
     {
-      number: "300+",
+      number: "450+",
       label: "Team Members Led",
       icon: Users,
       color: "from-pink-400 to-purple-500"
@@ -245,7 +245,7 @@ const HomePage = () => {
     },
     {
       title: "The Endless Love",
-      subtitle: "PART-2",
+      subtitle: "PART - 2",
       quote: "You'll experience your life's entire journey in the eyes which'll love you endlessly!",
       description: "A cosmic romance novel that takes readers on a journey through the universe of love. This sequel explores the infinite nature of devotion and the profound connection between souls destined to love each other endlessly.",
       genre: "Romance",
@@ -285,8 +285,8 @@ const HomePage = () => {
 
   const achievements = [
     {
-      title: "300+ Members",
-      description: "Created a community of 1000+ entrepreneurs and investors in StartupOS",
+      title: "450+ Members",
+      description: "Created a community of 500+ entrepreneurs and investors in StartupOS",
       icon: Star,
       color: "from-purple-300 to-purple-500"
     },
@@ -340,15 +340,15 @@ const HomePage = () => {
     "@type": "WebPage",
     "name": "The Meet Patel - A Startup Guy | Head of Business Excellence",
     "description": "Meet The Meet Patel - A Startup Guy with 8+ years experience building and scaling startups. Founder of StartupOS, ZeroHuman, MealVerse. Expert in business operations, product development, and startup ecosystem building.",
-    "url": "https://themeetpatel.in",
+    "url": "https://themeetpatel.com",
     "mainEntity": {
       "@type": "Person",
       "name": "The Meet Patel",
       "alternateName": ["Meet Patel", "themeetpatel"],
       "jobTitle": "Head of Business Excellence & A Startup Guy",
       "description": "A startup ecosystem builder with over 8 years of experience in building and scaling technology companies.",
-      "url": "https://themeetpatel.in",
-      "image": "https://themeetpatel.in/meet-patel-profile.jpg",
+      "url": "https://themeetpatel.com",
+      "image": "https://themeetpatel.com/meet-patel-profile.jpg",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Dubai",
@@ -393,7 +393,7 @@ const HomePage = () => {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://themeetpatel.in"
+          "item": "https://themeetpatel.com"
         }
       ]
     }
@@ -834,25 +834,31 @@ const HomePage = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative bg-white/90 backdrop-blur-md rounded-2xl overflow-hidden border border-purple-200/50 hover:border-purple-300/70 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-200/50 hover:-translate-y-1 block"
+                className="group relative bg-white/90 backdrop-blur-md rounded-2xl overflow-hidden border border-purple-200/50 hover:border-purple-300/70 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-200/50 hover:-translate-y-1 block mx-3 sm:mx-4"
               >
                 {/* Header Section with Gradient */}
                 <div className="h-40 bg-gradient-to-br from-purple-100 via-pink-100 to-purple-50 relative overflow-hidden">
-                  <div className="absolute top-3 left-3">
-                    <span className="bg-white/90 backdrop-blur-sm text-gray-700 px-3 py-1 rounded-lg text-xs font-semibold shadow-sm">
+                  {/* Decorative Pattern */}
+                  <div className="absolute inset-0 opacity-10">
+                    <div className="absolute top-0 left-0 w-32 h-32 bg-purple-500 rounded-full blur-3xl"></div>
+                    <div className="absolute bottom-0 right-0 w-32 h-32 bg-pink-500 rounded-full blur-3xl"></div>
+                  </div>
+                  
+                  <div className="absolute top-3 left-3 z-10">
+                    <span className="bg-white/90 backdrop-blur-sm text-purple-600 px-3 py-1 rounded-lg text-xs font-semibold shadow-sm">
                       {post.category}
               </span>
                       </div>
                   
                   {/* Center Icon */}
-                  <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="absolute inset-0 flex items-center justify-center z-10">
                     <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                       <BookOpen className="w-8 h-8 text-white" />
                     </div>
                   </div>
                   
                   {/* Metadata */}
-                  <div className="absolute bottom-3 left-3 right-3">
+                  <div className="absolute bottom-3 left-3 right-3 z-10">
                     <div className="flex items-center justify-between text-xs text-gray-600">
                       <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-2 py-1 rounded">
                         <Calendar className="w-3 h-3" />
@@ -880,7 +886,7 @@ const HomePage = () => {
                   </p>
                   
                   {/* Social Actions */}
-                  <div className="flex items-center justify-between pt-4 border-t border-purple-100 mb-4" onClick={(e) => e.stopPropagation()}>
+                  <div className="flex items-center justify-end pt-4 border-t border-purple-100 mb-4" onClick={(e) => e.stopPropagation()}>
                     <div className="flex items-center gap-2">
                       <motion.button
                         whileHover={{ scale: 1.1 }}
@@ -922,12 +928,7 @@ const HomePage = () => {
                         <ExternalLink className="w-4 h-4" />
                       </motion.button>
                       </div>
-                  
-                    <div className="flex items-center gap-1 text-gray-500 text-sm">
-                      <Heart className="w-4 h-4" />
-                      <span>127</span>
-                    </div>
-        </div>
+                  </div>
 
                   {/* Read More Button */}
                   <div className="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 px-4 rounded-xl font-semibold text-sm group-hover:from-purple-600 group-hover:to-pink-600 transition-all duration-300">

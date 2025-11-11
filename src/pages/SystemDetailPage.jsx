@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useParams, Link } from 'react-router-dom';
 import {
-  ArrowLeft, ExternalLink, Download, Share2, Heart, Bookmark,
+  ArrowLeft, ExternalLink, Download, Share2, Bookmark,
   Clock, Users, TrendingUp, Award, CheckCircle, Star,
   Settings, Workflow, FileText, Target, Zap, BarChart3,
   Cpu, Database, Globe, Smartphone, Monitor, Server, Cloud, Lock,
@@ -81,7 +81,6 @@ const getSystemResults = (system) => {
 const SystemDetailPage = () => {
   const { systemId } = useParams();
   const [system, setSystem] = useState(null);
-  const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
   const [isLoading, setIsLoading] = useState(true);
@@ -191,11 +190,11 @@ const SystemDetailPage = () => {
           <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
             <Settings className="w-8 h-8 text-white" />
           </div>
-          <h2 className="text-2xl font-bold text-white mb-2">System Not Found</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">System Not Found</h2>
           <p className="text-gray-600 mb-6">The system you're looking for doesn't exist.</p>
           <Link
             to="/systems"
-            className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
+            className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-colors"
           >
             Back to Systems
           </Link>
@@ -219,7 +218,7 @@ const SystemDetailPage = () => {
             {/* Back Button */}
             <Link
               to="/systems"
-              className="inline-flex items-center space-x-2 text-gray-600 hover:text-white transition-colors mb-8"
+              className="inline-flex items-center space-x-2 text-gray-600 hover:text-purple-600 transition-colors mb-8"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Systems</span>
@@ -229,18 +228,18 @@ const SystemDetailPage = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <div className="flex items-center space-x-3 mb-4">
-                  <span className="text-purple-500/20 text-purple-500 px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium">
                     {system.type}
                   </span>
                   <div className="flex items-center space-x-2">
                     <div className={`w-2 h-2 rounded-full ${
-                      system.status === 'Live' ? 'bg-green-400' : 'bg-yellow-400'
+                      system.status === 'Live' ? 'bg-green-500' : 'bg-yellow-500'
                     }`}></div>
                     <span className="text-gray-600 text-sm">{system.status}</span>
                   </div>
                 </div>
 
-                <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
                   {system.title}
                 </h1>
 
@@ -251,9 +250,9 @@ const SystemDetailPage = () => {
                 {/* Key Metrics */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
                   {Object.entries(system.metrics).slice(0, 4).map(([key, value], index) => (
-                    <div key={index} className="text-center">
-                      <div className="text-3xl font-bold text-white mb-2">{value}</div>
-                      <div className="text-purple-500 text-sm capitalize">
+                    <div key={index} className="text-center bg-purple-50/80 backdrop-blur-sm rounded-lg p-4 border border-purple-200/50">
+                      <div className="text-3xl font-bold text-purple-600 mb-2">{value}</div>
+                      <div className="text-gray-600 text-sm capitalize">
                         {key.replace(/([A-Z])/g, ' $1').trim()}
                       </div>
                     </div>
@@ -268,7 +267,7 @@ const SystemDetailPage = () => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 flex items-center space-x-2"
+                    className="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 flex items-center space-x-2 shadow-lg shadow-green-200/50"
                   >
                     <MessageSquare className="w-5 h-5" />
                     <span>WhatsApp Me</span>
@@ -277,7 +276,7 @@ const SystemDetailPage = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-purple-100 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/20 transition-all duration-300 flex items-center space-x-2"
+                    className="bg-white/80 backdrop-blur-sm text-purple-600 px-8 py-4 rounded-xl font-semibold hover:bg-purple-50 border border-purple-200/50 transition-all duration-300 flex items-center space-x-2"
                   >
                     <Download className="w-5 h-5" />
                     <span>Download Guide</span>
@@ -286,7 +285,7 @@ const SystemDetailPage = () => {
               </div>
 
               <div className="relative">
-                <div className="ultra-glass rounded-2xl overflow-hidden">
+                <div className="bg-white/30 backdrop-blur-md rounded-2xl overflow-hidden border border-purple-200/50">
                   <img
                     src={system.heroImage}
                     alt={system.title}
@@ -313,8 +312,8 @@ const SystemDetailPage = () => {
                   whileTap={{ scale: 0.95 }}
                   className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
                     activeTab === tab.id
-                      ? 'text-purple-500 text-white shadow-lg shadow-cyan-400/25'
-                      : 'bg-purple-100 text-gray-600 hover:bg-white/20 hover:text-white'
+                      ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-200/50'
+                      : 'bg-purple-100 text-gray-600 hover:text-purple-600 hover:bg-purple-50 border border-purple-200/50'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -334,12 +333,12 @@ const SystemDetailPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="ultra-glass rounded-2xl p-8 md:p-12"
+            className="bg-white/30 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-purple-200/50"
           >
             {activeTab === 'overview' && (
               <div className="space-y-12">
                 <div>
-                  <h2 className="text-3xl font-bold text-white mb-6">System Overview</h2>
+                  <h2 className="text-3xl font-bold text-gray-900 mb-6">System Overview</h2>
                   <p className="text-gray-700 leading-relaxed text-lg mb-6">
                     {system.overview}
                   </p>
@@ -347,13 +346,13 @@ const SystemDetailPage = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
-                    <h3 className="text-2xl font-bold text-white mb-4">Problem</h3>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">Problem</h3>
                     <p className="text-gray-600 leading-relaxed">
                       {system.problem}
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white mb-4">Solution</h3>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">Solution</h3>
                     <p className="text-gray-600 leading-relaxed">
                       {system.solution}
                     </p>
@@ -361,18 +360,18 @@ const SystemDetailPage = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-4">Results</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Results</h3>
                   <p className="text-gray-600 leading-relaxed text-lg">
                     {system.results}
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-6">Key Features</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Key Features</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {system.features.map((feature, index) => (
                       <div key={index} className="flex items-center space-x-3">
-                        <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
                         <span className="text-gray-700">{feature}</span>
                       </div>
                     ))}
@@ -383,14 +382,14 @@ const SystemDetailPage = () => {
 
             {activeTab === 'architecture' && (
               <div className="space-y-12">
-                <h2 className="text-3xl font-bold text-white mb-6">System Architecture</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">System Architecture</h2>
                 
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-6">Core Components</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Core Components</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {system.architecture.components.map((component, index) => (
-                      <div key={index} className="p-6 bg-white/80 rounded-xl border border-purple-200/50">
-                        <h4 className="text-lg font-semibold text-white mb-2">{component}</h4>
+                      <div key={index} className="p-6 bg-purple-50/80 backdrop-blur-sm rounded-xl border border-purple-200/50">
+                        <h4 className="text-lg font-semibold text-gray-900 mb-2">{component}</h4>
                         <p className="text-gray-600 text-sm">Core system component</p>
                       </div>
                     ))}
@@ -398,10 +397,10 @@ const SystemDetailPage = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-6">Integrations</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Integrations</h3>
                   <div className="flex flex-wrap gap-3">
                     {system.architecture.integrations.map((integration, index) => (
-                      <span key={index} className="bg-purple-600/20 text-purple-500 px-4 py-2 rounded-lg text-sm font-medium">
+                      <span key={index} className="bg-purple-100 text-purple-600 px-4 py-2 rounded-lg text-sm font-medium border border-purple-200/50">
                         {integration}
                       </span>
                     ))}
@@ -409,10 +408,10 @@ const SystemDetailPage = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-6">Technology Stack</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Technology Stack</h3>
                   <div className="flex flex-wrap gap-3">
                     {system.technologies.map((tech, index) => (
-                      <span key={index} className="bg-purple-600/20 text-blue-300 px-4 py-2 rounded-lg text-sm font-medium">
+                      <span key={index} className="bg-purple-100 text-purple-600 px-4 py-2 rounded-lg text-sm font-medium border border-purple-200/50">
                         {tech}
                       </span>
                     ))}
@@ -423,21 +422,21 @@ const SystemDetailPage = () => {
 
             {activeTab === 'implementation' && (
               <div className="space-y-12">
-                <h2 className="text-3xl font-bold text-white mb-6">Implementation Plan</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Implementation Plan</h2>
                 
                 <div className="space-y-8">
                   {system.implementation.phases.map((phase, index) => (
-                    <div key={index} className="p-6 bg-white/80 rounded-xl border border-purple-200/50">
+                    <div key={index} className="p-6 bg-purple-50/80 backdrop-blur-sm rounded-xl border border-purple-200/50">
                       <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-xl font-bold text-white">{phase.phase}</h3>
-                        <span className="bg-purple-600/20 text-purple-500 px-3 py-1 rounded-full text-sm font-medium">
+                        <h3 className="text-xl font-bold text-gray-900">{phase.phase}</h3>
+                        <span className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium">
                           {phase.duration}
                         </span>
                       </div>
                       <div className="space-y-2">
                         {phase.deliverables.map((deliverable, idx) => (
                           <div key={idx} className="flex items-center space-x-3">
-                            <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                            <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                             <span className="text-gray-700">{deliverable}</span>
                           </div>
                         ))}
@@ -450,18 +449,18 @@ const SystemDetailPage = () => {
 
             {activeTab === 'pricing' && (
               <div className="space-y-12">
-                <h2 className="text-3xl font-bold text-white mb-6">Pricing Plans</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Pricing Plans</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   {Object.values(system.pricing).map((plan, index) => (
                     <div key={index} className={`p-8 rounded-2xl border-2 ${
-                      index === 1 ? 'border-purple-500 text-purple-500/10' : 'border-purple-200/50 bg-white/80'
+                      index === 1 ? 'border-purple-500 bg-purple-50/50' : 'border-purple-200/50 bg-white/80'
                     }`}>
                       <div className="text-center mb-6">
-                        <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                        <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
                         <div className="text-4xl font-bold text-purple-600 mb-2">{plan.price}</div>
                         {index === 1 && (
-                          <span className="text-purple-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                          <span className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium">
                             Most Popular
                           </span>
                         )}
@@ -469,7 +468,7 @@ const SystemDetailPage = () => {
                       <div className="space-y-4">
                         {plan.features.map((feature, idx) => (
                           <div key={idx} className="flex items-center space-x-3">
-                            <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                            <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                             <span className="text-gray-700 text-sm">{feature}</span>
                           </div>
                         ))}
@@ -479,8 +478,8 @@ const SystemDetailPage = () => {
                         whileTap={{ scale: 0.95 }}
                         className={`w-full mt-8 py-3 rounded-xl font-semibold transition-all duration-300 ${
                           index === 1
-                            ? 'text-purple-500 text-white hover:bg-purple-600'
-                            : 'bg-purple-100 text-white hover:bg-white/20'
+                            ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 shadow-lg shadow-purple-200/50'
+                            : 'bg-purple-100 text-purple-600 hover:bg-purple-50 border border-purple-200/50'
                         }`}
                       >
                         Choose Plan
@@ -493,27 +492,27 @@ const SystemDetailPage = () => {
 
             {activeTab === 'casestudies' && (
               <div className="space-y-12">
-                <h2 className="text-3xl font-bold text-white mb-6">Case Studies</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Case Studies</h2>
                 
                 <div className="space-y-8">
                   {system.caseStudies.map((study, index) => (
-                    <div key={index} className="p-8 bg-white/80 rounded-xl border border-purple-200/50">
+                    <div key={index} className="p-8 bg-purple-50/80 backdrop-blur-sm rounded-xl border border-purple-200/50">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
-                          <h3 className="text-2xl font-bold text-white mb-2">{study.company}</h3>
-                          <p className="text-purple-500 mb-4">{study.industry}</p>
+                          <h3 className="text-2xl font-bold text-gray-900 mb-2">{study.company}</h3>
+                          <p className="text-purple-600 mb-4">{study.industry}</p>
                           <div>
-                            <h4 className="text-lg font-semibold text-white mb-2">Challenge</h4>
+                            <h4 className="text-lg font-semibold text-gray-900 mb-2">Challenge</h4>
                             <p className="text-gray-600">{study.challenge}</p>
                           </div>
                         </div>
                         <div>
                           <div className="mb-4">
-                            <h4 className="text-lg font-semibold text-white mb-2">Solution</h4>
+                            <h4 className="text-lg font-semibold text-gray-900 mb-2">Solution</h4>
                             <p className="text-gray-600">{study.solution}</p>
                           </div>
                           <div>
-                            <h4 className="text-lg font-semibold text-white mb-2">Results</h4>
+                            <h4 className="text-lg font-semibold text-gray-900 mb-2">Results</h4>
                             <p className="text-gray-600">{study.results}</p>
                           </div>
                         </div>
@@ -523,10 +522,10 @@ const SystemDetailPage = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-6">Client Testimonials</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Client Testimonials</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {system.testimonials.map((testimonial, index) => (
-                      <div key={index} className="p-6 bg-white/80 rounded-xl border border-purple-200/50">
+                      <div key={index} className="p-6 bg-purple-50/80 backdrop-blur-sm rounded-xl border border-purple-200/50">
                         <div className="flex items-center mb-4">
                           {[...Array(testimonial.rating)].map((_, i) => (
                             <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
@@ -534,8 +533,8 @@ const SystemDetailPage = () => {
                         </div>
                         <p className="text-gray-700 mb-4 italic">"{testimonial.content}"</p>
                         <div>
-                          <div className="font-semibold text-white">{testimonial.name}</div>
-                          <div className="text-purple-500 text-sm">{testimonial.role}</div>
+                          <div className="font-semibold text-gray-900">{testimonial.name}</div>
+                          <div className="text-purple-600 text-sm">{testimonial.role}</div>
                         </div>
                       </div>
                     ))}
@@ -554,12 +553,12 @@ const SystemDetailPage = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="ultra-glass rounded-2xl p-12"
+            className="bg-white/30 backdrop-blur-md border border-purple-200/50 rounded-2xl p-12"
           >
-            <h2 className="text-4xl font-bold text-white mb-4">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Ready to Implement This System?
             </h2>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            <p className="text-xl text-gray-700 mb-8 leading-relaxed">
               Let's work together to implement this system in your organization 
               and start seeing results immediately.
             </p>
@@ -571,7 +570,7 @@ const SystemDetailPage = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 flex items-center justify-center space-x-2"
+                className="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg shadow-green-200/50"
               >
                 <MessageSquare className="w-5 h-5" />
                 <span>WhatsApp Me</span>
@@ -580,7 +579,7 @@ const SystemDetailPage = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-purple-100 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/20 transition-all duration-300 flex items-center justify-center space-x-2"
+                className="bg-white/80 backdrop-blur-sm text-purple-600 px-8 py-4 rounded-xl font-semibold hover:bg-purple-50 border border-purple-200/50 transition-all duration-300 flex items-center justify-center space-x-2"
               >
                 <Download className="w-5 h-5" />
                 <span>Download Guide</span>

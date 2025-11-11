@@ -8,7 +8,6 @@ import {
   Copy, Check, Share2, Download, Calendar as CalendarIcon, BookOpen as Medium
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
-import { submitContactFormData, submitCommunityFormData } from '../services/formService';
 import ProductionDebug from '../components/ProductionDebug';
 
 const ContactPage = () => {
@@ -233,12 +232,8 @@ const ContactPage = () => {
     setCommunitySubmitError(null);
     
     try {
-      // Submit to Google Sheets and other services
-      const result = await submitCommunityFormData(communityFormData);
-      
-      if (result.success) {
-        // Create WhatsApp message with form data
-        const message = `Hi Meet! I want to join the StartupOS WhatsApp community.
+      // Create WhatsApp message with form data
+      const message = `Hi Meet! I want to join the StartupOS WhatsApp community.
 
 Here are my details:
 • LinkedIn: ${communityFormData.linkedinId}
@@ -250,26 +245,22 @@ Here are my details:
 
 Please add me to the community!`;
 
-        // Encode message for URL
-        const encodedMessage = encodeURIComponent(message);
-        
-        // Open WhatsApp with pre-filled message
-        window.open(`https://wa.me/919824341414?text=${encodedMessage}`, '_blank');
-        
-        // Reset form and close modal
-        setCommunityFormData({
-          linkedinId: '',
-          email: '',
-          whatsapp: '',
-          businessName: '',
-          role: '',
-          reason: ''
-        });
-        setIsCommunityFormOpen(false);
-      } else {
-        setCommunitySubmitError('Failed to submit form. Please try again or contact us directly.');
-        console.error('Community form submission failed:', result.errors);
-      }
+      // Encode message for URL
+      const encodedMessage = encodeURIComponent(message);
+      
+      // Open WhatsApp with pre-filled message
+      window.open(`https://wa.me/919824341414?text=${encodedMessage}`, '_blank');
+      
+      // Reset form and close modal
+      setCommunityFormData({
+        linkedinId: '',
+        email: '',
+        whatsapp: '',
+        businessName: '',
+        role: '',
+        reason: ''
+      });
+      setIsCommunityFormOpen(false);
     } catch (error) {
       setCommunitySubmitError('An error occurred. Please try again.');
       console.error('Community form submission error:', error);
@@ -284,19 +275,28 @@ Please add me to the community!`;
     setSubmitError(null);
     
     try {
-      // Submit to Google Sheets and other services
-      const result = await submitContactFormData(formData);
+      // Create WhatsApp message with form data
+      const message = `Hi Meet!
+
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.countryCode} ${formData.whatsapp}
+Subject: ${formData.subject}
+
+Message:
+${formData.message}`;
+
+      // Encode message for URL
+      const encodedMessage = encodeURIComponent(message);
       
-      if (result.success) {
-        setIsSubmitted(true);
-        setFormData({ name: '', email: '', countryCode: '+971', whatsapp: '', subject: '', message: '' });
-        
-        // Reset success message after 5 seconds
-        setTimeout(() => setIsSubmitted(false), 5000);
-      } else {
-        setSubmitError('Failed to submit form. Please try again or contact us directly.');
-        console.error('Contact form submission failed:', result.errors);
-      }
+      // Open WhatsApp with pre-filled message
+      window.open(`https://wa.me/919824341414?text=${encodedMessage}`, '_blank');
+      
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', countryCode: '+971', whatsapp: '', subject: '', message: '' });
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => setIsSubmitted(false), 5000);
     } catch (error) {
       setSubmitError('An error occurred. Please try again.');
       console.error('Contact form submission error:', error);
@@ -529,7 +529,7 @@ Please add me to the community!`;
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white/30 backdrop-blur-md border border-purple-200/50 p-8 text-center group hover:scale-105 transition-all duration-300 relative"
+                className="bg-white/30 backdrop-blur-md border border-purple-200/50 p-8 text-center group hover:scale-105 transition-all duration-300 relative rounded-2xl"
               >
                 {/* Priority Badge */}
                 <div className={`absolute top-4 right-4 px-2 py-1 rounded-full text-xs font-medium ${
@@ -612,7 +612,7 @@ Please add me to the community!`;
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white/30 backdrop-blur-md border border-purple-200/50 p-6 group hover:scale-105 transition-all duration-300"
+                className="bg-white/30 backdrop-blur-md border border-purple-200/50 p-6 group hover:scale-105 transition-all duration-300 rounded-2xl"
               >
                 <div className={`w-12 h-12 bg-gradient-to-r ${service.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   <service.icon className="w-6 h-6 text-white" />

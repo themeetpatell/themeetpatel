@@ -17,8 +17,7 @@ const AboutPage = () => {
 
   const personalInfo = {
     name: "Meet Patel",
-    title: "Head of Business Excellence",
-    company: "Finanshels.com",
+    title: "Founder of BiggDate, BiggBizz, ZeroHuman | Investor in Mealverse | Head of CoE at Finanshels",
     location: "Dubai, UAE",
     email: "the.meetpatel@gmail.com",
     linkedin: "https://www.linkedin.com/in/themeetpatel",
@@ -30,7 +29,7 @@ const AboutPage = () => {
     bio: "I’m Meet Patel — a builder who works with founders to design smarter systems, stronger strategies, and startups that scale with clarity.",
     
     about: [
-      "Over the past few years, I as Head of Business Excellence and Chief of Staff at Finanshels.com, where I drove a company-wide restructuring that lifted revenue by 40% in 8 months, led a $1.5M fundraising round, and launched high-impact GTM initiatives including an AI-powered tax portal.",
+      "Over the past few years, I as Head of CoE (Center of Excellence) at Finanshels.com, where I drove a company-wide restructuring that lifted revenue by 40% in 8 months, led a $1.5M fundraising round, and launched high-impact GTM initiatives including an AI-powered Accounting portal.",
       "My career spans FinTech, E-commerce, HRTech, and SaaS across India, UAE & GCC — building and scaling teams, designing execution systems, and leading product and market strategies that deliver measurable growth."
     ],
     
@@ -47,10 +46,22 @@ const AboutPage = () => {
     
     experience: [
       {
+        company: "Multiple Ventures",
+        position: "Founder & CEO | CGO & Co-founder | Investor & Mentor",
+        duration: "Nov 2025 - Present",
+        timeSpent: "1 Month+",
+        description: "Leading multiple ventures focused on building smarter systems, stronger strategies, and startups that scale with clarity.",
+        achievements: [
+          "BiggDate & BiggBizz (StartupOS): Founder & CEO - Leading comprehensive startup ecosystem platform with 50+ integrated tools and services for entrepreneurs at every stage.",
+          "ZeroHuman: CGO & Co-founder - Building AI human model platform creating ultra-realistic, customizable digital humans for advertising, fashion, retail, and entertainment.",
+          "Mealverse: Investor & Mentor - Supporting innovative food technology platform revolutionizing the culinary experience through digital innovation and sustainable food solutions."
+        ]
+      },
+      {
         company: "Finanshels.com",
-        position: "Head of Business Excellence, Ex. Chief of Staff, Interim COO, Product Manager",
+        position: "Head of CoE (Center of Excellence), Ex. Chief of Staff, Interim COO, Product Manager",
         duration: "Dec 2023 - Present",
-        timeSpent: "1 year 10+ months",
+        timeSpent: "1 Year 11 Months+",
         description: "Learning, experimenting, building, and scaling Finanshels.com - The movement towards making businesses smarter with their money.",
         achievements: [
           "Strategic Leadership & Turnaround: Transitioned from Product Consultant to Interim COO, leading company-wide restructuring. Established HR, Marketing, Branding, Ops, and Engineering functions from scratch, hired all Heads, and built scalable systems that grew revenue by 40% in 8 months.",
@@ -66,8 +77,8 @@ const AboutPage = () => {
       {
         company: "StudentHub - Jobs for Students and Fresh Graduates",
         position: "COO & Product Manager",
-        duration: "Apr 2022 - May 2024",
-        timeSpent: "2 years 2 month",
+        duration: "Apr 2022 - April 2024",
+        timeSpent: "2 years 1 month",
         description: "Managed multiple startups, including Studenthub, Plugn, Tamr, and provided strategic consulting for sold startups like Pogi and theCapital.",
         achievements: [
           "Strategic Financial Management: Turned a loss-making enterprise into a profitable one through increased revenue streams and achieved strategic cost reductions by 35%",
@@ -80,7 +91,7 @@ const AboutPage = () => {
         ]
       },
       {
-        company: "Plugn",
+        company: "BAWES",
         position: "Sr. Operations Manager",
         duration: "Sep 2021 - Mar 2022",
         timeSpent: "7 months",
@@ -226,6 +237,13 @@ const AboutPage = () => {
     ],
     
     projects: [
+      {
+        name: "BiggDate",
+        description: "A co-foundership building and startup creation platform. Entrepreneurs connect, build startups together, and upon successful establishment, they receive a visa to StartupOS.",
+        tech: ["Co-foundership", "Startup Creation", "Entrepreneurship Tools", "Web Platform"],
+        link: "https://biggdate.com",
+        status: "Live"
+      },
       {
         name: "ZeroHuman",
         description: "AI human model platform that creates ultra-realistic, customizable digital humans for advertising, fashion, retail, and entertainment. Features 300% customer interaction increase with zero human efforts and 90% cost savings.",
@@ -515,15 +533,15 @@ const AboutPage = () => {
     "@type": "AboutPage",
     "name": "About The Meet Patel - Serial Entrepreneur & Startup Ecosystem Builder",
     "description": "Learn about The Meet Patel's journey as a serial entrepreneur, his experience building startups, and his expertise in business operations, product development, and startup ecosystem building.",
-    "url": "https://themeetpatel.in/about",
+    "url": "https://themeetpatel.com/about",
     "mainEntity": {
       "@type": "Person",
       "name": "The Meet Patel",
       "alternateName": ["Meet Patel", "themeetpatel"],
       "jobTitle": "Serial Entrepreneur & Startup Ecosystem Builder",
       "description": "Serial entrepreneur and startup ecosystem builder with over 8 years of experience in building and scaling technology companies.",
-      "url": "https://themeetpatel.in",
-      "image": "https://themeetpatel.in/logo for themeetpatel.png",
+      "url": "https://themeetpatel.com",
+      "image": "https://themeetpatel.com/logo for themeetpatel.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Dubai",
@@ -582,13 +600,13 @@ const AboutPage = () => {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://themeetpatel.in"
+          "item": "https://themeetpatel.com"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "About",
-          "item": "https://themeetpatel.in/about"
+          "item": "https://themeetpatel.com/about"
         }
       ]
     }
@@ -679,7 +697,7 @@ const AboutPage = () => {
               {personalInfo.name}
             </h1>
             <p className="text-lg sm:text-2xl text-purple-600 mb-4 sm:mb-6">
-              {personalInfo.title} at {personalInfo.company}
+              {personalInfo.title}
             </p>
             <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 max-w-3xl mx-auto px-4 sm:px-0">
               {personalInfo.bio}
@@ -816,7 +834,7 @@ const AboutPage = () => {
                           <div className="text-gray-600 text-sm">Books Published</div>
                         </div>
                         <div className="bg-purple-50/80 backdrop-blur-sm rounded-lg p-4 text-center border border-purple-200/50">
-                          <div className="text-2xl font-bold text-pink-500">300+</div>
+                          <div className="text-2xl font-bold text-pink-500">450+</div>
                           <div className="text-gray-600 text-sm">Team Members Led</div>
                         </div>
                       </div>
@@ -839,11 +857,11 @@ const AboutPage = () => {
                         className="bg-purple-50/80 backdrop-blur-sm rounded-lg p-6 border border-purple-200/50"
                       >
                         <div className="flex items-start justify-between mb-4">
-                          <div>
-                            <h3 className="text-xl font-semibold text-gray-900">{exp.position}</h3>
-                            <p className="text-purple-600 font-medium">{exp.company}</p>
+                          <div className="flex-1">
+                            <h3 className="text-xl font-semibold text-gray-900 mb-1">{exp.position}</h3>
+                            <p className="text-purple-600 font-medium mb-1">{exp.company}</p>
                             <p className="text-gray-500 text-sm">{exp.duration}</p>
-                            <div className="flex items-center space-x-4 mt-1">
+                            <div className="flex items-center space-x-4 mt-2">
                               <span className="text-purple-500 text-sm font-medium bg-purple-600/10 px-2 py-1 rounded-full">
                                 {exp.timeSpent}
                               </span>
@@ -855,20 +873,43 @@ const AboutPage = () => {
                               )}
                             </div>
                           </div>
-                          <div className="text-right">
-                            <span className="bg-purple-600/20 text-purple-600 px-3 py-1 rounded-full text-sm">
-                              {exp.duration.split(' - ')[1]}
-                            </span>
-                          </div>
+                          {exp.duration.includes(' - ') && (
+                            <div className="text-right ml-4">
+                              {exp.duration.split(' - ')[1] === 'Present' ? (
+                                <span className="bg-green-500/20 text-green-600 px-3 py-1 rounded-full text-sm font-medium">
+                                  {exp.duration.split(' - ')[1]}
+                                </span>
+                              ) : (
+                                <span className="bg-purple-600/20 text-purple-600 px-3 py-1 rounded-full text-sm">
+                                  {exp.duration.split(' - ')[1]}
+                                </span>
+                              )}
+                            </div>
+                          )}
                         </div>
                         <p className="text-gray-600 mb-4">{exp.description}</p>
                         <ul className="space-y-2">
-                          {exp.achievements.map((achievement, idx) => (
-                            <li key={idx} className="flex items-start space-x-2">
-                              <CheckCircle className="w-4 h-4 text-purple-600 mt-0.5 flex-shrink-0" />
-                              <span className="text-gray-700 text-sm">{achievement}</span>
-                            </li>
-                          ))}
+                          {exp.achievements.map((achievement, idx) => {
+                            // Parse achievement to bold company names for Multiple Ventures
+                            let formattedAchievement = achievement;
+                            if (exp.company === "Multiple Ventures") {
+                              const parts = achievement.split(':');
+                              if (parts.length > 1) {
+                                formattedAchievement = (
+                                  <>
+                                    <span className="font-bold text-gray-900">{parts[0]}:</span>
+                                    <span> {parts.slice(1).join(':')}</span>
+                                  </>
+                                );
+                              }
+                            }
+                            return (
+                              <li key={idx} className="flex items-start space-x-2">
+                                <CheckCircle className="w-4 h-4 text-purple-600 mt-0.5 flex-shrink-0" />
+                                <span className="text-gray-700 text-sm">{formattedAchievement}</span>
+                              </li>
+                            );
+                          })}
                         </ul>
                       </motion.div>
                     ))}
@@ -1041,14 +1082,17 @@ const AboutPage = () => {
                                 <span className="relative z-10">Read Now</span>
                               </motion.a>
                             ) : (
-                              <motion.button
+                              <motion.a
+                                href={`https://wa.me/919824341414?text=${encodeURIComponent(`Hi! I'd like to request early access to "${book.title}" - ${book.subtitle}.`)}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 whileHover={{ scale: 1.02, y: -2 }}
                                 whileTap={{ scale: 0.98 }}
-                                className="group relative flex-1 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-500/30 overflow-hidden"
+                                className="group relative flex-1 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-500/30 overflow-hidden text-center block"
                               >
                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                                 <span className="relative z-10">Request Early Access</span>
-                              </motion.button>
+                              </motion.a>
                             )}
                           </div>
                         </div>

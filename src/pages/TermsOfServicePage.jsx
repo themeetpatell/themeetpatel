@@ -11,7 +11,7 @@ const TermsOfServicePage = () => {
         title="Terms of Service - The Meet Patel"
         description="Terms of Service for The Meet Patel's personal website. Read our terms and conditions for using our services."
         keywords="terms of service, terms and conditions, legal terms, website terms"
-        canonical="https://themeetpatel.in/terms-of-service"
+        canonical="https://themeetpatel.com/terms-of-service"
       />
 
       {/* Header */}

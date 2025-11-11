@@ -125,19 +125,15 @@ const UltraNavigation = () => {
               className="flex items-center space-x-3"
             >
               <Link to="/" className="flex items-center group">
-                <motion.div
-                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center shadow-lg overflow-hidden"
+                <motion.img
+                  src={logoImage}
+                  alt="Meet Patel Logo"
+                  className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.2 }}
-                >
-                  <img 
-                    src={logoImage}
-                    alt="The Meet Patel Logo"
-                    className="w-full h-full object-contain"
-                  />
-                </motion.div>
+                />
                 <span className="ml-2 sm:ml-3 text-gray-900 text-sm sm:text-lg font-semibold group-hover:text-purple-600 transition-colors">
-                  The Meet Patel
+                  Meet Patel
                 </span>
               </Link>
             </motion.div>

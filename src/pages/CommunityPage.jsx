@@ -6,7 +6,6 @@ import {
   Linkedin, Twitter, Github, Instagram, Youtube, TrendingUp, Target, Briefcase
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
-import { submitCommunityFormData } from '../services/formService';
 
 // WhatsApp Icon Component
 const WhatsAppIcon = ({ className }) => (
@@ -41,12 +40,8 @@ const CommunityPage = () => {
     setSubmitError(null);
     
     try {
-      // Submit to Google Sheets and other services
-      const result = await submitCommunityFormData(formData);
-      
-      if (result.success) {
-        // Create WhatsApp message with form data
-        const message = `Hi Meet! I want to join the StartupOS WhatsApp community.
+      // Create WhatsApp message with form data
+      const message = `Hi Meet! I want to join the StartupOS WhatsApp community.
 
 Here are my details:
 • LinkedIn: ${formData.linkedinId}
@@ -58,28 +53,24 @@ Here are my details:
 
 Please add me to the community!`;
 
-        // Encode message for URL
-        const encodedMessage = encodeURIComponent(message);
-        
-        // Open WhatsApp with pre-filled message
-        window.open(`https://wa.me/919824341414?text=${encodedMessage}`, '_blank');
-        
-        // Close the form
-        setIsFormOpen(false);
-        
-        // Reset form data
-        setFormData({
-          linkedinId: '',
-          email: '',
-          whatsapp: '',
-          businessName: '',
-          role: '',
-          reason: ''
-        });
-      } else {
-        setSubmitError('Failed to submit form. Please try again or contact us directly.');
-        console.error('Community form submission failed:', result.errors);
-      }
+      // Encode message for URL
+      const encodedMessage = encodeURIComponent(message);
+      
+      // Open WhatsApp with pre-filled message
+      window.open(`https://wa.me/919824341414?text=${encodedMessage}`, '_blank');
+      
+      // Close the form
+      setIsFormOpen(false);
+      
+      // Reset form data
+      setFormData({
+        linkedinId: '',
+        email: '',
+        whatsapp: '',
+        businessName: '',
+        role: '',
+        reason: ''
+      });
     } catch (error) {
       setSubmitError('An error occurred. Please try again.');
       console.error('Community form submission error:', error);
@@ -96,8 +87,8 @@ Please add me to the community!`;
       color: "from-purple-500 to-pink-500"
     },
     {
-      number: "50+",
-      label: "Daily Discussions",
+      number: "10+",
+      label: "Daily Threads",
       icon: WhatsAppIcon,
       color: "from-purple-400 to-pink-500"
     },
@@ -156,20 +147,20 @@ Please add me to the community!`;
 
   const testimonials = [
     {
-      name: "Sarah Chen",
-      role: "Founder, TechFlow",
+      name: "Harris Solangi",
+      role: "CTO, Finanshels",
       content: "The StartupOS community has been a game-changer for my startup. The insights and connections I've gained here are invaluable.",
       avatar: "SC"
     },
     {
-      name: "Marcus Rodriguez",
-      role: "CEO, DataVault",
+      name: "Drashty Soni",
+      role: "CEO, ZeroHuman",
       content: "I've found my co-founder, secured funding, and learned from the best entrepreneurs all in this community. Highly recommended!",
       avatar: "MR"
     },
     {
-      name: "Priya Sharma",
-      role: "Product Manager, InnovateLab",
+      name: "Yashvi Soni",
+      role: "Founder, Mealverse",
       content: "The daily discussions and expert advice have helped me navigate complex business challenges with confidence.",
       avatar: "PS"
     }
@@ -180,7 +171,7 @@ Please add me to the community!`;
     "@type": "Organization",
     "name": "StartupOS Community",
     "description": "Join the StartupOS WhatsApp community of 500+ entrepreneurs, founders, and startup enthusiasts. Get exclusive insights, mentorship, and networking opportunities.",
-    "url": "https://themeetpatel.in/community",
+    "url": "https://themeetpatel.com/community",
     "memberOf": {
       "@type": "Organization",
       "name": "The Meet Patel - Startup Ecosystem"

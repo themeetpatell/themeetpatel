@@ -11,7 +11,7 @@ const CookiePolicyPage = () => {
         title="Cookie Policy - The Meet Patel"
         description="Cookie Policy for The Meet Patel's personal website. Learn about how we use cookies and similar technologies."
         keywords="cookie policy, cookies, tracking, analytics, website cookies"
-        canonical="https://themeetpatel.in/cookie-policy"
+        canonical="https://themeetpatel.com/cookie-policy"
       />
 
       {/* Header */}
