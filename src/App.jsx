@@ -63,8 +63,8 @@ function App() {
           <Route path="/community" element={<CommunityPage />} />
           
           {/* Blog Pages */}
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:slug" element={<BlogArticlePage />} />
+          <Route path="/blogs" element={<BlogPage />} />
+          <Route path="/blogs/:slug" element={<BlogArticlePage />} />
           
           {/* Legal Pages */}
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

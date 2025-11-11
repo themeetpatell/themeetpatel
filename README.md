@@ -79,6 +79,19 @@ VITE_EMAILJS_TEMPLATE_ID=your_template_id
 VITE_EMAILJS_PUBLIC_KEY=your_public_key
 ```
 
+### 📝 Blog CMS Integration
+
+The local CMS has been removed in favor of external CMS API integration:
+- Blog content will be fetched from your CMS via API
+- API service ready at `src/services/blogApi.js`
+- See `CMS_API_INTEGRATION.md` for integration guide
+- Static blog data still available in `src/data/blogData.js` for development
+
+**To integrate your CMS:**
+1. Set `REACT_APP_CMS_API_URL` in your `.env` file
+2. Follow the guide in `CMS_API_INTEGRATION.md`
+3. Update data fetching to async in blog components
+
 ## 📁 Project Structure
 
 ```
@@ -90,11 +103,19 @@ startupos-revolutionary/
 │   │   ├── UltraFeatures.jsx        # Advanced features showcase
 │   │   ├── RevolutionarySolutions.jsx # Interactive solutions page
 │   │   └── UltraPremiumPricing.jsx  # Premium pricing page
+│   ├── services/
+│   │   └── blogApi.js               # Blog CMS API service
+│   ├── data/
+│   │   └── blogData.js              # Static blog data (for development)
+│   ├── pages/
+│   │   ├── BlogPage.jsx             # Blog listing page
+│   │   └── BlogArticlePage.jsx      # Article detail page
 │   ├── assets/                      # Generated premium images
 │   ├── App.jsx                      # Main application component
 │   ├── App.css                      # Ultra-premium CSS styles
 │   └── main.jsx                     # Application entry point
 ├── dist/                            # Production build
+├── CMS_API_INTEGRATION.md           # CMS integration guide
 ├── index.html                       # HTML template
 └── package.json                     # Dependencies and scripts
 ```

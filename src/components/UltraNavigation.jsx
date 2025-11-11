@@ -84,7 +84,7 @@ const UltraNavigation = () => {
     },
     {
       title: "Blog",
-      href: "/blog",
+      href: "/blogs",
       icon: BookOpen
     }
   ];
@@ -101,17 +101,17 @@ const UltraNavigation = () => {
         }}
         className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 ${
           scrolled 
-            ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' 
-            : 'bg-transparent'
+            ? 'bg-white/85 backdrop-blur-xl border-b border-purple-200/50 shadow-lg shadow-purple-100/50' 
+            : 'bg-white/70 backdrop-blur-md'
         }`}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
         {/* Apple-style Background */}
         <motion.div
-          className="absolute inset-0 bg-black/50"
+          className="absolute inset-0 bg-gradient-to-r from-purple-50/60 via-pink-50/60 to-purple-50/60"
           animate={{
-            opacity: isHovering ? 0.8 : 0.5
+            opacity: isHovering ? 1 : 0.8
           }}
           transition={{ duration: 0.3 }}
         />
@@ -136,7 +136,7 @@ const UltraNavigation = () => {
                     className="w-full h-full object-contain"
                   />
                 </motion.div>
-                <span className="ml-2 sm:ml-3 text-white text-sm sm:text-lg font-semibold group-hover:text-cyan-400 transition-colors">
+                <span className="ml-2 sm:ml-3 text-gray-900 text-sm sm:text-lg font-semibold group-hover:text-purple-600 transition-colors">
                   The Meet Patel
                 </span>
               </Link>
@@ -148,7 +148,7 @@ const UltraNavigation = () => {
                 <motion.div key={item.title} whileHover={{ y: -2 }}>
                   <Link
                     to={item.href}
-                    className="flex items-center space-x-2 text-white/70 hover:text-white transition-colors duration-200 font-medium text-sm"
+                    className="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors duration-200 font-medium text-sm"
                   >
                     <item.icon className="w-4 h-4" />
                     <span>{item.title}</span>
@@ -163,7 +163,7 @@ const UltraNavigation = () => {
                 href="/contact"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-4 py-2 bg-gradient-to-r from-cyan-400 to-teal-500 text-white rounded-lg font-medium hover:from-cyan-500 hover:to-teal-600 transition-colors duration-200 text-sm"
+                className="px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-medium hover:from-purple-600 hover:to-pink-600 transition-colors duration-200 text-sm shadow-lg shadow-purple-200"
               >
                 Get In Touch
               </motion.a>
@@ -174,7 +174,7 @@ const UltraNavigation = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 text-white/80 hover:text-white transition-colors duration-300"
+              className="lg:hidden p-2 text-gray-700 hover:text-purple-600 transition-colors duration-300"
               aria-label="Toggle mobile menu"
             >
               <AnimatePresence mode="wait">
@@ -213,7 +213,7 @@ const UltraNavigation = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed top-16 sm:top-20 left-0 right-0 z-[9997] lg:hidden bg-black/95 backdrop-blur-xl border-b border-white/10 overflow-hidden"
+            className="fixed top-16 sm:top-20 left-0 right-0 z-[9997] lg:hidden bg-white/95 backdrop-blur-xl border-b border-purple-200/50 overflow-hidden shadow-xl shadow-purple-100/50"
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
               <div className="space-y-4 sm:space-y-6">
@@ -227,17 +227,17 @@ const UltraNavigation = () => {
                       >
                         <Link
                       to={item.href}
-                      className="flex items-center space-x-3 p-3 sm:p-4 rounded-xl hover:bg-white/5 transition-all duration-300 group"
+                      className="flex items-center space-x-3 p-3 sm:p-4 rounded-xl hover:bg-purple-50 transition-all duration-300 group"
                           onClick={() => {
                             setIsOpen(false);
                             trackButtonClick(`nav_${item.title.toLowerCase()}`, 'mobile_menu');
                           }}
                         >
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center shadow-lg shadow-purple-200/50">
                         <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                           </div>
                           <div>
-                            <h4 className="text-white font-medium group-hover:text-blue-400 transition-colors duration-300 text-sm sm:text-base">
+                            <h4 className="text-gray-900 font-medium group-hover:text-purple-600 transition-colors duration-300 text-sm sm:text-base">
                           {item.title}
                             </h4>
                           </div>
@@ -247,12 +247,12 @@ const UltraNavigation = () => {
               </div>
 
               {/* Mobile CTA Buttons */}
-              <div className="space-y-3 sm:space-y-4 pt-4 sm:pt-6 border-t border-white/10">
+              <div className="space-y-3 sm:space-y-4 pt-4 sm:pt-6 border-t border-purple-200/50">
                 <motion.a
                   href="/contact"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-cyan-400 to-teal-500 text-white rounded-lg font-medium hover:from-cyan-500 hover:to-teal-600 transition-colors block text-center py-2.5 sm:py-3 text-sm sm:text-base"
+                  className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-medium hover:from-purple-600 hover:to-pink-600 transition-colors block text-center py-2.5 sm:py-3 text-sm sm:text-base shadow-lg shadow-purple-200"
                   onClick={() => {
                     setIsOpen(false);
                     trackButtonClick('get_in_touch', 'mobile_menu');
@@ -274,7 +274,7 @@ const UltraNavigation = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 lg:hidden"
+            className="fixed inset-0 bg-purple-900/20 backdrop-blur-sm z-30 lg:hidden"
             onClick={() => setIsOpen(false)}
           />
         )}

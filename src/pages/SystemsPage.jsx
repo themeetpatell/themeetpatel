@@ -129,47 +129,99 @@ const SystemsPage = () => {
         structuredData={systemsStructuredData}
       />
       {/* Hero Section */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-teal-900/20 to-slate-900" />
+      <section className="pt-16 sm:pt-20 min-h-[75vh] relative overflow-hidden flex items-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-pink-50 to-white" />
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+          <div className="absolute top-40 right-10 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+          <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Floating Systems Icons */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          <motion.div
+            animate={{ y: [0, -22, 0], rotate: [0, 10, 0], x: [0, 12, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-24 left-[9%] w-20 h-20 bg-gradient-to-br from-purple-200/60 to-pink-200/60 backdrop-blur-md rounded-full flex items-center justify-center shadow-2xl border border-purple-300/50"
+          >
+            <Settings className="w-10 h-10 text-purple-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 28, 0], rotate: [0, -12, 0], x: [0, -10, 0] }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute top-32 right-[12%] w-24 h-24 bg-gradient-to-tl from-pink-200/60 to-purple-200/60 backdrop-blur-md rounded-2xl flex items-center justify-center shadow-2xl border border-pink-300/50"
+          >
+            <Workflow className="w-12 h-12 text-pink-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, -18, 0], rotate: [0, 8, 0], scale: [1, 1.07, 1] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            className="absolute bottom-36 left-[14%] w-20 h-20 bg-gradient-to-br from-purple-100/70 to-pink-100/70 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-xl border border-purple-200/50"
+          >
+            <Target className="w-10 h-10 text-purple-700" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 26, 0], rotate: [0, -10, 0], x: [0, -14, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1.6 }}
+            className="absolute bottom-32 right-[10%] w-20 h-20 bg-gradient-to-tr from-pink-200/70 to-purple-200/70 backdrop-blur-md rounded-full flex items-center justify-center shadow-2xl border border-pink-300/60"
+          >
+            <Zap className="w-10 h-10 text-pink-700" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, -16, 0], rotate: [0, 6, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2.2 }}
+            className="absolute top-1/2 left-[7%] w-16 h-16 bg-purple-200/55 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg"
+          >
+            <BarChart3 className="w-8 h-8 text-purple-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 20, 0], rotate: [0, -8, 0], x: [0, 8, 0] }}
+            transition={{ duration: 8.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+            className="absolute top-1/3 right-[18%] w-16 h-16 bg-pink-100/65 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg"
+          >
+            <TrendingUp className="w-8 h-8 text-pink-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, -20, 0], rotate: [0, 10, 0], scale: [1, 1.05, 1] }}
+            transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+            className="absolute bottom-1/4 left-[24%] w-14 h-14 bg-purple-100/60 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-md"
+          >
+            <Rocket className="w-7 h-7 text-purple-600" />
+          </motion.div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <div className="inline-flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center shadow-lg">
-                <Settings className="w-6 h-6 text-white" />
-              </div>
-              <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight">
-                Systems Built
-              </h1>
-            </div>
-            
-            <p className="text-xl text-cyan-200 max-w-4xl mx-auto leading-relaxed mb-8">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold text-gray-900 mb-4 sm:mb-6 tracking-tight">
+              Systems Built
+            </h1>
+            <p className="text-lg sm:text-2xl text-purple-600 mb-6 sm:mb-8 max-w-3xl mx-auto px-4 sm:px-0">
               Comprehensive collection of systems, processes, SOPs, workflows, and frameworks 
               I've built and implemented across multiple ventures and industries.
             </p>
-
+            
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">{systems.length}+</div>
-                <div className="text-cyan-300 text-sm">Systems Built</div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 max-w-4xl mx-auto">
+              <div className="bg-purple-50/80 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-purple-200/50">
+                <div className="text-2xl sm:text-3xl font-bold text-purple-600">{systems.length}+</div>
+                <div className="text-gray-600 text-xs sm:text-sm">Systems Built</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">10</div>
-                <div className="text-cyan-300 text-sm">Business Functions</div>
+              <div className="bg-purple-50/80 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-purple-200/50">
+                <div className="text-2xl sm:text-3xl font-bold text-purple-600">10</div>
+                <div className="text-gray-600 text-xs sm:text-sm">Business Functions</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">10+</div>
-                <div className="text-cyan-300 text-sm">Startups Mentored</div>
+              <div className="bg-purple-50/80 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-purple-200/50">
+                <div className="text-2xl sm:text-3xl font-bold text-purple-600">10+</div>
+                <div className="text-gray-600 text-xs sm:text-sm">Startups Mentored</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">8+</div>
-                <div className="text-cyan-300 text-sm">Years Experience</div>
+              <div className="bg-purple-50/80 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-purple-200/50">
+                <div className="text-2xl sm:text-3xl font-bold text-purple-600">8+</div>
+                <div className="text-gray-600 text-xs sm:text-sm">Years Experience</div>
               </div>
             </div>
           </motion.div>
@@ -185,26 +237,26 @@ const SystemsPage = () => {
             transition={{ duration: 0.6 }}
             className="mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-4xl font-bold text-white mb-4 sm:mb-6 text-center">All Systems</h2>
-            <p className="text-lg sm:text-xl text-cyan-200 text-center max-w-3xl mx-auto mb-6 sm:mb-8 px-4 sm:px-0">
+            <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">All Systems</h2>
+            <p className="text-lg sm:text-xl text-purple-600 text-center max-w-3xl mx-auto mb-6 sm:mb-8 px-4 sm:px-0">
               Browse through all systems organized by category and industry
             </p>
 
             {/* Search Bar */}
             <div className="max-w-2xl mx-auto mb-6 sm:mb-8">
               <div className="relative">
-                <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-white/40 w-4 h-4 sm:w-5 sm:h-5" />
+                <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-purple-400 w-4 h-4 sm:w-5 sm:h-5" />
                 <input
                   type="text"
                   placeholder="Search systems, descriptions, or tags..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-white/10 border border-white/20 rounded-xl pl-10 sm:pl-12 pr-10 sm:pr-12 py-3 sm:py-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
+                  className="w-full bg-white/80 border border-purple-200/50 rounded-xl pl-10 sm:pl-12 pr-10 sm:pr-12 py-3 sm:py-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery('')}
-                    className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 text-white/40 hover:text-white transition-colors"
+                    className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 text-purple-400 hover:text-purple-600 transition-colors"
                   >
                     <X className="w-4 h-4 sm:w-5 sm:h-5" />
                   </button>
@@ -214,16 +266,16 @@ const SystemsPage = () => {
 
             {/* Results Counter */}
             <div className="text-center mb-6 sm:mb-8">
-              <p className="text-white/60 text-sm sm:text-base">
+              <p className="text-gray-600 text-sm sm:text-base">
                 Showing {filteredSystems.length} of {systems.length} systems
                 {searchQuery && (
-                  <span className="text-cyan-400"> for "{searchQuery}"</span>
+                  <span className="text-purple-600"> for "{searchQuery}"</span>
                 )}
               </p>
             </div>
 
             {/* Category Tabs */}
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12">
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
               {categories.map((category) => {
                 const Icon = category.icon;
                 return (
@@ -232,16 +284,15 @@ const SystemsPage = () => {
                     onClick={() => setSelectedCategory(category.id)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`flex items-center space-x-1 sm:space-x-2 px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 text-sm sm:text-base ${
+                    className={`flex items-center space-x-1 sm:space-x-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl font-semibold transition-all duration-300 text-sm sm:text-base ${
                       selectedCategory === category.id
-                        ? 'bg-cyan-400 text-white shadow-lg shadow-cyan-400/25'
-                        : 'bg-white/10 text-white/70 hover:bg-white/20 hover:text-white'
+                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-200/50'
+                        : 'bg-purple-100 text-gray-600 hover:text-purple-600 hover:bg-purple-50'
                     }`}
                   >
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
-                    <span className="hidden sm:inline">{category.label}</span>
-                    <span className="sm:hidden">{category.label.split(' ')[0]}</span>
-                    <span className="bg-white/20 text-white/80 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-xs">
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                    <span className="whitespace-nowrap">{category.label}</span>
+                    <span className="bg-white/20 text-gray-700 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-xs whitespace-nowrap">
                       {category.count}
                     </span>
                   </motion.button>
@@ -258,13 +309,13 @@ const SystemsPage = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="ultra-glass rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 group"
+                className="bg-white/30 backdrop-blur-md border border-purple-200/50 rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 group"
               >
                 {/* System Header */}
-                <div className="relative h-48 bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-purple-500/20">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <div className="relative h-48 bg-gradient-to-br from-purple-100 via-pink-100 to-purple-50">
+                  <div className="absolute inset-0 bg-gradient-to-t from-purple-500/10 via-transparent to-transparent" />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-cyan-400/20 text-cyan-300 px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium">
                       {system.type}
                     </span>
                   </div>
@@ -272,41 +323,41 @@ const SystemsPage = () => {
                     <div className="absolute top-4 right-4">
                       <div className="flex items-center space-x-2">
                         <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                        <span className="text-white text-sm font-medium">Featured</span>
+                        <span className="text-gray-900 text-sm font-medium">Featured</span>
                       </div>
                     </div>
                   )}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                         <Settings className="w-8 h-8 text-white" />
                       </div>
-                      <h3 className="text-xl font-bold text-white px-4">{system.title}</h3>
+                      <h3 className="text-xl font-bold text-gray-900 px-4">{system.title}</h3>
                     </div>
                   </div>
                 </div>
 
                 {/* System Content */}
                 <div className="p-6">
-                  <p className="text-white/80 leading-relaxed mb-4">
+                  <p className="text-gray-700 leading-relaxed mb-4">
                     {system.description}
                   </p>
 
                   {/* Metrics */}
                   <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="text-center p-3 bg-white/5 rounded-lg">
-                      <div className="text-2xl font-bold text-cyan-400">
+                    <div className="text-center p-3 bg-white/80 rounded-lg">
+                      <div className="text-2xl font-bold text-purple-600">
                         {Object.values(system.metrics)[0]}
                       </div>
-                      <div className="text-white/60 text-sm">
+                      <div className="text-gray-600 text-sm">
                         {Object.keys(system.metrics)[0]}
                       </div>
                     </div>
-                    <div className="text-center p-3 bg-white/5 rounded-lg">
-                      <div className="text-2xl font-bold text-cyan-400">
+                    <div className="text-center p-3 bg-white/80 rounded-lg">
+                      <div className="text-2xl font-bold text-purple-600">
                         {Object.values(system.metrics)[1]}
                       </div>
-                      <div className="text-white/60 text-sm">
+                      <div className="text-gray-600 text-sm">
                         {Object.keys(system.metrics)[1]}
                       </div>
                     </div>
@@ -315,12 +366,12 @@ const SystemsPage = () => {
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-6">
                     {system.technologies.slice(0, 4).map((tech, idx) => (
-                      <span key={idx} className="bg-blue-500/20 text-blue-300 px-2 py-1 rounded text-xs">
+                      <span key={idx} className="bg-purple-100 text-purple-600 px-2 py-1 rounded text-xs">
                         {tech}
                       </span>
                     ))}
                     {system.technologies.length > 4 && (
-                      <span className="bg-white/10 text-white/60 px-2 py-1 rounded text-xs">
+                      <span className="bg-purple-100 text-gray-600 px-2 py-1 rounded text-xs">
                         +{system.technologies.length - 4} more
                       </span>
                     )}
@@ -330,12 +381,12 @@ const SystemsPage = () => {
                   {system.tags && (
                     <div className="flex flex-wrap gap-2 mb-6">
                       {system.tags.slice(0, 3).map((tag, idx) => (
-                        <span key={idx} className="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs">
+                        <span key={idx} className="bg-purple-100 text-purple-600 px-2 py-1 rounded text-xs">
                           {tag}
                         </span>
                       ))}
                       {system.tags.length > 3 && (
-                        <span className="bg-white/10 text-white/60 px-2 py-1 rounded text-xs">
+                        <span className="bg-purple-100 text-gray-600 px-2 py-1 rounded text-xs">
                           +{system.tags.length - 3} more
                         </span>
                       )}
@@ -346,12 +397,12 @@ const SystemsPage = () => {
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-2">
                       <div className={`w-2 h-2 rounded-full ${
-                        system.status === 'Live' ? 'bg-green-400' : 
-                        system.status === 'Completed' ? 'bg-blue-400' : 'bg-yellow-400'
+                        system.status === 'Live' ? 'bg-green-500' : 
+                        system.status === 'Completed' ? 'bg-purple-500' : 'bg-yellow-500'
                       }`}></div>
-                      <span className="text-white/70 text-sm">{system.status}</span>
+                      <span className="text-gray-600 text-sm">{system.status}</span>
                     </div>
-                    <div className="text-white/60 text-sm">
+                    <div className="text-gray-600 text-sm">
                       {system.complexity} • {system.timeToBuild}
                     </div>
                   </div>
@@ -361,7 +412,7 @@ const SystemsPage = () => {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-full bg-gradient-to-r from-cyan-400/20 to-blue-500/20 text-cyan-400 hover:text-cyan-300 font-semibold py-3 rounded-xl border border-cyan-400/30 hover:border-cyan-400/50 transition-all duration-300 flex items-center justify-center space-x-2"
+                      className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 font-semibold py-3 rounded-xl border border-purple-500/30 hover:border-purple-500/50 transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg shadow-purple-200/50"
                     >
                       <span>View Details</span>
                       <ArrowRight className="w-4 h-4" />
@@ -375,11 +426,11 @@ const SystemsPage = () => {
           {/* No Results */}
           {filteredSystems.length === 0 && (
             <div className="text-center py-12">
-              <div className="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Search className="w-12 h-12 text-white/40" />
+              <div className="w-24 h-24 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Search className="w-12 h-12 text-purple-400" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">No systems found</h3>
-              <p className="text-white/60 mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">No systems found</h3>
+              <p className="text-gray-600 mb-6">
                 Try adjusting your search terms or category filters
               </p>
               <button
@@ -388,7 +439,7 @@ const SystemsPage = () => {
                   setSelectedCategory('all');
                   setSelectedTags([]);
                 }}
-                className="bg-cyan-400 text-white px-6 py-3 rounded-xl font-semibold hover:bg-cyan-500 transition-colors"
+                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-xl font-semibold hover:from-purple-600 hover:to-pink-600 transition-colors shadow-lg shadow-purple-200/50"
               >
                 Clear Filters
               </button>

@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ExternalLink, Github, Star, Eye, Code, Briefcase, 
   Award, TrendingUp, Users, Zap, Target, CheckCircle,
-  Filter, Search, Calendar, Tag, ShoppingCart, Radio, Cpu, BookOpen
+  Filter, Search, Calendar, Tag, ShoppingCart, Radio, Cpu, BookOpen, X
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import FollowMyJourney from '../components/FollowMyJourney';
@@ -358,8 +358,6 @@ const PortfolioPage = () => {
     return matchesCategory && matchesSearch;
   });
 
-  const featuredProjects = projects.filter(project => project.featured);
-
   // Structured Data for Portfolio Page
   const portfolioStructuredData = {
     "@context": "https://schema.org",
@@ -434,198 +432,187 @@ const PortfolioPage = () => {
         structuredData={portfolioStructuredData}
       />
       {/* Hero Section */}
-      <section className="py-12 sm:py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-teal-900/20 to-slate-900" />
+      <section className="pt-16 sm:pt-20 min-h-[75vh] relative overflow-hidden flex items-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-pink-50 to-white" />
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+          <div className="absolute top-40 right-10 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+          <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Floating Portfolio Icons */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          <motion.div
+            animate={{ y: [0, -22, 0], rotate: [0, 10, 0], x: [0, 12, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-24 left-[9%] w-20 h-20 bg-gradient-to-br from-purple-200/60 to-pink-200/60 backdrop-blur-md rounded-full flex items-center justify-center shadow-2xl border border-purple-300/50"
+          >
+            <Briefcase className="w-10 h-10 text-purple-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 28, 0], rotate: [0, -12, 0], x: [0, -10, 0] }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute top-32 right-[12%] w-24 h-24 bg-gradient-to-tl from-pink-200/60 to-purple-200/60 backdrop-blur-md rounded-2xl flex items-center justify-center shadow-2xl border border-pink-300/50"
+          >
+            <Code className="w-12 h-12 text-pink-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, -18, 0], rotate: [0, 8, 0], scale: [1, 1.07, 1] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            className="absolute bottom-36 left-[14%] w-20 h-20 bg-gradient-to-br from-purple-100/70 to-pink-100/70 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-xl border border-purple-200/50"
+          >
+            <Target className="w-10 h-10 text-purple-700" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 26, 0], rotate: [0, -10, 0], x: [0, -14, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1.6 }}
+            className="absolute bottom-32 right-[10%] w-20 h-20 bg-gradient-to-tr from-pink-200/70 to-purple-200/70 backdrop-blur-md rounded-full flex items-center justify-center shadow-2xl border border-pink-300/60"
+          >
+            <Award className="w-10 h-10 text-pink-700" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, -16, 0], rotate: [0, 6, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2.2 }}
+            className="absolute top-1/2 left-[7%] w-16 h-16 bg-purple-200/55 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg"
+          >
+            <Star className="w-8 h-8 text-purple-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 20, 0], rotate: [0, -8, 0], x: [0, 8, 0] }}
+            transition={{ duration: 8.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+            className="absolute top-1/3 right-[18%] w-16 h-16 bg-pink-100/65 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg"
+          >
+            <TrendingUp className="w-8 h-8 text-pink-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, -20, 0], rotate: [0, 10, 0], scale: [1, 1.05, 1] }}
+            transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+            className="absolute bottom-1/4 left-[24%] w-14 h-14 bg-purple-100/60 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-md"
+          >
+            <Zap className="w-7 h-7 text-purple-600" />
+          </motion.div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-4 sm:mb-6">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold text-gray-900 mb-4 sm:mb-6 tracking-tight">
               My Portfolio
             </h1>
-            <p className="text-lg sm:text-2xl text-cyan-200 mb-6 sm:mb-8 max-w-3xl mx-auto px-4 sm:px-0">
+            <p className="text-lg sm:text-2xl text-purple-600 mb-6 sm:mb-8 max-w-3xl mx-auto px-4 sm:px-0">
               A collection of projects, ventures, and creative works that showcase my journey as an entrepreneur, startup builder, and writer.
             </p>
             
             {/* Quick Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 max-w-4xl mx-auto">
-              <div className="bg-white/5 rounded-lg p-3 sm:p-4">
-                <div className="text-2xl sm:text-3xl font-bold text-blue-400">8+</div>
-                <div className="text-white/60 text-xs sm:text-sm">Years Experience</div>
+              <div className="bg-purple-50/80 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-purple-200/50">
+                <div className="text-2xl sm:text-3xl font-bold text-purple-500">8+</div>
+                <div className="text-gray-600 text-xs sm:text-sm">Years Experience</div>
               </div>
-              <div className="bg-white/5 rounded-lg p-3 sm:p-4">
-                <div className="text-2xl sm:text-3xl font-bold text-blue-400">10+</div>
-                <div className="text-white/60 text-xs sm:text-sm">Startups Mentored</div>
+              <div className="bg-purple-50/80 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-purple-200/50">
+                <div className="text-2xl sm:text-3xl font-bold text-purple-500">10+</div>
+                <div className="text-gray-600 text-xs sm:text-sm">Startups Mentored</div>
               </div>
-              <div className="bg-white/5 rounded-lg p-3 sm:p-4">
-                <div className="text-2xl sm:text-3xl font-bold text-blue-400">300+</div>
-                <div className="text-white/60 text-xs sm:text-sm">Team Members Led</div>
+              <div className="bg-purple-50/80 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-purple-200/50">
+                <div className="text-2xl sm:text-3xl font-bold text-purple-500">300+</div>
+                <div className="text-gray-600 text-xs sm:text-sm">Team Members Led</div>
               </div>
-              <div className="bg-white/5 rounded-lg p-3 sm:p-4">
-                <div className="text-2xl sm:text-3xl font-bold text-blue-400">2</div>
-                <div className="text-white/60 text-xs sm:text-sm">Books Published</div>
+              <div className="bg-purple-50/80 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-purple-200/50">
+                <div className="text-2xl sm:text-3xl font-bold text-purple-500">2</div>
+                <div className="text-gray-600 text-xs sm:text-sm">Books Published</div>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Featured Projects */}
-      <section className="py-12 sm:py-20 relative">
+      {/* Search and Filter Section */}
+      <section className="py-4 sm:py-6 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-8 sm:mb-16"
+            className="mb-6 sm:mb-8"
           >
-            <h2 className="text-2xl sm:text-4xl font-bold text-white mb-3 sm:mb-4 text-center">Featured Projects</h2>
-            <p className="text-white/70 text-center max-w-3xl mx-auto text-base sm:text-lg px-4 sm:px-0">
-              From AI-powered platforms to sustainable solutions, these projects represent my journey of building technology that transforms industries and empowers communities.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
-            {featuredProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
-                className="ultra-glass rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300"
-              >
-                <div className="relative">
-                  <div className="h-64 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Briefcase className="w-8 h-8 text-white" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-white">{project.title}</h3>
-                    </div>
-                  </div>
-                  <div className="absolute top-4 right-4">
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                      project.status === 'Live' ? 'bg-green-500/20 text-green-400' :
-                      project.status === 'Closed' ? 'bg-red-500/20 text-red-400' :
-                      project.status === 'Strategized' ? 'bg-blue-500/20 text-blue-400' :
-                      project.status === 'Exited' ? 'bg-purple-500/20 text-purple-400' :
-                      project.status === 'Pre-Launch' ? 'bg-yellow-500/20 text-yellow-400' :
-                      project.status === 'In Development' ? 'bg-blue-500/20 text-blue-400' :
-                      project.status === 'Acquired' ? 'bg-purple-500/20 text-purple-400' :
-                      'bg-orange-500/20 text-orange-400'
-                    }`}>
-                      {project.status}
-                    </span>
-                  </div>
-                </div>
-                
-                <div className="p-6">
-                  <p className="text-white/80 mb-4">{project.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.slice(0, 4).map((tech, idx) => (
-                      <span key={idx} className="bg-white/10 text-white/70 px-2 py-1 rounded text-xs">
-                        {tech}
-                      </span>
-                    ))}
-                    {project.tech.length > 4 && (
-                      <span className="bg-white/10 text-white/70 px-2 py-1 rounded text-xs">
-                        +{project.tech.length - 4} more
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-4 mb-6">
-                    {Object.entries(project.metrics).map(([key, value], idx) => (
-                      <div key={idx} className="text-center">
-                        <div className="text-lg font-bold text-blue-400">{value}</div>
-                        <div className="text-white/60 text-xs capitalize">{key}</div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex space-x-3">
-                    {project.liveUrl && (
-                      <motion.a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex-1 bg-blue-500 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors flex items-center justify-center"
-                      >
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        View Live
-                      </motion.a>
-                    )}
-                    {project.githubUrl && (
-                      <motion.a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex-1 bg-gray-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors flex items-center justify-center"
-                      >
-                        <Github className="w-4 h-4 mr-2" />
-                        Code
-                      </motion.a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* All Projects Section */}
-      <section className="py-12 sm:py-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-8 sm:mb-12"
-          >
-            <h2 className="text-2xl sm:text-4xl font-bold text-white mb-6 sm:mb-8 text-center">All Projects</h2>
-            
-            {/* Search and Filter */}
-            <div className="flex flex-col md:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
-              <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/40 w-4 h-4 sm:w-5 sm:h-5" />
+            {/* Search Bar */}
+            <div className="max-w-2xl mx-auto mb-6 sm:mb-8">
+              <div className="relative">
+                <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-purple-400 w-4 h-4 sm:w-5 sm:h-5" />
                 <input
                   type="text"
-                  placeholder="Search projects..."
+                  placeholder="Search projects, descriptions, or tags..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg pl-8 sm:pl-10 pr-4 py-2.5 sm:py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
+                  className="w-full bg-white/80 border border-purple-200/50 rounded-xl pl-10 sm:pl-12 pr-10 sm:pr-12 py-3 sm:py-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
                 />
+                {searchTerm && (
+                  <button
+                    onClick={() => setSearchTerm('')}
+                    className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 text-purple-400 hover:text-purple-600 transition-colors"
+                  >
+                    <X className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </button>
+                )}
               </div>
-              
-              <div className="flex items-center space-x-1 sm:space-x-2 overflow-x-auto pb-2">
-                {categories.map((category) => (
+            </div>
+
+            {/* Results Counter */}
+            <div className="text-center mb-6 sm:mb-8">
+              <p className="text-gray-600 text-sm sm:text-base">
+                Showing {filteredProjects.length} of {projects.length} projects
+                {searchTerm && (
+                  <span className="text-purple-600"> for "{searchTerm}"</span>
+                )}
+              </p>
+            </div>
+
+            {/* Category Tabs */}
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+              {categories.map((category) => {
+                const Icon = category.icon;
+                const categoryProjects = projects.filter(p => p.category === category.id);
+                return (
                   <motion.button
                     key={category.id}
                     onClick={() => setActiveFilter(category.id)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`flex items-center space-x-1 sm:space-x-2 px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all duration-300 whitespace-nowrap ${
+                    className={`flex items-center space-x-1 sm:space-x-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl font-semibold transition-all duration-300 text-sm sm:text-base ${
                       activeFilter === category.id
-                        ? 'bg-blue-500 text-white'
-                        : 'bg-white/10 text-white/60 hover:text-white hover:bg-white/20'
+                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-200/50'
+                        : 'bg-purple-100 text-gray-600 hover:text-purple-600 hover:bg-purple-50'
                     }`}
                   >
-                    <category.icon className="w-3 h-3 sm:w-4 sm:h-4" />
-                    <span className="text-xs sm:text-sm font-medium">{category.label}</span>
+                    <Icon className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+                    <span className="text-xs sm:text-sm font-medium whitespace-nowrap">{category.label}</span>
+                    <span className="text-xs opacity-70 whitespace-nowrap">({category.id === 'all' ? projects.length : categoryProjects.length})</span>
                   </motion.button>
-                ))}
-              </div>
+                );
+              })}
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* All Projects Section */}
+      <section className="pt-8 pb-12 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-8 sm:mb-12"
+          >
+            <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">All Projects</h2>
+            <p className="text-lg sm:text-xl text-purple-600 text-center max-w-3xl mx-auto mb-6 sm:mb-8 px-4 sm:px-0">
+              Browse through all projects organized by category and industry
+            </p>
           </motion.div>
 
           <AnimatePresence mode="wait">
@@ -643,25 +630,25 @@ const PortfolioPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="ultra-glass rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300"
+                  className="bg-white/30 backdrop-blur-md rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300 border border-purple-200/50"
                 >
                   <div className="relative">
-                    <div className="h-48 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
+                    <div className="h-48 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
                       <div className="text-center">
-                        <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-2">
                           <Briefcase className="w-6 h-6 text-white" />
                         </div>
-                        <h3 className="text-lg font-bold text-white">{project.title}</h3>
+                        <h3 className="text-lg font-bold text-purple-600">{project.title}</h3>
                       </div>
                     </div>
                     <div className="absolute top-3 right-3">
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                         project.status === 'Live' ? 'bg-green-500/20 text-green-400' :
                         project.status === 'Closed' ? 'bg-red-500/20 text-red-400' :
-                        project.status === 'Strategized' ? 'bg-blue-500/20 text-blue-400' :
+                        project.status === 'Strategized' ? 'bg-purple-600/20 text-purple-500' :
                         project.status === 'Exited' ? 'bg-purple-500/20 text-purple-400' :
                         project.status === 'Pre-Launch' ? 'bg-yellow-500/20 text-yellow-400' :
-                        project.status === 'In Development' ? 'bg-blue-500/20 text-blue-400' :
+                        project.status === 'In Development' ? 'bg-purple-600/20 text-purple-500' :
                         project.status === 'Acquired' ? 'bg-purple-500/20 text-purple-400' :
                         'bg-orange-500/20 text-orange-400'
                       }`}>
@@ -671,16 +658,16 @@ const PortfolioPage = () => {
                   </div>
                   
                   <div className="p-4">
-                    <p className="text-white/80 text-sm mb-3 line-clamp-2">{project.description}</p>
+                    <p className="text-gray-700 text-sm mb-3 line-clamp-2">{project.description}</p>
                     
                     <div className="flex flex-wrap gap-1 mb-3">
                       {project.tech.slice(0, 3).map((tech, idx) => (
-                        <span key={idx} className="bg-white/10 text-white/60 px-2 py-1 rounded text-xs">
+                        <span key={idx} className="bg-purple-100 text-gray-600 px-2 py-1 rounded text-xs">
                           {tech}
                         </span>
                       ))}
                       {project.tech.length > 3 && (
-                        <span className="bg-white/10 text-white/60 px-2 py-1 rounded text-xs">
+                        <span className="bg-purple-100 text-gray-600 px-2 py-1 rounded text-xs">
                           +{project.tech.length - 3}
                         </span>
                       )}
@@ -694,7 +681,7 @@ const PortfolioPage = () => {
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className="flex-1 bg-blue-500 text-white py-2 px-3 rounded text-xs font-medium hover:bg-blue-600 transition-colors flex items-center justify-center"
+                          className="flex-1 bg-purple-600 text-white py-2 px-3 rounded text-xs font-medium hover:bg-purple-700 transition-colors flex items-center justify-center"
                         >
                           <ExternalLink className="w-3 h-3 mr-1" />
                           Live
@@ -722,27 +709,27 @@ const PortfolioPage = () => {
 
           {filteredProjects.length === 0 && (
             <div className="text-center py-12">
-              <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Search className="w-8 h-8 text-white/40" />
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Search className="w-8 h-8 text-purple-400" />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">No projects found</h3>
-              <p className="text-white/60">Try adjusting your search or filter criteria.</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">No projects found</h3>
+              <p className="text-gray-600">Try adjusting your search or filter criteria.</p>
             </div>
           )}
         </div>
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 relative">
+      <section className="py-8 sm:py-12 relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="ultra-glass rounded-xl p-8"
+            className="bg-white/30 backdrop-blur-md border border-purple-200/50 rounded-xl p-8"
           >
-            <h2 className="text-3xl font-bold text-white mb-4">Interested in Working Together?</h2>
-            <p className="text-white/70 mb-8 text-lg">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Interested in Working Together?</h2>
+            <p className="text-gray-700 mb-8 text-lg">
               I'm always excited to take on new challenges and create innovative solutions. 
               Let's discuss how we can bring your ideas to life.
             </p>
@@ -751,7 +738,7 @@ const PortfolioPage = () => {
                 href="/contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors"
+                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-full font-semibold hover:from-purple-600 hover:to-pink-600 transition-colors shadow-lg shadow-purple-200/50"
               >
                 Get In Touch
               </motion.a>
@@ -759,7 +746,7 @@ const PortfolioPage = () => {
                 href="/about"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white/10 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/20 transition-colors"
+                className="bg-white/80 text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-purple-50 border border-purple-200 transition-colors"
               >
                 Learn More About Me
               </motion.a>

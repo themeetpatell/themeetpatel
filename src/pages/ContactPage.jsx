@@ -76,7 +76,7 @@ const ContactPage = () => {
       icon: Mail,
       value: contactInfo.email,
       action: `mailto:${contactInfo.email}`,
-      color: "from-blue-500 to-cyan-500",
+      color: "from-purple-500 to-pink-500",
       priority: "high"
     },
     {
@@ -94,7 +94,7 @@ const ContactPage = () => {
       icon: Linkedin,
       value: "LinkedIn Profile",
       action: contactInfo.linkedin,
-      color: "from-blue-600 to-blue-700",
+      color: "from-purple-600 to-purple-700",
       priority: "medium"
     },
     {
@@ -181,7 +181,7 @@ const ContactPage = () => {
       duration: "1-2 hours",
       price: "Free for first session",
       icon: Users,
-      color: "from-blue-500 to-cyan-500"
+      color: "from-purple-500 to-pink-500"
     },
     {
       title: "Business Strategy",
@@ -376,17 +376,49 @@ Please add me to the community!`;
         structuredData={contactStructuredData}
       />
       {/* Hero Section */}
-      <section ref={heroRef} className="py-12 sm:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-teal-900/20 to-slate-900" />
+      <section ref={heroRef} className="pt-16 sm:pt-20 min-h-[75vh] relative overflow-hidden flex items-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-pink-50 to-white" />
         
-        {/* Background Elements */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-20 w-32 h-32 bg-cyan-400 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-20 w-40 h-40 bg-teal-400 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-blue-400 rounded-full blur-2xl"></div>
+        {/* Animated Background Blobs */}
+        <div className="absolute inset-0 opacity-40">
+          <div className="absolute top-20 left-10 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+          <div className="absolute top-40 right-10 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+          <div className="absolute bottom-20 left-1/2 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
         </div>
         
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Floating Icons */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          <motion.div
+            animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-24 left-[10%] w-16 h-16 bg-purple-200/30 backdrop-blur-sm rounded-full flex items-center justify-center"
+          >
+            <Mail className="w-8 h-8 text-purple-500" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute top-36 right-[15%] w-20 h-20 bg-pink-200/30 backdrop-blur-sm rounded-full flex items-center justify-center"
+          >
+            <MessageSquare className="w-10 h-10 text-pink-500" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, -15, 0], rotate: [0, 10, 0] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            className="absolute bottom-32 left-[20%] w-14 h-14 bg-purple-100/40 backdrop-blur-sm rounded-full flex items-center justify-center"
+          >
+            <Phone className="w-7 h-7 text-purple-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 25, 0], rotate: [0, -8, 0] }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+            className="absolute bottom-24 right-[10%] w-18 h-18 bg-pink-100/40 backdrop-blur-sm rounded-full flex items-center justify-center"
+          >
+            <Calendar className="w-9 h-9 text-pink-600" />
+          </motion.div>
+        </div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
@@ -400,12 +432,12 @@ Please add me to the community!`;
               transition={{ duration: 0.8, delay: 0.2 }}
               className="mb-8"
             >
-              <h1 className="text-3xl sm:text-6xl md:text-8xl font-bold text-white mb-4 sm:mb-6 tracking-tight">
-                Let's <span className="bg-gradient-to-r from-cyan-400 via-teal-400 to-blue-400 bg-clip-text text-transparent">Connect</span>
+              <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold text-gray-900 mb-4 sm:mb-6 tracking-tight">
+                Let's <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 bg-clip-text text-transparent">Connect</span>
               </h1>
               
               {/* Decorative Line */}
-              <div className="w-16 sm:w-24 h-0.5 sm:h-1 bg-gradient-to-r from-cyan-400 to-teal-400 mx-auto rounded-full"></div>
+              <div className="w-16 sm:w-24 h-0.5 sm:h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
             </motion.div>
 
             {/* Subtitle */}
@@ -413,10 +445,10 @@ Please add me to the community!`;
               initial={{ opacity: 0, y: 20 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg sm:text-xl md:text-2xl text-cyan-200 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed px-4 sm:px-0"
+              className="text-lg sm:text-xl md:text-2xl text-purple-600 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed px-4 sm:px-0"
             >
               I'm always excited to meet new people, share experiences, and explore opportunities for collaboration. 
-              <span className="block mt-2 text-white/80">
+              <span className="block mt-2 text-gray-700">
                 Let's build something amazing together.
               </span>
             </motion.p>
@@ -432,9 +464,9 @@ Please add me to the community!`;
                 href="#contact-form"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative inline-flex items-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-cyan-500/20 overflow-hidden w-full sm:w-auto"
+                className="group relative inline-flex items-center bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-500/20 overflow-hidden w-full sm:w-auto"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-teal-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-400/20 to-pink-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <Mail className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 relative z-10" />
                 <span className="relative z-10">Send a Message</span>
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 sm:ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
@@ -444,7 +476,7 @@ Please add me to the community!`;
                 onClick={handleJoinCommunity}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative inline-flex items-center bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/30 text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-2xl transition-all duration-300 overflow-hidden w-full sm:w-auto"
+                className="group relative inline-flex items-center bg-white/80 hover:bg-purple-50 backdrop-blur-sm border border-purple-200 hover:border-purple-400 text-purple-600 font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 overflow-hidden w-full sm:w-auto"
               >
                 <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 relative z-10" />
                 <span className="relative z-10">Join Community</span>
@@ -456,7 +488,7 @@ Please add me to the community!`;
               initial={{ opacity: 0, y: 20 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="mt-12 sm:mt-16 flex flex-wrap justify-center items-center gap-4 sm:gap-8 text-white/60"
+              className="mt-12 sm:mt-16 flex flex-wrap justify-center items-center gap-4 sm:gap-8 text-gray-600"
             >
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" />
@@ -484,8 +516,8 @@ Please add me to the community!`;
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Choose Your Preferred Way</h2>
-            <p className="text-xl text-cyan-200 max-w-3xl mx-auto leading-relaxed">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">Choose Your Preferred Way</h2>
+            <p className="text-xl text-purple-600 max-w-3xl mx-auto leading-relaxed">
               Whether you prefer email, phone calls, or social media, I'm here to help and connect with you.
             </p>
           </motion.div>
@@ -497,7 +529,7 @@ Please add me to the community!`;
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="apple-glass p-8 text-center group hover:scale-105 transition-all duration-300 relative"
+                className="bg-white/30 backdrop-blur-md border border-purple-200/50 p-8 text-center group hover:scale-105 transition-all duration-300 relative"
               >
                 {/* Priority Badge */}
                 <div className={`absolute top-4 right-4 px-2 py-1 rounded-full text-xs font-medium ${
@@ -512,11 +544,11 @@ Please add me to the community!`;
                   <method.icon className="w-8 h-8 text-white" />
                 </div>
                 
-                <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors">
                   {method.title}
                 </h3>
                 
-                <p className="text-white/70 mb-4 text-sm leading-relaxed">
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                   {method.description}
                 </p>
                 
@@ -527,7 +559,7 @@ Please add me to the community!`;
                     rel={method.action.startsWith('http') ? 'noopener noreferrer' : undefined}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium text-sm group-hover:underline"
+                    className="inline-flex items-center text-purple-600 hover:text-purple-500 font-medium text-sm group-hover:underline"
                   >
                     {method.value}
                     {method.action.startsWith('http') && (
@@ -537,7 +569,7 @@ Please add me to the community!`;
                   
                   <button
                     onClick={() => copyToClipboard(method.value === 'LinkedIn Profile' ? contactInfo.linkedin : method.value, method.title)}
-                    className="flex items-center justify-center w-full text-white/60 hover:text-white text-xs space-x-1"
+                    className="flex items-center justify-center w-full text-gray-600 hover:text-purple-600 text-xs space-x-1"
                   >
                     {copiedItem === method.title ? (
                       <>
@@ -567,8 +599,8 @@ Please add me to the community!`;
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Services I Offer</h2>
-            <p className="text-xl text-cyan-200 max-w-3xl mx-auto leading-relaxed">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">Services I Offer</h2>
+            <p className="text-xl text-purple-600 max-w-3xl mx-auto leading-relaxed">
               From startup mentoring to speaking engagements, here's how I can help you succeed.
             </p>
           </motion.div>
@@ -580,28 +612,28 @@ Please add me to the community!`;
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="apple-glass p-6 group hover:scale-105 transition-all duration-300"
+                className="bg-white/30 backdrop-blur-md border border-purple-200/50 p-6 group hover:scale-105 transition-all duration-300"
               >
                 <div className={`w-12 h-12 bg-gradient-to-r ${service.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   <service.icon className="w-6 h-6 text-white" />
                 </div>
                 
-                <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-cyan-400 transition-colors">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">
                   {service.title}
                 </h3>
                 
-                <p className="text-white/70 text-sm mb-4 leading-relaxed">
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
                   {service.description}
                 </p>
                 
-                <div className="space-y-2 text-xs text-white/60">
+                <div className="space-y-2 text-xs text-gray-600">
                   <div className="flex justify-between">
                     <span>Duration:</span>
                     <span>{service.duration}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Price:</span>
-                    <span className="text-cyan-400">{service.price}</span>
+                    <span className="text-purple-600">{service.price}</span>
                   </div>
                 </div>
               </motion.div>
@@ -620,17 +652,17 @@ Please add me to the community!`;
             className="grid grid-cols-1 lg:grid-cols-2 gap-12"
           >
             {/* Availability Schedule */}
-            <div className="apple-glass rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-                <CalendarIcon className="w-6 h-6 mr-3 text-cyan-400" />
+            <div className="bg-white/30 backdrop-blur-md border border-purple-200/50 rounded-2xl p-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <CalendarIcon className="w-6 h-6 mr-3 text-purple-600" />
                 My Availability
               </h3>
               <div className="space-y-4">
                 {availability.map((slot, index) => (
-                  <div key={slot.day} className="flex items-center justify-between p-4 bg-white/5 rounded-xl">
+                  <div key={slot.day} className="flex items-center justify-between p-4 bg-purple-50/80 backdrop-blur-sm rounded-xl border border-purple-200/50">
                     <div>
-                      <h4 className="text-white font-semibold">{slot.day}</h4>
-                      <p className="text-white/70 text-sm">{slot.time}</p>
+                      <h4 className="text-gray-900 font-semibold">{slot.day}</h4>
+                      <p className="text-gray-600 text-sm">{slot.time}</p>
                     </div>
                     <span className={`px-3 py-1 rounded-full text-xs font-medium ${slot.color} bg-opacity-20`}>
                       {slot.status}
@@ -639,8 +671,8 @@ Please add me to the community!`;
                 ))}
               </div>
               
-              <div className="mt-6 p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
-                <p className="text-cyan-200 text-sm">
+              <div className="mt-6 p-4 bg-purple-600/10 border border-purple-600/20 rounded-xl">
+                <p className="text-purple-600 text-sm">
                   <strong>Note:</strong> All times are in IST (Indian Standard Time). 
                   I'm flexible with scheduling for important discussions.
                 </p>
@@ -648,24 +680,24 @@ Please add me to the community!`;
             </div>
 
             {/* Contact Details */}
-            <div className="apple-glass rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-                <MapPin className="w-6 h-6 mr-3 text-cyan-400" />
+            <div className="bg-white/30 backdrop-blur-md border border-purple-200/50 rounded-2xl p-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <MapPin className="w-6 h-6 mr-3 text-purple-600" />
                 Contact Details
               </h3>
               
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-teal-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-white font-semibold mb-1">Email Address</h4>
-                    <p className="text-cyan-200 mb-1">{contactInfo.email}</p>
-                    <p className="text-white/60 text-sm">Primary business email</p>
+                    <h4 className="text-gray-900 font-semibold mb-1">Email Address</h4>
+                    <p className="text-purple-600 mb-1">{contactInfo.email}</p>
+                    <p className="text-gray-600 text-sm">Primary business email</p>
                     <button
                       onClick={() => copyToClipboard(contactInfo.email, 'email')}
-                      className="text-xs text-cyan-400 hover:text-cyan-300 mt-1"
+                      className="text-xs text-purple-600 hover:text-purple-500 mt-1"
                     >
                       {copiedItem === 'email' ? 'Copied!' : 'Copy email'}
                     </button>
@@ -673,26 +705,26 @@ Please add me to the community!`;
                 </div>
                 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-teal-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-white font-semibold mb-1">Phone Numbers</h4>
-                    <p className="text-cyan-200 mb-1">{contactInfo.phone}</p>
-                    <p className="text-cyan-200 mb-1">{contactInfo.phone2}</p>
-                    <p className="text-white/60 text-sm">Available during business hours</p>
+                    <h4 className="text-gray-900 font-semibold mb-1">Phone Numbers</h4>
+                    <p className="text-purple-600 mb-1">{contactInfo.phone}</p>
+                    <p className="text-purple-600 mb-1">{contactInfo.phone2}</p>
+                    <p className="text-gray-600 text-sm">Available during business hours</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-teal-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-white font-semibold mb-1">Locations</h4>
-                    <p className="text-cyan-200 mb-1">{contactInfo.location}</p>
-                    <p className="text-cyan-200 mb-1">{contactInfo.location2}</p>
-                    <p className="text-white/60 text-sm">Frequently traveling between locations</p>
+                    <h4 className="text-gray-900 font-semibold mb-1">Locations</h4>
+                    <p className="text-purple-600 mb-1">{contactInfo.location}</p>
+                    <p className="text-purple-600 mb-1">{contactInfo.location2}</p>
+                    <p className="text-gray-600 text-sm">Frequently traveling between locations</p>
                   </div>
                 </div>
               </div>
@@ -710,8 +742,8 @@ Please add me to the community!`;
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Send Me a Message</h2>
-            <p className="text-xl text-cyan-200 max-w-3xl mx-auto leading-relaxed">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">Send Me a Message</h2>
+            <p className="text-xl text-purple-600 max-w-3xl mx-auto leading-relaxed">
               Have a specific question or project in mind? I'd love to hear from you.
             </p>
                 </motion.div>
@@ -720,54 +752,54 @@ Please add me to the community!`;
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="apple-glass rounded-3xl p-8"
+            className="bg-white/30 backdrop-blur-md border border-purple-200/50 rounded-3xl p-8"
           >
                 <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                  <label className="block text-white/80 text-sm mb-2 font-medium">Name *</label>
+                  <label className="block text-gray-700 text-sm mb-2 font-medium">Name *</label>
                       <input
                         type="text"
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
                     required
-                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                    className="w-full bg-white/80 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                         placeholder="Your full name"
                       />
                     </div>
                     <div>
-                  <label className="block text-white/80 text-sm mb-2 font-medium">Email *</label>
+                  <label className="block text-gray-700 text-sm mb-2 font-medium">Email *</label>
                       <input
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
                     required
-                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                    className="w-full bg-white/80 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                         placeholder="your@email.com"
                       />
                     </div>
                   </div>
 
               <div>
-                <label className="block text-white/80 text-sm mb-2 font-medium">WhatsApp Number</label>
+                <label className="block text-gray-700 text-sm mb-2 font-medium">WhatsApp Number</label>
                 <div className="flex gap-2">
                   <div className="relative">
                     <select
                       name="countryCode"
                       value={formData.countryCode}
                       onChange={handleInputChange}
-                      className="bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 appearance-none cursor-pointer min-w-[120px]"
+                      className="bg-white/80 border border-purple-200/50 rounded-xl p-4 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 appearance-none cursor-pointer min-w-[120px]"
                     >
                       {countryCodes.map((country) => (
-                        <option key={country.code} value={country.code} className="bg-gray-800 text-white">
+                        <option key={country.code} value={country.code} className="bg-white text-gray-900">
                           {country.flag} {country.code}
                         </option>
                       ))}
                     </select>
                     <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                      <ChevronRight className="w-4 h-4 text-white/40" />
+                      <ChevronRight className="w-4 h-4 text-purple-400" />
                     </div>
                   </div>
                   <input
@@ -775,34 +807,34 @@ Please add me to the community!`;
                     name="whatsapp"
                     value={formData.whatsapp}
                     onChange={handleInputChange}
-                    className="flex-1 bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                    className="flex-1 bg-white/80 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                     placeholder="98 2434 1414"
                   />
                 </div>
               </div>
 
                     <div>
-                <label className="block text-white/80 text-sm mb-2 font-medium">Subject *</label>
+                <label className="block text-gray-700 text-sm mb-2 font-medium">Subject *</label>
                       <input
                         type="text"
                   name="subject"
                   value={formData.subject}
                         onChange={handleInputChange}
                   required
-                  className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                  className="w-full bg-white/80 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                   placeholder="What's this about?"
                 />
                   </div>
 
                   <div>
-                <label className="block text-white/80 text-sm mb-2 font-medium">Message *</label>
+                <label className="block text-gray-700 text-sm mb-2 font-medium">Message *</label>
                     <textarea
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
                   required
                       rows={6}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 resize-none"
+                  className="w-full bg-white/80 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 resize-none"
                   placeholder="Tell me about your project, question, or how I can help you..."
                 />
                   </div>
@@ -810,23 +842,26 @@ Please add me to the community!`;
               <motion.button
                     type="submit"
                 disabled={isSubmitting}
-                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                whileHover={{ scale: isSubmitting ? 1 : 1.02, y: isSubmitting ? 0 : -2 }}
                 whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                className={`w-full py-4 px-8 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2 text-lg ${
+                className={`group relative w-full py-4 px-8 rounded-xl font-bold transition-all duration-300 flex items-center justify-center space-x-2 text-lg overflow-hidden text-white ${
                   isSubmitting
                     ? 'bg-gray-500 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-cyan-400 to-teal-500 hover:from-cyan-500 hover:to-teal-600'
+                    : 'bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 shadow-xl hover:shadow-2xl hover:shadow-purple-500/30'
                 }`}
               >
+                {!isSubmitting && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                )}
                 {isSubmitting ? (
                   <>
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    <span>Sending...</span>
+                    <span className="relative z-10">Sending...</span>
                   </>
                 ) : (
                   <>
-                    <Send className="w-5 h-5" />
-                    <span>Send Message</span>
+                    <Send className="w-5 h-5 relative z-10 group-hover:scale-110 transition-transform duration-300" />
+                    <span className="relative z-10">Send Message</span>
                   </>
                 )}
               </motion.button>
@@ -878,21 +913,21 @@ Please add me to the community!`;
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Follow My Journey</h2>
-            <p className="text-xl text-cyan-200 max-w-3xl mx-auto leading-relaxed">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">Follow My Journey</h2>
+            <p className="text-xl text-purple-600 max-w-3xl mx-auto leading-relaxed">
               Stay updated with my latest projects, insights, and entrepreneurial journey across all platforms.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-6">
             {[
-              { icon: Linkedin, href: contactInfo.linkedin, label: 'LinkedIn', color: 'hover:text-blue-400' },
+              { icon: Linkedin, href: contactInfo.linkedin, label: 'LinkedIn', color: 'hover:text-purple-500' },
               { icon: Twitter, href: contactInfo.twitter, label: 'Twitter', color: 'hover:text-sky-400' },
               { icon: Github, href: contactInfo.github, label: 'GitHub', color: 'hover:text-gray-400' },
               { icon: Instagram, href: contactInfo.instagram, label: 'Instagram', color: 'hover:text-pink-400' },
               { icon: Youtube, href: contactInfo.youtube, label: 'YouTube', color: 'hover:text-red-400' },
               { icon: Medium, href: contactInfo.medium, label: 'Medium', color: 'hover:text-green-400' },
-              { icon: Calendar, href: contactInfo.calendly, label: 'Calendly', color: 'hover:text-blue-400' }
+              { icon: Calendar, href: contactInfo.calendly, label: 'Calendly', color: 'hover:text-purple-500' }
             ].map((social, index) => (
               <motion.a
                 key={social.label}
@@ -904,15 +939,15 @@ Please add me to the community!`;
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="apple-glass p-6 text-center group hover:scale-105 transition-all duration-300"
+                className="bg-white/30 backdrop-blur-md border border-purple-200/50 p-6 text-center group hover:scale-105 transition-all duration-300 rounded-xl"
               >
-                <div className={`w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 text-white/60 ${social.color} transition-all duration-300 group-hover:bg-white/20`}>
+                <div className={`w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 text-gray-600 ${social.color} transition-all duration-300 group-hover:bg-white/20`}>
                   <social.icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-white font-semibold mb-1 group-hover:text-cyan-400 transition-colors">
+                <h3 className="text-gray-900 font-semibold mb-1 group-hover:text-purple-600 transition-colors">
                   {social.label}
                 </h3>
-                <p className="text-white/60 text-sm">
+                <p className="text-gray-600 text-sm">
                   Follow
                 </p>
               </motion.a>
@@ -930,8 +965,8 @@ Please add me to the community!`;
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Join Our StartupOS Community</h2>
-            <p className="text-xl text-cyan-200 max-w-3xl mx-auto leading-relaxed">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">Join Our StartupOS Community</h2>
+            <p className="text-xl text-purple-600 max-w-3xl mx-auto leading-relaxed">
               Connect with fellow entrepreneurs, get exclusive insights, and be part of a thriving startup ecosystem.
             </p>
           </motion.div>
@@ -940,13 +975,13 @@ Please add me to the community!`;
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="apple-glass rounded-3xl p-8 md:p-12 text-center relative overflow-hidden"
+            className="bg-white/30 backdrop-blur-md border border-purple-200/50 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden"
           >
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
-              <div className="absolute top-10 left-10 w-20 h-20 bg-cyan-400 rounded-full"></div>
-              <div className="absolute bottom-10 right-10 w-32 h-32 bg-teal-400 rounded-full"></div>
-              <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-blue-400 rounded-full"></div>
+              <div className="absolute top-10 left-10 w-20 h-20 text-purple-500 rounded-full"></div>
+              <div className="absolute bottom-10 right-10 w-32 h-32 bg-pink-500 rounded-full"></div>
+              <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-purple-500 rounded-full"></div>
             </div>
 
             <div className="relative z-10">
@@ -955,9 +990,9 @@ Please add me to the community!`;
                 initial={{ opacity: 0, scale: 0.5 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6"
+                className="w-16 h-16 sm:w-20 sm:h-20 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-6"
               >
-                <MessageSquare className="w-10 h-10 text-green-400" />
+                <MessageSquare className="w-8 h-8 sm:w-10 sm:h-10 text-purple-600" />
               </motion.div>
 
               {/* Stats */}
@@ -967,17 +1002,17 @@ Please add me to the community!`;
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
               >
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-2">500+</div>
-                  <div className="text-white/60 text-sm">Active Members</div>
+                  <div className="text-center">
+                  <div className="text-3xl font-bold text-purple-600 mb-2">500+</div>
+                  <div className="text-gray-600 text-sm">Active Members</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-2">50+</div>
-                  <div className="text-white/60 text-sm">Daily Insights</div>
+                  <div className="text-3xl font-bold text-purple-600 mb-2">50+</div>
+                  <div className="text-gray-600 text-sm">Daily Insights</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-2">24/7</div>
-                  <div className="text-white/60 text-sm">Support</div>
+                  <div className="text-3xl font-bold text-purple-600 mb-2">24/7</div>
+                  <div className="text-gray-600 text-sm">Support</div>
                 </div>
               </motion.div>
 
@@ -990,20 +1025,20 @@ Please add me to the community!`;
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                    <span className="text-white/80">Exclusive startup insights</span>
+                    <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0" />
+                    <span className="text-gray-700">Exclusive startup insights</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                    <span className="text-white/80">Networking opportunities</span>
+                    <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0" />
+                    <span className="text-gray-700">Networking opportunities</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                    <span className="text-white/80">Direct access to mentors</span>
+                    <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0" />
+                    <span className="text-gray-700">Direct access to mentors</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                    <span className="text-white/80">Early access to resources</span>
+                    <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0" />
+                    <span className="text-gray-700">Early access to resources</span>
                   </div>
                 </div>
               </motion.div>
@@ -1016,9 +1051,9 @@ Please add me to the community!`;
                 transition={{ duration: 0.6, delay: 0.9 }}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative inline-flex items-center bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-green-500/20 overflow-hidden"
+                className="group relative inline-flex items-center bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-500/20 overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-400/20 to-pink-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <MessageSquare className="w-6 h-6 mr-3 relative z-10" />
                 <span className="relative z-10">Join StartupOS Community</span>
                 <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
@@ -1029,7 +1064,7 @@ Please add me to the community!`;
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 1.0 }}
-                className="text-white/60 text-sm mt-4"
+                className="text-gray-600 text-sm mt-4"
               >
                 Free to join • No spam • Instant access to 500+ entrepreneurs
               </motion.p>
@@ -1045,25 +1080,25 @@ Please add me to the community!`;
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+            className="fixed inset-0 bg-purple-900/20 backdrop-blur-sm flex items-center justify-center p-4 z-50"
             onClick={() => setIsCommunityFormOpen(false)}
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="bg-gray-900/95 backdrop-blur-xl border border-white/10 rounded-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+              className="bg-white/95 backdrop-blur-xl border border-purple-200/50 rounded-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Join StartupOS Community</h3>
-                  <p className="text-white/70">Tell us about yourself to get started</p>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Join StartupOS Community</h3>
+                  <p className="text-gray-600">Tell us about yourself to get started</p>
                 </div>
                 <button
                   onClick={() => setIsCommunityFormOpen(false)}
-                  className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white/60 hover:text-white hover:bg-white/20 transition-all duration-300"
+                  className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-gray-600 hover:text-purple-600 hover:bg-white/20 transition-all duration-300"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -1073,80 +1108,80 @@ Please add me to the community!`;
               <form onSubmit={handleCommunitySubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-white/80 text-sm mb-2 font-medium">LinkedIn Profile URL *</label>
+                    <label className="block text-gray-700 text-sm mb-2 font-medium">LinkedIn Profile URL *</label>
                     <input
                       type="url"
                       name="linkedinId"
                       value={communityFormData.linkedinId}
                       onChange={handleCommunityInputChange}
                       required
-                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                      className="w-full bg-white/80 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                       placeholder="https://linkedin.com/in/yourprofile"
                     />
                   </div>
                   <div>
-                    <label className="block text-white/80 text-sm mb-2 font-medium">Email Address *</label>
+                    <label className="block text-gray-700 text-sm mb-2 font-medium">Email Address *</label>
                     <input
                       type="email"
                       name="email"
                       value={communityFormData.email}
                       onChange={handleCommunityInputChange}
                       required
-                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                      className="w-full bg-white/80 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                       placeholder="your@email.com"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-white/80 text-sm mb-2 font-medium">WhatsApp Number *</label>
+                  <label className="block text-gray-700 text-sm mb-2 font-medium">WhatsApp Number *</label>
                   <input
                     type="tel"
                     name="whatsapp"
                     value={communityFormData.whatsapp}
                     onChange={handleCommunityInputChange}
                     required
-                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                    className="w-full bg-white/80 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                     placeholder="+91 98 2434 1414"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-white/80 text-sm mb-2 font-medium">Business/Company Name *</label>
+                    <label className="block text-gray-700 text-sm mb-2 font-medium">Business/Company Name *</label>
                     <input
                       type="text"
                       name="businessName"
                       value={communityFormData.businessName}
                       onChange={handleCommunityInputChange}
                       required
-                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                      className="w-full bg-white/80 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                       placeholder="Your company name"
                     />
                   </div>
                   <div>
-                    <label className="block text-white/80 text-sm mb-2 font-medium">Your Role *</label>
+                    <label className="block text-gray-700 text-sm mb-2 font-medium">Your Role *</label>
                     <input
                       type="text"
                       name="role"
                       value={communityFormData.role}
                       onChange={handleCommunityInputChange}
                       required
-                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                      className="w-full bg-white/80 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                       placeholder="Founder, CEO, etc."
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-white/80 text-sm mb-2 font-medium">Why do you want to join? *</label>
+                  <label className="block text-gray-700 text-sm mb-2 font-medium">Why do you want to join? *</label>
                   <textarea
                     name="reason"
                     value={communityFormData.reason}
                     onChange={handleCommunityInputChange}
                     required
                     rows={4}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 resize-none"
+                    className="w-full bg-white/80 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 resize-none"
                     placeholder="Tell us about your goals and what you hope to gain from the community..."
                   />
                 </div>

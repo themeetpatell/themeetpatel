@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  MessageSquare, CheckCircle, X, ArrowRight, Users, 
+  MessageCircle, CheckCircle, X, ArrowRight, Users, 
   Star, Award, Heart, Zap, BookOpen, Calendar,
-  Linkedin, Twitter, Github, Instagram, Youtube
+  Linkedin, Twitter, Github, Instagram, Youtube, TrendingUp, Target, Briefcase
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { submitCommunityFormData } from '../services/formService';
+
+// WhatsApp Icon Component
+const WhatsAppIcon = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+);
 
 const CommunityPage = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -86,25 +93,25 @@ Please add me to the community!`;
       number: "500+",
       label: "Active Members",
       icon: Users,
-      color: "from-cyan-400 to-teal-500"
+      color: "from-purple-500 to-pink-500"
     },
     {
       number: "50+",
       label: "Daily Discussions",
-      icon: MessageSquare,
-      color: "from-teal-400 to-cyan-500"
+      icon: WhatsAppIcon,
+      color: "from-purple-400 to-pink-500"
     },
     {
       number: "24/7",
       label: "Support & Networking",
       icon: Heart,
-      color: "from-emerald-400 to-teal-500"
+      color: "from-pink-400 to-purple-500"
     },
     {
       number: "100%",
       label: "Free to Join",
       icon: Star,
-      color: "from-cyan-300 to-emerald-400"
+      color: "from-purple-300 to-pink-400"
     }
   ];
 
@@ -113,7 +120,7 @@ Please add me to the community!`;
       title: "Exclusive Insights",
       description: "Get access to market trends, startup insights, and industry analysis that you won't find anywhere else.",
       icon: BookOpen,
-      color: "from-blue-400 to-cyan-500"
+      color: "from-purple-400 to-pink-500"
     },
     {
       title: "Expert Mentorship",
@@ -125,19 +132,19 @@ Please add me to the community!`;
       title: "Networking Opportunities",
       description: "Connect with fellow entrepreneurs, potential co-founders, investors, and business partners.",
       icon: Users,
-      color: "from-green-400 to-emerald-500"
+      color: "from-pink-400 to-pink-500"
     },
     {
       title: "Funding & Partnerships",
       description: "Early access to funding opportunities, partnership deals, and collaboration possibilities.",
       icon: Zap,
-      color: "from-yellow-400 to-orange-500"
+      color: "from-purple-300 to-purple-500"
     },
     {
       title: "Masterclasses & Q&A",
       description: "Regular masterclasses, Q&A sessions, and workshops with industry leaders and successful founders.",
       icon: Calendar,
-      color: "from-pink-400 to-rose-500"
+      color: "from-pink-500 to-pink-600"
     },
     {
       title: "Job Opportunities",
@@ -195,67 +202,96 @@ Please add me to the community!`;
       />
       
       {/* Hero Section */}
-      <section className="pt-16 sm:pt-20 pb-20 sm:pb-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/20 to-black" />
+      <section className="pt-16 sm:pt-20 min-h-[75vh] relative overflow-hidden flex items-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-pink-50 to-white" />
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+          <div className="absolute top-40 right-10 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+          <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Floating Community Icons */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          <motion.div
+            animate={{ y: [0, -22, 0], rotate: [0, 10, 0], x: [0, 12, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-24 left-[9%] w-20 h-20 bg-gradient-to-br from-purple-200/60 to-pink-200/60 backdrop-blur-md rounded-full flex items-center justify-center shadow-2xl border border-purple-300/50"
+          >
+            <Users className="w-10 h-10 text-purple-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 28, 0], rotate: [0, -12, 0], x: [0, -10, 0] }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute top-32 right-[12%] w-24 h-24 bg-gradient-to-tl from-pink-200/60 to-purple-200/60 backdrop-blur-md rounded-2xl flex items-center justify-center shadow-2xl border border-pink-300/50"
+          >
+            <WhatsAppIcon className="w-12 h-12 text-pink-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, -18, 0], rotate: [0, 8, 0], scale: [1, 1.07, 1] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            className="absolute bottom-36 left-[14%] w-20 h-20 bg-gradient-to-br from-purple-100/70 to-pink-100/70 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-xl border border-purple-200/50"
+          >
+            <Heart className="w-10 h-10 text-purple-700" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 26, 0], rotate: [0, -10, 0], x: [0, -14, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1.6 }}
+            className="absolute bottom-32 right-[10%] w-20 h-20 bg-gradient-to-tr from-pink-200/70 to-purple-200/70 backdrop-blur-md rounded-full flex items-center justify-center shadow-2xl border border-pink-300/60"
+          >
+            <Star className="w-10 h-10 text-pink-700" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, -16, 0], rotate: [0, 6, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2.2 }}
+            className="absolute top-1/2 left-[7%] w-16 h-16 bg-purple-200/55 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg"
+          >
+            <Target className="w-8 h-8 text-purple-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 20, 0], rotate: [0, -8, 0], x: [0, 8, 0] }}
+            transition={{ duration: 8.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+            className="absolute top-1/3 right-[18%] w-16 h-16 bg-pink-100/65 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg"
+          >
+            <TrendingUp className="w-8 h-8 text-pink-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, -20, 0], rotate: [0, 10, 0], scale: [1, 1.05, 1] }}
+            transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+            className="absolute bottom-1/4 left-[24%] w-14 h-14 bg-purple-100/60 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-md"
+          >
+            <Award className="w-7 h-7 text-purple-600" />
+          </motion.div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            {/* Community Icon */}
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="mb-8 sm:mb-12"
-            >
-              <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto bg-gradient-to-br from-green-500 via-teal-600 to-green-700 rounded-full flex items-center justify-center mb-6 sm:mb-8 shadow-2xl">
-                <MessageSquare className="w-12 h-12 sm:w-16 sm:h-16 text-white" />
-              </div>
-            </motion.div>
-
-            {/* Title */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="mb-8"
-            >
-              <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-white mb-4 sm:mb-6 tracking-tight">
-                Join StartupOS
-                <span className="block bg-gradient-to-r from-green-400 via-teal-500 to-green-600 bg-clip-text text-transparent">
-                  Community
-                </span>
-              </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 max-w-4xl mx-auto leading-relaxed">
-                Connect with 500+ entrepreneurs, founders, and startup enthusiasts in our exclusive WhatsApp community
-              </p>
-            </motion.div>
-
-            {/* CTA Button */}
-            <motion.button
-              onClick={() => setIsFormOpen(true)}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="group relative bg-gradient-to-r from-green-500 via-teal-600 to-green-700 text-white px-8 sm:px-12 py-4 sm:py-6 rounded-2xl font-bold text-lg sm:text-xl hover:from-green-600 hover:via-teal-700 hover:to-green-800 transition-all duration-300 flex items-center space-x-3 mx-auto shadow-2xl shadow-green-500/30 hover:shadow-green-500/50 overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-              <MessageSquare className="w-6 h-6 relative z-10" />
-              <span className="relative z-10">Join Community Now</span>
-              <ArrowRight className="w-6 h-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-            </motion.button>
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold text-gray-900 mb-4 sm:mb-6 tracking-tight">
+              Join StartupOS Community
+            </h1>
+            <p className="text-lg sm:text-2xl text-purple-600 mb-6 sm:mb-8 max-w-3xl mx-auto px-4 sm:px-0">
+              Connect with 500+ entrepreneurs, founders, and startup enthusiasts in our exclusive WhatsApp community
+            </p>
+            
+            {/* Quick Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 max-w-4xl mx-auto">
+              {communityStats.map((stat, index) => (
+                <div key={index} className="bg-purple-50/80 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-purple-200/50">
+                  <div className="text-2xl sm:text-3xl font-bold text-purple-500">{stat.number}</div>
+                  <div className="text-gray-600 text-xs sm:text-sm">{stat.label}</div>
+                </div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 sm:py-24 relative">
+      <section className="py-12 sm:py-16 relative hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             {communityStats.map((stat, index) => (
@@ -264,15 +300,19 @@ Please add me to the community!`;
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300"
+                className="text-center p-6 bg-white/80 rounded-2xl border border-purple-200/50 hover:bg-purple-50 transition-all duration-300"
               >
                 <div className={`w-12 h-12 bg-gradient-to-r ${stat.color} rounded-xl flex items-center justify-center mx-auto mb-4`}>
-                  <stat.icon className="w-6 h-6 text-white" />
+                  {stat.icon === WhatsAppIcon ? (
+                    <WhatsAppIcon className="w-6 h-6 text-white" />
+                  ) : (
+                    <stat.icon className="w-6 h-6 text-white" />
+                  )}
                 </div>
-                <div className="text-3xl font-bold text-cyan-400 mb-2">
+                <div className="text-3xl font-bold text-purple-600 mb-2">
                   {stat.number}
                 </div>
-                <div className="text-white/60 text-sm">
+                <div className="text-gray-600 text-sm">
                   {stat.label}
                 </div>
               </motion.div>
@@ -282,7 +322,7 @@ Please add me to the community!`;
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 sm:py-24 relative">
+      <section className="py-12 sm:py-16 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -290,10 +330,10 @@ Please add me to the community!`;
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
               What You'll Get
             </h2>
-            <p className="text-xl text-cyan-200 max-w-3xl mx-auto">
+            <p className="text-xl text-purple-600 max-w-3xl mx-auto">
               Exclusive benefits and opportunities designed to accelerate your entrepreneurial journey
             </p>
           </motion.div>
@@ -305,13 +345,13 @@ Please add me to the community!`;
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="apple-glass rounded-3xl p-6 group hover:scale-105 transition-transform duration-300"
+                className="bg-white/30 backdrop-blur-md border border-purple-200/50 rounded-3xl p-6 group hover:scale-105 transition-transform duration-300"
               >
                 <div className={`w-12 h-12 bg-gradient-to-r ${benefit.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   <benefit.icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{benefit.title}</h3>
-                <p className="text-gray-300 text-sm leading-relaxed">{benefit.description}</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
+                <p className="text-gray-700 text-sm leading-relaxed">{benefit.description}</p>
               </motion.div>
             ))}
           </div>
@@ -319,7 +359,7 @@ Please add me to the community!`;
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 sm:py-24 relative">
+      <section className="py-12 sm:py-16 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -327,10 +367,10 @@ Please add me to the community!`;
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
               What Members Say
             </h2>
-            <p className="text-xl text-cyan-200 max-w-3xl mx-auto">
+            <p className="text-xl text-purple-600 max-w-3xl mx-auto">
               Hear from entrepreneurs who've transformed their businesses through our community
             </p>
           </motion.div>
@@ -342,18 +382,18 @@ Please add me to the community!`;
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="apple-glass rounded-3xl p-6"
+                className="bg-white/30 backdrop-blur-md border border-purple-200/50 rounded-3xl p-6"
               >
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
                     {testimonial.avatar}
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold">{testimonial.name}</h4>
-                    <p className="text-cyan-400 text-sm">{testimonial.role}</p>
+                    <h4 className="text-gray-900 font-semibold">{testimonial.name}</h4>
+                    <p className="text-purple-600 text-sm">{testimonial.role}</p>
                   </div>
                 </div>
-                <p className="text-gray-300 leading-relaxed italic">"{testimonial.content}"</p>
+                <p className="text-gray-700 leading-relaxed italic">"{testimonial.content}"</p>
               </motion.div>
             ))}
           </div>
@@ -361,42 +401,42 @@ Please add me to the community!`;
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-24 relative">
+      <section className="py-12 sm:py-16 relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="apple-glass rounded-3xl p-8 md:p-12 text-center relative overflow-hidden"
+            className="bg-white/30 backdrop-blur-md border border-purple-200/50 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden"
           >
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
-              <div className="absolute top-10 left-10 w-20 h-20 bg-cyan-400 rounded-full"></div>
-              <div className="absolute bottom-10 right-10 w-32 h-32 bg-teal-400 rounded-full"></div>
-              <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-blue-400 rounded-full"></div>
+              <div className="absolute top-10 left-10 w-20 h-20 text-purple-500 rounded-full"></div>
+              <div className="absolute bottom-10 right-10 w-32 h-32 bg-pink-500 rounded-full"></div>
+              <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-purple-500 rounded-full"></div>
             </div>
 
             <div className="relative z-10">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 Ready to Join?
               </h2>
-              <p className="text-xl text-cyan-200 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-purple-600 mb-8 max-w-2xl mx-auto">
                 Take the first step towards building meaningful connections and accelerating your startup journey
               </p>
               
               <motion.button
                 onClick={() => setIsFormOpen(true)}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative inline-flex items-center bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-green-500/20 overflow-hidden"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative inline-flex items-center bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 text-white font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-500/40 overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <MessageSquare className="w-6 h-6 mr-3 relative z-10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                <WhatsAppIcon className="w-6 h-6 mr-3 relative z-10 group-hover:scale-110 transition-transform duration-300" />
                 <span className="relative z-10">Join StartupOS Community</span>
                 <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
               </motion.button>
 
-              <p className="text-white/60 text-sm mt-4">
+              <p className="text-gray-600 text-sm mt-4">
                 Free to join • No spam • Instant access to 500+ entrepreneurs
               </p>
             </div>
@@ -411,7 +451,7 @@ Please add me to the community!`;
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-purple-900/20 backdrop-blur-sm z-50 flex items-center justify-center p-4"
             onClick={() => setIsFormOpen(false)}
           >
             <motion.div
@@ -419,18 +459,18 @@ Please add me to the community!`;
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ duration: 0.3 }}
-              className="apple-glass rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              className="bg-white/30 backdrop-blur-md border border-purple-200/50 rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Join StartupOS Community</h3>
-                  <p className="text-white/70">Tell us about yourself to get started</p>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Join StartupOS Community</h3>
+                  <p className="text-gray-600">Tell us about yourself to get started</p>
                 </div>
                 <button
                   onClick={() => setIsFormOpen(false)}
-                  className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white/60 hover:text-white hover:bg-white/20 transition-all duration-300"
+                  className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-gray-600 hover:text-purple-600 hover:bg-purple-50 transition-all duration-300"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -440,80 +480,80 @@ Please add me to the community!`;
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-white/80 text-sm mb-2 font-medium">LinkedIn Profile URL *</label>
+                    <label className="block text-gray-700 text-sm mb-2 font-medium">LinkedIn Profile URL *</label>
                     <input
                       type="url"
                       name="linkedinId"
                       value={formData.linkedinId}
                       onChange={handleInputChange}
                       required
-                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                      className="w-full bg-white/80 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                       placeholder="https://linkedin.com/in/yourprofile"
                     />
                   </div>
                   <div>
-                    <label className="block text-white/80 text-sm mb-2 font-medium">Email Address *</label>
+                    <label className="block text-gray-700 text-sm mb-2 font-medium">Email Address *</label>
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                      className="w-full bg-white/80 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                       placeholder="your@email.com"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-white/80 text-sm mb-2 font-medium">WhatsApp Number *</label>
+                  <label className="block text-gray-700 text-sm mb-2 font-medium">WhatsApp Number *</label>
                   <input
                     type="tel"
                     name="whatsapp"
                     value={formData.whatsapp}
                     onChange={handleInputChange}
                     required
-                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                    className="w-full bg-white/80 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                     placeholder="+91 98 2434 1414"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-white/80 text-sm mb-2 font-medium">Business/Company Name *</label>
+                    <label className="block text-gray-700 text-sm mb-2 font-medium">Business/Company Name *</label>
                     <input
                       type="text"
                       name="businessName"
                       value={formData.businessName}
                       onChange={handleInputChange}
                       required
-                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                      className="w-full bg-white/80 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                       placeholder="Your company or startup name"
                     />
                   </div>
                   <div>
-                    <label className="block text-white/80 text-sm mb-2 font-medium">Your Role *</label>
+                    <label className="block text-gray-700 text-sm mb-2 font-medium">Your Role *</label>
                     <input
                       type="text"
                       name="role"
                       value={formData.role}
                       onChange={handleInputChange}
                       required
-                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                      className="w-full bg-white/80 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                       placeholder="Founder, CEO, Developer, etc."
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-white/80 text-sm mb-2 font-medium">Why do you want to join our community? *</label>
+                  <label className="block text-gray-700 text-sm mb-2 font-medium">Why do you want to join our community? *</label>
                   <textarea
                     name="reason"
                     value={formData.reason}
                     onChange={handleInputChange}
                     required
                     rows={4}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 resize-none"
+                    className="w-full bg-white/80 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 resize-none"
                     placeholder="Tell us about your goals, what you're working on, or how you'd like to contribute to the community..."
                   />
                 </div>
@@ -522,23 +562,26 @@ Please add me to the community!`;
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02, y: isSubmitting ? 0 : -2 }}
                   whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                  className={`w-full py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg flex items-center justify-center space-x-3 ${
+                  className={`group relative w-full py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 shadow-xl flex items-center justify-center space-x-3 overflow-hidden text-white ${
                     isSubmitting
                       ? 'bg-gray-500 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 hover:shadow-xl hover:shadow-green-500/20'
+                      : 'bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 hover:shadow-2xl hover:shadow-purple-500/30'
                   }`}
                 >
+                  {!isSubmitting && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                  )}
                   {isSubmitting ? (
                     <>
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      <span>Submitting...</span>
+                      <span className="relative z-10">Submitting...</span>
                     </>
                   ) : (
                     <>
-                      <MessageSquare className="w-5 h-5" />
-                      <span>Send Application via WhatsApp</span>
+                      <WhatsAppIcon className="w-5 h-5 relative z-10 group-hover:scale-110 transition-transform duration-300" />
+                      <span className="relative z-10">Send Application via WhatsApp</span>
                     </>
                   )}
                 </motion.button>
@@ -553,7 +596,7 @@ Please add me to the community!`;
               </form>
 
               {/* Footer Note */}
-              <p className="text-white/60 text-sm mt-4 text-center">
+              <p className="text-gray-600 text-sm mt-4 text-center">
                 Your information will be sent to Meet via WhatsApp for community approval
               </p>
             </motion.div>

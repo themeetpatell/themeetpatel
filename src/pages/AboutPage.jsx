@@ -8,7 +8,6 @@ import {
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import FollowMyJourney from '../components/FollowMyJourney';
-import logoImage from '../assets/logo for themeetpatel.png';
 
 const AboutPage = () => {
   const [activeTab, setActiveTab] = useState('about');
@@ -506,7 +505,7 @@ const AboutPage = () => {
     { id: 'books', label: 'Books', icon: BookOpen },
     { id: 'achievements', label: 'Achievements', icon: Trophy },
     { id: 'speaking', label: 'Speaking', icon: Mic },
-    { id: 'certifications', label: 'Licenses & Certifications', icon: FileText },
+    { id: 'certifications', label: 'Certifications', icon: FileText },
     { id: 'mentorship', label: 'Mentorship', icon: Users }
   ];
 
@@ -607,40 +606,87 @@ const AboutPage = () => {
       />
 
       {/* Hero Section */}
-      <section ref={heroRef} className="py-12 sm:py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-teal-900/20 to-slate-900" />
+      <section ref={heroRef} className="pt-16 sm:pt-20 min-h-[75vh] relative overflow-hidden flex items-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-pink-50 to-white" />
+        <div className="absolute inset-0 opacity-40">
+          <div className="absolute top-20 left-10 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+          <div className="absolute top-40 right-10 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+          <div className="absolute bottom-20 left-1/2 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+        </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Floating Personal Icons */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          <motion.div
+            animate={{ y: [0, -22, 0], rotate: [0, 10, 0], x: [0, 12, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-24 left-[9%] w-22 h-22 bg-gradient-to-br from-purple-200/60 to-pink-200/60 backdrop-blur-md rounded-full flex items-center justify-center shadow-2xl border border-purple-300/50"
+          >
+            <User className="w-11 h-11 text-purple-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 28, 0], rotate: [0, -12, 0], x: [0, -10, 0] }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute top-32 right-[12%] w-24 h-24 bg-gradient-to-tl from-pink-200/60 to-purple-200/60 backdrop-blur-md rounded-2xl flex items-center justify-center shadow-2xl border border-pink-300/50"
+          >
+            <Award className="w-12 h-12 text-pink-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, -18, 0], rotate: [0, 8, 0], scale: [1, 1.07, 1] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            className="absolute bottom-36 left-[14%] w-20 h-20 bg-gradient-to-br from-purple-100/70 to-pink-100/70 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-xl border border-purple-200/50"
+          >
+            <Briefcase className="w-10 h-10 text-purple-700" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 26, 0], rotate: [0, -10, 0], x: [0, -14, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1.6 }}
+            className="absolute bottom-32 right-[10%] w-22 h-22 bg-gradient-to-tr from-pink-200/70 to-purple-200/70 backdrop-blur-md rounded-full flex items-center justify-center shadow-2xl border border-pink-300/60"
+          >
+            <Heart className="w-11 h-11 text-pink-700" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, -16, 0], rotate: [0, 6, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2.2 }}
+            className="absolute top-1/2 left-[7%] w-18 h-18 bg-purple-200/55 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg"
+          >
+            <Target className="w-9 h-9 text-purple-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 20, 0], rotate: [0, -8, 0], x: [0, 8, 0] }}
+            transition={{ duration: 8.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+            className="absolute top-1/3 right-[18%] w-16 h-16 bg-pink-100/65 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg"
+          >
+            <TrendingUp className="w-8 h-8 text-pink-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, -20, 0], rotate: [0, 10, 0], scale: [1, 1.05, 1] }}
+            transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+            className="absolute bottom-1/4 left-[24%] w-14 h-14 bg-purple-100/60 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-md"
+          >
+            <Star className="w-7 h-7 text-purple-600" />
+          </motion.div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            {/* Profile Image */}
-            <div className="mb-6 sm:mb-8">
-              <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full overflow-hidden mb-4 sm:mb-6 border-4 border-cyan-400/20 shadow-2xl">
-                <img 
-                  src={logoImage} 
-                  alt="The Meet Patel" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-
             {/* Name and Title */}
-            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-3 sm:mb-4">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold text-gray-900 mb-3 sm:mb-4 tracking-tight">
               {personalInfo.name}
             </h1>
-            <p className="text-lg sm:text-2xl text-cyan-200 mb-4 sm:mb-6">
+            <p className="text-lg sm:text-2xl text-purple-600 mb-4 sm:mb-6">
               {personalInfo.title} at {personalInfo.company}
             </p>
-            <p className="text-base sm:text-lg text-white/60 mb-6 sm:mb-8 max-w-3xl mx-auto px-4 sm:px-0">
+            <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 max-w-3xl mx-auto px-4 sm:px-0">
               {personalInfo.bio}
             </p>
 
             {/* Location and Contact */}
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-6 text-white/60 mb-6 sm:mb-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-6 text-gray-600 mb-6 sm:mb-8">
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-sm sm:text-base">{personalInfo.location}</span>
@@ -656,19 +702,21 @@ const AboutPage = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4">
               <motion.button
                 onClick={() => setIsContactFormOpen(true)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-cyan-400 to-teal-500 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-semibold hover:from-cyan-500 hover:to-teal-600 transition-colors w-full sm:w-auto"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-500/40 overflow-hidden w-full sm:w-auto"
               >
-                Get In Touch
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                <span className="relative z-10">Get In Touch</span>
               </motion.button>
               <motion.a
-                href="/blog"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white/10 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-white/20 transition-colors w-full sm:w-auto"
+                href="/blogs"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative bg-white/90 backdrop-blur-sm text-purple-600 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-purple-50 transition-all duration-300 flex items-center justify-center border-2 border-purple-200 hover:border-purple-400 shadow-xl hover:shadow-2xl hover:shadow-purple-200/50 overflow-hidden w-full sm:w-auto"
               >
-                Read My Blog
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-50 to-pink-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <span className="relative z-10">Read My Blog</span>
               </motion.a>
             </div>
           </motion.div>
@@ -676,98 +724,100 @@ const AboutPage = () => {
       </section>
 
       {/* Navigation Tabs */}
-      <section className="py-4 sm:py-8 relative">
+      <section className="py-2 sm:py-4 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center space-x-1 ultra-glass rounded-xl p-1 sm:p-2 overflow-x-auto">
-            {tabs.map((tab) => (
-              <motion.button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`flex items-center space-x-1 sm:space-x-2 px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all duration-300 whitespace-nowrap text-xs sm:text-sm ${
-                  activeTab === tab.id
-                    ? 'bg-gradient-to-r from-cyan-400 to-teal-500 text-white'
-                    : 'text-white/60 hover:text-white hover:bg-white/10'
-                }`}
-              >
-                <tab.icon className="w-3 h-3 sm:w-4 sm:h-4" />
-                <span className="text-xs sm:text-sm font-medium">{tab.label}</span>
-              </motion.button>
-            ))}
+          <div className="flex items-center justify-center overflow-x-auto pb-2 scrollbar-hide">
+            <div className="flex items-center gap-2 bg-white/30 backdrop-blur-md rounded-2xl p-2 border border-purple-200/50 min-w-max">
+              {tabs.map((tab) => (
+                <motion.button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl transition-all duration-300 text-xs sm:text-sm whitespace-nowrap ${
+                    activeTab === tab.id
+                      ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-200/50'
+                      : 'text-gray-600 hover:text-purple-600 hover:bg-purple-50'
+                  }`}
+                >
+                  <tab.icon className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+                  <span className="text-xs sm:text-sm font-medium">{tab.label}</span>
+                </motion.button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Content Sections */}
-      <section className="py-20 relative">
+      <section className="pt-8 pb-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatePresence mode="wait">
-          <motion.div
+            <motion.div
               key={activeTab}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
             >
               {/* About Section */}
               {activeTab === 'about' && (
-                <div className="ultra-glass rounded-xl p-8">
-                  <h2 className="text-3xl font-bold text-white mb-6">About Me</h2>
+                <div className="bg-white/30 backdrop-blur-md rounded-xl p-8 border border-purple-200/50">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-6">About Me</h2>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div>
                       <div className="space-y-4 mb-6">
                         {personalInfo.about.map((paragraph, index) => (
-                          <p key={index} className="text-white/80 text-lg leading-relaxed">
+                          <p key={index} className="text-gray-700 text-lg leading-relaxed">
                             {paragraph}
                           </p>
                         ))}
                       </div>
                       <div className="space-y-4">
-                        <h3 className="text-xl font-semibold text-white mb-4">Education</h3>
+                        <h3 className="text-xl font-semibold text-gray-900 mb-4">Education</h3>
                         {personalInfo.education.map((edu, index) => (
-                          <div key={index} className="bg-white/5 rounded-lg p-4">
-                            <h4 className="text-white font-semibold">{edu.institution}</h4>
-                            <p className="text-white/70">{edu.degree}</p>
-                            <p className="text-white/50 text-sm">{edu.duration}</p>
-                            <p className="text-white/60 text-sm mt-2">{edu.description}</p>
+                          <div key={index} className="bg-purple-50/80 backdrop-blur-sm rounded-lg p-4 border border-purple-200/50">
+                            <h4 className="text-gray-900 font-semibold">{edu.institution}</h4>
+                            <p className="text-gray-600">{edu.degree}</p>
+                            <p className="text-gray-500 text-sm">{edu.duration}</p>
+                            <p className="text-gray-600 text-sm mt-2">{edu.description}</p>
                           </div>
                         ))}
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-white mb-4">Interests</h3>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4">Interests</h3>
                       <div className="flex flex-wrap gap-2 mb-8">
                         {(() => {
                           console.log('Interests data:', personalInfo.interests);
                           return personalInfo.interests && personalInfo.interests.length > 0 ? (
                             personalInfo.interests.map((interest, index) => (
-                              <span key={index} className="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-sm">
+                              <span key={index} className="bg-purple-600/20 text-purple-600 px-3 py-1 rounded-full text-sm">
                                 {interest}
                               </span>
                             ))
                           ) : (
-                            <p className="text-white/60">No interests defined</p>
+                            <p className="text-gray-600">No interests defined</p>
                           );
                         })()}
                       </div>
-                      <h3 className="text-xl font-semibold text-white mb-4">Quick Stats</h3>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4">Quick Stats</h3>
                       <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-white/5 rounded-lg p-4 text-center">
-                          <div className="text-2xl font-bold text-cyan-400">8+</div>
-                          <div className="text-white/60 text-sm">Years Experience</div>
+                        <div className="bg-purple-50/80 backdrop-blur-sm rounded-lg p-4 text-center border border-purple-200/50">
+                          <div className="text-2xl font-bold text-purple-600">8+</div>
+                          <div className="text-gray-600 text-sm">Years Experience</div>
                         </div>
-                        <div className="bg-white/5 rounded-lg p-4 text-center">
-                          <div className="text-2xl font-bold text-cyan-400">10+</div>
-                          <div className="text-white/60 text-sm">Startups Mentored</div>
+                        <div className="bg-purple-50/80 backdrop-blur-sm rounded-lg p-4 text-center border border-purple-200/50">
+                          <div className="text-2xl font-bold text-purple-600">10+</div>
+                          <div className="text-gray-600 text-sm">Startups Mentored</div>
                         </div>
-                        <div className="bg-white/5 rounded-lg p-4 text-center">
-                          <div className="text-2xl font-bold text-cyan-400">2</div>
-                          <div className="text-white/60 text-sm">Books Published</div>
+                        <div className="bg-purple-50/80 backdrop-blur-sm rounded-lg p-4 text-center border border-purple-200/50">
+                          <div className="text-2xl font-bold text-purple-600">2</div>
+                          <div className="text-gray-600 text-sm">Books Published</div>
                         </div>
-                        <div className="bg-white/5 rounded-lg p-4 text-center">
-                          <div className="text-2xl font-bold text-emerald-400">300+</div>
-                          <div className="text-white/60 text-sm">Team Members Led</div>
+                        <div className="bg-purple-50/80 backdrop-blur-sm rounded-lg p-4 text-center border border-purple-200/50">
+                          <div className="text-2xl font-bold text-pink-500">300+</div>
+                          <div className="text-gray-600 text-sm">Team Members Led</div>
                         </div>
                       </div>
                     </div>
@@ -777,8 +827,8 @@ const AboutPage = () => {
 
               {/* Experience Section */}
               {activeTab === 'experience' && (
-                <div className="ultra-glass rounded-xl p-8">
-                  <h2 className="text-3xl font-bold text-white mb-8">Professional Experience</h2>
+                <div className="bg-white/30 backdrop-blur-md rounded-xl p-8 border border-purple-200/50">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-8">Professional Experience</h2>
                   <div className="space-y-8">
                     {personalInfo.experience.map((exp, index) => (
               <motion.div
@@ -786,19 +836,19 @@ const AboutPage = () => {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="bg-white/5 rounded-lg p-6"
+                        className="bg-purple-50/80 backdrop-blur-sm rounded-lg p-6 border border-purple-200/50"
                       >
                         <div className="flex items-start justify-between mb-4">
                           <div>
-                            <h3 className="text-xl font-semibold text-white">{exp.position}</h3>
-                            <p className="text-cyan-400 font-medium">{exp.company}</p>
-                            <p className="text-white/50 text-sm">{exp.duration}</p>
+                            <h3 className="text-xl font-semibold text-gray-900">{exp.position}</h3>
+                            <p className="text-purple-600 font-medium">{exp.company}</p>
+                            <p className="text-gray-500 text-sm">{exp.duration}</p>
                             <div className="flex items-center space-x-4 mt-1">
-                              <span className="text-cyan-300 text-sm font-medium bg-cyan-500/10 px-2 py-1 rounded-full">
+                              <span className="text-purple-500 text-sm font-medium bg-purple-600/10 px-2 py-1 rounded-full">
                                 {exp.timeSpent}
                               </span>
                               {exp.location && (
-                                <p className="text-white/40 text-xs flex items-center">
+                                <p className="text-gray-500 text-xs flex items-center">
                                   <MapPin className="w-3 h-3 mr-1" />
                                   {exp.location}
                                 </p>
@@ -806,17 +856,17 @@ const AboutPage = () => {
                             </div>
                           </div>
                           <div className="text-right">
-                            <span className="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-sm">
+                            <span className="bg-purple-600/20 text-purple-600 px-3 py-1 rounded-full text-sm">
                               {exp.duration.split(' - ')[1]}
                             </span>
                           </div>
                         </div>
-                        <p className="text-white/70 mb-4">{exp.description}</p>
+                        <p className="text-gray-600 mb-4">{exp.description}</p>
                         <ul className="space-y-2">
                           {exp.achievements.map((achievement, idx) => (
                             <li key={idx} className="flex items-start space-x-2">
-                              <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
-                              <span className="text-white/80 text-sm">{achievement}</span>
+                              <CheckCircle className="w-4 h-4 text-purple-600 mt-0.5 flex-shrink-0" />
+                              <span className="text-gray-700 text-sm">{achievement}</span>
                             </li>
                           ))}
                         </ul>
@@ -828,43 +878,43 @@ const AboutPage = () => {
 
               {/* Skills Section */}
               {activeTab === 'skills' && (
-                <div className="ultra-glass rounded-xl p-8">
-                  <h2 className="text-3xl font-bold text-white mb-8">Skills & Expertise</h2>
+                <div className="bg-white/30 backdrop-blur-md rounded-xl p-8 border border-purple-200/50">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-8">Skills & Expertise</h2>
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <div>
-                      <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                        <Code className="w-5 h-5 mr-2 text-cyan-400" />
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <Code className="w-5 h-5 mr-2 text-purple-600" />
                         Technical Skills
                       </h3>
                       <div className="flex flex-wrap gap-2">
                         {personalInfo.skills.technical.map((skill, index) => (
-                          <span key={index} className="bg-white/10 text-white/80 px-3 py-1 rounded-full text-sm">
+                          <span key={index} className="bg-purple-100 text-gray-700 px-3 py-1 rounded-full text-sm">
                             {skill}
                           </span>
                         ))}
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                        <TrendingUp className="w-5 h-5 mr-2 text-cyan-400" />
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <TrendingUp className="w-5 h-5 mr-2 text-purple-600" />
                         Business Skills
                       </h3>
                       <div className="flex flex-wrap gap-2">
                         {personalInfo.skills.business.map((skill, index) => (
-                          <span key={index} className="bg-white/10 text-white/80 px-3 py-1 rounded-full text-sm">
+                          <span key={index} className="bg-purple-100 text-gray-700 px-3 py-1 rounded-full text-sm">
                             {skill}
                           </span>
                         ))}
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                        <Users className="w-5 h-5 mr-2 text-cyan-400" />
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <Users className="w-5 h-5 mr-2 text-purple-600" />
                         Leadership Skills
                       </h3>
                       <div className="flex flex-wrap gap-2">
                         {personalInfo.skills.leadership.map((skill, index) => (
-                          <span key={index} className="bg-white/10 text-white/80 px-3 py-1 rounded-full text-sm">
+                          <span key={index} className="bg-purple-100 text-gray-700 px-3 py-1 rounded-full text-sm">
                             {skill}
                           </span>
                         ))}
@@ -876,24 +926,24 @@ const AboutPage = () => {
 
               {/* Projects Section */}
               {activeTab === 'projects' && (
-                <div className="ultra-glass rounded-xl p-8">
-                  <h2 className="text-3xl font-bold text-white mb-8">Featured Projects</h2>
+                <div className="bg-white/30 backdrop-blur-md rounded-xl p-8 border border-purple-200/50">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-8">Featured Projects</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {personalInfo.projects.map((project, index) => (
                       <motion.div
                         key={index}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="bg-white/5 rounded-lg p-6 hover:bg-white/10 transition-all duration-300"
+                        transition={{ duration: 0.3, delay: index * 0.05 }}
+                        className="bg-purple-50/80 backdrop-blur-sm rounded-lg p-6 hover:bg-purple-100 transition-all duration-300 border border-purple-200/50"
                       >
                         <div className="flex items-center justify-between mb-4">
-                          <h3 className="text-lg font-semibold text-white">{project.name}</h3>
+                          <h3 className="text-lg font-semibold text-gray-900">{project.name}</h3>
                           <span className={`px-2 py-1 rounded-full text-xs ${
                             project.status === 'Live' 
                               ? 'bg-green-500/20 text-green-400' 
                               : project.status === 'Completed'
-                              ? 'bg-blue-500/20 text-blue-400'
+                              ? 'bg-purple-600/20 text-purple-500'
                               : 'bg-gray-500/20 text-gray-400'
                           }`}>
                             {project.status}
@@ -901,16 +951,16 @@ const AboutPage = () => {
                         </div>
                         {project.company && (
                           <div className="mb-2">
-                            <span className="text-cyan-400 text-sm font-medium">{project.company}</span>
+                            <span className="text-purple-600 text-sm font-medium">{project.company}</span>
                             {project.duration && (
-                              <span className="text-white/50 text-sm ml-2">• {project.duration}</span>
+                              <span className="text-gray-500 text-sm ml-2">• {project.duration}</span>
                             )}
                           </div>
                         )}
-                        <p className="text-white/70 text-sm mb-4">{project.description}</p>
+                        <p className="text-gray-600 text-sm mb-4">{project.description}</p>
                         <div className="flex flex-wrap gap-2 mb-4">
                           {project.tech.map((tech, idx) => (
-                            <span key={idx} className="bg-white/10 text-white/60 px-2 py-1 rounded text-xs">
+                            <span key={idx} className="bg-purple-100 text-gray-600 px-2 py-1 rounded text-xs">
                               {tech}
                             </span>
                           ))}
@@ -920,7 +970,7 @@ const AboutPage = () => {
                             href={project.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-cyan-400 hover:text-cyan-300 text-sm font-medium flex items-center"
+                            className="text-purple-600 hover:text-purple-500 text-sm font-medium flex items-center"
                           >
                             View Project
                             <ExternalLink className="w-4 h-4 ml-1" />
@@ -934,9 +984,9 @@ const AboutPage = () => {
 
               {/* Books Section */}
               {activeTab === 'books' && (
-                <div className="ultra-glass rounded-xl p-8">
-                  <h2 className="text-3xl font-bold text-white mb-8">Books Written</h2>
-                  <p className="text-white/70 text-lg mb-8 text-center">
+                <div className="bg-white/30 backdrop-blur-md rounded-xl p-8 border border-purple-200/50">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-8">Books Written</h2>
+                  <p className="text-gray-600 text-lg mb-8 text-center">
                     Here's something special for you to freshen up! Few Love stories written by me 😲
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -946,23 +996,23 @@ const AboutPage = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="bg-white/5 rounded-lg p-6 hover:bg-white/10 transition-all duration-300"
+                        className="bg-purple-50/80 backdrop-blur-sm rounded-lg border border-purple-200/50 p-6 hover:bg-purple-50 transition-all duration-300"
                       >
                         <div className="text-center mb-6">
-                          <div className="w-48 h-64 mx-auto bg-gradient-to-br from-pink-400 via-purple-500 to-blue-500 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
-                            <div className="absolute inset-0 bg-black/20" />
+                          <div className="w-48 h-64 mx-auto bg-gradient-to-br from-pink-500 via-purple-600 to-pink-600 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden shadow-xl">
+                            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20" />
                             <div className="relative z-10 text-center p-4">
-                              <p className="text-white/90 text-xs italic mb-2">{book.quote}</p>
+                              <p className="text-white/95 text-xs italic mb-2 font-light">{book.quote}</p>
                               <h3 className="text-white text-xl font-bold mb-2">{book.title}</h3>
-                              <p className="text-white/80 text-sm">{book.subtitle}</p>
-                              <p className="text-white/70 text-xs mt-2">A Novel by Meet Patel</p>
+                              <p className="text-white/90 text-sm font-medium">{book.subtitle}</p>
+                              <p className="text-white/80 text-xs mt-2">A Novel by Meet Patel</p>
                             </div>
                           </div>
-                          <h3 className="text-lg font-semibold text-white mb-2">{book.title}</h3>
+                          <h3 className="text-lg font-semibold text-purple-600 mb-2">{book.title}</h3>
                         </div>
                         
                         <div className="space-y-4">
-                          <p className="text-white/70 text-sm leading-relaxed">{book.description}</p>
+                          <p className="text-gray-600 text-sm leading-relaxed">{book.description}</p>
                           
                           <div className="flex items-center justify-between">
                             <span className="bg-pink-500/20 text-pink-400 px-3 py-1 rounded-full text-xs font-medium">
@@ -983,19 +1033,21 @@ const AboutPage = () => {
                                 href={book.readLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="flex-1 bg-cyan-500 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-cyan-600 transition-colors text-center block"
+                                whileHover={{ scale: 1.02, y: -2 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="group relative flex-1 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-all duration-300 text-center block shadow-lg hover:shadow-xl hover:shadow-purple-500/30 overflow-hidden"
                               >
-                                Read Now
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                                <span className="relative z-10">Read Now</span>
                               </motion.a>
                             ) : (
                               <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="flex-1 bg-purple-500 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-purple-600 transition-colors"
+                                whileHover={{ scale: 1.02, y: -2 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="group relative flex-1 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-500/30 overflow-hidden"
                               >
-                                Request Early Access
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                                <span className="relative z-10">Request Early Access</span>
                               </motion.button>
                             )}
                           </div>
@@ -1005,8 +1057,8 @@ const AboutPage = () => {
             </div>
 
                   <div className="mt-12 text-center">
-                    <h3 className="text-xl font-semibold text-white mb-4">Contact Information</h3>
-                    <div className="space-y-2 text-white/70">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Contact Information</h3>
+                    <div className="space-y-2 text-gray-600">
                       <p>📧 the.meetpatell@gmail.com</p>
                       <p>📱 +971 50 495 4698 | +91 98 2434 1414</p>
                       <p>📍 In5, Dubai, UAE</p>
@@ -1018,8 +1070,8 @@ const AboutPage = () => {
 
               {/* Achievements Section */}
               {activeTab === 'achievements' && (
-                <div className="ultra-glass rounded-xl p-8">
-                  <h2 className="text-3xl font-bold text-white mb-8">Awards & Recognition</h2>
+                <div className="bg-white/30 backdrop-blur-md rounded-xl p-8 border border-purple-200/50">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-8">Awards & Recognition</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {personalInfo.achievements.map((achievement, index) => (
                       <motion.div
@@ -1027,16 +1079,16 @@ const AboutPage = () => {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="bg-white/5 rounded-lg p-6"
+                        className="bg-purple-50/80 backdrop-blur-sm rounded-lg border border-purple-200/50 p-6"
                       >
                         <div className="flex items-start space-x-4">
-                          <div className="w-12 h-12 bg-cyan-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                            <Trophy className="w-6 h-6 text-cyan-400" />
+                          <div className="w-12 h-12 bg-purple-600/20 rounded-full flex items-center justify-center flex-shrink-0">
+                            <Trophy className="w-6 h-6 text-purple-600" />
                           </div>
                           <div>
-                            <h3 className="text-lg font-semibold text-white">{achievement.title}</h3>
-                            <p className="text-cyan-400 text-sm font-medium">{achievement.year}</p>
-                            <p className="text-white/70 text-sm mt-2">{achievement.description}</p>
+                            <h3 className="text-lg font-semibold text-gray-900">{achievement.title}</h3>
+                            <p className="text-purple-600 text-sm font-medium">{achievement.year}</p>
+                            <p className="text-gray-600 text-sm mt-2">{achievement.description}</p>
                           </div>
                         </div>
                       </motion.div>
@@ -1047,8 +1099,8 @@ const AboutPage = () => {
 
               {/* Speaking Section */}
               {activeTab === 'speaking' && (
-                <div className="ultra-glass rounded-xl p-8">
-                  <h2 className="text-3xl font-bold text-white mb-8">Speaking Engagements</h2>
+                <div className="bg-white/30 backdrop-blur-md rounded-xl p-8 border border-purple-200/50">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-8">Speaking Engagements</h2>
                   <div className="space-y-6">
                     {personalInfo.speaking.map((event, index) => (
             <motion.div
@@ -1056,15 +1108,15 @@ const AboutPage = () => {
                         initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="bg-white/5 rounded-lg p-6"
+                        className="bg-purple-50/80 backdrop-blur-sm rounded-lg border border-purple-200/50 p-6"
                       >
                         <div className="flex items-start justify-between">
                           <div>
-                            <h3 className="text-lg font-semibold text-white">{event.event}</h3>
-                            <p className="text-cyan-400 font-medium">{event.topic}</p>
-                            <p className="text-white/50 text-sm">{event.location}</p>
+                            <h3 className="text-lg font-semibold text-gray-900">{event.event}</h3>
+                            <p className="text-purple-600 font-medium">{event.topic}</p>
+                            <p className="text-gray-500 text-sm">{event.location}</p>
                           </div>
-                          <span className="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-sm">
+                          <span className="bg-purple-600/20 text-purple-600 px-3 py-1 rounded-full text-sm">
                             {event.year}
                           </span>
                         </div>
@@ -1074,10 +1126,10 @@ const AboutPage = () => {
                 </div>
               )}
 
-              {/* Licenses & Certifications Section */}
+              {/* Certifications Section */}
               {activeTab === 'certifications' && (
-                <div className="ultra-glass rounded-xl p-8">
-                  <h2 className="text-3xl font-bold text-white mb-8">Licenses & Certifications</h2>
+                <div className="bg-white/30 backdrop-blur-md rounded-xl p-8 border border-purple-200/50">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-8">Certifications</h2>
                   <div className="space-y-6">
                     {personalInfo.certifications.map((cert, index) => (
                       <motion.div
@@ -1085,18 +1137,18 @@ const AboutPage = () => {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.05 }}
-                        className="bg-white/5 rounded-lg p-6"
+                        className="bg-purple-50/80 backdrop-blur-sm rounded-lg border border-purple-200/50 p-6"
                       >
                         <div className="flex items-start justify-between mb-4">
                           <div className="flex-1">
-                            <h3 className="text-lg font-semibold text-white mb-2">{cert.title}</h3>
+                            <h3 className="text-lg font-semibold text-gray-900 mb-2">{cert.title}</h3>
                             <div className="flex items-center space-x-4 text-sm">
-                              <span className="text-cyan-400 font-medium">{cert.issuer}</span>
-                              <span className="text-white/50">{cert.date}</span>
+                              <span className="text-purple-600 font-medium">{cert.issuer}</span>
+                              <span className="text-gray-500">{cert.date}</span>
                             </div>
                           </div>
                           <div className="text-right">
-                            <span className="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-sm">
+                            <span className="bg-purple-600/20 text-purple-600 px-3 py-1 rounded-full text-sm">
                               {cert.issuer}
                             </span>
                           </div>
@@ -1105,7 +1157,7 @@ const AboutPage = () => {
                           {cert.skills.map((skill, skillIndex) => (
                             <span
                               key={skillIndex}
-                              className="bg-cyan-500/10 text-cyan-300 px-2 py-1 rounded-full text-xs"
+                              className="bg-purple-600/10 text-purple-500 px-2 py-1 rounded-full text-xs"
                             >
                               {skill}
                             </span>
@@ -1119,52 +1171,53 @@ const AboutPage = () => {
 
               {/* Mentorship Section */}
               {activeTab === 'mentorship' && (
-                <div className="ultra-glass rounded-xl p-8">
-                  <h2 className="text-3xl font-bold text-white mb-8">Mentorship & Community</h2>
+                <div className="bg-white/30 backdrop-blur-md rounded-xl p-8 border border-purple-200/50">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-8">Mentorship & Community</h2>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div>
-                      <h3 className="text-xl font-semibold text-white mb-6">Mentorship Impact</h3>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-6">Mentorship Impact</h3>
                       <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-white/5 rounded-lg p-4 text-center">
-                          <div className="text-3xl font-bold text-cyan-400">{personalInfo.mentorship.startups}</div>
-                          <div className="text-white/60 text-sm">Startups Mentored</div>
+                        <div className="bg-purple-50/80 backdrop-blur-sm rounded-lg border border-purple-200/50 p-4 text-center">
+                          <div className="text-3xl font-bold text-purple-600">{personalInfo.mentorship.startups}</div>
+                          <div className="text-gray-600 text-sm">Startups Mentored</div>
                         </div>
-                        <div className="bg-white/5 rounded-lg p-4 text-center">
-                          <div className="text-3xl font-bold text-cyan-400">{personalInfo.mentorship.entrepreneurs}</div>
-                          <div className="text-white/60 text-sm">Entrepreneurs Helped</div>
+                        <div className="bg-purple-50/80 backdrop-blur-sm rounded-lg border border-purple-200/50 p-4 text-center">
+                          <div className="text-3xl font-bold text-purple-600">{personalInfo.mentorship.entrepreneurs}</div>
+                          <div className="text-gray-600 text-sm">Entrepreneurs Helped</div>
                         </div>
-                        <div className="bg-white/5 rounded-lg p-4 text-center">
-                          <div className="text-3xl font-bold text-cyan-400">{personalInfo.mentorship.successRate}</div>
-                          <div className="text-white/60 text-sm">Success Rate</div>
+                        <div className="bg-purple-50/80 backdrop-blur-sm rounded-lg border border-purple-200/50 p-4 text-center">
+                          <div className="text-3xl font-bold text-purple-600">{personalInfo.mentorship.successRate}</div>
+                          <div className="text-gray-600 text-sm">Success Rate</div>
                         </div>
-                        <div className="bg-white/5 rounded-lg p-4 text-center">
-                          <div className="text-3xl font-bold text-cyan-400">8+</div>
-                          <div className="text-white/60 text-sm">Years Mentoring</div>
+                        <div className="bg-purple-50/80 backdrop-blur-sm rounded-lg border border-purple-200/50 p-4 text-center">
+                          <div className="text-3xl font-bold text-purple-600">8+</div>
+                          <div className="text-gray-600 text-sm">Years Mentoring</div>
                         </div>
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-white mb-4">Focus Areas</h3>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4">Focus Areas</h3>
                       <div className="space-y-3">
                         {personalInfo.mentorship.focus.map((area, index) => (
                           <div key={index} className="flex items-center space-x-3">
-                            <CheckCircle className="w-5 h-5 text-cyan-400" />
-                            <span className="text-white/80">{area}</span>
+                            <CheckCircle className="w-5 h-5 text-purple-600" />
+                            <span className="text-gray-700">{area}</span>
                           </div>
                         ))}
                       </div>
                       <div className="mt-8">
-                        <h3 className="text-xl font-semibold text-white mb-4">Get Mentored</h3>
-                        <p className="text-white/70 mb-4">
+                        <h3 className="text-xl font-semibold text-gray-900 mb-4">Get Mentored</h3>
+                        <p className="text-gray-600 mb-4">
                           I'm passionate about helping entrepreneurs succeed. If you're building a startup and need guidance, I'd love to help.
                         </p>
                         <motion.button
                           onClick={() => setIsContactFormOpen(true)}
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="bg-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-cyan-600 transition-colors"
+                          whileHover={{ scale: 1.02, y: -2 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="group relative bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-500/30 overflow-hidden"
                         >
-                          Request Mentorship
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                          <span className="relative z-10">Request Mentorship</span>
                         </motion.button>
                       </div>
                     </div>
@@ -1183,57 +1236,58 @@ const AboutPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-purple-900/20 backdrop-blur-sm z-50 flex items-center justify-center p-4"
             onClick={() => setIsContactFormOpen(false)}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="ultra-glass rounded-xl p-8 max-w-md w-full"
+              className="bg-white/30 backdrop-blur-md rounded-xl p-8 border border-purple-200/50 max-w-md w-full"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl font-bold text-white">Get In Touch</h3>
+                <h3 className="text-xl font-bold text-gray-900">Get In Touch</h3>
                 <button
                   onClick={() => setIsContactFormOpen(false)}
-                  className="text-white/60 hover:text-white"
+                  className="text-gray-600 hover:text-purple-600"
                 >
                   <X className="w-5 h-5" />
               </button>
             </div>
               <form onSubmit={handleContactSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-white/80 text-sm mb-2">Name</label>
+                  <label className="block text-gray-700 text-sm mb-2">Name</label>
                   <input
                     type="text"
-                    className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                    className="w-full bg-white/80 border border-purple-200/50 rounded-lg p-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label className="block text-white/80 text-sm mb-2">Email</label>
+                  <label className="block text-gray-700 text-sm mb-2">Email</label>
                   <input
                     type="email"
-                    className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                    className="w-full bg-white/80 border border-purple-200/50 rounded-lg p-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
                     placeholder="your@email.com"
                   />
                 </div>
                 <div>
-                  <label className="block text-white/80 text-sm mb-2">Message</label>
+                  <label className="block text-gray-700 text-sm mb-2">Message</label>
                   <textarea
                     rows={4}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 resize-none"
+                    className="w-full bg-white/80 border border-purple-200/50 rounded-lg p-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-500 resize-none"
                     placeholder="How can I help you?"
                   />
                 </div>
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-cyan-500 text-white py-3 rounded-lg font-semibold hover:bg-cyan-600 transition-colors"
+                  className="group relative w-full bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-500/30 overflow-hidden"
                 >
-                  Send Message
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                  <span className="relative z-10">Send Message</span>
                 </motion.button>
               </form>
             </motion.div>

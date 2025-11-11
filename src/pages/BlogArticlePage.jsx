@@ -90,10 +90,10 @@ const BlogArticlePage = () => {
     return (
       <div className="min-h-screen pt-16 ultra-gradient-bg flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+          <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
             <BookOpen className="w-8 h-8 text-white" />
           </div>
-          <p className="text-white/70">Loading article...</p>
+          <p className="text-gray-600">Loading article...</p>
         </div>
       </div>
     );
@@ -105,7 +105,7 @@ const BlogArticlePage = () => {
         <SEOHead 
           title="Article Not Found"
           description="The article you're looking for doesn't exist on The Meet Patel's blog."
-          canonical={`/blog/${slug}`}
+          canonical={`/blogs/${slug}`}
         />
         <div className="min-h-screen pt-16 ultra-gradient-bg flex items-center justify-center">
           <div className="text-center">
@@ -113,10 +113,10 @@ const BlogArticlePage = () => {
               <X className="w-8 h-8 text-white" />
             </div>
             <h2 className="text-2xl font-bold text-white mb-2">Article Not Found</h2>
-            <p className="text-white/70 mb-6">The article you're looking for doesn't exist.</p>
+            <p className="text-gray-600 mb-6">The article you're looking for doesn't exist.</p>
             <Link
-              to="/blog"
-              className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors"
+              to="/blogs"
+              className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
             >
               Back to Blog
             </Link>
@@ -132,7 +132,7 @@ const BlogArticlePage = () => {
     "@type": "BlogPosting",
     "headline": article.title,
     "description": article.excerpt,
-    "image": `https://themeetpatel.com/blog/${article.slug}.jpg`,
+    "image": `https://themeetpatel.com/blogs/${article.slug}.jpg`,
     "author": {
       "@type": "Person",
       "name": article.author,
@@ -147,7 +147,7 @@ const BlogArticlePage = () => {
     "dateModified": article.date,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://themeetpatel.com/blog/${article.slug}`
+      "@id": `https://themeetpatel.com/blogs/${article.slug}`
     },
     "keywords": article.tags.join(', '),
     "articleSection": article.category,
@@ -161,8 +161,8 @@ const BlogArticlePage = () => {
         title={article.title}
         description={article.excerpt}
         keywords={`${article.tags.join(', ')}, ${article.category}, The Meet Patel blog, ${article.author}`}
-        canonical={`/blog/${article.slug}`}
-        ogImage={`/blog/${article.slug}.jpg`}
+        canonical={`/blogs/${article.slug}`}
+        ogImage={`/blogs/${article.slug}.jpg`}
         ogType="article"
         articleAuthor={article.author}
         articlePublishedTime={article.date}
@@ -171,16 +171,69 @@ const BlogArticlePage = () => {
       />
       <div className="min-h-screen pt-16 ultra-gradient-bg">
       {/* Reading Progress Bar */}
-      <div className="fixed top-16 left-0 right-0 h-1 bg-white/10 z-40">
+      <div className="fixed top-16 left-0 right-0 h-1 bg-purple-100 z-40">
         <motion.div
-          className="h-full bg-gradient-to-r from-blue-500 to-cyan-500"
+          className="h-full bg-gradient-to-r from-purple-500 to-pink-500"
           style={{ width: `${readingProgress}%` }}
         />
       </div>
 
       {/* Article Header */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-teal-900/20 to-slate-900" />
+      <section className="pt-28 sm:pt-32 pb-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-50 via-pink-50 to-white" />
+        
+        {/* Animated Background Blobs */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-10 left-10 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+          <div className="absolute top-20 right-10 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+          <div className="absolute bottom-10 left-1/2 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+        </div>
+        
+        {/* Floating Article Icons */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            animate={{ y: [0, -18, 0], rotate: [0, 8, 0], x: [0, 8, 0] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-24 left-[10%] w-18 h-18 bg-gradient-to-br from-purple-200/50 to-pink-200/50 backdrop-blur-md rounded-2xl flex items-center justify-center shadow-xl border border-purple-300/40"
+          >
+            <BookOpen className="w-9 h-9 text-purple-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 22, 0], rotate: [0, -10, 0], x: [0, -8, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
+            className="absolute top-32 right-[12%] w-20 h-20 bg-gradient-to-tl from-pink-200/50 to-purple-200/50 backdrop-blur-md rounded-full flex items-center justify-center shadow-xl border border-pink-300/40"
+          >
+            <Heart className="w-10 h-10 text-pink-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, -14, 0], rotate: [0, 6, 0], scale: [1, 1.05, 1] }}
+            transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+            className="absolute bottom-24 left-[14%] w-16 h-16 bg-gradient-to-br from-purple-100/60 to-pink-100/60 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg border border-purple-200/50"
+          >
+            <Share2 className="w-8 h-8 text-purple-700" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 20, 0], rotate: [0, -8, 0], x: [0, -10, 0] }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1.3 }}
+            className="absolute bottom-28 right-[10%] w-18 h-18 bg-gradient-to-tr from-pink-200/60 to-purple-200/60 backdrop-blur-md rounded-2xl flex items-center justify-center shadow-xl border border-pink-300/50"
+          >
+            <MessageSquare className="w-9 h-9 text-pink-700" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, -16, 0], rotate: [0, 10, 0] }}
+            transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 1.8 }}
+            className="absolute top-1/2 right-[8%] w-14 h-14 bg-purple-200/50 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg"
+          >
+            <Bookmark className="w-7 h-7 text-purple-600" />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 18, 0], rotate: [0, -6, 0], x: [0, 6, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            className="absolute top-1/3 left-[8%] w-14 h-14 bg-pink-100/60 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-md"
+          >
+            <Eye className="w-7 h-7 text-pink-600" />
+          </motion.div>
+        </div>
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -190,8 +243,8 @@ const BlogArticlePage = () => {
           >
             {/* Back Button */}
             <Link
-              to="/blog"
-              className="inline-flex items-center space-x-2 text-white/60 hover:text-white transition-colors mb-8"
+              to="/blogs"
+              className="inline-flex items-center space-x-2 text-gray-600 hover:text-white transition-colors mb-8"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Blog</span>
@@ -199,7 +252,7 @@ const BlogArticlePage = () => {
 
             {/* Category */}
             <div className="mb-4">
-              <span className="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm font-medium">
+              <span className="bg-purple-600/20 text-purple-500 px-3 py-1 rounded-full text-sm font-medium">
                   {article.category}
                 </span>
               </div>
@@ -210,12 +263,12 @@ const BlogArticlePage = () => {
               </h1>
 
             {/* Excerpt */}
-            <p className="text-xl text-cyan-200 mb-8 leading-relaxed">
+            <p className="text-xl text-purple-600 mb-8 leading-relaxed">
                 {article.excerpt}
               </p>
 
             {/* Meta Information */}
-            <div className="flex flex-wrap items-center gap-6 text-cyan-300 mb-8">
+            <div className="flex flex-wrap items-center gap-6 text-purple-500 mb-8">
               <div className="flex items-center space-x-2">
                 <User className="w-4 h-4" />
                 <span>{article.author}</span>
@@ -237,7 +290,7 @@ const BlogArticlePage = () => {
             {/* Tags */}
             <div className="flex flex-wrap gap-2 mb-8">
               {article.tags.map((tag, index) => (
-                <span key={index} className="bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-full text-sm border border-cyan-500/30">
+                <span key={index} className="bg-purple-600/20 text-purple-500 px-3 py-1 rounded-full text-sm border border-purple-600/30">
                   #{tag}
                                 </span>
                             ))}
@@ -252,7 +305,7 @@ const BlogArticlePage = () => {
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
                       isLiked 
                         ? 'bg-red-500/20 text-red-400' 
-                        : 'bg-white/10 text-white/60 hover:text-white hover:bg-white/20'
+                        : 'bg-purple-100 text-gray-600 hover:text-white hover:bg-white/20'
                     }`}
                   >
                 <Heart className={`w-4 h-4 ${isLiked ? 'fill-current' : ''}`} />
@@ -265,8 +318,8 @@ const BlogArticlePage = () => {
                     whileTap={{ scale: 0.95 }}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
                       isBookmarked 
-                    ? 'bg-blue-500/20 text-blue-400' 
-                        : 'bg-white/10 text-white/60 hover:text-white hover:bg-white/20'
+                    ? 'bg-purple-600/20 text-purple-500' 
+                        : 'bg-purple-100 text-gray-600 hover:text-white hover:bg-white/20'
                     }`}
                   >
                 <Bookmark className={`w-4 h-4 ${isBookmarked ? 'fill-current' : ''}`} />
@@ -278,7 +331,7 @@ const BlogArticlePage = () => {
                       onClick={() => setShowShareMenu(!showShareMenu)}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                  className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/10 text-white/60 hover:text-white hover:bg-white/20 transition-colors"
+                  className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-purple-100 text-gray-600 hover:text-white hover:bg-white/20 transition-colors"
                     >
                   <Share2 className="w-4 h-4" />
                   <span>Share</span>
@@ -290,34 +343,34 @@ const BlogArticlePage = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="absolute top-full left-0 mt-2 bg-black/90 backdrop-blur-xl border border-white/10 rounded-lg p-2 min-w-[200px] z-50"
+                      className="absolute top-full left-0 mt-2 bg-white/95 backdrop-blur-xl border border-purple-200/50 rounded-lg p-2 min-w-[200px] z-50"
                     >
                             <button
                               onClick={() => handleShare('twitter')}
-                        className="w-full flex items-center space-x-3 px-3 py-2 rounded hover:bg-white/10 transition-colors text-left"
+                        className="w-full flex items-center space-x-3 px-3 py-2 rounded hover:bg-purple-50 transition-colors text-left"
                             >
-                        <Twitter className="w-4 h-4 text-blue-400" />
+                        <Twitter className="w-4 h-4 text-purple-500" />
                         <span className="text-white">Twitter</span>
                             </button>
                             <button
                               onClick={() => handleShare('linkedin')}
-                        className="w-full flex items-center space-x-3 px-3 py-2 rounded hover:bg-white/10 transition-colors text-left"
+                        className="w-full flex items-center space-x-3 px-3 py-2 rounded hover:bg-purple-50 transition-colors text-left"
                             >
-                        <Linkedin className="w-4 h-4 text-blue-400" />
+                        <Linkedin className="w-4 h-4 text-purple-500" />
                         <span className="text-white">LinkedIn</span>
                             </button>
                             <button
                               onClick={() => handleShare('facebook')}
-                        className="w-full flex items-center space-x-3 px-3 py-2 rounded hover:bg-white/10 transition-colors text-left"
+                        className="w-full flex items-center space-x-3 px-3 py-2 rounded hover:bg-purple-50 transition-colors text-left"
                             >
-                        <Facebook className="w-4 h-4 text-blue-400" />
+                        <Facebook className="w-4 h-4 text-purple-500" />
                         <span className="text-white">Facebook</span>
                             </button>
                             <button
                         onClick={handleCopyLink}
-                        className="w-full flex items-center space-x-3 px-3 py-2 rounded hover:bg-white/10 transition-colors text-left"
+                        className="w-full flex items-center space-x-3 px-3 py-2 rounded hover:bg-purple-50 transition-colors text-left"
                             >
-                        <Copy className="w-4 h-4 text-white/60" />
+                        <Copy className="w-4 h-4 text-gray-600" />
                         <span className="text-white">Copy Link</span>
                             </button>
                         </motion.div>
@@ -347,7 +400,7 @@ const BlogArticlePage = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4">
+                      <div className="w-20 h-20 bg-purple-100 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4">
                         <BookOpen className="w-10 h-10 text-white" />
             </div>
                       <h2 className="text-2xl md:text-3xl font-bold text-white px-4">{article.title}</h2>
@@ -372,16 +425,16 @@ const BlogArticlePage = () => {
                   </div>
 
                   {/* Enhanced Social Sharing */}
-                  <div className="mt-12 pt-8 border-t border-white/10">
+                  <div className="mt-12 pt-8 border-t border-purple-200/50">
                     <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
                       <div className="flex items-center space-x-4">
-                        <span className="text-white/60 font-medium">Share this article:</span>
+                        <span className="text-gray-600 font-medium">Share this article:</span>
                         <div className="flex items-center space-x-3">
                           <motion.button
                             onClick={() => handleShare('linkedin')}
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
-                            className="p-3 bg-blue-600/20 text-blue-400 hover:bg-blue-600/30 rounded-xl transition-all duration-200"
+                            className="p-3 bg-blue-600/20 text-purple-500 hover:bg-purple-700/30 rounded-xl transition-all duration-200"
                             title="Share on LinkedIn"
                           >
                             <Linkedin className="w-5 h-5" />
@@ -401,7 +454,7 @@ const BlogArticlePage = () => {
                             onClick={() => handleShare('facebook')}
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
-                            className="p-3 bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 rounded-xl transition-all duration-200"
+                            className="p-3 bg-purple-600/20 text-purple-500 hover:bg-purple-600/30 rounded-xl transition-all duration-200"
                             title="Share on Facebook"
                           >
                             <Facebook className="w-5 h-5" />
@@ -419,7 +472,7 @@ const BlogArticlePage = () => {
                         </div>
                       </div>
                       
-                      <div className="flex items-center space-x-6 text-white/60">
+                      <div className="flex items-center space-x-6 text-gray-600">
                         <div className="flex items-center space-x-2">
                           <Heart className="w-4 h-4" />
                           <span>{article.likes} likes</span>
@@ -454,21 +507,21 @@ const BlogArticlePage = () => {
                       <User className="w-10 h-10 text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-white mb-2">{article.author}</h3>
-                    <p className="text-cyan-300 text-sm">Entrepreneur & Writer</p>
+                    <p className="text-purple-500 text-sm">Entrepreneur & Writer</p>
                   </div>
                   
-                  <div className="space-y-4 text-sm text-white/70">
+                  <div className="space-y-4 text-sm text-gray-600">
                     <div className="flex items-center justify-between">
                       <span>Articles Written</span>
-                      <span className="text-cyan-400 font-semibold">{getPublishedArticles().length}+</span>
+                      <span className="text-purple-600 font-semibold">{getPublishedArticles().length}+</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span>Total Reach</span>
-                      <span className="text-cyan-400 font-semibold">100K+</span>
+                      <span className="text-purple-600 font-semibold">100K+</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span>Followers</span>
-                      <span className="text-cyan-400 font-semibold">5.5K+</span>
+                      <span className="text-purple-600 font-semibold">5.5K+</span>
                     </div>
                   </div>
                   
@@ -508,14 +561,14 @@ const BlogArticlePage = () => {
                 >
                   <h3 className="text-lg font-semibold text-white mb-4">Reading Progress</h3>
                   <div className="space-y-4">
-                    <div className="w-full bg-white/10 rounded-full h-2">
+                    <div className="w-full bg-purple-100 rounded-full h-2">
                       <motion.div
                         className="h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"
                         style={{ width: `${readingProgress}%` }}
                         transition={{ duration: 0.3 }}
                       />
                     </div>
-                    <div className="flex items-center justify-between text-sm text-white/60">
+                    <div className="flex items-center justify-between text-sm text-gray-600">
                       <span>{Math.round(readingProgress)}% complete</span>
                       <span>{article.readTime}</span>
                     </div>
@@ -530,22 +583,22 @@ const BlogArticlePage = () => {
                   className="ultra-glass rounded-2xl p-6"
                 >
                   <h3 className="text-lg font-semibold text-white mb-4">Article Stats</h3>
-                  <div className="space-y-3 text-sm text-white/70">
+                  <div className="space-y-3 text-sm text-gray-600">
                     <div className="flex items-center justify-between">
                       <span>Reading Time</span>
-                      <span className="text-cyan-400 font-semibold">{article.readTime}</span>
+                      <span className="text-purple-600 font-semibold">{article.readTime}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span>Views</span>
-                      <span className="text-cyan-400 font-semibold">{article.views.toLocaleString()}</span>
+                      <span className="text-purple-600 font-semibold">{article.views.toLocaleString()}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span>Likes</span>
-                      <span className="text-cyan-400 font-semibold">{article.likes}</span>
+                      <span className="text-purple-600 font-semibold">{article.likes}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span>Category</span>
-                      <span className="text-cyan-400 font-semibold">{article.category}</span>
+                      <span className="text-purple-600 font-semibold">{article.category}</span>
                     </div>
                   </div>
           </motion.div>
@@ -565,7 +618,7 @@ const BlogArticlePage = () => {
             className="mb-12"
           >
             <h2 className="text-3xl font-bold text-white mb-6">Related Articles</h2>
-            <p className="text-white/70">Continue exploring more insights and stories</p>
+            <p className="text-gray-600">Continue exploring more insights and stories</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -578,9 +631,9 @@ const BlogArticlePage = () => {
                 className="ultra-glass rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300"
               >
                 <div className="relative">
-                  <div className="h-48 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
+                  <div className="h-48 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-2">
                         <BookOpen className="w-6 h-6 text-white" />
                       </div>
                       <h3 className="text-sm font-bold text-white line-clamp-2">{relatedArticle.title}</h3>
@@ -590,7 +643,7 @@ const BlogArticlePage = () => {
                 
                 <div className="p-6">
                   <div className="flex items-center space-x-2 mb-3">
-                    <span className="bg-white/10 text-white/60 px-2 py-1 rounded text-xs">
+                    <span className="bg-purple-100 text-gray-600 px-2 py-1 rounded text-xs">
                       {relatedArticle.category}
                     </span>
                   </div>
@@ -598,7 +651,7 @@ const BlogArticlePage = () => {
                   <h3 className="text-lg font-semibold text-white mb-3 line-clamp-2">
                     {relatedArticle.title}
                   </h3>
-                  <p className="text-white/70 text-sm mb-4 line-clamp-3">
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">
                     {relatedArticle.excerpt}
                   </p>
                   
@@ -614,8 +667,8 @@ const BlogArticlePage = () => {
                   </div>
                   
                   <Link
-                    to={`/blog/${relatedArticle.slug}`}
-                    className="text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center"
+                    to={`/blogs/${relatedArticle.slug}`}
+                    className="text-purple-500 hover:text-blue-300 text-sm font-medium flex items-center"
                   >
                     Read Article
                     <ArrowRight className="w-4 h-4 ml-1" />
@@ -637,19 +690,19 @@ const BlogArticlePage = () => {
             className="ultra-glass rounded-xl p-8"
           >
             <h2 className="text-3xl font-bold text-white mb-4">Enjoyed this article?</h2>
-            <p className="text-xl text-white/70 mb-8 leading-relaxed">
+            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
               Subscribe to get notified when I publish new articles about entrepreneurship, personal growth, and writing.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 bg-white/80 border border-purple-200/50 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors flex items-center justify-center space-x-2"
+                className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors flex items-center justify-center space-x-2"
               >
                 <MessageSquare className="w-5 h-5" />
                 <span>Subscribe</span>

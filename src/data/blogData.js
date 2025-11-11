@@ -848,30 +848,62 @@ export const blogArticles = [
 
 // Helper functions for blog management
 export const getArticleBySlug = (slug) => {
-  return blogArticles.find(article => article.slug === slug);
+  const deletedIds = getDeletedArticleIds();
+  const article = blogArticles.find(article => article.slug === slug);
+  return article && !deletedIds.includes(article.id) ? article : null;
 };
 
 export const getArticleById = (id) => {
-  return blogArticles.find(article => article.id === parseInt(id));
+  const deletedIds = getDeletedArticleIds();
+  const article = blogArticles.find(article => article.id === parseInt(id));
+  return article && !deletedIds.includes(article.id) ? article : null;
+};
+
+// LocalStorage key for deleted articles
+const DELETED_ARTICLES_KEY = 'deleted_blog_articles';
+
+// Get deleted article IDs from localStorage
+const getDeletedArticleIds = () => {
+  try {
+    const deleted = localStorage.getItem(DELETED_ARTICLES_KEY);
+    return deleted ? JSON.parse(deleted) : [];
+  } catch (error) {
+    console.error('Error reading deleted articles:', error);
+    return [];
+  }
+};
+
+// Save deleted article IDs to localStorage
+const saveDeletedArticleIds = (ids) => {
+  try {
+    localStorage.setItem(DELETED_ARTICLES_KEY, JSON.stringify(ids));
+  } catch (error) {
+    console.error('Error saving deleted articles:', error);
+  }
 };
 
 export const getPublishedArticles = () => {
-  return blogArticles.filter(article => article.published);
+  const deletedIds = getDeletedArticleIds();
+  return blogArticles.filter(article => article.published && !deletedIds.includes(article.id));
 };
 
 export const getFeaturedArticles = () => {
-  return blogArticles.filter(article => article.featured && article.published);
+  const deletedIds = getDeletedArticleIds();
+  return blogArticles.filter(article => article.featured && article.published && !deletedIds.includes(article.id));
 };
 
 export const getArticlesByCategory = (category) => {
-  return blogArticles.filter(article => article.category === category && article.published);
+  const deletedIds = getDeletedArticleIds();
+  return blogArticles.filter(article => article.category === category && article.published && !deletedIds.includes(article.id));
 };
 
 export const getRelatedArticles = (currentArticle, limit = 3) => {
+  const deletedIds = getDeletedArticleIds();
   return blogArticles
     .filter(article => 
       article.id !== currentArticle.id && 
       article.published &&
+      !deletedIds.includes(article.id) &&
       (article.category === currentArticle.category || 
        article.tags.some(tag => currentArticle.tags.includes(tag)))
     )
@@ -879,7 +911,9 @@ export const getRelatedArticles = (currentArticle, limit = 3) => {
 };
 
 export const getCategories = () => {
-  const categories = [...new Set(blogArticles.map(article => article.category))];
+  const deletedIds = getDeletedArticleIds();
+  const publishedArticles = blogArticles.filter(article => article.published && !deletedIds.includes(article.id));
+  const categories = [...new Set(publishedArticles.map(article => article.category))];
   return categories.map(category => ({
     name: category,
     count: getArticlesByCategory(category).length,
@@ -890,9 +924,17 @@ export const getCategories = () => {
 const getCategoryIcon = (category) => {
   const iconMap = {
     'Entrepreneurship': 'Rocket',
+    'Biggbizz': 'Target',
+    'Operations': 'Settings',
     'Personal Growth': 'TrendingUp',
+    'Business Strategy': 'Lightbulb',
+    'User-led Growth': 'Users',
+    'Design & UX': 'Code',
+    'Marketing & Sales': 'BarChart3',
+    'Partnerships': 'Handshake',
     'Writing & Books': 'FileText',
-    'Leadership': 'Crown'
+    'Leadership': 'Crown',
+    'Strategy': 'BookOpen'
   };
   return iconMap[category] || 'BookOpen';
 };
@@ -933,11 +975,26 @@ export const updateArticle = (id, updates) => {
   return null;
 };
 
-// Function to delete article
+// Function to delete article (persists to localStorage)
 export const deleteArticle = (id) => {
-  const index = blogArticles.findIndex(article => article.id === id);
-  if (index !== -1) {
-    return blogArticles.splice(index, 1)[0];
+  const deletedIds = getDeletedArticleIds();
+  if (!deletedIds.includes(id)) {
+    deletedIds.push(id);
+    saveDeletedArticleIds(deletedIds);
   }
-  return null;
+  return true;
+};
+
+// Function to restore a deleted article
+export const restoreArticle = (id) => {
+  const deletedIds = getDeletedArticleIds();
+  const filteredIds = deletedIds.filter(deletedId => deletedId !== id);
+  saveDeletedArticleIds(filteredIds);
+  return true;
+};
+
+// Function to clear all deleted articles (for admin purposes)
+export const clearDeletedArticles = () => {
+  localStorage.removeItem(DELETED_ARTICLES_KEY);
+  return true;
 };
