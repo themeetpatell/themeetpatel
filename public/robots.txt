@@ -1,25 +1,45 @@
+# Robots.txt for The Meet Patel - Optimized for Search Engine Crawling
+# Updated: January 2026
+
+# Global Rules - Allow all major search engines
 User-agent: *
 Allow: /
 
-# Allow all search engines to crawl all content
+# Google Bot - Priority Crawling
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0.5
 
-User-agent: Bingbot
+# Google Image Bot
+User-agent: Googlebot-Image
 Allow: /
 
+# Google Mobile Bot
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Bing Bot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0.5
+
+# Yahoo Bot
 User-agent: Slurp
 Allow: /
 
+# DuckDuckGo Bot
 User-agent: DuckDuckBot
 Allow: /
 
+# Baidu Bot (China)
 User-agent: Baiduspider
 Allow: /
 
+# Yandex Bot (Russia)
 User-agent: YandexBot
 Allow: /
 
+# Social Media Bots
 User-agent: facebookexternalhit
 Allow: /
 
@@ -29,24 +49,62 @@ Allow: /
 User-agent: LinkedInBot
 Allow: /
 
-# Disallow admin or private areas (if any)
+User-agent: Pinterestbot
+Allow: /
+
+# WhatsApp Link Preview
+User-agent: WhatsApp
+Allow: /
+
+# Telegram Bot
+User-agent: TelegramBot
+Allow: /
+
+# Disallow admin, private areas, and unnecessary resources
 Disallow: /admin/
 Disallow: /private/
 Disallow: /api/private/
+Disallow: /*.json$
+Disallow: /node_modules/
+Disallow: /dist/
 
-# Allow all other content
+# Allow all important pages explicitly
+Allow: /
 Allow: /about
-Allow: /blog
+Allow: /about/
+Allow: /blogs
+Allow: /blogs/
+Allow: /blogs/*
 Allow: /community
+Allow: /community/
 Allow: /contact
+Allow: /contact/
 Allow: /portfolio
+Allow: /portfolio/
 Allow: /systems
+Allow: /systems/
+Allow: /systems/*
 Allow: /privacy-policy
+Allow: /privacy-policy/
 Allow: /terms-of-service
+Allow: /terms-of-service/
 Allow: /cookie-policy
+Allow: /cookie-policy/
+Allow: /assets/*
+Allow: /*.css
+Allow: /*.js
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
 
-# Sitemap location
+# Sitemap Locations
 Sitemap: https://themeetpatel.com/sitemap.xml
 
-# Crawl delay (optional - helps prevent overloading server)
+# Crawl Delay (balanced for optimal indexing)
 Crawl-delay: 1
+
+# Host directive (helps with preferred domain)
+Host: https://themeetpatel.com

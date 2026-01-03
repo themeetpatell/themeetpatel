@@ -121,9 +121,9 @@ const SystemsPage = () => {
   return (
     <div className="min-h-screen pt-16 ultra-gradient-bg">
       <SEOHead 
-        title="Systems Built - The Meet Patel's Business Operations & Startup Systems"
-        description="Discover comprehensive business systems, processes, SOPs, workflows, and frameworks built by The Meet Patel across multiple ventures. From StartupOS to operational excellence systems for 10+ startups and business growth strategies."
-        keywords="Systems The Meet Patel, Meet Patel business systems, themeetpatel processes, StartupOS systems, business operations systems, startup processes, SOPs frameworks, business workflows, operational excellence, startup scaling systems, business strategy systems, operations management, startup leadership systems, business growth systems, Dubai entrepreneur systems, serial entrepreneur processes, startup ecosystem systems, business development systems, product management systems, startup mentoring systems"
+        title="Systems Built - Biggventure CEO | BiggMate Founder | The Meet Patel's Business Operations"
+        description="Discover comprehensive business systems, processes, SOPs, workflows, and frameworks built by The Meet Patel, CEO of Biggventure and founder of BiggMate. From StartupOS (500+ members) to operational excellence systems for 10+ startups including ZeroHuman and MealVerse."
+        keywords="Systems The Meet Patel, Meet Patel business systems, themeetpatel processes, Biggventure systems, BiggMate processes, StartupOS systems, business operations systems, startup processes, SOPs frameworks, business workflows, operational excellence, startup scaling systems, business strategy systems, operations management, startup leadership systems, business growth systems, Dubai entrepreneur systems, serial entrepreneur processes, startup ecosystem systems, business development systems, product management systems, startup mentoring systems"
         canonical="/systems"
         ogImage="/systems-preview.jpg"
         structuredData={systemsStructuredData}

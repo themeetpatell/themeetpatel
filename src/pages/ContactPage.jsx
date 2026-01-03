@@ -319,8 +319,8 @@ ${formData.message}`;
   const contactStructuredData = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    "name": "Contact The Meet Patel - Serial Entrepreneur & Startup Mentor",
-    "description": "Get in touch with The Meet Patel for business opportunities, startup mentorship, and collaboration. Contact information, social media links, and direct communication channels for entrepreneurs and business professionals.",
+    "name": "Contact The Meet Patel - Biggventure CEO | BiggMate Founder | Startup Mentor",
+    "description": "Contact The Meet Patel (Meet Patel, themeetpatel) - Biggventure CEO & founder, BiggMate founder for business opportunities, startup mentorship, venture collaboration, and partnerships. Based in Dubai, UAE.",
     "url": "https://themeetpatel.com/contact",
     "mainEntity": {
       "@type": "Person",
@@ -368,9 +368,9 @@ ${formData.message}`;
   return (
     <div className="min-h-screen pt-16 ultra-gradient-bg">
       <SEOHead 
-        title="Contact The Meet Patel - Serial Entrepreneur & Startup Mentor"
-        description="Get in touch with The Meet Patel for business opportunities, startup mentorship, and collaboration. Contact information, social media links, and direct communication channels for entrepreneurs and business professionals."
-        keywords="Contact The Meet Patel, Meet Patel contact, themeetpatel contact, startup mentor contact, business consultant contact, serial entrepreneur contact, Dubai entrepreneur contact, startup advisor contact, business strategy consultant, operations management consultant, startup leadership mentor, business growth consultant, startup ecosystem contact, business development contact, product management consultant, startup scaling mentor"
+        title="Contact The Meet Patel - Biggventure CEO | BiggMate Founder | Serial Entrepreneur"
+        description="Get in touch with The Meet Patel, founder of Biggventure and BiggMate, for business opportunities, startup mentorship, and collaboration. Connect with the leader of StartupOS (500+ members), ZeroHuman, and MealVerse. Contact information for Dubai-based serial entrepreneur."
+        keywords="Contact The Meet Patel, Meet Patel contact, themeetpatel contact, Biggventure CEO contact, BiggMate founder contact, startup mentor contact, business consultant contact, serial entrepreneur contact, Dubai entrepreneur contact, startup advisor contact, business strategy consultant, operations management consultant, startup leadership mentor, business growth consultant, startup ecosystem contact, business development contact, product management consultant, startup scaling mentor"
         canonical="/contact"
         ogImage="/contact-preview.jpg"
         structuredData={contactStructuredData}

@@ -148,9 +148,9 @@ const BlogPage = () => {
   return (
     <div className="min-h-screen pt-16 ultra-gradient-bg">
       <SEOHead 
-        title="Blog - The Meet Patel's Startup Insights & Business Strategy"
-        description="Read insights on entrepreneurship, startup building, business strategy, and operations management from serial entrepreneur The Meet Patel. Expert advice on startup scaling, business growth, and startup ecosystem building."
-        keywords="Blog The Meet Patel, Meet Patel blog, themeetpatel insights, startup blog, entrepreneurship blog, business strategy blog, startup scaling blog, business operations blog, startup ecosystem blog, business growth blog, startup mentoring blog, Dubai entrepreneur blog, serial entrepreneur insights, startup building blog, business development blog, product management blog, startup leadership blog, business strategy insights, operations management blog, startup advice blog"
+        title="Blog - Biggventure CEO | BiggMate Founder | The Meet Patel's Startup Insights"
+        description="Read insights on entrepreneurship, startup building, business strategy, and operations management from The Meet Patel, CEO of Biggventure and founder of BiggMate, StartupOS, ZeroHuman, and MealVerse. Expert advice on startup scaling, business growth, and startup ecosystem building."
+        keywords="Blog The Meet Patel, Meet Patel blog, themeetpatel insights, Biggventure CEO blog, BiggMate founder insights, startup blog, entrepreneurship blog, business strategy blog, startup scaling blog, business operations blog, startup ecosystem blog, business growth blog, startup mentoring blog, Dubai entrepreneur blog, serial entrepreneur insights, startup building blog, business development blog, product management blog, startup leadership blog, business strategy insights, operations management blog, startup advice blog"
         canonical="/blogs"
         ogImage="/blog-preview.jpg"
         structuredData={blogStructuredData}

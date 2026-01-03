@@ -615,9 +615,9 @@ const AboutPage = () => {
   return (
     <div className="min-h-screen pt-16 ultra-gradient-bg">
       <SEOHead 
-        title="About The Meet Patel - Serial Entrepreneur & Startup Ecosystem Builder"
-        description="Learn about The Meet Patel's journey as a serial entrepreneur with 8+ years experience building and scaling startups. Discover his expertise in business operations, product development, and startup ecosystem building. Founder of StartupOS, ZeroHuman, and MealVerse."
-        keywords="About The Meet Patel, Meet Patel biography, themeetpatel story, serial entrepreneur journey, startup ecosystem builder, business operations expert, StartupOS founder story, ZeroHuman founder, MealVerse founder, Dubai entrepreneur, startup mentor background, business consultant experience, product development expert, startup scaling expert, entrepreneurship journey, startup advisor background, business strategy expert, operations management expert, startup leadership experience"
+        title="About The Meet Patel - Biggventure CEO | BiggMate Founder | Serial Entrepreneur"
+        description="Learn about The Meet Patel (Meet Patel, themeetpatel) - Biggventure CEO & founder, BiggMate founder, serial entrepreneur with 8+ years building 8+ startups. Founded Biggventure, BiggMate, StartupOS (500+ community), ZeroHuman, MealVerse. Expert in business operations, startup scaling, product development. Led 270+ teams, mentored 50+ entrepreneurs in Dubai, UAE."
+        keywords="About The Meet Patel, Meet Patel biography, themeetpatel story, Biggventure CEO, Biggventure founder, BiggMate founder, biggmate creator, serial entrepreneur journey, StartupOS founder story, ZeroHuman founder, MealVerse founder, Dubai entrepreneur, startup ecosystem builder, business operations expert Dubai, startup mentor background, themeetpatel ventures, Meet Patel business operations, Biggventure CEO story, startup scaling expert, entrepreneurship journey Dubai, Meet Patel startups, venture builder Dubai, business consultant Dubai, product development expert, 270+ team leadership, 50+ entrepreneurs mentored"
         canonical="/about"
         ogImage="/logo for themeetpatel.png"
         structuredData={aboutStructuredData}

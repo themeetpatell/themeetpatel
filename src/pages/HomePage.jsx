@@ -122,8 +122,8 @@ const HomePage = () => {
 
   const personalInfo = {
     name: "Meet Patel",
-    title: "Business • Operations • Product • Growth",
-    location: "Dubai, UAE",
+    title: "Biggventure CEO & Founder | BiggMate Founder | Serial Entrepreneur | Business Operations Expert",
+    location: "Dubai, United Arab Emirates",
     email: "the.meetpatell@gmail.com",
     bio: "A Startup ecosystem builder with over 8 years of experience in building and scaling technology companies. Passionate about helping startups succeed through innovative solutions and strategic guidance.",
     
@@ -334,21 +334,41 @@ const HomePage = () => {
     setTimeout(() => setIsSubmitted(false), 3000);
   };
 
-  // Structured Data for Homepage
-  const homepageStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "The Meet Patel - A Startup Guy | Head of Business Excellence",
-    "description": "Meet The Meet Patel - A Startup Guy with 8+ years experience building and scaling startups. Founder of StartupOS, ZeroHuman, MealVerse. Expert in business operations, product development, and startup ecosystem building.",
-    "url": "https://themeetpatel.com",
-    "mainEntity": {
+  // Enhanced Structured Data for AEO/GEO/LLMO Optimization
+  const homepageStructuredData = [
+    // Primary Person Schema with comprehensive entity data
+    {
+      "@context": "https://schema.org",
       "@type": "Person",
+      "@id": "https://themeetpatel.com/#person",
       "name": "The Meet Patel",
-      "alternateName": ["Meet Patel", "themeetpatel"],
-      "jobTitle": "Head of Business Excellence & A Startup Guy",
-      "description": "A startup ecosystem builder with over 8 years of experience in building and scaling technology companies.",
+      "alternateName": [
+        "Meet Patel",
+        "themeetpatel",
+        "The Meet Patel Dubai",
+        "Meet Patel Entrepreneur",
+        "Meet Patel Serial Entrepreneur",
+        "Biggventure CEO",
+        "Biggventure Founder",
+        "BiggMate Founder",
+        "StartupOS Founder"
+      ],
+      "description": "The Meet Patel (Meet Patel) is a serial entrepreneur, Biggventure CEO, BiggMate founder, and business operations expert with 8+ years of experience building and scaling startups. Known as themeetpatel online, he founded Biggventure, BiggMate, StartupOS, ZeroHuman, and MealVerse. Based in Dubai, UAE, he specializes in startup ecosystem building, business operations, and product development.",
+      "jobTitle": [
+        "Serial Entrepreneur",
+        "CEO & Founder of Biggventure",
+        "Founder of BiggMate",
+        "Founder of StartupOS",
+        "Head of Business Excellence",
+        "Business Operations Expert",
+        "Startup Mentor"
+      ],
       "url": "https://themeetpatel.com",
-      "image": "https://themeetpatel.com/meet-patel-profile.jpg",
+      "image": [
+        "https://themeetpatel.com/meet-patel-profile.jpg",
+        "https://themeetpatel.com/themeetpatel.jpeg",
+        "https://themeetpatel.com/logo for themeetpatel.png"
+      ],
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Dubai",
@@ -356,179 +376,470 @@ const HomePage = () => {
         "addressCountry": "AE"
       },
       "email": "the.meetll@gmail.com",
+      "telephone": "+971-XX-XXXXXXX",
       "sameAs": [
         "https://www.linkedin.com/in/themeetpatel/",
         "https://x.com/the_meetpatel",
         "https://github.com/themeetpatell",
         "http://instagram.com/the.meetpatell/",
         "https://youtube.com/@themeetpatel",
-        "https://medium.com/@themeetpatel"
+        "https://medium.com/@themeetpatel",
+        "https://biggventure.com",
+        "https://startupos.com"
       ],
       "knowsAbout": [
         "Entrepreneurship",
-        "Startup Ecosystem Building", 
-        "Business Operations",
-        "Product Development",
-        "Startup Scaling",
-        "Business Strategy",
+        "Startup Ecosystem Building",
+        "Venture Building",
+        "Business Operations Excellence",
+        "Product Development & Management",
+        "Startup Scaling Strategies",
+        "Business Strategy & Planning",
         "Operations Management",
-        "Startup Leadership",
+        "Team Leadership",
         "Business Growth",
-        "Startup Mentoring"
+        "Startup Mentoring",
+        "Financial Modeling",
+        "Customer Success Operations",
+        "Strategic Planning"
       ],
       "hasOccupation": {
         "@type": "Occupation",
-        "name": "Head of Business Excellence",
-        "description": "Building and scaling multiple technology startups",
+        "name": "Serial Entrepreneur & CEO",
+        "description": "CEO of Biggventure, founder of multiple successful startups including BiggMate, StartupOS, ZeroHuman, and MealVerse. Expert in building and scaling technology companies.",
         "occupationLocation": {
           "@type": "City",
           "name": "Dubai, UAE"
-        }
-      }
-    },
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
+        },
+        "skills": [
+          "Business Operations",
+          "Startup Building",
+          "Product Development",
+          "Team Management",
+          "Strategic Planning",
+          "Financial Management",
+          "Business Consulting"
+        ]
+      },
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Gujarat Technological University",
+        "sameAs": "https://www.gtu.ac.in/"
+      },
+      "award": [
+        "Best New Joiner Award - Finanshels (April 2024)",
+        "Star Performer of the Month - Finanshels (Dec 2024)",
+        "Best Creative Innovator Award - Finanshels (Feb 2025)"
+      ],
+      "worksFor": [
         {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://themeetpatel.com"
+          "@type": "Organization",
+          "name": "Biggventure",
+          "url": "https://biggventure.com",
+          "description": "Innovation-driven venture building company",
+          "founder": {
+            "@id": "https://themeetpatel.com/#person"
+          }
+        },
+        {
+          "@type": "Organization",
+          "name": "BiggMate",
+          "description": "Entrepreneur networking and co-founder matching platform",
+          "founder": {
+            "@id": "https://themeetpatel.com/#person"
+          }
+        },
+        {
+          "@type": "Organization",
+          "name": "StartupOS",
+          "url": "https://startupos.com",
+          "description": "Comprehensive startup management platform with 500+ community members",
+          "founder": {
+            "@id": "https://themeetpatel.com/#person"
+          }
+        }
+      ],
+      "founder": [
+        {
+          "@type": "Organization",
+          "name": "Biggventure",
+          "description": "Venture building company",
+          "foundingDate": "2022"
+        },
+        {
+          "@type": "Organization",
+          "name": "BiggMate",
+          "description": "Entrepreneur networking platform",
+          "foundingDate": "2023"
+        },
+        {
+          "@type": "Organization",
+          "name": "StartupOS",
+          "description": "Startup management platform",
+          "foundingDate": "2022"
+        },
+        {
+          "@type": "Organization",
+          "name": "ZeroHuman",
+          "description": "AI automation platform",
+          "foundingDate": "2024"
+        },
+        {
+          "@type": "Organization",
+          "name": "MealVerse",
+          "description": "Food technology platform",
+          "foundingDate": "2024"
+        }
+      ],
+      "numberOfEmployees": "270+",
+      "seeks": [
+        "Startup Collaboration",
+        "Business Partnerships",
+        "Investment Opportunities",
+        "Mentorship Engagements"
+      ]
+    },
+    // FAQ Schema for Answer Engine Optimization (AEO)
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who is The Meet Patel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Meet Patel (Meet Patel, themeetpatel) is a serial entrepreneur, Biggventure CEO and founder, with 8+ years of experience building and scaling startups. He is the founder of BiggMate, StartupOS (500+ community members), ZeroHuman, and MealVerse. Based in Dubai, UAE, he specializes in business operations, product development, and startup ecosystem building. He has led teams of 270+ people and mentored 50+ entrepreneurs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Biggventure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Biggventure is an innovation-driven venture building company founded and led by The Meet Patel as CEO. Biggventure focuses on creating scalable startups across multiple industries including technology, AI, and consumer services. The company uses proven frameworks and business operations excellence to systematically build successful ventures."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is BiggMate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BiggMate is a revolutionary networking platform founded by Meet Patel that connects entrepreneurs with co-founders, investors, and mentors. It serves as a comprehensive solution for the startup ecosystem, helping founders find the right partners and resources to build successful companies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What companies did Meet Patel found?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Meet Patel founded several successful companies: Biggventure (venture studio where he serves as CEO), BiggMate (entrepreneur networking platform), StartupOS (startup management platform with 500+ members), ZeroHuman (AI automation platform), and MealVerse (food technology platform). He also serves as Head of Business Excellence at Finanshels, where he received multiple awards."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes The Meet Patel an expert in startups?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Meet Patel has 8+ years of entrepreneurial experience, having built 8+ successful startups including Biggventure, BiggMate, and StartupOS. He has led teams of 270+ people remotely, mentored 50+ entrepreneurs, and created a community of 500+ startup founders. His expertise spans business operations, product development, team management, and startup scaling. He has received awards including Star Performer of the Month and Best Creative Innovator Award at Finanshels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is The Meet Patel based?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Meet Patel is based in Dubai, United Arab Emirates (UAE), where he builds and scales startups while contributing to the Middle East startup ecosystem. His work as Biggventure CEO and founder of multiple companies spans international markets with a focus on the MENA region."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I contact Meet Patel for startup mentorship?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can contact The Meet Patel through his website themeetpatel.com, email at the.meetll@gmail.com, or connect via LinkedIn at linkedin.com/in/themeetpatel/. He offers startup mentorship, business operations consulting, and strategic planning services. You can also join his StartupOS community of 500+ entrepreneurs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What services does Biggventure offer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Biggventure, led by CEO Meet Patel, offers venture building services, startup consulting, business operations optimization, product development guidance, team management coaching, and strategic planning. The company specializes in creating and scaling startups using proven frameworks and systematic approaches."
+          }
         }
       ]
+    },
+    // WebPage Schema
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "The Meet Patel - Serial Entrepreneur | Biggventure CEO | BiggMate Founder",
+      "description": "The Meet Patel (Meet Patel, themeetpatel) - Serial entrepreneur, Biggventure CEO & founder, BiggMate founder, StartupOS creator. 8+ years building and scaling startups in Dubai, UAE. Expert in business operations, product development, and startup ecosystem building.",
+      "url": "https://themeetpatel.com",
+      "about": {
+        "@id": "https://themeetpatel.com/#person"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://themeetpatel.com"
+          }
+        ]
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", ".description"]
+      }
+    },
+    // ProfilePage for knowledge graph
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@id": "https://themeetpatel.com/#person"
+      },
+      "about": {
+        "@id": "https://themeetpatel.com/#person"
+      }
     }
-  };
+  ];
 
   return (
     <div className="min-h-screen ultra-gradient-bg">
       <SEOHead 
-        title="The Meet Patel - A Startup Guy | Business Excellence | Business Operations Expert"
-        description="Meet The Meet Patel - A Startup Guy with 8+ years experience building and scaling startups. Founder of StartupOS, ZeroHuman, MealVerse. Expert in business operations, product development, and startup ecosystem building. Based in Dubai, UAE."
-        keywords="The Meet Patel, Meet Patel, themeetpatel, serial entrepreneur, startup ecosystem builder, business operations expert, StartupOS founder, ZeroHuman founder, MealVerse founder, startup mentor, Dubai entrepreneur, business consultant, product development expert, startup scaling, business growth, entrepreneurship, startup advisor, business strategy, operations management, startup leadership"
+        title="The Meet Patel - Serial Entrepreneur | Biggventure CEO | BiggMate Founder | Business Operations Expert"
+        description="The Meet Patel (Meet Patel, themeetpatel) - Serial entrepreneur, Biggventure CEO & founder, BiggMate founder, StartupOS creator with 500+ community. 8+ years building 8+ successful startups in Dubai, UAE. Expert in business operations, startup scaling, and product development. Led 270+ teams, mentored 50+ entrepreneurs."
+        keywords="The Meet Patel, Meet Patel, themeetpatel, Biggventure CEO, Biggventure founder, BiggMate founder, biggmate, StartupOS founder, serial entrepreneur Dubai, startup ecosystem builder, business operations expert, ZeroHuman founder, MealVerse founder, startup mentor Dubai, Dubai entrepreneur, themeetpatel startups, Meet Patel entrepreneur, Biggventure CEO founder, biggventure startup studio, startup scaling expert, business consultant Dubai, product development expert, business growth strategies, entrepreneurship Dubai, startup advisor, business strategy expert, operations management, startup leadership, venture builder, Meet Patel business operations, The Meet Patel ventures, startup mentorship Dubai, Dubai startup ecosystem, MENA entrepreneur, business excellence Dubai, startup community Dubai"
         canonical="/"
         ogImage="/og-image.jpg"
         structuredData={homepageStructuredData}
       />
       
-      {/* Hero Section - Premium Light Design */}
-      <section ref={heroRef} className="pt-16 sm:pt-20 min-h-[75vh] relative overflow-hidden flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-pink-50 to-white" />
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-          <div className="absolute top-40 right-10 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-          <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
-        </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      {/* Hero Section - Complete Redesign */}
+      <section ref={heroRef} className="relative w-full min-h-[100vh] overflow-hidden flex items-center justify-center">
+        {/* Dynamic Gradient Background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-pink-50 to-white" />
+          
+          {/* Animated Gradient Orbs */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            {/* Profile Avatar */}
+            animate={{
+              top: ['0%', '50%', '0%'],
+              left: ['0%', '10%', '0%'],
+              opacity: [0.15, 0.25, 0.15]
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -top-1/4 -left-1/4 w-96 h-96 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full filter blur-3xl opacity-20"
+          />
+          <motion.div
+            animate={{
+              top: ['50%', '0%', '50%'],
+              right: ['0%', '10%', '0%'],
+              opacity: [0.1, 0.2, 0.1]
+            }}
+            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute -top-1/4 -right-1/4 w-96 h-96 bg-gradient-to-br from-purple-300 to-pink-300 rounded-full filter blur-3xl opacity-10"
+          />
+          <motion.div
+            animate={{
+              bottom: ['0%', '20%', '0%'],
+              left: ['50%', '40%', '50%'],
+              opacity: [0.1, 0.15, 0.1]
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute -bottom-1/4 left-1/2 w-80 h-80 bg-gradient-to-tr from-pink-300 to-purple-300 rounded-full filter blur-3xl opacity-15"
+          />
+        </div>
+
+        {/* Particle Effect */}
+        <div className="absolute inset-0 opacity-20">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-0"
+            style={{
+              backgroundImage: 'radial-gradient(2px 2px at 20px 30px, rgba(168,85,247,.3), transparent), radial-gradient(2px 2px at 60px 70px, rgba(236,72,153,.2), transparent), radial-gradient(1px 1px at 50px 50px, rgba(168,85,247,.25), transparent), radial-gradient(1px 1px at 130px 80px, rgba(236,72,153,.15), transparent)',
+              backgroundSize: '200px 200px'
+            }}
+          />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto py-20 sm:py-32">
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="mb-8 sm:mb-12"
+              initial={{ opacity: 0, y: 50 }}
+              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="space-y-8"
             >
-              <div className="w-32 h-32 sm:w-40 sm:h-40 mx-auto bg-gradient-to-br from-purple-500 via-pink-500 to-purple-600 rounded-full flex items-center justify-center mb-8 sm:mb-12 shadow-2xl shadow-purple-300/50 overflow-hidden ring-4 ring-white ring-opacity-50">
-                <img
-                  src={logoImage}
-                  alt="The Meet Patel Logo"
-                  className="w-20 h-20 sm:w-28 sm:h-28 object-contain"
+              {/* Top Text Animation */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="flex justify-center"
+              >
+                <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full border border-purple-400/40 bg-purple-500/15 backdrop-blur-xl">
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                    className="w-2 h-2 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full"
+                  />
+                  <span className="text-sm sm:text-base text-purple-700">Welcome to my world</span>
+                </div>
+              </motion.div>
+
+              {/* Main Heading - Split Animation */}
+              <div className="space-y-4 text-center">
+                <motion.h1
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="text-5xl sm:text-7xl lg:text-8xl font-black leading-tight tracking-tight"
+                >
+                  <span className="block text-gray-900">
+                    Meet The
+                  </span>
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 mt-2">
+                    Meet Patel
+                  </span>
+                </motion.h1>
+
+                {/* Animated Underline */}
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={isHeroInView ? { width: "200px" } : {}}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 mx-auto rounded-full"
                 />
               </div>
-          </motion.div>
 
-            {/* Banner Title */}
-          <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="mb-8 relative"
-            >
-              {/* Decorative Elements */}
-              <div className="absolute -top-8 -left-8 w-16 h-16 bg-purple-400/20 rounded-full blur-xl"></div>
-              <div className="absolute -bottom-6 -right-8 w-12 h-12 bg-pink-400/20 rounded-full blur-xl"></div>
-              <div className="absolute top-1/2 -left-12 w-8 h-8 bg-purple-500/20 rounded-full blur-lg"></div>
-              <div className="absolute top-1/2 -right-12 w-10 h-10 bg-pink-500/20 rounded-full blur-lg"></div>
-              
-              <div className="relative">
-                <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold text-gray-900 mb-3 sm:mb-6 tracking-tight leading-tight">
-                  Meet The
-            </h1>
-                <h1 className="text-5xl sm:text-7xl md:text-9xl font-black bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 bg-clip-text text-transparent mb-6 sm:mb-10 tracking-tighter relative leading-none">
-                  Meet Patel
-                  {/* Underline Effect */}
-                  <div className="absolute -bottom-2 sm:-bottom-4 left-0 right-0 h-1 sm:h-2 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 rounded-full opacity-80"></div>
-                </h1>
-              </div>
-          </motion.div>
+              {/* Tagline with animated gradient */}
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.3 }}
+                className="text-xl sm:text-3xl lg:text-4xl font-bold text-center leading-tight px-4"
+              >
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700">
+                  {personalInfo.title}
+                </span>
+              </motion.p>
 
-          <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="mb-8"
-            >
-              <p className="text-xl sm:text-3xl md:text-4xl text-gray-700 mb-4 sm:mb-6 font-medium">
-                {personalInfo.title}
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-3 text-base sm:text-xl text-gray-600">
-                <div className="flex items-center space-x-2 bg-purple-100 px-4 py-2 rounded-full">
-                  <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />
-                  <span className="font-medium">{personalInfo.location}</span>
-                </div>
-                <span className="hidden sm:inline text-purple-400">•</span>
-                <span className="bg-pink-100 px-4 py-2 rounded-full font-medium">A Startup Guy</span>
-                <span className="hidden sm:inline text-purple-400">•</span>
-                <span className="bg-purple-100 px-4 py-2 rounded-full font-medium">System Builder</span>
-              </div>
-          </motion.div>
-
-          <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 1.0 }}
-              className="text-lg sm:text-xl text-gray-700 max-w-5xl mx-auto leading-relaxed mb-8 sm:mb-12 px-6 sm:px-0"
-            >
-              A Startup Guy and <Link to="/about" className="text-purple-600 hover:text-pink-600 transition-colors duration-300 font-semibold underline decoration-purple-300 hover:decoration-pink-300 underline-offset-4">System builder</Link> with over 8 years of experience in building and scaling startups. <br className="hidden sm:block" /> I work with founders and teams to design business systems that don't break under pressure. <br className="hidden sm:block" /> Explore my <Link to="/portfolio" className="text-purple-600 hover:text-pink-600 transition-colors duration-300 font-semibold underline decoration-purple-300 hover:decoration-pink-300 underline-offset-4">portfolio of successful ventures</Link> and <Link to="/systems" className="text-purple-600 hover:text-pink-600 transition-colors duration-300 font-semibold underline decoration-purple-300 hover:decoration-pink-300 underline-offset-4">proven business systems</Link>.
-            </motion.div>
-
-            {/* Call to Action Buttons */}
+              {/* Location Chip */}
               <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 1.2 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-8 sm:mb-12 px-4 sm:px-0"
-            >
-              <motion.a
-                href="/about"
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 text-white px-8 sm:px-12 py-4 sm:py-6 rounded-full font-bold text-lg sm:text-xl hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 transition-all duration-300 flex items-center justify-center space-x-3 sm:space-x-4 shadow-2xl shadow-purple-300/50 hover:shadow-purple-400/60 overflow-hidden w-full sm:w-auto"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={isHeroInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex justify-center"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                <span className="relative z-10">Discover My Journey</span>
-                <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 relative z-10 group-hover:translate-x-2 transition-transform duration-300" />
-              </motion.a>
-              
-              <motion.a
-                href="/contact"
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative bg-white backdrop-blur-sm text-purple-600 px-8 sm:px-12 py-4 sm:py-6 rounded-full font-bold text-lg sm:text-xl hover:bg-purple-50 transition-all duration-300 flex items-center justify-center space-x-3 sm:space-x-4 border-2 border-purple-200 hover:border-purple-400 shadow-xl hover:shadow-2xl hover:shadow-purple-200/50 overflow-hidden w-full sm:w-auto"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-50 to-pink-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <MessageSquare className="w-6 h-6 sm:w-7 sm:h-7 relative z-10 group-hover:scale-110 transition-transform duration-300" />
-                <span className="relative z-10">Start a Conversation</span>
-              </motion.a>
-          </motion.div>
+                <div className="inline-flex items-center space-x-3 px-6 py-3 rounded-2xl border border-pink-400/50 bg-gradient-to-r from-pink-500/10 to-purple-500/10 backdrop-blur-xl hover:border-pink-400/80 transition-all duration-300">
+                  <MapPin className="w-5 h-5 text-pink-600 flex-shrink-0" />
+                  <span className="text-lg font-semibold text-gray-900">{personalInfo.location}</span>
+                </div>
+              </motion.div>
 
-          </motion.div>
+              {/* Description Section */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.5 }}
+                className="max-w-4xl mx-auto space-y-6"
+              >
+                <div className="space-y-4 text-center text-gray-700">
+                  <p className="text-base sm:text-lg leading-relaxed">
+                    I help founders build, scale, and stabilize businesses through proven systems and strategic guidance. With 8+ years of experience, I've mentored 10+ startups and led teams of 450+ people.
+                  </p>
+                  <p className="text-base sm:text-lg leading-relaxed">
+                    I work with founders and teams to design <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 font-semibold">business systems that don't break under pressure</span>.
+                  </p>
+                  <p className="text-base sm:text-lg leading-relaxed">
+                    Explore my <Link to="/portfolio" className="text-purple-600 hover:text-pink-600 font-semibold underline underline-offset-2 transition-colors">portfolio of successful ventures</Link> and <Link to="/systems" className="text-pink-600 hover:text-purple-600 font-semibold underline underline-offset-2 transition-colors">proven business systems</Link>.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Action Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.6 }}
+                className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8"
+              >
+                <motion.a
+                  href="/about"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group relative w-full sm:w-auto"
+                >
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full opacity-60 group-hover:opacity-100 blur transition-all duration-300"></div>
+                  <button className="relative px-10 py-4 bg-gray-900 rounded-full text-white font-bold text-lg flex items-center justify-center space-x-2 w-full sm:w-auto hover:bg-gray-800 transition-colors">
+                    <span>Discover My Journey</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </motion.a>
+
+                <motion.a
+                  href="/contact"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group relative w-full sm:w-auto px-10 py-4 rounded-full border-2 border-pink-500/60 hover:border-pink-500 transition-all duration-300 text-gray-900 font-bold text-lg flex items-center justify-center space-x-2"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-pink-500/0 to-pink-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <MessageSquare className="w-5 h-5 relative z-10 group-hover:scale-110 transition-transform" />
+                  <span className="relative z-10">Start a Conversation</span>
+                </motion.a>
+              </motion.div>
+
+              {/* Stats Row */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={isHeroInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.8, delay: 0.7 }}
+                className="grid grid-cols-3 gap-4 sm:gap-8 pt-12 border-t border-purple-400/30 mt-12"
+              >
+                {[
+                  { value: "8+", label: "Years" },
+                  { value: "10+", label: "Startups" },
+                  { value: "450+", label: "Team Members" }
+                ].map((stat, idx) => (
+                  <motion.div
+                    key={idx}
+                    whileHover={{ y: -5, scale: 1.05 }}
+                    className="text-center group cursor-default"
+                  >
+                    <div className="text-3xl sm:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600 group-hover:to-pink-500 transition-all">
+                      {stat.value}
+                    </div>
+                    <div className="text-xs sm:text-sm text-gray-600 mt-2 group-hover:text-gray-700 transition-colors">
+                      {stat.label}
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
+
+        {/* Floating Scroll Indicator */}
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
+        >
+          <div className="flex flex-col items-center space-y-2">
+            <span className="text-xs text-gray-600 uppercase tracking-widest">Scroll</span>
+            <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </div>
+        </motion.div>
       </section>
 
       {/* About Section */}

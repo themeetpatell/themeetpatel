@@ -184,9 +184,9 @@ Please add me to the community!`;
   return (
     <div className="min-h-screen ultra-gradient-bg">
       <SEOHead 
-        title="Join StartupOS Community | 500+ Entrepreneurs | The Meet Patel"
-        description="Join the StartupOS WhatsApp community of 500+ entrepreneurs, founders, and startup enthusiasts. Get exclusive insights, mentorship, networking opportunities, and direct access to industry experts."
-        keywords="StartupOS community, startup community, entrepreneur community, WhatsApp community, startup networking, business mentorship, startup insights, founder community, startup ecosystem, The Meet Patel community"
+        title="Join StartupOS Community | 500+ Entrepreneurs | Biggventure CEO | The Meet Patel"
+        description="Join the StartupOS WhatsApp community of 500+ entrepreneurs, founders, and startup enthusiasts led by The Meet Patel, CEO of Biggventure and founder of BiggMate. Get exclusive insights, mentorship from ZeroHuman and MealVerse founder, networking opportunities, and direct access to industry experts."
+        keywords="StartupOS community, startup community, entrepreneur community, WhatsApp community, startup networking, business mentorship, startup insights, founder community, startup ecosystem, The Meet Patel community, Biggventure CEO, BiggMate founder, themeetpatel community, Dubai entrepreneur network, serial entrepreneur mentorship"
         canonical="/community"
         ogImage="/community-og-image.jpg"
         structuredData={structuredData}

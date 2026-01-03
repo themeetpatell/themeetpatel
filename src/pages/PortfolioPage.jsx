@@ -424,9 +424,9 @@ const PortfolioPage = () => {
   return (
     <div className="min-h-screen pt-16 ultra-gradient-bg">
       <SEOHead 
-        title="Portfolio - The Meet Patel's Startup Ventures and Projects"
-        description="Explore The Meet Patel's comprehensive portfolio of successful startups, technology ventures, and innovative projects. From StartupOS to ZeroHuman, discover 8+ years of entrepreneurial achievements and business growth expertise."
-        keywords="Portfolio The Meet Patel, Meet Patel projects, themeetpatel ventures, StartupOS portfolio, ZeroHuman portfolio, MealVerse portfolio, startup ventures, technology projects, business portfolio, entrepreneurial achievements, startup ecosystem projects, business growth projects, Dubai entrepreneur portfolio, serial entrepreneur projects, startup building portfolio, business operations projects, product development portfolio, startup scaling projects, business strategy portfolio, operations management projects, startup leadership portfolio"
+        title="Portfolio - The Meet Patel | Biggventure CEO | BiggMate Founder | Startup Ventures"
+        description="Explore The Meet Patel's (Meet Patel, themeetpatel) portfolio as Biggventure CEO & founder, BiggMate founder. 8+ successful startups: Biggventure, BiggMate, StartupOS (500+ members), ZeroHuman, MealVerse, Finanshels. 8+ years building technology ventures in Dubai, UAE. View case studies, achievements, and impact metrics."
+        keywords="Portfolio The Meet Patel, Meet Patel projects, themeetpatel ventures, Biggventure CEO portfolio, BiggMate founder, StartupOS portfolio, ZeroHuman portfolio, MealVerse portfolio, startup ventures, technology projects, business portfolio, entrepreneurial achievements, Biggventure projects, startup ecosystem projects, business growth projects, Dubai entrepreneur portfolio, serial entrepreneur projects, startup building portfolio, Meet Patel startups, themeetpatel ventures, Biggventure venture studio, venture builder portfolio, business operations projects, product development portfolio, startup scaling projects"
         canonical="/portfolio"
         ogImage="/portfolio-preview.jpg"
         structuredData={portfolioStructuredData}
