@@ -129,10 +129,11 @@ const HomePage = () => {
     
     projects: [
       {
-        name: "StartupOS",
-        description: "Complete startup development platform helping entrepreneurs build, launch, and scale their ventures.",
+        name: "BiggMate",
+        description: "AI-powered co-founder matching platform connecting entrepreneurs to build startups together.",
         category: "Platform",
-        year: "2023"
+        year: "2026",
+        link: "/biggmate"
       },
       {
         name: "Finanshels.com",
@@ -150,13 +151,13 @@ const HomePage = () => {
         name: "ZeroHuman",
         description: "AI-powered automation platform for Modelling industry and media creation.",
         category: "AI",
-        year: "2024"
+        year: "2026"
       },
       {
         name: "MealVerse",
         description: "Food technology platform revolutionizing home-cooked meal planning and delivery services.",
         category: "FoodTech",
-        year: "2024"
+        year: "2026"
       },
       {
         name: "TorchIt",
@@ -960,14 +961,15 @@ const HomePage = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {personalInfo.projects.slice(0, 6).map((project, index) => (
-          <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative bg-white/90 backdrop-blur-md rounded-2xl p-6 border border-purple-200/50 hover:border-purple-300/70 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-200/50 hover:-translate-y-1"
-              >
+            {personalInfo.projects.slice(0, 6).map((project, index) => {
+              const CardContent = (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="group relative bg-white/90 backdrop-blur-md rounded-2xl p-6 border border-purple-200/50 hover:border-purple-300/70 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-200/50 hover:-translate-y-1 cursor-pointer"
+                >
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 via-pink-50/50 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative z-10">
                   <div className="w-14 h-14 bg-gradient-to-br from-purple-500 via-pink-500 to-purple-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-purple-200/50">
@@ -981,7 +983,14 @@ const HomePage = () => {
                   </div>
                 </div>
               </motion.div>
-            ))}
+              );
+              
+              return project.link ? (
+                <Link key={index} to={project.link}>
+                  {CardContent}
+                </Link>
+              ) : CardContent;
+            })}
           </div>
 
             <motion.div
@@ -1004,104 +1013,74 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Systems Section */}
-      <section className="py-12 sm:py-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* BiggMate Launch Banner */}
+      <section className="py-16 px-4 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+        </div>
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-8 sm:mb-16"
+            className="text-center"
           >
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 tracking-tight">
-              The Systems I Built
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
+              <Heart className="w-4 h-4 fill-current" />
+              <span>Launching Valentine's Day 2026</span>
+            </div>
+            
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              🚀 BiggMate is Coming Soon
             </h2>
-            <p className="text-lg sm:text-xl text-purple-600 max-w-3xl mx-auto px-4 sm:px-0">
-              Comprehensive frameworks, processes, and systems I've developed to help startups scale efficiently.
+            
+            <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+              Find your perfect co-founder. Build the next revolution together. Join 547+ founders on the waitlist.
             </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {[
-              {
-                name: "StartupOS Framework",
-                description: "Complete startup development methodology covering ideation to scaling",
-                category: "Framework",
-                icon: "🚀"
-              },
-              {
-                name: "Practice Management System",
-                description: "Comprehensive accounting firm management software with automation",
-                category: "Software",
-                icon: "📊"
-              },
-              {
-                name: "Growth Hacking Playbook",
-                description: "Proven strategies and tactics for rapid user acquisition and retention",
-                category: "Process",
-                icon: "📈"
-              },
-              {
-                name: "Team Building SOPs",
-                description: "Standard operating procedures for building and managing remote teams",
-                category: "Process",
-                icon: "👥"
-              },
-              {
-                name: "Financial Modeling Templates",
-                description: "Advanced financial models for startups and investment analysis",
-                category: "Template",
-                icon: "💰"
-              },
-              {
-                name: "Customer Success Framework",
-                description: "Systematic approach to customer onboarding, retention, and growth",
-                category: "Framework",
-                icon: "🎯"
-              }
-            ].map((system, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative bg-white/90 backdrop-blur-md rounded-2xl p-6 border border-purple-200/50 hover:border-purple-300/70 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-200/50 hover:-translate-y-1"
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <motion.a
+                href="/biggmate"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 via-pink-50/50 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative z-10">
-                  <div className="text-5xl mb-5 group-hover:scale-110 transition-transform duration-300">{system.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors">{system.name}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-5 min-h-[3rem]">{system.description}</p>
-                  <div className="flex items-center justify-between pt-4 border-t border-purple-100">
-                    <span className="text-xs font-semibold bg-purple-100 text-purple-600 px-3 py-1.5 rounded-full">{system.category}</span>
-                    <span className="text-xs text-green-600 font-medium flex items-center gap-1">
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      Available
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-                <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-center mt-12"
-          >
-            <motion.a
-              href="/systems"
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="group relative inline-flex items-center bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-500/40 overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-              <span className="relative z-10">Explore All Systems</span>
-              <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-            </motion.a>
+                <div className="absolute -inset-1 bg-white/30 rounded-full blur opacity-60 group-hover:opacity-100 transition-all duration-300"></div>
+                <button className="relative px-8 py-4 bg-white text-purple-600 rounded-full font-bold text-lg flex items-center space-x-2 hover:bg-gray-50 transition-colors shadow-xl">
+                  <span>Learn More</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </motion.a>
+              
+              <motion.a
+                href="https://www.biggmate.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-8 py-4 border-2 border-white text-white rounded-full font-bold text-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
+              >
+                Join Waitlist →
+              </motion.a>
+            </div>
+            
+            <div className="flex flex-wrap gap-6 justify-center items-center text-sm text-white/80 mt-8">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5" />
+                <span>AI-Powered Matching</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5" />
+                <span>Verified Founders</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5" />
+                <span>Free to Join</span>
+              </div>
+            </div>
           </motion.div>
-                  </div>
+        </div>
       </section>
 
       {/* Blog Section */}

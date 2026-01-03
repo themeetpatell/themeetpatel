@@ -18,6 +18,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import PortfolioPage from './pages/PortfolioPage';
+import BiggMatePage from './pages/BiggMatePage';
 import SystemsPage from './pages/SystemsPage';
 import SystemDetailPage from './pages/SystemDetailPage';
 import BlogPage from './pages/BlogPage';
@@ -58,6 +59,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/biggmate" element={<BiggMatePage />} />
           {/* Systems pages hidden - coming soon */}
           {/* <Route path="/systems" element={<SystemsPage />} /> */}
           {/* <Route path="/systems/:systemId" element={<SystemDetailPage />} /> */}

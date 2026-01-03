@@ -86,15 +86,15 @@ const staticPages = [
     ]
   },
   {
-    url: '/biggdate',
-    priority: '0.8',
+    url: '/biggmate',
+    priority: '0.9',
     changefreq: 'weekly',
     lastmod: currentDate,
     images: [
       {
-        loc: `${baseUrl}/biggdate-main.jpg`,
-        title: 'BiggDate - The Meet Patel\'s Dating Platform for Entrepreneurs',
-        caption: 'BiggDate by The Meet Patel - Dating platform specifically designed for founders and entrepreneurs'
+        loc: `${baseUrl}/biggmate-main.jpg`,
+        title: 'BiggMate - The Meet Patel\'s Co-foundership Building Platform',
+        caption: 'BiggMate by The Meet Patel - Co-foundership building platform connecting entrepreneurs to build startups together'
       }
     ]
   },
@@ -119,8 +119,8 @@ const staticPages = [
     images: [
       {
         loc: `${baseUrl}/portfolio-preview.jpg`,
-        title: 'Portfolio - The Meet Patel\'s Startup Ventures | StartupOS | BiggBizz | BiggDate',
-        caption: 'Explore The Meet Patel\'s portfolio including StartupOS, BiggBizz, BiggDate, and other successful startup ventures'
+        title: 'Portfolio - The Meet Patel\'s Startup Ventures | StartupOS | BiggBizz | BiggMate',
+        caption: 'Explore The Meet Patel\'s portfolio including StartupOS, BiggBizz, BiggMate, and other successful startup ventures'
       }
     ]
   },

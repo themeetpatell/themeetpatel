@@ -17,7 +17,7 @@ const AboutPage = () => {
 
   const personalInfo = {
     name: "Meet Patel",
-    title: "Founder of BiggDate, BiggBizz, ZeroHuman | Investor in Mealverse | Head of CoE at Finanshels",
+    title: "Founder of BiggMate, BiggBizz, ZeroHuman | Investor in Mealverse | Head of CoE at Finanshels",
     location: "Dubai, UAE",
     email: "the.meetpatel@gmail.com",
     linkedin: "https://www.linkedin.com/in/themeetpatel",
@@ -52,7 +52,7 @@ const AboutPage = () => {
         timeSpent: "1 Month+",
         description: "Leading multiple ventures focused on building smarter systems, stronger strategies, and startups that scale with clarity.",
         achievements: [
-          "BiggDate & BiggBizz (StartupOS): Founder & CEO - Leading comprehensive startup ecosystem platform with 50+ integrated tools and services for entrepreneurs at every stage.",
+          "BiggMate & BiggBizz (StartupOS): Founder & CEO - Leading comprehensive startup ecosystem platform with 50+ integrated tools and services for entrepreneurs at every stage.",
           "ZeroHuman: CGO & Co-founder - Building AI human model platform creating ultra-realistic, customizable digital humans for advertising, fashion, retail, and entertainment.",
           "Mealverse: Investor & Mentor - Supporting innovative food technology platform revolutionizing the culinary experience through digital innovation and sustainable food solutions."
         ]
@@ -238,10 +238,10 @@ const AboutPage = () => {
     
     projects: [
       {
-        name: "BiggDate",
+        name: "BiggMate",
         description: "A co-foundership building and startup creation platform. Entrepreneurs connect, build startups together, and upon successful establishment, they receive a visa to StartupOS.",
         tech: ["Co-foundership", "Startup Creation", "Entrepreneurship Tools", "Web Platform"],
-        link: "https://biggdate.com",
+        link: "https://biggmate.com",
         status: "Live"
       },
       {

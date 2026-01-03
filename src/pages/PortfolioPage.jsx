@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { 
   ExternalLink, Github, Star, Eye, Code, Briefcase, 
   Award, TrendingUp, Users, Zap, Target, CheckCircle,
@@ -11,10 +12,35 @@ import FollowMyJourney from '../components/FollowMyJourney';
 const PortfolioPage = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
 
   const projects = [
     {
       id: 1,
+      title: "BiggMate",
+      description: "A co-foundership building and startup creation platform. Entrepreneurs connect, build startups together, and upon successful establishment, they receive a visa to StartupOS.",
+      longDescription: "A co-foundership building and startup creation platform that brings together entrepreneurs to connect, build startups together, and upon successful establishment, they receive a visa to StartupOS - the comprehensive startup ecosystem platform with 50+ integrated tools and services.",
+      image: "/api/placeholder/600/400",
+      category: "social",
+      status: "Live",
+      tech: ["Co-foundership", "Startup Creation", "Entrepreneurship Tools", "Web Platform", "StartupOS"],
+      liveUrl: "https://biggmate.com",
+      internalUrl: "/biggmate",
+      githubUrl: null,
+      featured: true,
+      metrics: {
+        waitlist: "547+",
+        founders: "50+",
+        matches: "10+"
+      },
+      achievements: [
+        "Co-foundership Building Platform",
+        "Startup Creation Focus",
+        "StartupOS Visa Program"
+      ]
+    },
+    {
+      id: 2,
       title: "StartupOS",
       description: "Comprehensive startup ecosystem platform with 50+ integrated tools and services for entrepreneurs at every stage.",
       longDescription: "A revolutionary platform that combines AI-powered tools, gamification, and ecosystem access to help startups scale from idea to exit. Features include co-builder AI, stage-aware gamification, real-time analytics, and fractional CXO services.",
@@ -36,7 +62,7 @@ const PortfolioPage = () => {
       ]
     },
     {
-      id: 2,
+      id: 3,
       title: "ZeroHuman",
       description: "AI human model platform creating ultra-realistic, customizable digital humans for advertising, fashion, retail, and entertainment.",
       longDescription: "A cutting-edge AI platform that generates photorealistic digital humans with 4K resolution. Features 300% customer interaction increase, 90% cost savings, and 24/7 brand availability. Serves 50+ industries with 1000+ human models created and 100+ satisfied clients.",
@@ -55,30 +81,6 @@ const PortfolioPage = () => {
         "Chief Growth Officer Role",
         "300% Customer Interaction Increase",
         "90% Cost Savings for Clients"
-      ]
-    },
-
-    {
-      id: 3,
-      title: "BiggDate",
-      description: "A co-foundership building and startup creation platform. Entrepreneurs connect, build startups together, and upon successful establishment, they receive a visa to StartupOS.",
-      longDescription: "A co-foundership building and startup creation platform that brings together entrepreneurs to connect, build startups together, and upon successful establishment, they receive a visa to StartupOS - the comprehensive startup ecosystem platform with 50+ integrated tools and services.",
-      image: "/api/placeholder/600/400",
-      category: "social",
-      status: "Pre-Launch",
-      tech: ["Co-foundership", "Startup Creation", "Entrepreneurship Tools", "Web Platform", "StartupOS"],
-      liveUrl: "https://biggdate.com",
-      githubUrl: null,
-      featured: false,
-      metrics: {
-        waitlist: "100+",
-        founders: "50+",
-        matches: "10+"
-      },
-      achievements: [
-        "Co-foundership Building Platform",
-        "Startup Creation Focus",
-        "StartupOS Visa Program"
       ]
     },
     {
@@ -678,17 +680,21 @@ const PortfolioPage = () => {
 
                     <div className="flex space-x-2">
                       {project.liveUrl && (
-                        <motion.a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <motion.button
+                          onClick={() => {
+                            if (project.internalUrl) {
+                              navigate(project.internalUrl);
+                            } else {
+                              window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
+                            }
+                          }}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           className="flex-1 bg-purple-600 text-white py-2 px-3 rounded text-xs font-medium hover:bg-purple-700 transition-colors flex items-center justify-center"
                         >
                           <ExternalLink className="w-3 h-3 mr-1" />
-                          Live
-                        </motion.a>
+                          {project.internalUrl ? 'View' : 'Live'}
+                        </motion.button>
                       )}
                       {project.githubUrl && (
                         <motion.a
