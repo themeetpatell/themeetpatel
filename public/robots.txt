@@ -72,6 +72,10 @@ Disallow: /dist/
 Allow: /
 Allow: /about
 Allow: /about/
+Allow: /portfolio
+Allow: /portfolio/
+Allow: /biggmate
+Allow: /biggmate/
 Allow: /blogs
 Allow: /blogs/
 Allow: /blogs/*
@@ -79,8 +83,6 @@ Allow: /community
 Allow: /community/
 Allow: /contact
 Allow: /contact/
-Allow: /portfolio
-Allow: /portfolio/
 Allow: /systems
 Allow: /systems/
 Allow: /systems/*

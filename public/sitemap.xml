@@ -1,93 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  
+  <!-- Homepage - Main Landing -->
   <url>
     <loc>https://themeetpatel.com/</loc>
     <lastmod>2026-01-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+  
+  <!-- About Page - Professional Profile -->
   <url>
     <loc>https://themeetpatel.com/about</loc>
     <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
+  
+  <!-- Portfolio - Startup Ventures Showcase -->
   <url>
     <loc>https://themeetpatel.com/portfolio</loc>
     <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.95</priority>
   </url>
+  
+  <!-- BiggMate - Featured Product Launch -->
+  <url>
+    <loc>https://themeetpatel.com/biggmate</loc>
+    <lastmod>2026-01-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.98</priority>
+  </url>
+  
+  <!-- Business Systems & Frameworks -->
   <url>
     <loc>https://themeetpatel.com/systems</loc>
     <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.85</priority>
   </url>
+  
+  <!-- Blog & Articles Hub -->
   <url>
     <loc>https://themeetpatel.com/blogs</loc>
     <lastmod>2026-01-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+  
+  <!-- StartupOS Community -->
+  <url>
+    <loc>https://themeetpatel.com/community</loc>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.80</priority>
   </url>
-  <url>
-    <loc>https://themeetpatel.com/community</loc>
-    <lastmod>2026-01-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  
+  <!-- Contact & Consultation -->
   <url>
     <loc>https://themeetpatel.com/contact</loc>
     <lastmod>2026-01-03</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.75</priority>
   </url>
+  
+  <!-- Legal Pages -->
   <url>
     <loc>https://themeetpatel.com/privacy-policy</loc>
     <lastmod>2026-01-03</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.30</priority>
   </url>
+  
   <url>
     <loc>https://themeetpatel.com/terms-of-service</loc>
     <lastmod>2026-01-03</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.30</priority>
   </url>
+  
   <url>
     <loc>https://themeetpatel.com/cookie-policy</loc>
     <lastmod>2026-01-03</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.30</priority>
   </url>
-  <url>
-    <loc>https://themeetpatel.com/community</loc>
-    <lastmod>2026-01-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://themeetpatel.com/contact</loc>
-    <lastmod>2026-01-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://themeetpatel.com/privacy-policy</loc>
-    <lastmod>2026-01-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://themeetpatel.com/terms-of-service</loc>
-    <lastmod>2026-01-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://themeetpatel.com/cookie-policy</loc>
-    <lastmod>2026-01-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
+
 </urlset>
