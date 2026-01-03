@@ -73,11 +73,6 @@ const UltraNavigation = () => {
       icon: Briefcase
     },
     {
-      title: "Systems",
-      href: "/systems",
-      icon: Settings
-    },
-    {
       title: "Community",
       href: "/community",
       icon: Users

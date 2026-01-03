@@ -76,7 +76,6 @@ const UltraFooter = () => {
       links: [
         { name: "About", href: "/about", external: false, icon: User },
         { name: "Portfolio", href: "/portfolio", external: false, icon: FolderOpen },
-        { name: "Systems", href: "/systems", external: false, icon: Award },
         { name: "Blog", href: "/blogs", external: false, icon: BookOpen },
         { name: "Contact", href: "/contact", external: false, icon: MessageSquare }
       ]

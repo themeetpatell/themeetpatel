@@ -58,8 +58,9 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/systems" element={<SystemsPage />} />
-          <Route path="/systems/:systemId" element={<SystemDetailPage />} />
+          {/* Systems pages hidden - coming soon */}
+          {/* <Route path="/systems" element={<SystemsPage />} /> */}
+          {/* <Route path="/systems/:systemId" element={<SystemDetailPage />} /> */}
           <Route path="/community" element={<CommunityPage />} />
           
           {/* Blog Pages */}
