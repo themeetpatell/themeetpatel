@@ -27,40 +27,19 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        // Optimized manual chunking strategy
         manualChunks: (id) => {
-          // Vendor chunk for core React libraries
-          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
-            return 'vendor-react';
+          if (!id.includes('node_modules')) {
+            return
           }
-          // Router chunk
-          if (id.includes('node_modules/react-router-dom')) {
-            return 'vendor-router';
-          }
-          // Animation library
-          if (id.includes('node_modules/framer-motion')) {
-            return 'vendor-motion';
-          }
-          // Radix UI components
-          if (id.includes('node_modules/@radix-ui')) {
-            return 'vendor-radix';
-          }
-          // Form libraries
-          if (id.includes('node_modules/react-hook-form') || id.includes('node_modules/zod')) {
-            return 'vendor-forms';
-          }
-          // Icons
-          if (id.includes('node_modules/lucide-react')) {
-            return 'vendor-icons';
-          }
-          // Vercel analytics
+
+          // Keep third-party code in one shared vendor chunk so Rollup
+          // doesn't create cross-initialization cycles between React and
+          // libraries like Recharts/Sonner during startup.
           if (id.includes('node_modules/@vercel')) {
-            return 'vendor-analytics';
+            return 'vendor-analytics'
           }
-          // All other node_modules
-          if (id.includes('node_modules')) {
-            return 'vendor-misc';
-          }
+
+          return 'vendor'
         },
         // Optimize asset file names
         assetFileNames: (assetInfo) => {
