@@ -426,38 +426,24 @@ const HomePage = () => {
                   src={meetPatelImage}
                   alt="Meet Patel — Serial Entrepreneur, Dubai"
                   className="w-full h-full object-cover"
-                  style={{ filter: 'brightness(0.92) contrast(1.05)' }}
+                  style={{
+                    filter: 'brightness(0.92) contrast(1.05)',
+                    objectPosition: 'center 22%'
+                  }}
                 />
                 {/* Gradient overlay */}
                 <div
                   className="absolute inset-0"
-                  style={{ background: 'linear-gradient(180deg, transparent 40%, rgba(9,9,14,0.85) 100%)' }}
+                  style={{ background: 'linear-gradient(180deg, rgba(9,9,14,0.04) 0%, rgba(9,9,14,0.08) 24%, rgba(9,9,14,0.28) 52%, rgba(9,9,14,0.92) 100%)' }}
                 />
-
-                {/* Stat chips at bottom of photo */}
-                <div className="absolute bottom-5 left-5 right-5 flex gap-2.5">
-                  {[
-                    { val: '8+', label: 'Years Exp.' },
-                    { val: '450+', label: 'Led' },
-                  ].map((chip, i) => (
-                    <div
-                      key={i}
-                      className="flex-1 text-center py-2.5 px-3 rounded-xl"
-                      style={{
-                        background: 'rgba(17,17,24,0.85)',
-                        backdropFilter: 'blur(16px)',
-                        border: '1px solid rgba(255,255,255,0.08)'
-                      }}
-                    >
-                      <div style={{ fontSize: '1.25rem', fontWeight: 900, color: '#f5f5f7', lineHeight: 1 }}>
-                        {chip.val}
-                      </div>
-                      <div style={{ fontSize: '0.6875rem', color: '#8e8ea0', marginTop: '2px', fontWeight: 500 }}>
-                        {chip.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <div
+                  className="absolute inset-x-0 top-0 h-40 pointer-events-none"
+                  style={{ background: 'linear-gradient(180deg, rgba(9,9,14,0.24) 0%, rgba(9,9,14,0) 100%)' }}
+                />
+                <div
+                  className="absolute -bottom-12 left-1/2 w-72 h-72 -translate-x-1/2 rounded-full pointer-events-none"
+                  style={{ background: 'rgba(139,92,246,0.12)', filter: 'blur(70px)' }}
+                />
 
                 {/* Location badge */}
                 <div
@@ -470,6 +456,68 @@ const HomePage = () => {
                 >
                   <MapPin className="w-3 h-3" style={{ color: '#d4a847' }} />
                   <span style={{ fontSize: '0.6875rem', color: '#d4a847', fontWeight: 600 }}>Dubai, UAE</span>
+                </div>
+
+                <div
+                  className="absolute left-4 right-4 bottom-4 rounded-[1.4rem] p-5"
+                  style={{
+                    background: 'linear-gradient(180deg, rgba(17,17,24,0.68) 0%, rgba(9,9,14,0.92) 100%)',
+                    backdropFilter: 'blur(18px)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    boxShadow: '0 18px 40px rgba(0,0,0,0.35)'
+                  }}
+                >
+                  <div
+                    className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full"
+                    style={{
+                      background: 'rgba(212,168,71,0.08)',
+                      border: '1px solid rgba(212,168,71,0.18)',
+                      color: '#d4a847',
+                      fontSize: '0.65rem',
+                      fontWeight: 700,
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase'
+                    }}
+                  >
+                    Featured Profile
+                  </div>
+
+                  <div style={{ marginTop: '14px' }}>
+                    <div style={{ fontSize: '1.6rem', fontWeight: 800, letterSpacing: '-0.03em', color: '#f5f5f7', lineHeight: 1 }}>
+                      The Meet Patel
+                    </div>
+                    <p style={{ marginTop: '8px', fontSize: '0.9rem', lineHeight: 1.65, color: '#9c9cab', maxWidth: '320px' }}>
+                      Building startups through product clarity, operating systems, and disciplined execution.
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-3 mt-5">
+                    <div
+                      className="flex-1 rounded-2xl px-3 py-3"
+                      style={{
+                        background: 'rgba(255,255,255,0.03)',
+                        border: '1px solid rgba(255,255,255,0.06)'
+                      }}
+                    >
+                      <div className="flex items-center gap-2" style={{ color: '#f5f5f7' }}>
+                        <Briefcase className="w-3.5 h-3.5" style={{ color: '#8b5cf6' }} />
+                        <span style={{ fontSize: '0.74rem', fontWeight: 700 }}>Startup Operator</span>
+                      </div>
+                    </div>
+
+                    <div
+                      className="flex-1 rounded-2xl px-3 py-3"
+                      style={{
+                        background: 'rgba(255,255,255,0.03)',
+                        border: '1px solid rgba(255,255,255,0.06)'
+                      }}
+                    >
+                      <div className="flex items-center gap-2" style={{ color: '#f5f5f7' }}>
+                        <Clock className="w-3.5 h-3.5" style={{ color: '#d4a847' }} />
+                        <span style={{ fontSize: '0.74rem', fontWeight: 700 }}>8+ Years Building</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
