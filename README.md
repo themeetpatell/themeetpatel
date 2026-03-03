@@ -1,4 +1,4 @@
-# 🚀 StartupOS Revolutionary Website
+# The Meet Patel Website
 
 **The most advanced startup website ever created - 100X better than Apple's website with zero bugs!**
 
@@ -48,8 +48,7 @@ cd startupos-revolutionary
 pnpm install
 
 # Configure environment variables
-cp env.example .env
-# Edit .env and add your EmailJS credentials
+# Update .env with your EmailJS and Supabase credentials
 
 # Start development server
 pnpm run dev
@@ -77,7 +76,18 @@ This project uses EmailJS to send form submissions directly to your email. To se
 VITE_EMAILJS_SERVICE_ID=your_service_id
 VITE_EMAILJS_TEMPLATE_ID=your_template_id
 VITE_EMAILJS_PUBLIC_KEY=your_public_key
+VITE_SUPABASE_URL=https://your-project-ref.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=your_publishable_key
 ```
+
+### Supabase Configuration
+
+This project uses Supabase for:
+- blog/article storage
+- admin authentication
+- media uploads
+
+Run [SUPABASE_MIGRATION.sql](/Users/themeetpatel/Startups/themeetpatel/SUPABASE_MIGRATION.sql) in the Supabase SQL editor to create the required tables, policies, and RPC functions.
 
 ### 📝 Blog CMS Integration
 
@@ -246,8 +256,8 @@ Update component content and copy to match your brand and messaging.
 ## 📞 Support
 
 For questions or support, please contact:
-- Email: support@startupos.com
-- Website: https://startupos.com
+- Email: meet@biggventures.com
+- Website: https://themeetpatel.com
 - Documentation: https://docs.startupos.com
 
 ## 📄 License
@@ -259,4 +269,3 @@ This project is proprietary and confidential. All rights reserved.
 **Built with ❤️ by the StartupOS team**
 
 *The most revolutionary startup website ever created - setting new standards for design, performance, and user experience.*
-

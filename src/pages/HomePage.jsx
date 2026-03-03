@@ -1,28 +1,27 @@
 import React, { useState, useRef } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { 
-  Target, Users, TrendingUp, BookOpen, Mail, Send, X, CheckCircle,
-  Linkedin, Twitter, Github, Instagram, Youtube, ExternalLink,
-  Award, Heart, Zap, Star, ArrowRight, Play, Quote, Calendar,
-  MapPin, Phone, MessageSquare, Clock, Eye, ChevronRight, Briefcase,
-  BookOpen as Medium, Calendar as Calendly
+import {
+  Target, Users, BookOpen, Send, CheckCircle,
+  Linkedin, Twitter, Github, Instagram, Youtube,
+  Award, Heart, Star, ArrowRight,
+  MapPin, MessageSquare, Clock, Briefcase,
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import FollowMyJourney from '../components/FollowMyJourney';
 import meetPatelImage from '../assets/themeetpatel.jpeg';
 import meetPatelImage2 from '../assets/the meet patel.jpeg';
-import logoImage from '../assets/logo for themeetpatel.png';
 
-// WhatsApp Icon Component
+void motion;
+
+// WhatsApp Icon
 const WhatsAppIcon = ({ className }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
   </svg>
 );
 
 const HomePage = () => {
-  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -33,7 +32,7 @@ const HomePage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  
+
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef, { once: true });
 
@@ -48,76 +47,20 @@ const HomePage = () => {
     { code: '+34', country: 'Spain', flag: '🇪🇸' },
     { code: '+31', country: 'Netherlands', flag: '🇳🇱' },
     { code: '+41', country: 'Switzerland', flag: '🇨🇭' },
-    { code: '+43', country: 'Austria', flag: '🇦🇹' },
-    { code: '+46', country: 'Sweden', flag: '🇸🇪' },
-    { code: '+47', country: 'Norway', flag: '🇳🇴' },
-    { code: '+45', country: 'Denmark', flag: '🇩🇰' },
-    { code: '+358', country: 'Finland', flag: '🇫🇮' },
-    { code: '+32', country: 'Belgium', flag: '🇧🇪' },
-    { code: '+351', country: 'Portugal', flag: '🇵🇹' },
-    { code: '+30', country: 'Greece', flag: '🇬🇷' },
-    { code: '+48', country: 'Poland', flag: '🇵🇱' },
-    { code: '+420', country: 'Czech Republic', flag: '🇨🇿' },
-    { code: '+36', country: 'Hungary', flag: '🇭🇺' },
-    { code: '+40', country: 'Romania', flag: '🇷🇴' },
-    { code: '+359', country: 'Bulgaria', flag: '🇧🇬' },
-    { code: '+385', country: 'Croatia', flag: '🇭🇷' },
-    { code: '+386', country: 'Slovenia', flag: '🇸🇮' },
-    { code: '+421', country: 'Slovakia', flag: '🇸🇰' },
-    { code: '+370', country: 'Lithuania', flag: '🇱🇹' },
-    { code: '+371', country: 'Latvia', flag: '🇱🇻' },
-    { code: '+372', country: 'Estonia', flag: '🇪🇪' },
-    { code: '+353', country: 'Ireland', flag: '🇮🇪' },
     { code: '+61', country: 'Australia', flag: '🇦🇺' },
     { code: '+64', country: 'New Zealand', flag: '🇳🇿' },
-    { code: '+27', country: 'South Africa', flag: '🇿🇦' },
     { code: '+55', country: 'Brazil', flag: '🇧🇷' },
-    { code: '+54', country: 'Argentina', flag: '🇦🇷' },
-    { code: '+56', country: 'Chile', flag: '🇨🇱' },
-    { code: '+57', country: 'Colombia', flag: '🇨🇴' },
-    { code: '+52', country: 'Mexico', flag: '🇲🇽' },
-    { code: '+51', country: 'Peru', flag: '🇵🇪' },
-    { code: '+58', country: 'Venezuela', flag: '🇻🇪' },
     { code: '+86', country: 'China', flag: '🇨🇳' },
     { code: '+81', country: 'Japan', flag: '🇯🇵' },
-    { code: '+82', country: 'South Korea', flag: '🇰🇷' },
     { code: '+65', country: 'Singapore', flag: '🇸🇬' },
     { code: '+60', country: 'Malaysia', flag: '🇲🇾' },
-    { code: '+66', country: 'Thailand', flag: '🇹🇭' },
-    { code: '+63', country: 'Philippines', flag: '🇵🇭' },
-    { code: '+62', country: 'Indonesia', flag: '🇮🇩' },
-    { code: '+84', country: 'Vietnam', flag: '🇻🇳' },
-    { code: '+90', country: 'Turkey', flag: '🇹🇷' },
     { code: '+966', country: 'Saudi Arabia', flag: '🇸🇦' },
     { code: '+965', country: 'Kuwait', flag: '🇰🇼' },
-    { code: '+973', country: 'Bahrain', flag: '🇧🇭' },
     { code: '+974', country: 'Qatar', flag: '🇶🇦' },
-    { code: '+968', country: 'Oman', flag: '🇴🇲' },
-    { code: '+961', country: 'Lebanon', flag: '🇱🇧' },
-    { code: '+962', country: 'Jordan', flag: '🇯🇴' },
-    { code: '+972', country: 'Israel', flag: '🇮🇱' },
     { code: '+20', country: 'Egypt', flag: '🇪🇬' },
-    { code: '+212', country: 'Morocco', flag: '🇲🇦' },
-    { code: '+213', country: 'Algeria', flag: '🇩🇿' },
-    { code: '+216', country: 'Tunisia', flag: '🇹🇳' },
-    { code: '+218', country: 'Libya', flag: '🇱🇾' },
-    { code: '+249', country: 'Sudan', flag: '🇸🇩' },
-    { code: '+251', country: 'Ethiopia', flag: '🇪🇹' },
-    { code: '+254', country: 'Kenya', flag: '🇰🇪' },
     { code: '+234', country: 'Nigeria', flag: '🇳🇬' },
-    { code: '+233', country: 'Ghana', flag: '🇬🇭' },
     { code: '+27', country: 'South Africa', flag: '🇿🇦' },
     { code: '+7', country: 'Russia', flag: '🇷🇺' },
-    { code: '+380', country: 'Ukraine', flag: '🇺🇦' },
-    { code: '+375', country: 'Belarus', flag: '🇧🇾' },
-    { code: '+374', country: 'Armenia', flag: '🇦🇲' },
-    { code: '+995', country: 'Georgia', flag: '🇬🇪' },
-    { code: '+994', country: 'Azerbaijan', flag: '🇦🇿' },
-    { code: '+998', country: 'Uzbekistan', flag: '🇺🇿' },
-    { code: '+7', country: 'Kazakhstan', flag: '🇰🇿' },
-    { code: '+996', country: 'Kyrgyzstan', flag: '🇰🇬' },
-    { code: '+992', country: 'Tajikistan', flag: '🇹🇯' },
-    { code: '+993', country: 'Turkmenistan', flag: '🇹🇲' }
   ];
 
   const personalInfo = {
@@ -125,8 +68,7 @@ const HomePage = () => {
     title: "Biggventure CEO & Founder | BiggMate Founder | Serial Entrepreneur | Business Operations Expert",
     location: "Dubai, United Arab Emirates",
     email: "the.meetpatell@gmail.com",
-    bio: "A Startup ecosystem builder with over 8 years of experience in building and scaling technology companies. Passionate about helping startups succeed through innovative solutions and strategic guidance.",
-    
+    bio: "A Startup ecosystem builder with over 8 years of experience in building and scaling technology companies.",
     projects: [
       {
         name: "BiggMate",
@@ -143,13 +85,13 @@ const HomePage = () => {
       },
       {
         name: "StudentHub",
-        description: "Recruitment technology platform connecting students with jobs and resources and companies with students.",
+        description: "Recruitment technology platform connecting students with jobs and companies.",
         category: "EdTech",
         year: "2021"
       },
       {
         name: "ZeroHuman",
-        description: "AI-powered automation platform for Modelling industry and media creation.",
+        description: "AI-powered automation platform for modelling industry and media creation.",
         category: "AI",
         year: "2026"
       },
@@ -166,43 +108,20 @@ const HomePage = () => {
         year: "2020"
       }
     ],
-    
     socialLinks: [
       { label: "LinkedIn", href: "https://www.linkedin.com/in/themeetpatel/", icon: Linkedin },
       { label: "Twitter", href: "https://x.com/the_meetpatel", icon: Twitter },
       { label: "GitHub", href: "https://github.com/themeetpatell", icon: Github },
       { label: "Instagram", href: "http://instagram.com/the.meetpatell/", icon: Instagram },
       { label: "YouTube", href: "https://youtube.com/@themeetpatel", icon: Youtube },
-      { label: "Medium", href: "https://medium.com/@themeetpatel", icon: Medium },
-      { label: "Calendly", href: "https://calendly.com/themeetpatell/quick-connect", icon: Calendly }
     ]
   };
 
   const stats = [
-    {
-      number: "8+",
-      label: "Years Experience",
-      icon: Target,
-      color: "from-purple-500 to-pink-500"
-    },
-    {
-      number: "10+",
-      label: "Startups Mentored",
-      icon: Heart,
-      color: "from-purple-400 to-pink-500"
-    },
-    {
-      number: "450+",
-      label: "Team Members Led",
-      icon: Users,
-      color: "from-pink-400 to-purple-500"
-    },
-    {
-      number: "2",
-      label: "Books Published",
-      icon: BookOpen,
-      color: "from-purple-300 to-pink-400"
-    }
+    { number: "8+", label: "Years Experience", icon: Target },
+    { number: "10+", label: "Startups Mentored", icon: Heart },
+    { number: "450+", label: "Team Members Led", icon: Users },
+    { number: "2", label: "Books Published", icon: BookOpen }
   ];
 
   const blogPosts = [
@@ -237,1463 +156,1165 @@ const HomePage = () => {
       title: "The Eternal Love",
       subtitle: "Part - 1",
       quote: "It's True When Love Gives Everything and Demands Nothing in Return!",
-      description: "A romantic novel exploring the depths of unconditional love and sacrifice. Set against a backdrop of timeless romance, this story captures the essence of true love that gives everything without expecting anything in return.",
+      description: "A romantic novel exploring the depths of unconditional love and sacrifice. Set against a backdrop of timeless romance, this story captures the essence of true love.",
       genre: "Romance",
       status: "Published",
       coverColor: "from-pink-400 via-purple-500 to-blue-500",
       readLink: "/The Eternal Love by The Meet Patel.pdf",
-      requestLink: "#"
     },
     {
       title: "The Endless Love",
       subtitle: "PART - 2",
       quote: "You'll experience your life's entire journey in the eyes which'll love you endlessly!",
-      description: "A cosmic romance novel that takes readers on a journey through the universe of love. This sequel explores the infinite nature of devotion and the profound connection between souls destined to love each other endlessly.",
+      description: "A cosmic romance novel that takes readers on a journey through the universe of love. Explores the infinite nature of devotion and connection between souls.",
       genre: "Romance",
       status: "Early Access",
       coverColor: "from-rose-400 via-pink-500 to-purple-600",
       readLink: "#",
-      requestLink: "#"
-    }
-  ];
-
-  const usps = [
-    {
-      title: "Proven Track Record",
-      description: "8+ years of experience building and scaling technology companies, with a 85% success rate in mentoring startups.",
-      icon: Award,
-      color: "from-purple-300 to-purple-500"
-    },
-    {
-      title: "Holistic Approach",
-      description: "Combining technical expertise, business strategy, and creative writing to provide comprehensive solutions.",
-      icon: Heart,
-      color: "from-pink-500 to-pink-600"
-    },
-    {
-      title: "Innovation First",
-      description: "Always pushing boundaries and finding creative solutions to complex problems in entrepreneurship.",
-      icon: Zap,
-      color: "from-blue-400 to-cyan-500"
-    },
-    {
-      title: "Authentic Storytelling",
-      description: "Sharing real experiences and insights through writing that connects and inspires others.",
-      icon: BookOpen,
-      color: "from-purple-500 to-purple-600"
     }
   ];
 
   const achievements = [
-    {
-      title: "450+ Members",
-      description: "Created a community of 500+ entrepreneurs and investors in StartupOS",
-      icon: Star,
-      color: "from-purple-300 to-purple-500"
-    },
-    {
-      title: "Building Leadership Team",
-      description: "Built Entire Management team in 6 months at Million dollars company",
-      icon: Award,
-      color: "from-purple-400 to-purple-500"
-    },
-    {
-      title: "Published Author",
-      description: "Author of romantic novels and business guides",
-      icon: BookOpen,
-      color: "from-pink-500 to-pink-600"
-    },
-    {
-      title: "Leadership & Management",
-      description: "Led 270+ team members at age of 26 remotely",
-      icon: Users,
-      color: "from-pink-400 to-pink-500"
-    }
+    { title: "500+ Members", description: "Created a community of 500+ entrepreneurs in StartupOS", icon: Star },
+    { title: "Leadership Team", description: "Built entire management team in 6 months at a million dollar company", icon: Award },
+    { title: "Published Author", description: "Author of romantic novels and business guides", icon: BookOpen },
+    { title: "Led 270+ People", description: "Led 270+ team members at age of 26 remotely", icon: Users }
   ];
 
-
   const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 2000));
-    
     setIsSubmitting(false);
     setIsSubmitted(true);
     setFormData({ name: '', email: '', countryCode: '+971', whatsapp: '', subject: '', message: '' });
-    
-    // Reset success message after 3 seconds
     setTimeout(() => setIsSubmitted(false), 3000);
   };
 
-  // Enhanced Structured Data for AEO/GEO/LLMO Optimization
+  // Ventures for ticker
+  const ventures = [
+    'BiggMate', 'Finanshels', 'StudentHub', 'ZeroHuman', 'MealVerse', 'TorchIt', 'BAWES', 'Biggventure',
+    'Kingstorm', 'Plugn', 'Incsmart', 'StudentHub', 'ZeroHuman', 'MealVerse', 'BAWES', 'Finanshels'
+  ];
+
+  // Structured data (SEO)
   const homepageStructuredData = [
-    // Primary Person Schema with comprehensive entity data
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "@id": "https://themeetpatel.com/#person",
       "name": "The Meet Patel",
-      "alternateName": [
-        "Meet Patel",
-        "themeetpatel",
-        "The Meet Patel Dubai",
-        "Meet Patel Entrepreneur",
-        "Meet Patel Serial Entrepreneur",
-        "Biggventure CEO",
-        "Biggventure Founder",
-        "BiggMate Founder",
-        "StartupOS Founder"
-      ],
-      "description": "The Meet Patel (Meet Patel) is a serial entrepreneur, Biggventure CEO, BiggMate founder, and business operations expert with 8+ years of experience building and scaling startups. Known as themeetpatel online, he founded Biggventure, BiggMate, StartupOS, ZeroHuman, and MealVerse. Based in Dubai, UAE, he specializes in startup ecosystem building, business operations, and product development.",
-      "jobTitle": [
-        "Serial Entrepreneur",
-        "CEO & Founder of Biggventure",
-        "Founder of BiggMate",
-        "Founder of StartupOS",
-        "Head of Business Excellence",
-        "Business Operations Expert",
-        "Startup Mentor"
-      ],
+      "alternateName": ["Meet Patel", "themeetpatel"],
+      "description": "The Meet Patel is a Dubai-based venture builder, startup operator, business strategist, and author.",
+      "jobTitle": ["Venture Builder", "Business Strategist", "Startup Operator", "Author"],
       "url": "https://themeetpatel.com",
-      "image": [
-        "https://themeetpatel.com/meet-patel-profile.jpg",
-        "https://themeetpatel.com/themeetpatel.jpeg",
-        "https://themeetpatel.com/logo for themeetpatel.png"
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Dubai",
-        "addressRegion": "Dubai",
-        "addressCountry": "AE"
-      },
-      "email": "the.meetll@gmail.com",
-      "telephone": "+971-XX-XXXXXXX",
+      "address": { "@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE" },
       "sameAs": [
         "https://www.linkedin.com/in/themeetpatel/",
         "https://x.com/the_meetpatel",
         "https://github.com/themeetpatell",
-        "http://instagram.com/the.meetpatell/",
-        "https://youtube.com/@themeetpatel",
         "https://medium.com/@themeetpatel",
-        "https://biggventure.com",
-        "https://startupos.com"
+        "http://instagram.com/the.meetpatell/"
       ],
       "knowsAbout": [
-        "Entrepreneurship",
-        "Startup Ecosystem Building",
+        "Startups",
+        "Business Strategy",
         "Venture Building",
-        "Business Operations Excellence",
-        "Product Development & Management",
-        "Startup Scaling Strategies",
-        "Business Strategy & Planning",
-        "Operations Management",
-        "Team Leadership",
-        "Business Growth",
-        "Startup Mentoring",
-        "Financial Modeling",
-        "Customer Success Operations",
-        "Strategic Planning"
-      ],
-      "hasOccupation": {
-        "@type": "Occupation",
-        "name": "Serial Entrepreneur & CEO",
-        "description": "CEO of Biggventure, founder of multiple successful startups including BiggMate, StartupOS, ZeroHuman, and MealVerse. Expert in building and scaling technology companies.",
-        "occupationLocation": {
-          "@type": "City",
-          "name": "Dubai, UAE"
-        },
-        "skills": [
-          "Business Operations",
-          "Startup Building",
-          "Product Development",
-          "Team Management",
-          "Strategic Planning",
-          "Financial Management",
-          "Business Consulting"
-        ]
-      },
-      "alumniOf": {
-        "@type": "EducationalOrganization",
-        "name": "Gujarat Technological University",
-        "sameAs": "https://www.gtu.ac.in/"
-      },
-      "award": [
-        "Best New Joiner Award - Finanshels (April 2024)",
-        "Star Performer of the Month - Finanshels (Dec 2024)",
-        "Best Creative Innovator Award - Finanshels (Feb 2025)"
-      ],
-      "worksFor": [
-        {
-          "@type": "Organization",
-          "name": "Biggventure",
-          "url": "https://biggventure.com",
-          "description": "Innovation-driven venture building company",
-          "founder": {
-            "@id": "https://themeetpatel.com/#person"
-          }
-        },
-        {
-          "@type": "Organization",
-          "name": "BiggMate",
-          "description": "Entrepreneur networking and co-founder matching platform",
-          "founder": {
-            "@id": "https://themeetpatel.com/#person"
-          }
-        },
-        {
-          "@type": "Organization",
-          "name": "StartupOS",
-          "url": "https://startupos.com",
-          "description": "Comprehensive startup management platform with 500+ community members",
-          "founder": {
-            "@id": "https://themeetpatel.com/#person"
-          }
-        }
-      ],
-      "founder": [
-        {
-          "@type": "Organization",
-          "name": "Biggventure",
-          "description": "Venture building company",
-          "foundingDate": "2022"
-        },
-        {
-          "@type": "Organization",
-          "name": "BiggMate",
-          "description": "Entrepreneur networking platform",
-          "foundingDate": "2023"
-        },
-        {
-          "@type": "Organization",
-          "name": "StartupOS",
-          "description": "Startup management platform",
-          "foundingDate": "2022"
-        },
-        {
-          "@type": "Organization",
-          "name": "ZeroHuman",
-          "description": "AI automation platform",
-          "foundingDate": "2024"
-        },
-        {
-          "@type": "Organization",
-          "name": "MealVerse",
-          "description": "Food technology platform",
-          "foundingDate": "2024"
-        }
-      ],
-      "numberOfEmployees": "270+",
-      "seeks": [
-        "Startup Collaboration",
-        "Business Partnerships",
-        "Investment Opportunities",
-        "Mentorship Engagements"
+        "Business Operations",
+        "Growth Systems",
+        "Startup Mentorship",
+        "Team Building"
       ]
-    },
-    // FAQ Schema for Answer Engine Optimization (AEO)
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Who is The Meet Patel?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The Meet Patel (Meet Patel, themeetpatel) is a serial entrepreneur, Biggventure CEO and founder, with 8+ years of experience building and scaling startups. He is the founder of BiggMate, StartupOS (500+ community members), ZeroHuman, and MealVerse. Based in Dubai, UAE, he specializes in business operations, product development, and startup ecosystem building. He has led teams of 270+ people and mentored 50+ entrepreneurs."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is Biggventure?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Biggventure is an innovation-driven venture building company founded and led by The Meet Patel as CEO. Biggventure focuses on creating scalable startups across multiple industries including technology, AI, and consumer services. The company uses proven frameworks and business operations excellence to systematically build successful ventures."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is BiggMate?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "BiggMate is a revolutionary networking platform founded by Meet Patel that connects entrepreneurs with co-founders, investors, and mentors. It serves as a comprehensive solution for the startup ecosystem, helping founders find the right partners and resources to build successful companies."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What companies did Meet Patel found?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Meet Patel founded several successful companies: Biggventure (venture studio where he serves as CEO), BiggMate (entrepreneur networking platform), StartupOS (startup management platform with 500+ members), ZeroHuman (AI automation platform), and MealVerse (food technology platform). He also serves as Head of Business Excellence at Finanshels, where he received multiple awards."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What makes The Meet Patel an expert in startups?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The Meet Patel has 8+ years of entrepreneurial experience, having built 8+ successful startups including Biggventure, BiggMate, and StartupOS. He has led teams of 270+ people remotely, mentored 50+ entrepreneurs, and created a community of 500+ startup founders. His expertise spans business operations, product development, team management, and startup scaling. He has received awards including Star Performer of the Month and Best Creative Innovator Award at Finanshels."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Where is The Meet Patel based?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The Meet Patel is based in Dubai, United Arab Emirates (UAE), where he builds and scales startups while contributing to the Middle East startup ecosystem. His work as Biggventure CEO and founder of multiple companies spans international markets with a focus on the MENA region."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How can I contact Meet Patel for startup mentorship?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You can contact The Meet Patel through his website themeetpatel.com, email at the.meetll@gmail.com, or connect via LinkedIn at linkedin.com/in/themeetpatel/. He offers startup mentorship, business operations consulting, and strategic planning services. You can also join his StartupOS community of 500+ entrepreneurs."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What services does Biggventure offer?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Biggventure, led by CEO Meet Patel, offers venture building services, startup consulting, business operations optimization, product development guidance, team management coaching, and strategic planning. The company specializes in creating and scaling startups using proven frameworks and systematic approaches."
-          }
-        }
-      ]
-    },
-    // WebPage Schema
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "The Meet Patel - Serial Entrepreneur | Biggventure CEO | BiggMate Founder",
-      "description": "The Meet Patel (Meet Patel, themeetpatel) - Serial entrepreneur, Biggventure CEO & founder, BiggMate founder, StartupOS creator. 8+ years building and scaling startups in Dubai, UAE. Expert in business operations, product development, and startup ecosystem building.",
-      "url": "https://themeetpatel.com",
-      "about": {
-        "@id": "https://themeetpatel.com/#person"
-      },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://themeetpatel.com"
-          }
-        ]
-      },
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": ["h1", "h2", ".description"]
-      }
-    },
-    // ProfilePage for knowledge graph
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfilePage",
-      "mainEntity": {
-        "@id": "https://themeetpatel.com/#person"
-      },
-      "about": {
-        "@id": "https://themeetpatel.com/#person"
-      }
     }
   ];
 
   return (
-    <div className="min-h-screen ultra-gradient-bg">
-      <SEOHead 
-        title="The Meet Patel - Serial Entrepreneur | Biggventure CEO | BiggMate Founder | Business Operations Expert"
-        description="The Meet Patel (Meet Patel, themeetpatel) - Serial entrepreneur, Biggventure CEO & founder, BiggMate founder, StartupOS creator with 500+ community. 8+ years building 8+ successful startups in Dubai, UAE. Expert in business operations, startup scaling, and product development. Led 270+ teams, mentored 50+ entrepreneurs."
-        keywords="The Meet Patel, Meet Patel, themeetpatel, Biggventure CEO, Biggventure founder, BiggMate founder, biggmate, StartupOS founder, serial entrepreneur Dubai, startup ecosystem builder, business operations expert, ZeroHuman founder, MealVerse founder, startup mentor Dubai, Dubai entrepreneur, themeetpatel startups, Meet Patel entrepreneur, Biggventure CEO founder, biggventure startup studio, startup scaling expert, business consultant Dubai, product development expert, business growth strategies, entrepreneurship Dubai, startup advisor, business strategy expert, operations management, startup leadership, venture builder, Meet Patel business operations, The Meet Patel ventures, startup mentorship Dubai, Dubai startup ecosystem, MENA entrepreneur, business excellence Dubai, startup community Dubai"
+    <div className="min-h-screen" style={{ backgroundColor: '#09090e' }}>
+      <SEOHead
+        title="The Meet Patel | Venture Builder, Startup Operator & Business Strategist"
+        description="The Meet Patel, also known as Meet Patel and themeetpatel, is a Dubai-based venture builder, startup operator, business strategist, and author building startups across AI, fintech, hardware, and software."
+        keywords="The Meet Patel, Meet Patel, themeetpatel, venture builder, startup operator, business strategist, Dubai entrepreneur, startup consultant, founder advisor, startup builder, AI startups, fintech startups, hardware startups, startup portfolio"
         canonical="/"
         ogImage="/og-image.jpg"
         structuredData={homepageStructuredData}
       />
-      
-      {/* Hero Section - Complete Redesign */}
-      <section ref={heroRef} className="relative w-full min-h-[100vh] overflow-hidden flex items-center justify-center">
-        {/* Dynamic Gradient Background */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-pink-50 to-white" />
-          
-          {/* Animated Gradient Orbs */}
-          <motion.div
-            animate={{
-              top: ['0%', '50%', '0%'],
-              left: ['0%', '10%', '0%'],
-              opacity: [0.15, 0.25, 0.15]
-            }}
-            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-1/4 -left-1/4 w-96 h-96 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full filter blur-3xl opacity-20"
-          />
-          <motion.div
-            animate={{
-              top: ['50%', '0%', '50%'],
-              right: ['0%', '10%', '0%'],
-              opacity: [0.1, 0.2, 0.1]
-            }}
-            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute -top-1/4 -right-1/4 w-96 h-96 bg-gradient-to-br from-purple-300 to-pink-300 rounded-full filter blur-3xl opacity-10"
-          />
-          <motion.div
-            animate={{
-              bottom: ['0%', '20%', '0%'],
-              left: ['50%', '40%', '50%'],
-              opacity: [0.1, 0.15, 0.1]
-            }}
-            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute -bottom-1/4 left-1/2 w-80 h-80 bg-gradient-to-tr from-pink-300 to-purple-300 rounded-full filter blur-3xl opacity-15"
-          />
-        </div>
 
-        {/* Particle Effect */}
-        <div className="absolute inset-0 opacity-20">
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0"
-            style={{
-              backgroundImage: 'radial-gradient(2px 2px at 20px 30px, rgba(168,85,247,.3), transparent), radial-gradient(2px 2px at 60px 70px, rgba(236,72,153,.2), transparent), radial-gradient(1px 1px at 50px 50px, rgba(168,85,247,.25), transparent), radial-gradient(1px 1px at 130px 80px, rgba(236,72,153,.15), transparent)',
-              backgroundSize: '200px 200px'
-            }}
-          />
-        </div>
+      {/* ═══════════════════════════════════════════════════
+          HERO — Dark Luxury Bento Grid
+      ═══════════════════════════════════════════════════ */}
+      <section
+        ref={heroRef}
+        className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-[70px]"
+        style={{ backgroundColor: '#09090e' }}
+      >
+        {/* Subtle radial glow — no blobs, just a deep violet horizon */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse 80% 50% at 70% 60%, rgba(139,92,246,0.07) 0%, transparent 70%)'
+          }}
+        />
 
-        {/* Content */}
-        <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto py-20 sm:py-32">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="space-y-8"
-            >
-              {/* Top Text Animation */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-16 lg:py-24">
+
+          {/* ── Top Row: Status Indicator ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="flex items-center gap-2.5 mb-10 lg:mb-14"
+          >
+            <span className="status-dot" />
+            <span style={{ color: '#d4a847', fontSize: '0.8125rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+              Available for consulting
+            </span>
+            <span style={{ color: '#3a3a4e', fontSize: '0.8125rem' }}>·</span>
+            <span style={{ color: '#5a5a6e', fontSize: '0.8125rem', fontWeight: 500 }}>
+              Dubai, UAE 🇦🇪
+            </span>
+          </motion.div>
+
+          {/* ── Main Bento Grid ── */}
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-8 lg:gap-12 items-start">
+
+            {/* Left Column — Typography + CTAs */}
+            <div className="space-y-8">
+
+              {/* Name */}
+              <motion.div
+                initial={{ opacity: 0, y: 32 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.2 }}
+              >
+                <h1 className="m-0 p-0 leading-none" style={{ letterSpacing: '-0.04em' }}>
+                  <span
+                    className="block"
+                    style={{
+                      fontSize: 'clamp(4.5rem, 11vw, 9.5rem)',
+                      fontWeight: 900,
+                      lineHeight: 0.92,
+                      color: '#f5f5f7'
+                    }}
+                  >
+                    MEET
+                  </span>
+                  <span
+                    className="block"
+                    style={{
+                      fontSize: 'clamp(4.5rem, 11vw, 9.5rem)',
+                      fontWeight: 900,
+                      lineHeight: 0.92,
+                      color: '#d4a847'
+                    }}
+                  >
+                    PATEL.
+                  </span>
+                </h1>
+              </motion.div>
+
+              {/* Tagline */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="flex justify-center"
+                transition={{ duration: 0.6, delay: 0.35 }}
+                className="space-y-2"
               >
-                <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full border border-purple-400/40 bg-purple-500/15 backdrop-blur-xl">
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                    className="w-2 h-2 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full"
-                  />
-                  <span className="text-sm sm:text-base text-purple-700">Welcome to my world</span>
-                </div>
-              </motion.div>
-
-              {/* Main Heading - Split Animation */}
-              <div className="space-y-4 text-center">
-                <motion.h1
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="text-5xl sm:text-7xl lg:text-8xl font-black leading-tight tracking-tight"
-                >
-                  <span className="block text-gray-900">
-                    Meet The
-                  </span>
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 mt-2">
-                    Meet Patel
-                  </span>
-                </motion.h1>
-
-                {/* Animated Underline */}
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={isHeroInView ? { width: "200px" } : {}}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  className="h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 mx-auto rounded-full"
+                <div
+                  style={{
+                    height: '1px',
+                    width: '60px',
+                    background: 'rgba(255,255,255,0.15)',
+                    marginBottom: '20px'
+                  }}
                 />
-              </div>
-
-              {/* Tagline with animated gradient */}
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.7, delay: 0.3 }}
-                className="text-xl sm:text-3xl lg:text-4xl font-bold text-center leading-tight px-4"
-              >
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700">
-                  {personalInfo.title}
-                </span>
-              </motion.p>
-
-              {/* Location Chip */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={isHeroInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex justify-center"
-              >
-                <div className="inline-flex items-center space-x-3 px-6 py-3 rounded-2xl border border-pink-400/50 bg-gradient-to-r from-pink-500/10 to-purple-500/10 backdrop-blur-xl hover:border-pink-400/80 transition-all duration-300">
-                  <MapPin className="w-5 h-5 text-pink-600 flex-shrink-0" />
-                  <span className="text-lg font-semibold text-gray-900">{personalInfo.location}</span>
-                </div>
+                <p style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)', fontWeight: 500, color: '#8e8ea0', lineHeight: 1.5, maxWidth: '480px' }}>
+                  Serial Entrepreneur & Startup Builder
+                </p>
+                <p style={{ fontSize: '1rem', color: '#5a5a6e', lineHeight: 1.7, maxWidth: '460px' }}>
+                  I help founders build, scale, and stabilize businesses through proven systems and strategic guidance.
+                </p>
               </motion.div>
 
-              {/* Description Section */}
+              {/* CTA Buttons */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.7, delay: 0.5 }}
-                className="max-w-4xl mx-auto space-y-6"
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="flex flex-col sm:flex-row items-start gap-3 pt-2"
               >
-                <div className="space-y-4 text-center text-gray-700">
-                  <p className="text-base sm:text-lg leading-relaxed">
-                    I help founders build, scale, and stabilize businesses through proven systems and strategic guidance. With 8+ years of experience, I've mentored 10+ startups and led teams of 450+ people.
-                  </p>
-                  <p className="text-base sm:text-lg leading-relaxed">
-                    I work with founders and teams to design <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 font-semibold">business systems that don't break under pressure</span>.
-                  </p>
-                  <p className="text-base sm:text-lg leading-relaxed">
-                    Explore my <Link to="/portfolio" className="text-purple-600 hover:text-pink-600 font-semibold underline underline-offset-2 transition-colors">portfolio of successful ventures</Link> and <Link to="/systems" className="text-pink-600 hover:text-purple-600 font-semibold underline underline-offset-2 transition-colors">proven business systems</Link>.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Action Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.7, delay: 0.6 }}
-                className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8"
-              >
-                <motion.a
-                  href="/about"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="group relative w-full sm:w-auto"
-                >
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full opacity-60 group-hover:opacity-100 blur transition-all duration-300"></div>
-                  <button className="relative px-10 py-4 bg-gray-900 rounded-full text-white font-bold text-lg flex items-center justify-center space-x-2 w-full sm:w-auto hover:bg-gray-800 transition-colors">
-                    <span>Discover My Journey</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </motion.a>
-
                 <motion.a
                   href="/contact"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="group relative w-full sm:w-auto px-10 py-4 rounded-full border-2 border-pink-500/60 hover:border-pink-500 transition-all duration-300 text-gray-900 font-bold text-lg flex items-center justify-center space-x-2"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-semibold text-sm"
+                  style={{
+                    background: '#8b5cf6',
+                    boxShadow: '0 4px 20px rgba(139,92,246,0.4)',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.background = '#7c3aed'}
+                  onMouseLeave={e => e.currentTarget.style.background = '#8b5cf6'}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-pink-500/0 to-pink-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <MessageSquare className="w-5 h-5 relative z-10 group-hover:scale-110 transition-transform" />
-                  <span className="relative z-10">Start a Conversation</span>
+                  <MessageSquare className="w-4 h-4" />
+                  Let's Talk
+                </motion.a>
+
+                <motion.a
+                  href="/portfolio"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm"
+                  style={{
+                    color: '#f5f5f7',
+                    border: '1px solid rgba(255,255,255,0.18)',
+                    transition: 'all 0.2s ease',
+                    background: 'transparent'
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.background = '#16161f'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.18)'; }}
+                >
+                  View My Work
+                  <ArrowRight className="w-4 h-4" />
                 </motion.a>
               </motion.div>
 
-              {/* Stats Row */}
+              {/* Mini Stats Row */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={isHeroInView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.8, delay: 0.7 }}
-                className="grid grid-cols-3 gap-4 sm:gap-8 pt-12 border-t border-purple-400/30 mt-12"
+                transition={{ duration: 0.7, delay: 0.65 }}
+                className="flex items-center gap-8 pt-4"
+                style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
               >
                 {[
-                  { value: "8+", label: "Years" },
-                  { value: "10+", label: "Startups" },
-                  { value: "450+", label: "Team Members" }
-                ].map((stat, idx) => (
-                  <motion.div
-                    key={idx}
-                    whileHover={{ y: -5, scale: 1.05 }}
-                    className="text-center group cursor-default"
-                  >
-                    <div className="text-3xl sm:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600 group-hover:to-pink-500 transition-all">
-                      {stat.value}
+                  { value: '8+', label: 'Years' },
+                  { value: '10+', label: 'Startups' },
+                  { value: '450+', label: 'Team Members' },
+                ].map((s, i) => (
+                  <div key={i} className="text-center">
+                    <div style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 900, color: '#f5f5f7', lineHeight: 1 }}>
+                      {s.value}
                     </div>
-                    <div className="text-xs sm:text-sm text-gray-600 mt-2 group-hover:text-gray-700 transition-colors">
+                    <div style={{ fontSize: '0.75rem', color: '#5a5a6e', marginTop: '4px', fontWeight: 500 }}>
+                      {s.label}
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Right Column — Photo Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="relative hidden lg:block"
+            >
+              <div
+                className="relative rounded-2xl overflow-hidden"
+                style={{
+                  border: '1px solid rgba(255,255,255,0.07)',
+                  boxShadow: '0 0 0 1px rgba(139,92,246,0.12), 0 32px 80px rgba(0,0,0,0.7)',
+                  aspectRatio: '3/4'
+                }}
+              >
+                <img
+                  src={meetPatelImage}
+                  alt="Meet Patel — Serial Entrepreneur, Dubai"
+                  className="w-full h-full object-cover"
+                  style={{ filter: 'brightness(0.92) contrast(1.05)' }}
+                />
+                {/* Gradient overlay */}
+                <div
+                  className="absolute inset-0"
+                  style={{ background: 'linear-gradient(180deg, transparent 40%, rgba(9,9,14,0.85) 100%)' }}
+                />
+
+                {/* Stat chips at bottom of photo */}
+                <div className="absolute bottom-5 left-5 right-5 flex gap-2.5">
+                  {[
+                    { val: '8+', label: 'Years Exp.' },
+                    { val: '450+', label: 'Led' },
+                  ].map((chip, i) => (
+                    <div
+                      key={i}
+                      className="flex-1 text-center py-2.5 px-3 rounded-xl"
+                      style={{
+                        background: 'rgba(17,17,24,0.85)',
+                        backdropFilter: 'blur(16px)',
+                        border: '1px solid rgba(255,255,255,0.08)'
+                      }}
+                    >
+                      <div style={{ fontSize: '1.25rem', fontWeight: 900, color: '#f5f5f7', lineHeight: 1 }}>
+                        {chip.val}
+                      </div>
+                      <div style={{ fontSize: '0.6875rem', color: '#8e8ea0', marginTop: '2px', fontWeight: 500 }}>
+                        {chip.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Location badge */}
+                <div
+                  className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full"
+                  style={{
+                    background: 'rgba(17,17,24,0.85)',
+                    backdropFilter: 'blur(16px)',
+                    border: '1px solid rgba(212,168,71,0.2)'
+                  }}
+                >
+                  <MapPin className="w-3 h-3" style={{ color: '#d4a847' }} />
+                  <span style={{ fontSize: '0.6875rem', color: '#d4a847', fontWeight: 600 }}>Dubai, UAE</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* ── Venture Ticker ── */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isHeroInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mt-16 lg:mt-20 pt-6"
+            style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}
+          >
+            <div className="flex items-center gap-4 mb-4">
+              <span style={{ fontSize: '0.6875rem', color: '#3a3a4e', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                Ventures & Projects
+              </span>
+              <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.05)' }} />
+            </div>
+            <div className="luxury-ticker">
+              <div className="luxury-ticker-inner">
+                {ventures.concat(ventures).map((v, i) => (
+                  <span
+                    key={`ticker-${i}`}
+                    className="inline-flex items-center gap-4 mx-6"
+                    style={{ color: '#8b5cf6', fontSize: '0.875rem', fontWeight: 500 }}
+                  >
+                    <span style={{ color: 'rgba(139,92,246,0.5)', fontSize: '0.5rem' }}>◆</span>
+                    {v}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════
+          ABOUT SECTION
+      ═══════════════════════════════════════════════════ */}
+      <section className="py-24 lg:py-32 relative" style={{ backgroundColor: '#09090e' }}>
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+            {/* Text Side */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              className="space-y-7"
+            >
+              <div>
+                <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8b5cf6' }}>
+                  About Me
+                </span>
+                <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-0.025em', color: '#f5f5f7', marginTop: '12px', marginBottom: '0' }}>
+                  I help founders<br />
+                  <span style={{ color: '#d4a847' }}>build the future.</span>
+                </h2>
+              </div>
+
+              <p style={{ fontSize: '1.0625rem', color: '#8e8ea0', lineHeight: 1.75 }}>
+                Startups rarely move in straight lines. They bend, break, and demand decisions when the clock is ticking. I'm a generalist with range — connecting dots across people, products, processes, and performance.
+              </p>
+
+              {/* Strength bullets */}
+              <div className="space-y-3">
+                {[
+                  'Diagnosing messy problems, fast',
+                  'Building scalable systems that don\'t break under pressure',
+                  'Leading from the front in high-stakes environments',
+                  'Saying the hard truths when they matter most',
+                ].map((s, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#8b5cf6', marginTop: '9px', flexShrink: 0 }} />
+                    <p style={{ fontSize: '0.9375rem', color: '#8e8ea0', lineHeight: 1.6 }}>{s}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Stats Grid */}
+              <div className="grid grid-cols-2 gap-4 pt-2">
+                {stats.map((stat, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="p-4 rounded-2xl"
+                    style={{ background: '#111118', border: '1px solid rgba(255,255,255,0.07)' }}
+                  >
+                    <div style={{ fontSize: '1.75rem', fontWeight: 900, color: '#f5f5f7', lineHeight: 1 }}>
+                      {stat.number}
+                    </div>
+                    <div style={{ fontSize: '0.8125rem', color: '#5a5a6e', marginTop: '4px', fontWeight: 500 }}>
                       {stat.label}
                     </div>
                   </motion.div>
                 ))}
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Floating Scroll Indicator */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2.5, repeat: Infinity }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
-        >
-          <div className="flex flex-col items-center space-y-2">
-            <span className="text-xs text-gray-600 uppercase tracking-widest">Scroll</span>
-            <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* About Section */}
-      <section className="py-12 sm:py-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 items-center">
-                <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="space-y-8"
-            >
-              <div>
-                <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 tracking-tight">
-                  About Me
-                </h2>
-                <p className="text-lg sm:text-xl text-purple-600 mb-4 sm:mb-6">
-                  I help founders build, scale, and stabilize
-                </p>
-                  </div>
-              <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-4 sm:mb-6">
-              Startups rarely move in straight lines. They bend, break, and demand decisions when the clock is ticking. A generalist with range who connects dots across people, products, processes, and performance.
-              </p>
-              
-              {/* Key Strengths */}
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-gray-700">Diagnosing messy problems, fast</p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-gray-700">Building scalable systems that don't break under pressure</p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-gray-700">Leading from the front in high-stakes, rapid-growth environments</p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-gray-700">Saying the hard truths when they matter most</p>
-                </div>
-              </div>
-
-              <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                Founders trust me to push when needed, pivot when smart, and double down when it counts. I'm also a student of psychology, user-led growth, and storytelling.
-              </p>
-              
-              {/* Stats */}
-              <div className="grid grid-cols-2 gap-6 pt-4">
-                {stats.map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="text-center p-4 bg-white/80 rounded-xl border border-purple-200/50"
-                  >
-                    <div className="text-3xl font-bold text-purple-600 mb-1">
-                    {stat.number}
-                  </div>
-                    <div className="text-gray-900/60 text-sm">
-                    {stat.label}
-                  </div>
-              </motion.div>
-            ))}
               </div>
 
               <motion.a
                 href="/about"
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative inline-flex items-center bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-500/40 overflow-hidden"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-semibold text-sm"
+                style={{ background: '#8b5cf6', boxShadow: '0 4px 20px rgba(139,92,246,0.35)' }}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                <span className="relative z-10">Explore My Full Story</span>
-                <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+                Explore My Full Story
+                <ArrowRight className="w-4 h-4" />
               </motion.a>
-          </motion.div>
+            </motion.div>
 
-          <motion.div
-              initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+            {/* Photo Side */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
               className="relative"
             >
-              <div className="relative z-10">
+              <div
+                className="relative rounded-2xl overflow-hidden"
+                style={{
+                  border: '1px solid rgba(255,255,255,0.07)',
+                  boxShadow: '0 0 0 1px rgba(139,92,246,0.1), 0 24px 64px rgba(0,0,0,0.6)'
+                }}
+              >
                 <img
                   src={meetPatelImage}
-                  alt="The Meet Patel - A Startup Guy & System Builder"
-                  className="w-full h-96 object-cover rounded-3xl shadow-2xl"
+                  alt="Meet Patel"
+                  className="w-full object-cover"
+                  style={{ height: '500px', filter: 'brightness(0.9) contrast(1.05)' }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-3xl"></div>
+                <div
+                  className="absolute inset-0"
+                  style={{ background: 'linear-gradient(180deg, transparent 50%, rgba(9,9,14,0.8) 100%)' }}
+                />
               </div>
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-cyan-500/20 rounded-full blur-xl"></div>
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-purple-500/20 rounded-full blur-xl"></div>
+              {/* Violet glow accent */}
+              <div
+                className="absolute -bottom-6 -right-6 w-48 h-48 rounded-full pointer-events-none"
+                style={{ background: 'rgba(139,92,246,0.08)', filter: 'blur(40px)' }}
+              />
             </motion.div>
           </div>
         </div>
       </section>
 
-
-      {/* Portfolio Section */}
-      <section className="py-32 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ═══════════════════════════════════════════════════
+          PORTFOLIO / VENTURES
+      ═══════════════════════════════════════════════════ */}
+      <section className="py-24 lg:py-32" style={{ backgroundColor: '#09090e' }}>
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="mb-14"
           >
-            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
-              Checkout the Startups I've Built
+            <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8b5cf6' }}>
+              Ventures
+            </span>
+            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, letterSpacing: '-0.025em', color: '#f5f5f7', marginTop: '12px', marginBottom: '8px' }}>
+              Startups I've Built
             </h2>
-            <p className="text-xl text-purple-600 max-w-3xl mx-auto">
-              A showcase of my projects, ventures, and the impact I've created in the startup ecosystem.
+            <p style={{ fontSize: '1rem', color: '#5a5a6e', maxWidth: '480px' }}>
+              A portfolio of ventures spanning AI, fintech, edtech, and food technology.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {personalInfo.projects.slice(0, 6).map((project, index) => {
               const CardContent = (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="group relative bg-white/90 backdrop-blur-md rounded-2xl p-6 border border-purple-200/50 hover:border-purple-300/70 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-200/50 hover:-translate-y-1 cursor-pointer"
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  className="group relative p-6 rounded-2xl cursor-pointer"
+                  style={{
+                    background: '#111118',
+                    border: '1px solid rgba(255,255,255,0.07)',
+                    transition: 'all 0.25s ease'
+                  }}
+                  whileHover={{
+                    y: -4,
+                    borderColor: 'rgba(139,92,246,0.25)',
+                    boxShadow: '0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(139,92,246,0.15)'
+                  }}
                 >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 via-pink-50/50 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative z-10">
-                  <div className="w-14 h-14 bg-gradient-to-br from-purple-500 via-pink-500 to-purple-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-purple-200/50">
-                    <Briefcase className="w-7 h-7 text-white" />
-                </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors">{project.name}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-5 min-h-[3rem]">{project.description}</p>
-                  <div className="flex items-center justify-between pt-4 border-t border-purple-100">
-                    <span className="text-xs font-semibold bg-purple-100 text-purple-600 px-3 py-1.5 rounded-full">{project.category}</span>
-                    <span className="text-xs text-gray-500 font-medium">{project.year}</span>
+                  <div className="flex items-start justify-between mb-5">
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center"
+                      style={{ background: 'rgba(139,92,246,0.12)', border: '1px solid rgba(139,92,246,0.2)' }}
+                    >
+                      <Briefcase className="w-5 h-5" style={{ color: '#8b5cf6' }} />
+                    </div>
+                    <span style={{ fontSize: '0.75rem', color: '#d4a847', fontWeight: 600 }}>{project.year}</span>
                   </div>
-                </div>
-              </motion.div>
+
+                  <h3 style={{ fontSize: '1.0625rem', fontWeight: 700, color: '#f5f5f7', marginBottom: '8px' }}>
+                    {project.name}
+                  </h3>
+                  <p style={{ fontSize: '0.875rem', color: '#5a5a6e', lineHeight: 1.6, marginBottom: '16px' }}>
+                    {project.description}
+                  </p>
+
+                  <div
+                    className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold"
+                    style={{ background: 'rgba(139,92,246,0.1)', color: '#8b5cf6', border: '1px solid rgba(139,92,246,0.2)' }}
+                  >
+                    {project.category}
+                  </div>
+                </motion.div>
               );
-              
+
               return project.link ? (
-                <Link key={index} to={project.link}>
-                  {CardContent}
-                </Link>
+                <Link key={index} to={project.link}>{CardContent}</Link>
               ) : CardContent;
             })}
           </div>
 
-            <motion.div
-            initial={{ opacity: 0, y: 20 }}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-center mt-12"
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-10"
           >
-            <motion.a
+            <a
               href="/portfolio"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="group relative inline-flex items-center bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 hover:from-purple-700 hover:via-pink-700 hover:to-purple-800 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 shadow-2xl shadow-purple-500/40 hover:shadow-purple-600/50 overflow-hidden border-2 border-white/20"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm"
+              style={{
+                color: '#f5f5f7',
+                border: '1px solid rgba(255,255,255,0.15)',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#16161f'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'; }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-              <span className="relative z-10">View All Projects</span>
-              <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-            </motion.a>
+              View All Projects
+              <ArrowRight className="w-4 h-4" />
+            </a>
           </motion.div>
         </div>
       </section>
 
-      {/* BiggMate Launch Banner */}
-      <section className="py-16 px-4 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
-        </div>
-        <div className="max-w-6xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              <Heart className="w-4 h-4 fill-current" />
-              <span>Launching Valentine's Day 2026</span>
-            </div>
-            
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              🚀 BiggMate is Coming Soon
-            </h2>
-            
-            <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-              Find your perfect co-founder. Build the next revolution together. Join 547+ founders on the waitlist.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <motion.a
-                href="/biggmate"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative"
-              >
-                <div className="absolute -inset-1 bg-white/30 rounded-full blur opacity-60 group-hover:opacity-100 transition-all duration-300"></div>
-                <button className="relative px-8 py-4 bg-white text-purple-600 rounded-full font-bold text-lg flex items-center space-x-2 hover:bg-gray-50 transition-colors shadow-xl">
-                  <span>Learn More</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </motion.a>
-              
-              <motion.a
-                href="https://www.biggmate.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 border-2 border-white text-white rounded-full font-bold text-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
-              >
-                Join Waitlist →
-              </motion.a>
-            </div>
-            
-            <div className="flex flex-wrap gap-6 justify-center items-center text-sm text-white/80 mt-8">
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5" />
-                <span>AI-Powered Matching</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5" />
-                <span>Verified Founders</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5" />
-                <span>Free to Join</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Blog Section */}
-      <section className="py-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ═══════════════════════════════════════════════════
+          BLOG SECTION
+      ═══════════════════════════════════════════════════ */}
+      <section className="py-24 lg:py-32" style={{ backgroundColor: '#09090e' }}>
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-20"
+            className="mb-14"
           >
-            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
-              Read My Latest Insights Shared
+            <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8b5cf6' }}>
+              Writing
+            </span>
+            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, letterSpacing: '-0.025em', color: '#f5f5f7', marginTop: '12px', marginBottom: '8px' }}>
+              Latest Insights
             </h2>
-            <p className="text-xl text-purple-600 max-w-3xl mx-auto leading-relaxed mb-8">
-              Thoughts on entrepreneurship, leadership, and the journey of building meaningful things.
-            </p>
-            
-            {/* Blog Stats */}
-            <div className="flex items-center justify-center space-x-8 text-gray-900/60">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                <span className="text-sm">15+ Articles</span>
-                  </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                <span className="text-sm">15K+ Views</span>
-          </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                <span className="text-sm">800+ Likes</span>
-        </div>
-        </div>
+            <div className="flex items-center gap-5 mt-5">
+              {[{ v: '15+', l: 'Articles' }, { v: '15K+', l: 'Views' }, { v: '800+', l: 'Likes' }].map((s, i) => (
+                <span key={i} style={{ fontSize: '0.8125rem', color: '#5a5a6e' }}>
+                  <span style={{ color: '#8b5cf6', fontWeight: 700 }}>{s.v}</span> {s.l}
+                </span>
+              ))}
+            </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {blogPosts.map((post, index) => (
               <motion.a
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative bg-white/90 backdrop-blur-md rounded-2xl overflow-hidden border border-purple-200/50 hover:border-purple-300/70 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-200/50 hover:-translate-y-1 block mx-3 sm:mx-4"
+                className="group block p-6 rounded-2xl"
+                style={{
+                  background: '#111118',
+                  border: '1px solid rgba(255,255,255,0.07)',
+                  transition: 'all 0.25s ease',
+                  textDecoration: 'none'
+                }}
+                whileHover={{
+                  y: -4,
+                  borderColor: 'rgba(139,92,246,0.2)',
+                  boxShadow: '0 12px 40px rgba(0,0,0,0.4)'
+                }}
               >
-                {/* Header Section with Gradient */}
-                <div className="h-40 bg-gradient-to-br from-purple-100 via-pink-100 to-purple-50 relative overflow-hidden">
-                  {/* Decorative Pattern */}
-                  <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-0 left-0 w-32 h-32 bg-purple-500 rounded-full blur-3xl"></div>
-                    <div className="absolute bottom-0 right-0 w-32 h-32 bg-pink-500 rounded-full blur-3xl"></div>
+                <div className="flex items-start justify-between mb-4">
+                  <span
+                    className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold"
+                    style={{ background: 'rgba(139,92,246,0.1)', color: '#8b5cf6', border: '1px solid rgba(139,92,246,0.2)' }}
+                  >
+                    {post.category}
+                  </span>
+                  <div className="flex items-center gap-1" style={{ color: '#3a3a4e', fontSize: '0.75rem' }}>
+                    <Clock className="w-3 h-3" />
+                    {post.readTime}
                   </div>
-                  
-                  <div className="absolute top-3 left-3 z-10">
-                    <span className="bg-white/90 backdrop-blur-sm text-purple-600 px-3 py-1 rounded-lg text-xs font-semibold shadow-sm">
-                      {post.category}
-              </span>
-                      </div>
-                  
-                  {/* Center Icon */}
-                  <div className="absolute inset-0 flex items-center justify-center z-10">
-                    <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                      <BookOpen className="w-8 h-8 text-white" />
-                    </div>
-                  </div>
-                  
-                  {/* Metadata */}
-                  <div className="absolute bottom-3 left-3 right-3 z-10">
-                    <div className="flex items-center justify-between text-xs text-gray-600">
-                      <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-2 py-1 rounded">
-                        <Calendar className="w-3 h-3" />
-                        <span>{post.date}</span>
-                        <span>•</span>
-                        <Clock className="w-3 h-3" />
-                        <span>{post.readTime}</span>
-                  </div>
-                      <div className="flex items-center gap-1 bg-white/80 backdrop-blur-sm px-2 py-1 rounded">
-                        <Eye className="w-3 h-3" />
-                        <span>2.5K</span>
-            </div>
-                  </div>
-                  </div>
-                  </div>
-                  
-                {/* Content Section */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors leading-tight mb-3 line-clamp-2">
-                    {post.title}
-                  </h3>
-                  
-                  <p className="text-gray-600 leading-relaxed mb-5 line-clamp-3 text-sm">
-                    {post.excerpt}
-                  </p>
-                  
-                  {/* Social Actions */}
-                  <div className="flex items-center justify-end pt-4 border-t border-purple-100 mb-4" onClick={(e) => e.stopPropagation()}>
-                    <div className="flex items-center gap-2">
-                      <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200"
-                        title="Share on LinkedIn"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <Linkedin className="w-4 h-4" />
-                      </motion.button>
-                      
-                      <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="p-2 text-gray-400 hover:text-sky-500 hover:bg-sky-50 rounded-lg transition-all duration-200"
-                        title="Share on Twitter"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <Twitter className="w-4 h-4" />
-                      </motion.button>
-                      
-                      <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-200"
-                        title="Bookmark"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <BookOpen className="w-4 h-4" />
-                      </motion.button>
-                      
-                      <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-200"
-                        title="Share"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                      </motion.button>
-                      </div>
-                  </div>
+                </div>
 
-                  {/* Read More Button */}
-                  <div className="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 px-4 rounded-xl font-semibold text-sm group-hover:from-purple-600 group-hover:to-pink-600 transition-all duration-300">
-                    <span>Read Full Article</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#f5f5f7', lineHeight: 1.4, marginBottom: '8px' }}>
+                  {post.title}
+                </h3>
+                <p style={{ fontSize: '0.875rem', color: '#5a5a6e', lineHeight: 1.6, marginBottom: '16px' }}>
+                  {post.excerpt}
+                </p>
+
+                <div className="flex items-center justify-between" style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '12px' }}>
+                  <span style={{ fontSize: '0.75rem', color: '#3a3a4e' }}>{post.date}</span>
+                  <div className="flex items-center gap-1 group-hover:gap-2 transition-all" style={{ color: '#8b5cf6', fontSize: '0.8125rem', fontWeight: 600 }}>
+                    Read
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </div>
-                  </div>
+                </div>
               </motion.a>
             ))}
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="mt-10"
           >
-            <motion.a
+            <a
               href="/blogs"
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="group relative inline-flex items-center px-10 py-5 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 text-white rounded-2xl font-bold text-lg hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-500/40 overflow-hidden"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm"
+              style={{
+                color: '#f5f5f7',
+                border: '1px solid rgba(255,255,255,0.15)',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#16161f'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'; }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-              <span className="relative z-10">Read All My Articles</span>
-              <ArrowRight className="w-6 h-6 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-            </motion.a>
+              Read All Articles
+              <ArrowRight className="w-4 h-4" />
+            </a>
           </motion.div>
         </div>
       </section>
 
-
-
-
-      {/* Books Section - Apple Style */}
-      <section className="py-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ═══════════════════════════════════════════════════
+          BOOKS SECTION
+      ═══════════════════════════════════════════════════ */}
+      <section className="py-24 lg:py-32" style={{ backgroundColor: '#09090e' }}>
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-20"
+            className="mb-14"
           >
-            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
-              Books Written
+            <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8b5cf6' }}>
+              Books
+            </span>
+            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, letterSpacing: '-0.025em', color: '#f5f5f7', marginTop: '12px', marginBottom: '8px' }}>
+              Written Works
             </h2>
-            <p className="text-xl text-purple-600 max-w-3xl mx-auto leading-relaxed">
-              Here's something special for you to freshen up! Few Love stories written by me 😲
-            </p>
+            <p style={{ fontSize: '1rem', color: '#5a5a6e' }}>Love stories that give you a different perspective of life</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {books.map((book, index) => (
-                <motion.div
+              <motion.div
                 key={book.title}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                className="apple-glass rounded-3xl p-8 group hover:scale-105 transition-all duration-500"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="p-7 rounded-2xl"
+                style={{
+                  background: '#111118',
+                  border: '1px solid rgba(255,255,255,0.07)',
+                  transition: 'all 0.25s ease'
+                }}
+                whileHover={{
+                  borderColor: 'rgba(139,92,246,0.2)',
+                  boxShadow: '0 8px 40px rgba(0,0,0,0.4)'
+                }}
               >
-                {/* Book Cover */}
-                <div className="text-center mb-8">
-                  <div className={`w-64 h-80 mx-auto bg-gradient-to-br ${book.coverColor} rounded-2xl flex items-center justify-center mb-6 relative overflow-hidden shadow-2xl`}>
-                    <div className="absolute inset-0 bg-white/40" />
-                    <div className="relative z-10 text-center p-6">
-                      <p className="text-gray-900/90 text-sm italic mb-4 leading-relaxed">{book.quote}</p>
-                      <h3 className="text-gray-900 text-2xl font-bold mb-2">{book.title}</h3>
-                      <p className="text-gray-900/80 text-lg">{book.subtitle}</p>
-                      <p className="text-gray-900/70 text-sm mt-3">A Novel by Meet Patel</p>
-                </div>
-                </div>
+                <div className="flex gap-6 items-start">
+                  {/* Book Cover */}
+                  <div
+                    className={`w-24 h-32 flex-shrink-0 rounded-xl flex items-center justify-center bg-gradient-to-br ${book.coverColor} relative overflow-hidden`}
+                    style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.4)' }}
+                  >
+                    <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.3)' }} />
+                    <div className="relative z-10 text-center p-2">
+                      <p style={{ fontSize: '0.5625rem', color: 'rgba(255,255,255,0.85)', fontStyle: 'italic', lineHeight: 1.3, marginBottom: '4px' }}>
+                        {book.quote.substring(0, 40)}...
+                      </p>
+                    </div>
                   </div>
-                  
-                {/* Book Details */}
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-bold text-gray-900 text-center">{book.title}</h3>
-                  
-                  <p className="text-gray-900/70 leading-relaxed text-center">
-                    {book.description}
-                  </p>
-                  
-                  <div className="flex items-center justify-center space-x-4">
-                    <span className="bg-pink-500/20 text-pink-400 px-4 py-2 rounded-full text-sm font-medium">
-                      {book.genre}
-                    </span>
-                    <span className={`px-4 py-2 rounded-full text-sm font-medium ${
-                      book.status === 'Published' 
-                        ? 'bg-green-500/20 text-green-400' 
-                        : 'bg-purple-500/20 text-purple-400'
-                    }`}>
-                      {book.status}
-                    </span>
-                  </div>
-                  
-                  <div className="flex space-x-3">
-                    {book.status === 'Published' ? (
-                      <motion.button
-                        whileHover={{ scale: 1.02, y: -2 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="group relative w-full bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 text-white py-4 px-6 rounded-xl font-bold text-sm hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-500/30 overflow-hidden"
+
+                  {/* Book Details */}
+                  <div className="flex-1 space-y-3">
+                    <div>
+                      <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: '#f5f5f7', marginBottom: '2px' }}>{book.title}</h3>
+                      <p style={{ fontSize: '0.8125rem', color: '#5a5a6e' }}>{book.subtitle}</p>
+                    </div>
+                    <p style={{ fontSize: '0.875rem', color: '#8e8ea0', lineHeight: 1.6 }}>{book.description.substring(0, 120)}...</p>
+
+                    <div className="flex items-center gap-2">
+                      <span
+                        className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold"
+                        style={{ background: 'rgba(236,72,153,0.1)', color: '#ec4899', border: '1px solid rgba(236,72,153,0.2)' }}
                       >
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                        <span className="relative z-10">Start Reading</span>
-                      </motion.button>
-                    ) : (
-                      <motion.button
-                        whileHover={{ scale: 1.02, y: -2 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="group relative w-full bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 text-white py-4 px-6 rounded-xl font-bold text-sm hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-500/30 overflow-hidden"
+                        {book.genre}
+                      </span>
+                      <span
+                        className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold"
+                        style={{
+                          background: book.status === 'Published' ? 'rgba(16,185,129,0.1)' : 'rgba(139,92,246,0.1)',
+                          color: book.status === 'Published' ? '#10b981' : '#8b5cf6',
+                          border: book.status === 'Published' ? '1px solid rgba(16,185,129,0.2)' : '1px solid rgba(139,92,246,0.2)'
+                        }}
                       >
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                        <span className="relative z-10">Get Early Access</span>
-                      </motion.button>
-                    )}
-                      </div>
+                        {book.status}
+                      </span>
+                    </div>
+
+                    <a
+                      href={book.readLink}
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold"
+                      style={{ color: '#8b5cf6' }}
+                    >
+                      {book.status === 'Published' ? 'Start Reading' : 'Get Early Access'}
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
                   </div>
-                </motion.div>
-              ))}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Photo Section 2 - Achievements */}
-      <section className="py-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-              initial={{ opacity: 0, x: 50 }}
+      {/* ═══════════════════════════════════════════════════
+          RECOGNITION & IMPACT
+      ═══════════════════════════════════════════════════ */}
+      <section className="py-24 lg:py-32" style={{ backgroundColor: '#09090e' }}>
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+            {/* Photo */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-              className="relative order-2 lg:order-1"
+              transition={{ duration: 0.7 }}
+              className="relative"
             >
-              <div className="relative rounded-3xl aspect-square overflow-hidden shadow-2xl">
+              <div
+                className="relative rounded-2xl overflow-hidden aspect-square"
+                style={{
+                  border: '1px solid rgba(255,255,255,0.07)',
+                  boxShadow: '0 0 0 1px rgba(139,92,246,0.1), 0 24px 64px rgba(0,0,0,0.6)'
+                }}
+              >
                 <img
                   src={meetPatelImage2}
-                  alt="The Meet Patel - Recognition & Impact"
+                  alt="Meet Patel — Recognition & Impact"
                   className="w-full h-full object-cover"
+                  style={{ filter: 'brightness(0.88) contrast(1.08)' }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-        </div>
-              </motion.div>
+                <div
+                  className="absolute inset-0"
+                  style={{ background: 'linear-gradient(180deg, transparent 40%, rgba(9,9,14,0.8) 100%)' }}
+                />
+              </div>
+              <div
+                className="absolute -top-6 -left-6 w-40 h-40 rounded-full pointer-events-none"
+                style={{ background: 'rgba(212,168,71,0.05)', filter: 'blur(40px)' }}
+              />
+            </motion.div>
 
-          <motion.div
-              initial={{ opacity: 0, x: -50 }}
+            {/* Text */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-8 order-1 lg:order-2"
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="space-y-7"
             >
-              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight">
-                Recognition & Impact
-            </h2>
-              <p className="text-xl text-purple-600 leading-relaxed">
-                From mechanical engineer to mentoring 10+ startups as business expert, my work has been recognized and has created real impact.
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                {achievements.map((achievement, index) => (
-                  <div key={achievement.title} className="apple-glass rounded-xl p-4">
-                    <div className={`w-8 h-8 bg-gradient-to-r ${achievement.color} rounded-lg flex items-center justify-center mb-3`}>
-                      <achievement.icon className="w-4 h-4 text-gray-900" />
-            </div>
-                    <h4 className="text-gray-900 font-semibold text-sm mb-1">{achievement.title}</h4>
-                    <p className="text-gray-900/60 text-xs">{achievement.description}</p>
+              <div>
+                <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8b5cf6' }}>
+                  Impact
+                </span>
+                <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 800, letterSpacing: '-0.025em', color: '#f5f5f7', marginTop: '12px' }}>
+                  Recognition &<br />
+                  <span style={{ color: '#d4a847' }}>Real Impact</span>
+                </h2>
+                <p style={{ fontSize: '1rem', color: '#8e8ea0', lineHeight: 1.75, marginTop: '16px' }}>
+                  From mechanical engineer to mentoring 10+ startups as a business expert — the work has created real impact.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                {achievements.map((achievement) => (
+                  <div
+                    key={achievement.title}
+                    className="p-4 rounded-xl"
+                    style={{ background: '#111118', border: '1px solid rgba(255,255,255,0.07)' }}
+                  >
+                    <achievement.icon className="w-5 h-5 mb-3" style={{ color: '#8b5cf6' }} />
+                    <h4 style={{ fontSize: '0.9375rem', fontWeight: 700, color: '#f5f5f7', marginBottom: '4px' }}>{achievement.title}</h4>
+                    <p style={{ fontSize: '0.8125rem', color: '#5a5a6e', lineHeight: 1.5 }}>{achievement.description}</p>
                   </div>
                 ))}
               </div>
-                <motion.a
+
+              <a
                 href="/portfolio"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                className="group relative inline-flex items-center bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 hover:from-purple-700 hover:via-pink-700 hover:to-purple-800 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 shadow-2xl shadow-purple-500/40 hover:shadow-purple-600/50 overflow-hidden border-2 border-white/20"
-                >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                <span className="relative z-10">Explore My Portfolio</span>
-                <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-                </motion.a>
-          </motion.div>
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm text-white"
+                style={{ background: '#8b5cf6', boxShadow: '0 4px 20px rgba(139,92,246,0.35)' }}
+              >
+                Explore My Portfolio
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="py-20 relative">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div
+      {/* ═══════════════════════════════════════════════════
+          CONTACT FORM
+      ═══════════════════════════════════════════════════ */}
+      <section className="py-24 lg:py-32" style={{ backgroundColor: '#09090e' }}>
+        <div className="max-w-3xl mx-auto px-5 sm:px-8 lg:px-10">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="mb-12"
           >
-            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
-              Let's Create Magic Together
-                </h2>
-            <p className="text-xl text-purple-600 max-w-3xl mx-auto leading-relaxed">
-              Ready to start your entrepreneurial journey or need guidance on your current venture? I'd love to hear from you.
-                </p>
-              </motion.div>
+            <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8b5cf6' }}>
+              Contact
+            </span>
+            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, letterSpacing: '-0.025em', color: '#f5f5f7', marginTop: '12px', marginBottom: '8px' }}>
+              Let's Create Something
+            </h2>
+            <p style={{ fontSize: '1rem', color: '#5a5a6e' }}>
+              Ready to build, scale, or get guidance? I'd love to hear from you.
+            </p>
+          </motion.div>
 
-                <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="apple-glass rounded-3xl p-8"
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="p-8 rounded-2xl"
+            style={{ background: '#111118', border: '1px solid rgba(255,255,255,0.07)' }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {/* Name */}
                 <div>
-                  <label className="block text-gray-900 font-semibold text-sm mb-2">Name *</label>
+                  <label style={{ display: 'block', fontSize: '0.8125rem', fontWeight: 600, color: '#8e8ea0', marginBottom: '8px' }}>Name *</label>
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full bg-white/90 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-400 transition-all duration-300"
-                    placeholder="Enter your full name"
+                    placeholder="Your full name"
+                    style={{
+                      width: '100%',
+                      background: '#16161f',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      borderRadius: '12px',
+                      padding: '12px 16px',
+                      color: '#f5f5f7',
+                      fontSize: '0.9375rem',
+                      outline: 'none',
+                      transition: 'border-color 0.2s ease'
+                    }}
+                    onFocus={e => e.target.style.borderColor = 'rgba(139,92,246,0.5)'}
+                    onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
                   />
                 </div>
+                {/* Email */}
                 <div>
-                  <label className="block text-gray-900 font-semibold text-sm mb-2">Email *</label>
+                  <label style={{ display: 'block', fontSize: '0.8125rem', fontWeight: 600, color: '#8e8ea0', marginBottom: '8px' }}>Email *</label>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full bg-white/90 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-400 transition-all duration-300"
-                    placeholder="your.email@example.com"
+                    placeholder="your@email.com"
+                    style={{
+                      width: '100%',
+                      background: '#16161f',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      borderRadius: '12px',
+                      padding: '12px 16px',
+                      color: '#f5f5f7',
+                      fontSize: '0.9375rem',
+                      outline: 'none',
+                      transition: 'border-color 0.2s ease'
+                    }}
+                    onFocus={e => e.target.style.borderColor = 'rgba(139,92,246,0.5)'}
+                    onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
                   />
                 </div>
-                </div>
-              
+              </div>
+
+              {/* WhatsApp */}
               <div>
-                <label className="block text-gray-900 font-semibold text-sm mb-2">WhatsApp Number</label>
+                <label style={{ display: 'block', fontSize: '0.8125rem', fontWeight: 600, color: '#8e8ea0', marginBottom: '8px' }}>WhatsApp Number</label>
                 <div className="flex gap-2">
-                  <div className="relative">
-                    <select
-                      name="countryCode"
-                      value={formData.countryCode}
-                      onChange={handleInputChange}
-                      className="bg-white/90 border border-purple-200/50 rounded-xl p-4 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-400 transition-all duration-300 appearance-none cursor-pointer min-w-[140px] pr-10"
-                    >
-                      {countryCodes.map((country) => (
-                        <option key={country.code} value={country.code} className="bg-white text-gray-900">
-                          {country.flag} {country.code}
-                        </option>
-                      ))}
-                    </select>
-                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                      <ChevronRight className="w-4 h-4 text-purple-400 rotate-90" />
-            </div>
-        </div>
+                  <select
+                    name="countryCode"
+                    value={formData.countryCode}
+                    onChange={handleInputChange}
+                    style={{
+                      background: '#16161f',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      borderRadius: '12px',
+                      padding: '12px 14px',
+                      color: '#f5f5f7',
+                      fontSize: '0.9375rem',
+                      outline: 'none',
+                      minWidth: '120px',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    {countryCodes.map((country) => (
+                      <option key={country.code + country.country} value={country.code} style={{ background: '#16161f' }}>
+                        {country.flag} {country.code}
+                      </option>
+                    ))}
+                  </select>
                   <input
                     type="tel"
                     name="whatsapp"
                     value={formData.whatsapp}
                     onChange={handleInputChange}
-                    className="flex-1 bg-white/90 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-400 transition-all duration-300"
-                    placeholder="Enter your WhatsApp number"
+                    placeholder="Your WhatsApp number"
+                    style={{
+                      flex: 1,
+                      background: '#16161f',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      borderRadius: '12px',
+                      padding: '12px 16px',
+                      color: '#f5f5f7',
+                      fontSize: '0.9375rem',
+                      outline: 'none',
+                      transition: 'border-color 0.2s ease'
+                    }}
+                    onFocus={e => e.target.style.borderColor = 'rgba(139,92,246,0.5)'}
+                    onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
                   />
                 </div>
-                  </div>
-                  
+              </div>
+
+              {/* Subject */}
               <div>
-                <label className="block text-gray-900 font-semibold text-sm mb-2">Subject *</label>
+                <label style={{ display: 'block', fontSize: '0.8125rem', fontWeight: 600, color: '#8e8ea0', marginBottom: '8px' }}>Subject *</label>
                 <input
                   type="text"
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
                   required
-                  className="w-full bg-white/90 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-400 transition-all duration-300"
                   placeholder="What would you like to discuss?"
+                  style={{
+                    width: '100%',
+                    background: '#16161f',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    borderRadius: '12px',
+                    padding: '12px 16px',
+                    color: '#f5f5f7',
+                    fontSize: '0.9375rem',
+                    outline: 'none',
+                    transition: 'border-color 0.2s ease'
+                  }}
+                  onFocus={e => e.target.style.borderColor = 'rgba(139,92,246,0.5)'}
+                  onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
                 />
-        </div>
+              </div>
 
+              {/* Message */}
               <div>
-                <label className="block text-gray-900 font-semibold text-sm mb-2">Message *</label>
+                <label style={{ display: 'block', fontSize: '0.8125rem', fontWeight: 600, color: '#8e8ea0', marginBottom: '8px' }}>Message *</label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
                   required
-                  rows={6}
-                  className="w-full bg-white/90 border border-purple-200/50 rounded-xl p-4 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-400 transition-all duration-300 resize-none"
-                  placeholder="Share your thoughts, questions, or tell me about your project. I'd love to hear from you!"
+                  rows={5}
+                  placeholder="Share your thoughts, questions, or tell me about your project."
+                  style={{
+                    width: '100%',
+                    background: '#16161f',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    borderRadius: '12px',
+                    padding: '12px 16px',
+                    color: '#f5f5f7',
+                    fontSize: '0.9375rem',
+                    outline: 'none',
+                    resize: 'none',
+                    transition: 'border-color 0.2s ease',
+                    lineHeight: 1.7
+                  }}
+                  onFocus={e => e.target.style.borderColor = 'rgba(139,92,246,0.5)'}
+                  onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
                 />
-                  </div>
+              </div>
 
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                whileHover={{ scale: isSubmitting ? 1 : 1.02, y: isSubmitting ? 0 : -2 }}
+                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                 whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                className={`group relative w-full py-5 px-8 rounded-2xl font-bold transition-all duration-300 flex items-center justify-center space-x-3 text-lg overflow-hidden text-white ${
-                  isSubmitting
-                    ? 'bg-gray-500 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 shadow-xl hover:shadow-2xl hover:shadow-purple-500/30'
-                }`}
+                className="w-full flex items-center justify-center gap-2.5 py-4 rounded-xl font-semibold text-white"
+                style={{
+                  background: isSubmitting ? '#3a3a4e' : '#8b5cf6',
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                  boxShadow: isSubmitting ? 'none' : '0 4px 20px rgba(139,92,246,0.4)',
+                  fontSize: '0.9375rem',
+                  transition: 'all 0.2s ease'
+                }}
               >
-                {!isSubmitting && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                )}
                 {isSubmitting ? (
                   <>
-                    <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    <span className="relative z-10">Sending Your Message...</span>
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Sending...
                   </>
                 ) : (
                   <>
-                    <Send className="w-6 h-6 relative z-10 group-hover:scale-110 transition-transform duration-300" />
-                    <span className="relative z-10">Send Message</span>
+                    <Send className="w-4 h-4" />
+                    Send Message
                   </>
                 )}
               </motion.button>
             </form>
 
-            {/* Success Message */}
             <AnimatePresence>
               {isSubmitted && (
-              <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  className="mt-6 p-4 bg-green-500/20 border border-green-500/30 rounded-xl flex items-center space-x-3"
+                  exit={{ opacity: 0, y: -12 }}
+                  className="mt-5 p-4 rounded-xl flex items-center gap-3"
+                  style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.2)' }}
                 >
-                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                  <span className="text-green-300">
-                    Thank you! Your message has been sent successfully. I'll get back to you within 24 hours.
-              </span>
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#10b981' }} />
+                  <span style={{ fontSize: '0.9375rem', color: '#10b981' }}>
+                    Message sent! I'll get back to you within 24 hours.
+                  </span>
                 </motion.div>
               )}
             </AnimatePresence>
-              </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      {/* WhatsApp Community Section */}
-      <section className="py-16 relative">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ═══════════════════════════════════════════════════
+          COMMUNITY SECTION
+      ═══════════════════════════════════════════════════ */}
+      <section className="py-24 lg:py-32" style={{ backgroundColor: '#09090e' }}>
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="p-10 lg:p-14 rounded-3xl text-center relative overflow-hidden"
+            style={{
+              background: '#111118',
+              border: '1px solid rgba(255,255,255,0.07)',
+            }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">Join Our StartupOS Community</h2>
-            <p className="text-xl text-purple-600 max-w-3xl mx-auto leading-relaxed">
-              Connect with fellow entrepreneurs, get exclusive insights, and be part of a thriving startup ecosystem.
-            </p>
-          </motion.div>
-
-              <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="apple-glass rounded-3xl p-8 md:p-12 text-center relative overflow-hidden"
-          >
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute top-10 left-10 w-20 h-20 bg-purple-500 rounded-full"></div>
-              <div className="absolute bottom-10 right-10 w-32 h-32 bg-teal-400 rounded-full"></div>
-              <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-blue-400 rounded-full"></div>
-                </div>
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 0%, rgba(139,92,246,0.08) 0%, transparent 70%)' }}
+            />
 
             <div className="relative z-10">
-              {/* WhatsApp Icon */}
-              <motion.div
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="w-20 h-20 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl"
+              <div
+                className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-6"
+                style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid rgba(139,92,246,0.25)' }}
               >
-                <WhatsAppIcon className="w-10 h-10 text-white" />
-              </motion.div>
-
-              {/* Community Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-              <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                  className="text-center"
-                >
-                  <div className="text-3xl font-bold text-purple-600 mb-2">500+</div>
-                  <div className="text-gray-900/70">Active Members</div>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                  className="text-center"
-                >
-                  <div className="text-3xl font-bold text-purple-600 mb-2">50+</div>
-                  <div className="text-gray-900/70">Daily Discussions</div>
-              </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.7 }}
-                  className="text-center"
-                >
-                  <div className="text-3xl font-bold text-purple-600 mb-2">24/7</div>
-                  <div className="text-gray-900/70">Support & Networking</div>
-                </motion.div>
+                <WhatsAppIcon className="w-7 h-7" style={{ color: '#8b5cf6' }} />
               </div>
 
-              {/* Community Benefits */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="mb-8"
-              >
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">What You'll Get:</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-4xl mx-auto">
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                    <span className="text-gray-900/80">Exclusive startup insights and market trends</span>
-                </div>
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                    <span className="text-gray-900/80">Direct access to industry experts and mentors</span>
-                </div>
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                    <span className="text-gray-900/80">Networking opportunities with fellow entrepreneurs</span>
-                </div>
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                    <span className="text-gray-900/80">Early access to funding opportunities and partnerships</span>
-            </div>
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                    <span className="text-gray-900/80">Periodic masterclasses and Q&A sessions</span>
-        </div>
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                    <span className="text-gray-900/80">Job opportunities and talent referrals</span>
-        </div>
-                </div>
-              </motion.div>
+              <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8b5cf6' }}>
+                Community
+              </span>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontWeight: 800, color: '#f5f5f7', marginTop: '10px', marginBottom: '12px', letterSpacing: '-0.02em' }}>
+                Join StartupOS Community
+              </h2>
+              <p style={{ fontSize: '1rem', color: '#8e8ea0', maxWidth: '500px', margin: '0 auto 32px' }}>
+                Connect with fellow entrepreneurs, get exclusive insights, and be part of a thriving startup ecosystem.
+              </p>
 
-              {/* CTA Button */}
-              <motion.a
+              <div className="flex flex-wrap gap-10 justify-center mb-10">
+                {[{ v: '500+', l: 'Active Members' }, { v: '50+', l: 'Daily Discussions' }, { v: '24/7', l: 'Support' }].map((s, i) => (
+                  <div key={i} className="text-center">
+                    <div style={{ fontSize: '1.75rem', fontWeight: 900, color: '#f5f5f7', lineHeight: 1 }}>{s.v}</div>
+                    <div style={{ fontSize: '0.8125rem', color: '#5a5a6e', marginTop: '4px' }}>{s.l}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mx-auto mb-10 text-left">
+                {[
+                  'Exclusive startup insights and market trends',
+                  'Direct access to industry experts and mentors',
+                  'Networking with fellow entrepreneurs',
+                  'Early access to funding opportunities',
+                  'Periodic masterclasses and Q&A sessions',
+                  'Job opportunities and talent referrals',
+                ].map((b, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: '#8b5cf6' }} />
+                    <span style={{ fontSize: '0.875rem', color: '#8e8ea0' }}>{b}</span>
+                  </div>
+                ))}
+              </div>
+
+              <a
                 href="/community"
-                initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.9 }}
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative inline-flex items-center bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-500/40 overflow-hidden"
+                className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full text-white font-semibold"
+                style={{ background: '#8b5cf6', boxShadow: '0 4px 20px rgba(139,92,246,0.4)' }}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                <WhatsAppIcon className="w-6 h-6 mr-3 relative z-10 group-hover:scale-110 transition-transform duration-300" />
-                <span className="relative z-10">Join StartupOS Community</span>
-                <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-              </motion.a>
+                <WhatsAppIcon className="w-5 h-5" />
+                Join StartupOS Community
+                <ArrowRight className="w-4 h-4" />
+              </a>
 
-              {/* Additional Info */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1.0 }}
-                className="text-gray-900/60 text-sm mt-4"
-              >
-                Free to join • No spam • Instant access to 500+ entrepreneurs
-              </motion.p>
+              <p style={{ fontSize: '0.8125rem', color: '#3a3a4e', marginTop: '16px' }}>
+                Free to join · No spam · Instant access to 500+ entrepreneurs
+              </p>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Follow My Journey Section */}
+      {/* Follow My Journey */}
       <FollowMyJourney />
-
     </div>
   );
 };

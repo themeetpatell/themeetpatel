@@ -4,188 +4,208 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Cookie, Settings, Eye, Shield, Database, Globe, AlertCircle } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 
-const CookiePolicyPage = () => {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-white text-gray-900">
-      <SEOHead
-        title="Cookie Policy - The Meet Patel"
-        description="Cookie Policy for The Meet Patel's personal website. Learn about how we use cookies and similar technologies."
-        keywords="cookie policy, cookies, tracking, analytics, website cookies"
-        canonical="https://themeetpatel.com/cookie-policy"
-      />
+void motion;
 
-      {/* Header */}
-      <div className="bg-gradient-to-r from-cyan-900/20 to-teal-900/20 border-b border-purple-200/50 mt-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <div className="flex flex-col sm:flex-row items-center justify-center mb-6">
-              <Cookie className="w-10 h-10 sm:w-12 sm:h-12 text-purple-600 mb-4 sm:mb-0 sm:mr-4" />
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center sm:text-left">Cookie Policy</h1>
+const C = {
+  bg:           '#09090e',
+  surface:      '#111118',
+  elevated:     '#16161f',
+  border:       'rgba(255,255,255,0.07)',
+  primary:      '#f5f5f7',
+  secondary:    '#8e8ea0',
+  muted:        '#5a5a6e',
+  violet:       '#8b5cf6',
+  violetDim:    'rgba(139,92,246,0.10)',
+  violetBorder: 'rgba(139,92,246,0.22)',
+};
+
+const lastUpdated = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+function Section({ icon, title, children }) {
+  const IconComponent = icon;
+  return (
+    <div style={{ marginBottom: 40 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
+        <div style={{
+          width: 36, height: 36, borderRadius: 9, flexShrink: 0,
+          background: C.violetDim, border: `1px solid ${C.violetBorder}`,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>
+          {React.createElement(IconComponent, { size: 16, color: '#8b5cf6' })}
+        </div>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: C.primary, margin: 0, letterSpacing: '-0.01em' }}>{title}</h2>
+      </div>
+      <div style={{ paddingLeft: 48 }}>{children}</div>
+    </div>
+  );
+}
+
+function BodyText({ children }) {
+  return <p style={{ fontSize: 15, color: C.secondary, lineHeight: 1.75, margin: '0 0 12px' }}>{children}</p>;
+}
+
+function BulletList({ items }) {
+  return (
+    <ul style={{ margin: '8px 0 12px', paddingLeft: 20 }}>
+      {items.map((item, i) => (
+        <li key={i} style={{ fontSize: 15, color: C.secondary, lineHeight: 1.7, marginBottom: 6 }}>{item}</li>
+      ))}
+    </ul>
+  );
+}
+
+function SubSection({ icon, iconColor, title, children }) {
+  const IconComponent = icon;
+  return (
+    <div style={{ background: C.elevated, border: `1px solid ${C.border}`, borderRadius: 12, padding: '20px 24px', marginBottom: 16 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 12 }}>
+        {React.createElement(IconComponent, { size: 16, color: iconColor })}
+        <h3 style={{ fontSize: 15, fontWeight: 700, color: C.primary, margin: 0 }}>{title}</h3>
+      </div>
+      {children}
+    </div>
+  );
+}
+
+const CookiePolicyPage = () => (
+  <>
+    <SEOHead
+      title="Cookie Policy — The Meet Patel"
+      description="Cookie Policy for The Meet Patel's personal website. Learn about how we use cookies and similar technologies."
+      keywords="The Meet Patel cookie policy, Meet Patel cookies, themeetpatel cookie policy, website cookies, analytics cookies"
+      canonical="/cookie-policy"
+    />
+
+    <style>{`* { box-sizing: border-box; } * { -webkit-font-smoothing: antialiased; }`}</style>
+
+    <div style={{ background: C.bg, minHeight: '100vh', color: C.primary, fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+
+      {/* ── Header ──────────────────────────────────────────────────────────── */}
+      <section style={{
+        position: 'relative', overflow: 'hidden',
+        padding: 'clamp(100px, 13vw, 150px) 24px clamp(48px, 7vw, 72px)',
+        borderBottom: `1px solid ${C.border}`,
+      }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(139,92,246,0.06) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }} />
+        <div style={{ position: 'relative', maxWidth: 800, margin: '0 auto' }}>
+          <motion.div initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }} style={{ marginBottom: 28 }}>
+            <Link
+              to="/"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 500, color: C.muted, textDecoration: 'none', transition: 'color 0.2s' }}
+              onMouseEnter={e => e.currentTarget.style.color = C.secondary}
+              onMouseLeave={e => e.currentTarget.style.color = C.muted}
+            >
+              <ArrowLeft size={14} /> Back to Home
+            </Link>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
+              <div style={{ width: 52, height: 52, borderRadius: 14, background: C.violetDim, border: `1px solid ${C.violetBorder}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Cookie size={24} color="#8b5cf6" />
+              </div>
+              <div>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8b5cf6', display: 'block', marginBottom: 4 }}>Legal</span>
+                <h1 style={{ fontSize: 'clamp(28px, 5vw, 44px)', fontWeight: 800, letterSpacing: '-0.03em', margin: 0, color: C.primary }}>Cookie Policy</h1>
+              </div>
             </div>
-            <p className="text-lg sm:text-xl text-purple-600 max-w-3xl mx-auto px-4">
+            <p style={{ fontSize: 16, color: C.secondary, lineHeight: 1.65, maxWidth: 520, margin: '0 0 12px' }}>
               Learn about how we use cookies and similar technologies to enhance your browsing experience.
             </p>
-            <div className="mt-6">
-              <Link
-                to="/"
-                className="inline-flex items-center text-purple-600 hover:text-purple-500 transition-colors"
-              >
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Home
-              </Link>
-            </div>
+            <span style={{ fontSize: 13, color: C.muted }}>Last updated: {lastUpdated}</span>
           </motion.div>
         </div>
-      </div>
+      </section>
 
-      {/* Content */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-          <motion.div
-          initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="prose prose-lg prose-invert max-w-none"
-        >
-          <div className="bg-white/80 rounded-2xl p-4 sm:p-6 lg:p-8 border border-purple-200/50">
-            <p className="text-gray-700 mb-6">
-              <strong>Last updated:</strong> {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-            </p>
+      {/* ── Content ─────────────────────────────────────────────────────────── */}
+      <section style={{ maxWidth: 800, margin: '0 auto', padding: '56px 24px 100px' }}>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }}>
+          <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 20, padding: 'clamp(28px, 4vw, 48px)' }}>
 
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center">
-              <Cookie className="w-6 h-6 mr-3 text-purple-600" />
-              What Are Cookies?
-            </h2>
-            <div className="text-gray-700 space-y-4">
-              <p>Cookies are small text files that are stored on your device when you visit our website. They help us provide you with a better browsing experience by remembering your preferences and analyzing how you use our site.</p>
-            </div>
+            <Section icon={Cookie} title="What Are Cookies?">
+              <BodyText>Cookies are small text files that are stored on your device when you visit our website. They help us provide you with a better browsing experience by remembering your preferences and analyzing how you use our site.</BodyText>
+            </Section>
 
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center mt-8">
-              <Settings className="w-6 h-6 mr-3 text-purple-600" />
-              Types of Cookies We Use
-            </h2>
-            <div className="text-gray-700 space-y-6">
-              
-              <div className="bg-white/80 rounded-xl p-4 sm:p-6 border border-purple-200/50">
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 flex items-center">
-                  <Shield className="w-5 h-5 mr-2 text-green-400" />
-                  Essential Cookies
-                </h3>
-                <p className="mb-3">These cookies are necessary for the website to function properly and cannot be disabled.</p>
-                <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li>Session management and security</li>
-                  <li>Form submission and validation</li>
-                  <li>User authentication</li>
-                  <li>Website functionality</li>
-              </ul>
-              </div>
+            <Section icon={Settings} title="Types of Cookies We Use">
+              <SubSection icon={Shield} iconColor="#22c55e" title="Essential Cookies">
+                <BodyText>These cookies are necessary for the website to function properly and cannot be disabled.</BodyText>
+                <BulletList items={['Session management and security', 'Form submission and validation', 'User authentication', 'Website functionality']} />
+              </SubSection>
 
-              <div className="bg-white/80 rounded-xl p-4 sm:p-6 border border-purple-200/50">
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 flex items-center">
-                  <Database className="w-5 h-5 mr-2 text-purple-500" />
-                  Analytics Cookies
-                </h3>
-                <p className="mb-3">These cookies help us understand how visitors interact with our website.</p>
-                <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li>Google Analytics for website traffic analysis</li>
-                  <li>Page views and user behavior tracking</li>
-                  <li>Performance monitoring and optimization</li>
-                  <li>User journey analysis</li>
-              </ul>
-              </div>
+              <SubSection icon={Database} iconColor="#8b5cf6" title="Analytics Cookies">
+                <BodyText>These cookies help us understand how visitors interact with our website.</BodyText>
+                <BulletList items={['Google Analytics for website traffic analysis', 'Page views and user behavior tracking', 'Performance monitoring and optimization', 'User journey analysis']} />
+              </SubSection>
 
-              <div className="bg-white/80 rounded-xl p-4 sm:p-6 border border-purple-200/50">
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 flex items-center">
-                  <Eye className="w-5 h-5 mr-2 text-purple-400" />
-                  Functional Cookies
-                </h3>
-                <p className="mb-3">These cookies enhance your experience by remembering your preferences.</p>
-                <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li>Language and region preferences</li>
-                  <li>Theme and display settings</li>
-                  <li>Form data and user inputs</li>
-                  <li>Personalized content delivery</li>
-              </ul>
-              </div>
+              <SubSection icon={Eye} iconColor="#a78bfa" title="Functional Cookies">
+                <BodyText>These cookies enhance your experience by remembering your preferences.</BodyText>
+                <BulletList items={['Language and region preferences', 'Theme and display settings', 'Form data and user inputs', 'Personalized content delivery']} />
+              </SubSection>
 
-              <div className="bg-white/80 rounded-xl p-4 sm:p-6 border border-purple-200/50">
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 flex items-center">
-                  <Globe className="w-5 h-5 mr-2 text-orange-400" />
-                  Third-Party Cookies
-                </h3>
-                <p className="mb-3">These cookies are set by third-party services we use.</p>
-                <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li>Social media integration (LinkedIn, Twitter, etc.)</li>
-                  <li>Email marketing and newsletter services</li>
-                  <li>Customer support and chat widgets</li>
-                  <li>Payment processing services</li>
-              </ul>
-              </div>
-            </div>
+              <SubSection icon={Globe} iconColor="#f97316" title="Third-Party Cookies">
+                <BodyText>These cookies are set by third-party services we use.</BodyText>
+                <BulletList items={['Social media integration (LinkedIn, Twitter, etc.)', 'Email marketing and newsletter services', 'Customer support and chat widgets', 'Payment processing services']} />
+              </SubSection>
+            </Section>
 
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center mt-8">
-              <Settings className="w-6 h-6 mr-3 text-purple-600" />
-              Managing Your Cookie Preferences
-            </h2>
-            <div className="text-gray-700 space-y-4">
-              <p>You can control and manage cookies in several ways:</p>
-              
-              <div className="bg-white/80 rounded-xl p-4 sm:p-6 border border-purple-200/50">
-                <h3 className="text-lg font-semibold text-white mb-3">Browser Settings</h3>
-                <p className="mb-3">Most web browsers allow you to control cookies through their settings:</p>
-                <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li><strong>Chrome:</strong> Settings → Privacy and Security → Cookies and other site data</li>
-                  <li><strong>Firefox:</strong> Options → Privacy & Security → Cookies and Site Data</li>
-                  <li><strong>Safari:</strong> Preferences → Privacy → Manage Website Data</li>
-                  <li><strong>Edge:</strong> Settings → Cookies and site permissions</li>
-                </ul>
-              </div>
+            <Section icon={Settings} title="Managing Your Cookie Preferences">
+              <SubSection icon={Settings} iconColor="#8b5cf6" title="Browser Settings">
+                <BodyText>Most web browsers allow you to control cookies through their settings:</BodyText>
+                <BulletList items={['Chrome: Settings → Privacy and Security → Cookies and other site data', 'Firefox: Options → Privacy & Security → Cookies and Site Data', 'Safari: Preferences → Privacy → Manage Website Data', 'Edge: Settings → Cookies and site permissions']} />
+              </SubSection>
 
-              <div className="bg-white/80 rounded-xl p-4 sm:p-6 border border-purple-200/50">
-                <h3 className="text-lg font-semibold text-white mb-3">Cookie Consent</h3>
-                <p>When you first visit our website, you'll see a cookie consent banner where you can choose which types of cookies to accept or reject.</p>
-              </div>
-            </div>
+              <SubSection icon={Shield} iconColor="#22c55e" title="Cookie Consent">
+                <BodyText>When you first visit our website, you'll see a cookie consent banner where you can choose which types of cookies to accept or reject.</BodyText>
+              </SubSection>
+            </Section>
 
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center mt-8">
-              <AlertCircle className="w-6 h-6 mr-3 text-purple-600" />
-              Important Notes
-            </h2>
-            <div className="text-gray-700 space-y-4">
-              <div className="bg-yellow-500/10 rounded-xl p-4 sm:p-6 border border-yellow-500/20">
-                <p className="text-yellow-200">
+            <Section icon={AlertCircle} title="Important Notes">
+              <div style={{ background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: 12, padding: '16px 20px', marginBottom: 16 }}>
+                <p style={{ fontSize: 13, color: '#d4a847', margin: 0, lineHeight: 1.6 }}>
                   <strong>Note:</strong> Disabling certain cookies may affect the functionality of our website and your user experience. Essential cookies cannot be disabled as they are necessary for the website to work properly.
                 </p>
               </div>
-              
-              <div className="bg-purple-600/10 rounded-xl p-4 sm:p-6 border border-purple-600/20">
-                <p className="text-blue-200">
-                  <strong>Updates:</strong> We may update this Cookie Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons.
+              <div style={{ background: C.violetDim, border: `1px solid ${C.violetBorder}`, borderRadius: 12, padding: '16px 20px' }}>
+                <p style={{ fontSize: 13, color: C.secondary, margin: 0, lineHeight: 1.6 }}>
+                  <strong style={{ color: C.primary }}>Updates:</strong> We may update this Cookie Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons.
                 </p>
               </div>
-            </div>
+            </Section>
 
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center mt-8">
-              <Shield className="w-6 h-6 mr-3 text-purple-600" />
-              Contact Us
-            </h2>
-            <div className="text-gray-700 space-y-4">
-              <p>If you have any questions about our use of cookies, please contact us:</p>
-              <div className="bg-white/80 rounded-xl p-4 sm:p-6 border border-purple-200/50">
-                <p><strong>Email:</strong> the.meetpatell@gmail.com</p>
-                <p><strong>Phone:</strong> +971 54 754 1414</p>
-                <p><strong>Location:</strong> Dubai, UAE</p>
+            <Section icon={Shield} title="Contact Us">
+              <BodyText>If you have any questions about our use of cookies, please contact us:</BodyText>
+              <div style={{ background: C.elevated, border: `1px solid ${C.border}`, borderRadius: 12, padding: '20px 24px', marginTop: 8 }}>
+                {[['Email', 'the.meetpatell@gmail.com'], ['Phone', '+971 54 754 1414'], ['Location', 'Dubai, UAE']].map(([label, value]) => (
+                  <div key={label} style={{ display: 'flex', gap: 12, marginBottom: 8 }}>
+                    <span style={{ fontSize: 13, fontWeight: 600, color: C.secondary, minWidth: 70 }}>{label}:</span>
+                    <span style={{ fontSize: 13, color: C.primary }}>{value}</span>
+                  </div>
+                ))}
               </div>
-            </div>
+            </Section>
+          </div>
+
+          <div style={{ display: 'flex', gap: 20, marginTop: 32, flexWrap: 'wrap' }}>
+            {[['Privacy Policy', '/privacy-policy'], ['Terms of Service', '/terms-of-service']].map(([label, href]) => (
+              <Link
+                key={href}
+                to={href}
+                style={{ fontSize: 13, fontWeight: 500, color: C.muted, textDecoration: 'none', transition: 'color 0.2s' }}
+                onMouseEnter={e => e.currentTarget.style.color = '#8b5cf6'}
+                onMouseLeave={e => e.currentTarget.style.color = C.muted}
+              >
+                {label} →
+              </Link>
+            ))}
           </div>
         </motion.div>
-        </div>
+      </section>
     </div>
-  );
-};
+  </>
+);
 
 export default CookiePolicyPage;

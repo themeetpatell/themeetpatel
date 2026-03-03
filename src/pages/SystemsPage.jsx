@@ -11,6 +11,8 @@ import SEOHead from '../components/SEOHead';
 import FollowMyJourney from '../components/FollowMyJourney';
 import { systems } from '../data/systems';
 
+void motion;
+
 const SystemsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedTags, setSelectedTags] = useState([]);
@@ -60,7 +62,7 @@ const SystemsPage = () => {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Systems Built - The Meet Patel's Business Operations & Startup Systems",
-    "description": "Discover comprehensive business systems, processes, SOPs, workflows, and frameworks built by The Meet Patel across multiple ventures. From StartupOS to operational excellence systems for 10+ startups.",
+    "description": "Discover business systems, processes, SOPs, workflows, and frameworks built by The Meet Patel across multiple ventures and startup environments.",
     "url": "https://themeetpatel.com/systems",
     "mainEntity": {
       "@type": "Person",
@@ -76,13 +78,13 @@ const SystemsPage = () => {
         "addressRegion": "Dubai",
         "addressCountry": "AE"
       },
-      "email": "the.meetll@gmail.com",
+      "email": "the.meetpatell@gmail.com",
       "sameAs": [
         "https://www.linkedin.com/in/themeetpatel/",
         "https://x.com/the_meetpatel",
         "https://github.com/themeetpatell",
         "http://instagram.com/the.meetpatell/",
-        "https://youtube.com/@themeetpatel"
+        "https://medium.com/@themeetpatel"
       ]
     },
     "breadcrumb": {
@@ -121,9 +123,9 @@ const SystemsPage = () => {
   return (
     <div className="min-h-screen pt-16 ultra-gradient-bg">
       <SEOHead 
-        title="Systems Built - Biggventure CEO | BiggMate Founder | The Meet Patel's Business Operations"
-        description="Discover comprehensive business systems, processes, SOPs, workflows, and frameworks built by The Meet Patel, CEO of Biggventure and founder of BiggMate. From StartupOS (500+ members) to operational excellence systems for 10+ startups including ZeroHuman and MealVerse."
-        keywords="Systems The Meet Patel, Meet Patel business systems, themeetpatel processes, Biggventure systems, BiggMate processes, StartupOS systems, business operations systems, startup processes, SOPs frameworks, business workflows, operational excellence, startup scaling systems, business strategy systems, operations management, startup leadership systems, business growth systems, Dubai entrepreneur systems, serial entrepreneur processes, startup ecosystem systems, business development systems, product management systems, startup mentoring systems"
+        title="Systems Built | The Meet Patel Business Systems & Workflows"
+        description="Explore business systems, SOPs, workflows, and operating frameworks built by The Meet Patel for startups, growth teams, and operational excellence."
+        keywords="The Meet Patel systems, Meet Patel business systems, themeetpatel workflows, startup systems, SOP frameworks, business workflows, operational excellence, startup scaling systems, business strategy systems, operations management"
         canonical="/systems"
         ogImage="/systems-preview.jpg"
         structuredData={systemsStructuredData}

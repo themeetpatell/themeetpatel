@@ -1,31 +1,11 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Linkedin, 
-  Twitter, 
-  Github, 
-  Instagram, 
-  Youtube,
-  ArrowRight,
-  Heart,
-  Send,
-  MessageSquare,
-  Calendar,
-  Clock,
-  Globe,
-  Award,
-  Users,
-  BookOpen,
-  Briefcase,
-  User,
-  FolderOpen
+import {
+  Mail, MapPin, Linkedin, Twitter, Github, Instagram, Youtube,
+  Heart, Send
 } from 'lucide-react';
 import logoImage from '../assets/logo for themeetpatel.png';
-import { trackButtonClick, trackSocialClick, trackEmailClick, trackFormSubmission } from '../utils/analytics';
+import { trackButtonClick, trackSocialClick, trackFormSubmission } from '../utils/analytics';
 
 const UltraFooter = () => {
   const [email, setEmail] = useState('');
@@ -41,287 +21,234 @@ const UltraFooter = () => {
     }
   };
 
-  const footerSections = {
-    personal: {
-      title: "The Meet Patel",
-      description: "Serial entrepreneur, author, and mentor passionate about helping others succeed in their journey.",
-      links: [
-        { name: "About Me", href: "/about", icon: User },
-        { name: "My Story", href: "/about", icon: BookOpen },
-        { name: "Portfolio", href: "/portfolio", icon: Briefcase },
-        { name: "Contact", href: "/contact", icon: MessageSquare }
-      ]
-    },
-    projects: {
-      title: "Projects & Ventures",
-      links: [
-        { name: "BiggMate", href: "https://www.biggmate.com", external: true },
-        { name: "BiggBizz", href: "https://www.biggbizz.com", external: true },
-        { name: "Zerohuman", href: "https://www.zerohuman.co", external: true },
-        { name: "Mealverse", href: "https://www.mealverse.in", external: true },
-        { name: "Finanshels.com", href: "https://finanshels.com", external: true }
-      ]
-    },
-    writing: {
-      title: "Writing & Books",
-      links: [
-        { name: "The Eternal Love", href: "/The Eternal Love by The Meet Patel.pdf", external: false },
-        { name: "The Endless Devotion", href: "#", external: false },
-        { name: "Blog Articles", href: "/blogs", external: false },
-        { name: "Linkedin Newsletter", href: "https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7323218198735015937", external: true }
-      ]
-    },
-    navigation: {
-      title: "Quick Navigation",
-      links: [
-        { name: "About", href: "/about", external: false, icon: User },
-        { name: "Portfolio", href: "/portfolio", external: false, icon: FolderOpen },
-        { name: "Blog", href: "/blogs", external: false, icon: BookOpen },
-        { name: "Contact", href: "/contact", external: false, icon: MessageSquare }
-      ]
-    }
-  };
+  const ventures = [
+    { name: 'BiggMate', href: 'https://www.biggmate.com', external: true },
+    { name: 'BiggBizz', href: 'https://www.biggbizz.com', external: true },
+    { name: 'ZeroHuman', href: 'https://www.zerohuman.co', external: true },
+    { name: 'MealVerse', href: 'https://www.mealverse.in', external: true },
+    { name: 'Finanshels', href: 'https://finanshels.com', external: true },
+  ];
 
-  const contactInfo = {
-    email: "the.meetpatell@gmail.com",
-    phone: "+971 54 754 1414",
-    location: "Dubai, UAE"
-  };
+  const writing = [
+    { name: 'The Eternal Love', href: '/The Eternal Love by The Meet Patel.pdf', external: false },
+    { name: 'The Endless Devotion', href: '#', external: false },
+    { name: 'Blog Articles', href: '/blogs', external: false },
+    { name: 'LinkedIn Newsletter', href: 'https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7323218198735015937', external: true },
+  ];
 
+  const navLinks = [
+    { name: 'About', href: '/about' },
+    { name: 'Portfolio', href: '/portfolio' },
+    { name: 'Community', href: '/community' },
+    { name: 'Blog', href: '/blogs' },
+    { name: 'Contact', href: '/contact' },
+  ];
+
+  const socials = [
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/themeetpatel/', label: 'LinkedIn' },
+    { icon: Twitter, href: 'https://x.com/the_meetpatel', label: 'Twitter' },
+    { icon: Github, href: 'https://github.com/themeetpatell', label: 'GitHub' },
+    { icon: Instagram, href: 'http://instagram.com/the.meetpatell/', label: 'Instagram' },
+    { icon: Youtube, href: 'https://youtube.com/@themeetpatel', label: 'YouTube' },
+  ];
+
+  const muted = { color: '#5a5a6e', fontSize: '0.875rem' };
+  const colHead = {
+    color: '#f5f5f7',
+    fontSize: '0.75rem',
+    fontWeight: 700,
+    letterSpacing: '0.08em',
+    textTransform: 'uppercase',
+    marginBottom: '18px',
+    display: 'block'
+  };
 
   return (
-    <footer className="bg-gradient-to-br from-purple-50 via-pink-50 to-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(168,85,247,0.15),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(236,72,153,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(192,132,252,0.08),transparent_50%)]" />
-      </div>
-      
-      <div className="relative z-10">
-        {/* Main Footer Content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 sm:gap-12">
-            {/* Personal Section */}
-            <div className="lg:col-span-1">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="space-y-6"
-              >
-                <div>
-                  <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center overflow-hidden shadow-lg shadow-purple-200">
-                      <img
-                        src={logoImage}
-                        alt="The Meet Patel Logo"
-                        className="w-8 h-8 object-contain"
-                      />
-                    </div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900">The Meet Patel</h3>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed">
-                    {footerSections.personal.description}
-                  </p>
-                </div>
+    <footer style={{ backgroundColor: '#09090e', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
 
-                {/* Contact Info */}
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-3 text-gray-700">
-                    <Mail className="w-4 h-4 text-purple-600" />
-                    <a 
-                      href={`mailto:${contactInfo.email}`} 
-                      className="hover:text-purple-600 transition-colors"
-                      onClick={() => trackEmailClick('footer_contact')}
-                    >
-                      {contactInfo.email}
-                    </a>
-                  </div>
-                  <div className="flex items-center space-x-3 text-gray-700">
-                    <Phone className="w-4 h-4 text-purple-600" />
-                    <a 
-                      href={`tel:${contactInfo.phone}`} 
-                      className="hover:text-purple-600 transition-colors"
-                      onClick={() => trackButtonClick('phone_contact', 'footer')}
-                    >
-                      {contactInfo.phone}
-                    </a>
-                  </div>
-                  <div className="flex items-center space-x-3 text-gray-700">
-                    <MapPin className="w-4 h-4 text-purple-600" />
-                    <span>{contactInfo.location}</span>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-16 lg:py-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10">
 
-            {/* Projects Section */}
-            <div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              >
-                <h3 className="text-lg font-semibold text-gray-900 mb-6">{footerSections.projects.title}</h3>
-                <ul className="space-y-3">
-                  {footerSections.projects.links.map((link, index) => (
-                    <li key={index}>
-                      <motion.a
-                        href={link.href}
-                        target={link.external ? "_blank" : "_self"}
-                        rel={link.external ? "noopener noreferrer" : ""}
-                        whileHover={{ x: 5 }}
-                        className="flex items-center space-x-2 text-gray-600 hover:text-purple-600 transition-colors group"
-                        onClick={() => link.external ? trackExternalLink(link.href) : trackButtonClick(`footer_${link.name.toLowerCase().replace(/\s+/g, '_')}`, 'footer')}
-                      >
-                        <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                        <span>{link.name}</span>
-                      </motion.a>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </div>
+          {/* Brand Column */}
+          <div className="col-span-2 md:col-span-4 lg:col-span-2 space-y-6">
+            <Link to="/" className="inline-flex items-center gap-2.5">
+              <img src={logoImage} alt="Meet Patel" className="w-8 h-8 object-contain" style={{ opacity: 0.85 }} />
+              <span style={{ color: '#f5f5f7', fontWeight: 700, fontSize: '1rem' }}>Meet Patel</span>
+            </Link>
 
-            {/* Writing Section */}
-            <div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <h3 className="text-lg font-semibold text-gray-900 mb-6">{footerSections.writing.title}</h3>
-                <ul className="space-y-3">
-                  {footerSections.writing.links.map((link, index) => (
-                    <li key={index}>
-                      <motion.a
-                        href={link.href}
-                        target={link.external ? "_blank" : "_self"}
-                        rel={link.external ? "noopener noreferrer" : ""}
-                        whileHover={{ x: 5 }}
-                        className="flex items-center space-x-2 text-gray-600 hover:text-purple-600 transition-colors group"
-                        onClick={() => link.external ? trackExternalLink(link.href) : trackButtonClick(`footer_${link.name.toLowerCase().replace(/\s+/g, '_')}`, 'footer')}
-                      >
-                        <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                        <span>{link.name}</span>
-                      </motion.a>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </div>
+            <p style={{ color: '#5a5a6e', fontSize: '0.875rem', lineHeight: 1.75, maxWidth: '280px' }}>
+              Serial entrepreneur, author, and mentor. Building ventures that matter — from Dubai to the world.
+            </p>
 
-            {/* Navigation Section */}
-            <div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <h3 className="text-lg font-semibold text-gray-900 mb-6">{footerSections.navigation.title}</h3>
-                <ul className="space-y-3">
-                  {footerSections.navigation.links.map((link, index) => (
-                    <li key={index}>
-                      <motion.div whileHover={{ x: 5 }}>
-                        {link.external ? (
-                          <a
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center space-x-2 text-gray-600 hover:text-purple-600 transition-colors group"
-                            onClick={() => trackButtonClick(`footer_${link.name.toLowerCase()}`, 'footer_navigation')}
-                          >
-                            <link.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                            <span>{link.name}</span>
-                          </a>
-                        ) : (
-                          <Link
-                            to={link.href}
-                            className="flex items-center space-x-2 text-gray-600 hover:text-purple-600 transition-colors group"
-                            onClick={() => trackButtonClick(`footer_${link.name.toLowerCase()}`, 'footer_navigation')}
-                          >
-                            <link.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                            <span>{link.name}</span>
-                          </Link>
-                        )}
-                      </motion.div>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </div>
+            {/* Contact details */}
+            <div className="space-y-2.5">
+              <div className="flex items-center gap-2.5">
+                <Mail className="w-3.5 h-3.5 flex-shrink-0" style={{ color: '#8b5cf6' }} />
+                <a
+                  href="mailto:the.meetpatell@gmail.com"
+                  style={{ ...muted, transition: 'color 0.2s' }}
+                  onMouseEnter={e => e.target.style.color = '#f5f5f7'}
+                  onMouseLeave={e => e.target.style.color = '#5a5a6e'}
+                >the.meetpatell@gmail.com</a>
               </div>
+              <div className="flex items-center gap-2.5">
+                <MapPin className="w-3.5 h-3.5 flex-shrink-0" style={{ color: '#8b5cf6' }} />
+                <span style={muted}>Dubai, United Arab Emirates</span>
+              </div>
+            </div>
 
-          {/* Newsletter Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-16 pt-8 border-t border-purple-200"
-          >
-            <div className="max-w-2xl mx-auto text-center">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Stay Updated</h3>
-              <p className="text-gray-700 mb-8">
-                Get notified about new articles, projects, and insights from my entrepreneurial journey.
-              </p>
-              
-              {isSubscribed ? (
-                  <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="flex items-center justify-center space-x-2 text-purple-600"
+            {/* Social icons */}
+            <div className="flex items-center gap-2.5 pt-1">
+              {socials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={s.label}
+                  className="w-8 h-8 rounded-lg flex items-center justify-center"
+                  style={{ background: 'rgba(255,255,255,0.05)', color: '#5a5a6e', transition: 'all 0.2s' }}
+                  onMouseEnter={e => { e.currentTarget.style.background = 'rgba(139,92,246,0.15)'; e.currentTarget.style.color = '#8b5cf6'; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.color = '#5a5a6e'; }}
+                  onClick={() => trackSocialClick(s.label.toLowerCase())}
                 >
-                  <Heart className="w-5 h-5 fill-current" />
-                  <span className="font-medium">Thank you for subscribing!</span>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    className="flex-1 px-4 py-3 bg-white/80 border border-purple-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-gray-900 placeholder-gray-500"
-                    required
-                  />
-                  <motion.button
-                    type="submit"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg shadow-purple-200"
-                  >
-                    <Send className="w-4 h-4" />
-                    <span>Subscribe</span>
-                  </motion.button>
-                </form>
-              )}
+                  <s.icon className="w-4 h-4" />
+                </a>
+              ))}
             </div>
-                </motion.div>
           </div>
 
-        {/* Bottom Bar */}
-        <div className="bg-gradient-to-r from-purple-100 to-pink-100 border-t border-purple-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-              <div className="flex items-center space-x-2 text-gray-700">
-                <span>© 2025 The Meet Patel. Made with</span>
-                <Heart className="w-4 h-4 text-pink-500 fill-current" />
-                <span>in Dubai, UAE</span>
+          {/* Ventures */}
+          <div>
+            <span style={colHead}>Ventures</span>
+            <ul className="space-y-2.5">
+              {ventures.map((l) => (
+                <li key={l.name}>
+                  <a
+                    href={l.href}
+                    target={l.external ? '_blank' : '_self'}
+                    rel={l.external ? 'noopener noreferrer' : ''}
+                    style={{ ...muted, display: 'block', transition: 'color 0.2s' }}
+                    onMouseEnter={e => e.target.style.color = '#f5f5f7'}
+                    onMouseLeave={e => e.target.style.color = '#5a5a6e'}
+                    onClick={() => trackButtonClick(`footer_venture_${l.name.toLowerCase()}`, 'footer')}
+                  >{l.name}</a>
+                </li>
+              ))}
+            </ul>
           </div>
 
-                <div className="flex items-center space-x-6">
-                <Link to="/privacy-policy" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">
-                      Privacy Policy
-                    </Link>
-                <Link to="/cookie-policy" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">
-                  Cookie Policy
-                    </Link>
-                <Link to="/terms-of-service" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">
-                  Terms of Service
-                    </Link>
-              </div>
+          {/* Writing */}
+          <div>
+            <span style={colHead}>Writing</span>
+            <ul className="space-y-2.5">
+              {writing.map((l) => (
+                <li key={l.name}>
+                  <a
+                    href={l.href}
+                    target={l.external ? '_blank' : '_self'}
+                    rel={l.external ? 'noopener noreferrer' : ''}
+                    style={{ ...muted, display: 'block', transition: 'color 0.2s' }}
+                    onMouseEnter={e => e.target.style.color = '#f5f5f7'}
+                    onMouseLeave={e => e.target.style.color = '#5a5a6e'}
+                  >{l.name}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Navigation */}
+          <div>
+            <span style={colHead}>Navigate</span>
+            <ul className="space-y-2.5">
+              {navLinks.map((l) => (
+                <li key={l.name}>
+                  <Link
+                    to={l.href}
+                    style={{ ...muted, display: 'block', transition: 'color 0.2s' }}
+                    onMouseEnter={e => e.target.style.color = '#f5f5f7'}
+                    onMouseLeave={e => e.target.style.color = '#5a5a6e'}
+                    onClick={() => trackButtonClick(`footer_${l.name.toLowerCase()}`, 'footer')}
+                  >{l.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Newsletter strip */}
+        <div
+          className="mt-14 pt-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+          style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+        >
+          <div>
+            <p style={{ color: '#f5f5f7', fontWeight: 700, fontSize: '1rem', marginBottom: '4px' }}>Stay in the loop</p>
+            <p style={{ color: '#5a5a6e', fontSize: '0.875rem' }}>New articles, projects, and insights from the journey.</p>
+          </div>
+
+          {isSubscribed ? (
+            <div className="flex items-center gap-2" style={{ color: '#8b5cf6', fontSize: '0.875rem', fontWeight: 600 }}>
+              <Heart className="w-4 h-4" />
+              Thank you for subscribing!
             </div>
+          ) : (
+            <form onSubmit={handleSubscribe} className="flex gap-2">
+              <input
+                type="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder="your@email.com"
+                required
+                style={{
+                  background: '#111118',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  borderRadius: '50px',
+                  padding: '10px 18px',
+                  color: '#f5f5f7',
+                  fontSize: '0.875rem',
+                  outline: 'none',
+                  width: '220px',
+                  transition: 'border-color 0.2s'
+                }}
+                onFocus={e => e.target.style.borderColor = 'rgba(139,92,246,0.4)'}
+                onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
+              />
+              <button
+                type="submit"
+                className="flex items-center gap-1.5 px-5 py-2.5 rounded-full text-white text-sm font-semibold"
+                style={{ background: '#8b5cf6', whiteSpace: 'nowrap', flexShrink: 0, transition: 'background 0.2s' }}
+                onMouseEnter={e => e.currentTarget.style.background = '#7c3aed'}
+                onMouseLeave={e => e.currentTarget.style.background = '#8b5cf6'}
+              >
+                <Send className="w-3.5 h-3.5" />
+                Subscribe
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
+
+      {/* Bottom bar */}
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <span style={{ color: '#3a3a4e', fontSize: '0.8125rem' }}>
+            © 2025 The Meet Patel. All rights reserved.
+          </span>
+          <div className="flex items-center gap-5">
+            {[
+              { label: 'Privacy Policy', href: '/privacy-policy' },
+              { label: 'Cookie Policy', href: '/cookie-policy' },
+              { label: 'Terms of Service', href: '/terms-of-service' },
+            ].map((l) => (
+              <Link
+                key={l.label}
+                to={l.href}
+                style={{ color: '#3a3a4e', fontSize: '0.8125rem', transition: 'color 0.2s' }}
+                onMouseEnter={e => e.target.style.color = '#8e8ea0'}
+                onMouseLeave={e => e.target.style.color = '#3a3a4e'}
+              >{l.label}</Link>
+            ))}
           </div>
         </div>
       </div>
@@ -329,4 +256,4 @@ const UltraFooter = () => {
   );
 };
 
-export default UltraFooter; 
+export default UltraFooter;
