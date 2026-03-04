@@ -348,7 +348,7 @@ const BlogArticlePage = () => {
         </div>
 
         {/* ── Hero header ───────────────────────────────────────────────────── */}
-        <section style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(100px, 12vw, 150px) 0 clamp(48px, 6vw, 72px)' }}>
+        <section style={{ position: 'relative', overflowX: 'hidden', overflowY: 'visible', zIndex: 2, padding: 'clamp(100px, 12vw, 150px) 0 clamp(48px, 6vw, 72px)' }}>
           <div style={{
             position: 'absolute', inset: 0,
             background: 'radial-gradient(ellipse 70% 55% at 50% 30%, rgba(139,92,246,0.07) 0%, transparent 65%)',
