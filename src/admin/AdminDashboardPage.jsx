@@ -64,7 +64,6 @@ export default function AdminDashboardPage() {
 
   const published  = articles.filter(a => a.status === 'published').length;
   const drafts     = articles.filter(a => a.status === 'draft').length;
-  const scheduled  = articles.filter(a => a.status === 'scheduled').length;
   const totalViews = articles.reduce((sum, a) => sum + (a.views || 0), 0);
 
   const recent = [...articles]

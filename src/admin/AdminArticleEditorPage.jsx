@@ -113,15 +113,6 @@ export default function AdminArticleEditorPage() {
     }
   }, [form.title, slugEdited, isNew]);
 
-  // Auto-save every 30 seconds
-  useEffect(() => {
-    if (autoSaveTimer.current) clearTimeout(autoSaveTimer.current);
-    autoSaveTimer.current = setTimeout(() => {
-      if (form.title) doSave(true);
-    }, 30000);
-    return () => clearTimeout(autoSaveTimer.current);
-  }, [form]);
-
   const doSave = useCallback(async (silent = false) => {
     if (!form.title) {
       if (!silent) toast.error('Title is required');
@@ -151,6 +142,15 @@ export default function AdminArticleEditorPage() {
       setSaving(false);
     }
   }, [form]);
+
+  // Auto-save every 30 seconds when the form has a title.
+  useEffect(() => {
+    if (autoSaveTimer.current) clearTimeout(autoSaveTimer.current);
+    autoSaveTimer.current = setTimeout(() => {
+      if (form.title) doSave(true);
+    }, 30000);
+    return () => clearTimeout(autoSaveTimer.current);
+  }, [doSave, form.title]);
 
   const doPrimaryAction = useCallback(async () => {
     if (!form.title) { toast.error('Title is required'); return; }

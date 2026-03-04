@@ -1,199 +1,168 @@
 import React, { useEffect } from 'react';
 
+const getGtag = () => {
+  if (typeof window === 'undefined') return null;
+  return typeof window.gtag === 'function' ? window.gtag : null;
+};
+
+const trackEvent = (eventName, params = {}) => {
+  const gtag = getGtag();
+  if (!gtag) return;
+  gtag('event', eventName, params);
+};
+
 const SEOPerformance = () => {
   useEffect(() => {
-    // Google Analytics 4 Event Tracking
-    const trackPageView = () => {
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'page_view', {
-          page_title: document.title,
-          page_location: window.location.href,
-          page_path: window.location.pathname
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
+      return undefined;
+    }
+
+    trackEvent('page_view', {
+      page_title: document.title,
+      page_location: window.location.href,
+      page_path: window.location.pathname,
+    });
+
+    const scrollThresholds = [25, 50, 75, 90, 100];
+    const firedScrollThresholds = new Set();
+    const handleScroll = () => {
+      const denominator = document.documentElement.scrollHeight - window.innerHeight;
+      if (denominator <= 0) return;
+      const scrollPercent = Math.round((window.scrollY / denominator) * 100);
+
+      scrollThresholds.forEach((threshold) => {
+        if (scrollPercent >= threshold && !firedScrollThresholds.has(threshold)) {
+          firedScrollThresholds.add(threshold);
+          trackEvent('scroll', {
+            event_category: 'engagement',
+            event_label: `${threshold}%`,
+            value: threshold,
+          });
+        }
+      });
+    };
+
+    const startTime = Date.now();
+    const handleBeforeUnload = () => {
+      const timeOnPage = Math.round((Date.now() - startTime) / 1000);
+      trackEvent('timing_complete', {
+        name: 'time_on_page',
+        value: timeOnPage,
+      });
+    };
+
+    const formListeners = [];
+    document.querySelectorAll('form').forEach((form) => {
+      const handler = () => {
+        trackEvent('form_submit', {
+          event_category: 'engagement',
+          event_label: form.id || 'contact_form',
         });
+      };
+      form.addEventListener('submit', handler);
+      formListeners.push([form, handler]);
+    });
+
+    const externalLinkListeners = [];
+    document.querySelectorAll('a[href^="http"]').forEach((link) => {
+      const handler = () => {
+        trackEvent('click', {
+          event_category: 'outbound',
+          event_label: link.href,
+          transport_type: 'beacon',
+        });
+      };
+      link.addEventListener('click', handler);
+      externalLinkListeners.push([link, handler]);
+    });
+
+    const ctaListeners = [];
+    document.querySelectorAll('a[href="/contact"], a[href="/about"], button').forEach((button) => {
+      const handler = () => {
+        trackEvent('cta_click', {
+          event_category: 'engagement',
+          event_label: button.textContent || button.getAttribute('href') || 'button',
+        });
+      };
+      button.addEventListener('click', handler);
+      ctaListeners.push([button, handler]);
+    });
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+
+      formListeners.forEach(([form, handler]) => form.removeEventListener('submit', handler));
+      externalLinkListeners.forEach(([link, handler]) => link.removeEventListener('click', handler));
+      ctaListeners.forEach(([button, handler]) => button.removeEventListener('click', handler));
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof PerformanceObserver === 'undefined') {
+      return undefined;
+    }
+
+    const observers = [];
+    const safeObserve = (observer, options) => {
+      try {
+        observer.observe(options);
+        observers.push(observer);
+      } catch {
+        observer.disconnect();
       }
     };
 
-    // Track scroll depth
-    const trackScrollDepth = () => {
-      let maxScroll = 0;
-      const scrollThresholds = [25, 50, 75, 90, 100];
-      
-      const handleScroll = () => {
-        const scrollPercent = Math.round(
-          (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
-        );
-        
-        if (scrollPercent > maxScroll) {
-          maxScroll = scrollPercent;
-          
-          scrollThresholds.forEach(threshold => {
-            if (scrollPercent >= threshold && maxScroll >= threshold) {
-              if (typeof gtag !== 'undefined') {
-                gtag('event', 'scroll', {
-                  event_category: 'engagement',
-                  event_label: `${threshold}%`,
-                  value: threshold
-                });
-              }
-            }
-          });
+    const lcpObserver = new PerformanceObserver((list) => {
+      const entries = list.getEntries();
+      const lastEntry = entries[entries.length - 1];
+      if (!lastEntry) return;
+      trackEvent('web_vitals', {
+        event_category: 'performance',
+        event_label: 'LCP',
+        value: Math.round(lastEntry.startTime),
+      });
+    });
+    safeObserve(lcpObserver, { entryTypes: ['largest-contentful-paint'] });
+
+    const fidObserver = new PerformanceObserver((list) => {
+      list.getEntries().forEach((entry) => {
+        const delay = entry.processingStart - entry.startTime;
+        if (!Number.isFinite(delay)) return;
+        trackEvent('web_vitals', {
+          event_category: 'performance',
+          event_label: 'FID',
+          value: Math.round(delay),
+        });
+      });
+    });
+    safeObserve(fidObserver, { entryTypes: ['first-input'] });
+
+    let clsValue = 0;
+    const clsObserver = new PerformanceObserver((list) => {
+      list.getEntries().forEach((entry) => {
+        if (!entry.hadRecentInput && typeof entry.value === 'number') {
+          clsValue += entry.value;
         }
-      };
-
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      return () => window.removeEventListener('scroll', handleScroll);
-    };
-
-    // Track time on page
-    const trackTimeOnPage = () => {
-      const startTime = Date.now();
-      
-      const handleBeforeUnload = () => {
-        const timeOnPage = Math.round((Date.now() - startTime) / 1000);
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'timing_complete', {
-            name: 'time_on_page',
-            value: timeOnPage
-          });
-        }
-      };
-
-      window.addEventListener('beforeunload', handleBeforeUnload);
-      return () => window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-
-    // Track form interactions
-    const trackFormInteractions = () => {
-      const forms = document.querySelectorAll('form');
-      
-      forms.forEach(form => {
-        form.addEventListener('submit', (e) => {
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'form_submit', {
-              event_category: 'engagement',
-              event_label: form.id || 'contact_form'
-            });
-          }
-        });
       });
-    };
 
-    // Track external link clicks
-    const trackExternalLinks = () => {
-      const externalLinks = document.querySelectorAll('a[href^="http"]');
-      
-      externalLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'click', {
-              event_category: 'outbound',
-              event_label: link.href,
-              transport_type: 'beacon'
-            });
-          }
-        });
+      trackEvent('web_vitals', {
+        event_category: 'performance',
+        event_label: 'CLS',
+        value: Math.round(clsValue * 1000),
       });
-    };
+    });
+    safeObserve(clsObserver, { entryTypes: ['layout-shift'] });
 
-    // Track CTA clicks
-    const trackCTAClicks = () => {
-      const ctaButtons = document.querySelectorAll('a[href="/contact"], a[href="/about"], button');
-      
-      ctaButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'cta_click', {
-              event_category: 'engagement',
-              event_label: button.textContent || button.href
-            });
-          }
-        });
-      });
-    };
-
-    // Initialize tracking
-    trackPageView();
-    const cleanupScroll = trackScrollDepth();
-    const cleanupTime = trackTimeOnPage();
-    trackFormInteractions();
-    trackExternalLinks();
-    trackCTAClicks();
-
-    // Cleanup
     return () => {
-      if (cleanupScroll) cleanupScroll();
-      if (cleanupTime) cleanupTime();
+      observers.forEach((observer) => observer.disconnect());
     };
   }, []);
 
-  // Core Web Vitals monitoring
-  useEffect(() => {
-    const measureWebVitals = () => {
-      // Largest Contentful Paint (LCP)
-      const observer = new PerformanceObserver((list) => {
-        const entries = list.getEntries();
-        const lastEntry = entries[entries.length - 1];
-        
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'web_vitals', {
-            event_category: 'performance',
-            event_label: 'LCP',
-            value: Math.round(lastEntry.startTime)
-          });
-        }
-      });
-      
-      observer.observe({ entryTypes: ['largest-contentful-paint'] });
-
-      // First Input Delay (FID)
-      const fidObserver = new PerformanceObserver((list) => {
-        const entries = list.getEntries();
-        entries.forEach((entry) => {
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'web_vitals', {
-              event_category: 'performance',
-              event_label: 'FID',
-              value: Math.round(entry.processingStart - entry.startTime)
-            });
-          }
-        });
-      });
-      
-      fidObserver.observe({ entryTypes: ['first-input'] });
-
-      // Cumulative Layout Shift (CLS)
-      let clsValue = 0;
-      const clsObserver = new PerformanceObserver((list) => {
-        const entries = list.getEntries();
-        entries.forEach((entry) => {
-          if (!entry.hadRecentInput) {
-            clsValue += entry.value;
-          }
-        });
-        
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'web_vitals', {
-            event_category: 'performance',
-            event_label: 'CLS',
-            value: Math.round(clsValue * 1000)
-          });
-        }
-      });
-      
-      clsObserver.observe({ entryTypes: ['layout-shift'] });
-
-      return () => {
-        observer.disconnect();
-        fidObserver.disconnect();
-        clsObserver.disconnect();
-      };
-    };
-
-    const cleanup = measureWebVitals();
-    return cleanup;
-  }, []);
-
-  return null; // This component doesn't render anything
+  return null;
 };
 
 export default SEOPerformance;

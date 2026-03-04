@@ -346,12 +346,6 @@ const AboutPage = () => {
                 transition={{ duration: 0.5, delay: 0.16 }}
                 className="space-y-4"
               >
-                <p style={{ fontSize: '1.0625rem', color: T.sub, lineHeight: 1.8, maxWidth: '640px' }}>
-                  {personalInfo.bio}
-                </p>
-                <p style={{ fontSize: '0.95rem', color: T.muted, lineHeight: 1.75, maxWidth: '620px' }}>
-                  I build ventures, shape strategy, hire strong teams, and bring momentum to ambitious ideas without losing the human side of the work.
-                </p>
               </motion.div>
 
               <motion.div
@@ -419,12 +413,7 @@ const AboutPage = () => {
             >
               <div
                 style={{
-                  ...card,
-                  padding: '18px',
-                  background: 'linear-gradient(180deg, rgba(155,139,255,0.08), rgba(13,14,22,1))',
-                  border: '1px solid rgba(155,139,255,0.18)',
-                  borderRadius: '28px',
-                  boxShadow: '0 24px 80px rgba(0,0,0,0.35)',
+                  background: 'transparent',
                 }}
               >
                 <div style={{ position: 'relative', borderRadius: '24px', overflow: 'hidden' }}>
@@ -457,23 +446,6 @@ const AboutPage = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-3 mt-4">
-                  {heroStats.map((s) => (
-                    <div
-                      key={s.label}
-                      style={{
-                        background: 'rgba(7,7,13,0.76)',
-                        border: `1px solid ${T.border}`,
-                        borderRadius: '18px',
-                        padding: '16px 14px',
-                        textAlign: 'center',
-                      }}
-                    >
-                      <div style={{ fontSize: '1.85rem', fontWeight: 900, lineHeight: 1, color: T.text }}>{s.value}</div>
-                      <div style={{ fontSize: '0.78rem', color: T.muted, marginTop: '6px' }}>{s.label}</div>
-                    </div>
-                  ))}
-                </div>
               </div>
             </motion.div>
           </div>

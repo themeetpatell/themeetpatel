@@ -183,34 +183,236 @@ export default function TiptapEditor({ content, onChange, onWordCountChange }) {
       </div>
 
       <style>{`
-        .tiptap-link { color: #8b5cf6; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
-        .ProseMirror { outline: none; padding: 20px 0 24px; color: ${C.secondary}; line-height: 1.8; font-size: 15px; min-height: 360px; }
-        .ProseMirror p.is-editor-empty:first-child::before { content: attr(data-placeholder); color: ${C.muted}; pointer-events: none; float: left; height: 0; }
-        .ProseMirror h1, .ProseMirror h2, .ProseMirror h3, .ProseMirror h4 { color: ${C.primary}; font-weight: 700; line-height: 1.3; margin: 24px 0 12px; letter-spacing: -0.02em; }
+        /* ── Base ── */
+        .ProseMirror {
+          outline: none;
+          padding: 24px 0 32px;
+          color: ${C.secondary};
+          line-height: 1.85;
+          font-size: 15px;
+          min-height: 400px;
+          caret-color: #8b5cf6;
+        }
+
+        /* ── Placeholder ── */
+        .ProseMirror p.is-editor-empty:first-child::before {
+          content: attr(data-placeholder);
+          color: ${C.muted};
+          pointer-events: none;
+          float: left;
+          height: 0;
+        }
+
+        /* ── Headings ── */
+        .ProseMirror h1,
+        .ProseMirror h2,
+        .ProseMirror h3,
+        .ProseMirror h4 {
+          color: ${C.primary};
+          font-weight: 700;
+          line-height: 1.3;
+          margin: 28px 0 12px;
+          letter-spacing: -0.02em;
+        }
         .ProseMirror h1 { font-size: 28px; }
-        .ProseMirror h2 { font-size: 22px; border-bottom: 1px solid ${C.border}; padding-bottom: 8px; }
-        .ProseMirror h3 { font-size: 18px; }
-        .ProseMirror h4 { font-size: 15px; }
-        .ProseMirror p  { margin: 0 0 12px; }
+        .ProseMirror h2 {
+          font-size: 22px;
+          border-bottom: 1px solid ${C.border};
+          padding-bottom: 8px;
+        }
+        .ProseMirror h3 { font-size: 18px; color: ${C.primary}; }
+        .ProseMirror h4 { font-size: 15px; color: ${C.primary}; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        /* ── Paragraph ── */
+        .ProseMirror p { margin: 0 0 14px; }
+
+        /* ── Inline marks ── */
         .ProseMirror strong { color: ${C.primary}; font-weight: 700; }
-        .ProseMirror em { font-style: italic; }
+        .ProseMirror em { font-style: italic; color: ${C.secondary}; }
         .ProseMirror u { text-decoration: underline; text-underline-offset: 3px; }
-        .ProseMirror s { text-decoration: line-through; }
-        .ProseMirror mark { background: rgba(139,92,246,0.25); color: ${C.primary}; padding: 1px 3px; border-radius: 3px; }
-        .ProseMirror code { background: ${C.elevated}; color: #a78bfa; padding: 2px 6px; border-radius: 5px; font-size: 13px; font-family: 'JetBrains Mono', monospace; }
-        .ProseMirror pre { background: ${C.elevated}; border: 1px solid ${C.border}; border-radius: 10px; padding: 16px 20px; margin: 16px 0; overflow-x: auto; }
-        .ProseMirror pre code { background: none; color: #a78bfa; padding: 0; font-size: 13px; }
-        .ProseMirror blockquote { border-left: 3px solid #8b5cf6; background: rgba(139,92,246,0.06); padding: 12px 20px; margin: 16px 0; border-radius: 0 8px 8px 0; }
-        .ProseMirror blockquote p { color: ${C.secondary}; margin: 0; }
-        .ProseMirror ul, .ProseMirror ol { padding-left: 24px; margin: 8px 0 12px; }
-        .ProseMirror li { margin-bottom: 4px; color: ${C.secondary}; }
-        .ProseMirror hr { border: none; border-top: 1px solid ${C.border}; margin: 24px 0; }
-        .ProseMirror img { max-width: 100%; height: auto; border-radius: 10px; margin: 12px 0; border: 1px solid ${C.border}; }
-        .ProseMirror table { border-collapse: collapse; width: 100%; margin: 16px 0; }
-        .ProseMirror th, .ProseMirror td { border: 1px solid ${C.border}; padding: 10px 14px; font-size: 13px; text-align: left; }
-        .ProseMirror th { background: ${C.elevated}; color: ${C.primary}; font-weight: 700; }
+        .ProseMirror s { text-decoration: line-through; opacity: 0.6; }
+        .ProseMirror mark {
+          background: rgba(139,92,246,0.22);
+          color: ${C.primary};
+          padding: 1px 4px;
+          border-radius: 3px;
+        }
+
+        /* ── Links ── */
+        .ProseMirror a {
+          color: #8b5cf6;
+          text-decoration: underline;
+          text-underline-offset: 3px;
+          text-decoration-color: rgba(139,92,246,0.4);
+          transition: text-decoration-color 0.15s;
+        }
+        .ProseMirror a:hover { text-decoration-color: #8b5cf6; }
+
+        /* ── Unordered lists ── */
+        .ProseMirror ul {
+          list-style-type: disc;
+          list-style-position: outside;
+          padding-left: 28px;
+          margin: 4px 0 16px;
+        }
+        .ProseMirror ul ul {
+          list-style-type: circle;
+          margin: 4px 0 4px;
+        }
+        .ProseMirror ul ul ul {
+          list-style-type: square;
+        }
+
+        /* ── Ordered lists ── */
+        .ProseMirror ol {
+          list-style-type: decimal;
+          list-style-position: outside;
+          padding-left: 28px;
+          margin: 4px 0 16px;
+        }
+        .ProseMirror ol ol {
+          list-style-type: lower-alpha;
+          margin: 4px 0 4px;
+        }
+        .ProseMirror ol ol ol {
+          list-style-type: lower-roman;
+        }
+
+        /* ── List items ── */
+        .ProseMirror li {
+          color: ${C.secondary};
+          margin-bottom: 5px;
+          padding-left: 4px;
+          line-height: 1.75;
+        }
+        .ProseMirror li p {
+          margin: 0;
+        }
+        .ProseMirror li::marker {
+          color: #8b5cf6;
+          font-weight: 700;
+        }
+        /* Nested list spacing */
+        .ProseMirror li > ul,
+        .ProseMirror li > ol {
+          margin-top: 4px;
+          margin-bottom: 4px;
+        }
+
+        /* ── Blockquote ── */
+        .ProseMirror blockquote {
+          border-left: 3px solid #8b5cf6;
+          background: rgba(139,92,246,0.06);
+          padding: 14px 20px;
+          margin: 20px 0;
+          border-radius: 0 10px 10px 0;
+        }
+        .ProseMirror blockquote p {
+          color: ${C.secondary};
+          margin: 0;
+          font-style: italic;
+        }
+
+        /* ── Inline code ── */
+        .ProseMirror code {
+          background: ${C.elevated};
+          color: #a78bfa;
+          padding: 2px 7px;
+          border-radius: 5px;
+          font-size: 13px;
+          font-family: 'JetBrains Mono', 'Fira Code', monospace;
+          border: 1px solid rgba(167,139,250,0.15);
+        }
+
+        /* ── Code block ── */
+        .ProseMirror pre {
+          background: ${C.elevated};
+          border: 1px solid ${C.border};
+          border-radius: 10px;
+          padding: 18px 22px;
+          margin: 20px 0;
+          overflow-x: auto;
+        }
+        .ProseMirror pre code {
+          background: none;
+          color: #a78bfa;
+          padding: 0;
+          font-size: 13px;
+          border: none;
+          line-height: 1.7;
+        }
+
+        /* ── Horizontal rule ── */
+        .ProseMirror hr {
+          border: none;
+          border-top: 1px solid ${C.border};
+          margin: 28px 0;
+        }
+
+        /* ── Images ── */
+        .ProseMirror img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 10px;
+          margin: 16px 0;
+          border: 1px solid ${C.border};
+          display: block;
+        }
+        .ProseMirror img.ProseMirror-selectednode {
+          outline: 2px solid #8b5cf6;
+          outline-offset: 2px;
+        }
+
+        /* ── Tables ── */
+        .ProseMirror table {
+          border-collapse: collapse;
+          width: 100%;
+          margin: 20px 0;
+          border-radius: 8px;
+          overflow: hidden;
+        }
+        .ProseMirror th,
+        .ProseMirror td {
+          border: 1px solid ${C.border};
+          padding: 10px 16px;
+          font-size: 14px;
+          text-align: left;
+          vertical-align: top;
+        }
+        .ProseMirror th {
+          background: ${C.elevated};
+          color: ${C.primary};
+          font-weight: 700;
+          font-size: 12px;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
         .ProseMirror td { color: ${C.secondary}; }
-        .ProseMirror a { color: #8b5cf6; text-decoration: underline; text-underline-offset: 3px; }
+        .ProseMirror tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+        /* Selected cell highlight */
+        .ProseMirror .selectedCell::after {
+          background: rgba(139,92,246,0.12);
+          content: "";
+          left: 0; right: 0; top: 0; bottom: 0;
+          pointer-events: none;
+          position: absolute;
+          z-index: 2;
+        }
+        .ProseMirror .column-resize-handle {
+          background-color: #8b5cf6;
+          bottom: -2px;
+          pointer-events: none;
+          position: absolute;
+          right: -1px;
+          top: 0;
+          width: 2px;
+        }
+        .tableWrapper { overflow-x: auto; }
+
+        /* ── Text alignment ── */
+        .ProseMirror [style*="text-align: center"] { text-align: center; }
+        .ProseMirror [style*="text-align: right"]  { text-align: right; }
+        .ProseMirror [style*="text-align: justify"] { text-align: justify; }
       `}</style>
     </div>
   );

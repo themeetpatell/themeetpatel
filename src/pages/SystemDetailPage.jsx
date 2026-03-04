@@ -81,7 +81,6 @@ const getSystemResults = (system) => {
 const SystemDetailPage = () => {
   const { systemId } = useParams();
   const [system, setSystem] = useState(null);
-  const [isBookmarked, setIsBookmarked] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
   const [isLoading, setIsLoading] = useState(true);
 
