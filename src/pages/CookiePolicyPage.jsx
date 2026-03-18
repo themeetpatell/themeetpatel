@@ -74,6 +74,7 @@ const CookiePolicyPage = () => (
       description="Cookie Policy for The Meet Patel's personal website. Learn about how we use cookies and similar technologies."
       keywords="The Meet Patel cookie policy, Meet Patel cookies, themeetpatel cookie policy, website cookies, analytics cookies"
       canonical="/cookie-policy"
+      robotsNoindex={true}
     />
 
     <style>{`* { box-sizing: border-box; } * { -webkit-font-smoothing: antialiased; }`}</style>

@@ -674,7 +674,7 @@ const BlogArticlePage = () => {
                   {[
                     { label: 'Articles',     value: '16+' },
                     { label: 'Total Reach',  value: '100K+' },
-                    { label: 'Followers',    value: '5.5K+' },
+                    { label: 'Followers',    value: '6.5K+' },
                   ].map(({ label, value }) => (
                     <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <span style={{ fontSize: 13, color: C.muted }}>{label}</span>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
+import SEOHead from '../components/SEOHead';
 import {
   Users,
   Target,
@@ -193,19 +193,25 @@ const BiggMatePage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>BiggMate — Find Your Co-Founder | AI-Powered Matching</title>
-        <meta name="description" content="BiggMate is the AI-powered co-founder matching platform by The Meet Patel, helping founders find aligned startup partners and build better ventures together." />
-        <meta name="keywords" content="BiggMate, cofounder matching, startup cofounder, find cofounder, AI matching, entrepreneur networking, The Meet Patel, Meet Patel startups" />
-        <link rel="canonical" href="https://themeetpatel.com/biggmate" />
-        <meta property="og:title" content="BiggMate — Find Your Co-Founder" />
-        <meta property="og:description" content="AI-powered co-founder matching. 547+ founders on the waitlist. Don't build alone." />
-        <meta property="og:url" content="https://themeetpatel.com/biggmate" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="BiggMate — Find Your Co-Founder" />
-        <meta name="twitter:description" content="AI-powered co-founder matching. Don't build alone." />
-      </Helmet>
+      <SEOHead
+        title="BiggMate — Find Your Co-Founder | AI-Powered Matching"
+        description="BiggMate is the AI-powered co-founder matching platform by The Meet Patel, helping founders find aligned startup partners and build better ventures together."
+        keywords="BiggMate, cofounder matching, startup cofounder, find cofounder, AI matching, entrepreneur networking, The Meet Patel, Meet Patel startups"
+        canonical="/biggmate"
+        ogTitle="BiggMate — Find Your Co-Founder"
+        ogDescription="AI-powered co-founder matching. 547+ founders on the waitlist. Don't build alone."
+        structuredData={{
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'BiggMate',
+          applicationCategory: 'BusinessApplication',
+          description: 'AI-powered co-founder matching platform connecting entrepreneurs to build startups together.',
+          url: 'https://www.biggmate.com',
+          operatingSystem: 'Web',
+          author: { '@type': 'Person', name: 'The Meet Patel', url: 'https://themeetpatel.com' },
+          offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/PreOrder' },
+        }}
+      />
 
       <style>{`
         * { box-sizing: border-box; }

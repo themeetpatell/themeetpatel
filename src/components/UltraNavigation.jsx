@@ -37,6 +37,7 @@ const UltraNavigation = () => {
     <>
       {/* ───── Main Navigation ───── */}
       <nav
+        aria-label="Main navigation"
         className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-400 ${
           scrolled
             ? 'bg-[rgba(9,9,14,0.95)] backdrop-blur-2xl border-b border-white/[0.06] shadow-[0_1px_24px_rgba(0,0,0,0.5)]'

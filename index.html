@@ -70,17 +70,6 @@
     <meta name="distribution" content="global" />
     <meta name="rating" content="general" />
     
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://www.google-analytics.com" />
-    <link rel="preconnect" href="https://www.googletagmanager.com" />
-    
-    <!-- DNS Prefetch -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="//www.google-analytics.com" />
-    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-    
     <!-- Structured Data - Person Schema -->
     <script type="application/ld+json">
     {
@@ -182,6 +171,11 @@
       "publisher": {
         "@type": "Person",
         "name": "The Meet Patel"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://themeetpatel.com/blogs?q={search_term_string}",
+        "query-input": "required name=search_term_string"
       }
     }
     </script>

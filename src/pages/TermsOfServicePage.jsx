@@ -63,6 +63,7 @@ const TermsOfServicePage = () => (
       description="Terms of Service for The Meet Patel's personal website. Read our terms and conditions for using our services."
       keywords="The Meet Patel terms of service, Meet Patel terms, themeetpatel legal terms, terms and conditions, website terms"
       canonical="/terms-of-service"
+      robotsNoindex={true}
     />
 
     <style>{`* { box-sizing: border-box; } * { -webkit-font-smoothing: antialiased; }`}</style>

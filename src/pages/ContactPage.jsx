@@ -236,6 +236,20 @@ export default function ContactPage() {
         description="Get in touch with Meet Patel — entrepreneur, builder, and AI-first product thinker based in Dubai. Let's build something together."
         keywords="Contact The Meet Patel, Meet Patel contact, themeetpatel contact, startup consultant Dubai, venture builder contact, business strategist Dubai"
         canonical="/contact"
+        structuredData={{
+          '@context': 'https://schema.org',
+          '@type': 'ContactPage',
+          name: 'Contact The Meet Patel',
+          description: 'Get in touch with Meet Patel — entrepreneur, builder, and AI-first product thinker based in Dubai.',
+          url: 'https://themeetpatel.com/contact',
+          mainEntity: {
+            '@type': 'Person',
+            name: 'The Meet Patel',
+            email: 'the.meetpatell@gmail.com',
+            url: 'https://themeetpatel.com',
+            address: { '@type': 'PostalAddress', addressLocality: 'Dubai', addressCountry: 'AE' },
+          },
+        }}
       />
 
       <div style={{ background: C.bg, minHeight: '100vh', color: C.textPrimary, fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>

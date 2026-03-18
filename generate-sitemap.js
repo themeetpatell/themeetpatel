@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { blogArticles } from './src/data/blogData.js';
+import { systems } from './src/data/systems.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -34,7 +35,14 @@ const articlePages = (blogArticles || [])
     lastmod: article.date || currentDate,
   }));
 
-const urls = [...staticPages.map((page) => ({ ...page, lastmod: currentDate })), ...articlePages];
+const systemPages = (systems || []).map((system) => ({
+  url: `/systems/${system.slug}`,
+  priority: system.featured ? '0.7' : '0.6',
+  changefreq: 'monthly',
+  lastmod: currentDate,
+}));
+
+const urls = [...staticPages.map((page) => ({ ...page, lastmod: currentDate })), ...articlePages, ...systemPages];
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

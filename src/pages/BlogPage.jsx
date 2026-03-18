@@ -291,7 +291,7 @@ const BlogPage = () => {
               {[
                 { value: allArticles.length, label: 'Articles' },
                 { value: '100K+', label: 'Total Reach' },
-                { value: '5.5K+', label: 'Followers' },
+                { value: '6.5K+', label: 'Followers' },
                 { value: `${categories.length - 1}`, label: 'Categories' },
               ].map(s => (
                 <div key={s.label} style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 12, padding: '12px 20px' }}>

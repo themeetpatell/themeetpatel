@@ -110,6 +110,15 @@ export default function CommunityPage() {
         description="Join The Meet Patel community for startup conversations, founder networking, operator insights, WhatsApp access, and practical support for ambitious builders."
         keywords="The Meet Patel community, Meet Patel startup community, themeetpatel founders network, startup community Dubai, entrepreneur WhatsApp community, founder network"
         canonical="/community"
+        structuredData={{
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          name: 'StartupOS Community by The Meet Patel',
+          description: 'Community for startup conversations, founder networking, operator insights, and practical support for ambitious builders.',
+          url: 'https://themeetpatel.com/community',
+          founder: { '@type': 'Person', name: 'The Meet Patel', url: 'https://themeetpatel.com' },
+          memberOf: { '@type': 'ProgramMembership', name: 'StartupOS WhatsApp Community' },
+        }}
       />
 
       <div style={{ background: COLORS.bg, minHeight: '100vh', fontFamily: 'inherit' }}>

@@ -9,6 +9,7 @@ import {
   Calendar, MapPin, Phone, Mail, MessageSquare, ChevronRight
 } from 'lucide-react';
 import FollowMyJourney from '../components/FollowMyJourney';
+import SEOHead from '../components/SEOHead';
 import { systems } from '../data/systems';
 
 // Helper functions to generate relevant content for each system
@@ -184,25 +185,57 @@ const SystemDetailPage = () => {
 
   if (!system) {
     return (
-      <div className="min-h-screen pt-16 ultra-gradient-bg flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Settings className="w-8 h-8 text-white" />
+      <>
+        <SEOHead
+          title="System Not Found"
+          description="The system you're looking for doesn't exist on The Meet Patel's portfolio."
+          canonical={`/systems/${systemId}`}
+          robotsNoindex={true}
+        />
+        <div className="min-h-screen pt-16 ultra-gradient-bg flex items-center justify-center">
+          <div className="text-center">
+            <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Settings className="w-8 h-8 text-white" />
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">System Not Found</h2>
+            <p className="text-gray-600 mb-6">The system you're looking for doesn't exist.</p>
+            <Link
+              to="/systems"
+              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-colors"
+            >
+              Back to Systems
+            </Link>
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">System Not Found</h2>
-          <p className="text-gray-600 mb-6">The system you're looking for doesn't exist.</p>
-          <Link
-            to="/systems"
-            className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-colors"
-          >
-            Back to Systems
-          </Link>
         </div>
-      </div>
+      </>
     );
   }
 
+  const systemStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: system.title,
+    description: system.description,
+    url: `https://themeetpatel.com/systems/${system.slug}`,
+    provider: {
+      '@type': 'Person',
+      name: 'The Meet Patel',
+      url: 'https://themeetpatel.com',
+    },
+    serviceType: system.type,
+    areaServed: { '@type': 'Place', name: 'Global' },
+  };
+
   return (
+    <>
+    <SEOHead
+      title={`${system.title} — ${system.type} | The Meet Patel`}
+      description={system.description}
+      keywords={[system.type, ...(system.tags || []), 'The Meet Patel', 'business systems', 'startup operations'].join(', ')}
+      canonical={`/systems/${system.slug}`}
+      ogType="article"
+      structuredData={systemStructuredData}
+    />
     <div className="min-h-screen pt-16 ultra-gradient-bg">
       {/* Hero Section */}
       <section className="py-20 relative overflow-hidden">
@@ -591,6 +624,7 @@ const SystemDetailPage = () => {
       {/* Follow My Journey Section */}
       <FollowMyJourney />
     </div>
+    </>
   );
 };
 
