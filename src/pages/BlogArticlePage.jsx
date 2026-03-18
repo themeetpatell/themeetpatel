@@ -34,6 +34,18 @@ const BlogArticlePage = () => {
   const [isLoading, setIsLoading]         = useState(true);
   const [copiedLink, setCopiedLink]       = useState(false);
   const articleRef = useRef(null);
+  const shareRef = useRef(null);
+
+  // Close share menu on outside click
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (shareRef.current && !shareRef.current.contains(e.target)) {
+        setShowShareMenu(false);
+      }
+    };
+    if (showShareMenu) document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showShareMenu]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -348,7 +360,7 @@ const BlogArticlePage = () => {
         </div>
 
         {/* ── Hero header ───────────────────────────────────────────────────── */}
-        <section style={{ position: 'relative', overflowX: 'hidden', overflowY: 'visible', zIndex: 2, padding: 'clamp(100px, 12vw, 150px) 0 clamp(48px, 6vw, 72px)' }}>
+        <section style={{ position: 'relative', zIndex: 2, padding: 'clamp(100px, 12vw, 150px) 0 clamp(48px, 6vw, 72px)' }}>
           <div style={{
             position: 'absolute', inset: 0,
             background: 'radial-gradient(ellipse 70% 55% at 50% 30%, rgba(139,92,246,0.07) 0%, transparent 65%)',
@@ -467,7 +479,7 @@ const BlogArticlePage = () => {
                 {isBookmarked ? 'Saved' : 'Save'}
               </button>
 
-              <div style={{ position: 'relative' }}>
+              <div ref={shareRef} style={{ position: 'relative' }}>
                 <button
                   onClick={() => setShowShareMenu(v => !v)}
                   style={{

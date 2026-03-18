@@ -101,10 +101,28 @@ export const getCategories = async () => {
   }));
 };
 
-// ─── View increment (SECURITY DEFINER RPC — works without auth) ──────────────
+// ─── View increment (direct update — works without auth via RLS) ─────────────
 export const incrementViews = async (articleId) => {
   if (!articleId) return;
-  await supabase.rpc('increment_views', { article_id: articleId });
+  try {
+    // Try RPC first (if available)
+    const { error: rpcError } = await supabase.rpc('increment_views', { article_id: articleId });
+    if (!rpcError) return;
+    // Fallback: read current views then update
+    const { data } = await supabase
+      .from('articles')
+      .select('views')
+      .eq('id', articleId)
+      .single();
+    if (data) {
+      await supabase
+        .from('articles')
+        .update({ views: (data.views || 0) + 1 })
+        .eq('id', articleId);
+    }
+  } catch {
+    // Silently fail — views are non-critical
+  }
 };
 
 // ─── Admin reads (requires authenticated session) ────────────────────────────
