@@ -143,3 +143,41 @@ CREATE POLICY "Authenticated users manage media"
 DROP POLICY IF EXISTS "Public can read media" ON media;
 CREATE POLICY "Public can read media"
   ON media FOR SELECT USING (true);
+
+-- =============================================================================
+-- Storage Bucket Policies for "media" bucket
+-- (Supabase Storage has its own RLS, separate from table-level RLS)
+-- =============================================================================
+
+-- Create the bucket if it doesn't exist (public so images are accessible via URL)
+INSERT INTO storage.buckets (id, name, public)
+VALUES ('media', 'media', true)
+ON CONFLICT (id) DO UPDATE SET public = true;
+
+-- Allow authenticated users to upload files
+DROP POLICY IF EXISTS "Authenticated users can upload media" ON storage.objects;
+CREATE POLICY "Authenticated users can upload media"
+  ON storage.objects FOR INSERT
+  TO authenticated
+  WITH CHECK (bucket_id = 'media');
+
+-- Allow authenticated users to update their uploads
+DROP POLICY IF EXISTS "Authenticated users can update media" ON storage.objects;
+CREATE POLICY "Authenticated users can update media"
+  ON storage.objects FOR UPDATE
+  TO authenticated
+  USING (bucket_id = 'media');
+
+-- Allow authenticated users to delete media
+DROP POLICY IF EXISTS "Authenticated users can delete media" ON storage.objects;
+CREATE POLICY "Authenticated users can delete media"
+  ON storage.objects FOR DELETE
+  TO authenticated
+  USING (bucket_id = 'media');
+
+-- Allow public read access (so images display on the website)
+DROP POLICY IF EXISTS "Public can view media" ON storage.objects;
+CREATE POLICY "Public can view media"
+  ON storage.objects FOR SELECT
+  TO public
+  USING (bucket_id = 'media');
