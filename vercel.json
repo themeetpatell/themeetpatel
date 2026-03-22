@@ -3,6 +3,17 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/blogs/:slug",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i).*(bot|crawler|spider|facebookexternalhit|Facebot|twitterbot|linkedinbot|slackbot|whatsapp|telegram|discordbot|pinterestbot|applebot|google|bing|yandex|baidu|duckduckbot|semrushbot|ahrefsbot|mj12bot|dotbot|petalbot|bytespider).*"
+        }
+      ],
+      "destination": "/api/og?slug=:slug"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
