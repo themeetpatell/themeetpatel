@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState, useRef, useEffect } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { Image } from '@tiptap/extension-image';
@@ -13,9 +13,57 @@ import { CharacterCount } from '@tiptap/extension-character-count';
 import { Underline } from '@tiptap/extension-underline';
 import { TextAlign } from '@tiptap/extension-text-align';
 import { Highlight } from '@tiptap/extension-highlight';
+import { Superscript } from '@tiptap/extension-superscript';
+import { Subscript } from '@tiptap/extension-subscript';
+import { Color } from '@tiptap/extension-color';
+import { TextStyle } from '@tiptap/extension-text-style';
+import { Youtube } from '@tiptap/extension-youtube';
+import { HardBreak } from '@tiptap/extension-hard-break';
+import { Extension } from '@tiptap/react';
+import { Plugin, PluginKey } from '@tiptap/pm/state';
+import { DOMParser as ProseMirrorDOMParser } from '@tiptap/pm/model';
 import { common, createLowlight } from 'lowlight';
 
 const lowlight = createLowlight(common);
+
+// Custom extension to handle HTML paste
+const HtmlPaste = Extension.create({
+  name: 'htmlPaste',
+  addProseMirrorPlugins() {
+    const { editor } = this;
+    return [
+      new Plugin({
+        key: new PluginKey('htmlPaste'),
+        props: {
+          handlePaste(view, event) {
+            const clipboardData = event.clipboardData;
+            if (!clipboardData) return false;
+
+            const html = clipboardData.getData('text/html');
+            const text = clipboardData.getData('text/plain');
+
+            // If we got HTML from clipboard, let TipTap handle it natively
+            if (html) return false;
+
+            // If plain text looks like HTML (contains tags), parse and insert it
+            if (text && /<[a-z][\s\S]*>/i.test(text)) {
+              event.preventDefault();
+              const wrapper = document.createElement('div');
+              wrapper.innerHTML = text;
+              const parser = ProseMirrorDOMParser.fromSchema(view.state.schema);
+              const slice = parser.parseSlice(wrapper);
+              const tr = view.state.tr.replaceSelection(slice);
+              view.dispatch(tr);
+              return true;
+            }
+
+            return false;
+          },
+        },
+      }),
+    ];
+  },
+});
 
 const C = {
   bg:           '#09090e',
@@ -72,14 +120,27 @@ function Divider() {
 }
 
 export default function TiptapEditor({ content, onChange, onWordCountChange }) {
+  const [htmlMode, setHtmlMode] = useState(false);
+  const [htmlSource, setHtmlSource] = useState('');
+  const htmlTextareaRef = useRef(null);
+
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
         codeBlock: false,
+        hardBreak: false, // We use our own HardBreak
         heading: { levels: [1, 2, 3, 4] },
       }),
+      HardBreak.configure({
+        keepMarks: true,
+        HTMLAttributes: {},
+      }),
       Underline,
-      Highlight.configure({ multicolor: false }),
+      Superscript,
+      Subscript,
+      TextStyle,
+      Color,
+      Highlight.configure({ multicolor: true }),
       TextAlign.configure({ types: ['heading', 'paragraph'] }),
       TiptapLink.configure({ openOnClick: false }),
       Image.configure({ inline: false, allowBase64: false }),
@@ -90,6 +151,12 @@ export default function TiptapEditor({ content, onChange, onWordCountChange }) {
       TableHeader,
       TableCell,
       CharacterCount,
+      Youtube.configure({
+        inline: false,
+        controls: true,
+        nocookie: true,
+      }),
+      HtmlPaste,
     ],
     content: content || '',
     onUpdate: ({ editor }) => {
@@ -118,6 +185,43 @@ export default function TiptapEditor({ content, onChange, onWordCountChange }) {
     if (!editor) return;
     editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run();
   }, [editor]);
+
+  const addYoutube = useCallback(() => {
+    if (!editor) return;
+    const url = window.prompt('YouTube URL (e.g. https://youtube.com/watch?v=...)');
+    if (url) editor.commands.setYoutubeVideo({ src: url, width: 640, height: 360 });
+  }, [editor]);
+
+  const setColor = useCallback(() => {
+    if (!editor) return;
+    const color = window.prompt('Text color (hex, e.g. #ff6600)', '#');
+    if (color && color !== '#') editor.chain().focus().setColor(color).run();
+  }, [editor]);
+
+  // Toggle HTML source mode
+  const toggleHtmlMode = useCallback(() => {
+    if (!editor) return;
+    if (!htmlMode) {
+      // Entering HTML mode — grab current HTML
+      setHtmlSource(editor.getHTML());
+      setHtmlMode(true);
+    } else {
+      // Leaving HTML mode — apply HTML back to editor
+      editor.commands.setContent(htmlSource, true);
+      onChange?.({ json: editor.getJSON(), html: editor.getHTML() });
+      setHtmlMode(false);
+    }
+  }, [editor, htmlMode, htmlSource, onChange]);
+
+  // Paste HTML directly into editor
+  const pasteHtmlIntoEditor = useCallback(() => {
+    if (!editor) return;
+    const html = window.prompt('Paste your HTML content below:');
+    if (html) {
+      editor.commands.setContent(html, true);
+      onChange?.({ json: editor.getJSON(), html: editor.getHTML() });
+    }
+  }, [editor, onChange]);
 
   if (!editor) return null;
 
@@ -155,8 +259,17 @@ export default function TiptapEditor({ content, onChange, onWordCountChange }) {
           <ToolbarBtn active={editor.isActive('italic')}    onClick={() => editor.chain().focus().toggleItalic().run()}    title="Italic (Ctrl+I)">      <em>I</em>          </ToolbarBtn>
           <ToolbarBtn active={editor.isActive('underline')} onClick={() => editor.chain().focus().toggleUnderline().run()} title="Underline (Ctrl+U)">   <u>U</u>            </ToolbarBtn>
           <ToolbarBtn active={editor.isActive('strike')}    onClick={() => editor.chain().focus().toggleStrike().run()}    title="Strikethrough">         <s>S</s>            </ToolbarBtn>
+          <ToolbarBtn active={editor.isActive('superscript')} onClick={() => editor.chain().focus().toggleSuperscript().run()} title="Superscript">
+            <span style={{ fontSize: 11 }}>X<sup style={{ fontSize: 8 }}>²</sup></span>
+          </ToolbarBtn>
+          <ToolbarBtn active={editor.isActive('subscript')} onClick={() => editor.chain().focus().toggleSubscript().run()} title="Subscript">
+            <span style={{ fontSize: 11 }}>X<sub style={{ fontSize: 8 }}>₂</sub></span>
+          </ToolbarBtn>
           <ToolbarBtn active={editor.isActive('highlight')} onClick={() => editor.chain().focus().toggleHighlight().run()} title="Highlight">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20h9"/><path d="m16.5 3.5 2.12 2.12a3 3 0 0 1 0 4.24L8.5 20H4v-4.5L14.38 5.12a3 3 0 0 1 4.12-1.62z"/></svg>
+          </ToolbarBtn>
+          <ToolbarBtn onClick={setColor} title="Text color">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 20h16"/><path d="m8 4 4 12"/><path d="m16 4-4 12"/><path d="M10 12h4"/></svg>
           </ToolbarBtn>
         </ToolbarGroup>
         <Divider />
@@ -208,11 +321,17 @@ export default function TiptapEditor({ content, onChange, onWordCountChange }) {
           <ToolbarBtn onClick={addImage} title="Insert image">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           </ToolbarBtn>
+          <ToolbarBtn onClick={addYoutube} title="Embed YouTube video">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+          </ToolbarBtn>
           <ToolbarBtn onClick={insertTable} title="Insert table">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
           </ToolbarBtn>
           <ToolbarBtn onClick={() => editor.chain().focus().setHorizontalRule().run()} title="Horizontal divider">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="2" y1="12" x2="22" y2="12"/></svg>
+          </ToolbarBtn>
+          <ToolbarBtn onClick={() => editor.chain().focus().setHardBreak().run()} title="Line break (Shift+Enter)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 9-9h9"/></svg>
           </ToolbarBtn>
         </ToolbarGroup>
         <Divider />
@@ -226,12 +345,78 @@ export default function TiptapEditor({ content, onChange, onWordCountChange }) {
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
           </ToolbarBtn>
         </ToolbarGroup>
+        <Divider />
+
+        {/* HTML Source */}
+        <ToolbarGroup label="Source">
+          <ToolbarBtn onClick={pasteHtmlIntoEditor} title="Paste HTML content">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+          </ToolbarBtn>
+          <ToolbarBtn active={htmlMode} onClick={toggleHtmlMode} title={htmlMode ? 'Apply HTML & return to editor' : 'Edit HTML source'}>
+            <span style={{ fontSize: 11, fontFamily: 'monospace', fontWeight: 700 }}>&lt;/&gt;</span>
+          </ToolbarBtn>
+        </ToolbarGroup>
       </div>
 
       {/* Editor area */}
-      <div style={{ padding: '0 24px', minHeight: 500 }}>
-        <EditorContent editor={editor} />
-      </div>
+      {htmlMode ? (
+        <div style={{ padding: '0 24px', minHeight: 500 }}>
+          <textarea
+            ref={htmlTextareaRef}
+            value={htmlSource}
+            onChange={e => setHtmlSource(e.target.value)}
+            spellCheck={false}
+            style={{
+              width: '100%',
+              minHeight: 500,
+              padding: '24px 0',
+              background: 'transparent',
+              border: 'none',
+              outline: 'none',
+              color: '#a78bfa',
+              fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+              fontSize: 13,
+              lineHeight: 1.7,
+              resize: 'vertical',
+              caretColor: '#8b5cf6',
+            }}
+          />
+          <div style={{
+            padding: '8px 0 16px',
+            display: 'flex', gap: 8,
+          }}>
+            <button
+              type="button"
+              onClick={toggleHtmlMode}
+              style={{
+                padding: '8px 16px', borderRadius: 8,
+                background: C.violet, color: '#fff', border: 'none',
+                fontSize: 12, fontWeight: 700, cursor: 'pointer',
+                fontFamily: 'inherit',
+              }}
+            >
+              Apply HTML
+            </button>
+            <button
+              type="button"
+              onClick={() => { setHtmlMode(false); }}
+              style={{
+                padding: '8px 16px', borderRadius: 8,
+                background: 'transparent', color: C.muted,
+                border: `1px solid ${C.border}`,
+                fontSize: 12, fontWeight: 600, cursor: 'pointer',
+                fontFamily: 'inherit',
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div style={{ padding: '0 24px', minHeight: 500 }}>
+          <EditorContent editor={editor} />
+        </div>
+      )}
 
       {/* Footer */}
       <div style={{
@@ -475,6 +660,29 @@ export default function TiptapEditor({ content, onChange, onWordCountChange }) {
         .ProseMirror [style*="text-align: center"] { text-align: center; }
         .ProseMirror [style*="text-align: right"]  { text-align: right; }
         .ProseMirror [style*="text-align: justify"] { text-align: justify; }
+
+        /* ── Superscript / Subscript ── */
+        .ProseMirror sup { font-size: 0.75em; vertical-align: super; }
+        .ProseMirror sub { font-size: 0.75em; vertical-align: sub; }
+
+        /* ── YouTube embeds ── */
+        .ProseMirror div[data-youtube-video] {
+          margin: 20px 0;
+          border-radius: 10px;
+          overflow: hidden;
+          border: 1px solid ${C.border};
+        }
+        .ProseMirror div[data-youtube-video] iframe {
+          width: 100%;
+          aspect-ratio: 16/9;
+          height: auto;
+          display: block;
+        }
+
+        /* ── Hard break spacing ── */
+        .ProseMirror br.ProseMirror-trailingBreak:not(:first-child) {
+          display: block;
+        }
       `}</style>
     </div>
   );
