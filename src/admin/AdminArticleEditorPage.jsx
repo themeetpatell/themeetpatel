@@ -315,7 +315,7 @@ export default function AdminArticleEditorPage() {
 
         {/* Right panel */}
         <div style={{
-          width: 320, minWidth: 320, flexShrink: 0,
+          width: 420, minWidth: 380, flexShrink: 0,
           borderLeft: `1px solid ${C.border}`,
           background: C.bg,
           minHeight: 'calc(100vh - 57px)',
