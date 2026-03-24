@@ -234,7 +234,7 @@ export default function TiptapEditor({ content, onChange, onWordCountChange }) {
       <div style={{
         display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 6,
         padding: '10px 14px', borderBottom: `1px solid ${C.border}`,
-        background: C.surface, position: 'sticky', top: 57, zIndex: 15,
+        background: C.surface, position: 'sticky', top: 0, zIndex: 15,
         borderRadius: '12px 12px 0 0',
         boxShadow: '0 2px 12px rgba(0,0,0,0.3)',
       }}>

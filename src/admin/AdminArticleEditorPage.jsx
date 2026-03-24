@@ -259,10 +259,11 @@ export default function AdminArticleEditorPage() {
         </div>
       </div>
 
-      {/* Body */}
-      <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-        {/* Main editor area */}
-        <div style={{ flex: 1, padding: 'clamp(20px, 3vw, 40px)', maxWidth: 860, minWidth: 0 }}>
+      {/* Body — two independent scroll panels */}
+      <div style={{ display: 'flex', height: 'calc(100vh - 57px)', overflow: 'hidden' }}>
+        {/* Left scrollable panel */}
+        <div style={{ flex: 1, overflowY: 'auto', minWidth: 0 }}>
+        <div style={{ padding: 'clamp(20px, 3vw, 40px)', maxWidth: 860, margin: '0 auto' }}>
           {/* Title */}
           <input
             value={form.title}
@@ -311,16 +312,15 @@ export default function AdminArticleEditorPage() {
             onChange={handleEditorChange}
             onWordCountChange={setWordCount}
           />
-        </div>
+        </div>{/* end inner padding wrapper */}
+        </div>{/* end left scroll panel */}
 
-        {/* Right panel */}
+        {/* Right panel — independent scroll */}
         <div style={{
           width: 420, minWidth: 380, flexShrink: 0,
           borderLeft: `1px solid ${C.border}`,
           background: C.bg,
-          minHeight: 'calc(100vh - 57px)',
-          position: 'sticky', top: 57,
-          maxHeight: 'calc(100vh - 57px)',
+          height: '100%',
           overflowY: 'auto',
         }} className="admin-right-panel">
           {/* Tabs */}
