@@ -4,4 +4,23 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /api/private/
 
-Sitemap: https://themeetpatel.com/sitemap.xml
+# AI crawlers — allow for GEO (Generative Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+Sitemap: https://www.themeetpatel.com/sitemap.xml

@@ -205,21 +205,47 @@ const BlogPage = () => {
   const formatDate = d =>
     new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 
-  const blogStructuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Blog',
-    name: "The Meet Patel's Blog - Startup Insights & Business Strategy",
-    description: 'Read insights on entrepreneurship, startup building, business strategy, and operations management from serial entrepreneur The Meet Patel.',
-    url: 'https://themeetpatel.com/blogs',
-    author: { '@type': 'Person', name: 'The Meet Patel', url: 'https://themeetpatel.com' },
-  };
+  const blogStructuredData = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Blog',
+      '@id': 'https://www.themeetpatel.com/blogs',
+      name: "The Meet Patel's Blog — Startups, Founders & Entrepreneurship",
+      description: 'Read articles by The Meet Patel (Meet Patel / themeetpatel) on startups, venture building, business strategy, founder lessons, growth systems, and entrepreneurship.',
+      url: 'https://www.themeetpatel.com/blogs',
+      inLanguage: 'en-US',
+      author: {
+        '@type': 'Person',
+        '@id': 'https://www.themeetpatel.com/#person',
+        name: 'The Meet Patel',
+        alternateName: ['Meet Patel', 'themeetpatel', 'meetpatel'],
+        url: 'https://www.themeetpatel.com',
+      },
+      about: [
+        { '@type': 'Thing', name: 'Startups' },
+        { '@type': 'Thing', name: 'Entrepreneurship' },
+        { '@type': 'Thing', name: 'Venture Building' },
+        { '@type': 'Thing', name: 'Business Strategy' },
+        { '@type': 'Thing', name: 'Founder Advice' },
+        { '@type': 'Thing', name: 'Startup Operations' },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.themeetpatel.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.themeetpatel.com/blogs' },
+      ],
+    },
+  ];
 
   return (
     <>
       <SEOHead
-        title="Blog — Meet Patel | Startup Insights & Entrepreneurship"
-        description="Read articles by The Meet Patel on startups, venture building, business strategy, growth systems, execution, and entrepreneurship."
-        keywords="The Meet Patel blog, Meet Patel articles, themeetpatel blog, startup insights, venture building, business strategy, entrepreneurship, startup operations, founder advice"
+        title="Blog | The Meet Patel — Startups, Founders & Entrepreneurship"
+        description="Articles by The Meet Patel (Meet Patel / themeetpatel) on startups, founders, entrepreneurship, venture building, business strategy, and growth systems. Practical insights for startup founders."
+        keywords="The Meet Patel blog, Meet Patel articles, themeetpatel blog, meetpatel blog, startups, founders, entrepreneurship, startup insights, venture building, business strategy, startup operations, founder advice, serial entrepreneur blog"
         canonical="/blogs"
         structuredData={blogStructuredData}
       />

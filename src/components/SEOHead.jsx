@@ -22,7 +22,7 @@ const SEOHead = ({
   robotsNoindex  = false,
   robotsNofollow = false,
 }) => {
-  const baseUrl = 'https://themeetpatel.com';
+  const baseUrl = 'https://www.themeetpatel.com';
   const resolveUrl = (value, fallback = baseUrl) => {
     if (!value) return fallback;
     if (/^https?:\/\//i.test(value)) return value;

@@ -53,7 +53,9 @@ const BlogArticlePage = () => {
       .then(async found => {
         if (found) {
           setArticle(found);
-          incrementViews(found.id).catch(() => {});
+          incrementViews(found.id).then(() => {
+            setArticle(prev => prev ? { ...prev, views: (prev.views || 0) + 1 } : prev);
+          }).catch(() => {});
           const related = await getRelatedArticles(found);
           setRelatedArticles(related);
         }

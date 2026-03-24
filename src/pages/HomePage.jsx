@@ -203,31 +203,128 @@ const HomePage = () => {
 
   // Structured data (SEO)
   const homepageStructuredData = [
+    // WebSite schema — enables sitelinks search in Google
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://www.themeetpatel.com/#website",
+      "name": "The Meet Patel",
+      "alternateName": ["Meet Patel", "themeetpatel", "meetpatel"],
+      "url": "https://www.themeetpatel.com",
+      "description": "Official website of The Meet Patel — Dubai-based serial entrepreneur, venture builder, startup operator, business strategist, and author.",
+      "inLanguage": "en-US",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.themeetpatel.com/blogs?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    // Rich Person entity — primary identity node for GEO/AI disambiguation
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      "@id": "https://themeetpatel.com/#person",
+      "@id": "https://www.themeetpatel.com/#person",
       "name": "The Meet Patel",
-      "alternateName": ["Meet Patel", "themeetpatel"],
-      "description": "The Meet Patel is a Dubai-based venture builder, startup operator, business strategist, and author.",
-      "jobTitle": ["Venture Builder", "Business Strategist", "Startup Operator", "Author"],
-      "url": "https://themeetpatel.com",
-      "address": { "@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE" },
+      "alternateName": ["Meet Patel", "themeetpatel", "meetpatel", "Meet Patel Dubai"],
+      "description": "The Meet Patel (also known as Meet Patel, themeetpatel, or meetpatel) is a Dubai-based serial entrepreneur, venture builder, startup operator, business strategist, and author. He has built 10+ ventures, led 450+ people, and mentored hundreds of founders across AI, fintech, hardware, edtech, and software.",
+      "jobTitle": ["Serial Entrepreneur", "Venture Builder", "Business Strategist", "Startup Operator", "Startup Founder", "Author"],
+      "url": "https://www.themeetpatel.com",
+      "mainEntityOfPage": "https://www.themeetpatel.com/about",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://www.themeetpatel.com/og-image.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dubai",
+        "addressRegion": "Dubai",
+        "addressCountry": "AE"
+      },
       "sameAs": [
         "https://www.linkedin.com/in/themeetpatel/",
         "https://x.com/the_meetpatel",
+        "https://twitter.com/the_meetpatel",
         "https://github.com/themeetpatell",
         "https://medium.com/@themeetpatel",
-        "http://instagram.com/the.meetpatell/"
+        "https://instagram.com/the.meetpatell/",
+        "https://www.themeetpatel.com"
       ],
       "knowsAbout": [
-        "Startups",
-        "Business Strategy",
-        "Venture Building",
-        "Business Operations",
-        "Growth Systems",
-        "Startup Mentorship",
-        "Team Building"
+        "Startups", "Venture Building", "Serial Entrepreneurship", "Business Strategy",
+        "Startup Operations", "Growth Systems", "Startup Mentorship", "Founder Coaching",
+        "Team Building", "Product Management", "Fintech", "AI Startups", "EdTech",
+        "Hardware Startups", "Business Development", "Dubai Startup Ecosystem",
+        "Entrepreneurship", "Startup Scaling", "Angel Investing"
+      ],
+      "hasOccupation": [
+        { "@type": "Occupation", "name": "Venture Builder", "description": "Building and scaling startups from zero to growth stage" },
+        { "@type": "Occupation", "name": "Business Strategist", "description": "Strategic and operational guidance for founders and startups" },
+        { "@type": "Occupation", "name": "Author", "description": "Author of entrepreneurship and fiction books including The Eternal Love and The Endless Devotion" }
+      ],
+      "founder": [
+        { "@type": "Organization", "name": "BiggMate", "url": "https://www.biggmate.com" },
+        { "@type": "Organization", "name": "ZeroHuman", "url": "https://www.zerohuman.co" },
+        { "@type": "Organization", "name": "Finanshels", "url": "https://finanshels.com" }
+      ]
+    },
+    // FAQPage schema — AEO: surfaces in Google People Also Ask + AI-generated answers
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who is The Meet Patel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Meet Patel (also known as Meet Patel, themeetpatel, or meetpatel) is a Dubai-based serial entrepreneur, venture builder, startup operator, business strategist, and author. With 8+ years of experience, he has built 10+ ventures across AI, fintech, hardware, edtech, and software, and has led teams of 450+ people across his portfolio companies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Meet Patel known for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Meet Patel (The Meet Patel) is known for building and scaling startups from zero to growth stage, his StartupOS operating framework for founders, his WhatsApp community of 500+ entrepreneurs, his books on entrepreneurship and storytelling, and his advisory work with startup founders in Dubai and internationally."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is The Meet Patel based?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Meet Patel (Meet Patel / themeetpatel) is based in Dubai, UAE. He builds ventures and works with founders globally, with a focus on the UAE, India, and international startup ecosystems."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What startups has Meet Patel built?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Meet Patel has built 10+ ventures including BiggMate (AI-powered co-foundership platform), ZeroHuman (AI automation), Finanshels (fintech accounting), TorchIt (assistive technology hardware for the visually impaired), MealVerse (food tech), StudentHub (edtech, scaled to 50K+ users), and others across AI, fintech, hardware, and software sectors."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I work with or contact The Meet Patel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can reach The Meet Patel through his website contact page at www.themeetpatel.com/contact, connect on LinkedIn at linkedin.com/in/themeetpatel, or join his StartupOS founder community at www.themeetpatel.com/community for daily startup discussions and founder networking."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is themeetpatel.com?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "themeetpatel.com is the official website of The Meet Patel — a Dubai-based serial entrepreneur and venture builder. The site features his blog on startups and entrepreneurship, his venture portfolio, founder community, and contact information."
+          }
+        }
       ]
     }
   ];
@@ -235,9 +332,9 @@ const HomePage = () => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#09090e' }}>
       <SEOHead
-        title="The Meet Patel | Venture Builder, Startup Operator & Business Strategist"
-        description="The Meet Patel, also known as Meet Patel and themeetpatel, is a Dubai-based venture builder, startup operator, business strategist, and author building startups across AI, fintech, hardware, and software."
-        keywords="The Meet Patel, Meet Patel, themeetpatel, venture builder, startup operator, business strategist, Dubai entrepreneur, startup consultant, founder advisor, startup builder, AI startups, fintech startups, hardware startups, startup portfolio"
+        title="The Meet Patel | Serial Entrepreneur, Startup Founder & Venture Builder"
+        description="The Meet Patel (Meet Patel / themeetpatel) is a Dubai-based serial entrepreneur, startup founder, venture builder, and business strategist. Built 10+ ventures across AI, fintech, hardware & software. Mentor to 500+ founders."
+        keywords="The Meet Patel, Meet Patel, themeetpatel, meetpatel, serial entrepreneur, startup founder, venture builder, startup operator, business strategist, Dubai entrepreneur, startup consultant, founder advisor, startup builder, AI startups, fintech startups, hardware startups, startup portfolio, entrepreneurship, founders, startups"
         canonical="/"
         ogImage="/og-image.jpg"
         structuredData={homepageStructuredData}

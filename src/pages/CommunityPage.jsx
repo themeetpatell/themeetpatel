@@ -106,19 +106,40 @@ export default function CommunityPage() {
   return (
     <>
       <SEOHead
-        title="Meet Patel Community | Join 500+ Startup Builders"
-        description="Join The Meet Patel community for startup conversations, founder networking, operator insights, WhatsApp access, and practical support for ambitious builders."
-        keywords="The Meet Patel community, Meet Patel startup community, themeetpatel founders network, startup community Dubai, entrepreneur WhatsApp community, founder network"
+        title="Founder Community | The Meet Patel — Join 500+ Startup Founders"
+        description="Join The Meet Patel's StartupOS community — 500+ founders, daily startup discussions, expert access, and founder networking. Built by Meet Patel (themeetpatel) for serious entrepreneurs."
+        keywords="The Meet Patel community, Meet Patel founder community, themeetpatel startup community, StartupOS community, startup founders network, Dubai entrepreneur community, founder networking, startup WhatsApp group, entrepreneurship community"
         canonical="/community"
-        structuredData={{
-          '@context': 'https://schema.org',
-          '@type': 'Organization',
-          name: 'StartupOS Community by The Meet Patel',
-          description: 'Community for startup conversations, founder networking, operator insights, and practical support for ambitious builders.',
-          url: 'https://themeetpatel.com/community',
-          founder: { '@type': 'Person', name: 'The Meet Patel', url: 'https://themeetpatel.com' },
-          memberOf: { '@type': 'ProgramMembership', name: 'StartupOS WhatsApp Community' },
-        }}
+        structuredData={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            '@id': 'https://www.themeetpatel.com/community#org',
+            name: 'StartupOS Community by The Meet Patel',
+            description: 'A community of 500+ founders created by The Meet Patel (Meet Patel / themeetpatel) for startup conversations, founder networking, operator insights, and practical support for ambitious entrepreneurs.',
+            url: 'https://www.themeetpatel.com/community',
+            founder: {
+              '@type': 'Person',
+              '@id': 'https://www.themeetpatel.com/#person',
+              name: 'The Meet Patel',
+              alternateName: ['Meet Patel', 'themeetpatel'],
+              url: 'https://www.themeetpatel.com',
+            },
+            about: [
+              { '@type': 'Thing', name: 'Startups' },
+              { '@type': 'Thing', name: 'Entrepreneurship' },
+              { '@type': 'Thing', name: 'Founder Networking' },
+            ],
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.themeetpatel.com/' },
+              { '@type': 'ListItem', position: 2, name: 'Community', item: 'https://www.themeetpatel.com/community' },
+            ],
+          },
+        ]}
       />
 
       <div style={{ background: COLORS.bg, minHeight: '100vh', fontFamily: 'inherit' }}>

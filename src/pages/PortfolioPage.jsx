@@ -164,23 +164,39 @@ const STATS = [
   { value: '100%', label: 'Passion Driven', icon: Zap },
 ];
 
-const portfolioStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Meet Patel Portfolio",
-  "url": "https://themeetpatel.com/portfolio",
-  "description": "Portfolio of ventures built, led, or shaped by The Meet Patel across startups, AI, fintech, hardware, software, and growth systems.",
-  "mainEntity": {
-    "@type": "ItemList",
-    "itemListElement": PROJECTS.map((project, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "name": project.title,
-      "url": project.liveUrl || (project.internalUrl ? `https://themeetpatel.com${project.internalUrl}` : "https://themeetpatel.com/portfolio"),
-      "description": project.description,
-    })),
+const portfolioStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://www.themeetpatel.com/portfolio",
+    "name": "The Meet Patel Portfolio — Startups & Ventures by Meet Patel",
+    "url": "https://www.themeetpatel.com/portfolio",
+    "description": "Portfolio of 10+ ventures built, led, or shaped by The Meet Patel (Meet Patel / themeetpatel) across AI, fintech, hardware, edtech, and software startups.",
+    "author": {
+      "@type": "Person",
+      "@id": "https://www.themeetpatel.com/#person",
+      "name": "The Meet Patel",
+      "alternateName": ["Meet Patel", "themeetpatel"],
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.themeetpatel.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://www.themeetpatel.com/portfolio" },
+      ],
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": PROJECTS.map((project, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": project.title,
+        "url": project.liveUrl || (project.internalUrl ? `https://www.themeetpatel.com${project.internalUrl}` : "https://www.themeetpatel.com/portfolio"),
+        "description": project.description,
+      })),
+    },
   },
-};
+];
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
@@ -438,9 +454,9 @@ const PortfolioPage = () => {
   return (
     <>
       <SEOHead
-        title="Portfolio — Meet Patel | Ventures, Products & Startups"
-        description="10+ ventures built across AI, fintech, edtech, hardware, and social. From BAWES to BiggMate, each venture is built to last."
-        keywords="The Meet Patel portfolio, Meet Patel startups, themeetpatel ventures, startup portfolio, BiggMate, ZeroHuman, TorchIt, Kingstorm, Incsmart, BAWES, Plugn, startup builder portfolio"
+        title="Portfolio | The Meet Patel — Startups & Ventures Built by Meet Patel"
+        description="The Meet Patel (Meet Patel / themeetpatel) has built 10+ ventures across AI, fintech, edtech, hardware & software — BiggMate, ZeroHuman, Finanshels, TorchIt and more. See the full startup portfolio."
+        keywords="The Meet Patel portfolio, Meet Patel startups, themeetpatel ventures, meetpatel portfolio, startup portfolio, BiggMate, ZeroHuman, TorchIt, Finanshels, Incsmart, BAWES, Plugn, startup builder, serial entrepreneur portfolio, ventures"
         canonical="/portfolio"
         structuredData={portfolioStructuredData}
       />
