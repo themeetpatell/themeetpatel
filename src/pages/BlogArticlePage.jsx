@@ -77,8 +77,23 @@ const BlogArticlePage = () => {
   const formatDate = d =>
     new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
+  const getCanonicalShareUrl = () => {
+    const base = 'https://www.themeetpatel.com';
+    const canonical = article?.canonical_url;
+
+    if (canonical && /^https?:\/\//i.test(canonical)) {
+      return canonical;
+    }
+
+    if (canonical && canonical.startsWith('/')) {
+      return `${base}${canonical}`;
+    }
+
+    return `${base}/blogs/${article?.slug || slug}`;
+  };
+
   const handleShare = (platform) => {
-    const url   = window.location.href;
+    const url   = getCanonicalShareUrl();
     const title = article?.title || '';
     const map = {
       twitter:  `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
@@ -90,7 +105,7 @@ const BlogArticlePage = () => {
   };
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText(getCanonicalShareUrl());
     setCopiedLink(true);
     setTimeout(() => setCopiedLink(false), 2000);
     setShowShareMenu(false);
