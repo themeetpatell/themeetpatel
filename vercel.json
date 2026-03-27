@@ -8,7 +8,7 @@
         {
           "type": "header",
           "key": "user-agent",
-          "value": "(?i).*(bot|crawler|spider|facebookexternalhit|Facebot|twitterbot|linkedinbot|slackbot|whatsapp|telegram|discordbot|pinterestbot|applebot|google|bing|yandex|baidu|duckduckbot|semrushbot|ahrefsbot|mj12bot|dotbot|petalbot|bytespider).*"
+          "value": ".*([bB][oO][tT]|[cC]rawl|[sS]pider|facebookexternalhit|WhatsApp|[gG]oogle|[bB]ing|[yY]andex).*"
         }
       ],
       "destination": "/api/og?slug=:slug"
