@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
@@ -11,6 +11,7 @@ import SEOHead from '../components/SEOHead';
 import FollowMyJourney from '../components/FollowMyJourney';
 import meetPatelImage from '../assets/themeetpatel.jpeg';
 import meetPatelImage2 from '../assets/the meet patel.jpeg';
+import { getPublishedArticles } from '../lib/articleService';
 
 void motion;
 
@@ -22,6 +23,14 @@ const WhatsAppIcon = ({ className }) => (
 );
 
 const HomePage = () => {
+  const [blogPosts, setBlogPosts] = useState([]);
+
+  useEffect(() => {
+    getPublishedArticles()
+      .then(articles => setBlogPosts(articles.slice(0, 3)))
+      .catch(console.error);
+  }, []);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -124,32 +133,6 @@ const HomePage = () => {
     { number: "2", label: "Books Published", icon: BookOpen }
   ];
 
-  const blogPosts = [
-    {
-      slug: "building-startup-ecosystem",
-      title: "Building a Thriving Startup Ecosystem",
-      excerpt: "How to create an environment where startups can flourish and grow sustainably.",
-      readTime: "8 min read",
-      date: "2024-01-15",
-      category: "Entrepreneurship"
-    },
-    {
-      slug: "scaling-operations-efficiency",
-      title: "Scaling Operations for Maximum Efficiency",
-      excerpt: "Proven strategies for scaling your business operations without losing quality.",
-      readTime: "6 min read",
-      date: "2024-01-10",
-      category: "Operations"
-    },
-    {
-      slug: "leadership-remote-teams",
-      title: "Leading Remote Teams to Success",
-      excerpt: "Essential leadership principles for managing distributed teams effectively.",
-      readTime: "10 min read",
-      date: "2024-01-05",
-      category: "Leadership"
-    }
-  ];
 
   const books = [
     {
@@ -889,9 +872,8 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {blogPosts.map((post, index) => (
-              <motion.a
+              <motion.div
                 key={post.slug}
-                href={`/blog/${post.slug}`}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -917,25 +899,27 @@ const HomePage = () => {
                   </span>
                   <div className="flex items-center gap-1" style={{ color: '#3a3a4e', fontSize: '0.75rem' }}>
                     <Clock className="w-3 h-3" />
-                    {post.readTime}
+                    {post.read_time}
                   </div>
                 </div>
 
-                <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#f5f5f7', lineHeight: 1.4, marginBottom: '8px' }}>
-                  {post.title}
-                </h3>
+                <Link to={`/blogs/${post.slug}`} style={{ textDecoration: 'none' }}>
+                  <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#f5f5f7', lineHeight: 1.4, marginBottom: '8px' }}>
+                    {post.title}
+                  </h3>
+                </Link>
                 <p style={{ fontSize: '0.875rem', color: '#5a5a6e', lineHeight: 1.6, marginBottom: '16px' }}>
                   {post.excerpt}
                 </p>
 
                 <div className="flex items-center justify-between" style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '12px' }}>
                   <span style={{ fontSize: '0.75rem', color: '#3a3a4e' }}>{post.date}</span>
-                  <div className="flex items-center gap-1 group-hover:gap-2 transition-all" style={{ color: '#8b5cf6', fontSize: '0.8125rem', fontWeight: 600 }}>
+                  <Link to={`/blogs/${post.slug}`} className="flex items-center gap-1 group-hover:gap-2 transition-all" style={{ color: '#8b5cf6', fontSize: '0.8125rem', fontWeight: 600, textDecoration: 'none' }}>
                     Read
                     <ArrowRight className="w-3.5 h-3.5" />
-                  </div>
+                  </Link>
                 </div>
-              </motion.a>
+              </motion.div>
             ))}
           </div>
 
