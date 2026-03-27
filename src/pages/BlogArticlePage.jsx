@@ -353,8 +353,8 @@ const BlogArticlePage = () => {
         /* ── Misc ── */
         .article-body hr { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 2.25rem 0; }
         .article-body img { max-width: 100%; border-radius: 12px; margin: 1.5rem 0; display: block; border: 1px solid rgba(255,255,255,0.07); }
-        .article-body table { border-collapse: collapse; width: 100%; margin: 1.5rem 0; }
-        .article-body th, .article-body td { border: 1px solid rgba(255,255,255,0.07); padding: 10px 16px; font-size: 14px; text-align: left; }
+        .article-body table { border-collapse: collapse; width: 100%; margin: 1.5rem 0; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .article-body th, .article-body td { border: 1px solid rgba(255,255,255,0.07); padding: 10px 16px; font-size: 14px; text-align: left; white-space: nowrap; }
         .article-body th { background: #16161f; color: #f5f5f7; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
         .article-body td { color: #8e8ea0; }
         .article-body tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
