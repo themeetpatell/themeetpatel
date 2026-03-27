@@ -1,8 +1,12 @@
+/* global process */
 import { createClient } from '@supabase/supabase-js';
 
-function escapeHtml(str) {
+const BASE = 'https://www.themeetpatel.com';
+const DEFAULT_IMAGE = `${BASE}/og-image.jpg`;
+
+function esc(str) {
   if (!str) return '';
-  return str
+  return String(str)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
@@ -12,52 +16,45 @@ function escapeHtml(str) {
 
 export default async function handler(req, res) {
   const { slug } = req.query;
+
   if (!slug) {
-    res.writeHead(302, { Location: '/blogs' });
+    res.writeHead(302, { Location: `${BASE}/blogs` });
     return res.end();
   }
 
-  const supabaseUrl = process.env.VITE_SUPABASE_URL;
-  const supabaseKey =
-    process.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
-    process.env.VITE_SUPABASE_ANON_KEY;
+  const articleUrl = `${BASE}/blogs/${slug}`;
 
-  if (!supabaseUrl || !supabaseKey) {
-    res.writeHead(302, { Location: `/blogs/${encodeURIComponent(slug)}` });
-    return res.end();
+  // --- fetch article (never redirect on failure — bots would loop) ---
+  let article = null;
+  try {
+    const supabaseUrl = process.env.VITE_SUPABASE_URL;
+    const supabaseKey =
+      process.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
+      process.env.VITE_SUPABASE_ANON_KEY;
+
+    if (supabaseUrl && supabaseKey) {
+      const supabase = createClient(supabaseUrl, supabaseKey);
+      const { data } = await supabase
+        .from('articles')
+        .select('title, excerpt, slug, author, date, published_at, category, tags, og_image, meta_title, meta_description, og_title, og_description, twitter_card, twitter_creator')
+        .eq('slug', slug)
+        .eq('status', 'published')
+        .single();
+      article = data;
+    }
+  } catch {
+    // fall through to slug-based defaults
   }
 
-  const supabase = createClient(supabaseUrl, supabaseKey);
-
-  const { data: article } = await supabase
-    .from('articles')
-    .select(
-      'title, excerpt, slug, author, date, published_at, category, tags, og_image, meta_title, meta_description, og_title, og_description, twitter_card, twitter_creator'
-    )
-    .eq('slug', slug)
-    .eq('status', 'published')
-    .single();
-
-  if (!article) {
-    res.writeHead(302, { Location: `https://www.themeetpatel.com/blogs/${encodeURIComponent(slug)}` });
-    return res.end();
-  }
-
-  const title = escapeHtml(
-    article.og_title || article.meta_title || article.title
-  );
-  const description = escapeHtml(
-    article.og_description || article.meta_description || article.excerpt
-  );
-  const image = escapeHtml(article.og_image || 'https://www.themeetpatel.com/og-image.jpg');
-  const url = `https://www.themeetpatel.com/blogs/${article.slug}`;
-  const author = escapeHtml(article.author || 'The Meet Patel');
-  const publishedTime = article.published_at || article.date || '';
-  const twitterCard = escapeHtml(article.twitter_card || 'summary_large_image');
-  const twitterCreator = escapeHtml(article.twitter_creator || '@the_meetpatel');
-  const keywords = escapeHtml(
-    [...(article.tags || []), article.category].filter(Boolean).join(', ')
-  );
+  // --- resolve values (graceful fallback when article is null) ---
+  const title       = esc(article?.og_title || article?.meta_title || article?.title || slug.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' '));
+  const description = esc(article?.og_description || article?.meta_description || article?.excerpt || `Read this article by The Meet Patel on ${BASE}/blogs`);
+  const image       = esc(article?.og_image || DEFAULT_IMAGE);
+  const author      = esc(article?.author || 'The Meet Patel');
+  const publishedTime = article?.published_at || article?.date || '';
+  const twitterCard   = esc(article?.twitter_card || 'summary_large_image');
+  const twitterCreator = esc(article?.twitter_creator || '@the_meetpatel');
+  const keywords    = esc([...(article?.tags || []), article?.category].filter(Boolean).join(', '));
 
   const html = `<!DOCTYPE html>
 <html lang="en">
@@ -66,12 +63,12 @@ export default async function handler(req, res) {
   <title>${title} | The Meet Patel</title>
   <meta name="description" content="${description}" />
   <meta name="author" content="${author}" />
-  <meta name="keywords" content="${keywords}" />
-  <link rel="canonical" href="${url}" />
+  ${keywords ? `<meta name="keywords" content="${keywords}" />` : ''}
+  <link rel="canonical" href="${articleUrl}" />
 
-  <!-- Open Graph -->
+  <!-- Open Graph (LinkedIn, Facebook, WhatsApp) -->
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="${url}" />
+  <meta property="og:url" content="${articleUrl}" />
   <meta property="og:title" content="${title}" />
   <meta property="og:description" content="${description}" />
   <meta property="og:image" content="${image}" />
@@ -81,25 +78,25 @@ export default async function handler(req, res) {
   <meta property="og:site_name" content="The Meet Patel" />
   <meta property="og:locale" content="en_US" />
   <meta property="article:author" content="${author}" />
-  ${publishedTime ? `<meta property="article:published_time" content="${publishedTime}" />` : ''}
+  ${publishedTime ? `<meta property="article:published_time" content="${esc(publishedTime)}" />` : ''}
 
-  <!-- Twitter -->
+  <!-- Twitter / X -->
   <meta name="twitter:card" content="${twitterCard}" />
-  <meta name="twitter:url" content="${url}" />
+  <meta name="twitter:site" content="@the_meetpatel" />
+  <meta name="twitter:creator" content="${twitterCreator}" />
+  <meta name="twitter:url" content="${articleUrl}" />
   <meta name="twitter:title" content="${title}" />
   <meta name="twitter:description" content="${description}" />
   <meta name="twitter:image" content="${image}" />
   <meta name="twitter:image:alt" content="${title}" />
-  <meta name="twitter:creator" content="${twitterCreator}" />
 
-  <!-- LinkedIn specific -->
-  <meta name="title" content="${title}" />
-
-  <!-- Redirect human visitors to the SPA (bots read OG tags above and don't follow) -->
-  <script>if(!/bot|crawler|spider|linkedinbot|twitterbot|facebookexternalhit/i.test(navigator.userAgent)){window.location.replace('${url}');}</script>
+  <!-- Redirect real browsers to the SPA (bots don't execute JS) -->
+  <script>window.location.replace('${articleUrl}');</script>
 </head>
 <body>
+  <h1>${title}</h1>
   <p>${description}</p>
+  <a href="${articleUrl}">Read on The Meet Patel</a>
 </body>
 </html>`;
 
