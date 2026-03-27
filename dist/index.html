@@ -239,9 +239,9 @@
         margin-top: 16px;
       }
     </style>
-    <script type="module" crossorigin src="/assets/js/index-c10cCvQa.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/js/vendor-KVGk_uNu.js">
-    <link rel="modulepreload" crossorigin href="/assets/js/vendor-analytics-Dcyte5Nw.js">
+    <script type="module" crossorigin src="/assets/js/index-Brtfj2SV.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/js/vendor-CeFzfWCc.js">
+    <link rel="modulepreload" crossorigin href="/assets/js/vendor-analytics-CzkSvPta.js">
     <link rel="stylesheet" crossorigin href="/assets/index-CPT6qkIz.css">
   </head>
   <body>
@@ -252,5 +252,12 @@
       </div>
     </div>
     <div id="root"></div>
+    <script>
+      // Failsafe: never keep users on an infinite loading overlay.
+      setTimeout(function () {
+        var el = document.getElementById('loading-screen');
+        if (el) el.remove();
+      }, 5000);
+    </script>
   </body>
 </html>
