@@ -5,16 +5,24 @@ const supabasePublishableKey =
   import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
   import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !supabasePublishableKey) {
-  throw new Error(
-    'Missing Supabase environment variables. Set VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY in .env'
+const hasSupabaseConfig = Boolean(supabaseUrl && supabasePublishableKey);
+
+if (!hasSupabaseConfig) {
+  console.error(
+    'Missing Supabase env vars. Set VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY.'
   );
 }
 
-export const supabase = createClient(supabaseUrl, supabasePublishableKey, {
+export const supabase = createClient(
+  hasSupabaseConfig ? supabaseUrl : 'https://placeholder.supabase.co',
+  hasSupabaseConfig ? supabasePublishableKey : 'sb_publishable_placeholder',
+  {
   auth: {
     persistSession: true,
     autoRefreshToken: true,
     detectSessionInUrl: true,
   },
-});
+  }
+);
+
+export { hasSupabaseConfig };

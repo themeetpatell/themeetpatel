@@ -248,6 +248,13 @@
       </div>
     </div>
     <div id="root"></div>
+    <script>
+      // Failsafe: never keep users on an infinite loading overlay.
+      setTimeout(function () {
+        var el = document.getElementById('loading-screen');
+        if (el) el.remove();
+      }, 5000);
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
