@@ -1,6 +1,14 @@
-import { supabase } from './supabase';
+// ─── Auth token helper (admin only) ─────────────────────────────────────────
+const authHeader = () => {
+  const token = typeof window !== 'undefined'
+    ? localStorage.getItem('admin_token')
+    : null;
+  return token ? { Authorization: `Bearer ${token}` } : {};
+};
 
-// ─── Slug generation (pure, same logic as blogData.js) ──────────────────────
+const json = (r) => (r.ok ? r.json() : Promise.reject(new Error(`${r.status}`)));
+
+// ─── Slug generation ─────────────────────────────────────────────────────────
 export const generateSlug = (title) =>
   (title || '')
     .toLowerCase()
@@ -9,8 +17,33 @@ export const generateSlug = (title) =>
     .replace(/-+/g, '-')
     .trim();
 
-// ─── Category icon map ───────────────────────────────────────────────────────
-const getCategoryIcon = (category) => {
+// ─── Public reads ─────────────────────────────────────────────────────────────
+export const getPublishedArticles = () =>
+  fetch('/api/articles').then(json);
+
+export const getArticleBySlug = (slug) =>
+  fetch(`/api/articles/${encodeURIComponent(slug)}`).then(r => r.ok ? r.json() : null);
+
+export const getFeaturedArticles = () =>
+  getPublishedArticles().then(articles => articles.filter(a => a.featured));
+
+export const getArticlesByCategory = (category) =>
+  getPublishedArticles().then(articles => articles.filter(a => a.category === category));
+
+export const getRelatedArticles = async (currentArticle, limit = 3) => {
+  if (!currentArticle?.category) return [];
+  const articles = await getPublishedArticles();
+  return articles
+    .filter(a => a.category === currentArticle.category && a.id !== currentArticle.id)
+    .slice(0, limit);
+};
+
+export const getCategories = async () => {
+  const articles = await getPublishedArticles();
+  const map = {};
+  articles.forEach(a => {
+    if (a.category) map[a.category] = (map[a.category] || 0) + 1;
+  });
   const iconMap = {
     'Entrepreneurship': 'Rocket',
     'Biggbizz': 'Target',
@@ -25,165 +58,45 @@ const getCategoryIcon = (category) => {
     'Leadership': 'Crown',
     'Strategy': 'BookOpen',
   };
-  return iconMap[category] || 'BookOpen';
-};
-
-// ─── Public reads (RLS: published only) ─────────────────────────────────────
-
-export const getPublishedArticles = async () => {
-  const { data, error } = await supabase
-    .from('articles')
-    .select('*')
-    .eq('status', 'published')
-    .order('date', { ascending: false });
-  if (error) throw error;
-  return data || [];
-};
-
-export const getArticleBySlug = async (slug) => {
-  const { data, error } = await supabase
-    .from('articles')
-    .select('*')
-    .eq('slug', slug)
-    .eq('status', 'published')
-    .single();
-  if (error) return null;
-  return data;
-};
-
-export const getFeaturedArticles = async () => {
-  const { data, error } = await supabase
-    .from('articles')
-    .select('*')
-    .eq('status', 'published')
-    .eq('featured', true)
-    .order('date', { ascending: false });
-  if (error) throw error;
-  return data || [];
-};
-
-export const getArticlesByCategory = async (category) => {
-  const { data, error } = await supabase
-    .from('articles')
-    .select('*')
-    .eq('status', 'published')
-    .eq('category', category)
-    .order('date', { ascending: false });
-  if (error) throw error;
-  return data || [];
-};
-
-export const getRelatedArticles = async (currentArticle, limit = 3) => {
-  if (!currentArticle?.id || !currentArticle?.category) return [];
-  const { data, error } = await supabase
-    .from('articles')
-    .select('*')
-    .eq('status', 'published')
-    .eq('category', currentArticle.category)
-    .neq('id', currentArticle.id)
-    .limit(limit);
-  if (error) return [];
-  return data || [];
-};
-
-export const getCategories = async () => {
-  const articles = await getPublishedArticles();
-  const categoryMap = {};
-  articles.forEach(a => {
-    if (a.category && typeof a.category === 'string') {
-      categoryMap[a.category] = (categoryMap[a.category] || 0) + 1;
-    }
-  });
-  return Object.entries(categoryMap).map(([name, count]) => ({
-    name,
-    count,
-    icon: getCategoryIcon(name),
+  return Object.entries(map).map(([name, count]) => ({
+    name, count, icon: iconMap[name] || 'BookOpen',
   }));
 };
 
-// ─── View increment (direct update — works without auth via RLS) ─────────────
-export const incrementViews = async (articleId) => {
-  if (!articleId) return;
-  try {
-    // Try RPC first (if available)
-    const { error: rpcError } = await supabase.rpc('increment_views', { article_id: articleId });
-    if (!rpcError) return;
-    // Fallback: read current views then update
-    const { data } = await supabase
-      .from('articles')
-      .select('views')
-      .eq('id', articleId)
-      .single();
-    if (data) {
-      await supabase
-        .from('articles')
-        .update({ views: (data.views || 0) + 1 })
-        .eq('id', articleId);
-    }
-  } catch {
-    // Silently fail — views are non-critical
-  }
+export const incrementViews = (articleId) => {
+  if (!articleId) return Promise.resolve();
+  return fetch(`/api/views/${articleId}`, { method: 'PUT' }).catch(() => {});
 };
 
-// ─── Admin reads (requires authenticated session) ────────────────────────────
+// ─── Admin reads ──────────────────────────────────────────────────────────────
+export const getAllArticlesAdmin = () =>
+  fetch('/api/admin/articles', { headers: authHeader() }).then(json);
 
-export const getAllArticlesAdmin = async () => {
-  const { data, error } = await supabase
-    .from('articles')
-    .select('*')
-    .order('updated_at', { ascending: false });
-  if (error) throw error;
-  return data || [];
-};
+export const getArticleByIdAdmin = (id) =>
+  fetch(`/api/admin/articles/${id}`, { headers: authHeader() }).then(json);
 
-export const getArticleByIdAdmin = async (id) => {
-  const { data, error } = await supabase
-    .from('articles')
-    .select('*')
-    .eq('id', id)
-    .single();
-  if (error) throw error;
-  return data;
-};
+// ─── Admin CRUD ───────────────────────────────────────────────────────────────
+export const createArticle = (data) =>
+  fetch('/api/admin/articles', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...authHeader() },
+    body: JSON.stringify(data),
+  }).then(json);
 
-// ─── Admin CRUD ──────────────────────────────────────────────────────────────
+export const updateArticle = (id, updates) =>
+  fetch(`/api/admin/articles/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', ...authHeader() },
+    body: JSON.stringify(updates),
+  }).then(json);
 
-export const createArticle = async (articleData) => {
-  const payload = {
-    slug: articleData.slug || generateSlug(articleData.title),
-    status: 'draft',
-    views: 0,
-    likes: 0,
-    featured: false,
-    ...articleData,
-  };
-  const { data, error } = await supabase
-    .from('articles')
-    .insert(payload)
-    .select()
-    .single();
-  if (error) throw error;
-  return data;
-};
-
-export const updateArticle = async (id, updates) => {
-  const { data, error } = await supabase
-    .from('articles')
-    .update(updates)
-    .eq('id', id)
-    .select()
-    .single();
-  if (error) throw error;
-  return data;
-};
-
-export const publishArticle = async (id) =>
+export const publishArticle = (id) =>
   updateArticle(id, { status: 'published', published_at: new Date().toISOString() });
 
-export const unpublishArticle = async (id) =>
+export const unpublishArticle = (id) =>
   updateArticle(id, { status: 'draft', published_at: null });
 
-export const archiveArticle = async (id) =>
+export const archiveArticle = (id) =>
   updateArticle(id, { status: 'archived' });
 
 export const duplicateArticle = async (id) => {
@@ -197,62 +110,31 @@ export const duplicateArticle = async (id) => {
   });
 };
 
-export const deleteArticle = async (id) => {
-  const { error } = await supabase.from('articles').delete().eq('id', id);
-  if (error) throw error;
-};
+export const deleteArticle = (id) =>
+  fetch(`/api/admin/articles/${id}`, {
+    method: 'DELETE',
+    headers: authHeader(),
+  }).then(r => { if (!r.ok && r.status !== 204) throw new Error(r.status); });
 
-// ─── Media ───────────────────────────────────────────────────────────────────
-
+// ─── Media ────────────────────────────────────────────────────────────────────
 export const uploadMedia = async (file) => {
-  const nameParts = file.name.split('.');
-  const ext  = nameParts.length > 1 ? nameParts.pop() : 'bin';
-  const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-
-  const { error: uploadError } = await supabase.storage
-    .from('media')
-    .upload(path, file, { cacheControl: '3600', upsert: false });
-  if (uploadError) throw uploadError;
-
-  const { data: urlData } = supabase.storage.from('media').getPublicUrl(path);
-  if (!urlData?.publicUrl) throw new Error('Failed to get public URL for uploaded file');
-
-  const { data, error: dbError } = await supabase
-    .from('media')
-    .insert({ name: file.name, url: urlData.publicUrl, size: file.size, mime_type: file.type })
-    .select()
-    .single();
-  if (dbError) throw dbError;
-
-  return data;
-};
-
-export const getAllMedia = async () => {
-  const { data, error } = await supabase
-    .from('media')
-    .select('*')
-    .order('created_at', { ascending: false });
-  if (error) throw error;
-  return data || [];
-};
-
-export const deleteMedia = async (mediaItem) => {
-  if (!mediaItem?.url) throw new Error('Invalid media item: missing URL');
-
-  // Extract storage path from public URL
-  // URL format: https://<project>.supabase.co/storage/v1/object/public/media/<path>
-  try {
-    const url = new URL(mediaItem.url);
-    const marker = '/public/media/';
-    const idx = url.pathname.indexOf(marker);
-    const storagePath = idx !== -1 ? url.pathname.slice(idx + marker.length) : null;
-    if (storagePath) {
-      await supabase.storage.from('media').remove([storagePath]);
+  const res = await fetch(
+    `/api/admin/media?filename=${encodeURIComponent(file.name)}&contentType=${encodeURIComponent(file.type)}`,
+    {
+      method: 'POST',
+      headers: authHeader(),
+      body: file,
     }
-  } catch {
-    // URL parsing failed — skip storage deletion, still remove DB record
-  }
-
-  const { error } = await supabase.from('media').delete().eq('id', mediaItem.id);
-  if (error) throw error;
+  );
+  if (!res.ok) throw new Error(await res.text());
+  return res.json();
 };
+
+export const getAllMedia = () =>
+  fetch('/api/admin/media', { headers: authHeader() }).then(json);
+
+export const deleteMedia = (mediaItem) =>
+  fetch(`/api/admin/media/${mediaItem.id}`, {
+    method: 'DELETE',
+    headers: authHeader(),
+  }).then(r => { if (!r.ok && r.status !== 204) throw new Error(r.status); });

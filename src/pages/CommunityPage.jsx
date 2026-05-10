@@ -6,6 +6,7 @@ import {
   Instagram, Youtube, TrendingUp, Target, Briefcase, Send
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { submitCommunityFormData } from '../services/formService';
 
 void motion;
 
@@ -63,11 +64,17 @@ export default function CommunityPage() {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitError(null);
+
     try {
+      const result = await submitCommunityFormData(formData);
+      if (!result.success) {
+        console.error('Community form email send failed:', result.errors);
+      }
+
       const message = `Hi Meet! I want to join the StartupOS WhatsApp community.\n\nHere are my details:\n• LinkedIn: ${formData.linkedinId}\n• Email: ${formData.email}\n• WhatsApp: ${formData.whatsapp}\n• Business: ${formData.businessName}\n• Role: ${formData.role}\n• Reason: ${formData.reason}\n\nPlease add me to the community!`;
       const encodedMessage = encodeURIComponent(message);
       window.open(`https://wa.me/919824341414?text=${encodedMessage}`, '_blank');

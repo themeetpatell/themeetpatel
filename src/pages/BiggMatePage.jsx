@@ -18,6 +18,7 @@ import {
   UserCheck,
   Bot,
 } from 'lucide-react';
+import { submitWaitlistFormData } from '../services/formService';
 
 void motion;
 
@@ -183,9 +184,13 @@ const BiggMatePage = () => {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleWaitlist = (e) => {
+  const handleWaitlist = async (e) => {
     e.preventDefault();
     if (email) {
+      await submitWaitlistFormData({
+        email,
+        product: 'biggmate',
+      });
       window.open(`https://www.biggmate.com?email=${encodeURIComponent(email)}`, '_blank');
       setSubmitted(true);
     }

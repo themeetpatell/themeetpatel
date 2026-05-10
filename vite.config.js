@@ -66,8 +66,14 @@ export default defineConfig({
   },
   server: {
     historyApiFallback: true,
-    // Enable compression
     compress: true,
+    // Proxy /api to vercel dev (run: vercel dev --listen 3001)
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+    },
   },
   // Optimize deps
   optimizeDeps: {

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
-import { supabase } from '../lib/supabase';
 import {
   LayoutDashboard, FileText, Plus, Image, LogOut,
   Menu, X, ExternalLink, ChevronRight,
@@ -31,7 +30,7 @@ function SidebarContent({ onClose }) {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
+    localStorage.removeItem('admin_token');
     navigate('/admin/login');
   };
 

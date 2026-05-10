@@ -22,3 +22,5 @@ npm-debug.log*
 
 # Vercel
 .vercel
+node_modules
+node_modules

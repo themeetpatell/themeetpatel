@@ -19,6 +19,7 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import PortfolioPage from './pages/PortfolioPage';
 import BiggMatePage from './pages/BiggMatePage';
+import BiggDatePage from './pages/BiggDatePage';
 import BlogPage from './pages/BlogPage';
 import BlogArticlePage from './pages/BlogArticlePage';
 import CommunityPage from './pages/CommunityPage';
@@ -88,6 +89,7 @@ function App() {
           <Route path="/contact" element={<PublicLayout><ContactPage /></PublicLayout>} />
           <Route path="/portfolio" element={<PublicLayout><PortfolioPage /></PublicLayout>} />
           <Route path="/biggmate" element={<PublicLayout><BiggMatePage /></PublicLayout>} />
+          <Route path="/biggdate" element={<PublicLayout><BiggDatePage /></PublicLayout>} />
           <Route path="/community" element={<PublicLayout><CommunityPage /></PublicLayout>} />
           <Route path="/blogs" element={<PublicLayout><BlogPage /></PublicLayout>} />
           <Route path="/blogs/:slug" element={<PublicLayout><BlogArticlePage /></PublicLayout>} />

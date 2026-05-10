@@ -1,22 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import { supabase } from '../lib/supabase';
 
 const C = { bg: '#09090e', violet: '#8b5cf6' };
 
+function isTokenValid() {
+  const token = localStorage.getItem('admin_token');
+  if (!token) return false;
+  try {
+    const decoded = atob(token.replace(/-/g, '+').replace(/_/g, '/'));
+    const parts = decoded.split(':');
+    if (parts.length < 3) return false;
+    const expiry = Number(parts[1]);
+    return Date.now() < expiry;
+  } catch {
+    return false;
+  }
+}
+
 export default function AdminProtectedRoute({ children }) {
-  const [session, setSession] = useState(undefined); // undefined = loading
+  const [authed, setAuthed] = useState(undefined); // undefined = loading
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => setSession(session));
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-    return () => subscription.unsubscribe();
+    setAuthed(isTokenValid());
   }, []);
 
-  if (session === undefined) {
+  if (authed === undefined) {
     return (
       <div style={{
         background: C.bg, minHeight: '100vh',
@@ -33,7 +41,7 @@ export default function AdminProtectedRoute({ children }) {
     );
   }
 
-  if (!session) return <Navigate to="/admin/login" replace />;
+  if (!authed) return <Navigate to="/admin/login" replace />;
 
   return children;
 }

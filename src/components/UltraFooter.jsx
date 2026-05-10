@@ -6,14 +6,25 @@ import {
 } from 'lucide-react';
 import logoImage from '../assets/logo for themeetpatel.png';
 import { trackButtonClick, trackSocialClick, trackFormSubmission } from '../utils/analytics';
+import { submitNewsletterFormData } from '../services/formService';
 
 const UltraFooter = () => {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
     if (email) {
+      const result = await submitNewsletterFormData({
+        email,
+        source: 'footer_newsletter',
+      });
+
+      if (!result.success) {
+        alert(result.errors?.join(', ') || 'Subscription failed. Please try again.');
+        return;
+      }
+
       trackFormSubmission('newsletter_subscription');
       setIsSubscribed(true);
       setEmail('');
@@ -23,6 +34,7 @@ const UltraFooter = () => {
 
   const ventures = [
     { name: 'BiggMate', href: 'https://www.biggmate.com', external: true },
+    { name: 'BiggDate', href: 'https://biggdate.com', external: true },
     { name: 'BiggBizz', href: 'https://www.biggbizz.com', external: true },
     { name: 'ZeroHuman', href: 'https://www.zerohuman.co', external: true },
     { name: 'MealVerse', href: 'https://www.mealverse.in', external: true },

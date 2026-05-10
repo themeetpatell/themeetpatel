@@ -1,5 +1,4 @@
-/* global process */
-import { createClient } from '@supabase/supabase-js';
+import { sql } from './_db.js';
 
 const BASE = 'https://www.themeetpatel.com';
 const DEFAULT_IMAGE = `${BASE}/og-image.jpg`;
@@ -24,41 +23,29 @@ export default async function handler(req, res) {
 
   const articleUrl = `${BASE}/blogs/${slug}`;
 
-  // --- fetch article (never redirect on failure — bots would loop) ---
   let article = null;
   try {
-    const supabaseUrl =
-      process.env.SUPABASE_URL ||
-      process.env.VITE_SUPABASE_URL;
-    const supabaseKey =
-      process.env.SUPABASE_SECRET_KEY ||
-      process.env.SUPABASE_SERVICE_ROLE_KEY ||
-      process.env.SUPABASE_ANON_KEY ||
-      process.env.SUPABASE_PUBLISHABLE_KEY ||
-      process.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
-      process.env.VITE_SUPABASE_ANON_KEY;
-
-    if (supabaseUrl && supabaseKey) {
-      const supabase = createClient(supabaseUrl, supabaseKey);
-      const { data } = await supabase
-        .from('articles')
-        .select('title, excerpt, slug, author, date, published_at, category, tags, og_image, meta_title, meta_description, og_title, og_description, twitter_card, twitter_creator')
-        .eq('slug', slug)
-        .eq('status', 'published')
-        .single();
-      article = data;
-    }
+    const [row] = await sql`
+      SELECT
+        title, excerpt, slug, author, date, published_at, category, tags,
+        og_image, meta_title, meta_description, og_title, og_description,
+        twitter_card, twitter_creator
+      FROM articles
+      WHERE slug = ${slug}
+        AND status = 'published'
+      LIMIT 1
+    `;
+    article = row ?? null;
   } catch {
     // fall through to slug-based defaults
   }
 
-  // --- resolve values (graceful fallback when article is null) ---
   const title       = esc(article?.og_title || article?.meta_title || article?.title || slug.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' '));
   const description = esc(article?.og_description || article?.meta_description || article?.excerpt || `Read this article by The Meet Patel on ${BASE}/blogs`);
   const image       = esc(article?.og_image || DEFAULT_IMAGE);
   const author      = esc(article?.author || 'The Meet Patel');
-  const publishedTime = article?.published_at || article?.date || '';
-  const twitterCard   = esc(article?.twitter_card || 'summary_large_image');
+  const publishedTime  = article?.published_at || article?.date || '';
+  const twitterCard    = esc(article?.twitter_card || 'summary_large_image');
   const twitterCreator = esc(article?.twitter_creator || '@the_meetpatel');
   const keywords    = esc([...(article?.tags || []), article?.category].filter(Boolean).join(', '));
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, Sparkles, Mail } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+import { submitNewsletterFormData } from '../services/formService';
 
 const SubstackSubscriptionModal = () => {
   const [open, setOpen] = useState(false);
@@ -38,32 +38,14 @@ const SubstackSubscriptionModal = () => {
     setIsSubmitting(true);
 
     try {
-      const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-      const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const result = await submitNewsletterFormData({
+        email,
+        source: 'substack_modal',
+      });
 
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          to_email: 'the.meetpatell@gmail.com',
-          from_name: email,
-          form_type: 'NEWSLETTER SUBSCRIPTION',
-          email: email,
-          subject: 'Newsletter Subscription',
-          message: `New newsletter subscription from: ${email}`,
-          reply_to: email,
-          timestamp: new Date().toLocaleString(),
-        }
-      );
-
-      localStorage.setItem('formSubmissions', JSON.stringify([
-        ...JSON.parse(localStorage.getItem('formSubmissions') || '[]'),
-        {
-          timestamp: new Date().toISOString(),
-          formType: 'newsletter',
-          data: { email }
-        }
-      ]));
+      if (!result.success) {
+        throw new Error(result.errors?.join(', ') || 'Subscription failed');
+      }
 
       handleClose();
       window.open('https://themeetpatell.substack.com/', '_blank');

@@ -1,65 +1,27 @@
-import emailjs from '@emailjs/browser';
-
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-// Initialize EmailJS
-if (EMAILJS_PUBLIC_KEY) {
-  emailjs.init(EMAILJS_PUBLIC_KEY);
-}
-
-const isEmailJSConfigured = () => {
-  return !!(EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY);
-};
+const FORMS_NOTIFY_ENDPOINT = '/api/forms/notify';
 
 const sendEmailNotification = async (formType, formData) => {
-  if (!isEmailJSConfigured()) {
-    console.warn('EmailJS not configured. Check environment variables.');
-    return { success: false, error: 'Email service not configured' };
-  }
+  const payload = {
+    formType,
+    formData,
+    pagePath: typeof window !== 'undefined' ? window.location.pathname : '',
+    pageUrl: typeof window !== 'undefined' ? window.location.href : '',
+  };
 
   try {
-    let emailParams = {
-      to_email: 'the.meetpatell@gmail.com',
-      from_name: formData.name || 'Anonymous',
-      form_type: formType.toUpperCase(),
-      timestamp: new Date().toLocaleString(),
-    };
+    const response = await fetch(FORMS_NOTIFY_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
 
-    if (formType === 'contact') {
-      emailParams = {
-        ...emailParams,
-        name: formData.name,
-        email: formData.email,
-        phone: `${formData.countryCode} ${formData.whatsapp}`,
-        subject: formData.subject,
-        message: formData.message,
-        reply_to: formData.email,
-      };
-    } else if (formType === 'community') {
-      emailParams = {
-        ...emailParams,
-        linkedin: formData.linkedinId,
-        email: formData.email,
-        whatsapp: formData.whatsapp,
-        business_name: formData.businessName,
-        role: formData.role,
-        reason: formData.reason,
-        reply_to: formData.email,
-      };
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      return { success: false, error: data?.error || 'Email sending failed' };
     }
 
-    const response = await emailjs.send(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID,
-      emailParams
-    );
-
-    console.log('Email sent successfully:', response);
-    return { success: true, method: 'email', response };
+    return { success: true, method: 'resend', response: data };
   } catch (error) {
-    console.error('Email sending failed:', error);
     return { success: false, error: error.message };
   }
 };
@@ -95,7 +57,7 @@ export const submitForm = async (formType, formData) => {
       results.email = await sendEmailNotification(formType, formData);
       if (results.email?.success) {
         results.success = true;
-        console.log(`${formType} form emailed to the.meetpatell@gmail.com successfully`);
+        console.log(`${formType} form emailed to meet@biggventures.com successfully`);
       } else {
         results.errors.push(`Email error: ${results.email?.error}`);
       }
@@ -138,6 +100,14 @@ export const submitCommunityFormData = async (formData) => {
   return await submitForm('community', formData);
 };
 
+export const submitNewsletterFormData = async (formData) => {
+  return await submitForm('newsletter', formData);
+};
+
+export const submitWaitlistFormData = async (formData) => {
+  return await submitForm('waitlist', formData);
+};
+
 // Utility function to format form data for logging
 export const formatFormDataForLogging = (formType, formData) => {
   const baseData = {
@@ -172,13 +142,6 @@ export const formatFormDataForLogging = (formType, formData) => {
 };
 
 export const testEmailConnection = async () => {
-  if (!isEmailJSConfigured()) {
-    return {
-      success: false,
-      error: 'EmailJS not configured. Check environment variables.'
-    };
-  }
-
   try {
     const testData = {
       name: 'Test User',
@@ -186,7 +149,7 @@ export const testEmailConnection = async () => {
       countryCode: '+1',
       whatsapp: '1234567890',
       subject: 'Test Email Connection',
-      message: 'This is a test message to verify email configuration.'
+      message: 'This is a test message to verify Resend configuration.'
     };
 
     const result = await sendEmailNotification('contact', testData);

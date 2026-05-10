@@ -18,7 +18,7 @@ import {
   Check,
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
-import ProductionDebug from '../components/ProductionDebug';
+import { submitContactFormData } from '../services/formService';
 
 void motion;
 
@@ -223,9 +223,26 @@ export default function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise((r) => setTimeout(r, 2000));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    try {
+      const result = await submitContactFormData(form);
+      if (!result.success) {
+        throw new Error(result.errors?.join(', ') || 'Unable to submit form');
+      }
+
+      setIsSubmitted(true);
+      setForm({
+        name: '',
+        email: '',
+        countryCode: '+971',
+        whatsapp: '',
+        subject: '',
+        message: '',
+      });
+    } catch (error) {
+      alert(error?.message || 'Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // ─── render ─────────────────────────────────────────────────────────────────
@@ -803,7 +820,6 @@ export default function ContactPage() {
         }
       `}</style>
 
-      <ProductionDebug />
     </>
   );
 }

@@ -48,6 +48,18 @@ const PROJECTS = [
     metrics: { 'Waitlist': '547+', 'Founders': '50+', 'Matches': '10+' },
   },
   {
+    id: 2,
+    title: 'BiggDate',
+    description: 'Relationship-first dating platform focused on meaningful conversations, compatibility signals, and safer connections.',
+    category: 'social',
+    status: 'Pre-Launch',
+    featured: true,
+    liveUrl: 'https://biggdate.com',
+    internalUrl: '/biggdate',
+    tags: ['Dating', 'Social Discovery', 'Compatibility', 'Mobile First'],
+    metrics: { 'Waitlist': '1K+', 'Matches': '300+', 'Cities': '15+' },
+  },
+  {
     id: 3,
     title: 'ZeroHuman',
     description: 'AI human model platform offering photorealistic virtual models for brands. Eliminate costly photoshoots while scaling creative output.',
