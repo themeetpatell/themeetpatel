@@ -692,7 +692,7 @@ const HomePage = () => {
                   <span className="block text-[#f7f7fb]">
                     Meet The
                   </span>
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-violet-500 to-indigo-500 mt-2">
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#f7f7fb] via-[#e6e7f5] to-[#c4b5fd] mt-2">
                     Meet Patel
                   </span>
                 </motion.h1>
@@ -702,7 +702,7 @@ const HomePage = () => {
                   initial={{ width: 0 }}
                   animate={isHeroInView ? { width: "200px" } : {}}
                   transition={{ duration: 0.8, delay: 0.4 }}
-                  className="h-1 bg-gradient-to-r from-purple-500 via-violet-500 to-indigo-500 mx-auto rounded-full"
+                  className="h-px bg-gradient-to-r from-transparent via-purple-400/50 to-transparent mx-auto rounded-full"
                 />
               </div>
 
@@ -711,9 +711,9 @@ const HomePage = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.3 }}
-                className="text-xl sm:text-3xl lg:text-4xl font-bold text-center leading-tight px-4"
+                className="text-xl sm:text-3xl lg:text-4xl font-semibold text-center leading-tight px-4"
               >
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-violet-500 to-indigo-500">
+                <span className="text-[#cfd0e6]">
                   {personalInfo.title}
                 </span>
               </motion.p>
@@ -743,10 +743,10 @@ const HomePage = () => {
                     I help founders build, scale, and stabilize businesses through proven systems and strategic guidance. With 8+ years of experience, I've mentored 10+ startups and led teams of 450+ people.
                   </p>
                   <p className="text-base sm:text-lg leading-relaxed">
-                    I work with founders and teams to design <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-500 font-semibold">business systems that don't break under pressure</span>.
+                    I work with founders and teams to design <span className="text-[#e6e7f5] font-semibold">business systems that don't break under pressure</span>.
                   </p>
                   <p className="text-base sm:text-lg leading-relaxed">
-                    Explore my <Link to="/portfolio" className="text-purple-500 hover:text-indigo-400 font-semibold underline underline-offset-2 transition-colors">portfolio of successful ventures</Link> and <Link to="/systems" className="text-indigo-400 hover:text-purple-400 font-semibold underline underline-offset-2 transition-colors">proven business systems</Link>.
+                    Explore my <Link to="/portfolio" className="text-[#c4b5fd] hover:text-white font-semibold underline underline-offset-4 decoration-purple-400/40 hover:decoration-purple-300 transition-colors">portfolio of successful ventures</Link> and <Link to="/systems" className="text-[#c4b5fd] hover:text-white font-semibold underline underline-offset-4 decoration-purple-400/40 hover:decoration-purple-300 transition-colors">proven business systems</Link>.
                   </p>
                 </div>
               </motion.div>
