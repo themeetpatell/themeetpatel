@@ -692,7 +692,7 @@ const HomePage = () => {
                   <span className="block text-[#f7f7fb]">
                     Meet The
                   </span>
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#f7f7fb] via-[#e6e7f5] to-[#c4b5fd] mt-2">
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#c4b5fd] via-[#a78bfa] to-[#8b5cf6] mt-2">
                     Meet Patel
                   </span>
                 </motion.h1>
