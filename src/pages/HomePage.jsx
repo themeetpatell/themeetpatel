@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import FollowMyJourney from '../components/FollowMyJourney';
+import GodModeSection from '../components/GodModeSection';
 import { submitContactFormData } from '../services/formService';
 import meetPatelImage from '../assets/themeetpatel.jpeg';
 import meetPatelImage2 from '../assets/the meet patel.jpeg';
@@ -926,6 +927,8 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* God Mode Section */}
+      <GodModeSection />
 
       {/* Portfolio Section */}
       <section className="py-32 relative">
