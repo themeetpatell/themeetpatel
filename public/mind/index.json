@@ -1,0 +1,11 @@
+{
+  "latest": "graph.latest.json",
+  "snapshots": [
+    {
+      "month": "2026-05",
+      "file": "graph.2026-05.json",
+      "vaultCommit": "923d4f7",
+      "noteCount": 1692
+    }
+  ]
+}
