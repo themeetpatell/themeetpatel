@@ -14,7 +14,7 @@
       "destination": "/api/og?slug=:slug"
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
   ],
