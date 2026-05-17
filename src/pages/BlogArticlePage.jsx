@@ -366,7 +366,7 @@ const BlogArticlePage = () => {
         }
       `}</style>
 
-      <div style={{ background: C.bg, minHeight: '100vh', color: C.primary, fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+      <div style={{ background: C.bg, minHeight: '100vh', color: C.primary, fontFamily: "'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
 
         {/* ── Reading progress ──────────────────────────────────────────────── */}
         <div style={{ position: 'fixed', top: 64, left: 0, right: 0, height: 2, background: 'rgba(255,255,255,0.05)', zIndex: 9998 }}>

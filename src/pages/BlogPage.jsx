@@ -261,7 +261,7 @@ const BlogPage = () => {
         background: C.bg,
         minHeight:  '100vh',
         color:      C.primary,
-        fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, sans-serif',
+        fontFamily: "'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
         overflowX:  'hidden',
       }}>
 
@@ -312,7 +312,13 @@ const BlogPage = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+                gap: 'clamp(8px, 1.5vw, 12px)',
+                width: '100%',
+                maxWidth: 720,
+              }}
             >
               {[
                 { value: allArticles.length, label: 'Articles' },
@@ -320,9 +326,42 @@ const BlogPage = () => {
                 { value: '6.5K+', label: 'Followers' },
                 { value: `${categories.length - 1}`, label: 'Categories' },
               ].map(s => (
-                <div key={s.label} style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 12, padding: '12px 20px' }}>
-                  <div style={{ fontSize: 22, fontWeight: 800, color: C.violet, lineHeight: 1 }}>{s.value}</div>
-                  <div style={{ fontSize: 12, color: C.muted, marginTop: 4 }}>{s.label}</div>
+                <div
+                  key={s.label}
+                  style={{
+                    background: C.surface,
+                    border: `1px solid ${C.border}`,
+                    borderRadius: 12,
+                    padding: 'clamp(8px, 2vw, 12px) clamp(6px, 2vw, 20px)',
+                    minWidth: 0,
+                    textAlign: 'center',
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 'clamp(15px, 4.5vw, 22px)',
+                      fontWeight: 800,
+                      color: C.violet,
+                      lineHeight: 1,
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                    }}
+                  >
+                    {s.value}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 'clamp(10px, 2.6vw, 12px)',
+                      color: C.muted,
+                      marginTop: 4,
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                    }}
+                  >
+                    {s.label}
+                  </div>
                 </div>
               ))}
             </motion.div>

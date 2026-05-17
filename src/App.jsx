@@ -12,6 +12,7 @@ import UltraNavigation from './components/UltraNavigation';
 import UltraFooter from './components/UltraFooter';
 import SEOPerformance from './components/SEOPerformance';
 import SubstackSubscriptionModal from './components/SubstackSubscriptionModal';
+import StickyWhatsApp from './components/StickyWhatsApp';
 
 // Public pages
 import HomePage from './pages/HomePage';
@@ -54,6 +55,7 @@ function PublicLayout({ children }) {
       <UltraFooter />
       <SEOPerformance />
       <SubstackSubscriptionModal />
+      <StickyWhatsApp />
     </div>
   );
 }

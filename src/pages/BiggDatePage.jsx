@@ -233,7 +233,7 @@ const BiggDatePage = () => {
                        ${C.bg}`,
           color: C.primary,
           overflowX: 'hidden',
-          fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, sans-serif',
+          fontFamily: "'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
         }}
       >
         <section

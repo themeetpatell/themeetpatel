@@ -164,7 +164,7 @@ export default function AdminLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div style={{ display: 'flex', background: C.surface, minHeight: '100vh', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+    <div style={{ display: 'flex', background: C.surface, minHeight: '100vh', fontFamily: "'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
       {/* Desktop sidebar */}
       <div style={{ display: 'none' }} className="admin-sidebar-desktop">
         <SidebarContent />

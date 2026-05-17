@@ -269,7 +269,7 @@ export default function ContactPage() {
         }}
       />
 
-      <div style={{ background: C.bg, minHeight: '100vh', color: C.textPrimary, fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
+      <div style={{ background: C.bg, minHeight: '100vh', color: C.textPrimary, fontFamily: "'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
 
         {/* ── HERO ──────────────────────────────────────────────────────────── */}
         <section
@@ -884,7 +884,7 @@ function TextareaField({ label, id, value, onChange, placeholder, required }) {
           boxShadow:    focused ? '0 0 0 3px rgba(139,92,246,0.12)' : 'none',
           width:        '100%',
           boxSizing:    'border-box',
-          fontFamily:   "'Inter', -apple-system, sans-serif",
+          fontFamily:   "'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
         }}
       />
     </div>

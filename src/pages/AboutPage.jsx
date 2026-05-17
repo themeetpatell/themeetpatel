@@ -389,7 +389,7 @@ const AboutPage = () => {
                 <Label>Meet Patel</Label>
                 <h1 style={{ fontSize: 'clamp(4.2rem, 10vw, 8.6rem)', fontWeight: 900, lineHeight: 0.9, letterSpacing: '-0.055em', color: T.text, marginTop: '14px' }}>
                   <span style={{ display: 'block' }}>MEET</span>
-                  <span style={{ display: 'block', color: T.gold }}>PATEL.</span>
+                  <span style={{ display: 'block', color: T.violet }}>PATEL.</span>
                 </h1>
                 <p style={{ fontSize: 'clamp(1.15rem, 2vw, 1.45rem)', color: T.sub, marginTop: '22px', maxWidth: '620px', lineHeight: 1.55 }}>
                   Venture Builder. The Startup Guy. Business Strategist.

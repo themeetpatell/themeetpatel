@@ -1,6 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { getPublishedArticles } from '../lib/articleService';
 import { 
   Target, Users, TrendingUp, BookOpen, Mail, Send, X, CheckCircle,
   Linkedin, Twitter, Github, Instagram, Youtube, ExternalLink,
@@ -210,32 +211,21 @@ const HomePage = () => {
     }
   ];
 
-  const blogPosts = [
-    {
-      slug: "building-startup-ecosystem",
-      title: "Building a Thriving Startup Ecosystem",
-      excerpt: "How to create an environment where startups can flourish and grow sustainably.",
-      readTime: "8 min read",
-      date: "2024-01-15",
-      category: "Entrepreneurship"
-    },
-    {
-      slug: "scaling-operations-efficiency",
-      title: "Scaling Operations for Maximum Efficiency",
-      excerpt: "Proven strategies for scaling your business operations without losing quality.",
-      readTime: "6 min read",
-      date: "2024-01-10",
-      category: "Operations"
-    },
-    {
-      slug: "leadership-remote-teams",
-      title: "Leading Remote Teams to Success",
-      excerpt: "Essential leadership principles for managing distributed teams effectively.",
-      readTime: "10 min read",
-      date: "2024-01-05",
-      category: "Leadership"
-    }
-  ];
+  const [blogPosts, setBlogPosts] = useState([]);
+
+  useEffect(() => {
+    getPublishedArticles()
+      .then(articles => setBlogPosts((articles || []).slice(0, 3)))
+      .catch(() => setBlogPosts([]));
+  }, []);
+
+  const formatBlogDate = (value) => {
+    if (!value) return '';
+    const d = new Date(value);
+    return Number.isNaN(d.getTime())
+      ? ''
+      : d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+  };
 
   const books = [
     {
@@ -746,7 +736,7 @@ const HomePage = () => {
                     I work with founders and teams to design <span className="text-[#e6e7f5] font-semibold">business systems that don't break under pressure</span>.
                   </p>
                   <p className="text-base sm:text-lg leading-relaxed">
-                    Explore my <Link to="/portfolio" className="text-[#c4b5fd] hover:text-white font-semibold underline underline-offset-4 decoration-purple-400/40 hover:decoration-purple-300 transition-colors">portfolio of successful ventures</Link> and <Link to="/systems" className="text-[#c4b5fd] hover:text-white font-semibold underline underline-offset-4 decoration-purple-400/40 hover:decoration-purple-300 transition-colors">proven business systems</Link>.
+                    Explore my <Link to="/portfolio" className="text-[#c4b5fd] hover:text-white font-semibold underline underline-offset-4 decoration-purple-400/40 hover:decoration-purple-300 transition-colors">portfolio of successful ventures</Link>.
                   </p>
                 </div>
               </motion.div>
@@ -842,7 +832,7 @@ const HomePage = () => {
                 <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-4 sm:mb-6 tracking-tight">
                   About Me
                 </h2>
-                <p className="text-lg sm:text-xl text-purple-600 mb-4 sm:mb-6">
+                <p className="text-lg sm:text-xl text-[#cfd0e6] mb-4 sm:mb-6">
                   I help founders build, scale, and stabilize
                 </p>
                   </div>
@@ -942,7 +932,7 @@ const HomePage = () => {
             <h2 className="text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
               Checkout the Startups I've Built
             </h2>
-            <p className="text-xl text-purple-600 max-w-3xl mx-auto">
+            <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto">
               A showcase of my projects, ventures, and the impact I've created in the startup ecosystem.
             </p>
           </motion.div>
@@ -992,106 +982,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Systems Section */}
-      <section className="py-12 sm:py-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8 sm:mb-16"
-          >
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-4 sm:mb-6 tracking-tight">
-              The Systems I Built
-            </h2>
-            <p className="text-lg sm:text-xl text-purple-600 max-w-3xl mx-auto px-4 sm:px-0">
-              Comprehensive frameworks, processes, and systems I've developed to help startups scale efficiently.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {[
-              {
-                name: "StartupOS Framework",
-                description: "Complete startup development methodology covering ideation to scaling",
-                category: "Framework",
-                icon: "🚀"
-              },
-              {
-                name: "Practice Management System",
-                description: "Comprehensive accounting firm management software with automation",
-                category: "Software",
-                icon: "📊"
-              },
-              {
-                name: "Growth Hacking Playbook",
-                description: "Proven strategies and tactics for rapid user acquisition and retention",
-                category: "Process",
-                icon: "📈"
-              },
-              {
-                name: "Team Building SOPs",
-                description: "Standard operating procedures for building and managing remote teams",
-                category: "Process",
-                icon: "👥"
-              },
-              {
-                name: "Financial Modeling Templates",
-                description: "Advanced financial models for startups and investment analysis",
-                category: "Template",
-                icon: "💰"
-              },
-              {
-                name: "Customer Success Framework",
-                description: "Systematic approach to customer onboarding, retention, and growth",
-                category: "Framework",
-                icon: "🎯"
-              }
-            ].map((system, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative bg-[#0d0e16]/90 backdrop-blur-md rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20 hover:-translate-y-1"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-indigo-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative z-10">
-                  <div className="text-5xl mb-5 group-hover:scale-110 transition-transform duration-300">{system.icon}</div>
-                  <h3 className="text-xl font-bold text-[#f7f7fb] mb-3 group-hover:text-[#9b8bff] transition-colors">{system.name}</h3>
-                  <p className="text-[#a8a9c3] text-sm leading-relaxed mb-5 min-h-[3rem]">{system.description}</p>
-                  <div className="flex items-center justify-between pt-4 border-t border-purple-500/15">
-                    <span className="text-xs font-semibold bg-purple-500/20 text-purple-300 px-3 py-1.5 rounded-full">{system.category}</span>
-                    <span className="text-xs text-green-600 font-medium flex items-center gap-1">
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      Available
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-                <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-center mt-12"
-          >
-            <motion.a
-              href="/systems"
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="group relative inline-flex items-center bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-600 hover:from-purple-600 hover:via-indigo-600 hover:to-purple-700 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-500/40 overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-              <span className="relative z-10">Explore All Systems</span>
-              <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-            </motion.a>
-          </motion.div>
-                  </div>
-      </section>
-
       {/* Blog Section */}
       <section className="py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1104,7 +994,7 @@ const HomePage = () => {
             <h2 className="text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
               Read My Latest Insights Shared
             </h2>
-            <p className="text-xl text-purple-600 max-w-3xl mx-auto leading-relaxed mb-8">
+            <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto leading-relaxed mb-8">
               Thoughts on entrepreneurship, leadership, and the journey of building meaningful things.
             </p>
             
@@ -1128,8 +1018,8 @@ const HomePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
             {blogPosts.map((post, index) => (
               <motion.a
-                key={post.slug}
-                href={`/blog/${post.slug}`}
+                key={post.slug || post.id}
+                href={`/blogs/${post.slug}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -1161,14 +1051,18 @@ const HomePage = () => {
                     <div className="flex items-center justify-between text-xs text-[#a8a9c3]">
                       <div className="flex items-center gap-2 bg-[#0d0e16]/70 backdrop-blur-sm px-2 py-1 rounded border border-purple-500/10">
                         <Calendar className="w-3 h-3" />
-                        <span>{post.date}</span>
-                        <span>•</span>
-                        <Clock className="w-3 h-3" />
-                        <span>{post.readTime}</span>
+                        <span>{formatBlogDate(post.published_at || post.date)}</span>
+                        {post.read_time && (
+                          <>
+                            <span>•</span>
+                            <Clock className="w-3 h-3" />
+                            <span>{post.read_time}</span>
+                          </>
+                        )}
                   </div>
                       <div className="flex items-center gap-1 bg-[#0d0e16]/70 backdrop-blur-sm px-2 py-1 rounded border border-purple-500/10">
                         <Eye className="w-3 h-3" />
-                        <span>2.5K</span>
+                        <span>{post.views ?? 0}</span>
             </div>
                   </div>
                   </div>
@@ -1274,7 +1168,7 @@ const HomePage = () => {
             <h2 className="text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
               Books Written
             </h2>
-            <p className="text-xl text-purple-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto leading-relaxed">
               Here's something special for you to freshen up! Few Love stories written by me 😲
             </p>
           </motion.div>
@@ -1379,7 +1273,7 @@ const HomePage = () => {
               <h2 className="text-5xl md:text-6xl font-bold text-[#f7f7fb] tracking-tight">
                 Recognition & Impact
             </h2>
-              <p className="text-xl text-purple-600 leading-relaxed">
+              <p className="text-xl text-[#cfd0e6] leading-relaxed">
                 From mechanical engineer to mentoring 10+ startups as business expert, my work has been recognized and has created real impact.
               </p>
               <div className="grid grid-cols-2 gap-4">
@@ -1420,7 +1314,7 @@ const HomePage = () => {
             <h2 className="text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
               Let's Create Magic Together
                 </h2>
-            <p className="text-xl text-purple-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto leading-relaxed">
               Ready to start your entrepreneurial journey or need guidance on your current venture? I'd love to hear from you.
                 </p>
               </motion.div>
@@ -1574,7 +1468,7 @@ const HomePage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-[#f7f7fb] mb-4 tracking-tight">Join Our StartupOS Community</h2>
-            <p className="text-xl text-purple-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto leading-relaxed">
               Connect with fellow entrepreneurs, get exclusive insights, and be part of a thriving startup ecosystem.
             </p>
           </motion.div>
