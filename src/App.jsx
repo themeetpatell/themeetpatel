@@ -23,6 +23,7 @@ import BiggDatePage from './pages/BiggDatePage';
 import BlogPage from './pages/BlogPage';
 import BlogArticlePage from './pages/BlogArticlePage';
 import CommunityPage from './pages/CommunityPage';
+import MindPage from './pages/MindPage';
 import NotFoundPage from './pages/NotFoundPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import CookiePolicyPage from './pages/CookiePolicyPage';
@@ -91,6 +92,7 @@ function App() {
           <Route path="/biggmate" element={<PublicLayout><BiggMatePage /></PublicLayout>} />
           <Route path="/biggdate" element={<PublicLayout><BiggDatePage /></PublicLayout>} />
           <Route path="/community" element={<PublicLayout><CommunityPage /></PublicLayout>} />
+          <Route path="/mind" element={<PublicLayout><MindPage /></PublicLayout>} />
           <Route path="/blogs" element={<PublicLayout><BlogPage /></PublicLayout>} />
           <Route path="/blogs/:slug" element={<PublicLayout><BlogArticlePage /></PublicLayout>} />
           <Route path="/privacy-policy" element={<PublicLayout><PrivacyPolicyPage /></PublicLayout>} />
