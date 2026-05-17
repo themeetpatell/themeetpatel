@@ -2,56 +2,72 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Sparkles,
-  Crown,
   Network,
   BrainCircuit,
-  Database,
   Copy,
   Check,
   Terminal,
   ArrowRight,
   Github,
-  Workflow,
-  Cpu,
   Zap,
-  ShieldCheck
+  ShieldCheck,
+  Filter,
+  Layers,
+  Globe
 } from 'lucide-react';
 
-const ORCHESTRATOR_STEPS = [
-  'Clarify the outcome',
-  'Break into roadmap phases',
-  'Route research to Research Analyst',
-  'Route product scope to Product Strategist',
-  'Route launch funnel to Growth Architect',
-  'Create execution tasks',
-  'Generate installable handoff',
-  'Save session for continuation'
-];
+const GITHUB_URL = 'https://github.com/themeetpatell/god-mode';
+const LAUNCH_PROFILE_URL = `${GITHUB_URL}/blob/main/LAUNCH-PROFILE.md`;
+const ROUTER_EVAL_URL = `${GITHUB_URL}/blob/main/evals/routing-eval.jsonl`;
 
 const CAPABILITY_CARDS = [
   {
-    title: 'CEO Orchestrator',
-    icon: Crown,
+    title: 'Verifier',
+    icon: ShieldCheck,
     description:
-      'Drop in a goal. God Mode breaks it into phases, tasks, owners, context, and execution sequence.',
-    badge: 'Strategy → Execution',
-    accent: 'rgba(212,168,71,0.45)'
+      'The flagship primitive. Every roadmap task runs through a separate verifier agent before "done" reaches you — tests run, sources fetched, voice scored, DAGs walked. "Shipped" stops being a claim and becomes a measurement.',
+    badge: 'Strategy → Verified Ship',
+    accent: 'rgba(212,168,71,0.5)'
   },
   {
-    title: 'Model Router',
+    title: 'Learning Router',
     icon: Network,
     description:
-      'Cheap tasks go fast. Complex tasks go deep. Every task gets routed by complexity, risk, and output type.',
-    badge: 'Haiku · Sonnet · Opus',
+      'Weighted multi-signal pattern scoring with per-pattern weights that sharpen from your own ledger. 100% accuracy on 104 stratified eval cases including 41 adversarial keyword traps. The router is the IP and it compounds with use.',
+    badge: 'Haiku · Sonnet · Opus · Learned',
     accent: 'rgba(139,92,246,0.55)'
   },
   {
-    title: 'Execution Memory',
-    icon: Database,
+    title: 'Context Curator',
+    icon: Filter,
     description:
-      'Roadmaps, task status, handoffs, and reusable prompts persist across sessions through the MCP layer.',
-    badge: 'MCP-native memory',
+      'Every worker gets only the files, glossary, and decisions it needs — not the whole conversation. Where the cost savings actually live. Names what to drop and why.',
+    badge: 'Smallest Viable Context',
     accent: 'rgba(99,102,241,0.55)'
+  },
+  {
+    title: 'Persistent Brain',
+    icon: BrainCircuit,
+    description:
+      'Memory facts, belief register with revision history, and vector-indexed episodic recall. Session 10 is better than session 1 because the CEO remembers your stack, ICP, voice, past decisions — and can semantically recall similar past work.',
+    badge: 'Memory · Beliefs · Episodes',
+    accent: 'rgba(139,92,246,0.5)'
+  },
+  {
+    title: 'Domain Packs',
+    icon: Layers,
+    description:
+      'Core engine + opinionated packs for your operator role. Founder-UAE, AI-Builder, Growth-Ops ship in v1.3.1 — with more from the community via the marketplace in v1.5.',
+    badge: 'Founder · UAE · AI-Builder · Growth',
+    accent: 'rgba(212,168,71,0.4)'
+  },
+  {
+    title: 'Portable',
+    icon: Globe,
+    description:
+      'Same CEO discipline travels across every tool. Start a goal in Claude Code, continue on your phone in ChatGPT, finish in Cursor. The handoff brief takes the state with you.',
+    badge: 'Portable · 6 AI Tools',
+    accent: 'rgba(99,102,241,0.5)'
   }
 ];
 
@@ -59,11 +75,11 @@ const INSTALL_COMMANDS = [
   {
     label: 'Claude Code · Plugin',
     command:
-      '/plugin marketplace add /absolute/path/to/themeetpatel\n/plugin install themeetpatel@themeetpatel'
+      '/plugin marketplace add https://github.com/themeetpatell/god-mode\n/plugin install themeetpatel@themeetpatel'
   },
   {
     label: 'MCP Server · Build',
-    command: 'cd themeetpatel/mcp-server && npm install && npm run build'
+    command: 'cd mcp-server && npm install && npm run build'
   },
   {
     label: 'MCP Config · claude_desktop_config.json',
@@ -71,21 +87,84 @@ const INSTALL_COMMANDS = [
   "mcpServers": {
     "themeetpatel-god-mode": {
       "command": "node",
-      "args": ["/ABSOLUTE/PATH/themeetpatel/mcp-server/dist/index.js"]
+      "args": ["/ABSOLUTE/PATH/themeetpatel/mcp-server/dist/index.js"],
+      "env": { "THEMEETPATEL_HOME": "$HOME/.themeetpatel" }
     }
   }
 }`
+  },
+  {
+    label: 'Portable · Other Tools',
+    command: `Paste portable/universal-system-prompt.md into:
+• claude.ai  → Project custom instructions
+• Cowork     → workspace instructions
+• ChatGPT    → Custom GPT instructions
+• Cursor     → .cursorrules
+• Gemini     → Gem instructions`
   }
 ];
 
 const HIGHLIGHTS = [
-  { icon: Workflow, label: 'Phase-aware planning' },
-  { icon: Cpu, label: 'Cost-tiered routing' },
-  { icon: Zap, label: 'Installable handoffs' },
-  { icon: ShieldCheck, label: 'Session-safe memory' }
+  { icon: ShieldCheck, label: 'Verified deliverables' },
+  { icon: Zap, label: '100% router accuracy' },
+  { icon: BrainCircuit, label: 'Episodic + belief memory' },
+  { icon: Layers, label: 'Domain Packs' },
+  { icon: Globe, label: 'Portable across 6 tools' }
 ];
 
-const GITHUB_URL = 'https://github.com/themeetpatell/god-mode';
+const PROOF_ITEMS = [
+  '23 agents',
+  '60 skills · 28 production · 32 preview',
+  '104 eval cases · 100% pass · 41 adversarial',
+  'MIT licensed · open source forever'
+];
+
+const TERMINAL_GOAL =
+  '/god-mode Build a Next.js landing page with email signup, ship Vercel-ready';
+
+const TERMINAL_LINES = [
+  { text: '→ INTAKE  (memory: using your Next.js + Tailwind + Supabase defaults)', tone: 'arrow' },
+  { text: '', tone: 'blank' },
+  { text: '→ ROADMAP', tone: 'arrow' },
+  { text: '   Phase 1: Scope & decisions        [parallel]', tone: 'phase' },
+  { text: '     T1.1  Framework + design system     → Opus', tone: 'task' },
+  { text: '     T1.2  Hero copy variants (3)        → Haiku', tone: 'task' },
+  { text: '', tone: 'blank' },
+  { text: '   Phase 2: Build                    [sequential]', tone: 'phase' },
+  { text: '     T2.1  Scaffold Next.js + Tailwind   → Sonnet', tone: 'task' },
+  { text: '     T2.2  Hero + FAQ + features         → Sonnet', tone: 'task' },
+  { text: '     T2.3  Email signup + API route      → Sonnet', tone: 'task' },
+  { text: '     T2.4  Playwright tests              → Sonnet', tone: 'task' },
+  { text: '', tone: 'blank' },
+  { text: '   Phase 3: Polish & ship            [parallel]', tone: 'phase' },
+  { text: '     T3.1  SEO meta + JSON-LD            → Haiku', tone: 'task' },
+  { text: '     T3.2  Vercel deploy + smoke test    → Sonnet', tone: 'task' },
+  { text: '', tone: 'blank' },
+  { text: '→ ROUTE + CURATE CONTEXT  (28% input tokens vs naive)', tone: 'arrow' },
+  { text: '', tone: 'blank' },
+  { text: '→ EXECUTE  (8 tasks across 3 model tiers)', tone: 'arrow' },
+  { text: '', tone: 'blank' },
+  { text: '→ VERIFY  T1.1 ✓  T1.2 ✓  T2.1 ✓  T2.2 ✓  T2.3 ⚠ (rate-limit missing)', tone: 'verify' },
+  { text: '          T2.4 ✓  T3.1 ✓  T3.2 ✓', tone: 'verify' },
+  { text: '', tone: 'blank' },
+  { text: '✓ DONE: Landing page live at example.com', tone: 'done' },
+  { text: 'SHIPPED: 8 files, 1 API route, 4 Playwright tests', tone: 'summary' },
+  { text: 'VERIFIED: 7 pass · 1 conditional · 0 fail', tone: 'summary' },
+  { text: 'COST: ~$0.41  (Haiku: 2, Sonnet: 5, Opus: 1)  vs all-Opus baseline $1.00', tone: 'summary' },
+  { text: 'TIME: 18m 42s', tone: 'summary' },
+  { text: 'NEXT: add rate-limit middleware before public launch', tone: 'next' }
+];
+
+const TERMINAL_TONES = {
+  arrow: 'text-purple-300 font-semibold',
+  phase: 'text-[#cfd0e6]',
+  task: 'text-[#9ea0bf]',
+  verify: 'text-[#e7e8fb]',
+  done: 'text-[#28c840] font-semibold',
+  summary: 'text-[#b6b7d2]',
+  next: 'text-[#d4a847] font-semibold',
+  blank: 'text-transparent'
+};
 
 const CopyButton = ({ value, label }) => {
   const [copied, setCopied] = useState(false);
@@ -177,7 +256,7 @@ const GodModeSection = () => {
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-purple-400/30 bg-purple-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-purple-200 backdrop-blur-sm">
             <Sparkles className="h-3.5 w-3.5 text-[#d4a847]" />
-            New Build · AI Chief of Staff
+            v1.3.1 Launch · Open Source
           </span>
 
           <h2
@@ -192,15 +271,19 @@ const GodModeSection = () => {
                   'linear-gradient(135deg, #d4a847 0%, #f4d27a 35%, #c4b5fd 70%, #8b5cf6 100%)'
               }}
             >
-              Full roadmap out.
-            </span>{' '}
-            Every task routed to the right brain.
+              Verified deliverable out.
+            </span>
+            <span className="mt-3 block text-2xl font-semibold text-[#cfd0e6] sm:text-3xl md:text-4xl">
+              The AI operating layer for the rest of your work.
+            </span>
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-[#b6b7d2] sm:text-lg">
-            God Mode is my AI execution layer for turning messy ideas into structured plans, specialist tasks,
-            model routing, installable workflows, and execution-ready outputs across Claude, Cursor, ChatGPT, and
-            MCP-compatible tools.
+            God Mode is an open-source Claude Code plugin + MCP server. One CEO orchestrator decomposes
+            your goal, routes every task to the right model (100% accuracy on 104 stratified router evals),
+            curates minimum context per worker, runs the work in parallel, and a separate verifier agent
+            proves the deliverable shipped. Same discipline runs in Claude Code, claude.ai, Cowork, ChatGPT,
+            Cursor, and Gemini.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -232,11 +315,11 @@ const GodModeSection = () => {
                 style={{ background: `radial-gradient(circle, ${accent} 0%, transparent 70%)` }}
               />
               <div className="relative z-10">
-                <div className="flex items-center justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-purple-400/30 bg-gradient-to-br from-purple-500/30 via-indigo-500/20 to-transparent shadow-lg shadow-purple-900/30">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-purple-400/30 bg-gradient-to-br from-purple-500/30 via-indigo-500/20 to-transparent shadow-lg shadow-purple-900/30">
                     <Icon className="h-6 w-6 text-purple-100" />
                   </div>
-                  <span className="rounded-full border border-white/10 bg-black/30 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#c4b5fd]">
+                  <span className="max-w-[58%] rounded-2xl border border-white/10 bg-black/30 px-2.5 py-1 text-right text-[10px] font-semibold uppercase leading-[1.5] tracking-[0.16em] text-[#c4b5fd]">
                     {badge}
                   </span>
                 </div>
@@ -265,42 +348,36 @@ const GodModeSection = () => {
                   <Terminal className="h-3.5 w-3.5" /> god-mode · live demo
                 </span>
               </div>
-              <CopyButton
-                label="god mode command"
-                value="/god-mode Build a launch plan for an AI-native startup operating system"
-              />
+              <CopyButton label="god mode command" value={TERMINAL_GOAL} />
             </div>
 
             <div className="px-5 py-6 font-mono text-sm leading-relaxed sm:px-7 sm:py-7">
               <div className="flex items-start gap-2 text-[#c4b5fd]">
                 <span className="text-[#d4a847]">$</span>
-                <span className="break-all text-[#e7e8fb]">
-                  /god-mode Build a launch plan for an AI-native startup operating system
-                </span>
+                <span className="break-all text-[#e7e8fb]">{TERMINAL_GOAL}</span>
               </div>
 
-              <div className="mt-5 space-y-2 text-[13px] text-[#cfd0e6]">
-                <p className="text-[11px] uppercase tracking-[0.22em] text-purple-300/80">→ Orchestrator plan</p>
-                {ORCHESTRATOR_STEPS.map((step, idx) => (
-                  <motion.div
-                    key={step}
-                    initial={{ opacity: 0, x: -6 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.1 + idx * 0.06 }}
-                    className="flex items-start gap-3"
-                  >
-                    <span className="mt-[3px] inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-md border border-purple-400/30 bg-purple-500/15 text-[10px] font-semibold text-purple-200">
-                      {idx + 1}
-                    </span>
-                    <span>{step}</span>
-                  </motion.div>
-                ))}
+              <div className="mt-5 overflow-x-auto">
+                <div className="min-w-fit space-y-[3px] text-[12px] sm:text-[13px]">
+                  {TERMINAL_LINES.map((line, idx) => (
+                    <motion.div
+                      key={`${line.tone}-${idx}`}
+                      initial={{ opacity: 0, x: -6 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.32, delay: 0.08 + idx * 0.035 }}
+                      className={`whitespace-pre ${TERMINAL_TONES[line.tone]}`}
+                    >
+                      {line.text || ' '}
+                    </motion.div>
+                  ))}
+                </div>
               </div>
 
-              <div className="mt-6 flex items-center gap-2 border-t border-white/5 pt-4 text-[12px] text-[#8b8da8]">
-                <BrainCircuit className="h-4 w-4 text-purple-300" />
-                Routed across 7 specialist agents · 3 model tiers · MCP memory enabled
+              <div className="mt-6 flex items-start gap-2 border-t border-white/5 pt-4 text-[12px] text-[#8b8da8]">
+                <BrainCircuit className="h-4 w-4 flex-shrink-0 text-purple-300" />
+                Routed across 23 specialist agents · Verifier on every task · 100% router accuracy ·
+                59% cheaper vs all-Opus
               </div>
             </div>
           </motion.div>
@@ -317,7 +394,8 @@ const GodModeSection = () => {
                 Install God Mode
               </h3>
               <p className="mt-2 text-sm text-[#a8a9c3]">
-                One-liners to install the plugin, build the MCP server, and wire it into any MCP-compatible tool.
+                One-liners for the Claude Code plugin, the MCP server, and the portable prompt that
+                carries the same discipline into every other tool.
               </p>
             </div>
 
@@ -345,53 +423,85 @@ const GodModeSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="mt-14 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          className="mt-14 flex flex-col items-center justify-center gap-4"
         >
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-[#09090e] transition-all duration-300 hover:shadow-[0_0_44px_-6px_rgba(212,168,71,0.6)]"
+              style={{
+                background:
+                  'linear-gradient(135deg, #f4d27a 0%, #d4a847 50%, #c4b5fd 100%)'
+              }}
+            >
+              <Github className="h-4 w-4" />
+              Install God Mode
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </a>
+            <a
+              href={LAUNCH_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-2 rounded-full border border-purple-400/40 bg-purple-500/15 px-7 py-3 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-purple-300/70 hover:bg-purple-500/25 hover:shadow-[0_0_40px_-8px_rgba(139,92,246,0.6)]"
+            >
+              Read the launch profile
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </a>
+          </div>
           <a
-            href="#god-mode-demo"
-            className="group inline-flex items-center justify-center gap-2 rounded-full border border-purple-400/40 bg-purple-500/15 px-7 py-3 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-purple-300/70 hover:bg-purple-500/25 hover:shadow-[0_0_40px_-8px_rgba(139,92,246,0.6)]"
-          >
-            View Demo
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-          </a>
-          <a
-            href={GITHUB_URL}
+            href={ROUTER_EVAL_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-[#09090e] transition-all duration-300 hover:shadow-[0_0_44px_-6px_rgba(212,168,71,0.6)]"
-            style={{
-              background:
-                'linear-gradient(135deg, #f4d27a 0%, #d4a847 50%, #c4b5fd 100%)'
-            }}
+            className="group inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.16em] text-[#9ea0bf] transition-colors duration-200 hover:text-purple-200"
           >
-            <Github className="h-4 w-4" />
-            Install God Mode
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+            100% router eval
+            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
           </a>
         </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="mt-12 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 border-t border-white/5 pt-8"
+        >
+          {PROOF_ITEMS.map((item) => (
+            <span
+              key={item}
+              className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-[11px] font-medium tracking-[0.04em] text-[#8b8da8] backdrop-blur"
+            >
+              {item}
+            </span>
+          ))}
+        </motion.div>
+
         <div className="sr-only">
-          <h3>God Mode — AI Chief of Staff by Meet Patel (themeetpatel)</h3>
+          <h3>God Mode v1.3.1 — open-source AI operating layer by Meet Patel (themeetpatel)</h3>
           <p>
-            God Mode is an AI orchestration layer and Chief of Staff system built by Meet Patel. It converts a
-            single founder goal into a structured roadmap, routes each task to the most cost-efficient AI model
-            (Claude Haiku, Sonnet, and Opus), dispatches specialist agents in parallel, and persists session
-            memory through the Model Context Protocol (MCP).
+            God Mode is an open-source Claude Code plugin and MCP server built by Meet Patel. One CEO
+            orchestrator converts a single goal into a structured roadmap, routes each task to the most
+            cost-efficient AI model (Claude Haiku, Sonnet, and Opus) with 100% accuracy across 104
+            stratified router evaluations, curates the minimum viable context per worker, dispatches
+            specialist agents in parallel, and runs a separate verifier agent that proves each
+            deliverable shipped before reporting it done.
           </p>
           <p>
-            How does God Mode work? You provide one outcome. God Mode clarifies the goal, decomposes it into
-            roadmap phases, routes research, product strategy, and growth tasks to specialist agents, and
-            generates an installable handoff. It works with Claude Code, Cursor, ChatGPT, and any
-            MCP-compatible developer tool.
+            How does God Mode work? You provide one outcome. God Mode clarifies the goal, decomposes it
+            into roadmap phases, routes tasks across model tiers, curates context, executes in parallel,
+            and verifies every task. It works with Claude Code, claude.ai, Cowork, ChatGPT, Cursor, and
+            Gemini through the Model Context Protocol (MCP) and a portable system prompt.
           </p>
           <p>
-            Who is it for? Founders, operators, and product teams who want fewer prompts, faster execution, and a
-            durable execution memory across tools and sessions.
+            Who is it for? Founders, operators, and product teams who want fewer prompts, verified
+            execution, and a durable execution memory across tools and sessions.
           </p>
           <ul>
-            <li>What it does: turns one goal into a full execution roadmap with routed specialist tasks.</li>
-            <li>How to install: add the Claude Code plugin, build the MCP server, and register it in your MCP config.</li>
-            <li>Why it matters: optimizes AI spend by routing simple tasks to fast cheap models and complex tasks to reasoning models.</li>
+            <li>What it does: turns one goal into a verified deliverable with routed specialist tasks.</li>
+            <li>How to install: add the Claude Code plugin, build the MCP server, or paste the portable prompt.</li>
+            <li>Why it matters: a separate verifier proves work shipped, and routing is 59% cheaper than all-Opus.</li>
           </ul>
         </div>
       </div>
