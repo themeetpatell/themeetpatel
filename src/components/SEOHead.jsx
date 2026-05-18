@@ -33,8 +33,8 @@ const SEOHead = ({
   const fullCanonical  = resolveUrl(canonicalValue);
   const fullOgImage    = resolveUrl(ogImage, `${baseUrl}/og-image.jpg`);
 
-  const defaultTitle       = 'The Meet Patel | Venture Builder, Business Strategist & Author';
-  const defaultDescription = 'The Meet Patel, also known as Meet Patel and themeetpatel, is a Dubai-based venture builder, startup operator, business strategist, and author working across startups, growth, systems, and execution.';
+  const defaultTitle       = 'Meet Patel — I help founders build, operate, and scale startups';
+  const defaultDescription = "Hey, I'm Meet — a Dubai-based operator who has built across AI, fintech, hardware, and software. If you're a founder figuring it out, I'd love to help.";
   const defaultKeywords    = 'The Meet Patel, Meet Patel, themeetpatel, venture builder, startup operator, business strategist, startup consultant Dubai, entrepreneur Dubai, startup builder, startup growth, startup systems, business operations, startup mentor, founder advisor, author Meet Patel, startup portfolio, business strategy, operational excellence, team building, startup execution';
 
   const seoTitle       = title
