@@ -123,7 +123,7 @@ const HomePage = () => {
 
   const personalInfo = {
     name: "Meet Patel",
-    title: "Biggventure CEO & Founder | BiggMate Founder | Serial Entrepreneur | Business Operations Expert",
+    title: "Founder & operator — currently building Biggventure and BiggMate",
     location: "Dubai, United Arab Emirates",
     email: "the.meetpatell@gmail.com",
     bio: "A Startup ecosystem builder with over 8 years of experience in building and scaling technology companies. Passionate about helping startups succeed through innovative solutions and strategic guidance.",
@@ -667,7 +667,7 @@ const HomePage = () => {
                     transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                     className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
                   />
-                  <span className="text-sm sm:text-base text-purple-300">Welcome to my world</span>
+                  <span className="text-sm sm:text-base text-purple-300">Hey, glad you're here</span>
                 </div>
               </motion.div>
 
@@ -730,7 +730,7 @@ const HomePage = () => {
               >
                 <div className="space-y-4 text-center text-[#a8a9c3]">
                   <p className="text-base sm:text-lg leading-relaxed">
-                    I help founders build, scale, and stabilize businesses through proven systems and strategic guidance. With 8+ years of experience, I've mentored 10+ startups and led teams of 450+ people.
+                    Over the last 8 years I've helped build 10+ startups and worked alongside teams of 450+ people — so I've seen most of the ways things break, and a few of the ways they actually work. I'd love to bring that to your team.
                   </p>
                   <p className="text-base sm:text-lg leading-relaxed">
                     I work with founders and teams to design <span className="text-[#e6e7f5] font-semibold">business systems that don't break under pressure</span>.
