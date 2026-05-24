@@ -16,6 +16,7 @@ import StickyWhatsApp from './components/StickyWhatsApp';
 
 // Public pages
 import HomePage from './pages/HomePage';
+import HomePageV2 from './pages/HomePageV2';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import PortfolioPage from './pages/PortfolioPage';
@@ -88,6 +89,7 @@ function App() {
 
           {/* ── Public routes (with nav/footer) ───────────────────────── */}
           <Route path="/" element={<PublicLayout><HomePage /></PublicLayout>} />
+          <Route path="/v2" element={<PublicLayout><HomePageV2 /></PublicLayout>} />
           <Route path="/about" element={<PublicLayout><AboutPage /></PublicLayout>} />
           <Route path="/contact" element={<PublicLayout><ContactPage /></PublicLayout>} />
           <Route path="/portfolio" element={<PublicLayout><PortfolioPage /></PublicLayout>} />

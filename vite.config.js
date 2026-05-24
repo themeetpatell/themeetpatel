@@ -67,11 +67,16 @@ export default defineConfig({
   server: {
     historyApiFallback: true,
     compress: true,
-    // Proxy /api to vercel dev (run: vercel dev --listen 3001)
+    // Proxy /api to vercel dev (run: vercel dev --listen 3001).
+    // If vercel dev isn't running, swallow the connection errors so the
+    // terminal stays clean — the frontend already handles fetch failures.
     proxy: {
       '/api': {
         target: 'http://localhost:3001',
         changeOrigin: true,
+        configure: (proxy) => {
+          proxy.on('error', () => { /* vercel dev offline — silent */ })
+        },
       },
     },
   },

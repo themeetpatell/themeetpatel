@@ -20,8 +20,17 @@ const UltraNavigation = () => {
   // Close mobile menu on route change
   useEffect(() => setIsOpen(false), [location]);
 
+  // First nav slot toggles based on which home variant the user is currently on:
+  //   on  "/"   → label "My Story", goes to /v2
+  //   on  "/v2" → label "Home",     goes to /
+  //   elsewhere → label "Home",     goes to / (default)
+  const onV2 = location.pathname === '/v2';
+  const homeSlot = onV2
+    ? { title: 'Home',     href: '/'   }
+    : { title: 'My Story', href: '/v2' };
+
   const navigationItems = [
-    { title: 'Home',      href: '/' },
+    homeSlot,
     { title: 'About',     href: '/about' },
     { title: 'Portfolio', href: '/portfolio' },
     { title: 'Community', href: '/community' },
@@ -29,7 +38,8 @@ const UltraNavigation = () => {
   ];
 
   const isActive = (href) => {
-    if (href === '/') return location.pathname === '/';
+    if (href === '/')   return location.pathname === '/';
+    if (href === '/v2') return location.pathname === '/v2';
     return location.pathname.startsWith(href);
   };
 
