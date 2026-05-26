@@ -224,7 +224,7 @@ export default function CommunityPage() {
             </p>
           </motion.div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 16 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
             {benefits.map((benefit, i) => {
               const IconComponent = benefit.icon;
               return (
@@ -276,7 +276,7 @@ export default function CommunityPage() {
               <p style={{ fontSize: 15, color: COLORS.textSecondary, margin: 0 }}>Real words from real founders inside the community.</p>
             </motion.div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 20 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
               {testimonials.map(({ quote, name, role }, i) => (
                 <motion.div
                   key={name}

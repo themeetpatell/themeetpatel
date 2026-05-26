@@ -424,7 +424,7 @@ const BlogPage = () => {
           </div>
 
           {loading ? (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 20 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))', gap: 20 }}>
               {[1, 2, 3].map(i => <SkeletonCard key={i} />)}
             </div>
           ) : filtered.length === 0 ? (
@@ -438,7 +438,7 @@ const BlogPage = () => {
               <p style={{ fontSize: 16, color: C.muted }}>No articles found. Try a different search or category.</p>
             </div>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 20 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))', gap: 20 }}>
               {filtered.map((article, i) => (
                 <ArticleCard key={article.id} article={article} index={i} formatDate={formatDate} />
               ))}

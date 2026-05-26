@@ -246,6 +246,14 @@ const BiggMatePage = () => {
           border-color: rgba(139,92,246,0.5) !important;
           color: ${C.primary} !important;
         }
+        @media (max-width: 640px) {
+          .biggmate-features-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .biggmate-feature-card {
+            padding: 22px !important;
+          }
+        }
       `}</style>
 
       <div style={{
@@ -465,7 +473,7 @@ const BiggMatePage = () => {
 
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
               gap: '16px',
             }}>
               {PROBLEMS.map((p) => {
@@ -574,7 +582,7 @@ const BiggMatePage = () => {
 
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
               gap: '0',
               position: 'relative',
             }}>
@@ -685,11 +693,13 @@ const BiggMatePage = () => {
               </h2>
             </motion.div>
 
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '16px',
-            }}>
+            <div
+              className="biggmate-features-grid"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gap: '16px',
+              }}>
               {FEATURES.map((feat) => {
                 const Icon = feat.icon;
                 const isWide = feat.span === 2;
@@ -697,6 +707,7 @@ const BiggMatePage = () => {
                   <motion.div
                     key={feat.title}
                     variants={fadeUp}
+                    className="biggmate-feature-card"
                     style={{
                       gridColumn: isWide ? '1 / -1' : undefined,
                       background: C.surface,
@@ -830,7 +841,7 @@ const BiggMatePage = () => {
 
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
               gap: '16px',
             }}>
               {TESTIMONIALS.map((t) => (
