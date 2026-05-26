@@ -194,7 +194,7 @@ const InstantKillModeSection = () => {
     <section
       id="instant-kill-mode"
       aria-labelledby="instant-kill-mode-heading"
-      className="relative overflow-hidden py-24 sm:py-32"
+      className="relative overflow-hidden py-16 sm:py-24 md:py-32"
       style={{
         background:
           'radial-gradient(120% 80% at 50% 0%, rgba(139,92,246,0.18) 0%, rgba(15,12,28,0) 55%), linear-gradient(180deg, #07060d 0%, #0b0a18 45%, #07060d 100%)'
@@ -251,14 +251,14 @@ const InstantKillModeSection = () => {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           className="mx-auto max-w-4xl text-center"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-purple-400/30 bg-purple-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-purple-200 backdrop-blur-sm">
-            <Sparkles className="h-3.5 w-3.5 text-[#d4a847]" />
-            v2.0.0 · Instant Kill Mode · Open Source
+          <span className="inline-flex max-w-full items-center gap-2 rounded-full border border-purple-400/30 bg-purple-500/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-purple-200 backdrop-blur-sm sm:px-4 sm:text-xs sm:tracking-[0.24em]">
+            <Sparkles className="h-3.5 w-3.5 flex-shrink-0 text-[#d4a847]" />
+            <span className="truncate">v2.0.0 · Instant Kill Mode · Open Source</span>
           </span>
 
           <h2
             id="instant-kill-mode-heading"
-            className="mt-6 text-4xl font-bold tracking-tight text-[#f7f7fb] sm:text-5xl md:text-6xl"
+            className="mt-6 text-3xl font-bold tracking-tight text-[#f7f7fb] sm:text-4xl md:text-5xl lg:text-6xl"
           >
             One goal in.{' '}
             <span
@@ -270,7 +270,7 @@ const InstantKillModeSection = () => {
             >
               Verified deliverable out.
             </span>
-            <span className="mt-3 block text-2xl font-semibold text-[#cfd0e6] sm:text-3xl md:text-4xl">
+            <span className="mt-3 block text-xl font-semibold text-[#cfd0e6] sm:text-2xl md:text-3xl lg:text-4xl">
               No ceremony. Ruthless convergence. Strictly better output.
             </span>
           </h2>
@@ -317,7 +317,7 @@ const InstantKillModeSection = () => {
                   <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-purple-400/30 bg-gradient-to-br from-purple-500/30 via-indigo-500/20 to-transparent shadow-lg shadow-purple-900/30">
                     <Icon className="h-6 w-6 text-purple-100" />
                   </div>
-                  <span className="max-w-[58%] rounded-2xl border border-white/10 bg-black/30 px-2.5 py-1 text-right text-[10px] font-semibold uppercase leading-[1.5] tracking-[0.16em] text-[#c4b5fd]">
+                  <span className="max-w-[60%] break-words rounded-2xl border border-white/10 bg-black/30 px-2.5 py-1 text-right text-[10px] font-semibold uppercase leading-[1.5] tracking-[0.12em] text-[#c4b5fd] sm:tracking-[0.16em]">
                     {badge}
                   </span>
                 </div>
@@ -335,21 +335,24 @@ const InstantKillModeSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="relative overflow-hidden rounded-2xl border border-purple-400/20 bg-[#0a0814]/90 shadow-[0_30px_80px_-20px_rgba(139,92,246,0.35)] backdrop-blur-xl lg:col-span-3"
+            className="relative overflow-hidden rounded-2xl border border-purple-400/20 bg-[#0a0814]/90 shadow-[0_30px_80px_-20px_rgba(139,92,246,0.35)] backdrop-blur-xl min-w-0 lg:col-span-3"
           >
-            <div className="flex items-center justify-between border-b border-white/5 bg-white/[0.03] px-4 py-3">
-              <div className="flex items-center gap-2">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-[#9ea0bf]">
-                  <Terminal className="h-3.5 w-3.5" /> instant kill mode · live demo
+            <div className="flex items-center justify-between gap-2 border-b border-white/5 bg-white/[0.03] px-3 py-3 sm:px-4">
+              <div className="flex min-w-0 items-center gap-2">
+                <span className="h-3 w-3 flex-shrink-0 rounded-full bg-[#ff5f57]" />
+                <span className="h-3 w-3 flex-shrink-0 rounded-full bg-[#febc2e]" />
+                <span className="h-3 w-3 flex-shrink-0 rounded-full bg-[#28c840]" />
+                <span className="ml-1 hidden min-w-0 items-center gap-1.5 truncate text-[11px] font-medium uppercase tracking-[0.18em] text-[#9ea0bf] sm:ml-3 sm:inline-flex">
+                  <Terminal className="h-3.5 w-3.5 flex-shrink-0" /> instant kill mode · live demo
+                </span>
+                <span className="ml-1 inline-flex min-w-0 items-center gap-1.5 truncate text-[10px] font-medium uppercase tracking-[0.14em] text-[#9ea0bf] sm:hidden">
+                  <Terminal className="h-3 w-3 flex-shrink-0" /> live demo
                 </span>
               </div>
               <CopyButton label="kill command" value={TERMINAL_GOAL} />
             </div>
 
-            <div className="px-5 py-6 font-mono text-sm leading-relaxed sm:px-7 sm:py-7">
+            <div className="px-4 py-5 font-mono text-sm leading-relaxed sm:px-7 sm:py-7">
               <div className="flex items-start gap-2 text-[#c4b5fd]">
                 <span className="text-[#d4a847]">$</span>
                 <span className="break-all text-[#e7e8fb]">{TERMINAL_GOAL}</span>
@@ -385,7 +388,7 @@ const InstantKillModeSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
-            className="flex flex-col gap-4 lg:col-span-2"
+            className="flex flex-col gap-4 min-w-0 lg:col-span-2"
           >
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-xl">
               <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-purple-200">
@@ -400,15 +403,15 @@ const InstantKillModeSection = () => {
             {INSTALL_COMMANDS.map(({ label, command }) => (
               <div
                 key={label}
-                className="overflow-hidden rounded-2xl border border-white/10 bg-[#0a0814]/85 backdrop-blur-xl"
+                className="min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-[#0a0814]/85 backdrop-blur-xl"
               >
-                <div className="flex items-center justify-between border-b border-white/5 px-4 py-2.5">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#9ea0bf]">
+                <div className="flex items-center justify-between gap-2 border-b border-white/5 px-3 py-2.5 sm:px-4">
+                  <span className="truncate text-[10px] font-semibold uppercase tracking-[0.16em] text-[#9ea0bf] sm:text-[11px] sm:tracking-[0.2em]">
                     {label}
                   </span>
                   <CopyButton label={label} value={command} />
                 </div>
-                <pre className="overflow-x-auto px-4 py-3 font-mono text-[12px] leading-relaxed text-[#e7e8fb]">
+                <pre className="overflow-x-auto px-3 py-3 font-mono text-[11px] leading-relaxed text-[#e7e8fb] sm:px-4 sm:text-[12px]">
                   <code>{command}</code>
                 </pre>
               </div>
@@ -423,12 +426,12 @@ const InstantKillModeSection = () => {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="mt-14 flex flex-col items-center justify-center gap-4"
         >
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="flex w-full flex-col items-stretch justify-center gap-3 sm:w-auto sm:flex-row sm:items-center sm:gap-4">
             <a
               href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-[#09090e] transition-all duration-300 hover:shadow-[0_0_44px_-6px_rgba(212,168,71,0.6)]"
+              className="group inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold text-[#09090e] transition-all duration-300 hover:shadow-[0_0_44px_-6px_rgba(212,168,71,0.6)] sm:px-7"
               style={{
                 background:
                   'linear-gradient(135deg, #f4d27a 0%, #d4a847 50%, #c4b5fd 100%)'
@@ -442,7 +445,7 @@ const InstantKillModeSection = () => {
               href={ARCHITECTURE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-2 rounded-full border border-purple-400/40 bg-purple-500/15 px-7 py-3 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-purple-300/70 hover:bg-purple-500/25 hover:shadow-[0_0_40px_-8px_rgba(139,92,246,0.6)]"
+              className="group inline-flex items-center justify-center gap-2 rounded-full border border-purple-400/40 bg-purple-500/15 px-5 py-3 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-purple-300/70 hover:bg-purple-500/25 hover:shadow-[0_0_40px_-8px_rgba(139,92,246,0.6)] sm:px-7"
             >
               Read the architecture
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />

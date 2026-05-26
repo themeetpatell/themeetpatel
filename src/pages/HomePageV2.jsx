@@ -617,10 +617,10 @@ const Origin = () => {
           <motion.div style={{ height: lineH }} className="w-full bg-gradient-to-b from-[#9b8bff] to-transparent" />
         </div>
 
-        <div className="max-w-[1400px] mx-auto w-full px-12 lg:px-24 relative z-10">
+        <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-8 md:px-12 lg:px-24 relative z-10">
           <SectionTitleCard label="II" name="Origin" kicker="Nine years · One arc" />
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
             <div className="md:col-span-4">
               <Eyebrow>The arc, one beat at a time</Eyebrow>
               <h2 className="mt-6 font-black tracking-[-0.03em] leading-[0.95] text-[clamp(2rem,4.5vw,3.5rem)] text-white">

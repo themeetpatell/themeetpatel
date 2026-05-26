@@ -205,13 +205,14 @@ const UltraFooter = () => {
               Thank you for subscribing!
             </div>
           ) : (
-            <form onSubmit={handleSubscribe} className="flex gap-2">
+            <form onSubmit={handleSubscribe} className="flex w-full gap-2 sm:w-auto">
               <input
                 type="email"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 required
+                className="min-w-0 flex-1 sm:flex-initial sm:w-[220px]"
                 style={{
                   background: '#111118',
                   border: '1px solid rgba(255,255,255,0.08)',
@@ -220,7 +221,6 @@ const UltraFooter = () => {
                   color: '#f5f5f7',
                   fontSize: '0.875rem',
                   outline: 'none',
-                  width: '220px',
                   transition: 'border-color 0.2s'
                 }}
                 onFocus={e => e.target.style.borderColor = 'rgba(139,92,246,0.4)'}

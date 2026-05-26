@@ -776,7 +776,7 @@ const BlogArticlePage = () => {
                 Related Articles
               </h2>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 20 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
               {relatedArticles.map((rel, i) => (
                 <motion.div
                   key={rel.id}
