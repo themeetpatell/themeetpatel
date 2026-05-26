@@ -13,60 +13,61 @@ import {
   ShieldCheck,
   Filter,
   Layers,
-  Globe
+  Globe,
+  RefreshCw
 } from 'lucide-react';
 
-const GITHUB_URL = 'https://github.com/themeetpatell/god-mode';
-const LAUNCH_PROFILE_URL = `${GITHUB_URL}/blob/main/LAUNCH-PROFILE.md`;
-const ROUTER_EVAL_URL = `${GITHUB_URL}/blob/main/evals/routing-eval.jsonl`;
+const GITHUB_URL = 'https://github.com/themeetpatel/themeetpatel';
+const CHANGELOG_URL = `${GITHUB_URL}/blob/main/CHANGELOG.md`;
+const ARCHITECTURE_URL = `${GITHUB_URL}/blob/main/README.md#architecture`;
 
 const CAPABILITY_CARDS = [
   {
-    title: 'Verifier',
-    icon: ShieldCheck,
+    title: 'Best-of-N Speculation',
+    icon: Zap,
     description:
-      'The flagship primitive. Every roadmap task runs through a separate verifier agent before "done" reaches you — tests run, sources fetched, voice scored, DAGs walked. "Shipped" stops being a claim and becomes a measurement.',
-    badge: 'Strategy → Verified Ship',
+      'On high-stakes tasks the engine fires two parallel attempts with deliberately different prompts and lets the judge pick the winner. Comparing two attempts catches errors a single shot produces with confidence — the structural reason output is strictly better than single-attempt orchestrators.',
+    badge: 'Stakes:High → 2 Attempts',
     accent: 'rgba(212,168,71,0.5)'
   },
   {
-    title: 'Learning Router',
-    icon: Network,
+    title: 'Independent Inline Judge',
+    icon: ShieldCheck,
     description:
-      'Weighted multi-signal pattern scoring with per-pattern weights that sharpen from your own ledger. 100% accuracy on 104 stratified eval cases including 41 adversarial keyword traps. The router is the IP and it compounds with use.',
-    badge: 'Haiku · Sonnet · Opus · Learned',
+      'Workers never grade their own homework. A separate judge agent runs after each output — Haiku by default, auto-bumped to Sonnet for code, security, legal, and financial output. Errors caught per-task, before they propagate into later work.',
+    badge: 'Per-Task Verification',
     accent: 'rgba(139,92,246,0.55)'
   },
   {
-    title: 'Context Curator',
-    icon: Filter,
+    title: 'Ruthless Routing',
+    icon: Network,
     description:
-      'Every worker gets only the files, glossary, and decisions it needs — not the whole conversation. Where the cost savings actually live. Names what to drop and why.',
-    badge: 'Smallest Viable Context',
+      'Haiku-default orchestrator escalates the plan to Opus only when the pre-flight critic flags a misdecomposed goal. Every task routed to the cheapest model that will produce a correct answer. 5–10× cheaper than Opus-only without quality loss.',
+    badge: 'Haiku · Sonnet · Opus',
     accent: 'rgba(99,102,241,0.55)'
   },
   {
-    title: 'Persistent Brain',
-    icon: BrainCircuit,
+    title: 'Auto-Recovery Ladder',
+    icon: RefreshCw,
     description:
-      'Memory facts, belief register with revision history, and vector-indexed episodic recall. Session 10 is better than session 1 because the CEO remembers your stack, ICP, voice, past decisions — and can semantically recall similar past work.',
-    badge: 'Memory · Beliefs · Episodes',
+      'Judge fail triggers same-tier retry with the critique as new constraint → escalate one tier with both attempts as context → only then ask the user. Quality monotonically increases until budget cap. The engine never silently swallows a fail.',
+    badge: 'Retry → Escalate → Ask',
     accent: 'rgba(139,92,246,0.5)'
   },
   {
-    title: 'Domain Packs',
+    title: 'Streaming Synthesis',
     icon: Layers,
     description:
-      'Core engine + opinionated packs for your operator role. Founder-UAE, AI-Builder, Growth-Ops ship in v1.3.1 — with more from the community via the marketplace in v1.5.',
-    badge: 'Founder · UAE · AI-Builder · Growth',
+      'Deliverable assembled as tasks verify, not batched at the end. Later tasks see verified upstream output instead of raw worker output, so errors do not propagate. Wall-clock approaches critical-path time, not max-of-all-tasks.',
+    badge: 'Verified-As-You-Go',
     accent: 'rgba(212,168,71,0.4)'
   },
   {
-    title: 'Portable',
+    title: 'Portable Handoff',
     icon: Globe,
     description:
-      'Same CEO discipline travels across every tool. Start a goal in Claude Code, continue on your phone in ChatGPT, finish in Cursor. The handoff brief takes the state with you.',
-    badge: 'Portable · 6 AI Tools',
+      'Same orchestration discipline travels across Claude Code, Cowork, claude.ai, ChatGPT, Cursor, and Gemini. The handoff brief carries goal, decomposition, verified outputs, and remaining work into any other tool — or to a teammate.',
+    badge: 'Portable · 6 Tools',
     accent: 'rgba(99,102,241,0.5)'
   }
 ];
@@ -75,90 +76,86 @@ const INSTALL_COMMANDS = [
   {
     label: 'Claude Code · Plugin',
     command:
-      '/plugin marketplace add https://github.com/themeetpatell/god-mode\n/plugin install themeetpatel@themeetpatel'
+      '# Drop the plugin folder into your Claude Code plugins dir\ncp -r themeetpatel ~/.claude/plugins/data/themeetpatel-themeetpatel/\n\n# Then in any Claude Code session:\n/kill <your goal in plain English>'
   },
   {
-    label: 'MCP Server · Build',
-    command: 'cd mcp-server && npm install && npm run build'
+    label: 'Claude Cowork · Upload',
+    command: `# Download themeetpatel-v2.0.0-plugin.zip from the repo
+# In Cowork:
+#   Settings → Skills → Upload Skill Pack → select the zip
+# Then in any Cowork workspace, say:
+#   "Activate Instant Kill Mode. Goal: ..."`
   },
   {
-    label: 'MCP Config · claude_desktop_config.json',
-    command: `{
-  "mcpServers": {
-    "themeetpatel-god-mode": {
-      "command": "node",
-      "args": ["/ABSOLUTE/PATH/themeetpatel/mcp-server/dist/index.js"],
-      "env": { "THEMEETPATEL_HOME": "$HOME/.themeetpatel" }
-    }
-  }
-}`
+    label: 'claude.ai · Skills Upload',
+    command: `# Download themeetpatel-v2.0.0-skills-only.zip from the repo
+# On claude.ai:
+#   Settings → Capabilities → Skills → Upload Skill
+#   (or via a Project's Skills tab)
+# In chat:
+#   "Activate Instant Kill Mode. Goal: ..."`
   },
   {
     label: 'Portable · Other Tools',
-    command: `Paste portable/universal-system-prompt.md into:
-• claude.ai  → Project custom instructions
-• Cowork     → workspace instructions
-• ChatGPT    → Custom GPT instructions
-• Cursor     → .cursorrules
-• Gemini     → Gem instructions`
+    command: `Paste the handoff brief into:
+• ChatGPT   → Custom GPT instructions
+• Cursor    → .cursorrules
+• Gemini    → Gem instructions
+
+Full brief format: skills/handoff/SKILL.md`
   }
 ];
 
 const HIGHLIGHTS = [
-  { icon: ShieldCheck, label: 'Verified deliverables' },
-  { icon: Zap, label: '100% router accuracy' },
-  { icon: BrainCircuit, label: 'Episodic + belief memory' },
-  { icon: Layers, label: 'Domain Packs' },
+  { icon: Zap, label: 'Best-of-N safeguard' },
+  { icon: ShieldCheck, label: 'Independent inline judge' },
+  { icon: Network, label: '5–10× cheaper than Opus' },
+  { icon: RefreshCw, label: 'Auto-escalation ladder' },
   { icon: Globe, label: 'Portable across 6 tools' }
 ];
 
 const PROOF_ITEMS = [
-  '23 agents',
-  '60 skills · 28 production · 32 preview',
-  '104 eval cases · 100% pass · 41 adversarial',
+  '5 core agents · 8 essential skills',
+  '2 commands · 0 dependencies',
+  '~$0.06 per goal vs $1.00 all-Opus',
   'MIT licensed · open source forever'
 ];
 
 const TERMINAL_GOAL =
-  '/god-mode Build a Next.js landing page with email signup, ship Vercel-ready';
+  '/kill Build a Next.js landing page with email signup, ship Vercel-ready';
 
 const TERMINAL_LINES = [
-  { text: '→ INTAKE  (memory: using your Next.js + Tailwind + Supabase defaults)', tone: 'arrow' },
+  { text: '→ GOAL: Ship a verified Vercel-ready Next.js landing page with email signup.', tone: 'arrow' },
+  { text: '→ MEMORY: using your Next.js + Tailwind + Supabase defaults.', tone: 'arrow' },
+  { text: '→ PREFLIGHT CRITIC ✓  (Haiku · decomposition sound · no escalation)', tone: 'arrow' },
   { text: '', tone: 'blank' },
-  { text: '→ ROADMAP', tone: 'arrow' },
-  { text: '   Phase 1: Scope & decisions        [parallel]', tone: 'phase' },
-  { text: '     T1.1  Framework + design system     → Opus', tone: 'task' },
-  { text: '     T1.2  Hero copy variants (3)        → Haiku', tone: 'task' },
+  { text: '→ DISPATCH  (parallel where independent)', tone: 'arrow' },
+  { text: '     T1.1  Hero copy variants (3)        → Haiku', tone: 'task' },
+  { text: '     T1.2  Design system tokens          → Sonnet', tone: 'task' },
+  { text: '     T2.1  Scaffold Next.js + Tailwind   → Sonnet   [waits T1.2]', tone: 'task' },
+  { text: '     T2.2  Hero + FAQ + features         → Sonnet   [waits T2.1, T1.1]', tone: 'task' },
+  { text: '     T2.3  Email signup + API route      → Sonnet   ★ best-of-N (stakes:high)', tone: 'spec' },
+  { text: '     T2.4  Playwright tests              → Sonnet   [waits T2.2, T2.3]', tone: 'task' },
+  { text: '     T3.1  SEO meta + JSON-LD            → Haiku    [waits T2.2]', tone: 'task' },
+  { text: '     T3.2  Vercel deploy + smoke test    → Sonnet   [waits T2.4, T3.1]', tone: 'task' },
   { text: '', tone: 'blank' },
-  { text: '   Phase 2: Build                    [sequential]', tone: 'phase' },
-  { text: '     T2.1  Scaffold Next.js + Tailwind   → Sonnet', tone: 'task' },
-  { text: '     T2.2  Hero + FAQ + features         → Sonnet', tone: 'task' },
-  { text: '     T2.3  Email signup + API route      → Sonnet', tone: 'task' },
-  { text: '     T2.4  Playwright tests              → Sonnet', tone: 'task' },
-  { text: '', tone: 'blank' },
-  { text: '   Phase 3: Polish & ship            [parallel]', tone: 'phase' },
-  { text: '     T3.1  SEO meta + JSON-LD            → Haiku', tone: 'task' },
-  { text: '     T3.2  Vercel deploy + smoke test    → Sonnet', tone: 'task' },
-  { text: '', tone: 'blank' },
-  { text: '→ ROUTE + CURATE CONTEXT  (28% input tokens vs naive)', tone: 'arrow' },
-  { text: '', tone: 'blank' },
-  { text: '→ EXECUTE  (8 tasks across 3 model tiers)', tone: 'arrow' },
-  { text: '', tone: 'blank' },
-  { text: '→ VERIFY  T1.1 ✓  T1.2 ✓  T2.1 ✓  T2.2 ✓  T2.3 ⚠ (rate-limit missing)', tone: 'verify' },
-  { text: '          T2.4 ✓  T3.1 ✓  T3.2 ✓', tone: 'verify' },
+  { text: '→ INLINE JUDGE  T1.1 ✓  T1.2 ✓  T2.1 ✓  T2.2 ✓', tone: 'verify' },
+  { text: '                T2.3 ⚠ judge fail (missing rate-limit) → retry Sonnet ✓', tone: 'verify' },
+  { text: '                T2.4 ✓  T3.1 ✓  T3.2 ✓', tone: 'verify' },
   { text: '', tone: 'blank' },
   { text: '✓ DONE: Landing page live at example.com', tone: 'done' },
-  { text: 'SHIPPED: 8 files, 1 API route, 4 Playwright tests', tone: 'summary' },
-  { text: 'VERIFIED: 7 pass · 1 conditional · 0 fail', tone: 'summary' },
-  { text: 'COST: ~$0.41  (Haiku: 2, Sonnet: 5, Opus: 1)  vs all-Opus baseline $1.00', tone: 'summary' },
-  { text: 'TIME: 18m 42s', tone: 'summary' },
-  { text: 'NEXT: add rate-limit middleware before public launch', tone: 'next' }
+  { text: 'SHIPPED: 8 files · 1 API route · 4 Playwright tests', tone: 'summary' },
+  { text: 'VERIFIED: 8 pass · 0 fail · 1 task self-healed via auto-recovery ladder', tone: 'summary' },
+  { text: 'COST: ~$0.06  (Haiku: 2k, Sonnet: 11k, Opus: 0)  vs all-Opus baseline ~$0.62', tone: 'summary' },
+  { text: 'TIME: 4m 12s', tone: 'summary' },
+  { text: 'NEXT: enable Vercel Analytics before public launch', tone: 'next' }
 ];
 
 const TERMINAL_TONES = {
   arrow: 'text-purple-300 font-semibold',
   phase: 'text-[#cfd0e6]',
   task: 'text-[#9ea0bf]',
+  spec: 'text-[#d4a847]',
   verify: 'text-[#e7e8fb]',
   done: 'text-[#28c840] font-semibold',
   summary: 'text-[#b6b7d2]',
@@ -192,11 +189,11 @@ const CopyButton = ({ value, label }) => {
   );
 };
 
-const GodModeSection = () => {
+const InstantKillModeSection = () => {
   return (
     <section
-      id="god-mode"
-      aria-labelledby="god-mode-heading"
+      id="instant-kill-mode"
+      aria-labelledby="instant-kill-mode-heading"
       className="relative overflow-hidden py-24 sm:py-32"
       style={{
         background:
@@ -256,11 +253,11 @@ const GodModeSection = () => {
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-purple-400/30 bg-purple-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-purple-200 backdrop-blur-sm">
             <Sparkles className="h-3.5 w-3.5 text-[#d4a847]" />
-            v1.3.1 Launch · Open Source
+            v2.0.0 · Instant Kill Mode · Open Source
           </span>
 
           <h2
-            id="god-mode-heading"
+            id="instant-kill-mode-heading"
             className="mt-6 text-4xl font-bold tracking-tight text-[#f7f7fb] sm:text-5xl md:text-6xl"
           >
             One goal in.{' '}
@@ -274,16 +271,17 @@ const GodModeSection = () => {
               Verified deliverable out.
             </span>
             <span className="mt-3 block text-2xl font-semibold text-[#cfd0e6] sm:text-3xl md:text-4xl">
-              The AI operating layer for the rest of your work.
+              No ceremony. Ruthless convergence. Strictly better output.
             </span>
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-[#b6b7d2] sm:text-lg">
-            God Mode is an open-source Claude Code plugin + MCP server. One CEO orchestrator decomposes
-            your goal, routes every task to the right model (100% accuracy on 104 stratified router evals),
-            curates minimum context per worker, runs the work in parallel, and a separate verifier agent
-            proves the deliverable shipped. Same discipline runs in Claude Code, claude.ai, Cowork, ChatGPT,
-            Cursor, and Gemini.
+            Instant Kill Mode is the v2.0 successor to God Mode. A Haiku-default orchestrator decomposes
+            your goal, runs a pre-flight critic, routes each task to the cheapest model that will produce
+            a correct answer, fires <strong className="text-purple-200">best-of-N</strong> on high-stakes
+            work, runs an <strong className="text-purple-200">independent inline judge</strong> after every
+            worker, and self-heals on failure via an auto-escalation ladder. Same discipline runs in
+            Claude Code, Cowork, claude.ai, ChatGPT, Cursor, and Gemini.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -332,7 +330,7 @@ const GodModeSection = () => {
 
         <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-5">
           <motion.div
-            id="god-mode-demo"
+            id="instant-kill-mode-demo"
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
@@ -345,10 +343,10 @@ const GodModeSection = () => {
                 <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
                 <span className="h-3 w-3 rounded-full bg-[#28c840]" />
                 <span className="ml-3 inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-[#9ea0bf]">
-                  <Terminal className="h-3.5 w-3.5" /> god-mode · live demo
+                  <Terminal className="h-3.5 w-3.5" /> instant kill mode · live demo
                 </span>
               </div>
-              <CopyButton label="god mode command" value={TERMINAL_GOAL} />
+              <CopyButton label="kill command" value={TERMINAL_GOAL} />
             </div>
 
             <div className="px-5 py-6 font-mono text-sm leading-relaxed sm:px-7 sm:py-7">
@@ -376,8 +374,8 @@ const GodModeSection = () => {
 
               <div className="mt-6 flex items-start gap-2 border-t border-white/5 pt-4 text-[12px] text-[#8b8da8]">
                 <BrainCircuit className="h-4 w-4 flex-shrink-0 text-purple-300" />
-                Routed across 23 specialist agents · Verifier on every task · 100% router accuracy ·
-                59% cheaper vs all-Opus
+                Haiku orchestrator · best-of-N on stakes:high · independent inline judge ·
+                auto-escalation ladder · ~90% cheaper than all-Opus
               </div>
             </div>
           </motion.div>
@@ -391,11 +389,11 @@ const GodModeSection = () => {
           >
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-xl">
               <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-purple-200">
-                Install God Mode
+                Install Instant Kill Mode
               </h3>
               <p className="mt-2 text-sm text-[#a8a9c3]">
-                One-liners for the Claude Code plugin, the MCP server, and the portable prompt that
-                carries the same discipline into every other tool.
+                One plugin for Claude Code. One upload for Cowork. One upload for claude.ai. One portable
+                brief for everything else. No MCP server, no dependencies, no setup script.
               </p>
             </div>
 
@@ -437,26 +435,26 @@ const GodModeSection = () => {
               }}
             >
               <Github className="h-4 w-4" />
-              Install God Mode
+              Install Instant Kill Mode
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </a>
             <a
-              href={LAUNCH_PROFILE_URL}
+              href={ARCHITECTURE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center justify-center gap-2 rounded-full border border-purple-400/40 bg-purple-500/15 px-7 py-3 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-purple-300/70 hover:bg-purple-500/25 hover:shadow-[0_0_40px_-8px_rgba(139,92,246,0.6)]"
             >
-              Read the launch profile
+              Read the architecture
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </a>
           </div>
           <a
-            href={ROUTER_EVAL_URL}
+            href={CHANGELOG_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.16em] text-[#9ea0bf] transition-colors duration-200 hover:text-purple-200"
           >
-            100% router eval
+            What changed from God Mode v1.3.1
             <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
           </a>
         </motion.div>
@@ -479,29 +477,40 @@ const GodModeSection = () => {
         </motion.div>
 
         <div className="sr-only">
-          <h3>God Mode v1.3.1 — open-source AI operating layer by Meet Patel (themeetpatel)</h3>
+          <h3>Instant Kill Mode v2.0.0 — open-source AI orchestration plugin by Meet Patel (themeetpatel)</h3>
           <p>
-            God Mode is an open-source Claude Code plugin and MCP server built by Meet Patel. One CEO
-            orchestrator converts a single goal into a structured roadmap, routes each task to the most
-            cost-efficient AI model (Claude Haiku, Sonnet, and Opus) with 100% accuracy across 104
-            stratified router evaluations, curates the minimum viable context per worker, dispatches
-            specialist agents in parallel, and runs a separate verifier agent that proves each
-            deliverable shipped before reporting it done.
+            Instant Kill Mode is the v2 successor to God Mode. It is an open-source Claude Code plugin
+            (and skill pack for Cowork and claude.ai) built by Meet Patel. A Haiku-default orchestrator
+            converts a single goal into a verified deliverable: a pre-flight critic sanity-checks the
+            decomposition, every task is routed to the cheapest model that will produce a correct answer,
+            high-stakes tasks fire best-of-N speculative execution (two parallel attempts, judge picks
+            the winner), an independent inline judge grades every worker output before it propagates
+            into the deliverable, and an auto-escalation ladder self-heals on failure.
           </p>
           <p>
-            How does God Mode work? You provide one outcome. God Mode clarifies the goal, decomposes it
-            into roadmap phases, routes tasks across model tiers, curates context, executes in parallel,
-            and verifies every task. It works with Claude Code, claude.ai, Cowork, ChatGPT, Cursor, and
-            Gemini through the Model Context Protocol (MCP) and a portable system prompt.
+            How does Instant Kill Mode work? You provide one outcome. The kill-engine restates the goal,
+            preloads memory, decomposes into atomic tasks, runs a pre-flight critic, dispatches workers
+            in parallel with curated briefs, runs an inline judge per task, retries with auto-escalation
+            on judge fail, and streams the synthesized deliverable back to you. It works with Claude
+            Code, Claude Cowork, claude.ai, ChatGPT, Cursor, and Gemini via a portable handoff brief.
           </p>
           <p>
-            Who is it for? Founders, operators, and product teams who want fewer prompts, verified
-            execution, and a durable execution memory across tools and sessions.
+            What changed from God Mode v1.3.1? 23 specialist agents collapsed to 5 core agents
+            (kill-engine, three tier workers, inline-judge). 60 skills collapsed to 8 essentials.
+            Roadmap-approval gate replaced by a cheap Haiku pre-flight critic. Batch verification
+            replaced by per-task independent inline judge. New: best-of-N speculative execution on
+            stakes:high tasks. New: auto-escalation recovery ladder. New: streaming synthesis. Result:
+            5–10× cheaper, strictly better output on hard tasks, no MCP server to install.
+          </p>
+          <p>
+            Who is it for? Founders, operators, engineers, and product teams who want one goal in and a
+            verified deliverable out — at the cost floor of Haiku, with the quality ceiling of Opus
+            only when it matters.
           </p>
           <ul>
-            <li>What it does: turns one goal into a verified deliverable with routed specialist tasks.</li>
-            <li>How to install: add the Claude Code plugin, build the MCP server, or paste the portable prompt.</li>
-            <li>Why it matters: a separate verifier proves work shipped, and routing is 59% cheaper than all-Opus.</li>
+            <li>What it does: turns one goal into a verified deliverable with routed specialist tasks and best-of-N on high-stakes work.</li>
+            <li>How to install: copy the plugin folder into Claude Code, upload the zip to Cowork or claude.ai, or paste the portable handoff brief into any other tool.</li>
+            <li>Why it matters: an independent inline judge catches errors per-task, an auto-escalation ladder self-heals on failure, and best-of-N produces strictly better output than single-attempt orchestrators on hard tasks.</li>
           </ul>
         </div>
       </div>
@@ -509,4 +518,4 @@ const GodModeSection = () => {
   );
 };
 
-export default GodModeSection;
+export default InstantKillModeSection;
