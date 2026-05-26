@@ -929,7 +929,7 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
               Checkout the Startups I've Built
             </h2>
             <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto">
@@ -991,7 +991,7 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-20"
           >
-            <h2 className="text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
               Read My Latest Insights Shared
             </h2>
             <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto leading-relaxed mb-8">
@@ -1165,7 +1165,7 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-20"
           >
-            <h2 className="text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
               Books Written
             </h2>
             <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto leading-relaxed">
@@ -1270,7 +1270,7 @@ const HomePage = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="space-y-8 order-1 lg:order-2"
             >
-              <h2 className="text-5xl md:text-6xl font-bold text-[#f7f7fb] tracking-tight">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] tracking-tight">
                 Recognition & Impact
             </h2>
               <p className="text-xl text-[#cfd0e6] leading-relaxed">
@@ -1311,7 +1311,7 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
               Let's Create Magic Together
                 </h2>
             <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto leading-relaxed">
@@ -1467,7 +1467,7 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-[#f7f7fb] mb-4 tracking-tight">Join Our StartupOS Community</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#f7f7fb] mb-4 tracking-tight">Join Our StartupOS Community</h2>
             <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto leading-relaxed">
               Connect with fellow entrepreneurs, get exclusive insights, and be part of a thriving startup ecosystem.
             </p>
