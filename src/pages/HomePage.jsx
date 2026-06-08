@@ -123,12 +123,18 @@ const HomePage = () => {
 
   const personalInfo = {
     name: "Meet Patel",
-    title: "Founder & operator — currently building Biggventure and BiggMate",
+    title: "Founder & operator — currently building Stealth Startup, Biggventure, and BiggMate",
     location: "Dubai, United Arab Emirates",
     email: "the.meetpatell@gmail.com",
     bio: "A Startup ecosystem builder with over 8 years of experience in building and scaling technology companies. Passionate about helping startups succeed through innovative solutions and strategic guidance.",
     
     projects: [
+      {
+        name: "Stealth Startup",
+        description: "A new fintech venture, currently building in stealth.",
+        category: "Fintech",
+        year: "2023"
+      },
       {
         name: "StudentHub",
         description: "Recruitment technology platform connecting students with jobs and resources and companies with students.",

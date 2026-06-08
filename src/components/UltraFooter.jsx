@@ -33,6 +33,7 @@ const UltraFooter = () => {
   };
 
   const ventures = [
+    { name: 'Stealth Startup', href: null, external: false },
     { name: 'BiggMate', href: 'https://www.biggmate.com', external: true },
     { name: 'BiggBizz', href: 'https://www.biggbizz.com', external: true },
     { name: 'ZeroHuman', href: 'https://www.zerohuman.co', external: true },
@@ -135,15 +136,19 @@ const UltraFooter = () => {
             <ul className="space-y-2.5">
               {ventures.map((l) => (
                 <li key={l.name}>
-                  <a
-                    href={l.href}
-                    target={l.external ? '_blank' : '_self'}
-                    rel={l.external ? 'noopener noreferrer' : ''}
-                    style={{ ...muted, display: 'block', transition: 'color 0.2s' }}
-                    onMouseEnter={e => e.target.style.color = '#f5f5f7'}
-                    onMouseLeave={e => e.target.style.color = '#5a5a6e'}
-                    onClick={() => trackButtonClick(`footer_venture_${l.name.toLowerCase()}`, 'footer')}
-                  >{l.name}</a>
+                  {l.href ? (
+                    <a
+                      href={l.href}
+                      target={l.external ? '_blank' : '_self'}
+                      rel={l.external ? 'noopener noreferrer' : ''}
+                      style={{ ...muted, display: 'block', transition: 'color 0.2s' }}
+                      onMouseEnter={e => e.target.style.color = '#f5f5f7'}
+                      onMouseLeave={e => e.target.style.color = '#5a5a6e'}
+                      onClick={() => trackButtonClick(`footer_venture_${l.name.toLowerCase()}`, 'footer')}
+                    >{l.name}</a>
+                  ) : (
+                    <span style={{ ...muted, display: 'block' }}>{l.name}</span>
+                  )}
                 </li>
               ))}
             </ul>

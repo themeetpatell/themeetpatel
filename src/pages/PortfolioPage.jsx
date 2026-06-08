@@ -36,6 +36,16 @@ const C = {
 // ─── Project Data ─────────────────────────────────────────────────────────────
 const PROJECTS = [
   {
+    id: 5,
+    title: 'Stealth Startup',
+    description: 'A new fintech venture, currently building in stealth. More to share soon.',
+    category: 'fintech',
+    status: 'Stealth',
+    featured: true,
+    tags: ['Fintech', 'Stealth', 'Building'],
+    metrics: {},
+  },
+  {
     id: 1,
     title: 'BiggMate',
     description: 'AI-powered co-foundership platform that matches entrepreneurs to build startups together. Successful startups earn a StartupOS Visa.',
