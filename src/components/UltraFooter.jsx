@@ -34,11 +34,9 @@ const UltraFooter = () => {
 
   const ventures = [
     { name: 'BiggMate', href: 'https://www.biggmate.com', external: true },
-    { name: 'BiggDate', href: 'https://biggdate.com', external: true },
     { name: 'BiggBizz', href: 'https://www.biggbizz.com', external: true },
     { name: 'ZeroHuman', href: 'https://www.zerohuman.co', external: true },
     { name: 'MealVerse', href: 'https://www.mealverse.in', external: true },
-    { name: 'Finanshels', href: 'https://finanshels.com', external: true },
   ];
 
   const writing = [

@@ -32,11 +32,9 @@ import startupEcosystemImage from '../assets/startup-ecosystem.jpg';
  * ════════════════════════════════════════════════════════════════════════ */
 
 const ventures = [
-  { name: 'Finanshels',  tag: 'Fintech',    year: '2023', status: 'Operating', metric: '$M+ in SMB books closed',           blurb: 'Automated bookkeeping + tax for SMBs. Built the ops engine that lets it scale.' },
   { name: 'Biggventure', tag: 'Studio',     year: '2024', status: 'Building',  metric: '7 ventures in motion',               blurb: 'Venture-building house turning operators into outcomes.' },
   { name: 'BiggMate',    tag: 'Network',    year: '2025', status: 'Building',  metric: 'Co-founder matching, intent-first', blurb: 'Find the right partner before the wrong one costs a year.' },
   { name: 'StartupOS',   tag: 'Community',  year: '2022', status: 'Live',      metric: '500+ founders in residence',         blurb: 'The systems that don’t break under pressure — taught, lived, repeated.' },
-  { name: 'BiggDate',    tag: 'Consumer',   year: '2026', status: 'Soon',      metric: 'Compatibility, not games',           blurb: 'Relationship-first dating built on real signals, not infinite swipe.' },
   { name: 'ZeroHuman',   tag: 'AI',         year: '2024', status: 'Live',      metric: 'AI-native creative pipelines',       blurb: 'AI-native media for modelling and creator industries.' },
   { name: 'MealVerse',   tag: 'FoodTech',   year: '2024', status: 'Live',      metric: 'Home-cooked, scheduled',             blurb: 'Meal planning + last-mile for humans who refuse to live on dark-kitchen takeout.' },
   { name: 'TorchIt',     tag: 'Impact',     year: '2020', status: 'Acquired',  metric: '1,000+ devices shipped',             blurb: 'Assistive technology for the differently-abled. Started here.' },
@@ -1358,7 +1356,7 @@ const HomePageV2 = () => {
     >
       <SEOHead
         title="Meet Patel — Founder &amp; operator | v.2026"
-        description="Founder and operator building a connected universe of ventures. Eight years inside startup engine rooms — Finanshels, Biggventure, BiggMate, StartupOS — designing the systems behind the systems."
+        description="Founder and operator building a connected universe of ventures. Eight years inside startup engine rooms — Biggventure, BiggMate, StartupOS — designing the systems behind the systems."
         canonical="/v2"
       />
       <ScrollProgress />

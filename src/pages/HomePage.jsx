@@ -123,24 +123,12 @@ const HomePage = () => {
 
   const personalInfo = {
     name: "Meet Patel",
-    title: "Founder & operator — currently building Finanshels, Biggventure, and BiggMate",
+    title: "Founder & operator — currently building Biggventure and BiggMate",
     location: "Dubai, United Arab Emirates",
     email: "the.meetpatell@gmail.com",
     bio: "A Startup ecosystem builder with over 8 years of experience in building and scaling technology companies. Passionate about helping startups succeed through innovative solutions and strategic guidance.",
     
     projects: [
-      {
-        name: "BiggDate",
-        description: "Relationship-first dating platform focused on meaningful matches, compatibility signals, and safer connections.",
-        category: "Social",
-        year: "2026"
-      },
-      {
-        name: "Finanshels.com",
-        description: "Financial management platform for small businesses with automated bookkeeping and taxes.",
-        category: "Fintech",
-        year: "2023"
-      },
       {
         name: "StudentHub",
         description: "Recruitment technology platform connecting students with jobs and resources and companies with students.",
@@ -164,12 +152,6 @@ const HomePage = () => {
         description: "An assis-tech startup helping differently-abled people with smart devices.",
         category: "Mobile",
         year: "2020"
-      },
-      {
-        name: "BiggDate",
-        description: "Relationship-first dating platform built for meaningful matches and long-term compatibility.",
-        category: "Social",
-        year: "2026"
       }
     ],
     
@@ -402,11 +384,6 @@ const HomePage = () => {
         "name": "Gujarat Technological University",
         "sameAs": "https://www.gtu.ac.in/"
       },
-      "award": [
-        "Best New Joiner Award - Finanshels (April 2024)",
-        "Star Performer of the Month - Finanshels (Dec 2024)",
-        "Best Creative Innovator Award - Finanshels (Feb 2025)"
-      ],
       "worksFor": [
         {
           "@type": "Organization",
@@ -509,7 +486,7 @@ const HomePage = () => {
           "name": "What companies did Meet Patel found?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Meet Patel founded several successful companies: Biggventure (venture studio where he serves as CEO), BiggMate (entrepreneur networking platform), StartupOS (startup management platform with 500+ members), ZeroHuman (AI automation platform), and MealVerse (food technology platform). He also serves as Head of Business Excellence at Finanshels, where he received multiple awards."
+            "text": "Meet Patel founded several successful companies: Biggventure (venture studio where he serves as CEO), BiggMate (entrepreneur networking platform), StartupOS (startup management platform with 500+ members), ZeroHuman (AI automation platform), and MealVerse (food technology platform)."
           }
         },
         {
@@ -517,7 +494,7 @@ const HomePage = () => {
           "name": "What makes The Meet Patel an expert in startups?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The Meet Patel has 8+ years of entrepreneurial experience, having built 8+ successful startups including Biggventure, BiggMate, and StartupOS. He has led teams of 270+ people remotely, mentored 50+ entrepreneurs, and created a community of 500+ startup founders. His expertise spans business operations, product development, team management, and startup scaling. He has received awards including Star Performer of the Month and Best Creative Innovator Award at Finanshels."
+            "text": "The Meet Patel has 8+ years of entrepreneurial experience, having built 8+ successful startups including Biggventure, BiggMate, and StartupOS. He has led teams of 270+ people remotely, mentored 50+ entrepreneurs, and created a community of 500+ startup founders. His expertise spans business operations, product development, team management, and startup scaling."
           }
         },
         {

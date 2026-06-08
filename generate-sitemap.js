@@ -17,7 +17,6 @@ const staticPages = [
   { url: '/about', priority: '0.95', changefreq: 'weekly' },
   { url: '/portfolio', priority: '0.95', changefreq: 'weekly' },
   { url: '/biggmate', priority: '0.9', changefreq: 'weekly' },
-  { url: '/biggdate', priority: '0.9', changefreq: 'weekly' },
   { url: '/systems', priority: '0.85', changefreq: 'weekly' },
   { url: '/blogs', priority: '0.9', changefreq: 'daily' },
   { url: '/community', priority: '0.8', changefreq: 'weekly' },

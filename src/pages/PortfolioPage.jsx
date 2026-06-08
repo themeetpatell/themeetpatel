@@ -48,18 +48,6 @@ const PROJECTS = [
     metrics: { 'Waitlist': '547+', 'Founders': '50+', 'Matches': '10+' },
   },
   {
-    id: 2,
-    title: 'BiggDate',
-    description: 'Relationship-first dating platform focused on meaningful conversations, compatibility signals, and safer connections.',
-    category: 'social',
-    status: 'Pre-Launch',
-    featured: true,
-    liveUrl: 'https://biggdate.com',
-    internalUrl: '/biggdate',
-    tags: ['Dating', 'Social Discovery', 'Compatibility', 'Mobile First'],
-    metrics: { 'Waitlist': '1K+', 'Matches': '300+', 'Cities': '15+' },
-  },
-  {
     id: 3,
     title: 'ZeroHuman',
     description: 'AI human model platform offering photorealistic virtual models for brands. Eliminate costly photoshoots while scaling creative output.',
@@ -80,17 +68,6 @@ const PROJECTS = [
     liveUrl: 'https://www.mealverse.in',
     tags: ['FoodTech', 'Marketplace', 'Mobile', 'Logistics'],
     metrics: {'Providers Registered': '100+', 'Cities': '2+', 'waitlist': '500+'},
-  },
-  {
-    id: 5,
-    title: 'Finanshels',
-    description: 'Financial management platform purpose-built for SMBs. Streamlines bookkeeping, compliance, and financial visibility in one dashboard.',
-    category: 'fintech',
-    status: 'Live',
-    featured: true,
-    liveUrl: 'https://finanshels.com',
-    tags: ['FinTech', 'SMB Finance', 'Accounting', 'SaaS'],
-    metrics: { 'Clients': '6000+', 'Team Size': '140+', 'Funding': '$1.5M' },
   },
   {
     id: 6,
@@ -467,8 +444,8 @@ const PortfolioPage = () => {
     <>
       <SEOHead
         title="Portfolio | The Meet Patel — Startups & Ventures Built by Meet Patel"
-        description="The Meet Patel (Meet Patel / themeetpatel) has built 10+ ventures across AI, fintech, edtech, hardware & software — BiggMate, ZeroHuman, Finanshels, TorchIt and more. See the full startup portfolio."
-        keywords="The Meet Patel portfolio, Meet Patel startups, themeetpatel ventures, meetpatel portfolio, startup portfolio, BiggMate, ZeroHuman, TorchIt, Finanshels, Incsmart, BAWES, Plugn, startup builder, serial entrepreneur portfolio, ventures"
+        description="The Meet Patel (Meet Patel / themeetpatel) has built 10+ ventures across AI, fintech, edtech, hardware & software — BiggMate, ZeroHuman, TorchIt and more. See the full startup portfolio."
+        keywords="The Meet Patel portfolio, Meet Patel startups, themeetpatel ventures, meetpatel portfolio, startup portfolio, BiggMate, ZeroHuman, TorchIt, Incsmart, BAWES, Plugn, startup builder, serial entrepreneur portfolio, ventures"
         canonical="/portfolio"
         structuredData={portfolioStructuredData}
       />
