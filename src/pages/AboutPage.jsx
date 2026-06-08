@@ -63,22 +63,6 @@ const AboutPage = () => {
         ]
       },
       {
-        company: "Finanshels",
-        position: "Head of Business Excellence (Ex. Interim COO, Product & Business Strategist)",
-        duration: "Dec 2023 – Present",
-        location: "Dubai (Hybrid)",
-        achievements: [
-          "Transitioned from Product Consultant to Interim COO; led org-wide restructuring and built HR, Marketing, Branding, Ops, and Engineering from scratch — revenue up 40% in 8 months.",
-          "Directed $1.5M fundraising diligence and investor readiness across compliance, data rooms, and operational metrics.",
-          "Scaled headcount from 34 to 97; HR team from 1 to 4; retention +20% via performance and culture systems.",
-          "Established product strategy, roadmaps, and UI/UX system; built Engineering foundations for scalable delivery.",
-          "Systems-first scaling: took teams from 0→1 with SOP stacks, 1→10 with OKR cadences + workflows, and 10→beyond on EOS plus product-led motion.",
-          "Systems & automation: CRM migrations (HubSpot/Pipedrive → Zoho), dashboards, WhatsApp bots, AI calling, subscription optimizations.",
-          "GTM & growth loops: Corporate Tax Portal (AED 99 entry), referral/affiliate flywheels, community-first GTMs.",
-          "Cost optimization: negotiated SaaS/vendor contracts (HubSpot, Ziwo, Wati, Brightcall) saving six figures annually; launched Kiflo/Zoho partner portals with 50+ partners."
-        ]
-      },
-      {
         company: "StudentHub, Plugn, BAWES",
         position: "Chief Operating Officer / Product Manager",
         duration: "Apr 2022 – May 2024",
@@ -169,9 +153,6 @@ const AboutPage = () => {
       ]
     },
     achievements: [
-      { title: "Best New Joiner Award", year: "Apr 2024", org: "Finanshels", description: "Exceptional performance and quick adaptation to culture." },
-      { title: "Star Performer of the Month", year: "Dec 2024", org: "Finanshels", description: "Outstanding contributions exceeding performance expectations." },
-      { title: "Best Creative Innovator", year: "Feb 2025", org: "Finanshels", description: "Innovative solutions and creative problem-solving." },
       { title: "National Level Winner", year: "Aug 2014", org: "Nirma University", description: "National level poster presentation & elocution competition." },
       { title: "Published Author", year: "2025", org: "Independent", description: "Two love story novels: 'The Eternal Love' & 'The Endless Devotion'." },
       { title: "Serial Entrepreneur", year: "2016–2025", org: "Self", description: "Founded and led multiple startups across India and UAE." }
@@ -304,7 +285,7 @@ const AboutPage = () => {
           "name": "How many startups has Meet Patel founded?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Meet Patel (The Meet Patel) has founded and built 10+ ventures including BiggMate, ZeroHuman, Finanshels, TorchIt, MealVerse, StudentHub, and others. His portfolio spans AI, fintech, hardware, edtech, and software sectors across UAE, India, and international markets."
+            "text": "Meet Patel (The Meet Patel) has founded and built 10+ ventures including BiggMate, ZeroHuman, TorchIt, MealVerse, StudentHub, and others. His portfolio spans AI, fintech, hardware, edtech, and software sectors across UAE, India, and international markets."
           }
         }
       ]
