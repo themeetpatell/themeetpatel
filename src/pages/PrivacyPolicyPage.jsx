@@ -19,7 +19,7 @@ const C = {
   violetBorder: 'rgba(139,92,246,0.22)',
 };
 
-const lastUpdated = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const lastUpdated = 'January 15, 2026';
 
 function Section({ icon, number, title, children }) {
   const IconComponent = icon;

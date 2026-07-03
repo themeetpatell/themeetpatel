@@ -10,6 +10,13 @@ import {
   BookOpen as Medium, Calendar as Calendly
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import {
+  SITE_URL,
+  personRef,
+  meetPatelEntities,
+  buildFaqPage,
+  buildBreadcrumb,
+} from '../lib/seoEntity';
 import FollowMyJourney from '../components/FollowMyJourney';
 import InstantKillModeSection from '../components/InstantKillModeSection';
 import { submitContactFormData } from '../services/formService';
@@ -123,17 +130,17 @@ const HomePage = () => {
 
   const personalInfo = {
     name: "Meet Patel",
-    title: "Founder & operator — currently building Stealth Startup, Biggventure, and BiggMate",
+    title: "Founder & operator — currently building Company 8 under my venture studio, Biggventure",
     location: "Dubai, United Arab Emirates",
     email: "the.meetpatell@gmail.com",
     bio: "A Startup ecosystem builder with over 8 years of experience in building and scaling technology companies. Passionate about helping startups succeed through innovative solutions and strategic guidance.",
     
     projects: [
       {
-        name: "Stealth Startup",
-        description: "A new fintech venture, currently building in stealth.",
-        category: "Fintech",
-        year: "2023"
+        name: "Company 8",
+        description: "AI-native business intelligence platform built under the Biggventure studio. Ask your business anything and get answers that lead to action.",
+        category: "AI",
+        year: "2025"
       },
       {
         name: "StudentHub",
@@ -298,282 +305,68 @@ const HomePage = () => {
     }
   };
 
-  // Enhanced Structured Data for AEO/GEO/LLMO Optimization
+  // Visible + structured FAQ — third-person, answer-engine friendly.
+  const homepageFaq = [
+    {
+      q: 'Who is Meet Patel?',
+      a: 'Meet Patel (also known as The Meet Patel or themeetpatel) is a Dubai-based startup founder and operator. He runs the venture-building studio Biggventure and is currently building Company 8, an AI-native business intelligence platform. Over 8+ years he has built and scaled 10+ ventures across AI, fintech, hardware, and software, and led teams of 450+ people.',
+    },
+    {
+      q: 'What is Biggventure?',
+      a: 'Biggventure is the venture-building studio founded by Meet Patel. It builds, ships, and scales startups across AI, fintech, hardware, and software using proven operating systems and hands-on operating support.',
+    },
+    {
+      q: 'What is Company 8?',
+      a: 'Company 8 is the venture Meet Patel is currently building under his Biggventure studio — an AI-native business intelligence platform that lets founders ask their business anything and get answers that lead to action.',
+    },
+    {
+      q: 'What companies has Meet Patel built?',
+      a: 'Meet Patel founded the Biggventure studio and is currently building Company 8. His broader portfolio spans BiggMate, ZeroHuman, MealVerse, StudentHub, and TorchIt across AI, fintech, edtech, hardware, and software.',
+    },
+    {
+      q: 'Where is Meet Patel based?',
+      a: 'Meet Patel is based in Dubai, United Arab Emirates, where he builds and scales startups and contributes to the wider startup ecosystem.',
+    },
+    {
+      q: 'How can I contact Meet Patel?',
+      a: 'You can reach Meet Patel through themeetpatel.com or by email at the.meetpatell@gmail.com, and connect on LinkedIn at linkedin.com/in/themeetpatel. He works with founders on building, operating, and scaling startups.',
+    },
+  ];
+
+  // One canonical Person entity + the venture graph (Biggventure → Company 8),
+  // plus page-level WebPage / FAQ / Profile nodes. See src/lib/seoEntity.js.
   const homepageStructuredData = [
-    // Primary Person Schema with comprehensive entity data
+    ...meetPatelEntities,
+    buildFaqPage(homepageFaq),
     {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "@id": "https://themeetpatel.com/#person",
-      "name": "The Meet Patel",
-      "alternateName": [
-        "Meet Patel",
-        "themeetpatel",
-        "The Meet Patel Dubai",
-        "Meet Patel Entrepreneur",
-        "Meet Patel Serial Entrepreneur",
-        "Biggventure CEO",
-        "Biggventure Founder",
-        "BiggMate Founder",
-        "StartupOS Founder"
-      ],
-      "description": "The Meet Patel (Meet Patel) is a serial entrepreneur, Biggventure CEO, BiggMate founder, and business operations expert with 8+ years of experience building and scaling startups. Known as themeetpatel online, he founded Biggventure, BiggMate, StartupOS, ZeroHuman, and MealVerse. Based in Dubai, UAE, he specializes in startup ecosystem building, business operations, and product development.",
-      "jobTitle": [
-        "Serial Entrepreneur",
-        "CEO & Founder of Biggventure",
-        "Founder of BiggMate",
-        "Founder of StartupOS",
-        "Head of Business Excellence",
-        "Business Operations Expert",
-        "Startup Mentor"
-      ],
-      "url": "https://themeetpatel.com",
-      "image": [
-        "https://themeetpatel.com/meet-patel-profile.jpg",
-        "https://themeetpatel.com/themeetpatel.jpeg",
-        "https://themeetpatel.com/logo for themeetpatel.png"
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Dubai",
-        "addressRegion": "Dubai",
-        "addressCountry": "AE"
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: 'Meet Patel — Startup Founder & Operator in Dubai',
+      description:
+        'Meet Patel is a Dubai-based startup founder and operator. He runs the Biggventure studio and is currently building Company 8.',
+      url: SITE_URL,
+      about: personRef,
+      mainEntity: personRef,
+      breadcrumb: buildBreadcrumb([{ name: 'Home', url: '/' }]),
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', 'h2', '.description'],
       },
-      "email": "the.meetll@gmail.com",
-      "telephone": "+971-XX-XXXXXXX",
-      "sameAs": [
-        "https://www.linkedin.com/in/themeetpatel/",
-        "https://x.com/the_meetpatel",
-        "https://github.com/themeetpatell",
-        "http://instagram.com/the.meetpatell/",
-        "https://youtube.com/@themeetpatel",
-        "https://medium.com/@themeetpatel",
-        "https://biggventure.com",
-        "https://startupos.com"
-      ],
-      "knowsAbout": [
-        "Entrepreneurship",
-        "Startup Ecosystem Building",
-        "Venture Building",
-        "Business Operations Excellence",
-        "Product Development & Management",
-        "Startup Scaling Strategies",
-        "Business Strategy & Planning",
-        "Operations Management",
-        "Team Leadership",
-        "Business Growth",
-        "Startup Mentoring",
-        "Financial Modeling",
-        "Customer Success Operations",
-        "Strategic Planning"
-      ],
-      "hasOccupation": {
-        "@type": "Occupation",
-        "name": "Serial Entrepreneur & CEO",
-        "description": "CEO of Biggventure, founder of multiple successful startups including BiggMate, StartupOS, ZeroHuman, and MealVerse. Expert in building and scaling technology companies.",
-        "occupationLocation": {
-          "@type": "City",
-          "name": "Dubai, UAE"
-        },
-        "skills": [
-          "Business Operations",
-          "Startup Building",
-          "Product Development",
-          "Team Management",
-          "Strategic Planning",
-          "Financial Management",
-          "Business Consulting"
-        ]
-      },
-      "alumniOf": {
-        "@type": "EducationalOrganization",
-        "name": "Gujarat Technological University",
-        "sameAs": "https://www.gtu.ac.in/"
-      },
-      "worksFor": [
-        {
-          "@type": "Organization",
-          "name": "Biggventure",
-          "url": "https://biggventure.com",
-          "description": "Innovation-driven venture building company",
-          "founder": {
-            "@id": "https://themeetpatel.com/#person"
-          }
-        },
-        {
-          "@type": "Organization",
-          "name": "BiggMate",
-          "description": "Entrepreneur networking and co-founder matching platform",
-          "founder": {
-            "@id": "https://themeetpatel.com/#person"
-          }
-        },
-        {
-          "@type": "Organization",
-          "name": "StartupOS",
-          "url": "https://startupos.com",
-          "description": "Comprehensive startup management platform with 500+ community members",
-          "founder": {
-            "@id": "https://themeetpatel.com/#person"
-          }
-        }
-      ],
-      "founder": [
-        {
-          "@type": "Organization",
-          "name": "Biggventure",
-          "description": "Venture building company",
-          "foundingDate": "2022"
-        },
-        {
-          "@type": "Organization",
-          "name": "BiggMate",
-          "description": "Entrepreneur networking platform",
-          "foundingDate": "2023"
-        },
-        {
-          "@type": "Organization",
-          "name": "StartupOS",
-          "description": "Startup management platform",
-          "foundingDate": "2022"
-        },
-        {
-          "@type": "Organization",
-          "name": "ZeroHuman",
-          "description": "AI automation platform",
-          "foundingDate": "2024"
-        },
-        {
-          "@type": "Organization",
-          "name": "MealVerse",
-          "description": "Food technology platform",
-          "foundingDate": "2024"
-        }
-      ],
-      "numberOfEmployees": "270+",
-      "seeks": [
-        "Startup Collaboration",
-        "Business Partnerships",
-        "Investment Opportunities",
-        "Mentorship Engagements"
-      ]
     },
-    // FAQ Schema for Answer Engine Optimization (AEO)
     {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Who is The Meet Patel?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The Meet Patel (Meet Patel, themeetpatel) is a serial entrepreneur, Biggventure CEO and founder, with 8+ years of experience building and scaling startups. He is the founder of BiggMate, StartupOS (500+ community members), ZeroHuman, and MealVerse. Based in Dubai, UAE, he specializes in business operations, product development, and startup ecosystem building. He has led teams of 270+ people and mentored 50+ entrepreneurs."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is Biggventure?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Biggventure is an innovation-driven venture building company founded and led by The Meet Patel as CEO. Biggventure focuses on creating scalable startups across multiple industries including technology, AI, and consumer services. The company uses proven frameworks and business operations excellence to systematically build successful ventures."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is BiggMate?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "BiggMate is a revolutionary networking platform founded by Meet Patel that connects entrepreneurs with co-founders, investors, and mentors. It serves as a comprehensive solution for the startup ecosystem, helping founders find the right partners and resources to build successful companies."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What companies did Meet Patel found?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Meet Patel founded several successful companies: Biggventure (venture studio where he serves as CEO), BiggMate (entrepreneur networking platform), StartupOS (startup management platform with 500+ members), ZeroHuman (AI automation platform), and MealVerse (food technology platform)."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What makes The Meet Patel an expert in startups?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The Meet Patel has 8+ years of entrepreneurial experience, having built 8+ successful startups including Biggventure, BiggMate, and StartupOS. He has led teams of 270+ people remotely, mentored 50+ entrepreneurs, and created a community of 500+ startup founders. His expertise spans business operations, product development, team management, and startup scaling."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Where is The Meet Patel based?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The Meet Patel is based in Dubai, United Arab Emirates (UAE), where he builds and scales startups while contributing to the Middle East startup ecosystem. His work as Biggventure CEO and founder of multiple companies spans international markets with a focus on the MENA region."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How can I contact Meet Patel for startup mentorship?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You can contact The Meet Patel through his website themeetpatel.com, email at the.meetll@gmail.com, or connect via LinkedIn at linkedin.com/in/themeetpatel/. He offers startup mentorship, business operations consulting, and strategic planning services. You can also join his StartupOS community of 500+ entrepreneurs."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What services does Biggventure offer?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Biggventure, led by CEO Meet Patel, offers venture building services, startup consulting, business operations optimization, product development guidance, team management coaching, and strategic planning. The company specializes in creating and scaling startups using proven frameworks and systematic approaches."
-          }
-        }
-      ]
+      '@context': 'https://schema.org',
+      '@type': 'ProfilePage',
+      mainEntity: personRef,
+      about: personRef,
     },
-    // WebPage Schema
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "The Meet Patel - Serial Entrepreneur | Biggventure CEO | BiggMate Founder",
-      "description": "The Meet Patel (Meet Patel, themeetpatel) - Serial entrepreneur, Biggventure CEO & founder, BiggMate founder, StartupOS creator. 8+ years building and scaling startups in Dubai, UAE. Expert in business operations, product development, and startup ecosystem building.",
-      "url": "https://themeetpatel.com",
-      "about": {
-        "@id": "https://themeetpatel.com/#person"
-      },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://themeetpatel.com"
-          }
-        ]
-      },
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": ["h1", "h2", ".description"]
-      }
-    },
-    // ProfilePage for knowledge graph
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfilePage",
-      "mainEntity": {
-        "@id": "https://themeetpatel.com/#person"
-      },
-      "about": {
-        "@id": "https://themeetpatel.com/#person"
-      }
-    }
   ];
 
   return (
     <div className="min-h-screen ultra-gradient-bg">
       <SEOHead 
-        title="The Meet Patel - Serial Entrepreneur | Biggventure CEO | BiggMate Founder | Business Operations Expert"
-        description="The Meet Patel (Meet Patel, themeetpatel) - Serial entrepreneur, Biggventure CEO & founder, BiggMate founder, StartupOS creator with 500+ community. 8+ years building 8+ successful startups in Dubai, UAE. Expert in business operations, startup scaling, and product development. Led 270+ teams, mentored 50+ entrepreneurs."
-        keywords="The Meet Patel, Meet Patel, themeetpatel, Biggventure CEO, Biggventure founder, BiggMate founder, biggmate, StartupOS founder, serial entrepreneur Dubai, startup ecosystem builder, business operations expert, ZeroHuman founder, MealVerse founder, startup mentor Dubai, Dubai entrepreneur, themeetpatel startups, Meet Patel entrepreneur, Biggventure CEO founder, biggventure startup studio, startup scaling expert, business consultant Dubai, product development expert, business growth strategies, entrepreneurship Dubai, startup advisor, business strategy expert, operations management, startup leadership, venture builder, Meet Patel business operations, The Meet Patel ventures, startup mentorship Dubai, Dubai startup ecosystem, MENA entrepreneur, business excellence Dubai, startup community Dubai"
+        title="Meet Patel — Startup Founder & Operator in Dubai"
+        description="Meet Patel (themeetpatel) is a Dubai-based startup founder and operator. He runs the Biggventure studio and is currently building Company 8 — and has built 10+ ventures across AI, fintech, and software."
+        keywords="Meet Patel, The Meet Patel, themeetpatel, meet patel dubai, Biggventure, Biggventures, Company 8, startup founder, startup operator, venture builder, startups, Dubai entrepreneur, founder advisor"
         canonical="/"
         ogImage="/og-image.jpg"
         structuredData={homepageStructuredData}
@@ -663,7 +456,7 @@ const HomePage = () => {
                   className="text-5xl sm:text-7xl lg:text-8xl font-black leading-tight tracking-tight"
                 >
                   <span className="block text-[#f7f7fb]">
-                    Meet The
+                    Say 'Hey' to
                   </span>
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#c4b5fd] via-[#a78bfa] to-[#8b5cf6] mt-2">
                     Meet Patel
@@ -686,7 +479,7 @@ const HomePage = () => {
                 transition={{ duration: 0.7, delay: 0.3 }}
                 className="text-xl sm:text-3xl lg:text-4xl font-semibold text-center leading-tight px-4"
               >
-                <span className="text-[#cfd0e6]">
+                <span className="description text-[#cfd0e6]">
                   {personalInfo.title}
                 </span>
               </motion.p>
@@ -813,7 +606,7 @@ const HomePage = () => {
             >
               <div>
                 <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-4 sm:mb-6 tracking-tight">
-                  About Me
+                  About Meet Patel
                 </h2>
                 <p className="text-lg sm:text-xl text-[#cfd0e6] mb-4 sm:mb-6">
                   I help founders build, scale, and stabilize
@@ -1574,6 +1367,41 @@ const HomePage = () => {
               </motion.p>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ — visible, crawlable answers for answer engines (AEO) */}
+      <section className="py-24 relative" aria-labelledby="faq-heading">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 id="faq-heading" className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-4 tracking-tight">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-[#a8a9c3] max-w-2xl mx-auto">
+              The quick version of who Meet Patel is and what he's building.
+            </p>
+          </motion.div>
+
+          <div className="space-y-4">
+            {homepageFaq.map((item, index) => (
+              <details
+                key={index}
+                open={index === 0}
+                className="group bg-[#0d0e16]/90 backdrop-blur-md rounded-2xl border border-purple-500/20 overflow-hidden"
+              >
+                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5">
+                  <h3 className="text-lg font-semibold text-[#f7f7fb]">{item.q}</h3>
+                  <ChevronRight className="w-5 h-5 text-[#9b8bff] shrink-0 transition-transform duration-300 group-open:rotate-90" />
+                </summary>
+                <p className="px-6 pb-6 text-[#a8a9c3] leading-relaxed">{item.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 

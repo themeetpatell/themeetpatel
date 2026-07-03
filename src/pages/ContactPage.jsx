@@ -19,6 +19,14 @@ import {
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { submitContactFormData } from '../services/formService';
+import {
+  SITE_URL,
+  personRef,
+  meetPatelEntities,
+  SAME_AS,
+  CONTACT_EMAIL,
+  buildBreadcrumb,
+} from '../lib/seoEntity';
 
 void motion;
 
@@ -245,28 +253,41 @@ export default function ContactPage() {
     }
   };
 
+  // ─── structured data (composed from the shared entity graph) ─────────────────
+  const structuredData = [
+    ...meetPatelEntities,
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ContactPage',
+      name: 'Contact Meet Patel',
+      description:
+        'Get in touch with Meet Patel — a Dubai-based startup founder running the venture studio Biggventure and building Company 8.',
+      url: `${SITE_URL}/contact`,
+      mainEntity: personRef,
+      sameAs: SAME_AS,
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'customer support',
+        email: CONTACT_EMAIL,
+        areaServed: ['AE', 'IN'],
+        availableLanguage: ['English'],
+      },
+    },
+    buildBreadcrumb([
+      { name: 'Home', url: '/' },
+      { name: 'Contact', url: '/contact' },
+    ]),
+  ];
+
   // ─── render ─────────────────────────────────────────────────────────────────
   return (
     <>
       <SEOHead
-        title="Contact | Meet Patel"
-        description="Get in touch with Meet Patel — entrepreneur, builder, and AI-first product thinker based in Dubai. Let's build something together."
-        keywords="Contact The Meet Patel, Meet Patel contact, themeetpatel contact, startup consultant Dubai, venture builder contact, business strategist Dubai"
+        title="Contact Meet Patel — Startup Founder in Dubai"
+        description="Get in touch with Meet Patel — a Dubai-based startup founder running the venture studio Biggventure and building Company 8. Let's talk startups."
+        keywords="Contact Meet Patel, Meet Patel contact, themeetpatel contact, Biggventure contact, Company 8, startup founder Dubai, venture builder contact"
         canonical="/contact"
-        structuredData={{
-          '@context': 'https://schema.org',
-          '@type': 'ContactPage',
-          name: 'Contact The Meet Patel',
-          description: 'Get in touch with Meet Patel — entrepreneur, builder, and AI-first product thinker based in Dubai.',
-          url: 'https://themeetpatel.com/contact',
-          mainEntity: {
-            '@type': 'Person',
-            name: 'The Meet Patel',
-            email: 'the.meetpatell@gmail.com',
-            url: 'https://themeetpatel.com',
-            address: { '@type': 'PostalAddress', addressLocality: 'Dubai', addressCountry: 'AE' },
-          },
-        }}
+        structuredData={structuredData}
       />
 
       <div style={{ background: C.bg, minHeight: '100vh', color: C.textPrimary, fontFamily: "'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
@@ -329,16 +350,33 @@ export default function ContactPage() {
                 color:      C.textPrimary,
               }}
             >
-              Let's Build{' '}
+              Contact{' '}
               <span style={{
                 background:            `linear-gradient(135deg, ${C.violet} 0%, #a78bfa 100%)`,
                 WebkitBackgroundClip:  'text',
                 WebkitTextFillColor:   'transparent',
                 backgroundClip:        'text',
               }}>
-                Something
+                Meet Patel
               </span>
             </motion.h1>
+
+            {/* Subhead (demoted former headline) */}
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={heroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: 0.12 }}
+              style={{
+                fontSize:      'clamp(20px, 3vw, 28px)',
+                fontWeight:    600,
+                lineHeight:    1.3,
+                letterSpacing: '-0.02em',
+                margin:        '0 0 20px',
+                color:         C.textSec,
+              }}
+            >
+              Let's build something.
+            </motion.h2>
 
             {/* Subtitle */}
             <motion.p
@@ -353,7 +391,7 @@ export default function ContactPage() {
                 margin:     '0 auto 36px',
               }}
             >
-              Whether you have a project in mind, want to explore a partnership, or simply want to connect — I'm open to meaningful conversations.
+              Whether it's startups, Biggventure, or Company 8 — or you simply want to connect — I'm open to meaningful conversations.
             </motion.p>
 
             {/* Availability badge */}

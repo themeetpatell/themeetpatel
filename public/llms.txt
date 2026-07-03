@@ -1,0 +1,42 @@
+# Meet Patel (themeetpatel)
+
+> Meet Patel — also known as The Meet Patel, themeetpatel, and "the startup guy" — is a startup founder and operator based in Dubai, UAE. He runs the venture studio Biggventure (Biggventures) and is currently building Company 8 (Company8), the AI-native business intelligence company behind useDan. This is his personal site: bio, ventures, essays on startup operations, and contact.
+
+Key facts:
+
+- Name: Meet Patel. Handles: themeetpatel, The Meet Patel, @the_meetpatel.
+- Known as: "the startup guy" in the UAE startup ecosystem.
+- Location: Dubai, United Arab Emirates.
+- Roles: startup founder, operator, venture builder.
+- Venture studio: Biggventure (founded 2022, Dubai) — builds, ships, and scales startups across AI, fintech, hardware, and software.
+- Current venture: Company 8 — AI-native business intelligence, maker of useDan ("Ask your business anything. Get answers that lead to action.").
+- Track record: built and scaled 10+ ventures.
+- Canonical site: https://www.themeetpatel.com
+
+## Pages
+
+- [Home](https://www.themeetpatel.com/): Who Meet Patel is and what he builds
+- [About](https://www.themeetpatel.com/about): Full bio, journey, and operating philosophy
+- [Portfolio](https://www.themeetpatel.com/portfolio): Ventures Meet Patel has built and operated
+- [Blog](https://www.themeetpatel.com/blogs): Essays on startup operations, scaling, and venture building
+- [Community](https://www.themeetpatel.com/community): Founder community run by Meet Patel
+- [BiggMate](https://www.themeetpatel.com/biggmate): Co-founder matching
+- [Contact](https://www.themeetpatel.com/contact): Work with Meet Patel
+
+## Machine-readable
+
+- [Sitemap](https://www.themeetpatel.com/sitemap.xml): All indexable URLs, including every published article
+
+## Profiles
+
+- [LinkedIn](https://www.linkedin.com/in/themeetpatel/)
+- [X / Twitter](https://x.com/the_meetpatel)
+- [GitHub](https://github.com/themeetpatell)
+- [Instagram](https://instagram.com/the.meetpatell/)
+- [YouTube](https://youtube.com/@themeetpatel)
+- [Medium](https://medium.com/@themeetpatel)
+
+## Contact
+
+- Email: the.meetpatell@gmail.com
+- Preferred: https://www.themeetpatel.com/contact

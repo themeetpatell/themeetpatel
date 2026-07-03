@@ -9,6 +9,7 @@ import {
 import SEOHead from '../components/SEOHead';
 import FollowMyJourney from '../components/FollowMyJourney';
 import meetPatelImage from '../assets/themeetpatel.jpeg';
+import { meetPatelEntities, personRef, buildBreadcrumb, buildFaqPage } from '../lib/seoEntity';
 
 void motion;
 
@@ -52,14 +53,27 @@ const AboutPage = () => {
     ],
     experience: [
       {
-        company: "Multiple Ventures (BiggVentures)",
-        position: "Founder & CEO | CGO & Co-founder | Investor",
+        company: "Biggventure (Venture Studio)",
+        position: "Founder & Operator — currently building Company 8",
         duration: "Nov 2025 – Present",
         location: "Dubai, UAE",
         achievements: [
-          "Biggmate: Founder & CEO — Co-foundership Building platform instead of matching apps.",
+          "Biggventure: Founder & Operator of the venture-building studio that builds, ships, and scales startups across AI, fintech, hardware, and software.",
+          "Company 8: the venture currently being built under Biggventure — an AI-native business intelligence platform. Ask your business anything and get answers that lead to action.",
           "ZeroHuman: CGO & Co-founder — AI human model platform for advertising, fashion, retail & entertainment.",
           "Mealverse: Investor & Mentor — Food technology platform revolutionizing the culinary experience."
+        ]
+      },
+      {
+        company: "Finanshels.com",
+        position: "Head of COE / Chief of Staff (PMO) / Interim COO",
+        duration: "Dec 2023 – Present",
+        location: "Dubai, UAE",
+        achievements: [
+          "Head of COE (Jul 2025 – Present): integrator across all functions, running the company on an EOS-driven operating system.",
+          "Chief of Staff / PMO (2024 – 25): led strategic projects, KPI & leadership reporting, SOPs, and accountability systems across departments.",
+          "Interim COO (2024): drove operational restructuring and built operations for scale — department-level KPIs, execution frameworks, and operating discipline.",
+          "Product & Growth Strategist (2023 – 24): owned product strategy, GTM planning, growth operations, and customer pain-point analysis."
         ]
       },
       {
@@ -212,84 +226,35 @@ const AboutPage = () => {
     { id: 'certifications',  label: 'Certifications',  icon: FileText },
   ];
 
-  const structuredData = [
+  /* ── FAQ (third-person; drives both visible block + FAQPage JSON-LD) ── */
+  const aboutFaq = [
     {
-      "@context": "https://schema.org",
-      "@type": "ProfilePage",
-      "@id": "https://www.themeetpatel.com/about",
-      "name": "About The Meet Patel — Meet Patel, themeetpatel, Serial Entrepreneur",
-      "url": "https://www.themeetpatel.com/about",
-      "description": "About The Meet Patel, also known as Meet Patel, themeetpatel, and meetpatel — Dubai-based serial entrepreneur, startup founder, venture builder, business strategist, and author with 8+ years building 10+ ventures.",
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.themeetpatel.com/" },
-          { "@type": "ListItem", "position": 2, "name": "About", "item": "https://www.themeetpatel.com/about" }
-        ]
-      },
-      "mainEntity": {
-        "@type": "Person",
-        "@id": "https://www.themeetpatel.com/#person",
-        "name": "The Meet Patel",
-        "alternateName": ["Meet Patel", "themeetpatel", "meetpatel", "Meet Patel Dubai"],
-        "description": "The Meet Patel is a Dubai-based serial entrepreneur, startup founder, venture builder, startup operator, business strategist, and author. In 8+ years he has built 10+ ventures, led 450+ team members, and mentored hundreds of founders across AI, fintech, hardware, edtech, and software.",
-        "jobTitle": ["Serial Entrepreneur", "Startup Founder", "Venture Builder", "Business Strategist", "Startup Operator", "Author"],
-        "url": "https://www.themeetpatel.com/about",
-        "image": { "@type": "ImageObject", "url": "https://www.themeetpatel.com/og-image.jpg" },
-        "address": { "@type": "PostalAddress", "addressLocality": "Dubai", "addressRegion": "Dubai", "addressCountry": "AE" },
-        "hasOccupation": [
-          { "@type": "Occupation", "name": "Serial Entrepreneur" },
-          { "@type": "Occupation", "name": "Venture Builder" },
-          { "@type": "Occupation", "name": "Business Strategist" },
-          { "@type": "Occupation", "name": "Author" }
-        ],
-        "knowsAbout": [
-          "Startups", "Venture Building", "Serial Entrepreneurship", "Business Strategy",
-          "Startup Operations", "Growth Systems", "Startup Mentorship", "Founder Coaching",
-          "Team Building", "Product Management", "Fintech", "AI Startups", "EdTech",
-          "Hardware Startups", "Entrepreneurship", "Dubai Startup Ecosystem"
-        ],
-        "sameAs": [
-          "https://www.linkedin.com/in/themeetpatel/",
-          "https://x.com/the_meetpatel",
-          "https://twitter.com/the_meetpatel",
-          "https://github.com/themeetpatell",
-          "https://medium.com/@themeetpatel",
-          "https://instagram.com/the.meetpatell/",
-          "https://www.themeetpatel.com"
-        ]
-      }
+      q: "Who is Meet Patel?",
+      a: "Meet Patel (also known as The Meet Patel and themeetpatel) is a Dubai-based startup founder and operator. He founded and runs Biggventure, a venture-building studio, and is currently building Company 8, an AI-native business intelligence platform, under it."
     },
     {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is The Meet Patel's background?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The Meet Patel (Meet Patel / themeetpatel) is a serial entrepreneur and venture builder based in Dubai with 8+ years of experience. He has built 10+ ventures across AI, fintech, hardware, edtech, and software, led teams of 450+ people, and mentored hundreds of startup founders globally."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What does The Meet Patel do?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The Meet Patel builds and scales startups as a venture builder and startup operator, provides strategic advisory to founders as a business strategist, runs the StartupOS founder community with 500+ members, and writes books on entrepreneurship and storytelling."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How many startups has Meet Patel founded?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Meet Patel (The Meet Patel) has founded and built 10+ ventures including BiggMate, ZeroHuman, TorchIt, MealVerse, StudentHub, and others. His portfolio spans AI, fintech, hardware, edtech, and software sectors across UAE, India, and international markets."
-          }
-        }
-      ]
+      q: "What is Biggventure?",
+      a: "Biggventure is the venture-building studio founded by Meet Patel. It builds, ships, and scales startups across AI, fintech, hardware, and software — Company 8 is the venture currently being built under it."
+    },
+    {
+      q: "What is Company 8?",
+      a: "Company 8 is the venture Meet Patel is currently building under the Biggventure studio. It is an AI-native business intelligence platform that lets teams ask their business anything and get answers that lead to action."
     }
+  ];
+
+  const structuredData = [
+    ...meetPatelEntities,
+    buildFaqPage(aboutFaq),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ProfilePage',
+      mainEntity: personRef,
+      about: personRef,
+    },
+    buildBreadcrumb([
+      { name: 'Home', url: '/' },
+      { name: 'About', url: '/about' },
+    ]),
   ];
 
   /* ─── card style ─── */
@@ -310,9 +275,9 @@ const AboutPage = () => {
   return (
     <div style={{ backgroundColor: T.bg, minHeight: '100vh' }}>
       <SEOHead
-        title="About The Meet Patel | Meet Patel, Serial Entrepreneur & Startup Founder"
-        description="The Meet Patel (Meet Patel / themeetpatel) — Dubai-based serial entrepreneur, startup founder, venture builder & business strategist. 8+ years, 10+ ventures, 450+ team members led. Read his full story."
-        keywords="About The Meet Patel, Meet Patel, themeetpatel, meetpatel, Meet Patel Dubai, serial entrepreneur, startup founder, venture builder, startup operator, business strategist, startup mentor, founder advisor, entrepreneurship, startups, founders"
+        title="About Meet Patel — Founder & Operator in Dubai"
+        description="Meet Patel (themeetpatel) is a Dubai-based founder & operator. He runs the venture studio Biggventure and is currently building Company 8."
+        keywords="About Meet Patel, Meet Patel, themeetpatel, meetpatel, Meet Patel Dubai, startup founder, operator, venture builder, Biggventure, Company 8, venture studio, entrepreneurship, startups, founders"
         canonical="/about"
         structuredData={structuredData}
       />
@@ -955,6 +920,38 @@ const AboutPage = () => {
         </AnimatePresence>
       </div>
 
+      {/* ═══ FAQ ═══ */}
+      <section style={{ backgroundColor: T.bg }} className="pb-4">
+        <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-10">
+          <div className="mb-8">
+            <Label>FAQ</Label>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 800, color: T.text, marginTop: '10px', letterSpacing: '-0.02em' }}>
+              Frequently Asked
+            </h2>
+          </div>
+          <div className="space-y-3">
+            {aboutFaq.map((item, i) => (
+              <details
+                key={i}
+                open={i === 0}
+                style={{ ...card, padding: '20px 24px' }}
+              >
+                <summary
+                  className="cursor-pointer list-none flex items-center justify-between gap-4"
+                  style={{ outline: 'none' }}
+                >
+                  <h3 style={{ fontSize: '1rem', fontWeight: 700, color: T.text, margin: 0 }}>{item.q}</h3>
+                  <ArrowRight className="w-4 h-4 flex-shrink-0" style={{ color: T.violet }} />
+                </summary>
+                <p style={{ fontSize: '0.9375rem', color: T.sub, lineHeight: 1.7, marginTop: '12px' }}>
+                  {item.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ═══ CTA ═══ */}
       <section style={{ backgroundColor: T.bg }} className="py-20">
         <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-10">
@@ -979,6 +976,17 @@ const AboutPage = () => {
                 <MessageSquare className="w-4 h-4" />
                 Get In Touch
               </a>
+              <div className="flex items-center justify-center gap-x-6 gap-y-2 flex-wrap mt-7">
+                <a href="/portfolio" style={{ fontSize: '0.875rem', fontWeight: 600, color: T.violet, textDecoration: 'none' }}>
+                  View Portfolio
+                </a>
+                <a href="/blogs" style={{ fontSize: '0.875rem', fontWeight: 600, color: T.violet, textDecoration: 'none' }}>
+                  Read the Blog
+                </a>
+                <a href="/" style={{ fontSize: '0.875rem', fontWeight: 600, color: T.violet, textDecoration: 'none' }}>
+                  Back to Home
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -33,7 +33,7 @@ const UltraFooter = () => {
   };
 
   const ventures = [
-    { name: 'Stealth Startup', href: null, external: false },
+    { name: 'Company 8', href: 'https://usedan.com', external: true },
     { name: 'BiggMate', href: 'https://www.biggmate.com', external: true },
     { name: 'BiggBizz', href: 'https://www.biggbizz.com', external: true },
     { name: 'ZeroHuman', href: 'https://www.zerohuman.co', external: true },

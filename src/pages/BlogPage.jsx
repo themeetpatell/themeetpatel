@@ -217,8 +217,8 @@ const BlogPage = () => {
       author: {
         '@type': 'Person',
         '@id': 'https://www.themeetpatel.com/#person',
-        name: 'The Meet Patel',
-        alternateName: ['Meet Patel', 'themeetpatel', 'meetpatel'],
+        name: 'Meet Patel',
+        alternateName: ['The Meet Patel', 'themeetpatel', 'meetpatel'],
         url: 'https://www.themeetpatel.com',
       },
       about: [
@@ -238,6 +238,19 @@ const BlogPage = () => {
         { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.themeetpatel.com/blogs' },
       ],
     },
+    ...(allArticles.length > 0
+      ? [{
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          name: "Meet Patel's Blog Articles",
+          itemListElement: allArticles.map((a, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            url: `https://www.themeetpatel.com/blogs/${a.slug}`,
+            name: a.title,
+          })),
+        }]
+      : []),
   ];
 
   return (
@@ -296,7 +309,10 @@ const BlogPage = () => {
               transition={{ duration: 0.6, delay: 0.06 }}
               style={{ fontSize: 'clamp(64px, 10vw, 120px)', fontWeight: 900, letterSpacing: '-0.045em', lineHeight: 0.9, margin: '0 0 32px', color: C.primary }}
             >
-              BLOG<span style={{ color: C.gold }}>.</span>
+              <span style={{ position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0 }}>
+                Meet Patel's Blog — Startups, Founders &amp; Entrepreneurship.{' '}
+              </span>
+              <span aria-hidden="true">BLOG<span style={{ color: C.gold }}>.</span></span>
             </motion.h1>
 
             <motion.p

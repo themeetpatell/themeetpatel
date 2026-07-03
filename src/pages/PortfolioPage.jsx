@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import FollowMyJourney from '../components/FollowMyJourney';
+import { meetPatelEntities, personRef, buildBreadcrumb } from '../lib/seoEntity';
 
 void motion;
 
@@ -37,12 +38,13 @@ const C = {
 const PROJECTS = [
   {
     id: 5,
-    title: 'Stealth Startup',
-    description: 'A new fintech venture, currently building in stealth. More to share soon.',
-    category: 'fintech',
-    status: 'Stealth',
+    title: 'Company 8',
+    description: 'AI-native business intelligence platform. Ask useDan anything about your business and get answers that lead to action.',
+    category: 'ai',
+    status: 'Live',
     featured: true,
-    tags: ['Fintech', 'Stealth', 'Building'],
+    liveUrl: 'https://usedan.com',
+    tags: ['AI-Native BI', 'Analytics', 'useDan', 'Product Hunt'],
     metrics: {},
   },
   {
@@ -164,26 +166,17 @@ const STATS = [
 ];
 
 const portfolioStructuredData = [
+  // Person (worksFor Biggventure + Company 8) + Biggventure + Company 8 entities.
+  ...meetPatelEntities,
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "@id": "https://www.themeetpatel.com/portfolio",
-    "name": "The Meet Patel Portfolio — Startups & Ventures by Meet Patel",
+    "name": "Startups & Ventures by Meet Patel — Portfolio",
     "url": "https://www.themeetpatel.com/portfolio",
-    "description": "Portfolio of 10+ ventures built, led, or shaped by The Meet Patel (Meet Patel / themeetpatel) across AI, fintech, hardware, edtech, and software startups.",
-    "author": {
-      "@type": "Person",
-      "@id": "https://www.themeetpatel.com/#person",
-      "name": "The Meet Patel",
-      "alternateName": ["Meet Patel", "themeetpatel"],
-    },
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.themeetpatel.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://www.themeetpatel.com/portfolio" },
-      ],
-    },
+    "description": "Portfolio of 10+ ventures built by Meet Patel through the Biggventure studio across AI, fintech, hardware, edtech, and software startups.",
+    "author": personRef,
+    "creator": personRef,
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": PROJECTS.map((project, index) => ({
@@ -195,6 +188,10 @@ const portfolioStructuredData = [
       })),
     },
   },
+  buildBreadcrumb([
+    { name: 'Home', url: '/' },
+    { name: 'Portfolio', url: '/portfolio' },
+  ]),
 ];
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -405,8 +402,11 @@ const ProjectCard = ({ project, index, navigate }) => {
             </button>
           )}
           {project.liveUrl && (
-            <button
-              onClick={() => window.open(project.liveUrl, '_blank')}
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -420,10 +420,11 @@ const ProjectCard = ({ project, index, navigate }) => {
                 fontWeight: 600,
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
+                textDecoration: 'none',
               }}
             >
               Live Site <ExternalLink size={12} />
-            </button>
+            </a>
           )}
         </div>
       )}
@@ -454,7 +455,7 @@ const PortfolioPage = () => {
     <>
       <SEOHead
         title="Portfolio | The Meet Patel — Startups & Ventures Built by Meet Patel"
-        description="The Meet Patel (Meet Patel / themeetpatel) has built 10+ ventures across AI, fintech, edtech, hardware & software — BiggMate, ZeroHuman, TorchIt and more. See the full startup portfolio."
+        description="Meet Patel has built 10+ startups through the Biggventure studio — Company 8, BiggMate, ZeroHuman, TorchIt & more. Explore the full venture portfolio."
         keywords="The Meet Patel portfolio, Meet Patel startups, themeetpatel ventures, meetpatel portfolio, startup portfolio, BiggMate, ZeroHuman, TorchIt, Incsmart, BAWES, Plugn, startup builder, serial entrepreneur portfolio, ventures"
         canonical="/portfolio"
         structuredData={portfolioStructuredData}
@@ -514,10 +515,30 @@ const PortfolioPage = () => {
 
             {/* Heading */}
             <h1 style={{
-              fontSize: 'clamp(48px, 7vw, 88px)',
+              fontSize: 'clamp(40px, 6vw, 76px)',
               fontWeight: 800,
               letterSpacing: '-0.04em',
-              lineHeight: 0.95,
+              lineHeight: 0.98,
+              margin: '0 0 16px',
+              color: C.primary,
+            }}>
+              Startups &amp; Ventures by{' '}
+              <span style={{
+                background: 'linear-gradient(135deg, #9b8bff, #b7a6ff)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>
+                Meet Patel
+              </span>
+            </h1>
+
+            {/* Built to Last — styled subline */}
+            <p style={{
+              fontSize: 'clamp(24px, 3.5vw, 40px)',
+              fontWeight: 800,
+              letterSpacing: '-0.03em',
+              lineHeight: 1,
               margin: '0 0 24px',
               color: C.primary,
             }}>
@@ -530,17 +551,32 @@ const PortfolioPage = () => {
               }}>
                 Last.
               </span>
-            </h1>
+            </p>
 
             {/* Subtitle */}
             <p style={{
               fontSize: 'clamp(16px, 2vw, 20px)',
               color: C.secondary,
-              maxWidth: '560px',
+              maxWidth: '620px',
+              lineHeight: 1.65,
+              margin: '0 0 24px',
+            }}>
+              Ten ventures spanning AI, fintech, edtech, hardware, and social, each one built with conviction and a long-term horizon.
+            </p>
+
+            {/* Biggventure context */}
+            <p style={{
+              fontSize: 'clamp(15px, 1.7vw, 17px)',
+              color: C.secondary,
+              maxWidth: '620px',
               lineHeight: 1.65,
               margin: '0 0 56px',
             }}>
-              Ten ventures spanning AI, fintech, edtech, hardware, and social, each one built with conviction and a long-term horizon.
+              These ventures were built through{' '}
+              <span style={{ color: C.violet, fontWeight: 700 }}>Biggventure</span>
+              {' '}— Meet Patel&apos;s venture studio — with{' '}
+              <span style={{ color: C.violet, fontWeight: 700 }}>Company 8</span>
+              {' '}the current build.
             </p>
 
             {/* Stats row */}
@@ -657,6 +693,27 @@ const PortfolioPage = () => {
           margin: '0 auto',
           padding: '0 24px 80px',
         }}>
+          {/* Section heading */}
+          <h2 style={{
+            fontSize: 'clamp(26px, 3vw, 36px)',
+            fontWeight: 800,
+            letterSpacing: '-0.03em',
+            lineHeight: 1.1,
+            margin: '0 0 8px',
+            color: C.primary,
+          }}>
+            Featured Ventures
+          </h2>
+          <p style={{
+            fontSize: '15px',
+            color: C.secondary,
+            lineHeight: 1.6,
+            margin: '0 0 24px',
+            maxWidth: '620px',
+          }}>
+            A selection of startups Meet Patel has built and scaled through Biggventure.
+          </p>
+
           {/* Result count */}
           <div style={{ fontSize: '13px', color: C.muted, marginBottom: '24px' }}>
             {filtered.length} project{filtered.length !== 1 ? 's' : ''}

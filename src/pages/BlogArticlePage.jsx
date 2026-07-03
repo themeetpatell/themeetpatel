@@ -9,6 +9,7 @@ import {
 import { getArticleBySlug, getRelatedArticles, incrementViews } from '../lib/articleService';
 import FollowMyJourney from '../components/FollowMyJourney';
 import SEOHead from '../components/SEOHead';
+import { SITE_URL, buildBreadcrumb } from '../lib/seoEntity';
 
 const C = {
   bg:           '#09090e',
@@ -171,19 +172,27 @@ const BlogArticlePage = () => {
 
   // ── Structured data ──────────────────────────────────────────────────────────
   const schemaType = article.schema_type || 'BlogPosting';
+  const rawArticleImage = article.og_image || `${SITE_URL}/og-image.jpg`;
+  const articleImageUrl = rawArticleImage.startsWith('http') ? rawArticleImage : `${SITE_URL}${rawArticleImage}`;
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': schemaType,
-    headline: article.title,
+    headline: (article.title || '').slice(0, 110),
     description: article.meta_description || article.excerpt,
-    author: { '@type': 'Person', name: article.author || 'Meet Patel', url: 'https://themeetpatel.com/about' },
-    publisher: { '@type': 'Person', name: 'The Meet Patel', url: 'https://themeetpatel.com' },
+    author: { '@type': 'Person', '@id': `${SITE_URL}/#person`, name: article.author || 'Meet Patel', url: `${SITE_URL}/about` },
+    publisher: {
+      '@type': 'Organization',
+      name: 'The Meet Patel',
+      url: SITE_URL,
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/favicon.png`, width: 512, height: 512 },
+    },
     datePublished: article.published_at || article.date,
     dateModified: article.last_updated_at || article.updated_at || article.date,
     keywords: [...(article.tags || []), ...(article.secondary_keywords || [])].join(', '),
     articleSection: article.category,
     timeRequired: article.read_time,
-    ...(article.og_image ? { image: article.og_image } : {}),
+    image: { '@type': 'ImageObject', url: articleImageUrl, width: 1200, height: 630 },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/blogs/${article.slug}` },
     ...(article.speakable && article.ai_summary ? {
       speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.article-ai-summary'] },
     } : {}),
@@ -219,6 +228,12 @@ const BlogArticlePage = () => {
     })),
   } : null;
 
+  const breadcrumbSchema = buildBreadcrumb([
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blogs' },
+    { name: article.title, url: `/blogs/${article.slug}` },
+  ]);
+
   const readTime = article.read_time;
 
   return (
@@ -246,6 +261,8 @@ const BlogArticlePage = () => {
       {howtoSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howtoSchema) }} />
       )}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+
 
       <style>{`
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
@@ -369,7 +386,7 @@ const BlogArticlePage = () => {
       <div style={{ background: C.bg, minHeight: '100vh', color: C.primary, fontFamily: "'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
 
         {/* ── Reading progress ──────────────────────────────────────────────── */}
-        <div style={{ position: 'fixed', top: 64, left: 0, right: 0, height: 2, background: 'rgba(255,255,255,0.05)', zIndex: 9998 }}>
+        <div style={{ position: 'fixed', top: 'calc(var(--launch-banner-h, 0px) + 64px)', left: 0, right: 0, height: 2, background: 'rgba(255,255,255,0.05)', zIndex: 9998 }}>
           <motion.div
             style={{ height: '100%', background: C.violet, width: `${readingProgress}%` }}
             transition={{ duration: 0.1 }}

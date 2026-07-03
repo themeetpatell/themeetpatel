@@ -32,7 +32,7 @@ import startupEcosystemImage from '../assets/startup-ecosystem.jpg';
  * ════════════════════════════════════════════════════════════════════════ */
 
 const ventures = [
-  { name: 'Stealth Startup', tag: 'Fintech', year: '2023', status: 'Building',  metric: 'Fintech · in stealth',              blurb: 'A new fintech venture, currently building in stealth.' },
+  { name: 'Company 8',    tag: 'AI',         year: '2025', status: 'Live',      metric: 'AI-native business intelligence',   blurb: 'Ask your business anything and get answers that lead to action.' },
   { name: 'Biggventure', tag: 'Studio',     year: '2024', status: 'Building',  metric: '7 ventures in motion',               blurb: 'Venture-building house turning operators into outcomes.' },
   { name: 'BiggMate',    tag: 'Network',    year: '2025', status: 'Building',  metric: 'Co-founder matching, intent-first', blurb: 'Find the right partner before the wrong one costs a year.' },
   { name: 'StartupOS',   tag: 'Community',  year: '2022', status: 'Live',      metric: '500+ founders in residence',         blurb: 'The systems that don’t break under pressure — taught, lived, repeated.' },
@@ -273,8 +273,8 @@ const ScrollProgress = () => {
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
   return (
     <motion.div
-      style={{ scaleX, transformOrigin: '0% 50%' }}
-      className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#9b8bff] via-[#cfc4ff] to-[#9b8bff] z-50"
+      style={{ scaleX, transformOrigin: '0% 50%', top: 'var(--launch-banner-h, 0px)' }}
+      className="fixed left-0 right-0 h-[2px] bg-gradient-to-r from-[#9b8bff] via-[#cfc4ff] to-[#9b8bff] z-50"
     />
   );
 };
@@ -1356,9 +1356,9 @@ const HomePageV2 = () => {
       }}
     >
       <SEOHead
-        title="Meet Patel — Founder &amp; operator | v.2026"
-        description="Founder and operator building a connected universe of ventures. Eight years inside startup engine rooms — Biggventure, BiggMate, StartupOS — designing the systems behind the systems."
-        canonical="/v2"
+        title="Meet Patel — Founder &amp; Operator in Dubai"
+        description="Founder and operator building a connected universe of ventures. Eight years inside startup engine rooms — Biggventure and Company 8 — designing the systems behind the systems."
+        canonical="/"
       />
       <ScrollProgress />
       <ChapterIndicator current={current} />

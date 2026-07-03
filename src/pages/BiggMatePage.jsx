@@ -213,7 +213,7 @@ const BiggMatePage = () => {
           description: 'AI-powered co-founder matching platform connecting entrepreneurs to build startups together.',
           url: 'https://www.biggmate.com',
           operatingSystem: 'Web',
-          author: { '@type': 'Person', name: 'The Meet Patel', url: 'https://themeetpatel.com' },
+          author: { '@type': 'Person', '@id': 'https://www.themeetpatel.com/#person', name: 'Meet Patel', url: 'https://www.themeetpatel.com' },
           offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/PreOrder' },
         }}
       />

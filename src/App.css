@@ -804,3 +804,20 @@ pre {
 .violet-glow {
   box-shadow: 0 0 40px rgba(155, 139, 255, 0.15), 0 0 80px rgba(155, 139, 255, 0.08);
 }
+
+/* ============================================
+   LAUNCH BANNER OFFSETS
+   --nav-h: fixed nav height (responsive)
+   --launch-banner-h: set at runtime by LaunchAnnouncementBar (0 when hidden)
+   ============================================ */
+
+:root {
+  --nav-h: 64px;
+  --launch-banner-h: 0px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --nav-h: 70px;
+  }
+}

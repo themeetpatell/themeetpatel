@@ -1,7 +1,13 @@
-import { sql } from './_db.js';
+import { supabase } from './_supabase.js';
+
+// Bot-facing article page: full content + entity-linked JSON-LD.
+// Real browsers are redirected to the SPA; crawlers and AI agents (which do
+// not execute JS) get the complete article HTML so answer engines can quote it.
 
 const BASE = 'https://www.themeetpatel.com';
 const DEFAULT_IMAGE = `${BASE}/og-image.jpg`;
+const PERSON_ID = `${BASE}/#person`;
+const SLUG_PATTERN = /^[a-z0-9][a-z0-9-]{0,199}$/i;
 
 function esc(str) {
   if (!str) return '';
@@ -16,7 +22,7 @@ function esc(str) {
 export default async function handler(req, res) {
   const { slug } = req.query;
 
-  if (!slug) {
+  if (!slug || !SLUG_PATTERN.test(String(slug))) {
     res.writeHead(302, { Location: `${BASE}/blogs` });
     return res.end();
   }
@@ -25,35 +31,76 @@ export default async function handler(req, res) {
 
   let article = null;
   try {
-    const [row] = await sql`
-      SELECT
-        title, excerpt, slug, author, date, published_at, category, tags,
-        og_image, meta_title, meta_description, og_title, og_description,
-        twitter_card, twitter_creator
-      FROM articles
-      WHERE slug = ${slug}
-        AND status = 'published'
-      LIMIT 1
-    `;
-    article = row ?? null;
-  } catch {
-    // fall through to slug-based defaults
+    const { data, error } = await supabase
+      .from('articles')
+      .select(
+        'title, excerpt, slug, author, date, published_at, last_updated_at, updated_at, category, tags, content_html, og_image, meta_title, meta_description, og_title, og_description, twitter_card, twitter_creator'
+      )
+      .eq('slug', slug)
+      .eq('status', 'published')
+      .limit(1)
+      .maybeSingle();
+    if (error) throw error;
+    article = data ?? null;
+  } catch (err) {
+    // Degrade to slug-based defaults rather than failing the page.
+    console.error('og: article fetch failed, serving slug defaults:', err);
   }
 
-  const title       = esc(article?.og_title || article?.meta_title || article?.title || slug.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' '));
-  const description = esc(article?.og_description || article?.meta_description || article?.excerpt || `Read this article by The Meet Patel on ${BASE}/blogs`);
-  const image       = esc(article?.og_image || DEFAULT_IMAGE);
-  const author      = esc(article?.author || 'The Meet Patel');
-  const publishedTime  = article?.published_at || article?.date || '';
-  const twitterCard    = esc(article?.twitter_card || 'summary_large_image');
+  const rawTitle =
+    article?.og_title ||
+    article?.meta_title ||
+    article?.title ||
+    String(slug)
+      .split('-')
+      .map((w) => w[0].toUpperCase() + w.slice(1))
+      .join(' ');
+  const rawDescription =
+    article?.og_description ||
+    article?.meta_description ||
+    article?.excerpt ||
+    `Read this article by Meet Patel (themeetpatel) on ${BASE}/blogs`;
+  const rawImage = article?.og_image || DEFAULT_IMAGE;
+  const rawAuthor = article?.author || 'Meet Patel';
+  const publishedTime = article?.published_at || article?.date || '';
+  const modifiedTime = article?.last_updated_at || article?.updated_at || publishedTime;
+  const rawKeywords = [...(article?.tags || []), article?.category].filter(Boolean).join(', ');
+
+  const title = esc(rawTitle);
+  const description = esc(rawDescription);
+  const image = esc(rawImage);
+  const author = esc(rawAuthor);
+  const twitterCard = esc(article?.twitter_card || 'summary_large_image');
   const twitterCreator = esc(article?.twitter_creator || '@the_meetpatel');
-  const keywords    = esc([...(article?.tags || []), article?.category].filter(Boolean).join(', '));
+  const keywords = esc(rawKeywords);
+
+  const articleLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    '@id': `${articleUrl}#article`,
+    mainEntityOfPage: articleUrl,
+    url: articleUrl,
+    headline: rawTitle,
+    description: rawDescription,
+    image: rawImage,
+    ...(publishedTime ? { datePublished: publishedTime } : {}),
+    ...(modifiedTime ? { dateModified: modifiedTime } : {}),
+    ...(rawKeywords ? { keywords: rawKeywords } : {}),
+    author: { '@type': 'Person', '@id': PERSON_ID, name: 'Meet Patel', url: BASE },
+    publisher: { '@type': 'Person', '@id': PERSON_ID, name: 'Meet Patel', url: BASE },
+  };
+
+  // content_html is admin-authored rich text, rendered as-is on purpose so
+  // crawlers receive the full article body.
+  const bodyHtml =
+    article?.content_html ||
+    (article?.excerpt ? `<p>${esc(article.excerpt)}</p>` : `<p>${description}</p>`);
 
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>${title} | The Meet Patel</title>
+  <title>${title} | Meet Patel — themeetpatel</title>
   <meta name="description" content="${description}" />
   <meta name="author" content="${author}" />
   ${keywords ? `<meta name="keywords" content="${keywords}" />` : ''}
@@ -83,13 +130,18 @@ export default async function handler(req, res) {
   <meta name="twitter:image" content="${image}" />
   <meta name="twitter:image:alt" content="${title}" />
 
+  <script type="application/ld+json">${JSON.stringify(articleLd)}</script>
+
   <!-- Redirect real browsers to the SPA (bots don't execute JS) -->
-  <script>window.location.replace('${articleUrl}');</script>
+  <script>window.location.replace(${JSON.stringify(articleUrl)});</script>
 </head>
 <body>
-  <h1>${title}</h1>
-  <p>${description}</p>
-  <a href="${articleUrl}">Read on The Meet Patel</a>
+  <article>
+    <h1>${title}</h1>
+    <p>By ${author}${publishedTime ? ` · ${esc(String(publishedTime).slice(0, 10))}` : ''}</p>
+    ${bodyHtml}
+    <p><a href="${articleUrl}">Read on themeetpatel.com</a> · <a href="${BASE}/blogs">More articles by Meet Patel</a></p>
+  </article>
 </body>
 </html>`;
 

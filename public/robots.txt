@@ -1,26 +1,100 @@
+# themeetpatel.com — robots policy
+# LLM-readable site guide: https://www.themeetpatel.com/llms.txt
+
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /private/
 Disallow: /api/private/
 
-# AI crawlers — allow for GEO (Generative Engine Optimization)
-User-agent: GPTBot
+# ── Search engines ──
+User-agent: Googlebot
 Allow: /
 
-User-agent: Claude-Web
-Allow: /
-
-User-agent: PerplexityBot
+User-agent: Bingbot
 Allow: /
 
 User-agent: GoogleOther
 Allow: /
 
+# ── AI crawlers — explicitly allowed for AEO/GEO ──
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
 User-agent: anthropic-ai
 Allow: /
 
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google AI (Gemini grounding / AI Overviews)
+User-agent: Google-Extended
+Allow: /
+
+# Apple (Siri / Apple Intelligence)
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+# Amazon (Alexa / Rufus)
+User-agent: Amazonbot
+Allow: /
+
+# Microsoft Copilot
+User-agent: DuckAssistBot
+Allow: /
+
+# Mistral
+User-agent: MistralAI-User
+Allow: /
+
+# Cohere
 User-agent: cohere-ai
+Allow: /
+
+# You.com
+User-agent: YouBot
+Allow: /
+
+# ByteDance (TikTok search / Doubao)
+User-agent: Bytespider
+Allow: /
+
+# Common Crawl (feeds most LLM training corpora)
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://www.themeetpatel.com/sitemap.xml

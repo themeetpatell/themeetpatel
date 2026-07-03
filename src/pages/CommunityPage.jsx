@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   MessageCircle, CheckCircle, X, ArrowRight, Users, Star, Award,
@@ -6,6 +7,7 @@ import {
   Instagram, Youtube, TrendingUp, Target, Briefcase, Send
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { personRef, buildBreadcrumb, buildFaqPage } from '../lib/seoEntity';
 import { submitCommunityFormData } from '../services/formService';
 
 void motion;
@@ -50,6 +52,21 @@ const testimonials = [
   { quote: 'The StartupOS community changed how I approach my startup. The daily discussions alone are worth more than any course I have taken.', name: 'Priya S.', role: 'Founder, EdTech Startup' },
   { quote: 'I met my first investor through this community three weeks after joining. The network here is genuinely world-class.', name: 'Arjun M.', role: 'Co-Founder, FinTech' },
   { quote: "Meet's insights are unmatched. This community is gold — every conversation pushes me to think bigger and execute smarter.", name: 'Riya K.', role: 'CEO, SaaS Platform' },
+];
+
+const faqs = [
+  {
+    q: 'Who is the StartupOS community for?',
+    a: 'The StartupOS community is for serious startup founders, operators, and builders — early-stage entrepreneurs who want daily startup discussions, mentor access, investor introductions, and a peer network that understands the grind.',
+  },
+  {
+    q: 'Is it free to join?',
+    a: 'Yes, the StartupOS community is free to join. Every application is reviewed to keep the network high-signal and vetted, but there is no membership fee.',
+  },
+  {
+    q: 'Who runs the StartupOS community?',
+    a: "It's run by Meet Patel, a Dubai-based startup founder and operator who runs the Biggventure studio.",
+  },
 ];
 
 export default function CommunityPage() {
@@ -125,27 +142,18 @@ export default function CommunityPage() {
             name: 'StartupOS Community by The Meet Patel',
             description: 'A community of 500+ founders created by The Meet Patel (Meet Patel / themeetpatel) for startup conversations, founder networking, operator insights, and practical support for ambitious entrepreneurs.',
             url: 'https://www.themeetpatel.com/community',
-            founder: {
-              '@type': 'Person',
-              '@id': 'https://www.themeetpatel.com/#person',
-              name: 'The Meet Patel',
-              alternateName: ['Meet Patel', 'themeetpatel'],
-              url: 'https://www.themeetpatel.com',
-            },
+            founder: personRef,
             about: [
               { '@type': 'Thing', name: 'Startups' },
               { '@type': 'Thing', name: 'Entrepreneurship' },
               { '@type': 'Thing', name: 'Founder Networking' },
             ],
           },
-          {
-            '@context': 'https://schema.org',
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.themeetpatel.com/' },
-              { '@type': 'ListItem', position: 2, name: 'Community', item: 'https://www.themeetpatel.com/community' },
-            ],
-          },
+          buildFaqPage(faqs),
+          buildBreadcrumb([
+            { name: 'Home', url: '/' },
+            { name: 'Community', url: '/community' },
+          ]),
         ]}
       />
 
@@ -183,8 +191,13 @@ export default function CommunityPage() {
             </motion.h1>
 
             <motion.p variants={fadeUp} initial="hidden" animate="visible" custom={2}
-              style={{ fontSize: 20, color: COLORS.textSecondary, maxWidth: 520, margin: '0 auto 48px', lineHeight: 1.6 }}>
+              style={{ fontSize: 20, color: COLORS.textSecondary, maxWidth: 520, margin: '0 auto 16px', lineHeight: 1.6 }}>
               500+ entrepreneurs. Daily discussions. Exclusive access.
+            </motion.p>
+
+            <motion.p variants={fadeUp} initial="hidden" animate="visible" custom={2.5}
+              style={{ fontSize: 15, color: COLORS.textMuted, maxWidth: 520, margin: '0 auto 48px', lineHeight: 1.6 }}>
+              A founder community built by Meet Patel.
             </motion.p>
 
             {/* Stat chips */}
@@ -306,6 +319,48 @@ export default function CommunityPage() {
               ))}
             </div>
           </div>
+        </section>
+
+        {/* ── FAQ ── */}
+        <section style={{ maxWidth: 760, margin: '0 auto', padding: '90px 24px 20px' }}>
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}
+            style={{ textAlign: 'center', marginBottom: 40 }}>
+            <h2 style={{ fontSize: 'clamp(26px, 4vw, 38px)', fontWeight: 700, color: COLORS.textPrimary, margin: '0 0 10px', letterSpacing: '-0.02em' }}>
+              Frequently asked questions
+            </h2>
+            <p style={{ fontSize: 15, color: COLORS.textSecondary, margin: 0 }}>
+              Everything you need to know before you join.
+            </p>
+          </motion.div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            {faqs.map(({ q, a }) => (
+              <details
+                key={q}
+                style={{
+                  background: COLORS.surface, border: `1px solid ${COLORS.border}`,
+                  borderRadius: 14, padding: '20px 24px',
+                }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', margin: 0 }}>
+                  <h3 style={{ display: 'inline', fontSize: 16, fontWeight: 700, color: COLORS.textPrimary, margin: 0, letterSpacing: '-0.01em' }}>
+                    {q}
+                  </h3>
+                </summary>
+                <p style={{ fontSize: 14, color: COLORS.textSecondary, lineHeight: 1.7, margin: '12px 0 0' }}>
+                  {a}
+                </p>
+              </details>
+            ))}
+          </div>
+
+          <p style={{ fontSize: 14, color: COLORS.textSecondary, lineHeight: 1.7, textAlign: 'center', margin: '36px 0 0' }}>
+            New here? Get to know{' '}
+            <Link to="/about" style={{ color: COLORS.violet, textDecoration: 'underline', textUnderlineOffset: 3 }}>Meet Patel</Link>,
+            read the{' '}
+            <Link to="/blogs" style={{ color: COLORS.violet, textDecoration: 'underline', textUnderlineOffset: 3 }}>latest startup essays</Link>,
+            or explore the{' '}
+            <Link to="/portfolio" style={{ color: COLORS.violet, textDecoration: 'underline', textUnderlineOffset: 3 }}>venture portfolio</Link>.
+          </p>
         </section>
 
         {/* ── JOIN FORM SECTION ── */}

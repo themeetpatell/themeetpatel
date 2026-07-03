@@ -48,7 +48,8 @@ const UltraNavigation = () => {
       {/* ───── Main Navigation ───── */}
       <nav
         aria-label="Main navigation"
-        className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-400 ${
+        style={{ top: 'var(--launch-banner-h, 0px)' }}
+        className={`fixed left-0 right-0 z-[9999] transition-all duration-400 ${
           scrolled
             ? 'bg-[rgba(9,9,14,0.95)] backdrop-blur-2xl border-b border-white/[0.06] shadow-[0_1px_24px_rgba(0,0,0,0.5)]'
             : 'bg-[rgba(9,9,14,0.80)] backdrop-blur-xl'
@@ -135,7 +136,8 @@ const UltraNavigation = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.22, ease: 'easeOut' }}
-              className="fixed top-[64px] sm:top-[70px] left-0 right-0 z-[9997] lg:hidden bg-[#111118] border-b border-white/[0.07]"
+              style={{ top: 'calc(var(--launch-banner-h, 0px) + var(--nav-h, 64px))' }}
+              className="fixed left-0 right-0 z-[9997] lg:hidden bg-[#111118] border-b border-white/[0.07]"
             >
               <div className="max-w-7xl mx-auto px-5 sm:px-8 py-6">
                 <div className="space-y-1">

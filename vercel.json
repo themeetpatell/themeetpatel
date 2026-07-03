@@ -3,12 +3,16 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/sitemap.xml",
+      "destination": "/api/sitemap"
+    },
+    {
       "source": "/blogs/:slug",
       "has": [
         {
           "type": "header",
           "key": "user-agent",
-          "value": ".*([bB][oO][tT]|[cC]rawl|[sS]pider|facebookexternalhit|WhatsApp|[gG]oogle|[bB]ing|[yY]andex).*"
+          "value": ".*([bB][oO][tT]|[cC]rawl|[sS]pider|GPT|OAI|[cC]laude|[aA]nthropic|[pP]erplexity|[mM]istral|[cC]ohere|meta-external|facebookexternalhit|WhatsApp|[gG]oogle|[bB]ing|[yY]andex).*"
         }
       ],
       "destination": "/api/og?slug=:slug"
@@ -50,6 +54,19 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/llms.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=86400"
         }
       ]
     }

@@ -42,7 +42,7 @@ const SEOHead = ({
     : defaultTitle;
   const seoDescription = description  || defaultDescription;
   const seoKeywords    = Array.isArray(keywords) ? keywords.join(', ') : (keywords || defaultKeywords);
-  const author         = articleAuthor || 'The Meet Patel';
+  const author         = articleAuthor || 'Meet Patel';
 
   const resolvedOgTitle       = ogTitle       || seoTitle;
   const resolvedOgDescription = ogDescription || seoDescription;
@@ -65,8 +65,8 @@ const SEOHead = ({
       <meta name="description" content={seoDescription} />
       <meta name="keywords"    content={seoKeywords} />
       <meta name="author"      content={author} />
-      <meta name="creator"     content="The Meet Patel" />
-      <meta name="publisher"   content="The Meet Patel" />
+      <meta name="creator"     content="Meet Patel" />
+      <meta name="publisher"   content="Meet Patel" />
       <link rel="canonical"    href={fullCanonical} />
 
       {/* Open Graph / Facebook */}

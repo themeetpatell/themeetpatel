@@ -9,6 +9,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import SEOHead from "../components/SEOHead";
+import { SITE_URL, meetPatelEntities, personRef } from "../lib/seoEntity";
 import MindGraph from "../components/mind/MindGraph";
 import TimeScrubber from "../components/mind/TimeScrubber";
 import StatsTicker from "../components/mind/StatsTicker";
@@ -41,12 +42,27 @@ export default function MindPage() {
     if (paused) setPlaying(false);
   }, [paused]);
 
+  const structuredData = [
+    ...meetPatelEntities,
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: "Meet Patel's Mind",
+      description:
+        "A living visualization of Meet Patel's second brain — the topology of how a Dubai-based startup founder organizes knowledge across ventures.",
+      url: `${SITE_URL}/mind`,
+      about: personRef,
+      isPartOf: { "@id": `${SITE_URL}/#person` },
+    },
+  ];
+
   return (
     <>
       <SEOHead
-        title="Mind — Meet Patel"
-        description="A living visualization of my second brain. Topology only — no titles, no content. Watch the structure breathe."
-        canonical="https://themeetpatel.com/mind"
+        title="The Mind — Meet Patel's Second Brain, Visualized"
+        description="Explore Meet Patel's mind — a live visualization of the second brain a Dubai startup founder uses to organize knowledge across ventures."
+        canonical="/mind"
+        structuredData={structuredData}
       />
 
       <div

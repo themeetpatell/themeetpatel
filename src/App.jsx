@@ -13,6 +13,8 @@ import UltraFooter from './components/UltraFooter';
 import SEOPerformance from './components/SEOPerformance';
 import SubstackSubscriptionModal from './components/SubstackSubscriptionModal';
 import StickyWhatsApp from './components/StickyWhatsApp';
+import LaunchAnnouncementBar from './components/launch/LaunchAnnouncementBar';
+import LaunchProductHuntCard from './components/launch/LaunchProductHuntCard';
 
 // Public pages
 import HomePage from './pages/HomePage';
@@ -50,13 +52,21 @@ function PageTracker() {
 
 function PublicLayout({ children }) {
   return (
-    <div className="App ultra-gradient-bg min-h-screen">
+    <div
+      className="App ultra-gradient-bg min-h-screen"
+      style={{
+        paddingTop: 'var(--launch-banner-h, 0px)',
+        transition: 'padding-top 300ms ease',
+      }}
+    >
+      <LaunchAnnouncementBar />
       <UltraNavigation />
       {children}
       <UltraFooter />
       <SEOPerformance />
       <SubstackSubscriptionModal />
       <StickyWhatsApp />
+      <LaunchProductHuntCard />
     </div>
   );
 }
