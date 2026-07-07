@@ -7,7 +7,7 @@ const FollowMyJourney = () => {
     { icon: Linkedin,  href: 'https://www.linkedin.com/in/themeetpatel/', label: 'LinkedIn',  sub: 'Professional network' },
     { icon: Twitter,   href: 'https://x.com/the_meetpatel',               label: 'Twitter',   sub: 'Thoughts & takes' },
     { icon: Github,    href: 'https://github.com/themeetpatell',           label: 'GitHub',    sub: 'Open source work' },
-    { icon: Instagram, href: 'http://instagram.com/the.meetpatell/',       label: 'Instagram', sub: 'Behind the scenes' },
+    { icon: Instagram, href: 'https://instagram.com/the.meetpatell/',       label: 'Instagram', sub: 'Behind the scenes' },
     { icon: Youtube,   href: 'https://youtube.com/@themeetpatel',          label: 'YouTube',   sub: 'Video content' },
     { icon: Medium,    href: 'https://medium.com/@themeetpatel',           label: 'Medium',    sub: 'Long-form writing' },
     { icon: Calendar,  href: 'https://calendly.com/themeetpatell/quick-connect', label: 'Calendly', sub: 'Book a call' },

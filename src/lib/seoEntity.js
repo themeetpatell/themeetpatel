@@ -21,12 +21,12 @@ export const SAME_AS = [
   'https://www.linkedin.com/in/themeetpatel/',
   'https://x.com/the_meetpatel',
   'https://github.com/themeetpatell',
-  'http://instagram.com/the.meetpatell/',
+  'https://instagram.com/the.meetpatell/',
   'https://youtube.com/@themeetpatel',
   'https://medium.com/@themeetpatel',
 ];
 
-export const CONTACT_EMAIL = 'the.meetpatell@gmail.com';
+export const CONTACT_EMAIL = 'meet@company8.dev';
 
 export const KNOWS_ABOUT = [
   'Entrepreneurship',
@@ -64,7 +64,7 @@ export const company8Org = {
   name: 'Company 8',
   alternateName: ['Company8'],
   description:
-    'Company 8 is the venture Meet Patel is currently building under the Biggventure studio — an AI-native business intelligence platform and the maker of useDan.',
+    'Company 8 is the company Meet Patel is building — an AI-native business intelligence platform and the maker of Dan (usedan.com): ask your business anything, get answers that lead to action.',
   foundingDate: '2025',
   parentOrganization: { '@id': BIGGVENTURE_ID },
   founder: personRef,
@@ -76,12 +76,16 @@ export const personEntity = {
   '@type': 'Person',
   '@id': PERSON_ID,
   name: 'Meet Patel',
-  alternateName: ['The Meet Patel', 'themeetpatel', 'meetpatel', 'The Startup Guy'],
+  alternateName: ['The Meet Patel', 'themeetpatel', 'meetpatel'],
   description:
-    "Meet Patel (themeetpatel / The Meet Patel) — known in the UAE startup ecosystem as 'the startup guy' — is a Dubai-based startup founder and operator. He runs the venture studio Biggventure, is currently building Company 8 (maker of useDan), and has built and scaled 10+ ventures across AI, fintech, hardware, and software.",
+    'Meet Patel (themeetpatel / The Meet Patel) is a Dubai-based startup founder and operator. He is the founder of Company 8, building Dan (usedan.com) — ask your business anything, get answers that lead to action — and has built and scaled 10+ ventures across AI, fintech, hardware, and software.',
   url: SITE_URL,
   image: `${SITE_URL}/og-image.jpg`,
-  jobTitle: ['Startup Founder', 'Operator', 'Venture Builder'],
+  jobTitle: 'Founder, Company 8',
+  hasOccupation: {
+    '@type': 'Occupation',
+    name: 'Startup Founder & Operator',
+  },
   email: CONTACT_EMAIL,
   address: {
     '@type': 'PostalAddress',

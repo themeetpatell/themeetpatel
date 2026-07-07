@@ -161,7 +161,7 @@ const TermsOfServicePage = () => (
             <Section icon={Mail} number="11" title="Contact Information">
               <BodyText>If you have any questions about these Terms of Service, please contact us:</BodyText>
               <div style={{ background: C.elevated, border: `1px solid ${C.border}`, borderRadius: 12, padding: '20px 24px', marginTop: 8 }}>
-                {[['Email', 'the.meetpatell@gmail.com'], ['Phone', '+971 54 754 1414'], ['Location', 'Dubai, UAE']].map(([label, value]) => (
+                {[['Email', 'meet@company8.dev'], ['Phone', '+971 54 754 1414'], ['Location', 'Dubai, UAE']].map(([label, value]) => (
                   <div key={label} style={{ display: 'flex', gap: 12, marginBottom: 8 }}>
                     <span style={{ fontSize: 13, fontWeight: 600, color: C.secondary, minWidth: 70 }}>{label}:</span>
                     <span style={{ fontSize: 13, color: C.primary }}>{value}</span>

@@ -18,8 +18,8 @@ import {
   buildBreadcrumb,
 } from '../lib/seoEntity';
 import FollowMyJourney from '../components/FollowMyJourney';
-import InstantKillModeSection from '../components/InstantKillModeSection';
 import { submitContactFormData } from '../services/formService';
+import { BRAND, POSITIONING, PRODUCT, STATS } from '../data/company8';
 import meetPatelImage from '../assets/themeetpatel.jpeg';
 import meetPatelImage2 from '../assets/the meet patel.jpeg';
 
@@ -130,10 +130,10 @@ const HomePage = () => {
 
   const personalInfo = {
     name: "Meet Patel",
-    title: "Founder & operator — currently building Company 8 under my venture studio, Biggventure",
+    title: "I'm Meet Patel — founder of Company 8, building Dan.",
     location: "Dubai, United Arab Emirates",
-    email: "the.meetpatell@gmail.com",
-    bio: "A Startup ecosystem builder with over 8 years of experience in building and scaling technology companies. Passionate about helping startups succeed through innovative solutions and strategic guidance.",
+    email: "meet@company8.dev",
+    bio: "Founder of Company 8, building Dan — ask your business anything and get answers that lead to action. Years of operating and scaling technology companies taught me exactly why business intelligence is broken. Dan is the fix.",
     
     projects: [
       {
@@ -162,7 +162,7 @@ const HomePage = () => {
       },
       {
         name: "TorchIt",
-        description: "An assis-tech startup helping differently-abled people with smart devices.",
+        description: "An assistive-tech startup helping differently-abled people with smart devices.",
         category: "Mobile",
         year: "2020"
       }
@@ -172,7 +172,7 @@ const HomePage = () => {
       { label: "LinkedIn", href: "https://www.linkedin.com/in/themeetpatel/", icon: Linkedin },
       { label: "Twitter", href: "https://x.com/the_meetpatel", icon: Twitter },
       { label: "GitHub", href: "https://github.com/themeetpatell", icon: Github },
-      { label: "Instagram", href: "http://instagram.com/the.meetpatell/", icon: Instagram },
+      { label: "Instagram", href: "https://instagram.com/the.meetpatell/", icon: Instagram },
       { label: "YouTube", href: "https://youtube.com/@themeetpatel", icon: Youtube },
       { label: "Medium", href: "https://medium.com/@themeetpatel", icon: Medium },
       { label: "Calendly", href: "https://calendly.com/themeetpatell/quick-connect", icon: Calendly }
@@ -188,19 +188,19 @@ const HomePage = () => {
     },
     {
       number: "10+",
-      label: "Startups Mentored",
+      label: "Ventures Built",
       icon: Heart,
       color: "from-purple-400 to-indigo-500"
     },
     {
-      number: "450+",
+      number: "490+",
       label: "Team Members Led",
       icon: Users,
       color: "from-indigo-400 to-purple-500"
     },
     {
       number: "2",
-      label: "Books Published",
+      label: "Books Written",
       icon: BookOpen,
       color: "from-purple-300 to-indigo-400"
     }
@@ -235,7 +235,7 @@ const HomePage = () => {
       requestLink: "#"
     },
     {
-      title: "The Endless Love",
+      title: "The Endless Devotion",
       subtitle: "PART - 2",
       quote: "You'll experience your life's entire journey in the eyes which'll love you endlessly!",
       description: "A cosmic romance novel that takes readers on a journey through the universe of love. This sequel explores the infinite nature of devotion and the profound connection between souls destined to love each other endlessly.",
@@ -249,14 +249,14 @@ const HomePage = () => {
 
   const achievements = [
     {
-      title: "450+ Members",
-      description: "Created a community of 500+ entrepreneurs and investors in StartupOS",
+      title: "500+ Members",
+      description: "Built a community of 500+ entrepreneurs and investors in StartupOS",
       icon: Star,
       color: "from-purple-300 to-purple-500"
     },
     {
       title: "Building Leadership Team",
-      description: "Built Entire Management team in 6 months at Million dollars company",
+      description: "Built the entire management team in 6 months at a million-dollar company",
       icon: Award,
       color: "from-purple-400 to-purple-500"
     },
@@ -309,7 +309,7 @@ const HomePage = () => {
   const homepageFaq = [
     {
       q: 'Who is Meet Patel?',
-      a: 'Meet Patel (also known as The Meet Patel or themeetpatel) is a Dubai-based startup founder and operator. He runs the venture-building studio Biggventure and is currently building Company 8, an AI-native business intelligence platform. Over 8+ years he has built and scaled 10+ ventures across AI, fintech, hardware, and software, and led teams of 450+ people.',
+      a: 'Meet Patel (also known as The Meet Patel or themeetpatel) is a Dubai-based startup founder and operator. He is the founder of Company 8, building Dan — the AI that lets any operator ask their business anything and get answers that lead to action. Over 8+ years he has built and scaled 10+ ventures across AI, fintech, hardware, and software, and led teams of 490+ people across his ventures.',
     },
     {
       q: 'What is Biggventure?',
@@ -329,7 +329,7 @@ const HomePage = () => {
     },
     {
       q: 'How can I contact Meet Patel?',
-      a: 'You can reach Meet Patel through themeetpatel.com or by email at the.meetpatell@gmail.com, and connect on LinkedIn at linkedin.com/in/themeetpatel. He works with founders on building, operating, and scaling startups.',
+      a: 'You can reach Meet Patel through themeetpatel.com or by email at meet@company8.dev, and connect on LinkedIn at linkedin.com/in/themeetpatel. He works with founders on building, operating, and scaling startups.',
     },
   ];
 
@@ -456,10 +456,10 @@ const HomePage = () => {
                   className="text-5xl sm:text-7xl lg:text-8xl font-black leading-tight tracking-tight"
                 >
                   <span className="block text-[#f7f7fb]">
-                    Say 'Hey' to
+                    Ask your business anything.
                   </span>
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#c4b5fd] via-[#a78bfa] to-[#8b5cf6] mt-2">
-                    Meet Patel
+                    Get answers that lead to action.
                   </span>
                 </motion.h1>
 
@@ -506,13 +506,13 @@ const HomePage = () => {
               >
                 <div className="space-y-4 text-center text-[#a8a9c3]">
                   <p className="text-base sm:text-lg leading-relaxed">
-                    Over the last 8 years I've helped build 10+ startups and worked alongside teams of 450+ people — so I've seen most of the ways things break, and a few of the ways they actually work. I'd love to bring that to your team.
+                    {POSITIONING.problem}
                   </p>
                   <p className="text-base sm:text-lg leading-relaxed">
-                    I work with founders and teams to design <span className="text-[#e6e7f5] font-semibold">business systems that don't break under pressure</span>.
+                    <span className="text-[#e6e7f5] font-semibold">{BRAND.company}</span> is building <span className="text-[#e6e7f5] font-semibold">{BRAND.product}</span> — the AI operator that answers any question about your business in plain English. I'm building it because I lived the problem, as Chief of Staff and interim COO inside a fintech.
                   </p>
                   <p className="text-base sm:text-lg leading-relaxed">
-                    Explore my <Link to="/portfolio" className="text-[#c4b5fd] hover:text-white font-semibold underline underline-offset-4 decoration-purple-400/40 hover:decoration-purple-300 transition-colors">portfolio of successful ventures</Link>.
+                    See <a href="https://usedan.com" target="_blank" rel="noopener noreferrer" className="text-[#c4b5fd] hover:text-white font-semibold underline underline-offset-4 decoration-purple-400/40 hover:decoration-purple-300 transition-colors">Dan live</a>, or read the <Link to="/investors" className="text-[#c4b5fd] hover:text-white font-semibold underline underline-offset-4 decoration-purple-400/40 hover:decoration-purple-300 transition-colors">investor brief</Link>.
                   </p>
                 </div>
               </motion.div>
@@ -525,27 +525,29 @@ const HomePage = () => {
                 className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8"
               >
                 <motion.a
-                  href="/about"
+                  href="https://usedan.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                   className="group relative w-full sm:w-auto"
                 >
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 via-violet-500 to-indigo-600 rounded-full opacity-60 group-hover:opacity-100 blur transition-all duration-300"></div>
                   <button className="relative px-10 py-4 bg-gray-900 rounded-full text-white font-bold text-lg flex items-center justify-center space-x-2 w-full sm:w-auto hover:bg-gray-800 transition-colors">
-                    <span>Discover My Journey</span>
+                    <span>See Dan live</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </motion.a>
 
                 <motion.a
-                  href="/contact"
+                  href="/investors"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                   className="group relative w-full sm:w-auto px-10 py-4 rounded-full border-2 border-purple-500/60 hover:border-purple-500 transition-all duration-300 text-[#f7f7fb] font-bold text-lg flex items-center justify-center space-x-2"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 to-indigo-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <MessageSquare className="w-5 h-5 relative z-10 group-hover:scale-110 transition-transform" />
-                  <span className="relative z-10">Start a Conversation</span>
+                  <Briefcase className="w-5 h-5 relative z-10 group-hover:scale-110 transition-transform" />
+                  <span className="relative z-10">For investors</span>
                 </motion.a>
               </motion.div>
 
@@ -557,9 +559,9 @@ const HomePage = () => {
                 className="grid grid-cols-3 gap-4 sm:gap-8 pt-12 border-t border-purple-400/30 mt-12"
               >
                 {[
-                  { value: "8+", label: "Years" },
-                  { value: "10+", label: "Startups" },
-                  { value: "450+", label: "Team Members" }
+                  { value: STATS.yearsOperating, label: "Years operating" },
+                  { value: STATS.venturesBuilt, label: "Ventures built" },
+                  { value: STATS.teamLed, label: "Team members led" }
                 ].map((stat, idx) => (
                   <motion.div
                     key={idx}
@@ -594,6 +596,65 @@ const HomePage = () => {
         </motion.div>
       </section>
 
+      {/* ── Dan (the product) ─────────────────────────────────────────── */}
+      <section id="dan" className="py-20 sm:py-28 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <span className="inline-block text-sm font-semibold tracking-wide text-[#c4b5fd] uppercase mb-4">
+              {PRODUCT.eyebrow}
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-bold text-[#f7f7fb] tracking-tight mb-5">
+              {PRODUCT.heading}
+            </h2>
+            <p className="text-lg text-[#a8a9c3] leading-relaxed">
+              {POSITIONING.oneLiner}
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
+            {PRODUCT.capabilities.map((cap, i) => (
+              <motion.div
+                key={cap.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="p-7 rounded-2xl bg-[#0d0e16]/80 border border-purple-500/15 hover:border-purple-500/35 transition-colors"
+              >
+                <div className="w-10 h-10 rounded-xl bg-purple-500/15 flex items-center justify-center mb-5">
+                  <Zap className="w-5 h-5 text-[#a78bfa]" />
+                </div>
+                <h3 className="text-lg font-bold text-[#f7f7fb] mb-2">{cap.title}</h3>
+                <p className="text-[#a8a9c3] leading-relaxed text-[15px]">{cap.body}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
+            <a
+              href="https://usedan.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#8b5cf6] hover:bg-[#7c3aed] text-white font-bold transition-colors"
+            >
+              See Dan live <ExternalLink className="w-4 h-4" />
+            </a>
+            <Link
+              to="/investors"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-purple-500/50 hover:border-purple-500 text-[#f7f7fb] font-bold transition-colors"
+            >
+              For investors <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* About Section */}
       <section className="py-12 sm:py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -609,7 +670,7 @@ const HomePage = () => {
                   About Meet Patel
                 </h2>
                 <p className="text-lg sm:text-xl text-[#cfd0e6] mb-4 sm:mb-6">
-                  I help founders build, scale, and stabilize
+                  The operator behind Dan — I lived the problem before I built it
                 </p>
                   </div>
               <p className="text-base sm:text-lg text-[#a8a9c3] leading-relaxed mb-4 sm:mb-6">
@@ -681,7 +742,7 @@ const HomePage = () => {
               <div className="relative z-10">
                 <img
                   src={meetPatelImage}
-                  alt="The Meet Patel - A Startup Guy & System Builder"
+                  alt="Meet Patel — Founder of Company 8, building Dan"
                   className="w-full h-96 object-cover rounded-3xl shadow-2xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-3xl"></div>
@@ -693,8 +754,8 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Instant Kill Mode Section */}
-      <InstantKillModeSection />
+      {/* Instant Kill Mode / God Mode moved to /labs so it doesn't compete with
+          Company 8 / Dan on the fundraising homepage. Preserved, not deleted. */}
 
       {/* Portfolio Section */}
       <section className="py-32 relative">
@@ -994,23 +1055,27 @@ const HomePage = () => {
                   
                   <div className="flex space-x-3">
                     {book.status === 'Published' ? (
-                      <motion.button
+                      <motion.a
+                        href={book.readLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         whileHover={{ scale: 1.02, y: -2 }}
                         whileTap={{ scale: 0.98 }}
-                        className="group relative w-full bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-600 text-white py-4 px-6 rounded-xl font-bold text-sm hover:from-purple-600 hover:via-indigo-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-500/30 overflow-hidden"
+                        className="group relative block w-full text-center bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-600 text-white py-4 px-6 rounded-xl font-bold text-sm hover:from-purple-600 hover:via-indigo-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-500/30 overflow-hidden"
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                         <span className="relative z-10">Start Reading</span>
-                      </motion.button>
+                      </motion.a>
                     ) : (
-                      <motion.button
+                      <motion.a
+                        href={`mailto:meet@company8.dev?subject=${encodeURIComponent(`Early access: ${book.title}`)}`}
                         whileHover={{ scale: 1.02, y: -2 }}
                         whileTap={{ scale: 0.98 }}
-                        className="group relative w-full bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-600 text-white py-4 px-6 rounded-xl font-bold text-sm hover:from-purple-600 hover:via-indigo-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-500/30 overflow-hidden"
+                        className="group relative block w-full text-center bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-600 text-white py-4 px-6 rounded-xl font-bold text-sm hover:from-purple-600 hover:via-indigo-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-500/30 overflow-hidden"
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                         <span className="relative z-10">Get Early Access</span>
-                      </motion.button>
+                      </motion.a>
                     )}
                       </div>
                   </div>

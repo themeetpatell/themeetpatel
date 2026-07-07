@@ -6,7 +6,7 @@ export const LAUNCH = {
   enabled: true,
   id: 'usedan-ph-2026-07', // dismissal is scoped to this id
 
-  product: 'useDan',
+  product: 'Dan',
   company: 'Company 8',
   // Verbatim Product Hunt tagline.
   tagline: 'Ask your business anything. Get answers that lead to action.',

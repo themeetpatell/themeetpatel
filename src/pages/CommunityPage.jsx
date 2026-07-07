@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  MessageCircle, CheckCircle, X, ArrowRight, Users, Star, Award,
+  MessageCircle, CheckCircle, X, ArrowRight, Users, Award,
   Heart, Zap, BookOpen, Calendar, Linkedin, Twitter, Github,
   Instagram, Youtube, TrendingUp, Target, Briefcase, Send
 } from 'lucide-react';
@@ -46,12 +46,6 @@ const benefits = [
   { icon: Briefcase,  title: 'Funding Opportunities', desc: 'Early access to investor introductions, pitch prep sessions, and warm connections that move the needle.' },
   { icon: BookOpen,   title: 'Masterclasses',       desc: 'Live workshops, deep-dive Q&As, and recorded sessions covering every stage of the startup journey.' },
   { icon: Award,      title: 'Career Opportunities', desc: 'Exclusive job referrals, talent spotlights, and co-founder matching for builders inside the network.' },
-];
-
-const testimonials = [
-  { quote: 'The StartupOS community changed how I approach my startup. The daily discussions alone are worth more than any course I have taken.', name: 'Priya S.', role: 'Founder, EdTech Startup' },
-  { quote: 'I met my first investor through this community three weeks after joining. The network here is genuinely world-class.', name: 'Arjun M.', role: 'Co-Founder, FinTech' },
-  { quote: "Meet's insights are unmatched. This community is gold — every conversation pushes me to think bigger and execute smarter.", name: 'Riya K.', role: 'CEO, SaaS Platform' },
 ];
 
 const faqs = [
@@ -270,54 +264,6 @@ export default function CommunityPage() {
               </motion.div>
               );
             })}
-          </div>
-        </section>
-
-        {/* ── TESTIMONIALS ── */}
-        <section style={{ background: COLORS.surface, borderTop: `1px solid ${COLORS.border}`, borderBottom: `1px solid ${COLORS.border}`, padding: '80px 24px' }}>
-          <div style={{ maxWidth: 1120, margin: '0 auto' }}>
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}
-              style={{ textAlign: 'center', marginBottom: 52 }}>
-              <div style={{ display: 'flex', justifyContent: 'center', gap: 4, marginBottom: 16 }}>
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={16} fill={COLORS.gold} style={{ color: COLORS.gold }} />
-                ))}
-              </div>
-              <h2 style={{ fontSize: 'clamp(26px, 4vw, 38px)', fontWeight: 700, color: COLORS.textPrimary, margin: '0 0 10px', letterSpacing: '-0.02em' }}>
-                What members are saying
-              </h2>
-              <p style={{ fontSize: 15, color: COLORS.textSecondary, margin: 0 }}>Real words from real founders inside the community.</p>
-            </motion.div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
-              {testimonials.map(({ quote, name, role }, i) => (
-                <motion.div
-                  key={name}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  custom={i * 0.6}
-                  style={{
-                    background: COLORS.elevated, border: `1px solid ${COLORS.border}`,
-                    borderRadius: 16, padding: '28px 28px 30px',
-                  }}>
-                  <div style={{ fontSize: 28, color: COLORS.violet, lineHeight: 1, marginBottom: 14, fontWeight: 800 }}>"</div>
-                  <p style={{ fontSize: 15, color: COLORS.textSecondary, lineHeight: 1.7, margin: '0 0 24px', fontStyle: 'italic' }}>
-                    {quote}
-                  </p>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                    <div style={{ width: 36, height: 36, borderRadius: '50%', background: COLORS.violetDim, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <Users size={16} style={{ color: COLORS.violet }} />
-                    </div>
-                    <div>
-                      <div style={{ fontSize: 14, fontWeight: 600, color: COLORS.textPrimary }}>{name}</div>
-                      <div style={{ fontSize: 12, color: COLORS.textMuted }}>{role}</div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </div>
         </section>
 

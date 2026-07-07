@@ -39,7 +39,7 @@ const AboutPage = () => {
 
   /* ── DATA ── */
   const personalInfo = {
-	    bio: "I’m a venture builder, the startup guy, and a business strategist with speed, energy, and humour, known for building top teams and writing romantic fiction novels along the way.",
+	    bio: "I’m the founder of Company 8, building Dan — the AI that lets any operator ask their business anything and get answers that lead to action. An operator who has built top teams and scaled ventures across fintech, hardware, and software, now all-in on Company 8.",
 	    about: [
 	      "I’ve worked across fintech, recruitment, ecommerce, IoT, automation, assistive technology, and software, including taking two ventures from zero to scale.",
 	      "The work I enjoy most sits in the messy middle of growth: bringing structure to ambition through GTM systems, OKR and KPI rhythms, SOPs, and product roadmaps teams can actually execute.",
@@ -262,13 +262,13 @@ const AboutPage = () => {
   const heroStats = [
     { value: '8+', label: 'Years' },
     { value: '10+', label: 'Ventures Built' },
-    { value: '450+', label: 'Team Members Led' },
+    { value: '490+', label: 'Team Members Led' },
   ];
   const socialLinks = [
     { icon: Linkedin, label: 'LinkedIn', meta: '/in/themeetpatel', href: 'https://www.linkedin.com/in/themeetpatel/' },
     { icon: Twitter, label: 'X', meta: '@the_meetpatel', href: 'https://x.com/the_meetpatel' },
     { icon: Github, label: 'GitHub', meta: 'themeetpatell', href: 'https://github.com/themeetpatell' },
-    { icon: Instagram, label: 'Instagram', meta: '@the.meetpatell', href: 'http://instagram.com/the.meetpatell/' },
+    { icon: Instagram, label: 'Instagram', meta: '@the.meetpatell', href: 'https://instagram.com/the.meetpatell/' },
     { icon: BookOpen, label: 'Medium', meta: '@themeetpatel', href: 'https://medium.com/@themeetpatel' },
   ];
 
@@ -317,7 +317,7 @@ const AboutPage = () => {
                 >
                   <span style={{ width: '8px', height: '8px', borderRadius: '999px', background: T.gold, display: 'inline-block' }} />
                   <span style={{ fontSize: '0.8125rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: T.gold }}>
-                    Available for consulting
+                    Founder, Company 8
                   </span>
                 </div>
                 <div className="inline-flex items-center gap-2" style={{ color: T.muted, fontSize: '0.95rem' }}>
@@ -338,7 +338,7 @@ const AboutPage = () => {
                   <span style={{ display: 'block', color: T.violet }}>PATEL.</span>
                 </h1>
                 <p style={{ fontSize: 'clamp(1.15rem, 2vw, 1.45rem)', color: T.sub, marginTop: '22px', maxWidth: '620px', lineHeight: 1.55 }}>
-                  Venture Builder. The Startup Guy. Business Strategist.
+                  Founder of Company 8, building Dan — the AI that lets any operator ask their business anything and get answers that lead to action. Years turning operating scars into products.
                 </p>
               </motion.div>
 
