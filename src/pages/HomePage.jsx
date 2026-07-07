@@ -172,7 +172,7 @@ const HomePage = () => {
       { label: "LinkedIn", href: "https://www.linkedin.com/in/themeetpatel/", icon: Linkedin },
       { label: "Twitter", href: "https://x.com/the_meetpatel", icon: Twitter },
       { label: "GitHub", href: "https://github.com/themeetpatell", icon: Github },
-      { label: "Instagram", href: "http://instagram.com/the.meetpatell/", icon: Instagram },
+      { label: "Instagram", href: "https://instagram.com/the.meetpatell/", icon: Instagram },
       { label: "YouTube", href: "https://youtube.com/@themeetpatel", icon: Youtube },
       { label: "Medium", href: "https://medium.com/@themeetpatel", icon: Medium },
       { label: "Calendly", href: "https://calendly.com/themeetpatell/quick-connect", icon: Calendly }
@@ -329,7 +329,7 @@ const HomePage = () => {
     },
     {
       q: 'How can I contact Meet Patel?',
-      a: 'You can reach Meet Patel through themeetpatel.com or by email at the.meetpatell@gmail.com, and connect on LinkedIn at linkedin.com/in/themeetpatel. He works with founders on building, operating, and scaling startups.',
+      a: 'You can reach Meet Patel through themeetpatel.com or by email at meet@company8.dev, and connect on LinkedIn at linkedin.com/in/themeetpatel. He works with founders on building, operating, and scaling startups.',
     },
   ];
 
@@ -742,7 +742,7 @@ const HomePage = () => {
               <div className="relative z-10">
                 <img
                   src={meetPatelImage}
-                  alt="The Meet Patel - A Startup Guy & System Builder"
+                  alt="Meet Patel — Founder of Company 8, building Dan"
                   className="w-full h-96 object-cover rounded-3xl shadow-2xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-3xl"></div>
@@ -1068,7 +1068,7 @@ const HomePage = () => {
                       </motion.a>
                     ) : (
                       <motion.a
-                        href={`mailto:the.meetpatell@gmail.com?subject=${encodeURIComponent(`Early access: ${book.title}`)}`}
+                        href={`mailto:meet@company8.dev?subject=${encodeURIComponent(`Early access: ${book.title}`)}`}
                         whileHover={{ scale: 1.02, y: -2 }}
                         whileTap={{ scale: 0.98 }}
                         className="group relative block w-full text-center bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-600 text-white py-4 px-6 rounded-xl font-bold text-sm hover:from-purple-600 hover:via-indigo-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-500/30 overflow-hidden"

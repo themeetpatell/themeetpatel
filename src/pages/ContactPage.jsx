@@ -69,7 +69,7 @@ const SOCIALS = [
   { icon: Linkedin,  href: 'https://www.linkedin.com/in/themeetpatel/', label: 'LinkedIn' },
   { icon: Twitter,   href: 'https://x.com/the_meetpatel',              label: 'Twitter/X' },
   { icon: Github,    href: 'https://github.com/themeetpatell',          label: 'GitHub' },
-  { icon: Instagram, href: 'http://instagram.com/the.meetpatell/',      label: 'Instagram' },
+  { icon: Instagram, href: 'https://instagram.com/the.meetpatell/',      label: 'Instagram' },
   { icon: Youtube,   href: 'https://youtube.com/@themeetpatel',         label: 'YouTube' },
 ];
 
@@ -451,12 +451,12 @@ export default function ContactPage() {
                 <InfoCard icon={Mail} iconColor={C.violet} iconBg={C.violetBg} title="Send an Email">
                   <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 4 }}>
                     <a
-                      href="mailto:the.meetpatell@gmail.com"
+                      href="mailto:meet@company8.dev"
                       style={{ color: C.textPrimary, textDecoration: 'none', fontSize: 15, fontWeight: 500, wordBreak: 'break-all' }}
                     >
-                      the.meetpatell@gmail.com
+                      meet@company8.dev
                     </a>
-                    <CopyButton text="the.meetpatell@gmail.com" itemKey="email" copiedItem={copiedItem} onCopy={handleCopy} />
+                    <CopyButton text="meet@company8.dev" itemKey="email" copiedItem={copiedItem} onCopy={handleCopy} />
                   </div>
                   <div style={{ fontSize: 12, color: C.textMuted, marginTop: 4 }}>Typically responds within 24 hours</div>
                 </InfoCard>

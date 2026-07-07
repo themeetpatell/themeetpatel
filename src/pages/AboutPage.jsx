@@ -268,7 +268,7 @@ const AboutPage = () => {
     { icon: Linkedin, label: 'LinkedIn', meta: '/in/themeetpatel', href: 'https://www.linkedin.com/in/themeetpatel/' },
     { icon: Twitter, label: 'X', meta: '@the_meetpatel', href: 'https://x.com/the_meetpatel' },
     { icon: Github, label: 'GitHub', meta: 'themeetpatell', href: 'https://github.com/themeetpatell' },
-    { icon: Instagram, label: 'Instagram', meta: '@the.meetpatell', href: 'http://instagram.com/the.meetpatell/' },
+    { icon: Instagram, label: 'Instagram', meta: '@the.meetpatell', href: 'https://instagram.com/the.meetpatell/' },
     { icon: BookOpen, label: 'Medium', meta: '@themeetpatel', href: 'https://medium.com/@themeetpatel' },
   ];
 

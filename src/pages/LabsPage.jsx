@@ -11,6 +11,7 @@ const LabsPage = () => (
       title="Labs — Open-source experiments by Meet Patel"
       description="Open-source tools and experiments from Meet Patel, including Instant Kill Mode for Claude Code."
       canonical="/labs"
+      robotsNoindex={true}
     />
     <div style={{ paddingTop: 96 }}>
       <InstantKillModeSection />
