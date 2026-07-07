@@ -429,7 +429,7 @@ export default function ContactPage() {
                   display:      'block',
                 }} />
               </span>
-              Building Company8&nbsp;&middot;&nbsp;Dubai, UAE
+              Building Company 8&nbsp;&middot;&nbsp;Dubai, UAE
             </motion.div>
           </div>
         </section>

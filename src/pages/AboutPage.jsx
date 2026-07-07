@@ -317,7 +317,7 @@ const AboutPage = () => {
                 >
                   <span style={{ width: '8px', height: '8px', borderRadius: '999px', background: T.gold, display: 'inline-block' }} />
                   <span style={{ fontSize: '0.8125rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: T.gold }}>
-                    Founder, Company8
+                    Founder, Company 8
                   </span>
                 </div>
                 <div className="inline-flex items-center gap-2" style={{ color: T.muted, fontSize: '0.95rem' }}>
