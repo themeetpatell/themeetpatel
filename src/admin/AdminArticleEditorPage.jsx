@@ -51,7 +51,7 @@ const DEFAULT_FORM = {
   schema_type:        'BlogPosting',
   secondary_keywords: [],
   twitter_card:       'summary_large_image',
-  twitter_creator:    '@themeetpatel',
+  twitter_creator:    '@the_meetpatel',
   robots_noindex:     false,
   robots_nofollow:    false,
   faq_items:          [],

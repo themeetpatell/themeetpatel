@@ -21,6 +21,7 @@ import HomePage from './pages/HomePage';
 import HomePageV2 from './pages/HomePageV2';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import InvestorsPage from './pages/InvestorsPage';
 import PortfolioPage from './pages/PortfolioPage';
 import BiggMatePage from './pages/BiggMatePage';
 // import BiggDatePage from './pages/BiggDatePage'; // hidden — route disabled below
@@ -28,6 +29,7 @@ import BlogPage from './pages/BlogPage';
 import BlogArticlePage from './pages/BlogArticlePage';
 import CommunityPage from './pages/CommunityPage';
 import MindPage from './pages/MindPage';
+import LabsPage from './pages/LabsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import CookiePolicyPage from './pages/CookiePolicyPage';
@@ -50,7 +52,15 @@ function PageTracker() {
   return null;
 }
 
+// Consumer-grade widgets (newsletter popup, personal WhatsApp bar) read "creator"
+// not "founder" to an investor, so we suppress them on the fundraising surfaces
+// (homepage + investor page). They remain live on audience-building pages.
+const FUNDRAISING_SURFACES = new Set(['/', '/investors']);
+
 function PublicLayout({ children }) {
+  const location = useLocation();
+  const isFundraisingSurface = FUNDRAISING_SURFACES.has(location.pathname);
+
   return (
     <div
       className="App ultra-gradient-bg min-h-screen"
@@ -64,8 +74,8 @@ function PublicLayout({ children }) {
       {children}
       <UltraFooter />
       <SEOPerformance />
-      <SubstackSubscriptionModal />
-      <StickyWhatsApp />
+      {!isFundraisingSurface && <SubstackSubscriptionModal />}
+      {!isFundraisingSurface && <StickyWhatsApp />}
       <LaunchProductHuntCard />
     </div>
   );
@@ -102,11 +112,13 @@ function App() {
           <Route path="/v2" element={<PublicLayout><HomePageV2 /></PublicLayout>} />
           <Route path="/about" element={<PublicLayout><AboutPage /></PublicLayout>} />
           <Route path="/contact" element={<PublicLayout><ContactPage /></PublicLayout>} />
+          <Route path="/investors" element={<PublicLayout><InvestorsPage /></PublicLayout>} />
           <Route path="/portfolio" element={<PublicLayout><PortfolioPage /></PublicLayout>} />
           <Route path="/biggmate" element={<PublicLayout><BiggMatePage /></PublicLayout>} />
           {/* <Route path="/biggdate" element={<PublicLayout><BiggDatePage /></PublicLayout>} /> */}  {/* hidden — BiggDatePage.jsx kept on disk */}
           <Route path="/community" element={<PublicLayout><CommunityPage /></PublicLayout>} />
           <Route path="/mind" element={<PublicLayout><MindPage /></PublicLayout>} />
+          <Route path="/labs" element={<PublicLayout><LabsPage /></PublicLayout>} />
           <Route path="/blogs" element={<PublicLayout><BlogPage /></PublicLayout>} />
           <Route path="/blogs/:slug" element={<PublicLayout><BlogArticlePage /></PublicLayout>} />
           <Route path="/privacy-policy" element={<PublicLayout><PrivacyPolicyPage /></PublicLayout>} />

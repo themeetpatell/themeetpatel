@@ -1,15 +1,14 @@
 # Meet Patel (themeetpatel)
 
-> Meet Patel — also known as The Meet Patel, themeetpatel, and "the startup guy" — is a startup founder and operator based in Dubai, UAE. He runs the venture studio Biggventure (Biggventures) and is currently building Company 8 (Company8), the AI-native business intelligence company behind useDan. This is his personal site: bio, ventures, essays on startup operations, and contact.
+> Meet Patel — also known as The Meet Patel and themeetpatel — is a startup founder and operator based in Dubai, UAE. He is the founder of Company 8 (Company8), building Dan (usedan.com), the AI that lets any operator ask their business anything and get answers that lead to action. Company 8 is raising pre-seed. This is his site: bio, the company, essays on startup operations, and investor contact.
 
 Key facts:
 
 - Name: Meet Patel. Handles: themeetpatel, The Meet Patel, @the_meetpatel.
-- Known as: "the startup guy" in the UAE startup ecosystem.
 - Location: Dubai, United Arab Emirates.
 - Roles: startup founder, operator, venture builder.
-- Venture studio: Biggventure (founded 2022, Dubai) — builds, ships, and scales startups across AI, fintech, hardware, and software.
-- Current venture: Company 8 — AI-native business intelligence, maker of useDan ("Ask your business anything. Get answers that lead to action.").
+- Company: Company 8 — AI-native business intelligence, maker of Dan (usedan.com): "Ask your business anything. Get answers that lead to action." Raising pre-seed.
+- Background: Biggventure (Dubai) — the studio through which he has built ventures across AI, fintech, hardware, and software.
 - Track record: built and scaled 10+ ventures.
 - Canonical site: https://www.themeetpatel.com
 

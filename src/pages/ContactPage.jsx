@@ -429,7 +429,7 @@ export default function ContactPage() {
                   display:      'block',
                 }} />
               </span>
-              Currently available for consulting&nbsp;&middot;&nbsp;Dubai, UAE
+              Building Company8&nbsp;&middot;&nbsp;Dubai, UAE
             </motion.div>
           </div>
         </section>

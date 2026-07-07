@@ -33,7 +33,7 @@ import startupEcosystemImage from '../assets/startup-ecosystem.jpg';
 
 const ventures = [
   { name: 'Company 8',    tag: 'AI',         year: '2025', status: 'Live',      metric: 'AI-native business intelligence',   blurb: 'Ask your business anything and get answers that lead to action.' },
-  { name: 'Biggventure', tag: 'Studio',     year: '2024', status: 'Building',  metric: '7 ventures in motion',               blurb: 'Venture-building house turning operators into outcomes.' },
+  { name: 'Biggventure', tag: 'Studio',     year: '2022', status: 'Building',  metric: '10+ ventures built',                 blurb: 'Venture-building house turning operators into outcomes.' },
   { name: 'BiggMate',    tag: 'Network',    year: '2025', status: 'Building',  metric: 'Co-founder matching, intent-first', blurb: 'Find the right partner before the wrong one costs a year.' },
   { name: 'StartupOS',   tag: 'Community',  year: '2022', status: 'Live',      metric: '500+ founders in residence',         blurb: 'The systems that don’t break under pressure — taught, lived, repeated.' },
   { name: 'ZeroHuman',   tag: 'AI',         year: '2024', status: 'Live',      metric: 'AI-native creative pipelines',       blurb: 'AI-native media for modelling and creator industries.' },
@@ -389,7 +389,7 @@ const Hero = () => {
             </span>
             <span className="text-rose-300">REC</span>
             <span className="text-white/30">·</span>
-            <span className="truncate">Operating · One slot open</span>
+            <span className="truncate">Building Dan · Company 8</span>
           </div>
           <div className="flex items-center gap-3 sm:gap-6 shrink-0">
             <span>DXB {clock}</span>
@@ -422,9 +422,9 @@ const Hero = () => {
         <div className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-end">
           <Reveal delay={1.1} className="md:col-span-7">
             <p className="text-base sm:text-lg md:text-xl leading-relaxed text-white/70 max-w-2xl font-light">
-              Eight years inside startup engine rooms. Ten ventures shipped. Teams of 450+ run remote.
-              I design <span className="text-white font-semibold">the systems behind the systems</span> —
-              the unglamorous infrastructure that turns founder velocity into a compounding advantage.
+              Years inside startup engine rooms. 10+ ventures shipped. 490+ people led across teams.
+              Now all-in on <span className="text-white font-semibold">Company 8</span>, building Dan —
+              the AI that lets any operator ask their business anything and get answers that lead to action.
             </p>
           </Reveal>
           <Reveal delay={1.25} className="md:col-span-5">
@@ -460,7 +460,7 @@ const Hero = () => {
               {[
                 { kicker: '8+ yrs',    label: 'Operating in startup engine rooms' },
                 { kicker: '10+',       label: 'Ventures shipped or scaled' },
-                { kicker: '450+',      label: 'People led across remote teams' },
+                { kicker: '490+',      label: 'People led across ventures' },
                 { kicker: 'Dubai → ∞', label: 'MENA-rooted, globally networked' },
               ].map((m) => (
                 <div key={m.label} className="flex flex-col gap-1">
@@ -1275,18 +1275,18 @@ const FinalCTA = () => {
         </h2>
         <Reveal delay={0.2}>
           <p className="mt-10 text-lg md:text-xl text-white/65 max-w-2xl mx-auto leading-relaxed font-light">
-            If you&rsquo;ve read this far, something probably resonated. I&rsquo;ll take one new project
-            this quarter. Tell me what&rsquo;s breaking.
+            If you&rsquo;ve read this far, something probably resonated. I&rsquo;m building Dan at Company 8,
+            and raising pre-seed. If you back operator-founders early, let&rsquo;s talk.
           </p>
         </Reveal>
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Magnetic strength={0.3}>
             <Link
-              to="/contact"
+              to="/investors"
               data-cursor="hover"
               className="group inline-flex items-center gap-3 rounded-full bg-white text-black px-8 py-5 font-black hover:bg-[#cfc4ff] transition-colors text-lg"
             >
-              Talk to me
+              For investors
               <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
             </Link>
           </Magnetic>

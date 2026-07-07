@@ -39,12 +39,12 @@ const PROJECTS = [
   {
     id: 5,
     title: 'Company 8',
-    description: 'AI-native business intelligence platform. Ask useDan anything about your business and get answers that lead to action.',
+    description: 'AI-native business intelligence platform. Ask Dan anything about your business and get answers that lead to action.',
     category: 'ai',
     status: 'Live',
     featured: true,
     liveUrl: 'https://usedan.com',
-    tags: ['AI-Native BI', 'Analytics', 'useDan', 'Product Hunt'],
+    tags: ['AI-Native BI', 'Analytics', 'Dan', 'Product Hunt'],
     metrics: {},
   },
   {
@@ -123,7 +123,7 @@ const PROJECTS = [
     featured: false,
     liveUrl: 'https://torchit.in',
     tags: ['Hardware', 'AssistiveTech', 'IoT', 'Social Impact'],
-    metrics: { 'Units': '100K', 'Growth': '167.8%', 'CSR Projects Done': '17+' },
+    metrics: { 'Units': '100K', 'Growth': '1,678%', 'CSR Projects Done': '17+' },
   },
   {
     id: 10,

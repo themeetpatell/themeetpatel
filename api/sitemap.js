@@ -10,12 +10,13 @@ const SITE = 'https://www.themeetpatel.com';
 // intentionally excluded (submitting noindex URLs triggers Search Console warnings).
 const STATIC_ROUTES = [
   { path: '/', changefreq: 'daily', priority: '1.0' },
-  { path: '/about', changefreq: 'weekly', priority: '0.95' },
-  { path: '/portfolio', changefreq: 'weekly', priority: '0.95' },
-  { path: '/biggmate', changefreq: 'weekly', priority: '0.9' },
+  { path: '/investors', changefreq: 'weekly', priority: '0.95' },
+  { path: '/about', changefreq: 'weekly', priority: '0.9' },
+  { path: '/portfolio', changefreq: 'weekly', priority: '0.85' },
+  { path: '/biggmate', changefreq: 'weekly', priority: '0.8' },
   { path: '/blogs', changefreq: 'daily', priority: '0.9' },
-  { path: '/community', changefreq: 'weekly', priority: '0.8' },
-  { path: '/mind', changefreq: 'monthly', priority: '0.6' },
+  { path: '/community', changefreq: 'weekly', priority: '0.7' },
+  { path: '/mind', changefreq: 'monthly', priority: '0.5' },
   { path: '/contact', changefreq: 'monthly', priority: '0.75' },
 ];
 

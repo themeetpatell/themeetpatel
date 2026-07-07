@@ -33,9 +33,9 @@ const SEOHead = ({
   const fullCanonical  = resolveUrl(canonicalValue);
   const fullOgImage    = resolveUrl(ogImage, `${baseUrl}/og-image.jpg`);
 
-  const defaultTitle       = 'Meet Patel — I help founders build, operate, and scale startups';
-  const defaultDescription = "Hey, I'm Meet — a Dubai-based operator who has built across AI, fintech, hardware, and software. If you're a founder figuring it out, I'd love to help.";
-  const defaultKeywords    = 'The Meet Patel, Meet Patel, themeetpatel, venture builder, startup operator, business strategist, startup consultant Dubai, entrepreneur Dubai, startup builder, startup growth, startup systems, business operations, startup mentor, founder advisor, author Meet Patel, startup portfolio, business strategy, operational excellence, team building, startup execution';
+  const defaultTitle       = 'Meet Patel — Founder of Company 8, building Dan';
+  const defaultDescription = 'Meet Patel is a Dubai-based founder building Dan — the AI that lets any operator ask their business anything and get answers that lead to action. All-in on Company 8.';
+  const defaultKeywords    = 'Meet Patel, themeetpatel, Company 8, Dan, useDan, AI business intelligence, founder Dubai, AI operator';
 
   const seoTitle       = title
     ? (/the meet patel|meet patel/i.test(title) ? title : `${title} | The Meet Patel`)

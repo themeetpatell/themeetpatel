@@ -7,6 +7,9 @@ import {
 import logoImage from '../assets/logo for themeetpatel.png';
 import { trackButtonClick, trackSocialClick, trackFormSubmission } from '../utils/analytics';
 import { submitNewsletterFormData } from '../services/formService';
+import { INVESTOR } from '../data/company8';
+
+const COPYRIGHT_YEAR = new Date().getFullYear();
 
 const UltraFooter = () => {
   const [email, setEmail] = useState('');
@@ -33,21 +36,20 @@ const UltraFooter = () => {
   };
 
   const ventures = [
-    { name: 'Company 8', href: 'https://usedan.com', external: true },
+    { name: 'Dan — by Company 8', href: 'https://usedan.com', external: true },
     { name: 'BiggMate', href: 'https://www.biggmate.com', external: true },
-    { name: 'BiggBizz', href: 'https://www.biggbizz.com', external: true },
     { name: 'ZeroHuman', href: 'https://www.zerohuman.co', external: true },
     { name: 'MealVerse', href: 'https://www.mealverse.in', external: true },
   ];
 
   const writing = [
-    { name: 'The Eternal Love', href: '/The Eternal Love by The Meet Patel.pdf', external: false },
-    { name: 'The Endless Devotion', href: '#', external: false },
     { name: 'Blog Articles', href: '/blogs', external: false },
     { name: 'LinkedIn Newsletter', href: 'https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7323218198735015937', external: true },
+    { name: 'The Eternal Love (fiction)', href: '/The Eternal Love by The Meet Patel.pdf', external: false },
   ];
 
   const navLinks = [
+    { name: 'For investors', href: '/investors' },
     { name: 'About', href: '/about' },
     { name: 'Portfolio', href: '/portfolio' },
     { name: 'Community', href: '/community' },
@@ -59,7 +61,7 @@ const UltraFooter = () => {
     { icon: Linkedin, href: 'https://www.linkedin.com/in/themeetpatel/', label: 'LinkedIn' },
     { icon: Twitter, href: 'https://x.com/the_meetpatel', label: 'Twitter' },
     { icon: Github, href: 'https://github.com/themeetpatell', label: 'GitHub' },
-    { icon: Instagram, href: 'http://instagram.com/the.meetpatell/', label: 'Instagram' },
+    { icon: Instagram, href: 'https://instagram.com/the.meetpatell/', label: 'Instagram' },
     { icon: Youtube, href: 'https://youtube.com/@themeetpatel', label: 'YouTube' },
   ];
 
@@ -89,7 +91,7 @@ const UltraFooter = () => {
             </Link>
 
             <p style={{ color: '#5a5a6e', fontSize: '0.875rem', lineHeight: 1.75, maxWidth: '280px' }}>
-              Serial entrepreneur, author, and mentor. Building ventures that matter — from Dubai to the world.
+              Founder of Company 8, building Dan — the AI that lets any operator ask their business anything and get answers that lead to action. Operating from Dubai.
             </p>
 
             {/* Contact details */}
@@ -97,11 +99,11 @@ const UltraFooter = () => {
               <div className="flex items-center gap-2.5">
                 <Mail className="w-3.5 h-3.5 flex-shrink-0" style={{ color: '#8b5cf6' }} />
                 <a
-                  href="mailto:the.meetpatell@gmail.com"
+                  href={`mailto:${INVESTOR.email}`}
                   style={{ ...muted, transition: 'color 0.2s' }}
                   onMouseEnter={e => e.target.style.color = '#f5f5f7'}
                   onMouseLeave={e => e.target.style.color = '#5a5a6e'}
-                >the.meetpatell@gmail.com</a>
+                >{INVESTOR.email}</a>
               </div>
               <div className="flex items-center gap-2.5">
                 <MapPin className="w-3.5 h-3.5 flex-shrink-0" style={{ color: '#8b5cf6' }} />
@@ -132,7 +134,7 @@ const UltraFooter = () => {
 
           {/* Ventures */}
           <div>
-            <span style={colHead}>Ventures</span>
+            <span style={colHead}>Building</span>
             <ul className="space-y-2.5">
               {ventures.map((l) => (
                 <li key={l.name}>
@@ -248,7 +250,7 @@ const UltraFooter = () => {
       <div style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <span style={{ color: '#3a3a4e', fontSize: '0.8125rem' }}>
-            © 2025 The Meet Patel. All rights reserved.
+            © {COPYRIGHT_YEAR} Meet Patel · Company 8. All rights reserved.
           </span>
           <div className="flex items-center gap-5">
             {[
