@@ -19,6 +19,9 @@ export const BRAND = {
   founder: 'Meet Patel',
   founderHandle: 'themeetpatel',
   location: 'Dubai, UAE',
+  // Inferred from Dan's positioning (AI-native BI, "answers that lead to action",
+  // built for operators). Adjust if the real ICP is narrower.
+  targetUser: 'founders and operators of growing businesses',
 };
 
 /** The narrative spine — pre-seed = founder + insight + early signal. */
@@ -69,11 +72,10 @@ export const PRODUCT = {
  */
 export const TRACTION = {
   status: 'live',                    // Dan is live (Product Hunt launched)
-  activeUsers: null,                 // NEEDS-CONFIRM: e.g. '120+ active users'
-  pilots: null,                      // NEEDS-CONFIRM: e.g. '5 design-partner pilots'
+  activeUsers: '26 early users on Dan',
+  pilots: null,                      // add design-partner pilots here when live
   productHunt: 'Launched on Product Hunt',
-  // NEEDS-CONFIRM: any honest retention/usage stat, e.g. 'Users return weekly'.
-  usageStat: null,
+  usageStat: null,                   // add an honest retention/usage stat when available
 };
 
 /** The raise. */

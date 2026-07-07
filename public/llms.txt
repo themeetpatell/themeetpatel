@@ -14,13 +14,15 @@ Key facts:
 
 ## Pages
 
-- [Home](https://www.themeetpatel.com/): Who Meet Patel is and what he builds
-- [About](https://www.themeetpatel.com/about): Full bio, journey, and operating philosophy
-- [Portfolio](https://www.themeetpatel.com/portfolio): Ventures Meet Patel has built and operated
+- [Home](https://www.themeetpatel.com/): Who Meet Patel is and what he builds — Company 8 / Dan
+- [Dan (product)](https://usedan.com): The AI that lets any operator ask their business anything and get answers that lead to action
+- [Investors](https://www.themeetpatel.com/investors): Company 8 is raising pre-seed — thesis, traction, and how to reach Meet Patel
+- [About](https://www.themeetpatel.com/about): Founder bio, journey, and operating background
 - [Blog](https://www.themeetpatel.com/blogs): Essays on startup operations, scaling, and venture building
+- [Portfolio](https://www.themeetpatel.com/portfolio): Prior ventures Meet Patel has built and operated
 - [Community](https://www.themeetpatel.com/community): Founder community run by Meet Patel
 - [BiggMate](https://www.themeetpatel.com/biggmate): Co-founder matching
-- [Contact](https://www.themeetpatel.com/contact): Work with Meet Patel
+- [Contact](https://www.themeetpatel.com/contact): Reach Meet Patel
 
 ## Machine-readable
 
@@ -37,5 +39,6 @@ Key facts:
 
 ## Contact
 
-- Email: the.meetpatell@gmail.com
+- Email: meet@company8.dev
+- Investors: https://www.themeetpatel.com/investors
 - Preferred: https://www.themeetpatel.com/contact
