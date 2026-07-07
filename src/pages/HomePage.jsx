@@ -19,7 +19,7 @@ import {
 } from '../lib/seoEntity';
 import FollowMyJourney from '../components/FollowMyJourney';
 import { submitContactFormData } from '../services/formService';
-import { BRAND, POSITIONING, STATS } from '../data/company8';
+import { BRAND, POSITIONING, PRODUCT, STATS } from '../data/company8';
 import meetPatelImage from '../assets/themeetpatel.jpeg';
 import meetPatelImage2 from '../assets/the meet patel.jpeg';
 
@@ -596,6 +596,65 @@ const HomePage = () => {
         </motion.div>
       </section>
 
+      {/* ── Dan (the product) ─────────────────────────────────────────── */}
+      <section id="dan" className="py-20 sm:py-28 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <span className="inline-block text-sm font-semibold tracking-wide text-[#c4b5fd] uppercase mb-4">
+              {PRODUCT.eyebrow}
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-bold text-[#f7f7fb] tracking-tight mb-5">
+              {PRODUCT.heading}
+            </h2>
+            <p className="text-lg text-[#a8a9c3] leading-relaxed">
+              {POSITIONING.oneLiner}
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
+            {PRODUCT.capabilities.map((cap, i) => (
+              <motion.div
+                key={cap.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="p-7 rounded-2xl bg-[#0d0e16]/80 border border-purple-500/15 hover:border-purple-500/35 transition-colors"
+              >
+                <div className="w-10 h-10 rounded-xl bg-purple-500/15 flex items-center justify-center mb-5">
+                  <Zap className="w-5 h-5 text-[#a78bfa]" />
+                </div>
+                <h3 className="text-lg font-bold text-[#f7f7fb] mb-2">{cap.title}</h3>
+                <p className="text-[#a8a9c3] leading-relaxed text-[15px]">{cap.body}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
+            <a
+              href="https://usedan.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#8b5cf6] hover:bg-[#7c3aed] text-white font-bold transition-colors"
+            >
+              See Dan live <ExternalLink className="w-4 h-4" />
+            </a>
+            <Link
+              to="/investors"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-purple-500/50 hover:border-purple-500 text-[#f7f7fb] font-bold transition-colors"
+            >
+              For investors <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* About Section */}
       <section className="py-12 sm:py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -611,7 +670,7 @@ const HomePage = () => {
                   About Meet Patel
                 </h2>
                 <p className="text-lg sm:text-xl text-[#cfd0e6] mb-4 sm:mb-6">
-                  I help founders build, scale, and stabilize
+                  The operator behind Dan — I lived the problem before I built it
                 </p>
                   </div>
               <p className="text-base sm:text-lg text-[#a8a9c3] leading-relaxed mb-4 sm:mb-6">

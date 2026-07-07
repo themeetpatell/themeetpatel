@@ -40,6 +40,30 @@ export const POSITIONING = {
 };
 
 /**
+ * What Dan does — kept at the confirmed positioning level (usedan.com blocks
+ * bots, so no invented features). Replace these three with the real product
+ * bullets/copy from usedan.com when ready — they render on the homepage.
+ */
+export const PRODUCT = {
+  eyebrow: 'Meet Dan',
+  heading: 'The AI operator for your business.',
+  capabilities: [
+    {
+      title: 'Ask in plain English',
+      body: 'No dashboards, no SQL, no waiting on an analyst. Ask Dan a question the way you would ask a colleague.',
+    },
+    {
+      title: 'Answers, not charts',
+      body: 'Dan tells you what is happening in the business and what to do about it — the action, not another graph to interpret.',
+    },
+    {
+      title: 'Built for operators',
+      body: 'For founders and operators who need the real state of the business now — not a report next quarter.',
+    },
+  ],
+};
+
+/**
  * Traction — you answered "active users / live pilots".
  * Fill the real numbers; keep them here only, so they never contradict again.
  */
