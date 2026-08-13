@@ -1,5 +1,6 @@
 # themeetpatel.com — robots policy
 # LLM-readable site guide: https://www.themeetpatel.com/llms.txt
+# LLM full text digest: https://www.themeetpatel.com/llms-full.txt
 
 User-agent: *
 Allow: /

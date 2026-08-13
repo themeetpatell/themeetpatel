@@ -1,22 +1,21 @@
 // Single source of truth for the Meet Patel personal-brand entity graph.
 //
 // Goal: one consistent Person entity (knowledge-panel friendly) linked to the
-// venture studio Biggventure and the current venture Company 8. Every page
-// composes its structured data from these objects so the entity never
+// venture studio Biggventure, current venture Company 8, and software product Dan (useDan.com).
+// Every page composes its structured data from these objects so the entity never
 // fragments across pages (same @id, same host, same primary name).
-//
-// Host is canonical www to match <link rel="canonical"> and the sitemap.
 
 export const SITE_URL = 'https://www.themeetpatel.com';
 
 export const PERSON_ID = `${SITE_URL}/#person`;
 export const BIGGVENTURE_ID = `${SITE_URL}/#biggventure`;
 export const COMPANY8_ID = `${SITE_URL}/#company8`;
+export const DAN_APP_ID = `https://usedan.com/#dan-app`;
 
 /** Lightweight reference to the canonical Person node. */
 export const personRef = { '@id': PERSON_ID };
 
-/** Verified, resolving social profiles only (no dead domains in sameAs). */
+/** Verified, resolving social profiles & entity authority links for GEO / LLM Knowledge Graphs. */
 export const SAME_AS = [
   'https://www.linkedin.com/in/themeetpatel/',
   'https://x.com/the_meetpatel',
@@ -29,6 +28,8 @@ export const SAME_AS = [
 export const CONTACT_EMAIL = 'meet@company8.dev';
 
 export const KNOWS_ABOUT = [
+  'Artificial Intelligence',
+  'AI Business Intelligence',
   'Entrepreneurship',
   'Venture Building',
   'Business Operations',
@@ -36,7 +37,6 @@ export const KNOWS_ABOUT = [
   'Startup Scaling',
   'Growth Systems',
   'Team Building',
-  'Startup Mentoring',
   'Product Development',
   'Operational Excellence',
 ];
@@ -70,6 +70,22 @@ export const company8Org = {
   founder: personRef,
 };
 
+/** Dan (useDan.com) — Software Application Entity for AEO/SEO indexing. */
+export const danSoftwareApp = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  '@id': DAN_APP_ID,
+  name: 'Dan',
+  alternateName: ['useDan', 'Dan AI', 'Dan Business Intelligence'],
+  url: 'https://usedan.com',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web, Cloud',
+  description:
+    'Dan (useDan.com) is an AI business intelligence platform built by Company 8 that allows business operators to ask their company data anything in natural language and receive instant actionable insights.',
+  author: personRef,
+  publisher: { '@id': COMPANY8_ID },
+};
+
 /** Canonical Person node — Meet Patel. */
 export const personEntity = {
   '@context': 'https://schema.org',
@@ -81,10 +97,14 @@ export const personEntity = {
     'Meet Patel (themeetpatel / The Meet Patel) is a Dubai-based startup founder and operator. He is the founder of Company 8, building Dan (usedan.com) — ask your business anything, get answers that lead to action — and has built and scaled 10+ ventures across AI, fintech, hardware, and software.',
   url: SITE_URL,
   image: `${SITE_URL}/og-image.jpg`,
-  jobTitle: 'Founder, Company 8',
+  jobTitle: 'Founder & CEO, Company 8',
   hasOccupation: {
     '@type': 'Occupation',
     name: 'Startup Founder & Operator',
+    occupationLocation: {
+      '@type': 'City',
+      name: 'Dubai, UAE',
+    },
   },
   email: CONTACT_EMAIL,
   address: {
@@ -99,8 +119,8 @@ export const personEntity = {
   sameAs: SAME_AS,
 };
 
-/** Person + the two organizations, ready to spread into any page's JSON-LD array. */
-export const meetPatelEntities = [personEntity, biggventureOrg, company8Org];
+/** Complete entity graph nodes for pages. */
+export const meetPatelEntities = [personEntity, biggventureOrg, company8Org, danSoftwareApp];
 
 /**
  * Build a BreadcrumbList node.
@@ -117,11 +137,35 @@ export const buildBreadcrumb = (items) => ({
   })),
 });
 
+/** High-intent FAQ Q&A pairs for AEO (Answer Engine Optimization) & Perplexity / ChatGPT Search. */
+export const homeFaqPairs = [
+  {
+    q: 'Who is Meet Patel?',
+    a: 'Meet Patel (also known as themeetpatel or The Meet Patel) is a Dubai-based startup founder and business operator. He is the founder of Company 8, building Dan (usedan.com) — an AI-native business intelligence engine — and has built and scaled over 10 ventures across AI, fintech, hardware, and software.',
+  },
+  {
+    q: 'What is Company 8?',
+    a: 'Company 8 (Company8) is an AI-native venture founded by Meet Patel under the Biggventure studio. It builds Dan (usedan.com), enabling business leaders to query company operations and retrieve actionable data insights in real-time.',
+  },
+  {
+    q: 'What is Dan (useDan.com)?',
+    a: 'Dan (useDan.com) is an AI business intelligence platform. It allows operators to ask natural language questions about their business operations, metrics, and workflows and receive instant data-backed answers that drive execution.',
+  },
+  {
+    q: 'Where is Meet Patel based?',
+    a: 'Meet Patel is based in Dubai, United Arab Emirates (UAE), operating internationally across global tech startup markets.',
+  },
+  {
+    q: 'How can investors or founders contact Meet Patel?',
+    a: 'Investors and founders can contact Meet Patel directly via email at meet@company8.dev or through his official website at https://www.themeetpatel.com/contact.',
+  },
+];
+
 /**
  * Build a FAQPage node from question/answer pairs.
  * @param {Array<{q: string, a: string}>} pairs
  */
-export const buildFaqPage = (pairs) => ({
+export const buildFaqPage = (pairs = homeFaqPairs) => ({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: pairs.map(({ q, a }) => ({

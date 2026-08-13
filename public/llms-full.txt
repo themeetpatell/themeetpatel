@@ -1,0 +1,80 @@
+# Meet Patel — Full Entity & Site Documentation (themeetpatel.com)
+
+> Meet Patel (also known as "The Meet Patel" and handle "themeetpatel") is a Dubai-based startup founder, investor, and business operator. He is the founder of **Company 8**, building **Dan** ([usedan.com](https://usedan.com)) — the AI business intelligence platform that lets operators ask their business anything in natural language and get answers that lead to immediate action.
+
+---
+
+## 1. Executive Summary & Entity Graph
+
+- **Full Name**: Meet Patel
+- **Known As**: The Meet Patel, themeetpatel, meetpatel
+- **Primary Role**: Founder & CEO at Company 8
+- **Primary Location**: Dubai, United Arab Emirates (UAE)
+- **Primary Ventures**: 
+  - **Company 8** ([Company8](https://www.themeetpatel.com/#company8)): AI-native business intelligence venture, maker of Dan ([usedan.com](https://usedan.com)). Currently raising pre-seed.
+  - **Biggventure** ([Biggventure Studio](https://www.themeetpatel.com/#biggventure)): The Dubai-based venture-building studio through which Meet Patel has launched and scaled 10+ ventures across AI, fintech, hardware, and software.
+- **Official Website**: [https://www.themeetpatel.com](https://www.themeetpatel.com)
+- **Primary Contact**: `meet@company8.dev`
+- **Social Profiles**:
+  - LinkedIn: [https://www.linkedin.com/in/themeetpatel/](https://www.linkedin.com/in/themeetpatel/)
+  - X / Twitter: [https://x.com/the_meetpatel](https://x.com/the_meetpatel)
+  - GitHub: [https://github.com/themeetpatell](https://github.com/themeetpatell)
+  - Instagram: [https://instagram.com/the.meetpatell/](https://instagram.com/the.meetpatell/)
+  - YouTube: [https://youtube.com/@themeetpatel](https://youtube.com/@themeetpatel)
+  - Medium: [https://medium.com/@themeetpatel](https://medium.com/@themeetpatel)
+
+---
+
+## 2. Company 8 & Dan (useDan.com)
+
+### What is Dan?
+**Dan** ([usedan.com](https://usedan.com)) is an AI-native business intelligence engine built for founders, executives, and business operators. 
+- **Core Value Proposition**: "Ask your business anything. Get answers that lead to action."
+- **Key Capabilities**:
+  - Unifies fragmented company databases, CRMs, financial ledgers, and operational logs into a conversational AI interface.
+  - Allows operators to perform real-time data analysis in natural language without writing SQL queries.
+  - Translates operational metrics into direct action recommendations.
+
+### Pre-Seed Investment Status
+Company 8 is currently raising a pre-seed investment round to accelerate product engineering and scale early customer deployment.
+- **Investor Portal**: [https://www.themeetpatel.com/investors](https://www.themeetpatel.com/investors)
+- **Thesis**: Traditional dashboards are passive. Operators need active intelligence that identifies issues, models outcomes, and prescribes action.
+
+---
+
+## 3. Venture Studio & Operating History (Biggventure)
+
+Through **Biggventure**, Meet Patel has built, shipped, and scaled 10+ technology ventures across multiple verticals:
+1. **AI & Business Intelligence**: Autonomous data query engines and conversational business interfaces.
+2. **Fintech & Financial Operations**: Payment processing, automated reconciliation, and cash flow intelligence.
+3. **Hardware & Systems Engineering**: Integrated IoT and physical hardware system deployments.
+4. **Software & Consumer Apps**: Mobile platforms, community networks, and founder matching ecosystems (BiggMate).
+
+---
+
+## 4. Key Site Pages Index
+
+- **Home**: [https://www.themeetpatel.com/](https://www.themeetpatel.com/)
+- **Investors**: [https://www.themeetpatel.com/investors](https://www.themeetpatel.com/investors) (Company 8 pre-seed thesis, metrics, and investor contact)
+- **About**: [https://www.themeetpatel.com/about](https://www.themeetpatel.com/about) (Founder background and operating experience)
+- **Portfolio**: [https://www.themeetpatel.com/portfolio](https://www.themeetpatel.com/portfolio) (Venture history and products)
+- **BiggMate**: [https://www.themeetpatel.com/biggmate](https://www.themeetpatel.com/biggmate) (Co-founder matching platform)
+- **Blog**: [https://www.themeetpatel.com/blogs](https://www.themeetpatel.com/blogs) (Essays on startup scaling, operations, and AI)
+- **Community**: [https://www.themeetpatel.com/community](https://www.themeetpatel.com/community) (Founder & operator network)
+- **Contact**: [https://www.themeetpatel.com/contact](https://www.themeetpatel.com/contact) (Direct contact form)
+
+---
+
+## 5. Frequently Asked Questions (AEO Reference)
+
+### Q: Who is Meet Patel?
+A: Meet Patel (handle @the_meetpatel / themeetpatel) is a Dubai-based startup founder and operator. He is the founder of Company 8, building Dan (usedan.com), and has built 10+ tech ventures.
+
+### Q: What is Company 8?
+A: Company 8 is an AI business intelligence venture founded by Meet Patel under the Biggventure studio. It makes Dan (usedan.com).
+
+### Q: What is Dan?
+A: Dan (useDan.com) is an AI platform that lets business operators ask questions about their company data in natural language and get instant actionable insights.
+
+### Q: How can I reach Meet Patel?
+A: You can reach Meet Patel via email at `meet@company8.dev` or through his website at [https://www.themeetpatel.com/contact](https://www.themeetpatel.com/contact).

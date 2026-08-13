@@ -4,7 +4,8 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { blogArticles } from './src/data/blogData.js';
-import { systems } from './src/data/systems.js';
+
+const systems = [];
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,6 +16,7 @@ const currentDate = new Date().toISOString().split('T')[0];
 const staticPages = [
   { url: '/', priority: '1.0', changefreq: 'daily' },
   { url: '/about', priority: '0.95', changefreq: 'weekly' },
+  { url: '/investors', priority: '0.95', changefreq: 'weekly' },
   { url: '/portfolio', priority: '0.95', changefreq: 'weekly' },
   { url: '/biggmate', priority: '0.9', changefreq: 'weekly' },
   { url: '/systems', priority: '0.85', changefreq: 'weekly' },

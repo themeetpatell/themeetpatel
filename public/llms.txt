@@ -26,6 +26,7 @@ Key facts:
 
 ## Machine-readable
 
+- [Full LLM Digest](https://www.themeetpatel.com/llms-full.txt): Complete Markdown documentation, founder bio, venture overview, and FAQ
 - [Sitemap](https://www.themeetpatel.com/sitemap.xml): All indexable URLs, including every published article
 
 ## Profiles
