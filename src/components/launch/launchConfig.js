@@ -4,14 +4,14 @@
 
 export const LAUNCH = {
   enabled: true,
-  id: 'usedan-ph-2026-07', // dismissal is scoped to this id
+  id: 'usedan-ph-live-now', // dismissal is scoped to this id
 
   product: 'Dan',
   company: 'Company 8',
   // Verbatim Product Hunt tagline.
   tagline: 'Ask your business anything. Get answers that lead to action.',
   // Short eyebrow shown in the top bar.
-  eyebrow: 'Now on Product Hunt',
+  eyebrow: '🔥 Live on Product Hunt',
 
   productHuntUrl:
     'https://www.producthunt.com/products/usedan-by-company8?utm_source=themeetpatel&utm_medium=launch_banner',

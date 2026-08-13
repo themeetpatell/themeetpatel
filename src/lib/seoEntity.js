@@ -23,6 +23,7 @@ export const SAME_AS = [
   'https://instagram.com/the.meetpatell/',
   'https://youtube.com/@themeetpatel',
   'https://medium.com/@themeetpatel',
+  'https://www.producthunt.com/products/usedan-by-company8',
 ];
 
 export const CONTACT_EMAIL = 'meet@company8.dev';
