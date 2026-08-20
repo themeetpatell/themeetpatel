@@ -61,13 +61,20 @@ export default async function handler(req, res) {
   try {
     const { data, error } = await supabase
       .from('articles')
-      .select('slug, published_at, last_updated_at, updated_at, date')
+      .select('slug, published_at, last_updated_at, updated_at, date, canonical_url')
       .eq('status', 'published')
       .order('published_at', { ascending: false, nullsFirst: false });
     if (error) throw error;
 
+    // A syndicated post canonicalises to another domain. Listing it here would ask
+    // Google to index a URL we have already told it not to index.
+    const isSyndicated = (a) =>
+      a.canonical_url &&
+      /^https?:\/\//i.test(a.canonical_url) &&
+      !a.canonical_url.startsWith(SITE);
+
     articleEntries = (data || [])
-      .filter((a) => a.slug)
+      .filter((a) => a.slug && !isSyndicated(a))
       .map((a) => ({
         loc: `${SITE}/blogs/${a.slug}`,
         lastmod: toDate(a.last_updated_at || a.updated_at || a.published_at || a.date, today),

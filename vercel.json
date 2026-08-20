@@ -46,7 +46,7 @@
           "value": ".*([bB][oO][tT]|[cC]rawl|[sS]pider|GPT|OAI|[cC]laude|[aA]nthropic|[pP]erplexity|[mM]istral|[cC]ohere|meta-external|facebookexternalhit|WhatsApp|[gG]oogle|[bB]ing|[yY]andex|[aA]pplebot|[aA]mazonbot|[dD]uckAssist|YouBot|CCBot|Bytespider|[sS]lackbot|Twitterbot|LinkedInBot|Discordbot|TelegramBot).*"
         }
       ],
-      "destination": "/api/page?path=/"
+      "destination": "/api/og?path=/"
     },
     {
       "source": "/:route(about|investors|portfolio|blogs|biggmate|community|mind|contact)",
@@ -57,7 +57,7 @@
           "value": ".*([bB][oO][tT]|[cC]rawl|[sS]pider|GPT|OAI|[cC]laude|[aA]nthropic|[pP]erplexity|[mM]istral|[cC]ohere|meta-external|facebookexternalhit|WhatsApp|[gG]oogle|[bB]ing|[yY]andex|[aA]pplebot|[aA]mazonbot|[dD]uckAssist|YouBot|CCBot|Bytespider|[sS]lackbot|Twitterbot|LinkedInBot|Discordbot|TelegramBot).*"
         }
       ],
-      "destination": "/api/page?path=/:route"
+      "destination": "/api/og?path=/:route"
     },
     {
       "source": "/((?!api/).*)",

@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   try {
     const { data, error } = await supabase
       .from('articles')
-      .select('id, title, slug, excerpt, content, content_html, category, author, date, published_at, read_time, featured, tags, views, meta_title, meta_description, og_title, og_description, og_image, canonical_url, twitter_card, twitter_creator')
+      .select('id, title, slug, excerpt, content, content_html, category, author, date, published_at, updated_at, read_time, featured, tags, views, meta_title, meta_description, og_title, og_description, og_image, canonical_url, twitter_card, twitter_creator, focus_keyword, secondary_keywords, schema_type, ai_summary, speakable, faq_items, howto_steps, citations, key_stats, related_entities, robots_noindex, robots_nofollow')
       .eq('slug', slug)
       .eq('status', 'published')
       .single();

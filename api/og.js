@@ -1,10 +1,17 @@
 import { supabase } from './_supabase.js';
 import { SITE_LINKS, PROFILE_LINKS } from './_pageContent.js';
 import { meetPatelEntities, buildBreadcrumb } from '../src/lib/seoEntity.js';
+import { renderPage } from './_renderPage.js';
 
-// Bot-facing article page: full content + entity-linked JSON-LD.
-// Real browsers are redirected to the SPA; crawlers and AI agents (which do
-// not execute JS) get the complete article HTML so answer engines can quote it.
+// Bot-facing renderer. Real browsers are redirected to the SPA; crawlers and AI
+// agents (which do not execute JS) get complete HTML so answer engines can quote it.
+//
+// One handler serves two shapes, dispatched on the query string:
+//   ?slug=<article-slug>  -> the article page (below)
+//   ?path=/<route>        -> a static route, via ./_renderPage.js
+// They share a function because Vercel's plan caps this project at 12
+// Serverless Functions and it was already at exactly 12; a second file failed
+// the deployment at the output stage.
 
 const BASE = 'https://www.themeetpatel.com';
 const PERSON_ID = `${BASE}/#person`;
@@ -22,7 +29,12 @@ function esc(str) {
 }
 
 export default async function handler(req, res) {
-  const { slug } = req.query;
+  const { slug, path } = req.query;
+
+  // Static-route request — hand off to the page renderer.
+  if (path) {
+    return renderPage(req, res);
+  }
 
   if (!slug || !SLUG_PATTERN.test(String(slug))) {
     res.writeHead(302, { Location: `${BASE}/blogs` });

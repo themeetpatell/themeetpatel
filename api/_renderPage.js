@@ -2,7 +2,11 @@ import { supabase } from './_supabase.js';
 import { PAGES, SITE, SITE_LINKS, PROFILE_LINKS } from './_pageContent.js';
 import { meetPatelEntities, buildBreadcrumb, buildFaqPage } from '../src/lib/seoEntity.js';
 
-// Bot-facing page renderer for every non-article route.
+// Bot-facing renderer for every non-article route.
+//
+// Exported as a function rather than being its own api/ handler: Vercel's plan
+// caps this project at 12 Serverless Functions and it was already at exactly 12,
+// so adding a file here failed the deployment. api/og.js dispatches to this.
 //
 // The site is a client-rendered SPA. Googlebot renders JS on a second pass, but
 // GPTBot, ClaudeBot, PerplexityBot, Applebot-Extended and most other AI crawlers
@@ -72,7 +76,7 @@ async function fetchArticleLinks(limit = 60) {
   }
 }
 
-export default async function handler(req, res) {
+export async function renderPage(req, res) {
   const path = resolvePath(req.query?.path);
 
   if (!path) {
