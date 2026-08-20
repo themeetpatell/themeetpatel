@@ -19,6 +19,54 @@ export const DAN_APP_ID = `https://usedan.com/#dan-app`;
 export const personRef = { '@id': PERSON_ID };
 
 /**
+ * Hosts that are this site. Both apex and www forms are listed, and the .in
+ * domain serves the same app, so a canonical_url pointing at any of them is
+ * self-canonical — NOT syndication.
+ */
+export const OWNED_HOSTS = new Set([
+  'themeetpatel.com',
+  'www.themeetpatel.com',
+  'themeetpatel.in',
+  'www.themeetpatel.in',
+]);
+
+/**
+ * Resolve a CMS `canonical_url` into the URL to actually emit, and say whether
+ * it points off-site.
+ *
+ * This exists because a naive `canonical.startsWith(SITE_URL)` check is wrong:
+ * every article in the CMS is self-canonical to the NON-www host
+ * (https://themeetpatel.com/blogs/...), so a prefix test classifies all of them
+ * as syndicated. That silently dropped 35 of 37 articles from the sitemap and
+ * pointed each article's canonical at a URL that only 308-redirects.
+ *
+ * @param {string|null|undefined} value - raw canonical_url from the CMS
+ * @param {string} fallbackUrl - absolute URL to use when there is no usable value
+ * @returns {{ url: string, isSyndicated: boolean }}
+ */
+export const resolveCanonical = (value, fallbackUrl) => {
+  const raw = typeof value === 'string' ? value.trim() : '';
+  if (!raw) return { url: fallbackUrl, isSyndicated: false };
+
+  if (raw.startsWith('/')) return { url: `${SITE_URL}${raw}`, isSyndicated: false };
+
+  let parsed;
+  try {
+    parsed = new URL(raw);
+  } catch {
+    return { url: fallbackUrl, isSyndicated: false };
+  }
+
+  if (OWNED_HOSTS.has(parsed.hostname.toLowerCase())) {
+    // Same site — normalise onto the canonical host so the canonical never
+    // points at a URL that just redirects.
+    return { url: `${SITE_URL}${parsed.pathname}${parsed.search}`, isSyndicated: false };
+  }
+
+  return { url: raw, isSyndicated: true };
+};
+
+/**
  * Verified, resolving profiles & entity-authority links for GEO / LLM knowledge graphs.
  *
  * `sameAs` is an identity claim, not an agreement claim — listing a profile tells

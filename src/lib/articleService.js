@@ -57,6 +57,9 @@ export const getCategories = async () => {
     'Writing & Books': 'FileText',
     'Leadership': 'Crown',
     'Strategy': 'BookOpen',
+    'Relationships': 'Handshake',
+    'Product-Led Management': 'Zap',
+    'Data & Analytics': 'BarChart3',
   };
   return Object.entries(map).map(([name, count]) => ({
     name, count, icon: iconMap[name] || 'BookOpen',

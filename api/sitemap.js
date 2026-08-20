@@ -1,4 +1,5 @@
 import { supabase } from './_supabase.js';
+import { resolveCanonical } from '../src/lib/seoEntity.js';
 
 // Dynamic sitemap: static public routes + every published article from the DB,
 // so the blog surface can never silently drift from what's actually live.
@@ -66,12 +67,14 @@ export default async function handler(req, res) {
       .order('published_at', { ascending: false, nullsFirst: false });
     if (error) throw error;
 
-    // A syndicated post canonicalises to another domain. Listing it here would ask
-    // Google to index a URL we have already told it not to index.
+    // A genuinely syndicated post canonicalises to another domain; listing it
+    // would ask Google to index a URL we've told it not to index.
+    //
+    // The host check must be host-aware, not a string prefix: every article in
+    // the CMS is self-canonical to the non-www host, so `startsWith(SITE)`
+    // classified 35 of 37 articles as syndicated and dropped them.
     const isSyndicated = (a) =>
-      a.canonical_url &&
-      /^https?:\/\//i.test(a.canonical_url) &&
-      !a.canonical_url.startsWith(SITE);
+      resolveCanonical(a.canonical_url, `${SITE}/blogs/${a.slug}`).isSyndicated;
 
     articleEntries = (data || [])
       .filter((a) => a.slug && !isSyndicated(a))

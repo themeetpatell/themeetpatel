@@ -1,6 +1,6 @@
 import { supabase } from './_supabase.js';
 import { SITE_LINKS, PROFILE_LINKS } from './_pageContent.js';
-import { meetPatelEntities, buildBreadcrumb } from '../src/lib/seoEntity.js';
+import { meetPatelEntities, buildBreadcrumb, resolveCanonical } from '../src/lib/seoEntity.js';
 import { renderPage } from './_renderPage.js';
 
 // Bot-facing renderer. Real browsers are redirected to the SPA; crawlers and AI
@@ -91,10 +91,11 @@ export default async function handler(req, res) {
   // Bots are rewritten here by vercel.json, so this page — not the React app — is
   // what search engines read. A syndicated post carries an off-site canonical_url
   // pointing at the original; without honouring it here the two copies compete.
-  const canonicalUrl =
-    article?.canonical_url && /^https?:\/\//i.test(article.canonical_url)
-      ? article.canonical_url
-      : articleUrl;
+  //
+  // The check is host-aware rather than "is it absolute?": every article in the
+  // CMS is self-canonical to the non-www host, so treating any absolute URL as
+  // authoritative emitted a canonical that only 308-redirects to the real one.
+  const { url: canonicalUrl } = resolveCanonical(article?.canonical_url, articleUrl);
 
   const title = esc(rawTitle);
   const description = esc(rawDescription);
