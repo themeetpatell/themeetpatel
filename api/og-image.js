@@ -1,5 +1,4 @@
 import { ImageResponse } from '@vercel/og';
-import { supabase } from './_supabase.js';
 
 // Per-article Open Graph image.
 //
@@ -7,14 +6,22 @@ import { supabase } from './_supabase.js';
 // essays produced an identical card in search, social, and AI answer surfaces.
 // This renders the article's own title and category instead.
 //
-// Rendered with the platform's Satori runtime — no headless browser, no fonts
-// to ship: `fontFamily` falls back to the runtime's default sans stack.
+// Deliberately has NO database dependency: every caller (api/og.js and
+// BlogArticlePage) already holds the article record, so it passes the title in.
+// Importing @supabase/supabase-js alongside @vercel/og pushed the Edge bundle
+// past its size limit and failed the deployment outright — and the DB round-trip
+// bought nothing, since this endpoint is only ever called with data in hand.
 
 export const config = { runtime: 'edge' };
 
-const SLUG_PATTERN = /^[a-z0-9][a-z0-9-]{0,199}$/i;
 const WIDTH = 1200;
 const HEIGHT = 630;
+
+// Cap untrusted query input. This endpoint renders whatever title it is given,
+// so the length limit is what stops it being used as an image generator for
+// arbitrary text on this domain.
+const MAX_TITLE = 140;
+const MAX_LABEL = 40;
 
 // Matches the site's dark-luxury palette (see src/index.css).
 const COLORS = {
@@ -35,124 +42,78 @@ const titleSize = (title) => {
   return 42;
 };
 
-const fallbackTitle = (slug) =>
-  String(slug)
-    .split('-')
-    .map((word) => (word ? word[0].toUpperCase() + word.slice(1) : word))
-    .join(' ');
+const clean = (value, max) =>
+  String(value || '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, max);
 
-export default async function handler(req) {
+const titleFromSlug = (slug) =>
+  clean(
+    String(slug || '')
+      .split('-')
+      .map((word) => (word ? word[0].toUpperCase() + word.slice(1) : word))
+      .join(' '),
+    MAX_TITLE
+  );
+
+const box = (style, children) => ({ type: 'div', props: { style, children } });
+
+export default function handler(req) {
   try {
     const { searchParams } = new URL(req.url);
-    const slug = searchParams.get('slug');
 
-    if (!slug || !SLUG_PATTERN.test(slug)) {
-      return new Response('Invalid slug', { status: 400 });
+    const title = clean(searchParams.get('title'), MAX_TITLE) || titleFromSlug(searchParams.get('slug'));
+    if (!title) {
+      return new Response('Missing title or slug', { status: 400 });
     }
 
-    let article = null;
-    try {
-      const { data, error } = await supabase
-        .from('articles')
-        .select('title, category, read_time')
-        .eq('slug', slug)
-        .eq('status', 'published')
-        .limit(1)
-        .maybeSingle();
-      if (error) throw error;
-      article = data ?? null;
-    } catch (err) {
-      // A missing row should still produce a usable card, not a broken image.
-      console.error('og-image: article fetch failed, using slug fallback:', err);
-    }
-
-    const title = article?.title || fallbackTitle(slug);
-    const category = article?.category || 'Essay';
-    const readTime = article?.read_time ? ` · ${article.read_time}` : '';
+    const category = clean(searchParams.get('category'), MAX_LABEL) || 'Essay';
+    const readTime = clean(searchParams.get('readTime'), MAX_LABEL);
+    const eyebrow = readTime ? `${category} · ${readTime}` : category;
 
     return new ImageResponse(
-      {
-        type: 'div',
-        props: {
-          style: {
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            background: `linear-gradient(150deg, ${COLORS.bg} 0%, ${COLORS.surface} 55%, ${COLORS.bg} 100%)`,
-            padding: '72px 80px',
-            fontFamily: 'sans-serif',
-          },
-          children: [
-            {
-              type: 'div',
-              props: {
-                style: {
-                  display: 'flex',
-                  fontSize: 26,
-                  fontWeight: 700,
-                  letterSpacing: 2,
-                  textTransform: 'uppercase',
-                  color: COLORS.violetLight,
-                },
-                children: `${category}${readTime}`,
-              },
-            },
-            {
-              type: 'div',
-              props: {
-                style: {
-                  display: 'flex',
-                  fontSize: titleSize(title),
-                  fontWeight: 800,
-                  lineHeight: 1.15,
-                  color: COLORS.heading,
-                  maxWidth: 1040,
-                },
-                children: title,
-              },
-            },
-            {
-              type: 'div',
-              props: {
-                style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between' },
-                children: [
-                  {
-                    type: 'div',
-                    props: {
-                      style: { display: 'flex', fontSize: 30, fontWeight: 700, color: COLORS.heading },
-                      children: 'Meet Patel',
-                    },
-                  },
-                  {
-                    type: 'div',
-                    props: {
-                      style: { display: 'flex', fontSize: 26, color: COLORS.body },
-                      children: 'themeetpatel.com',
-                    },
-                  },
-                ],
-              },
-            },
-            {
-              type: 'div',
-              props: {
-                style: {
-                  display: 'flex',
-                  position: 'absolute',
-                  bottom: 0,
-                  left: 0,
-                  width: WIDTH,
-                  height: 8,
-                  background: COLORS.violet,
-                },
-                children: [],
-              },
-            },
-          ],
+      box(
+        {
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          background: `linear-gradient(150deg, ${COLORS.bg} 0%, ${COLORS.surface} 55%, ${COLORS.bg} 100%)`,
+          padding: '72px 80px',
+          borderBottom: `8px solid ${COLORS.violet}`,
+          fontFamily: 'sans-serif',
         },
-      },
+        [
+          box(
+            {
+              display: 'flex',
+              fontSize: 26,
+              fontWeight: 700,
+              letterSpacing: 2,
+              textTransform: 'uppercase',
+              color: COLORS.violetLight,
+            },
+            eyebrow
+          ),
+          box(
+            {
+              display: 'flex',
+              fontSize: titleSize(title),
+              fontWeight: 800,
+              lineHeight: 1.15,
+              color: COLORS.heading,
+              maxWidth: 1040,
+            },
+            title
+          ),
+          box({ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }, [
+            box({ display: 'flex', fontSize: 30, fontWeight: 700, color: COLORS.heading }, 'Meet Patel'),
+            box({ display: 'flex', fontSize: 26, color: COLORS.body }, 'themeetpatel.com'),
+          ]),
+        ]
+      ),
       {
         width: WIDTH,
         height: HEIGHT,

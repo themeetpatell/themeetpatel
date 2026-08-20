@@ -36,7 +36,7 @@ export default async function handler(req, res) {
     const { data, error } = await supabase
       .from('articles')
       .select(
-        'title, excerpt, slug, author, date, published_at, last_updated_at, updated_at, category, tags, secondary_keywords, read_time, content_html, og_image, meta_title, meta_description, og_title, og_description, twitter_card, twitter_creator, schema_type, ai_summary, faq_items, howto_steps, citations, speakable'
+        'title, excerpt, slug, author, date, published_at, last_updated_at, updated_at, category, tags, secondary_keywords, read_time, content_html, og_image, meta_title, meta_description, og_title, og_description, canonical_url, twitter_card, twitter_creator, schema_type, ai_summary, faq_items, howto_steps, citations, speakable'
       )
       .eq('slug', slug)
       .eq('status', 'published')
@@ -65,11 +65,24 @@ export default async function handler(req, res) {
   // Prefer an explicitly uploaded image; otherwise generate a per-article card.
   // The old fallback was a single shared /og-image.jpg, which gave 35 different
   // essays an identical card everywhere they were shared or cited.
-  const rawImage = article?.og_image || `${BASE}/api/og-image?slug=${encodeURIComponent(slug)}`;
+  const generatedCard = `${BASE}/api/og-image?${new URLSearchParams({
+    slug,
+    title: rawTitle,
+    ...(article?.category ? { category: article.category } : {}),
+    ...(article?.read_time ? { readTime: article.read_time } : {}),
+  })}`;
+  const rawImage = article?.og_image || generatedCard;
   const rawAuthor = article?.author || 'Meet Patel';
   const publishedTime = article?.published_at || article?.date || '';
   const modifiedTime = article?.last_updated_at || article?.updated_at || publishedTime;
   const rawKeywords = [...(article?.tags || []), article?.category].filter(Boolean).join(', ');
+  // Bots are rewritten here by vercel.json, so this page — not the React app — is
+  // what search engines read. A syndicated post carries an off-site canonical_url
+  // pointing at the original; without honouring it here the two copies compete.
+  const canonicalUrl =
+    article?.canonical_url && /^https?:\/\//i.test(article.canonical_url)
+      ? article.canonical_url
+      : articleUrl;
 
   const title = esc(rawTitle);
   const description = esc(rawDescription);
@@ -107,9 +120,9 @@ export default async function handler(req, res) {
   const articleLd = {
     '@context': 'https://schema.org',
     '@type': schemaType,
-    '@id': `${articleUrl}#article`,
-    mainEntityOfPage: articleUrl,
-    url: articleUrl,
+    '@id': `${canonicalUrl}#article`,
+    mainEntityOfPage: canonicalUrl,
+    url: canonicalUrl,
     headline: rawTitle.slice(0, 110),
     description: rawDescription,
     image: rawImage,
@@ -221,7 +234,7 @@ export default async function handler(req, res) {
   <meta name="description" content="${description}" />
   <meta name="author" content="${author}" />
   ${keywords ? `<meta name="keywords" content="${keywords}" />` : ''}
-  <link rel="canonical" href="${articleUrl}" />
+  <link rel="canonical" href="${esc(canonicalUrl)}" />
 
   <!-- Open Graph (LinkedIn, Facebook, WhatsApp) -->
   <meta property="og:type" content="article" />

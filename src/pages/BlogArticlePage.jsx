@@ -191,8 +191,13 @@ const BlogArticlePage = () => {
   const schemaType = article.schema_type || 'BlogPosting';
   // Falls back to the generated per-article card (api/og-image.js) rather than
   // the one shared /og-image.jpg, so every essay has a distinct image.
-  const rawArticleImage =
-    article.og_image || `${SITE_URL}/api/og-image?slug=${encodeURIComponent(article.slug)}`;
+  const generatedCard = `${SITE_URL}/api/og-image?${new URLSearchParams({
+    slug: article.slug,
+    title: article.title || '',
+    ...(article.category ? { category: article.category } : {}),
+    ...(article.read_time ? { readTime: article.read_time } : {}),
+  })}`;
+  const rawArticleImage = article.og_image || generatedCard;
   const articleImageUrl = rawArticleImage.startsWith('http') ? rawArticleImage : `${SITE_URL}${rawArticleImage}`;
   const structuredData = {
     '@context': 'https://schema.org',
