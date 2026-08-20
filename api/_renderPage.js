@@ -128,6 +128,26 @@ export async function renderPage(req, res) {
     },
     buildBreadcrumb(page.breadcrumb || [{ name: 'Home', url: '/' }]),
     ...(page.faq?.length ? [buildFaqPage(page.faq)] : []),
+    ...(page.definedTerms?.length
+      ? [
+          {
+            '@context': 'https://schema.org',
+            '@type': 'DefinedTermSet',
+            '@id': `${canonical}#vocabulary`,
+            name: 'AI-native company operations — a working vocabulary',
+            description:
+              'Terms Meet Patel uses to describe how AI changes the way companies are operated and decisions are made.',
+            author: { '@id': `${SITE}/#person` },
+            hasDefinedTerm: page.definedTerms.map((term) => ({
+              '@type': 'DefinedTerm',
+              '@id': `${canonical}#${term.term.toLowerCase().replace(/\s+/g, '-')}`,
+              name: term.term,
+              description: term.definition,
+              inDefinedTermSet: { '@id': `${canonical}#vocabulary` },
+            })),
+          },
+        ]
+      : []),
   ];
 
   const html = `<!DOCTYPE html>

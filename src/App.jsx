@@ -29,6 +29,7 @@ import BlogPage from './pages/BlogPage';
 import BlogArticlePage from './pages/BlogArticlePage';
 import CommunityPage from './pages/CommunityPage';
 import LabsPage from './pages/LabsPage';
+import ThesisPage from './pages/ThesisPage';
 
 // /mind renders an interactive force-directed graph (react-force-graph + d3).
 // It's a single minor route, so it is lazy-loaded rather than taxing every
@@ -135,6 +136,7 @@ function App() {
           <Route path="/" element={<PublicLayout><HomePage /></PublicLayout>} />
           <Route path="/v2" element={<PublicLayout><HomePageV2 /></PublicLayout>} />
           <Route path="/about" element={<PublicLayout><AboutPage /></PublicLayout>} />
+          <Route path="/thesis" element={<PublicLayout><ThesisPage /></PublicLayout>} />
           <Route path="/contact" element={<PublicLayout><ContactPage /></PublicLayout>} />
           <Route path="/investors" element={<PublicLayout><InvestorsPage /></PublicLayout>} />
           <Route path="/portfolio" element={<PublicLayout><PortfolioPage /></PublicLayout>} />

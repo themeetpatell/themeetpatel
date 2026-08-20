@@ -14,11 +14,37 @@ Key facts:
 - Background: built and scaled 10+ ventures across AI, fintech, hardware, edtech, and software; served as Chief of Staff and interim COO inside a fintech.
 - Canonical site: https://www.themeetpatel.com
 
+## The thesis
+
+> The scarce resource inside a modern company is not data. It's organizational attention.
+
+Companies have built systems for storing information, systems for visualising it, and now systems for querying it. What they still have not built is a system responsible for noticing what deserves management attention. That layer is what becomes interesting over the next decade.
+
+Territory: How AI changes the way companies are operated, decisions are made, and management systems are designed.
+
+### Pillars
+
+- **The Autonomous Company** (40%) — How companies themselves change: management layers, agents as coworkers, human approval, organizational design, and what a smaller AI-native operating model actually looks like.
+- **Decision Intelligence** (40%) — Why businesses still make bad decisions despite having more dashboards, more data and more AI than ever — and what has to exist between information and action.
+- **Founder Economics & AI-Native Building** (20%) — What AI does to the economics of building: capital requirements, small-team leverage, pricing, and why the next generation of software companies will look strange against traditional benchmarks.
+
+### Working vocabulary (coined / defined by Meet Patel)
+
+- **Organizational attention** — The finite capacity of a company to notice, prioritise and act on what is actually happening inside it. Unlike data, it does not scale by adding storage — and most tools consume it rather than protect it.
+- **Decision debt** — The accumulated cost of decisions a company deferred because the information required to make them was expensive to assemble. It compounds quietly, and is usually repaid during a crisis.
+- **Management latency** — The elapsed time between something changing in a business and the person able to act on it knowing about it. Most companies measure system uptime to the second and management latency not at all.
+- **Decision infrastructure** — The systems, ownership and thresholds that determine how a company moves from information to a decision. Dashboards are reporting infrastructure; they are not this.
+- **Machine coworkers** — Software agents that hold responsibilities rather than execute tasks — which turns them into a management problem (scope, approval, escalation, review) long before it is a technology problem.
+- **Evidence layer** — The missing tier between raw company data and a recommendation: what is true, how confident we are, and what it implies. Without it, an AI answer is a confident sentence with no accountability behind it.
+
+Full statement: https://www.themeetpatel.com/thesis
+
 ## Pages
 
 - [Home](https://www.themeetpatel.com/): Who Meet Patel is and what he builds — Company 8 / Dan
 - [Dan (product)](https://usedan.com): The AI that lets any operator ask their business anything and get answers that lead to action
 - [Investors](https://www.themeetpatel.com/investors): Company 8 is raising pre-seed — thesis, traction, and how to reach Meet Patel
+- [Thesis](https://www.themeetpatel.com/thesis): How AI changes the way companies are operated — the argument underneath Company 8
 - [About](https://www.themeetpatel.com/about): Founder bio, journey, and operating background
 - [Blog](https://www.themeetpatel.com/blogs): Essays on startup operations, scaling, and venture building
 - [Portfolio](https://www.themeetpatel.com/portfolio): Prior ventures Meet Patel has built and operated

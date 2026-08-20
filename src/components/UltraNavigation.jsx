@@ -27,6 +27,7 @@ const UltraNavigation = () => {
   const navigationItems = [
     { title: 'Home',    href: '/' },
     { title: 'Dan',     href: 'https://usedan.com', external: true },
+    { title: 'Thesis',  href: '/thesis' },
     { title: 'Founder', href: '/about' },
     { title: 'Writing', href: '/blogs' },
   ];

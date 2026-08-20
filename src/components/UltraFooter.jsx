@@ -50,6 +50,7 @@ const UltraFooter = () => {
 
   const navLinks = [
     { name: 'For investors', href: '/investors' },
+    { name: 'Thesis', href: '/thesis' },
     { name: 'About', href: '/about' },
     { name: 'Portfolio', href: '/portfolio' },
     { name: 'Community', href: '/community' },

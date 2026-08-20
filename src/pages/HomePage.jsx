@@ -20,6 +20,7 @@ import {
 import FollowMyJourney from '../components/FollowMyJourney';
 import { submitContactFormData } from '../services/formService';
 import { BRAND, POSITIONING, PRODUCT, STATS } from '../data/company8';
+import { CATEGORY } from '../data/thesis';
 import meetPatelImage from '../assets/themeetpatel.jpeg';
 import meetPatelImage2 from '../assets/the meet patel.jpeg';
 
@@ -312,6 +313,10 @@ const HomePage = () => {
       a: 'Meet Patel (also known as The Meet Patel or themeetpatel) is a Dubai-based startup founder and operator. He is the founder of Company 8, building Dan — the AI that lets any operator ask their business anything and get answers that lead to action. Over 8+ years he has built and scaled 10+ ventures across AI, fintech, hardware, and software, and led teams of 490+ people across his ventures.',
     },
     {
+      q: 'What does Meet Patel believe about AI and companies?',
+      a: `${CATEGORY.thesis} ${CATEGORY.elaboration} The full argument is at themeetpatel.com/thesis.`,
+    },
+    {
       q: 'Which Meet Patel is this?',
       a: 'The Meet Patel who founded Company 8 and builds Dan (usedan.com) in Dubai, UAE — handle themeetpatel / @the_meetpatel. Not to be confused with other people named Meet Patel.',
     },
@@ -345,7 +350,7 @@ const HomePage = () => {
     {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
-      name: 'Meet Patel — Startup Founder & Operator in Dubai',
+      name: 'Meet Patel — Founder of Company 8, building Dan',
       description:
         'Meet Patel is a Dubai-based startup founder and operator. He is the founder of Company 8, building Dan.',
       url: SITE_URL,
@@ -368,7 +373,7 @@ const HomePage = () => {
   return (
     <div className="min-h-screen ultra-gradient-bg">
       <SEOHead 
-        title="Meet Patel — Startup Founder & Operator in Dubai"
+        title="Meet Patel — Founder of Company 8, building Dan"
         description="Meet Patel (themeetpatel) is a Dubai-based founder building Dan — the AI that lets any operator ask their business anything and get answers that lead to action. All-in on Company 8, after building 10+ ventures across AI, fintech, and software."
         keywords="Meet Patel, The Meet Patel, themeetpatel, meet patel dubai, Company 8, Company8, Dan, useDan, AI business intelligence, startup founder, startup operator, Dubai entrepreneur"
         canonical="/"
@@ -656,6 +661,36 @@ const HomePage = () => {
               For investors <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Thesis Section
+          Sits between Dan and the bio: after a visitor knows what the product is,
+          before they read who built it. Answers "why is this the obvious thing to
+          build" — the question the homepage previously left open.
+          Copy is read from src/data/thesis.js (shared with /thesis and /about). */}
+      <section className="py-16 sm:py-24 relative" aria-labelledby="thesis-heading">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-xs font-bold uppercase tracking-[0.14em]" style={{ color: '#c4b5fd' }}>
+            The thesis
+          </div>
+          <h2
+            id="thesis-heading"
+            className="mt-4 font-extrabold tracking-tight"
+            style={{ fontSize: 'clamp(1.6rem, 3.6vw, 2.5rem)', color: '#f7f7fb', lineHeight: 1.18 }}
+          >
+            {CATEGORY.thesis}
+          </h2>
+          <p className="mt-5" style={{ fontSize: 17, lineHeight: 1.7, color: '#cfd0e6' }}>
+            {CATEGORY.elaboration}
+          </p>
+          <Link
+            to="/thesis"
+            className="inline-block mt-7 font-semibold"
+            style={{ color: '#8b5cf6', fontSize: 15.5 }}
+          >
+            Read the full thesis &rarr;
+          </Link>
         </div>
       </section>
 
