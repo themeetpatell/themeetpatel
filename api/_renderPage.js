@@ -160,8 +160,17 @@ export async function renderPage(req, res) {
 
   <script type="application/ld+json">${JSON.stringify(graph)}</script>
 
-  <!-- Real browsers get the SPA; bots don't execute this. -->
-  <script>window.location.replace(${JSON.stringify(canonical)});</script>
+  <!-- Real browsers get the SPA; bots don't execute this. Guarded against a
+       bounce loop for any human middleware.js misclassifies as a bot. -->
+  <script>
+    (function () {
+      try {
+        if (sessionStorage.getItem('spa-bounce')) return;
+        sessionStorage.setItem('spa-bounce', '1');
+      } catch (e) { /* private mode — the ?__spa flag still breaks the loop */ }
+      window.location.replace(${JSON.stringify(canonical)} + '?__spa=1');
+    })();
+  </script>
 </head>
 <body>
   <main>

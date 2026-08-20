@@ -277,8 +277,19 @@ export default async function handler(req, res) {
 
   <script type="application/ld+json">${JSON.stringify(graph)}</script>
 
-  <!-- Redirect real browsers to the SPA (bots don't execute JS) -->
-  <script>window.location.replace(${JSON.stringify(articleUrl)});</script>
+  <!-- Redirect real browsers to the SPA (bots don't execute JS).
+       Guarded: middleware.js routes this page by user agent, so a misclassified
+       human would bounce here, back to the same URL, and loop forever. The
+       ?__spa flag tells middleware to let the request through. -->
+  <script>
+    (function () {
+      try {
+        if (sessionStorage.getItem('spa-bounce')) return;
+        sessionStorage.setItem('spa-bounce', '1');
+      } catch (e) { /* private mode — the ?__spa flag still breaks the loop */ }
+      window.location.replace(${JSON.stringify(articleUrl)} + '?__spa=1');
+    })();
+  </script>
 </head>
 <body>
   <nav><a href="${BASE}/">Home</a> › <a href="${BASE}/blogs">Writing</a> › <span>${title}</span></nav>
