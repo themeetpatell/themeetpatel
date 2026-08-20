@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Lock, Mail, Eye, EyeOff, LogIn } from 'lucide-react';
+import { capture, identifyUser } from '../lib/posthog';
 
 const C = {
   bg:           '#09090e',
@@ -37,8 +38,11 @@ export default function AdminLoginPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Login failed');
       localStorage.setItem('admin_token', data.token);
+      identifyUser(email, { email, is_admin: true });
+      capture('admin_signed_in', { email });
       navigate('/admin');
     } catch (err) {
+      capture('admin_sign_in_failed', { error_message: err.message });
       setError(err.message);
     } finally {
       setLoading(false);

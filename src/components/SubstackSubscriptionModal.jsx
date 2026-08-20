@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { X, Sparkles, Mail } from 'lucide-react';
 import { submitNewsletterFormData } from '../services/formService';
+import { capture, captureError, identifyUser } from '../lib/posthog';
+
+const NEWSLETTER_SOURCE = 'substack_modal';
 
 const SubstackSubscriptionModal = () => {
   const [open, setOpen] = useState(false);
@@ -15,6 +18,10 @@ const SubstackSubscriptionModal = () => {
     if (!hasSeenModal || lastSeenDate !== today) {
       const timer = setTimeout(() => {
         setOpen(true);
+        capture('newsletter_modal_shown', {
+          source: NEWSLETTER_SOURCE,
+          page_path: window.location.pathname,
+        });
       }, 5000);
 
       return () => clearTimeout(timer);
@@ -27,10 +34,15 @@ const SubstackSubscriptionModal = () => {
     };
   }, []);
 
-  const handleClose = () => {
+  const closeModal = () => {
     setOpen(false);
     localStorage.setItem('substackModalSeen', 'true');
     localStorage.setItem('substackModalDate', new Date().toDateString());
+  };
+
+  const handleClose = () => {
+    capture('newsletter_modal_dismissed', { source: NEWSLETTER_SOURCE });
+    closeModal();
   };
 
   const handleSubmit = async (e) => {
@@ -40,16 +52,27 @@ const SubstackSubscriptionModal = () => {
     try {
       const result = await submitNewsletterFormData({
         email,
-        source: 'substack_modal',
+        source: NEWSLETTER_SOURCE,
       });
 
       if (!result.success) {
         throw new Error(result.errors?.join(', ') || 'Subscription failed');
       }
 
-      handleClose();
+      identifyUser(email, { email });
+      capture('newsletter_subscribed', {
+        source: NEWSLETTER_SOURCE,
+        page_path: window.location.pathname,
+      });
+
+      closeModal();
       window.open('https://themeetpatell.substack.com/', '_blank');
     } catch (error) {
+      capture('newsletter_subscription_failed', {
+        source: NEWSLETTER_SOURCE,
+        error_message: error?.message || 'unknown',
+      });
+      captureError(error, { form: 'newsletter' });
       console.error('Subscription error:', error);
       alert('Subscription failed. Please try again.');
     } finally {

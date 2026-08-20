@@ -9,6 +9,7 @@ import {
 import SEOHead from '../components/SEOHead';
 import { personRef, buildBreadcrumb, buildFaqPage } from '../lib/seoEntity';
 import { submitCommunityFormData } from '../services/formService';
+import { capture, captureError, identifyUser } from '../lib/posthog';
 
 void motion;
 
@@ -86,12 +87,21 @@ export default function CommunityPage() {
         console.error('Community form email send failed:', result.errors);
       }
 
+      identifyUser(formData.email, { email: formData.email, role: formData.role });
+      capture('community_application_submitted', {
+        role: formData.role,
+        has_business_name: Boolean(formData.businessName),
+        email_delivered: Boolean(result.success),
+      });
+
       const message = `Hi Meet! I want to join the StartupOS WhatsApp community.\n\nHere are my details:\n• LinkedIn: ${formData.linkedinId}\n• Email: ${formData.email}\n• WhatsApp: ${formData.whatsapp}\n• Business: ${formData.businessName}\n• Role: ${formData.role}\n• Reason: ${formData.reason}\n\nPlease add me to the community!`;
       const encodedMessage = encodeURIComponent(message);
       window.open(`https://wa.me/919824341414?text=${encodedMessage}`, '_blank');
       setIsFormOpen(false);
       setFormData({ linkedinId: '', email: '', whatsapp: '', businessName: '', role: '', reason: '' });
-    } catch {
+    } catch (error) {
+      capture('community_application_failed', { error_message: error?.message || 'unknown' });
+      captureError(error, { form: 'community' });
       setSubmitError('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);

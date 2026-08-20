@@ -10,6 +10,7 @@ import { getArticleBySlug, getRelatedArticles, incrementViews } from '../lib/art
 import FollowMyJourney from '../components/FollowMyJourney';
 import SEOHead from '../components/SEOHead';
 import { SITE_URL, buildBreadcrumb } from '../lib/seoEntity';
+import { capture, captureError } from '../lib/posthog';
 
 const C = {
   bg:           '#09090e',
@@ -54,14 +55,28 @@ const BlogArticlePage = () => {
       .then(async found => {
         if (found) {
           setArticle(found);
+          // Top of the content funnel — the one "viewed" event worth capturing
+          // explicitly, because it carries the article's own dimensions.
+          capture('article_viewed', {
+            slug: found.slug,
+            title: found.title,
+            category: found.category,
+            author: found.author,
+            featured: Boolean(found.featured),
+          });
           incrementViews(found.id).then(() => {
             setArticle(prev => prev ? { ...prev, views: (prev.views || 0) + 1 } : prev);
           }).catch(() => {});
           const related = await getRelatedArticles(found);
           setRelatedArticles(related);
+        } else {
+          capture('article_not_found', { slug });
         }
       })
-      .catch(console.error)
+      .catch(error => {
+        captureError(error, { page: 'blog_article', slug });
+        console.error(error);
+      })
       .finally(() => setIsLoading(false));
   }, [slug]);
 
@@ -102,11 +117,13 @@ const BlogArticlePage = () => {
       facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
     };
     if (map[platform]) window.open(map[platform], '_blank', 'width=600,height=400');
+    capture('article_shared', { platform, slug: article?.slug || slug, title });
     setShowShareMenu(false);
   };
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(getCanonicalShareUrl());
+    capture('article_shared', { platform: 'copy_link', slug: article?.slug || slug, title: article?.title || '' });
     setCopiedLink(true);
     setTimeout(() => setCopiedLink(false), 2000);
     setShowShareMenu(false);

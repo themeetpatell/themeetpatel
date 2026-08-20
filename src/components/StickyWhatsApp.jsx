@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { capture } from '../lib/posthog';
 
 const WHATSAPP_NUMBER = '919824341414';
 const PREFILLED_MESSAGE =
@@ -43,6 +44,12 @@ const StickyWhatsApp = () => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with Meet on WhatsApp"
+        onClick={() =>
+          capture('whatsapp_cta_clicked', {
+            location: 'sticky_bar',
+            page_path: window.location.pathname,
+          })
+        }
         className="wa-cta pointer-events-auto group relative flex w-full max-w-[440px] items-center gap-3 overflow-hidden rounded-2xl border border-white/10 px-4 py-3 text-white backdrop-blur-xl sm:w-auto sm:max-w-none sm:gap-3 sm:rounded-full sm:px-3 sm:py-2.5 sm:pr-5"
         style={{
           background:

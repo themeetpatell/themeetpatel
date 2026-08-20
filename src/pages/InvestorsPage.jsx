@@ -4,6 +4,7 @@ import { ArrowUpRight, Calendar, Mail, FileText, Sparkles } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { BRAND, POSITIONING, TRACTION, RAISE, INVESTOR } from '../data/company8';
 import { trackButtonClick } from '../utils/analytics';
+import { capture } from '../lib/posthog';
 
 // Investor-facing surface — the path the audit found missing entirely.
 // All copy reads from src/data/company8.js so numbers never drift again.
@@ -35,6 +36,19 @@ function buildTraction() {
 
 const InvestorsPage = () => {
   const traction = buildTraction();
+
+  // The investor CTAs are the site's highest-intent conversion — they get their
+  // own PostHog event (not just the generic button_clicked mirror) so the
+  // fundraising funnel is queryable on its own.
+  const trackInvestorCta = (cta, destination) => {
+    trackButtonClick(cta, 'investors');
+    capture('investor_cta_clicked', {
+      cta,
+      destination,
+      raise_stage: RAISE.stage,
+      raise_is_open: RAISE.isOpen,
+    });
+  };
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -195,7 +209,7 @@ const InvestorsPage = () => {
               href={deckHref}
               target={INVESTOR.deckUrl ? '_blank' : undefined}
               rel="noopener noreferrer"
-              onClick={() => trackButtonClick('request_deck', 'investors')}
+              onClick={() => trackInvestorCta('request_deck', INVESTOR.deckUrl ? 'deck' : 'email')}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -215,7 +229,7 @@ const InvestorsPage = () => {
               href={INVESTOR.calendly}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackButtonClick('book_call', 'investors')}
+              onClick={() => trackInvestorCta('book_call', 'calendly')}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -236,7 +250,7 @@ const InvestorsPage = () => {
               href={`https://usedan.com`}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackButtonClick('see_dan', 'investors')}
+              onClick={() => trackInvestorCta('see_dan', 'usedan.com')}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -257,7 +271,11 @@ const InvestorsPage = () => {
 
           <p style={{ marginTop: 20, fontSize: 14, color: COLORS.body, display: 'flex', alignItems: 'center', gap: 8 }}>
             <Mail size={14} /> Direct:{' '}
-            <a href={`mailto:${INVESTOR.email}`} style={{ color: COLORS.violetLight, textDecoration: 'none' }}>
+            <a
+              href={`mailto:${INVESTOR.email}`}
+              onClick={() => trackInvestorCta('direct_email', 'mailto')}
+              style={{ color: COLORS.violetLight, textDecoration: 'none' }}
+            >
               {INVESTOR.email}
             </a>
           </p>

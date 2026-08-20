@@ -1,5 +1,6 @@
 /* global process */
 import { Resend } from 'resend';
+import { captureServerEvent, captureServerError } from '../_posthog.js';
 
 const DESTINATION_EMAIL = 'meet@biggventures.com';
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
@@ -106,8 +107,31 @@ export default async function handler(req, res) {
       replyTo: formData.email || undefined,
     });
 
+    // Server-side source of truth for the lead — the client event can be lost
+    // to ad blockers or a navigation away right after submit.
+    await captureServerEvent(
+      req,
+      'lead_captured',
+      {
+        form_type: formType,
+        page_path: pagePath,
+        page_url: pageUrl,
+        has_email: Boolean(formData.email),
+        email_id: result?.data?.id || null,
+      },
+      formData.email || undefined,
+    );
+
     return res.status(200).json({ success: true, id: result?.data?.id || null });
   } catch (error) {
+    await captureServerEvent(
+      req,
+      'lead_capture_failed',
+      { form_type: formType, page_path: pagePath, error_message: error?.message || 'unknown' },
+      formData.email || undefined,
+    );
+    await captureServerError(req, error, { endpoint: 'forms/notify', form_type: formType });
+
     return res.status(500).json({
       error: error?.message || 'Failed to send email',
     });

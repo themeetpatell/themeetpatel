@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { submitContactFormData } from '../services/formService';
+import { capture, captureError, identifyUser } from '../lib/posthog';
 import {
   SITE_URL,
   personRef,
@@ -237,6 +238,15 @@ export default function ContactPage() {
         throw new Error(result.errors?.join(', ') || 'Unable to submit form');
       }
 
+      // The visitor handed over an email — tie this session to a known person.
+      identifyUser(form.email, { email: form.email, name: form.name });
+      capture('contact_form_submitted', {
+        subject: form.subject,
+        has_whatsapp: Boolean(form.whatsapp),
+        country_code: form.countryCode,
+        message_length: form.message.length,
+      });
+
       setIsSubmitted(true);
       setForm({
         name: '',
@@ -247,6 +257,8 @@ export default function ContactPage() {
         message: '',
       });
     } catch (error) {
+      capture('contact_form_failed', { error_message: error?.message || 'unknown' });
+      captureError(error, { form: 'contact' });
       alert(error?.message || 'Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -261,7 +273,7 @@ export default function ContactPage() {
       '@type': 'ContactPage',
       name: 'Contact Meet Patel',
       description:
-        'Get in touch with Meet Patel — a Dubai-based startup founder running the venture studio Biggventure and building Company 8.',
+        'Get in touch with Meet Patel — the Dubai-based founder of Company 8, building Dan.',
       url: `${SITE_URL}/contact`,
       mainEntity: personRef,
       sameAs: SAME_AS,
@@ -284,8 +296,8 @@ export default function ContactPage() {
     <>
       <SEOHead
         title="Contact Meet Patel — Startup Founder in Dubai"
-        description="Get in touch with Meet Patel — a Dubai-based startup founder running the venture studio Biggventure and building Company 8. Let's talk startups."
-        keywords="Contact Meet Patel, Meet Patel contact, themeetpatel contact, Biggventure contact, Company 8, startup founder Dubai, venture builder contact"
+        description="Get in touch with Meet Patel — the Dubai-based founder of Company 8, building Dan. Let's talk startups."
+        keywords="Contact Meet Patel, Meet Patel contact, themeetpatel contact, Company 8 contact, Dan, startup founder Dubai"
         canonical="/contact"
         structuredData={structuredData}
       />
@@ -391,7 +403,7 @@ export default function ContactPage() {
                 margin:     '0 auto 36px',
               }}
             >
-              Whether it's startups, Biggventure, or Company 8 — or you simply want to connect — I'm open to meaningful conversations.
+              Whether it's startups, Company 8, or Dan — or you simply want to connect — I'm open to meaningful conversations.
             </motion.p>
 
             {/* Availability badge */}
