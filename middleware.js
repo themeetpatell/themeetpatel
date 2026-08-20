@@ -19,6 +19,7 @@ const BOT_PATTERN =
 const PAGE_ROUTES = new Set([
   '/',
   '/about',
+  '/thesis',
   '/investors',
   '/portfolio',
   '/blogs',
@@ -34,6 +35,7 @@ export const config = {
   matcher: [
     '/',
     '/about',
+    '/thesis',
     '/investors',
     '/portfolio',
     '/blogs',
