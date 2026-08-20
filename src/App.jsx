@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Analytics } from '@vercel/analytics/react';
@@ -28,22 +28,37 @@ import BiggMatePage from './pages/BiggMatePage';
 import BlogPage from './pages/BlogPage';
 import BlogArticlePage from './pages/BlogArticlePage';
 import CommunityPage from './pages/CommunityPage';
-import MindPage from './pages/MindPage';
 import LabsPage from './pages/LabsPage';
+
+// /mind renders an interactive force-directed graph (react-force-graph + d3).
+// It's a single minor route, so it is lazy-loaded rather than taxing every
+// public pageview with the graph engine.
+const MindPage = lazy(() => import('./pages/MindPage'));
 import NotFoundPage from './pages/NotFoundPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import CookiePolicyPage from './pages/CookiePolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 
-// Admin pages
-import AdminLoginPage from './admin/AdminLoginPage';
-import AdminProtectedRoute from './admin/AdminProtectedRoute';
-import AdminLayout from './admin/AdminLayout';
-import AdminDashboardPage from './admin/AdminDashboardPage';
-import AdminArticlesPage from './admin/AdminArticlesPage';
-import AdminArticleEditorPage from './admin/AdminArticleEditorPage';
-import AdminMediaPage from './admin/AdminMediaPage';
-import AdminMigratePage from './admin/AdminMigratePage';
+// Admin pages — lazy-loaded on purpose.
+// The editor pulls in Tiptap + ProseMirror + lowlight (~1MB of the vendor
+// bundle) and the dashboard pulls Recharts. Nobody visiting a public page ever
+// needs that code, but a static import forced every visitor to download it,
+// which is what pushed LCP behind a loading spinner on mobile.
+const AdminLoginPage        = lazy(() => import('./admin/AdminLoginPage'));
+const AdminProtectedRoute   = lazy(() => import('./admin/AdminProtectedRoute'));
+const AdminLayout           = lazy(() => import('./admin/AdminLayout'));
+const AdminDashboardPage    = lazy(() => import('./admin/AdminDashboardPage'));
+const AdminArticlesPage     = lazy(() => import('./admin/AdminArticlesPage'));
+const AdminArticleEditorPage = lazy(() => import('./admin/AdminArticleEditorPage'));
+const AdminMediaPage        = lazy(() => import('./admin/AdminMediaPage'));
+const AdminMigratePage      = lazy(() => import('./admin/AdminMigratePage'));
+
+/** Shared loading state for the lazy routes (admin + /mind). */
+const RouteFallback = () => (
+  <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', color: '#a8a9c3' }}>
+    Loading…
+  </div>
+);
 
 function PageTracker() {
   const location = useLocation();
@@ -89,14 +104,23 @@ function App() {
         <Analytics />
         <SpeedInsights />
         <Routes>
-          {/* ── Admin routes (no nav/footer) ───────────────────────────── */}
-          <Route path="/admin/login" element={<AdminLoginPage />} />
+          {/* ── Admin routes (no nav/footer, lazy-loaded) ──────────────── */}
+          <Route
+            path="/admin/login"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <AdminLoginPage />
+              </Suspense>
+            }
+          />
           <Route
             path="/admin/*"
             element={
-              <AdminProtectedRoute>
-                <AdminLayout />
-              </AdminProtectedRoute>
+              <Suspense fallback={<RouteFallback />}>
+                <AdminProtectedRoute>
+                  <AdminLayout />
+                </AdminProtectedRoute>
+              </Suspense>
             }
           >
             <Route index element={<AdminDashboardPage />} />
@@ -117,7 +141,7 @@ function App() {
           <Route path="/biggmate" element={<PublicLayout><BiggMatePage /></PublicLayout>} />
           {/* <Route path="/biggdate" element={<PublicLayout><BiggDatePage /></PublicLayout>} /> */}  {/* hidden — BiggDatePage.jsx kept on disk */}
           <Route path="/community" element={<PublicLayout><CommunityPage /></PublicLayout>} />
-          <Route path="/mind" element={<PublicLayout><MindPage /></PublicLayout>} />
+          <Route path="/mind" element={<PublicLayout><Suspense fallback={<RouteFallback />}><MindPage /></Suspense></PublicLayout>} />
           <Route path="/labs" element={<PublicLayout><LabsPage /></PublicLayout>} />
           <Route path="/blogs" element={<PublicLayout><BlogPage /></PublicLayout>} />
           <Route path="/blogs/:slug" element={<PublicLayout><BlogArticlePage /></PublicLayout>} />

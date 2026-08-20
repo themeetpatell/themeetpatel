@@ -2,6 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Calendar, Mail, FileText, Sparkles } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import {
+  SITE_URL,
+  personRef,
+  meetPatelEntities,
+  buildBreadcrumb,
+  buildFaqPage,
+} from '../lib/seoEntity';
 import { BRAND, POSITIONING, TRACTION, RAISE, INVESTOR } from '../data/company8';
 import { trackButtonClick } from '../utils/analytics';
 import { capture } from '../lib/posthog';
@@ -50,14 +57,46 @@ const InvestorsPage = () => {
     });
   };
 
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    '@id': 'https://www.themeetpatel.com/investors',
-    name: `${BRAND.company} — Investor Information`,
-    url: 'https://www.themeetpatel.com/investors',
-    description: RAISE.thesis,
-  };
+  // Questions investors actually ask, rendered visibly below and mirrored into
+  // FAQPage schema. Both must stay in sync — FAQ markup describing content that
+  // isn't on the page is a structured-data policy violation, not a shortcut.
+  const investorFaq = [
+    {
+      q: `What round is ${BRAND.company} raising?`,
+      a: `${BRAND.company} is raising a ${RAISE.stage.toLowerCase()} round. ${RAISE.thesis}`,
+    },
+    {
+      q: 'What is the product?',
+      a: `${BRAND.product} (${BRAND.productUrl}) — the AI that lets any operator ask their business anything and get answers that lead to action.${
+        TRACTION.activeUsers ? ` It is live, with ${TRACTION.activeUsers}.` : ''
+      }`,
+    },
+    { q: 'Why is this founder the right one to build it?', a: POSITIONING.whyMe },
+    {
+      q: `How do investors contact ${BRAND.company}?`,
+      a: `Email ${INVESTOR.email} or book time at ${INVESTOR.calendly}. Meet Patel is the founder and replies directly.`,
+    },
+  ];
+
+  const structuredData = [
+    ...meetPatelEntities,
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': `${SITE_URL}/investors#webpage`,
+      name: `${BRAND.company} — Investor Information`,
+      url: `${SITE_URL}/investors`,
+      description: RAISE.thesis,
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      about: personRef,
+      inLanguage: 'en-US',
+    },
+    buildBreadcrumb([
+      { name: 'Home', url: '/' },
+      { name: 'Investors', url: '/investors' },
+    ]),
+    buildFaqPage(investorFaq),
+  ];
 
   const deckHref = INVESTOR.deckUrl
     ? INVESTOR.deckUrl
@@ -173,6 +212,21 @@ const InvestorsPage = () => {
           <p style={{ marginTop: 14, fontSize: 17, lineHeight: 1.65, color: COLORS.subhead }}>
             {POSITIONING.whyNow}
           </p>
+        </div>
+
+        {/* Investor FAQ — mirrors the FAQPage schema above, verbatim. */}
+        <div style={{ marginTop: 48 }}>
+          <h2 style={{ fontSize: 13, fontWeight: 700, letterSpacing: 1.4, textTransform: 'uppercase', color: COLORS.body }}>
+            Questions investors ask
+          </h2>
+          <dl style={{ marginTop: 16 }}>
+            {investorFaq.map(({ q, a }) => (
+              <div key={q} style={{ marginTop: 22 }}>
+                <dt style={{ fontSize: 17, fontWeight: 700, color: COLORS.heading, lineHeight: 1.45 }}>{q}</dt>
+                <dd style={{ margin: '8px 0 0', fontSize: 17, lineHeight: 1.65, color: COLORS.subhead }}>{a}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
         {/* Use of funds (only if filled) */}

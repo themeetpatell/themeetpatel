@@ -35,13 +35,49 @@ export default defineConfig({
             return
           }
 
-          // Keep third-party code in one shared vendor chunk so Rollup
-          // doesn't create cross-initialization cycles between React and
-          // libraries like Recharts/Sonner during startup.
           if (id.includes('node_modules/@vercel')) {
             return 'vendor-analytics'
           }
 
+          // Admin-only libraries. These are reachable ONLY through the lazy
+          // admin routes in App.jsx, so splitting them out cannot create the
+          // React/Recharts cross-initialization cycle that forced everything
+          // into one chunk before — nothing on a public page imports them.
+          // Together they were ~1MB of dead weight on every public pageview.
+          if (
+            id.includes('node_modules/@tiptap') ||
+            id.includes('node_modules/prosemirror') ||
+            id.includes('node_modules/lowlight') ||
+            id.includes('node_modules/highlight.js') ||
+            id.includes('node_modules/refractor')
+          ) {
+            return 'vendor-editor'
+          }
+
+          if (id.includes('node_modules/recharts')) {
+            return 'vendor-charts'
+          }
+
+          // force-graph and its full helper set. The helpers must be listed
+          // explicitly: leaving one (float-tooltip) unmatched dropped it into
+          // the shared vendor chunk, from where it imported d3 and created a
+          // `vendor -> vendor-dataviz -> vendor` cycle.
+          if (
+            /node_modules\/(react-force-graph|react-kapsule|force-graph|kapsule|float-tooltip|accessor-fn|bezier-js|canvas-color-tracker|index-array-by|@tweenjs)/.test(id)
+          ) {
+            return 'vendor-graph'
+          }
+
+          // d3 (+ victory-vendor, Recharts' d3 wrapper) is used only by the two
+          // lazy chunks above, never by a public page — so it gets its own leaf
+          // chunk rather than riding along in vendor on every pageview.
+          if (id.includes('node_modules/d3-') || id.includes('node_modules/victory-vendor')) {
+            return 'vendor-dataviz'
+          }
+
+          // Everything else stays in one shared vendor chunk, deliberately:
+          // splitting React away from its consumers reintroduces the startup
+          // cycle this config previously worked around.
           return 'vendor'
         },
         // Optimize asset file names

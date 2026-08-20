@@ -189,7 +189,10 @@ const BlogArticlePage = () => {
 
   // ── Structured data ──────────────────────────────────────────────────────────
   const schemaType = article.schema_type || 'BlogPosting';
-  const rawArticleImage = article.og_image || `${SITE_URL}/og-image.jpg`;
+  // Falls back to the generated per-article card (api/og-image.js) rather than
+  // the one shared /og-image.jpg, so every essay has a distinct image.
+  const rawArticleImage =
+    article.og_image || `${SITE_URL}/api/og-image?slug=${encodeURIComponent(article.slug)}`;
   const articleImageUrl = rawArticleImage.startsWith('http') ? rawArticleImage : `${SITE_URL}${rawArticleImage}`;
   const structuredData = {
     '@context': 'https://schema.org',
@@ -263,7 +266,7 @@ const BlogArticlePage = () => {
         ogType="article"
         ogTitle={article.og_title || article.meta_title || article.title}
         ogDescription={article.og_description || article.meta_description || article.excerpt}
-        ogImage={article.og_image}
+        ogImage={rawArticleImage}
         articlePublishedTime={article.published_at || article.date}
         articleModifiedTime={article.last_updated_at || article.updated_at}
         structuredData={structuredData}

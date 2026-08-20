@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import SEOHead from '../components/SEOHead';
+import { meetPatelEntities, buildBreadcrumb } from '../lib/seoEntity';
 import {
   Users,
   Target,
@@ -205,7 +206,13 @@ const BiggMatePage = () => {
         canonical="/biggmate"
         ogTitle="BiggMate — Find Your Co-Founder"
         ogDescription="AI-powered co-founder matching. 547+ founders on the waitlist. Don't build alone."
-        structuredData={{
+        structuredData={[
+          ...meetPatelEntities,
+          buildBreadcrumb([
+            { name: 'Home', url: '/' },
+            { name: 'BiggMate', url: '/biggmate' },
+          ]),
+          {
           '@context': 'https://schema.org',
           '@type': 'SoftwareApplication',
           name: 'BiggMate',
@@ -213,9 +220,10 @@ const BiggMatePage = () => {
           description: 'AI-powered co-founder matching platform connecting entrepreneurs to build startups together.',
           url: 'https://www.biggmate.com',
           operatingSystem: 'Web',
-          author: { '@type': 'Person', '@id': 'https://www.themeetpatel.com/#person', name: 'Meet Patel', url: 'https://www.themeetpatel.com' },
-          offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/PreOrder' },
-        }}
+            author: { '@id': 'https://www.themeetpatel.com/#person' },
+            offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/PreOrder' },
+          },
+        ]}
       />
 
       <style>{`

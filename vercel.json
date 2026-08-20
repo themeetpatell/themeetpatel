@@ -1,6 +1,26 @@
 {
   "installCommand": "npm install --legacy-peer-deps",
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "themeetpatel.in" }],
+      "destination": "https://www.themeetpatel.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.themeetpatel.in" }],
+      "destination": "https://www.themeetpatel.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "themeetpatel.com" }],
+      "destination": "https://www.themeetpatel.com/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/sitemap.xml",
@@ -12,10 +32,32 @@
         {
           "type": "header",
           "key": "user-agent",
-          "value": ".*([bB][oO][tT]|[cC]rawl|[sS]pider|GPT|OAI|[cC]laude|[aA]nthropic|[pP]erplexity|[mM]istral|[cC]ohere|meta-external|facebookexternalhit|WhatsApp|[gG]oogle|[bB]ing|[yY]andex).*"
+          "value": ".*([bB][oO][tT]|[cC]rawl|[sS]pider|GPT|OAI|[cC]laude|[aA]nthropic|[pP]erplexity|[mM]istral|[cC]ohere|meta-external|facebookexternalhit|WhatsApp|[gG]oogle|[bB]ing|[yY]andex|[aA]pplebot|[aA]mazonbot|[dD]uckAssist|YouBot|CCBot|Bytespider|[sS]lackbot|Twitterbot|LinkedInBot|Discordbot|TelegramBot).*"
         }
       ],
       "destination": "/api/og?slug=:slug"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*([bB][oO][tT]|[cC]rawl|[sS]pider|GPT|OAI|[cC]laude|[aA]nthropic|[pP]erplexity|[mM]istral|[cC]ohere|meta-external|facebookexternalhit|WhatsApp|[gG]oogle|[bB]ing|[yY]andex|[aA]pplebot|[aA]mazonbot|[dD]uckAssist|YouBot|CCBot|Bytespider|[sS]lackbot|Twitterbot|LinkedInBot|Discordbot|TelegramBot).*"
+        }
+      ],
+      "destination": "/api/page?path=/"
+    },
+    {
+      "source": "/:route(about|investors|portfolio|blogs|biggmate|community|mind|contact)",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*([bB][oO][tT]|[cC]rawl|[sS]pider|GPT|OAI|[cC]laude|[aA]nthropic|[pP]erplexity|[mM]istral|[cC]ohere|meta-external|facebookexternalhit|WhatsApp|[gG]oogle|[bB]ing|[yY]andex|[aA]pplebot|[aA]mazonbot|[dD]uckAssist|YouBot|CCBot|Bytespider|[sS]lackbot|Twitterbot|LinkedInBot|Discordbot|TelegramBot).*"
+        }
+      ],
+      "destination": "/api/page?path=/:route"
     },
     {
       "source": "/((?!api/).*)",
@@ -26,48 +68,29 @@
     {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=()"
-        }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
       ]
     },
     {
       "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     },
     {
       "source": "/llms.txt",
       "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/plain; charset=utf-8"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600, s-maxage=86400"
-        }
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" }
+      ]
+    },
+    {
+      "source": "/llms-full.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" }
       ]
     }
   ]

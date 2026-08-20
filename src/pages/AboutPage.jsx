@@ -53,13 +53,13 @@ const AboutPage = () => {
     ],
     experience: [
       {
-        company: "Biggventure (Venture Studio)",
+        company: "Company 8",
         position: "Founder & Operator — currently building Company 8",
         duration: "Nov 2025 – Present",
         location: "Dubai, UAE",
         achievements: [
-          "Biggventure: Founder & Operator of the venture-building studio that builds, ships, and scales startups across AI, fintech, hardware, and software.",
-          "Company 8: the venture currently being built under Biggventure — an AI-native business intelligence platform. Ask your business anything and get answers that lead to action.",
+          "Founder of Company 8, building Dan — the AI that lets any operator ask their business anything and get answers that lead to action.",
+          "Previously built and scaled 10+ ventures across AI, fintech, hardware, edtech, and software.",
           "ZeroHuman: CGO & Co-founder — AI human model platform for advertising, fashion, retail & entertainment.",
           "Mealverse: Investor & Mentor — Food technology platform revolutionizing the culinary experience."
         ]
@@ -230,15 +230,15 @@ const AboutPage = () => {
   const aboutFaq = [
     {
       q: "Who is Meet Patel?",
-      a: "Meet Patel (also known as The Meet Patel and themeetpatel) is a Dubai-based startup founder and operator. He founded and runs Biggventure, a venture-building studio, and is currently building Company 8, an AI-native business intelligence platform, under it."
+      a: "Meet Patel (also known as The Meet Patel and themeetpatel) is a Dubai-based startup founder and operator. He is the founder of Company 8, building Dan — the AI that lets any operator ask their business anything and get answers that lead to action."
     },
     {
-      q: "What is Biggventure?",
-      a: "Biggventure is the venture-building studio founded by Meet Patel. It builds, ships, and scales startups across AI, fintech, hardware, and software — Company 8 is the venture currently being built under it."
+      q: "What did Meet Patel build before Company 8?",
+      a: "He built and scaled 10+ ventures across AI, fintech, hardware, edtech, and software, and led teams as Chief of Staff and interim COO inside a fintech. The full list is at themeetpatel.com/portfolio."
     },
     {
       q: "What is Company 8?",
-      a: "Company 8 is the venture Meet Patel is currently building under the Biggventure studio. It is an AI-native business intelligence platform that lets teams ask their business anything and get answers that lead to action."
+      a: "Company 8 is the AI-native business intelligence company Meet Patel founded in Dubai in 2025. It builds Dan, which lets teams ask their business anything and get answers that lead to action. Company 8 is raising a pre-seed round."
     }
   ];
 
@@ -276,8 +276,8 @@ const AboutPage = () => {
     <div style={{ backgroundColor: T.bg, minHeight: '100vh' }}>
       <SEOHead
         title="About Meet Patel — Founder & Operator in Dubai"
-        description="Meet Patel (themeetpatel) is a Dubai-based founder & operator. He runs the venture studio Biggventure and is currently building Company 8."
-        keywords="About Meet Patel, Meet Patel, themeetpatel, meetpatel, Meet Patel Dubai, startup founder, operator, venture builder, Biggventure, Company 8, venture studio, entrepreneurship, startups, founders"
+        description="Meet Patel (themeetpatel) is a Dubai-based founder and operator. He is the founder of Company 8, building Dan — ask your business anything, get answers that lead to action."
+        keywords="About Meet Patel, Meet Patel, themeetpatel, meetpatel, Meet Patel Dubai, startup founder, operator, Company 8, Dan, useDan, entrepreneurship, startups, founders"
         canonical="/about"
         structuredData={structuredData}
       />

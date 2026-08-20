@@ -2,7 +2,7 @@
 import { Resend } from 'resend';
 import { captureServerEvent, captureServerError } from '../_posthog.js';
 
-const DESTINATION_EMAIL = 'meet@biggventures.com';
+const DESTINATION_EMAIL = 'meet@company8.dev';
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
 const RESEND_API_KEY = process.env.RESEND_API_KEY || 're_xxxxxxxxx';
 

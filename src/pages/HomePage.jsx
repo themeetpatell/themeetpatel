@@ -138,7 +138,7 @@ const HomePage = () => {
     projects: [
       {
         name: "Company 8",
-        description: "AI-native business intelligence platform built under the Biggventure studio. Ask your business anything and get answers that lead to action.",
+        description: "AI-native business intelligence company, maker of Dan. Ask your business anything and get answers that lead to action.",
         category: "AI",
         year: "2025"
       },
@@ -312,16 +312,20 @@ const HomePage = () => {
       a: 'Meet Patel (also known as The Meet Patel or themeetpatel) is a Dubai-based startup founder and operator. He is the founder of Company 8, building Dan — the AI that lets any operator ask their business anything and get answers that lead to action. Over 8+ years he has built and scaled 10+ ventures across AI, fintech, hardware, and software, and led teams of 490+ people across his ventures.',
     },
     {
-      q: 'What is Biggventure?',
-      a: 'Biggventure is the venture-building studio founded by Meet Patel. It builds, ships, and scales startups across AI, fintech, hardware, and software using proven operating systems and hands-on operating support.',
+      q: 'Which Meet Patel is this?',
+      a: 'The Meet Patel who founded Company 8 and builds Dan (usedan.com) in Dubai, UAE — handle themeetpatel / @the_meetpatel. Not to be confused with other people named Meet Patel.',
+    },
+    {
+      q: 'What is Dan?',
+      a: 'Dan (usedan.com) is the product Company 8 is building — the AI that lets any operator ask their business anything and get answers that lead to action. No dashboards, no SQL, no waiting on an analyst: Dan tells you what is happening in the business and what to do about it.',
     },
     {
       q: 'What is Company 8?',
-      a: 'Company 8 is the venture Meet Patel is currently building under his Biggventure studio — an AI-native business intelligence platform that lets founders ask their business anything and get answers that lead to action.',
+      a: 'Company 8 is the AI-native business intelligence company Meet Patel founded in Dubai in 2025. It builds Dan, which lets founders ask their business anything and get answers that lead to action. Company 8 is raising a pre-seed round.',
     },
     {
       q: 'What companies has Meet Patel built?',
-      a: 'Meet Patel founded the Biggventure studio and is currently building Company 8. His broader portfolio spans BiggMate, ZeroHuman, MealVerse, StudentHub, and TorchIt across AI, fintech, edtech, hardware, and software.',
+      a: 'Meet Patel is the founder of Company 8, building Dan. Before that he built and scaled 10+ ventures — BiggMate, ZeroHuman, MealVerse, StudentHub, and TorchIt — across AI, fintech, edtech, hardware, and software.',
     },
     {
       q: 'Where is Meet Patel based?',
@@ -333,7 +337,7 @@ const HomePage = () => {
     },
   ];
 
-  // One canonical Person entity + the venture graph (Biggventure → Company 8),
+  // One canonical Person entity + the venture graph (Person → Company 8 → Dan),
   // plus page-level WebPage / FAQ / Profile nodes. See src/lib/seoEntity.js.
   const homepageStructuredData = [
     ...meetPatelEntities,
@@ -343,7 +347,7 @@ const HomePage = () => {
       '@type': 'WebPage',
       name: 'Meet Patel — Startup Founder & Operator in Dubai',
       description:
-        'Meet Patel is a Dubai-based startup founder and operator. He runs the Biggventure studio and is currently building Company 8.',
+        'Meet Patel is a Dubai-based startup founder and operator. He is the founder of Company 8, building Dan.',
       url: SITE_URL,
       about: personRef,
       mainEntity: personRef,
@@ -365,8 +369,8 @@ const HomePage = () => {
     <div className="min-h-screen ultra-gradient-bg">
       <SEOHead 
         title="Meet Patel — Startup Founder & Operator in Dubai"
-        description="Meet Patel (themeetpatel) is a Dubai-based startup founder and operator. He runs the Biggventure studio and is currently building Company 8 — and has built 10+ ventures across AI, fintech, and software."
-        keywords="Meet Patel, The Meet Patel, themeetpatel, meet patel dubai, Biggventure, Biggventures, Company 8, startup founder, startup operator, venture builder, startups, Dubai entrepreneur, founder advisor"
+        description="Meet Patel (themeetpatel) is a Dubai-based founder building Dan — the AI that lets any operator ask their business anything and get answers that lead to action. All-in on Company 8, after building 10+ ventures across AI, fintech, and software."
+        keywords="Meet Patel, The Meet Patel, themeetpatel, meet patel dubai, Company 8, Company8, Dan, useDan, AI business intelligence, startup founder, startup operator, Dubai entrepreneur"
         canonical="/"
         ogImage="/og-image.jpg"
         structuredData={homepageStructuredData}

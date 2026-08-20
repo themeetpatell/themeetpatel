@@ -57,7 +57,7 @@ export const submitForm = async (formType, formData) => {
       results.email = await sendEmailNotification(formType, formData);
       if (results.email?.success) {
         results.success = true;
-        console.log(`${formType} form emailed to meet@biggventures.com successfully`);
+        console.log(`${formType} form emailed to meet@company8.dev successfully`);
       } else {
         results.errors.push(`Email error: ${results.email?.error}`);
       }

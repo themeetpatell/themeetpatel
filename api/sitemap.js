@@ -8,16 +8,24 @@ const SITE = 'https://www.themeetpatel.com';
 
 // Indexable public routes only. Legal pages are noindex, so they are
 // intentionally excluded (submitting noindex URLs triggers Search Console warnings).
+//
+// `lastmod` must be honest — Google discounts sitemaps where every URL claims
+// today's date. Each route carries the date its copy actually last changed;
+// bump it in the same commit that edits the page. Routes marked `feed: true`
+// derive lastmod from the newest published article instead.
+//
+// /labs is intentionally absent: LabsPage sets robotsNoindex, and submitting
+// noindex URLs is what triggers Search Console coverage warnings.
 const STATIC_ROUTES = [
-  { path: '/', changefreq: 'daily', priority: '1.0' },
-  { path: '/investors', changefreq: 'weekly', priority: '0.95' },
-  { path: '/about', changefreq: 'weekly', priority: '0.9' },
-  { path: '/portfolio', changefreq: 'weekly', priority: '0.85' },
-  { path: '/biggmate', changefreq: 'weekly', priority: '0.8' },
-  { path: '/blogs', changefreq: 'daily', priority: '0.9' },
-  { path: '/community', changefreq: 'weekly', priority: '0.7' },
-  { path: '/mind', changefreq: 'monthly', priority: '0.5' },
-  { path: '/contact', changefreq: 'monthly', priority: '0.75' },
+  { path: '/',           changefreq: 'weekly',  priority: '1.0',  feed: true,  lastmod: '2026-08-20' },
+  { path: '/investors',  changefreq: 'weekly',  priority: '0.95', lastmod: '2026-08-20' },
+  { path: '/about',      changefreq: 'monthly', priority: '0.9',  lastmod: '2026-08-20' },
+  { path: '/blogs',      changefreq: 'daily',   priority: '0.9',  feed: true,  lastmod: '2026-08-20' },
+  { path: '/portfolio',  changefreq: 'monthly', priority: '0.85', lastmod: '2026-07-07' },
+  { path: '/biggmate',   changefreq: 'monthly', priority: '0.8',  lastmod: '2026-07-07' },
+  { path: '/contact',    changefreq: 'monthly', priority: '0.75', lastmod: '2026-07-07' },
+  { path: '/community',  changefreq: 'monthly', priority: '0.7',  lastmod: '2026-07-07' },
+  { path: '/mind',       changefreq: 'monthly', priority: '0.5',  lastmod: '2026-07-07' },
 ];
 
 const xmlEscape = (value) =>
@@ -71,9 +79,15 @@ export default async function handler(req, res) {
     console.error('sitemap: article fetch failed, serving static routes only:', err);
   }
 
+  // Feed routes (home, blog index) are only as fresh as the newest article on them.
+  const newestArticleDate = articleEntries.reduce(
+    (newest, entry) => (entry.lastmod > newest ? entry.lastmod : newest),
+    ''
+  );
+
   const staticEntries = STATIC_ROUTES.map((r) => ({
     loc: `${SITE}${r.path}`,
-    lastmod: today,
+    lastmod: r.feed && newestArticleDate > r.lastmod ? newestArticleDate : r.lastmod,
     changefreq: r.changefreq,
     priority: r.priority,
   }));
