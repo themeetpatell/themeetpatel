@@ -7,6 +7,7 @@ import {
   MessageSquare, ArrowRight, MapPin
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { CATEGORY, PILLARS } from '../data/thesis';
 import FollowMyJourney from '../components/FollowMyJourney';
 import meetPatelImage from '../assets/themeetpatel.jpeg';
 import { meetPatelEntities, personRef, buildBreadcrumb, buildFaqPage } from '../lib/seoEntity';
@@ -338,7 +339,7 @@ const AboutPage = () => {
                   <span style={{ display: 'block', color: T.violet }}>PATEL.</span>
                 </h1>
                 <p style={{ fontSize: 'clamp(1.15rem, 2vw, 1.45rem)', color: T.sub, marginTop: '22px', maxWidth: '620px', lineHeight: 1.55 }}>
-                  Founder of Company 8, building Dan — the AI that lets any operator ask their business anything and get answers that lead to action. Years turning operating scars into products.
+                  I work on how AI changes the way companies are operated — how decisions get made, and what has to exist between information and action. Company 8 is that thesis as a product: I&apos;m building Dan.
                 </p>
               </motion.div>
 
@@ -558,6 +559,69 @@ const AboutPage = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ═══ THESIS ═══
+           Sits above the CV tabs on purpose: the argument is the reason to keep
+           reading, the timeline is the evidence for it. Copy comes from
+           src/data/thesis.js so /thesis, /about and the homepage never diverge. */}
+      <section style={{ borderTop: `1px solid rgba(255,255,255,0.06)`, background: '#0b0b12' }}>
+        <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-10" style={{ padding: '72px 24px' }}>
+          <Label>What I argue</Label>
+          <h2
+            style={{
+              fontSize: 'clamp(1.6rem, 3.4vw, 2.4rem)',
+              fontWeight: 800,
+              letterSpacing: '-0.025em',
+              color: T.text,
+              margin: '14px 0 0',
+              lineHeight: 1.2,
+            }}
+          >
+            {CATEGORY.thesis}
+          </h2>
+          <p style={{ fontSize: 17, lineHeight: 1.7, color: T.sub, margin: '18px 0 0', maxWidth: 720 }}>
+            {CATEGORY.elaboration}
+          </p>
+
+          <div style={{ display: 'grid', gap: 12, marginTop: 28 }}>
+            {PILLARS.map((pillar) => (
+              <div
+                key={pillar.id}
+                style={{
+                  display: 'flex',
+                  gap: 14,
+                  padding: '16px 0',
+                  borderTop: `1px solid rgba(255,255,255,0.06)`,
+                }}
+              >
+                <span style={{ color: T.violet, fontWeight: 800, fontSize: 15, minWidth: 34 }}>
+                  {pillar.weight}%
+                </span>
+                <div>
+                  <div style={{ fontSize: 16.5, fontWeight: 700, color: T.text }}>{pillar.name}</div>
+                  <div style={{ fontSize: 15.5, lineHeight: 1.6, color: T.sub, marginTop: 4 }}>
+                    {pillar.summary}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <a
+            href="/thesis"
+            style={{
+              display: 'inline-block',
+              marginTop: 28,
+              color: T.violet,
+              fontSize: 15.5,
+              fontWeight: 600,
+              textDecoration: 'none',
+            }}
+          >
+            Read the full thesis &rarr;
+          </a>
         </div>
       </section>
 

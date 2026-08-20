@@ -96,18 +96,23 @@ export const DISAMBIGUATION =
 
 export const CONTACT_EMAIL = 'meet@company8.dev';
 
+/**
+ * Ordered by the territory he is claiming, not by generic startup vocabulary.
+ * "Entrepreneurship" and "Startup Strategy" are hopelessly crowded; the first
+ * six entries are the category — see src/data/thesis.js.
+ */
 export const KNOWS_ABOUT = [
-  'Artificial Intelligence',
-  'AI Business Intelligence',
-  'Entrepreneurship',
-  'Venture Building',
-  'Business Operations',
-  'Startup Strategy',
-  'Startup Scaling',
-  'Growth Systems',
-  'Team Building',
-  'Product Development',
-  'Operational Excellence',
+  'AI-native company operations',
+  'Decision intelligence',
+  'Autonomous organizations',
+  'AI agents in management',
+  'Organizational design',
+  'AI business intelligence',
+  'Business operations',
+  'Founder economics',
+  'SaaS economics',
+  'Startup scaling',
+  'Product development',
 ];
 
 /** Company 8 — the company Meet Patel is building, and the root of the venture graph. */

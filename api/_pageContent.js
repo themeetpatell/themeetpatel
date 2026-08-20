@@ -11,6 +11,7 @@
 // src/data/company8.js so a number can never disagree with the live page.
 
 import { BRAND, POSITIONING, PRODUCT, TRACTION, RAISE, INVESTOR, STATS, BACKGROUND } from '../src/data/company8.js';
+import { CATEGORY, PILLARS, MENTAL_MODELS, ENEMIES, BRIDGE } from '../src/data/thesis.js';
 
 export const SITE = 'https://www.themeetpatel.com';
 
@@ -145,13 +146,55 @@ export const PAGES = {
     ],
   },
 
+  '/thesis': {
+    schemaType: 'WebPage',
+    title: 'The thesis — how AI changes the way companies are run',
+    description: `${CATEGORY.thesis} Meet Patel on AI-native company operations, decision intelligence, and what replaces the dashboard.`,
+    keywords:
+      'AI native operations, decision intelligence, autonomous company, organizational attention, decision debt, management latency, AI management layer, Meet Patel thesis',
+    h1: CATEGORY.thesis,
+    intro: CATEGORY.elaboration,
+    breadcrumb: [HOME_CRUMB, { name: 'Thesis', url: '/thesis' }],
+    sections: [
+      {
+        h2: 'Companies bought visibility. They still cannot decide.',
+        paragraphs: [
+          'Every operator wants more visibility into the business, so the company buys another dashboard. Six months later Monday still opens with someone asking which number is correct. At that point the problem is not visibility — it is that nothing in the company is responsible for noticing what matters.',
+        ],
+        list: ENEMIES,
+      },
+      {
+        h2: 'What the work is about',
+        list: PILLARS.map((p) => `${p.name} (${p.weight}%) — ${p.summary} ${p.question}`),
+      },
+      {
+        h2: 'Words I use, and what I mean by them',
+        list: MENTAL_MODELS.map((m) => `${m.term} — ${m.definition}`),
+      },
+      { h2: 'Where this leads', paragraphs: [BRIDGE] },
+    ],
+    // Emitted as schema.org DefinedTermSet. A defined term + definition is the
+    // most quotable, most attributable shape on the site for an answer engine,
+    // so it must exist on the crawler-facing page, not only in the React app.
+    definedTerms: MENTAL_MODELS,
+    faq: [
+      { q: 'What is Meet Patel\u2019s thesis about AI and companies?', a: `${CATEGORY.thesis} ${CATEGORY.elaboration}` },
+      { q: 'What does "organizational attention" mean?', a: MENTAL_MODELS[0].definition },
+      { q: 'What is decision debt?', a: MENTAL_MODELS[1].definition },
+      {
+        q: 'What does Meet Patel write about?',
+        a: `Three areas: ${PILLARS.map((p) => p.name).join(', ')}. Together they cover ${CATEGORY.statement.charAt(0).toLowerCase()}${CATEGORY.statement.slice(1)}`,
+      },
+    ],
+  },
+
   '/about': {
     schemaType: 'AboutPage',
     title: 'About Meet Patel — operator, founder, Dubai',
     description: `The background behind ${BRAND.company}: how Meet Patel went from scaling teams and systems inside fintech, hardware, and edtech ventures to building ${BRAND.product} full time.`,
     keywords: 'about Meet Patel, themeetpatel bio, Meet Patel founder background, Meet Patel Dubai operator',
     h1: 'About Meet Patel',
-    intro: `Meet Patel is a startup founder and operator based in ${BRAND.location}. He is the founder of ${BRAND.company}, building ${BRAND.product}.`,
+    intro: `Meet Patel works on how AI changes the way companies are operated — how decisions get made, and what has to exist between information and action. He is based in ${BRAND.location} and is the founder of ${BRAND.company}, building ${BRAND.product} as that thesis in product form.`,
     breadcrumb: [HOME_CRUMB, { name: 'About', url: '/about' }],
     sections: [
       { h2: 'The short version', paragraphs: [POSITIONING.whyMe] },
@@ -292,6 +335,7 @@ export const PAGES = {
 export const SITE_LINKS = [
   { href: '/', label: 'Home — Meet Patel, founder of Company 8' },
   { href: '/investors', label: `For investors — ${BRAND.company} ${RAISE.stage.toLowerCase()}` },
+  { href: '/thesis', label: 'The thesis — how AI changes the way companies are run' },
   { href: '/about', label: 'About Meet Patel' },
   { href: '/blogs', label: 'Writing — essays on startup operations' },
   { href: '/portfolio', label: 'Portfolio — ventures built' },

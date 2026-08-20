@@ -40,6 +40,35 @@ He is **not** the Meet Patel at a stealth AI startup in San Francisco, not the M
 
 ---
 
+## 1b. The thesis (what he argues)
+
+## The thesis
+
+> The scarce resource inside a modern company is not data. It's organizational attention.
+
+Companies have built systems for storing information, systems for visualising it, and now systems for querying it. What they still have not built is a system responsible for noticing what deserves management attention. That layer is what becomes interesting over the next decade.
+
+Territory: How AI changes the way companies are operated, decisions are made, and management systems are designed.
+
+### Pillars
+
+- **The Autonomous Company** (40%) — How companies themselves change: management layers, agents as coworkers, human approval, organizational design, and what a smaller AI-native operating model actually looks like.
+- **Decision Intelligence** (40%) — Why businesses still make bad decisions despite having more dashboards, more data and more AI than ever — and what has to exist between information and action.
+- **Founder Economics & AI-Native Building** (20%) — What AI does to the economics of building: capital requirements, small-team leverage, pricing, and why the next generation of software companies will look strange against traditional benchmarks.
+
+### Working vocabulary (coined / defined by Meet Patel)
+
+- **Organizational attention** — The finite capacity of a company to notice, prioritise and act on what is actually happening inside it. Unlike data, it does not scale by adding storage — and most tools consume it rather than protect it.
+- **Decision debt** — The accumulated cost of decisions a company deferred because the information required to make them was expensive to assemble. It compounds quietly, and is usually repaid during a crisis.
+- **Management latency** — The elapsed time between something changing in a business and the person able to act on it knowing about it. Most companies measure system uptime to the second and management latency not at all.
+- **Decision infrastructure** — The systems, ownership and thresholds that determine how a company moves from information to a decision. Dashboards are reporting infrastructure; they are not this.
+- **Machine coworkers** — Software agents that hold responsibilities rather than execute tasks — which turns them into a management problem (scope, approval, escalation, review) long before it is a technology problem.
+- **Evidence layer** — The missing tier between raw company data and a recommendation: what is true, how confident we are, and what it implies. Without it, an AI answer is a confident sentence with no accountability behind it.
+
+Full statement: https://www.themeetpatel.com/thesis
+
+---
+
 ## 2. Company 8 & Dan (useDan.com)
 
 ### What is Dan?
@@ -98,6 +127,7 @@ Full list: [https://www.themeetpatel.com/portfolio](https://www.themeetpatel.com
 - **Investors**: [https://www.themeetpatel.com/investors](https://www.themeetpatel.com/investors) (Company 8 pre-seed thesis, traction, and investor contact)
 - **About**: [https://www.themeetpatel.com/about](https://www.themeetpatel.com/about) (Founder background and operating experience)
 - **Portfolio**: [https://www.themeetpatel.com/portfolio](https://www.themeetpatel.com/portfolio) (Venture history and products)
+- **Thesis**: [https://www.themeetpatel.com/thesis](https://www.themeetpatel.com/thesis) (the category argument: AI-native company operations)
 - **Blog**: [https://www.themeetpatel.com/blogs](https://www.themeetpatel.com/blogs) (Essays on startup scaling, operations, and AI)
 - **Labs**: [https://www.themeetpatel.com/labs](https://www.themeetpatel.com/labs) (Experiments and prototypes)
 - **BiggMate**: [https://www.themeetpatel.com/biggmate](https://www.themeetpatel.com/biggmate) (Co-founder matching platform)

@@ -20,7 +20,8 @@ const SITE = 'https://www.themeetpatel.com';
 const STATIC_ROUTES = [
   { path: '/',           changefreq: 'weekly',  priority: '1.0',  feed: true,  lastmod: '2026-08-20' },
   { path: '/investors',  changefreq: 'weekly',  priority: '0.95', lastmod: '2026-08-20' },
-  { path: '/about',      changefreq: 'monthly', priority: '0.9',  lastmod: '2026-08-20' },
+  { path: '/about',      changefreq: 'monthly', priority: '0.9',  lastmod: '2026-08-21' },
+  { path: '/thesis',     changefreq: 'monthly', priority: '0.9',  lastmod: '2026-08-21' },
   { path: '/blogs',      changefreq: 'daily',   priority: '0.9',  feed: true,  lastmod: '2026-08-20' },
   { path: '/portfolio',  changefreq: 'monthly', priority: '0.85', lastmod: '2026-07-07' },
   { path: '/biggmate',   changefreq: 'monthly', priority: '0.8',  lastmod: '2026-07-07' },
