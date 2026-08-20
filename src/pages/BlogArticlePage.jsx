@@ -9,7 +9,7 @@ import {
 import { getArticleBySlug, getRelatedArticles, incrementViews } from '../lib/articleService';
 import FollowMyJourney from '../components/FollowMyJourney';
 import SEOHead from '../components/SEOHead';
-import { SITE_URL, buildBreadcrumb } from '../lib/seoEntity';
+import { SITE_URL, buildBreadcrumb, resolveCanonical } from '../lib/seoEntity';
 import { capture, captureError } from '../lib/posthog';
 
 const C = {
@@ -93,20 +93,12 @@ const BlogArticlePage = () => {
   const formatDate = d =>
     new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
-  const getCanonicalShareUrl = () => {
-    const base = 'https://www.themeetpatel.com';
-    const canonical = article?.canonical_url;
-
-    if (canonical && /^https?:\/\//i.test(canonical)) {
-      return canonical;
-    }
-
-    if (canonical && canonical.startsWith('/')) {
-      return `${base}${canonical}`;
-    }
-
-    return `${base}/blogs/${article?.slug || slug}`;
-  };
+  // Host-aware. Every article in the CMS is self-canonical to the NON-www host,
+  // so returning any absolute canonical_url verbatim produced share and canonical
+  // URLs that only 308-redirect. resolveCanonical normalises our own hosts onto
+  // SITE_URL and leaves genuinely off-site canonicals untouched.
+  const getCanonicalShareUrl = () =>
+    resolveCanonical(article?.canonical_url, `${SITE_URL}/blogs/${article?.slug || slug}`).url;
 
   const handleShare = (platform) => {
     const url   = getCanonicalShareUrl();
@@ -189,7 +181,15 @@ const BlogArticlePage = () => {
 
   // ── Structured data ──────────────────────────────────────────────────────────
   const schemaType = article.schema_type || 'BlogPosting';
-  const rawArticleImage = article.og_image || `${SITE_URL}/og-image.jpg`;
+  // Falls back to the generated per-article card (api/og-image.js) rather than
+  // the one shared /og-image.jpg, so every essay has a distinct image.
+  const generatedCard = `${SITE_URL}/api/og-image?${new URLSearchParams({
+    slug: article.slug,
+    title: article.title || '',
+    ...(article.category ? { category: article.category } : {}),
+    ...(article.read_time ? { readTime: article.read_time } : {}),
+  })}`;
+  const rawArticleImage = article.og_image || generatedCard;
   const articleImageUrl = rawArticleImage.startsWith('http') ? rawArticleImage : `${SITE_URL}${rawArticleImage}`;
   const structuredData = {
     '@context': 'https://schema.org',
@@ -259,11 +259,11 @@ const BlogArticlePage = () => {
         title={article.meta_title || article.title}
         description={article.meta_description || article.excerpt}
         keywords={[...(article.tags || []), ...(article.secondary_keywords || []), article.category, 'The Meet Patel blog'].filter(Boolean).join(', ')}
-        canonical={article.canonical_url || `/blogs/${article.slug}`}
+        canonical={getCanonicalShareUrl()}
         ogType="article"
         ogTitle={article.og_title || article.meta_title || article.title}
         ogDescription={article.og_description || article.meta_description || article.excerpt}
-        ogImage={article.og_image}
+        ogImage={rawArticleImage}
         articlePublishedTime={article.published_at || article.date}
         articleModifiedTime={article.last_updated_at || article.updated_at}
         structuredData={structuredData}

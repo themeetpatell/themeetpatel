@@ -1,21 +1,45 @@
 {
   "installCommand": "npm install --legacy-peer-deps",
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "themeetpatel.in"
+        }
+      ],
+      "destination": "https://www.themeetpatel.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.themeetpatel.in"
+        }
+      ],
+      "destination": "https://www.themeetpatel.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "themeetpatel.com"
+        }
+      ],
+      "destination": "https://www.themeetpatel.com/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/sitemap.xml",
       "destination": "/api/sitemap"
-    },
-    {
-      "source": "/blogs/:slug",
-      "has": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": ".*([bB][oO][tT]|[cC]rawl|[sS]pider|GPT|OAI|[cC]laude|[aA]nthropic|[pP]erplexity|[mM]istral|[cC]ohere|meta-external|facebookexternalhit|WhatsApp|[gG]oogle|[bB]ing|[yY]andex).*"
-        }
-      ],
-      "destination": "/api/og?slug=:slug"
     },
     {
       "source": "/((?!api/).*)",
@@ -59,6 +83,19 @@
     },
     {
       "source": "/llms.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=86400"
+        }
+      ]
+    },
+    {
+      "source": "/llms-full.txt",
       "headers": [
         {
           "key": "Content-Type",

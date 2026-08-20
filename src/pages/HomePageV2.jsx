@@ -33,7 +33,6 @@ import startupEcosystemImage from '../assets/startup-ecosystem.jpg';
 
 const ventures = [
   { name: 'Company 8',    tag: 'AI',         year: '2025', status: 'Live',      metric: 'AI-native business intelligence',   blurb: 'Ask your business anything and get answers that lead to action.' },
-  { name: 'Biggventure', tag: 'Studio',     year: '2022', status: 'Building',  metric: '10+ ventures built',                 blurb: 'Venture-building house turning operators into outcomes.' },
   { name: 'BiggMate',    tag: 'Network',    year: '2025', status: 'Building',  metric: 'Co-founder matching, intent-first', blurb: 'Find the right partner before the wrong one costs a year.' },
   { name: 'StartupOS',   tag: 'Community',  year: '2022', status: 'Live',      metric: '500+ founders in residence',         blurb: 'The systems that don’t break under pressure — taught, lived, repeated.' },
   { name: 'ZeroHuman',   tag: 'AI',         year: '2024', status: 'Live',      metric: 'AI-native creative pipelines',       blurb: 'AI-native media for modelling and creator industries.' },
@@ -1357,8 +1356,12 @@ const HomePageV2 = () => {
     >
       <SEOHead
         title="Meet Patel — Founder &amp; Operator in Dubai"
-        description="Founder and operator building a connected universe of ventures. Eight years inside startup engine rooms — Biggventure and Company 8 — designing the systems behind the systems."
-        canonical="/"
+        description="Founder and operator building a connected universe of ventures. Eight years inside startup engine rooms — now all-in on Company 8, building Dan."
+        canonical="/v2"
+        // /v2 is a design variant kept for preview. noindex (not canonical="/")
+        // because a noindex page pointing its canonical at "/" sends search
+        // engines two contradictory instructions about the homepage.
+        robotsNoindex={true}
       />
       <ScrollProgress />
       <ChapterIndicator current={current} />

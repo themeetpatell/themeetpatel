@@ -9,7 +9,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import SEOHead from "../components/SEOHead";
-import { SITE_URL, meetPatelEntities, personRef } from "../lib/seoEntity";
+import { SITE_URL, meetPatelEntities, personRef, buildBreadcrumb } from "../lib/seoEntity";
 import MindGraph from "../components/mind/MindGraph";
 import TimeScrubber from "../components/mind/TimeScrubber";
 import StatsTicker from "../components/mind/StatsTicker";
@@ -52,8 +52,15 @@ export default function MindPage() {
         "A living visualization of Meet Patel's second brain — the topology of how a Dubai-based startup founder organizes knowledge across ventures.",
       url: `${SITE_URL}/mind`,
       about: personRef,
-      isPartOf: { "@id": `${SITE_URL}/#person` },
+      // isPartOf points at the WebSite node; it previously pointed at #person,
+      // which asserted that a page is part of a human being.
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      inLanguage: "en-US",
     },
+    buildBreadcrumb([
+      { name: "Home", url: "/" },
+      { name: "Mind", url: "/mind" },
+    ]),
   ];
 
   return (

@@ -166,7 +166,7 @@ const STATS = [
 ];
 
 const portfolioStructuredData = [
-  // Person (worksFor Biggventure + Company 8) + Biggventure + Company 8 entities.
+  // Person (worksFor Company 8) + Company 8 + Dan entities.
   ...meetPatelEntities,
   {
     "@context": "https://schema.org",
@@ -174,7 +174,7 @@ const portfolioStructuredData = [
     "@id": "https://www.themeetpatel.com/portfolio",
     "name": "Startups & Ventures by Meet Patel — Portfolio",
     "url": "https://www.themeetpatel.com/portfolio",
-    "description": "Portfolio of 10+ ventures built by Meet Patel through the Biggventure studio across AI, fintech, hardware, edtech, and software startups.",
+    "description": "Portfolio of 10+ ventures built and scaled by Meet Patel across AI, fintech, hardware, edtech, and software before founding Company 8.",
     "author": personRef,
     "creator": personRef,
     "mainEntity": {
@@ -455,7 +455,7 @@ const PortfolioPage = () => {
     <>
       <SEOHead
         title="Portfolio | The Meet Patel — Startups & Ventures Built by Meet Patel"
-        description="Meet Patel has built 10+ startups through the Biggventure studio — Company 8, BiggMate, ZeroHuman, TorchIt & more. Explore the full venture portfolio."
+        description="Meet Patel has built and scaled 10+ startups — Company 8, BiggMate, ZeroHuman, TorchIt & more. Explore the full venture portfolio."
         keywords="The Meet Patel portfolio, Meet Patel startups, themeetpatel ventures, meetpatel portfolio, startup portfolio, BiggMate, ZeroHuman, TorchIt, Incsmart, BAWES, Plugn, startup builder, serial entrepreneur portfolio, ventures"
         canonical="/portfolio"
         structuredData={portfolioStructuredData}
@@ -564,7 +564,7 @@ const PortfolioPage = () => {
               Ten ventures spanning AI, fintech, edtech, hardware, and social, each one built with conviction and a long-term horizon.
             </p>
 
-            {/* Biggventure context */}
+            {/* Where the work goes now */}
             <p style={{
               fontSize: 'clamp(15px, 1.7vw, 17px)',
               color: C.secondary,
@@ -572,11 +572,10 @@ const PortfolioPage = () => {
               lineHeight: 1.65,
               margin: '0 0 56px',
             }}>
-              These ventures were built through{' '}
-              <span style={{ color: C.violet, fontWeight: 700 }}>Biggventure</span>
-              {' '}— Meet Patel&apos;s venture studio — with{' '}
+              Everything here is what came before{' '}
               <span style={{ color: C.violet, fontWeight: 700 }}>Company 8</span>
-              {' '}the current build.
+              {' '}— the company Meet Patel is all-in on now, building{' '}
+              <span style={{ color: C.violet, fontWeight: 700 }}>Dan</span>.
             </p>
 
             {/* Stats row */}
@@ -711,7 +710,7 @@ const PortfolioPage = () => {
             margin: '0 0 24px',
             maxWidth: '620px',
           }}>
-            A selection of startups Meet Patel has built and scaled through Biggventure.
+            A selection of startups Meet Patel has built and scaled.
           </p>
 
           {/* Result count */}

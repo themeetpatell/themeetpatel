@@ -60,7 +60,7 @@ const faqs = [
   },
   {
     q: 'Who runs the StartupOS community?',
-    a: "It's run by Meet Patel, a Dubai-based startup founder and operator who runs the Biggventure studio.",
+    a: "It's run by Meet Patel, a Dubai-based startup founder and operator, and the founder of Company 8.",
   },
 ];
 

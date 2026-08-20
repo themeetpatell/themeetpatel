@@ -18,276 +18,134 @@
     <link rel="dns-prefetch" href="https://us-assets.i.posthog.com" />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet" />
     
-    <!-- Primary SEO Meta Tags -->
+    <!-- ─────────────────────────────────────────────────────────────────────
+         SEO META TAGS LIVE IN src/components/SEOHead.jsx — NOT HERE.
+         react-helmet-async can only replace tags it created, so any SEO tag
+         duplicated in this shell renders TWICE in the DOM (verified: two
+         conflicting <link rel="canonical"> told Google every interior page
+         was a duplicate of the homepage). Only the <title> is safe, because
+         the browser keeps a single title element.
+         Crawlers that don't run JS are served fully-rendered HTML by
+         api/page.js and api/og.js — see the bot rewrites in vercel.json.
+         ───────────────────────────────────────────────────────────────────── -->
     <title>Meet Patel — Founder of Company 8, building Dan</title>
-    <meta name="title" content="Meet Patel — Founder of Company 8, building Dan" />
-    <meta name="description" content="Meet Patel is a Dubai-based founder building Dan — the AI that lets any operator ask their business anything and get answers that lead to action. An operator who scaled teams and systems across fintech, hardware, and software, now all-in on Company 8." />
-    <meta name="keywords" content="Meet Patel, themeetpatel, Company 8, Dan, useDan, AI business intelligence, founder Dubai, AI operator" />
-    <meta name="author" content="The Meet Patel" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <meta name="googlebot" content="index, follow" />
-    <meta name="bingbot" content="index, follow" />
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.themeetpatel.com" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.themeetpatel.com" />
-    <meta property="og:title" content="Meet Patel — Founder of Company 8, building Dan" />
-    <meta property="og:description" content="Meet Patel is a Dubai-based founder building Dan — the AI that lets any operator ask their business anything and get answers that lead to action. An operator who scaled teams and systems across fintech, hardware, and software, now all-in on Company 8." />
-    <meta property="og:image" content="https://www.themeetpatel.com/og-image.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Meet Patel — founder of Company 8, building Dan" />
-    <meta property="og:site_name" content="The Meet Patel" />
-    <meta property="og:locale" content="en_US" />
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://www.themeetpatel.com" />
-    <meta name="twitter:title" content="Meet Patel — Founder of Company 8, building Dan" />
-    <meta name="twitter:description" content="Meet Patel is a Dubai-based founder building Dan — the AI that lets any operator ask their business anything and get answers that lead to action. An operator who scaled teams and systems across fintech, hardware, and software, now all-in on Company 8." />
-    <meta name="twitter:image" content="https://www.themeetpatel.com/og-image.jpg" />
-    <meta name="twitter:image:alt" content="Meet Patel — founder of Company 8, building Dan" />
-    <meta name="twitter:creator" content="@the_meetpatel" />
-    <meta name="twitter:site" content="@the_meetpatel" />
-    
-    <!-- Additional SEO Meta Tags -->
-    <meta name="theme-color" content="#09090e" />
-    <meta name="msapplication-TileColor" content="#09090e" />
-    <meta name="application-name" content="The Meet Patel" />
-    <meta name="apple-mobile-web-app-title" content="The Meet Patel" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    
-    <!-- Geo Tags -->
+
+    <!-- Geo tags (not emitted by SEOHead, so no duplication risk) -->
     <meta name="geo.region" content="AE-DU" />
     <meta name="geo.placename" content="Dubai" />
     <meta name="geo.position" content="25.2048;55.2708" />
     <meta name="ICBM" content="25.2048, 55.2708" />
     
-    <!-- Language and Content -->
-    <meta name="language" content="English" />
-    <meta name="revisit-after" content="7 days" />
-    <meta name="distribution" content="global" />
-    <meta name="rating" content="general" />
-    
-    <!-- Structured Data - Person Schema -->
+    <!-- ─────────────────────────────────────────────────────────────────────
+         Site-wide identity anchor. One @graph, every node carrying an @id, so
+         search and answer engines resolve ONE "Meet Patel" no matter which URL
+         they land on. Page-specific nodes (WebPage, ProfilePage, FAQPage,
+         BreadcrumbList, BlogPosting) are emitted per route by SEOHead — they
+         must NOT live here, because a shell that ships on every route would
+         assert a homepage FAQ on /privacy-policy.
+         Source of truth: src/lib/seoEntity.js — keep the two in sync.
+         ───────────────────────────────────────────────────────────────────── -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "@id": "https://www.themeetpatel.com/#person",
-      "name": "Meet Patel",
-      "alternateName": ["The Meet Patel", "themeetpatel", "meetpatel"],
-      "url": "https://www.themeetpatel.com",
-      "image": ["https://www.themeetpatel.com/og-image.jpg"],
-      "description": "Meet Patel (themeetpatel / The Meet Patel) is a Dubai-based startup founder and operator. He is the founder of Company 8, building Dan (usedan.com) — ask your business anything, get answers that lead to action — and has built and scaled 10+ ventures across AI, fintech, hardware, and software.",
-      "jobTitle": "Founder, Company 8",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Dubai",
-        "addressRegion": "Dubai",
-        "addressCountry": "AE"
-      },
-      "email": "meet@company8.dev",
-      "sameAs": [
-        "https://www.linkedin.com/in/themeetpatel/",
-        "https://x.com/the_meetpatel",
-        "https://github.com/themeetpatell",
-        "https://instagram.com/the.meetpatell/",
-        "https://youtube.com/@themeetpatel",
-        "https://medium.com/@themeetpatel"
-      ],
-      "knowsAbout": [
-        "Entrepreneurship",
-        "Venture Building",
-        "Business Operations",
-        "Startup Strategy",
-        "Startup Scaling",
-        "Growth Systems",
-        "Team Building",
-        "Startup Mentoring",
-        "Product Development",
-        "Operational Excellence"
-      ],
-      "hasOccupation": {
-        "@type": "Occupation",
-        "name": "Startup Founder & Operator",
-        "description": "Building and scaling startups, systems, and growth operations",
-        "occupationLocation": {
-          "@type": "City",
-          "name": "Dubai, UAE"
-        }
-      },
-      "worksFor": [
-        { "@id": "https://www.themeetpatel.com/#biggventure" },
-        { "@id": "https://www.themeetpatel.com/#company8" }
-      ],
-      "founder": [
-        { "@id": "https://www.themeetpatel.com/#biggventure" },
-        { "@id": "https://www.themeetpatel.com/#company8" }
-      ]
-    }
-    </script>
-
-    <!-- Structured Data - Biggventure (venture studio) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://www.themeetpatel.com/#biggventure",
-      "name": "Biggventure",
-      "alternateName": ["Biggventures", "Biggventure Studio"],
-      "description": "Biggventure is the venture-building studio founded by Meet Patel. It builds, ships, and scales startups across AI, fintech, hardware, and software.",
-      "url": "https://www.themeetpatel.com",
-      "foundingDate": "2022",
-      "foundingLocation": { "@type": "Place", "name": "Dubai, UAE" },
-      "founder": { "@id": "https://www.themeetpatel.com/#person" }
-    }
-    </script>
-
-    <!-- Structured Data - Company 8 (current venture) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://www.themeetpatel.com/#company8",
-      "name": "Company 8",
-      "alternateName": ["Company8"],
-      "description": "Company 8 is the venture Meet Patel is currently building under the Biggventure studio — an AI-native business intelligence platform.",
-      "foundingDate": "2025",
-      "parentOrganization": { "@id": "https://www.themeetpatel.com/#biggventure" },
-      "founder": { "@id": "https://www.themeetpatel.com/#person" }
-    }
-    </script>
-
-    <!-- Structured Data - Organization Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "The Meet Patel",
-      "url": "https://www.themeetpatel.com",
-      "logo": "https://www.themeetpatel.com/favicon.png",
-      "description": "Personal website of Meet Patel — a Dubai-based founder and operator who works with founders to build, ship, and scale startups.",
-      "founder": {
-        "@id": "https://www.themeetpatel.com/#person"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Dubai",
-        "addressRegion": "Dubai", 
-        "addressCountry": "AE"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "Business",
-        "email": "meet@company8.dev"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/themeetpatel/",
-        "https://x.com/the_meetpatel",
-        "https://github.com/themeetpatell",
-        "https://instagram.com/the.meetpatell/",
-        "https://medium.com/@themeetpatel"
-      ]
-    }
-    </script>
-    
-    <!-- Structured Data - Website Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": "https://www.themeetpatel.com/#website",
-      "name": "The Meet Patel",
-      "url": "https://www.themeetpatel.com",
-      "description": "Personal website of Meet Patel — a Dubai-based founder and operator who works with founders to build, ship, and scale startups.",
-      "author": {
-        "@id": "https://www.themeetpatel.com/#person"
-      },
-      "inLanguage": "en-US",
-      "copyrightYear": "2026",
-      "publisher": {
-        "@id": "https://www.themeetpatel.com/#person"
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://www.themeetpatel.com/blogs?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
-
-    <!-- Structured Data - ProfilePage (this site is Meet Patel's profile) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfilePage",
-      "@id": "https://www.themeetpatel.com/#profilepage",
-      "url": "https://www.themeetpatel.com",
-      "name": "Meet Patel (themeetpatel) — startup founder & operator",
-      "isPartOf": { "@id": "https://www.themeetpatel.com/#website" },
-      "mainEntity": { "@id": "https://www.themeetpatel.com/#person" },
-      "about": { "@id": "https://www.themeetpatel.com/#person" },
-      "inLanguage": "en-US"
-    }
-    </script>
-
-    <!-- Structured Data - FAQ (answer-engine friendly Q&A) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
+      "@graph": [
         {
-          "@type": "Question",
-          "name": "Who is Meet Patel (themeetpatel)?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Meet Patel — known online as themeetpatel and The Meet Patel — is a startup founder and operator based in Dubai, UAE. He runs the venture studio Biggventure, is currently building Company 8, and has built and scaled 10+ ventures across AI, fintech, hardware, and software."
+          "@type": "Person",
+          "@id": "https://www.themeetpatel.com/#person",
+          "name": "Meet Patel",
+          "alternateName": ["The Meet Patel", "themeetpatel", "meetpatel", "Meet Patel Dubai"],
+          "disambiguatingDescription": "The Meet Patel who founded Company 8 and builds Dan (usedan.com) in Dubai, UAE — handle themeetpatel / @the_meetpatel. Not to be confused with other people named Meet Patel.",
+          "url": "https://www.themeetpatel.com",
+          "mainEntityOfPage": "https://www.themeetpatel.com",
+          "image": "https://www.themeetpatel.com/og-image.jpg",
+          "description": "Meet Patel (themeetpatel / The Meet Patel) is a Dubai-based startup founder and operator. He is the founder of Company 8, building Dan (usedan.com) — ask your business anything, get answers that lead to action — and has built and scaled 10+ ventures across AI, fintech, hardware, and software.",
+          "jobTitle": "Founder, Company 8",
+          "homeLocation": { "@type": "Place", "name": "Dubai, United Arab Emirates" },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Dubai",
+            "addressRegion": "Dubai",
+            "addressCountry": "AE"
+          },
+          "email": "meet@company8.dev",
+          "sameAs": [
+            "https://www.linkedin.com/in/themeetpatel/",
+            "https://x.com/the_meetpatel",
+            "https://github.com/themeetpatell",
+            "https://instagram.com/the.meetpatell/",
+            "https://youtube.com/@themeetpatel",
+            "https://medium.com/@themeetpatel",
+            "https://www.crunchbase.com/person/meet-patel",
+            "https://www.producthunt.com/products/usedan-by-company8",
+            "https://about.me/themeetpatel"
+          ],
+          "knowsAbout": [
+            "Artificial Intelligence",
+            "AI Business Intelligence",
+            "Entrepreneurship",
+            "Venture Building",
+            "Business Operations",
+            "Startup Strategy",
+            "Startup Scaling",
+            "Growth Systems",
+            "Team Building",
+            "Product Development",
+            "Operational Excellence"
+          ],
+          "hasOccupation": {
+            "@type": "Occupation",
+            "name": "Startup Founder & Operator",
+            "description": "Building and scaling startups, systems, and growth operations",
+            "occupationLocation": { "@type": "City", "name": "Dubai, UAE" }
+          },
+          "worksFor": { "@id": "https://www.themeetpatel.com/#company8" },
+          "founder": { "@id": "https://www.themeetpatel.com/#company8" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://www.themeetpatel.com/#company8",
+          "name": "Company 8",
+          "alternateName": ["Company8"],
+          "description": "Company 8 is the company Meet Patel is building — an AI-native business intelligence company and the maker of Dan (usedan.com): ask your business anything, get answers that lead to action. Company 8 is raising a pre-seed round.",
+          "url": "https://usedan.com",
+          "foundingDate": "2025",
+          "foundingLocation": { "@type": "Place", "name": "Dubai, UAE" },
+          "founder": { "@id": "https://www.themeetpatel.com/#person" },
+          "sameAs": ["https://www.producthunt.com/products/usedan-by-company8"],
+          "makesOffer": {
+            "@type": "Offer",
+            "itemOffered": { "@id": "https://usedan.com/#dan-app" }
           }
         },
         {
-          "@type": "Question",
-          "name": "What is Dan?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Dan is the product Meet Patel is building at Company 8 — the AI that lets any operator ask their business anything and get answers that lead to action. Dan is live at usedan.com. Company 8 is raising pre-seed."
-          }
+          "@type": "SoftwareApplication",
+          "@id": "https://usedan.com/#dan-app",
+          "name": "Dan",
+          "alternateName": ["useDan", "Dan AI"],
+          "url": "https://usedan.com",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "description": "Dan is the AI that lets any operator ask their business anything and get answers that lead to action. Built by Company 8.",
+          "publisher": { "@id": "https://www.themeetpatel.com/#company8" },
+          "author": { "@id": "https://www.themeetpatel.com/#person" }
         },
         {
-          "@type": "Question",
-          "name": "What is Biggventure (Biggventures)?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Biggventure is the venture-building studio founded by Meet Patel in Dubai in 2022. It builds, ships, and scales startups across AI, fintech, hardware, and software. Company 8 is its current flagship venture."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is Company 8 (Company8)?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Company 8 is the company Meet Patel is building. It is an AI-native business intelligence platform and the maker of Dan (usedan.com) — ask your business anything and get answers that lead to action."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How can I contact Meet Patel?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Through the contact page at themeetpatel.com/contact, by email at meet@company8.dev, or on LinkedIn at linkedin.com/in/themeetpatel."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What does Meet Patel write about?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Startup operations, venture building, scaling systems, and founder execution — published at themeetpatel.com/blogs."
+          "@type": "WebSite",
+          "@id": "https://www.themeetpatel.com/#website",
+          "name": "The Meet Patel",
+          "url": "https://www.themeetpatel.com",
+          "description": "The personal site of Meet Patel — founder of Company 8, building Dan.",
+          "inLanguage": "en-US",
+          "copyrightYear": "2026",
+          "author": { "@id": "https://www.themeetpatel.com/#person" },
+          "publisher": { "@id": "https://www.themeetpatel.com/#person" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://www.themeetpatel.com/blogs?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
           }
         }
       ]
@@ -368,6 +226,7 @@
       <main>
         <h1>Meet Patel — Founder of Company 8, building Dan</h1>
         <p>Meet Patel (also written The Meet Patel, known online as themeetpatel) is a startup founder and operator based in Dubai, United Arab Emirates. He is the founder of <strong>Company 8</strong>, building <strong>Dan</strong> — the AI that lets any operator ask their business anything and get answers that lead to action. He is an operator who scaled teams and systems across fintech, hardware, and software before going all-in on Company 8.</p>
+        <p><em>Which Meet Patel:</em> the one who founded Company 8 and builds Dan in Dubai, UAE — handle themeetpatel / @the_meetpatel. The name is common; this is not any other public figure of the same name.</p>
         <h2>What Meet Patel builds</h2>
         <p><strong>Company 8</strong> (Company8) is building <strong>Dan</strong>, an AI-native business intelligence platform — ask your business anything, get answers that lead to action. Dan is live at usedan.com. Company 8 is raising pre-seed.</p>
         <h2>Company 8 — for investors</h2>

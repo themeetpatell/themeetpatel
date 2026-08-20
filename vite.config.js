@@ -35,13 +35,53 @@ export default defineConfig({
             return
           }
 
-          // Keep third-party code in one shared vendor chunk so Rollup
-          // doesn't create cross-initialization cycles between React and
-          // libraries like Recharts/Sonner during startup.
           if (id.includes('node_modules/@vercel')) {
             return 'vendor-analytics'
           }
 
+          // Admin-only libraries. These are reachable ONLY through the lazy
+          // admin routes in App.jsx, so splitting them out cannot create the
+          // React/Recharts cross-initialization cycle that forced everything
+          // into one chunk before — nothing on a public page imports them.
+          // Together they were ~1MB of dead weight on every public pageview.
+          if (
+            id.includes('node_modules/@tiptap') ||
+            id.includes('node_modules/prosemirror') ||
+            id.includes('node_modules/lowlight') ||
+            id.includes('node_modules/highlight.js') ||
+            id.includes('node_modules/refractor')
+          ) {
+            return 'vendor-editor'
+          }
+
+          if (id.includes('node_modules/recharts')) {
+            return 'vendor-charts'
+          }
+
+          // force-graph, its full helper set, AND d3 must stay in ONE chunk.
+          // force-graph is kapsule-based: it builds its API by mutating a
+          // prototype at module-init time, so splitting it from d3 across chunks
+          // reorders initialization and it throws
+          // "e.d3AlphaDecay is not a function" at runtime. Verified on a preview
+          // deployment — /mind rendered the error boundary instead of the graph.
+          //
+          // The helpers must be listed explicitly too: leaving one
+          // (float-tooltip) unmatched dropped it into the shared vendor chunk,
+          // from where it imported d3 and created a chunk cycle.
+          if (
+            /node_modules\/(react-force-graph|react-kapsule|force-graph|kapsule|float-tooltip|accessor-fn|bezier-js|canvas-color-tracker|index-array-by|@tweenjs|d3-)/.test(id)
+          ) {
+            return 'vendor-graph'
+          }
+
+          // Recharts' d3 wrapper rides with the chart chunk it belongs to.
+          if (id.includes('node_modules/victory-vendor')) {
+            return 'vendor-charts'
+          }
+
+          // Everything else stays in one shared vendor chunk, deliberately:
+          // splitting React away from its consumers reintroduces the startup
+          // cycle this config previously worked around.
           return 'vendor'
         },
         // Optimize asset file names
