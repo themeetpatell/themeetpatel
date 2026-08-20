@@ -58,21 +58,25 @@ export default defineConfig({
             return 'vendor-charts'
           }
 
-          // force-graph and its full helper set. The helpers must be listed
-          // explicitly: leaving one (float-tooltip) unmatched dropped it into
-          // the shared vendor chunk, from where it imported d3 and created a
-          // `vendor -> vendor-dataviz -> vendor` cycle.
+          // force-graph, its full helper set, AND d3 must stay in ONE chunk.
+          // force-graph is kapsule-based: it builds its API by mutating a
+          // prototype at module-init time, so splitting it from d3 across chunks
+          // reorders initialization and it throws
+          // "e.d3AlphaDecay is not a function" at runtime. Verified on a preview
+          // deployment — /mind rendered the error boundary instead of the graph.
+          //
+          // The helpers must be listed explicitly too: leaving one
+          // (float-tooltip) unmatched dropped it into the shared vendor chunk,
+          // from where it imported d3 and created a chunk cycle.
           if (
-            /node_modules\/(react-force-graph|react-kapsule|force-graph|kapsule|float-tooltip|accessor-fn|bezier-js|canvas-color-tracker|index-array-by|@tweenjs)/.test(id)
+            /node_modules\/(react-force-graph|react-kapsule|force-graph|kapsule|float-tooltip|accessor-fn|bezier-js|canvas-color-tracker|index-array-by|@tweenjs|d3-)/.test(id)
           ) {
             return 'vendor-graph'
           }
 
-          // d3 (+ victory-vendor, Recharts' d3 wrapper) is used only by the two
-          // lazy chunks above, never by a public page — so it gets its own leaf
-          // chunk rather than riding along in vendor on every pageview.
-          if (id.includes('node_modules/d3-') || id.includes('node_modules/victory-vendor')) {
-            return 'vendor-dataviz'
+          // Recharts' d3 wrapper rides with the chart chunk it belongs to.
+          if (id.includes('node_modules/victory-vendor')) {
+            return 'vendor-charts'
           }
 
           // Everything else stays in one shared vendor chunk, deliberately:

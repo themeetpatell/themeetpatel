@@ -45,9 +45,16 @@ export default function MindGraph({ data, paused = false }) {
 
   useEffect(() => {
     const fg = fgRef.current;
-    if (!fg) return;
-    fg.d3AlphaDecay(FORCE_PARAMS.alphaDecay);
-    fg.d3VelocityDecay(FORCE_PARAMS.velocityDecay);
+    // react-force-graph-2d@1.29 predates React 19, and under it the ref does not
+    // always expose the underlying kapsule instance. Calling its methods blindly
+    // threw "e.d3AlphaDecay is not a function" and the error boundary replaced
+    // the entire page. Tuning the simulation is a nice-to-have; rendering the
+    // graph at all is not, so every call is now guarded and the graph falls back
+    // to the library's default physics.
+    if (!fg || typeof fg.d3Force !== "function") return;
+
+    if (typeof fg.d3AlphaDecay === "function") fg.d3AlphaDecay(FORCE_PARAMS.alphaDecay);
+    if (typeof fg.d3VelocityDecay === "function") fg.d3VelocityDecay(FORCE_PARAMS.velocityDecay);
 
     const linkForce = fg.d3Force("link");
     if (linkForce) {
@@ -66,19 +73,19 @@ export default function MindGraph({ data, paused = false }) {
       }
     });
 
-    fg.d3ReheatSimulation();
+    if (typeof fg.d3ReheatSimulation === "function") fg.d3ReheatSimulation();
   }, [graph]);
 
   useEffect(() => {
     const fg = fgRef.current;
-    if (!fg) return;
+    if (!fg || typeof fg.pauseAnimation !== "function") return;
     if (paused) fg.pauseAnimation();
     else fg.resumeAnimation();
   }, [paused]);
 
   useEffect(() => {
     const fg = fgRef.current;
-    if (!fg) return;
+    if (!fg || typeof fg.screen2GraphCoords !== "function") return;
     const r = FORCE_PARAMS.cursorForceRadius;
     function onMouseMove(e) {
       const rect = e.target.getBoundingClientRect();
