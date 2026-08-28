@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Linkedin, Twitter, Github, Instagram, Youtube, Building2, Plus } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { liveSocials, FOLLOW_STRIP } from '../data/socials';
-import { SubstackIcon, MediumIcon } from './icons/BrandIcons';
+import { socialsWithIcons } from './icons/socialIcons';
 
 /**
  * Floating follow bubble, pinned to the left edge and vertically centred.
@@ -21,17 +21,6 @@ import { SubstackIcon, MediumIcon } from './icons/BrandIcons';
  * Transform and opacity only.
  */
 
-const ICONS = {
-  linkedin: Linkedin,
-  'linkedin-company': Building2,
-  twitter: Twitter,
-  substack: SubstackIcon,
-  medium: MediumIcon,
-  instagram: Instagram,
-  youtube: Youtube,
-  github: Github,
-};
-
 const Z = 9980; // below StickyWhatsApp (9999) and LaunchTryDanCard (9990)
 const STEP = 46; // px between channel centres when open
 
@@ -39,7 +28,7 @@ export default function SocialStrip() {
   const [isOpen, setIsOpen] = useState(false);
   const rootRef = useRef(null);
 
-  const channels = liveSocials();
+  const channels = socialsWithIcons(liveSocials());
   const half = Math.ceil(channels.length / 2);
   const above = channels.slice(0, half).reverse(); // nearest the bubble first
   const below = channels.slice(half);
@@ -64,8 +53,7 @@ export default function SocialStrip() {
     };
   }, [isOpen]);
 
-  const renderChannel = ({ id, label, href, handle }, index, direction) => {
-    const Icon = ICONS[id];
+  const renderChannel = ({ id, label, href, handle, icon: Icon }, index, direction) => {
     const offset = (index + 1) * STEP * direction;
     return (
       <a
@@ -81,7 +69,7 @@ export default function SocialStrip() {
           transitionDelay: `${isOpen ? index * 28 : 0}ms`,
         }}
       >
-        {Icon ? <Icon size={17} aria-hidden="true" /> : null}
+        <Icon size={17} aria-hidden="true" />
         <span className="sb-tip" aria-hidden="true">{label}</span>
       </a>
     );
@@ -96,8 +84,8 @@ export default function SocialStrip() {
           top: 50%;
           transform: translateY(-50%);
           z-index: ${Z};
-          width: 46px;
-          height: 46px;
+          width: 42px;
+          height: 42px;
         }
         .sb-item {
           position: absolute;
@@ -106,8 +94,8 @@ export default function SocialStrip() {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 46px;
-          height: 46px;
+          width: 42px;
+          height: 42px;
           border: 1px solid rgba(155,139,255,0.2);
           border-radius: 50%;
           background: rgba(13,14,22,0.94);
@@ -130,7 +118,7 @@ export default function SocialStrip() {
         /* Label appears on hover only, so the resting state stays one bubble. */
         .sb-tip {
           position: absolute;
-          left: 56px;
+          left: 52px;
           padding: 5px 10px;
           border: 1px solid rgba(155,139,255,0.2);
           border-radius: 8px;
@@ -146,6 +134,10 @@ export default function SocialStrip() {
         }
         .sb-item:hover .sb-tip, .sb-item:focus-visible .sb-tip { opacity: 1; transform: translateX(0); }
 
+        /* At rest the bubble is a ghost: mostly transparent, lightly frosted, so
+           the copy underneath still reads. It solidifies on hover, on focus, and
+           whenever the channels are open — the moments someone is actually
+           looking at it rather than reading past it. */
         .sb-bubble {
           position: absolute;
           left: 0;
@@ -153,19 +145,29 @@ export default function SocialStrip() {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 46px;
-          height: 46px;
+          width: 42px;
+          height: 42px;
           padding: 0;
-          border: 1px solid rgba(155,139,255,0.35);
+          border: 1px solid rgba(155,139,255,0.22);
           border-radius: 50%;
-          background: linear-gradient(135deg, rgba(155,139,255,0.22), rgba(139,92,246,0.14));
+          background: rgba(155,139,255,0.06);
+          backdrop-filter: blur(3px);
+          box-shadow: none;
+          color: rgba(196,181,253,0.55);
+          cursor: pointer;
+          transition: transform 320ms cubic-bezier(0.34,1.3,0.64,1),
+                      background-color 200ms ease, border-color 200ms ease,
+                      color 200ms ease, box-shadow 200ms ease, backdrop-filter 200ms ease;
+        }
+        .sb-bubble:hover,
+        .sb-bubble:focus-visible,
+        .sb-root[data-open="true"] .sb-bubble {
+          background: linear-gradient(135deg, rgba(155,139,255,0.24), rgba(139,92,246,0.16));
+          border-color: rgba(155,139,255,0.7);
           backdrop-filter: blur(12px);
           box-shadow: 0 6px 24px rgba(0,0,0,0.5);
           color: #c4b5fd;
-          cursor: pointer;
-          transition: transform 320ms cubic-bezier(0.34,1.3,0.64,1), border-color 180ms ease;
         }
-        .sb-bubble:hover { border-color: rgba(155,139,255,0.7); }
         .sb-bubble:focus-visible { outline: 2px solid #9b8bff; outline-offset: 3px; }
         .sb-root[data-open="true"] .sb-bubble { transform: rotate(45deg); }
 

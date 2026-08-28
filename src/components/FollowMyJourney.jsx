@@ -1,25 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Linkedin, Twitter, Github, Instagram, Youtube, Calendar, Building2 } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import { INVESTOR } from '../data/company8';
 import { liveSocials } from '../data/socials';
-import { SubstackIcon, MediumIcon } from './icons/BrandIcons';
+import { socialsWithIcons } from './icons/socialIcons';
 
 const FollowMyJourney = () => {
-  // Destinations come from src/data/socials.js, shared with the floating follow
-  // bubble and the footer. Icons live here because they are presentation.
-  const icons = {
-    linkedin: Linkedin,
-    'linkedin-company': Building2,
-    twitter: Twitter,
-    substack: SubstackIcon,
-    medium: MediumIcon,
-    instagram: Instagram,
-    youtube: Youtube,
-    github: Github,
-  };
+  // Destinations from src/data/socials.js, icons from the one shared map —
+  // same source as the footer and the floating follow bubble.
   const socials = [
-    ...liveSocials().map((s) => ({ ...s, icon: icons[s.id] })),
+    ...socialsWithIcons(liveSocials()),
     // Not a social account, so it does not belong in socials.js — but it is the
     // strongest thing to offer someone who got this far down the page.
     { id: 'call', icon: Calendar, href: INVESTOR.calendly, label: 'Book a call', sub: '30-min quick connect' },

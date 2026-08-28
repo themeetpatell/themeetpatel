@@ -8,7 +8,8 @@ import logoImage from '../assets/logo for themeetpatel.png';
 import { trackButtonClick, trackSocialClick, trackFormSubmission } from '../utils/analytics';
 import { submitNewsletterFormData } from '../services/formService';
 import { INVESTOR } from '../data/company8';
-import { SOCIALS } from '../data/socials';
+import { liveSocials } from '../data/socials';
+import { socialsWithIcons } from './icons/socialIcons';
 
 const COPYRIGHT_YEAR = new Date().getFullYear();
 
@@ -60,10 +61,9 @@ const UltraFooter = () => {
     { name: 'Contact', href: '/contact' },
   ];
 
-  // Destinations come from src/data/socials.js so the footer and the floating
-  // follow strip can never drift apart. Icons stay here — they are presentation.
-  const socialIcons = { linkedin: Linkedin, twitter: Twitter, github: Github, instagram: Instagram, youtube: Youtube };
-  const socials = SOCIALS.map((s) => ({ ...s, icon: socialIcons[s.id] }));
+  // Destinations from src/data/socials.js, icons from the one shared map, so
+  // adding a channel can never leave this surface rendering an undefined icon.
+  const socials = socialsWithIcons(liveSocials());
 
   const muted = { color: '#5a5a6e', fontSize: '0.875rem' };
   const colHead = {
