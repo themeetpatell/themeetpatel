@@ -1,5 +1,5 @@
 import React, { useEffect, lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
@@ -14,11 +14,11 @@ import SEOPerformance from './components/SEOPerformance';
 import SubstackSubscriptionModal from './components/SubstackSubscriptionModal';
 import StickyWhatsApp from './components/StickyWhatsApp';
 import LaunchAnnouncementBar from './components/launch/LaunchAnnouncementBar';
-import LaunchProductHuntCard from './components/launch/LaunchProductHuntCard';
+import SocialStrip from './components/SocialStrip';
+import LaunchTryDanCard from './components/launch/LaunchTryDanCard';
 
 // Public pages
 import HomePage from './pages/HomePage';
-import HomePageV2 from './pages/HomePageV2';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import InvestorsPage from './pages/InvestorsPage';
@@ -28,7 +28,7 @@ import BiggMatePage from './pages/BiggMatePage';
 import BlogPage from './pages/BlogPage';
 import BlogArticlePage from './pages/BlogArticlePage';
 import CommunityPage from './pages/CommunityPage';
-import LabsPage from './pages/LabsPage';
+import ACUPage from './pages/ACUPage';
 import ThesisPage from './pages/ThesisPage';
 
 // /mind renders an interactive force-directed graph (react-force-graph + d3).
@@ -68,14 +68,17 @@ function PageTracker() {
   return null;
 }
 
-// Consumer-grade widgets (newsletter popup, personal WhatsApp bar) read "creator"
-// not "founder" to an investor, so we suppress them on the fundraising surfaces
-// (homepage + investor page). They remain live on audience-building pages.
-const FUNDRAISING_SURFACES = new Set(['/', '/investors']);
+// The newsletter popup reads "creator" not "founder" to an investor, so it stays
+// suppressed on both fundraising surfaces (homepage + investor page).
+const NEWSLETTER_SUPPRESSED = new Set(['/', '/investors']);
+
+// The WhatsApp bar is a direct contact route, not a consumer growth widget, so it
+// belongs on the homepage alongside the Dan card. Only the investor page holds it back.
+const WHATSAPP_SUPPRESSED = new Set(['/investors']);
 
 function PublicLayout({ children }) {
   const location = useLocation();
-  const isFundraisingSurface = FUNDRAISING_SURFACES.has(location.pathname);
+  const { pathname } = location;
 
   return (
     <div
@@ -90,9 +93,10 @@ function PublicLayout({ children }) {
       {children}
       <UltraFooter />
       <SEOPerformance />
-      {!isFundraisingSurface && <SubstackSubscriptionModal />}
-      {!isFundraisingSurface && <StickyWhatsApp />}
-      <LaunchProductHuntCard />
+      {!NEWSLETTER_SUPPRESSED.has(pathname) && <SubstackSubscriptionModal />}
+      {!WHATSAPP_SUPPRESSED.has(pathname) && <StickyWhatsApp />}
+      <LaunchTryDanCard />
+      <SocialStrip />
     </div>
   );
 }
@@ -134,7 +138,6 @@ function App() {
 
           {/* ── Public routes (with nav/footer) ───────────────────────── */}
           <Route path="/" element={<PublicLayout><HomePage /></PublicLayout>} />
-          <Route path="/v2" element={<PublicLayout><HomePageV2 /></PublicLayout>} />
           <Route path="/about" element={<PublicLayout><AboutPage /></PublicLayout>} />
           <Route path="/thesis" element={<PublicLayout><ThesisPage /></PublicLayout>} />
           <Route path="/contact" element={<PublicLayout><ContactPage /></PublicLayout>} />
@@ -144,7 +147,10 @@ function App() {
           {/* <Route path="/biggdate" element={<PublicLayout><BiggDatePage /></PublicLayout>} /> */}  {/* hidden — BiggDatePage.jsx kept on disk */}
           <Route path="/community" element={<PublicLayout><CommunityPage /></PublicLayout>} />
           <Route path="/mind" element={<PublicLayout><Suspense fallback={<RouteFallback />}><MindPage /></Suspense></PublicLayout>} />
-          <Route path="/labs" element={<PublicLayout><LabsPage /></PublicLayout>} />
+          <Route path="/acu" element={<PublicLayout><ACUPage /></PublicLayout>} />
+          {/* /labs became /acu. Prod 308s in middleware.js; this covers dev and
+              any client-side navigation that still points at the old path. */}
+          <Route path="/labs" element={<Navigate to="/acu" replace />} />
           <Route path="/blogs" element={<PublicLayout><BlogPage /></PublicLayout>} />
           <Route path="/blogs/:slug" element={<PublicLayout><BlogArticlePage /></PublicLayout>} />
           <Route path="/privacy-policy" element={<PublicLayout><PrivacyPolicyPage /></PublicLayout>} />

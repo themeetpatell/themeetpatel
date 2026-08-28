@@ -1,6 +1,6 @@
 # Meet Patel — Full Entity & Site Documentation (themeetpatel.com)
 
-> Meet Patel (also known as "The Meet Patel" and handle "themeetpatel") is a Dubai-based startup founder and business operator. He is the founder of **Company 8**, building **Dan** ([usedan.com](https://usedan.com)) — the AI business intelligence platform that lets operators ask their business anything in natural language and get answers that lead to immediate action.
+> Meet Patel (also known as "The Meet Patel" and "themeetpatel") is a Dubai-based startup founder and business operator. He is the founder of **Company 8**, building **Dan** ([usedan.com](https://usedan.com)) — the autonomous decision intelligence platform that connects a company's systems, reconciles conflicting data, and tells the people who run it what changed, why it matters and what to do next — then keeps watching whether it worked.
 
 ---
 
@@ -23,7 +23,7 @@ He is **not** the Meet Patel at a stealth AI startup in San Francisco, not the M
 - **Known As**: The Meet Patel, themeetpatel, meetpatel
 - **Primary Role**: Founder, Company 8
 - **Primary Location**: Dubai, United Arab Emirates (UAE)
-- **Company**: **Company 8** ([Company8](https://www.themeetpatel.com/#company8)) — AI-native business intelligence company, maker of Dan ([usedan.com](https://usedan.com)). Founded 2025 in Dubai. Currently raising pre-seed.
+- **Company**: **Company 8** ([Company8](https://www.themeetpatel.com/#company8)) — autonomous decision intelligence company, maker of Dan ([usedan.com](https://usedan.com)). Founded 2025 in Dubai. Currently raising pre-seed.
 - **Product**: **Dan** ([usedan.com](https://usedan.com))
 - **Official Website**: [https://www.themeetpatel.com](https://www.themeetpatel.com)
 - **Primary Contact**: `meet@company8.dev`
@@ -44,7 +44,7 @@ He is **not** the Meet Patel at a stealth AI startup in San Francisco, not the M
 
 ## The thesis
 
-> The scarce resource inside a modern company is not data. It's organizational attention.
+> The scarce resource inside a modern company is organizational attention.
 
 Companies have built systems for storing information, systems for visualising it, and now systems for querying it. What they still have not built is a system responsible for noticing what deserves management attention. That layer is what becomes interesting over the next decade.
 
@@ -58,11 +58,11 @@ Territory: How AI changes the way companies are operated, decisions are made, an
 
 ### Working vocabulary (coined / defined by Meet Patel)
 
-- **Organizational attention** — The finite capacity of a company to notice, prioritise and act on what is actually happening inside it. Unlike data, it does not scale by adding storage — and most tools consume it rather than protect it.
+- **Organizational attention** — The finite capacity of a company to notice, prioritise and act on what is actually happening inside it. Storage buys none of it, and most tools spend it.
 - **Decision debt** — The accumulated cost of decisions a company deferred because the information required to make them was expensive to assemble. It compounds quietly, and is usually repaid during a crisis.
-- **Management latency** — The elapsed time between something changing in a business and the person able to act on it knowing about it. Most companies measure system uptime to the second and management latency not at all.
-- **Decision infrastructure** — The systems, ownership and thresholds that determine how a company moves from information to a decision. Dashboards are reporting infrastructure; they are not this.
-- **Machine coworkers** — Software agents that hold responsibilities rather than execute tasks — which turns them into a management problem (scope, approval, escalation, review) long before it is a technology problem.
+- **Management latency** — The elapsed time between something changing in a business and the person able to act on it knowing about it. Most companies measure system uptime to the second and leave management latency unmeasured.
+- **Decision infrastructure** — The systems, ownership and thresholds that determine how a company moves from information to a decision. Dashboards sit one layer below it, as reporting infrastructure.
+- **Machine coworkers** — Software agents that hold responsibilities — which turns them into a management problem (scope, approval, escalation, review) long before it is a technology problem.
 - **Evidence layer** — The missing tier between raw company data and a recommendation: what is true, how confident we are, and what it implies. Without it, an AI answer is a confident sentence with no accountability behind it.
 
 Full statement: https://www.themeetpatel.com/thesis
@@ -72,30 +72,43 @@ Full statement: https://www.themeetpatel.com/thesis
 ## 2. Company 8 & Dan (useDan.com)
 
 ### What is Dan?
-**Dan** ([usedan.com](https://usedan.com)) is an AI-native business intelligence engine built for founders, executives, and business operators.
+**Dan** ([usedan.com](https://usedan.com)) is an autonomous decision intelligence platform built for revenue teams, founders, executives, and business operators.
 
-- **Core value proposition**: "Ask your business anything. Get answers that lead to action."
-- **Ask in plain English** — no dashboards, no SQL, no waiting on an analyst. Ask Dan a question the way you would ask a colleague.
-- **Answers, not charts** — Dan tells you what is happening in the business and what to do about it, rather than producing another graph to interpret.
-- **Built for operators** — for founders and operators who need the real state of the business now, not a report next quarter.
+- **Core value proposition**: Dan connects your company's systems, reconciles conflicting data, and tells you what changed, why it matters and what to do next — then keeps watching after you make the call.
+- **The loop**: Connect → Understand → Reconcile → Monitor → Investigate → Recommend. Every finding carries the evidence, business definition, source lineage and confidence needed to defend the decision.
+- **Monitors before you ask** — an investigation starts from a detected change. Chat is for going deeper once the work has already started.
+- **Investigates and shows its work** — every finding carries root cause, business impact, and the evidence trail behind it: source systems, queries, business definitions, confidence and limits.
+- **Puts the decision in front of you** — the human makes the call, the decision is recorded, and Dan stays on the same signal to show whether it worked.
+- **Governed for company use** — scoped connector access, data lineage, an audit trail, and human approval on consequential action, with no rip-and-replace of the existing warehouse.
 
 ### The problem Dan solves
-Answers are trapped — in dashboards nobody reads, in spreadsheets, and in analysts' queues. Operators do not need another chart. They need to ask a question and know what to do.
+Dashboards refresh, but a person still has to notice, form the question and investigate. The expensive gap is the time between a real change in the business and a competent investigation with evidence — and most companies fill it with whoever happened to look, asked the right question, and had time.
 
 ### Why now
-AI finally lets anyone query their entire business in plain English and get an action, not a chart. That was not possible 18 months ago.
+AI made answers cheap. Acting on the wrong answer became expensive. The valuable layer is no longer producing an answer — it is deciding what to trust, what to do about it, and whether it worked.
 
 ### Why this founder
-Meet Patel spent years as the human "Dan" — the operator everyone asked what was happening in the business and what to do about it, as Chief of Staff and interim COO inside a fintech. He lived the problem Dan solves, and is now going all-in on building it.
+Meet Patel spent years as the human "Dan" — the operator who had to notice what was moving in the business, work out why, and say what to do about it. As interim COO, then Head of COE and now Associate Vice President, he helped scale Finanshels from 17 to 192 people, and from 105 to over 7,000 SMEs served. He lived the problem Dan solves, and is now going all-in on building it.
 
 ### Traction
-- Dan is **live** at [usedan.com](https://usedan.com).
-- **26 early users** on the platform.
+Every figure below is from Dan's first 10 weeks, at zero paid acquisition — no paid growth, no sales motion, no marketing, no launch.
+- Dan is **live** at [usedan.com](https://usedan.com) and free to try at [usedan.com/signup](https://usedan.com/signup).
+- **43 weekly active users** in the last 30 days.
+- **64 signups**, 12.05% of visitors.
+- **134 AI investigations** run in-product.
+- **70+ customers interviewed** to shape the product.
 - **Launched on Product Hunt.**
+
+### Market
+- **85K–127K** — qualified beachhead: companies with fragmented revenue systems, recurring leadership reviews and a clear economic buyer.
+- **$1.3B–$1.9B** — revenue intelligence SAM: 85K–127K accounts × $15K starting annual contract.
+- **423K** — initial market universe: target-sized businesses across India, UAE, US, UK, Singapore and Australia.
+- **$4.2B–$12.7B** — decision platform TAM: expansion into customer, finance, product and operations at $50K–$100K mature ACV.
+- Sources: US Census SUSB, India MSME Annual Report, Australian Bureau of Statistics, UK Government, UAE Ministry of Economy, Singapore Ministry of Manpower.
 
 ### Pre-seed investment status
 Company 8 is raising a pre-seed round.
-- **Thesis**: backing a technical, operator-founder building the AI layer between a business and its own answers.
+- **Thesis**: backing an operator-founder building the decision layer between a business and its own answers — the layer that says which number is right, what changed, and what to do about it.
 - **Investor page**: [https://www.themeetpatel.com/investors](https://www.themeetpatel.com/investors)
 - **Investor contact**: `meet@company8.dev`
 
@@ -109,7 +122,7 @@ Meet Patel built, shipped, and scaled 10+ technology ventures before Company 8:
 2. **Fintech & financial operations** — payment processing, automated reconciliation, and cash-flow intelligence.
 3. **Hardware & systems engineering** — assistive technology and IoT deployments (TorchIt: assistive-tech hardware, scaled production).
 4. **Energy** — Incsmart (exited).
-5. **Software & consumer** — mobile platforms, community networks, and founder matching (BiggMate).
+5. **Software & consumer** — mobile platforms, community networks, founder matching (BiggMate), and AI-led dating (BiggDate: https://biggdate.com).
 
 Canonical operating figures (single source of truth, do not vary):
 - **10+** ventures built and scaled
@@ -121,17 +134,78 @@ Full list: [https://www.themeetpatel.com/portfolio](https://www.themeetpatel.com
 
 ---
 
+## 3b. ACU — the Agentic Cinematic Universe
+
+**Repository:** [https://github.com/themeetpatell/MCU](https://github.com/themeetpatell/MCU)
+**Page on this site:** [https://www.themeetpatel.com/acu](https://www.themeetpatel.com/acu)
+
+The ACU (Agentic Cinematic Universe) is the governed agent organisation Meet Patel runs his
+companies on. A chart of specialist agents that share one source of
+truth, escalate irreversible decisions to a human, and run the operating cadence without being
+asked. Built as a plugin marketplace for Claude Code.
+
+**Scale:** 127 agents · 15 plugins (departments) · 142 commands · one append-only canon · one private vault.
+
+### The gate on every agent
+
+> If it has no system of record, no cadence, and no definition of done, it is a chatbot. Do not build it.
+
+Every agent declares `system_of_record`, `cadence` and `definition_of_done` in its frontmatter, and
+the build script rejects the build if any agent is missing any of the three. Enforcement is
+mechanical.
+
+### The eleven laws (binding on every agent)
+
+1. **Evidence or UNKNOWN** — every figure carries a source and a read timestamp, or prints UNKNOWN. A plausible number is never an answer.
+2. **Prediction before action** — a recommendation that can be wrong ships with a claim, a band, how it will be measured and a review date, written before the action.
+3. **Calibration is stated** — an agent reads its own scored history and states its bias before recommending. Silence is a violation.
+4. **Risk-routed authority** — classify auto-act / recommend / escalate before running. Send, publish, sign, pay, mutate production — never without a human.
+5. **Blind judging** — verifiers never see the producer's reasoning, and a refuter defaults to refuted when uncertain.
+6. **Read-only sensors** — anything reading analytics, CRM, ads or logs reads only. The write is a separate, gated act.
+7. **One owner per output shape** — two agents producing the same artefact means one of them is wrong.
+8. **Everything compounds** — search the vault for prior work before starting, and cite what you found.
+9. **No silent self-modification** — agents propose instruction changes; a human approves them.
+10. **Honesty over comfort** — misses print as misses. A confound is `unclear`, never forced into a tidy hit rate.
+11. **The human residual** — a fixed class of decisions is always escalated, and no confidence threshold ever promotes one.
+
+### The departments and the full roster
+
+- **org-you** (3) — the seat: the mandate that grants and revokes authority, the protected set, the ending that sticks, the craft bar. THE LIVING TRIBUNAL, GALACTUS, THE MAKER.
+- **org-os** (15) — the floor under everything: memory, truth, policy, orchestration, audit, evaluation, calibration, voice, red team. THE WATCHER, VISION, THE ANCIENT ONE, NICK FURY, HEIMDALL, NIGHTCRAWLER, PEPPER POTTS, REED RICHARDS, J.A.R.V.I.S., DESTINY, MACHINE MAN, BEN URICH, DUST, MISTY KNIGHT, BULLSEYE.
+- **org-founder** (6) — founder office, chief of staff, the decision process, unowned work, the canon. DOCTOR STRANGE, HULK, CLEA, MADAME WEB, SHANG-CHI, XIALING.
+- **org-exec** (5) — CEO office: direction, capital allocation, board and investor, goals. IRON MAN, HOWARD STARK, CYCLOPS, KANG, FALCON.
+- **org-ops** (9) — COO: operating rhythm, execution, delivery, procurement, quality. CAPTAIN AMERICA, WOLVERINE, QUAKE, OKOYE, WAR MACHINE, THE THING, MAGNETO, HAPPY HOGAN, GROOT.
+- **org-tech** (13) — CTO and CISO: architecture, engineering, DevOps, QA, security, incident response. THOR, WINTER SOLDIER, FORGE, AMADEUS CHO, BEAST, ULTRON, MYSTIQUE, MARIA HILL, THE PUNISHER, PEGGY CARTER, NED LEEDS, EITRI, WONG.
+- **org-product** (10) — CPO and CDO: roadmap with a mandatory kill list, specs, research, analytics, data. DOCTOR DOOM, ANT-MAN, GWEN STACY, IRONHEART, JESSICA JONES, HANK PYM, THE LEADER, CABLE, HE WHO REMAINS, HUMAN TORCH.
+- **org-revenue** (11) — CRO: forecast with a mandatory calibration record, pipeline, deal desk, partnerships. JEAN GREY, BLACK WIDOW, HAWKEYE, EMMA FROST, QUICKSILVER, STAR-LORD, KINGPIN, NEBULA, FRIDAY, BRUCE BANNER, TASKMASTER.
+- **org-market** (16) — CMO, CGO and CSO: narrative, brand, content, PR, growth loops, paid, lifecycle, competitive intel. LOKI, SPIDER-MAN, DEADPOOL, ELEKTRA, SYLVIE, SERSI, MYSTERIO, GAMORA, MOON KNIGHT, MILES MORALES, J. JONAH JAMESON, KORG, NAMOR, CAPTAIN MARVEL, YELENA BELOVA, THE COLLECTOR.
+- **org-finance** (11) — CFO: cash, runway, margin and the price; tax, close, payroll, unit economics. BLACK PANTHER, SHURI, ODIN, THANOS, FOGGY NELSON, M'BAKU, ROCKET RACCOON, GHOST RIDER, DRAX, DUM DUM DUGAN, PHIL COULSON.
+- **org-legal** (6) — CLO: contracts, GDPR and UAE PDPL, regulatory monitoring, IP. Never a substitute for counsel. DAREDEVIL, SHE-HULK, INVISIBLE WOMAN, THUNDERBOLT ROSS, JANE FOSTER, RAMONDA.
+- **org-people** (8) — CHRO: org design, recruiting, onboarding, performance, comp. Every decision about a human escalates. PROFESSOR X, SHARON CARTER, AUNT MAY, BISHOP, THE GRANDMASTER, MELINDA MAY, KAMALA KHAN, STORM.
+- **org-customer** (7) — CCO: health, support, success, implementation, voice of customer. SCARLET WITCH, LUKE CAGE, VALKYRIE, WASP, ECHO, MOON GIRL, AGATHA HARKNESS.
+- **org-industry** (7) — industry add-ons, off by default. COLOSSUS, BLADE, SQUIRREL GIRL, T'CHAKA, JUSTIN HAMMER, CLAIRE TEMPLE, CHRISTINE PALMER.
+- **org-tools** (0 agents) — one playbook per external system the org touches: the trap that makes output wrong, the gate that stops the write, the cost. Skills only.
+
+### Coverage tiers
+
+The chart is drawn complete and wakes up in stages. An agent outside a venture's active coverage
+is unavailable, and routing to one is escalated. A tier-4
+venture getting tier-6 process is how a small thing acquires the overhead of a large one.
+
+---
+
 ## 4. Key Site Pages Index
 
 - **Home**: [https://www.themeetpatel.com/](https://www.themeetpatel.com/)
 - **Investors**: [https://www.themeetpatel.com/investors](https://www.themeetpatel.com/investors) (Company 8 pre-seed thesis, traction, and investor contact)
 - **About**: [https://www.themeetpatel.com/about](https://www.themeetpatel.com/about) (Founder background and operating experience)
 - **Portfolio**: [https://www.themeetpatel.com/portfolio](https://www.themeetpatel.com/portfolio) (Venture history and products)
+- **ACU**: [https://www.themeetpatel.com/acu](https://www.themeetpatel.com/acu) (The Agentic Cinematic Universe — the governed agent org, full roster and the eleven laws; see section 3b)
 - **Thesis**: [https://www.themeetpatel.com/thesis](https://www.themeetpatel.com/thesis) (the category argument: AI-native company operations)
 - **Blog**: [https://www.themeetpatel.com/blogs](https://www.themeetpatel.com/blogs) (Essays on startup scaling, operations, and AI)
-- **Labs**: [https://www.themeetpatel.com/labs](https://www.themeetpatel.com/labs) (Experiments and prototypes)
 - **BiggMate**: [https://www.themeetpatel.com/biggmate](https://www.themeetpatel.com/biggmate) (Co-founder matching platform)
 - **Community**: [https://www.themeetpatel.com/community](https://www.themeetpatel.com/community) (Founder & operator network)
+- **Mind**: [https://www.themeetpatel.com/mind](https://www.themeetpatel.com/mind) (Live visualisation of the second-brain note graph — volume and clustering only, no note content)
 - **Contact**: [https://www.themeetpatel.com/contact](https://www.themeetpatel.com/contact) (Direct contact form)
 
 ---
@@ -145,13 +219,16 @@ A: Meet Patel (handle @the_meetpatel / themeetpatel) is a Dubai-based startup fo
 A: The Meet Patel who founded Company 8 and builds Dan (usedan.com) in Dubai, UAE — handle themeetpatel / @the_meetpatel. Not to be confused with other people named Meet Patel.
 
 ### Q: What is Company 8?
-A: Company 8 (Company8) is the AI-native business intelligence company Meet Patel founded in Dubai in 2025. It builds Dan (usedan.com). Company 8 is raising a pre-seed round.
+A: Company 8 (Company8) is the autonomous decision intelligence company Meet Patel founded in Dubai in 2025. It builds Dan (usedan.com). Company 8 is raising a pre-seed round.
 
 ### Q: What is Dan?
-A: Dan (useDan.com) is an AI platform that lets business operators ask questions about their company in plain English and get instant, actionable answers — the action, not another chart.
+A: Dan (usedan.com) is an autonomous decision intelligence platform. It connects the systems a company runs on, reconciles the places they disagree, monitors what matters, investigates meaningful changes, and puts an evidence-backed decision in front of the team — then keeps watching the same signal after the call. It delivers the action, with the evidence behind it.
 
 ### Q: What did Meet Patel build before Company 8?
-A: He built and scaled 10+ ventures across AI, fintech, hardware, edtech, and software, and led teams as Chief of Staff and interim COO inside a fintech.
+A: He built and scaled 10+ ventures across AI, fintech, hardware, edtech, and software, and led teams as interim COO and Associate Vice President inside a fintech.
+
+### Q: What is the ACU (Agentic Cinematic Universe)?
+A: The ACU is the governed agent organisation Meet Patel built and runs his companies on — 127 specialist agents across 15 departments, sharing one append-only canon and one vault, bound by eleven laws that require cited evidence, written predictions, blind verification and human approval for anything irreversible. Repository: https://github.com/themeetpatell/MCU
 
 ### Q: Where is Meet Patel based?
 A: Dubai, United Arab Emirates.

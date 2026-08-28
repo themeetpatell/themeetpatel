@@ -15,8 +15,9 @@ const SITE = 'https://www.themeetpatel.com';
 // bump it in the same commit that edits the page. Routes marked `feed: true`
 // derive lastmod from the newest published article instead.
 //
-// /labs is intentionally absent: LabsPage sets robotsNoindex, and submitting
-// noindex URLs is what triggers Search Console coverage warnings.
+// /labs is gone: it became /acu, and middleware.js 308s the old path. Only the
+// destination belongs in the sitemap — submitting a redirecting URL is what
+// triggers Search Console coverage warnings.
 const STATIC_ROUTES = [
   { path: '/',           changefreq: 'weekly',  priority: '1.0',  feed: true,  lastmod: '2026-08-20' },
   { path: '/investors',  changefreq: 'weekly',  priority: '0.95', lastmod: '2026-08-20' },
@@ -24,6 +25,7 @@ const STATIC_ROUTES = [
   { path: '/thesis',     changefreq: 'monthly', priority: '0.9',  lastmod: '2026-08-21' },
   { path: '/blogs',      changefreq: 'daily',   priority: '0.9',  feed: true,  lastmod: '2026-08-20' },
   { path: '/portfolio',  changefreq: 'monthly', priority: '0.85', lastmod: '2026-07-07' },
+  { path: '/acu',        changefreq: 'monthly', priority: '0.8',  lastmod: '2026-08-29' },
   { path: '/biggmate',   changefreq: 'monthly', priority: '0.8',  lastmod: '2026-07-07' },
   { path: '/contact',    changefreq: 'monthly', priority: '0.75', lastmod: '2026-07-07' },
   { path: '/community',  changefreq: 'monthly', priority: '0.7',  lastmod: '2026-07-07' },

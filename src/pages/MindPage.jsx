@@ -9,6 +9,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import SEOHead from "../components/SEOHead";
+import { MIND } from "../data/pageVoice";
 import { SITE_URL, meetPatelEntities, personRef, buildBreadcrumb } from "../lib/seoEntity";
 import MindGraph from "../components/mind/MindGraph";
 import TimeScrubber from "../components/mind/TimeScrubber";
@@ -76,7 +77,7 @@ export default function MindPage() {
         style={{
           position: "relative",
           width: "100%",
-          height: "calc(100vh - 72px)",
+          height: "calc(100vh - var(--launch-banner-h, 0px))",
           background: T.bg,
           overflow: "hidden",
         }}
@@ -85,7 +86,7 @@ export default function MindPage() {
         <div
           style={{
             position: "absolute",
-            top: 20,
+            top: "calc(var(--nav-h, 64px) + 20px)",
             left: 24,
             zIndex: 5,
             display: "flex",
@@ -104,7 +105,7 @@ export default function MindPage() {
               fontWeight: 700,
             }}
           >
-            The Mind
+            {MIND.eyebrow}
           </span>
           <h1
             style={{
@@ -116,7 +117,7 @@ export default function MindPage() {
               letterSpacing: "-0.01em",
             }}
           >
-            A living map of how I think.
+            {MIND.h1}
           </h1>
           <p
             style={{
@@ -127,9 +128,7 @@ export default function MindPage() {
               maxWidth: 380,
             }}
           >
-            Each dot is a note in my second brain. Colors are life areas. No
-            content is shown — just the shape of the thinking, breathing in
-            real time.
+            {MIND.body}
           </p>
         </div>
 
@@ -137,7 +136,7 @@ export default function MindPage() {
         <div
           style={{
             position: "absolute",
-            top: 20,
+            top: "calc(var(--nav-h, 64px) + 20px)",
             right: 24,
             zIndex: 5,
             pointerEvents: "none",

@@ -123,7 +123,7 @@ export const company8Org = {
   name: 'Company 8',
   alternateName: ['Company8'],
   description:
-    'Company 8 is the company Meet Patel is building — an AI-native business intelligence company and the maker of Dan (usedan.com): ask your business anything, get answers that lead to action. Company 8 is raising a pre-seed round.',
+    'Company 8 is the company Meet Patel is building — an autonomous decision intelligence company and the maker of Dan (usedan.com): it connects the systems a company runs on, reconciles the places they disagree, and tells the people who run it what changed, why it matters and what to do next. Company 8 is raising a pre-seed round.',
   url: 'https://usedan.com',
   foundingDate: '2025',
   foundingLocation: { '@type': 'Place', name: 'Dubai, UAE' },
@@ -138,12 +138,12 @@ export const danSoftwareApp = {
   '@type': 'SoftwareApplication',
   '@id': DAN_APP_ID,
   name: 'Dan',
-  alternateName: ['useDan', 'Dan AI', 'Dan Business Intelligence'],
+  alternateName: ['useDan', 'Dan AI', 'Dan Business Intelligence', 'Dan by Company 8'],
   url: 'https://usedan.com',
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web, Cloud',
   description:
-    'Dan (useDan.com) is an AI business intelligence platform built by Company 8 that allows business operators to ask their company data anything in natural language and receive instant actionable insights.',
+    'Dan (usedan.com) is an autonomous decision intelligence platform built by Company 8. It connects to the warehouse, CRM, billing, product analytics and ads, reconciles the places they disagree, monitors what matters, investigates meaningful changes, and puts an evidence-backed decision in front of the team — then keeps watching the same signal after the call.',
   author: personRef,
   publisher: { '@id': COMPANY8_ID },
 };
@@ -157,7 +157,7 @@ export const personEntity = {
   alternateName: ['The Meet Patel', 'themeetpatel', 'meetpatel', 'Meet Patel Dubai'],
   disambiguatingDescription: DISAMBIGUATION,
   description:
-    'Meet Patel (themeetpatel / The Meet Patel) is a Dubai-based startup founder and operator. He is the founder of Company 8, building Dan (usedan.com) — ask your business anything, get answers that lead to action — and has built and scaled 10+ ventures across AI, fintech, hardware, and software.',
+    'Meet Patel (themeetpatel / The Meet Patel) is a Dubai-based startup founder and operator. He is the founder of Company 8, building Dan (usedan.com) — it monitors the business, investigates what changed, and puts an evidence-backed decision in front of the people who run it — and has built and scaled 10+ ventures across AI, fintech, hardware, and software.',
   url: SITE_URL,
   mainEntityOfPage: SITE_URL,
   image: `${SITE_URL}/og-image.jpg`,
@@ -202,43 +202,11 @@ export const buildBreadcrumb = (items) => ({
   })),
 });
 
-/** High-intent FAQ Q&A pairs for AEO (Answer Engine Optimization) & Perplexity / ChatGPT Search. */
-export const homeFaqPairs = [
-  {
-    q: 'Who is Meet Patel?',
-    a: 'Meet Patel (also known as themeetpatel or The Meet Patel) is a Dubai-based startup founder and business operator. He is the founder of Company 8, building Dan (usedan.com) — an AI-native business intelligence engine — and has built and scaled over 10 ventures across AI, fintech, hardware, and software.',
-  },
-  {
-    q: 'What is Company 8?',
-    a: 'Company 8 (Company8) is the AI-native business intelligence company founded by Meet Patel in Dubai in 2025. It builds Dan (usedan.com), which lets business leaders query company operations in plain English and get actionable answers in real time. Company 8 is raising a pre-seed round.',
-  },
-  {
-    q: 'Which Meet Patel is this?',
-    a: DISAMBIGUATION,
-  },
-  {
-    q: 'What did Meet Patel build before Company 8?',
-    a: 'He built and scaled 10+ ventures across AI, fintech, hardware, edtech, and software, and led teams as Chief of Staff and interim COO inside a fintech. The full list is at themeetpatel.com/portfolio.',
-  },
-  {
-    q: 'What is Dan (useDan.com)?',
-    a: 'Dan (useDan.com) is an AI business intelligence platform. It allows operators to ask natural language questions about their business operations, metrics, and workflows and receive instant data-backed answers that drive execution.',
-  },
-  {
-    q: 'Where is Meet Patel based?',
-    a: 'Meet Patel is based in Dubai, United Arab Emirates (UAE), operating internationally across global tech startup markets.',
-  },
-  {
-    q: 'How can investors or founders contact Meet Patel?',
-    a: 'Investors and founders can contact Meet Patel directly via email at meet@company8.dev or through his official website at https://www.themeetpatel.com/contact.',
-  },
-];
-
 /**
  * Build a FAQPage node from question/answer pairs.
  * @param {Array<{q: string, a: string}>} pairs
  */
-export const buildFaqPage = (pairs = homeFaqPairs) => ({
+export const buildFaqPage = (pairs) => ({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: pairs.map(({ q, a }) => ({

@@ -1,4 +1,3 @@
-/* global process */
 // PostHog product analytics — server-side (Vercel Functions).
 //
 // Serverless functions can freeze the moment a response is returned, so every

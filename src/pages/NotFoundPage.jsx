@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
+import { NOT_FOUND } from '../data/pageVoice';
 
 const C = {
   bg: '#09090e',
@@ -35,10 +36,10 @@ export default function NotFoundPage() {
           404
         </div>
         <h1 style={{ fontSize: 28, fontWeight: 700, color: C.primary, marginBottom: 12 }}>
-          Page Not Found
+          {NOT_FOUND.h1}
         </h1>
         <p style={{ fontSize: 16, color: C.secondary, maxWidth: 420, marginBottom: 40, lineHeight: 1.6 }}>
-          This page doesn't exist or has been moved.
+          {NOT_FOUND.body}
         </p>
         <Link
           to="/"
@@ -55,7 +56,7 @@ export default function NotFoundPage() {
             textDecoration: 'none',
           }}
         >
-          Back to Home
+          {NOT_FOUND.cta}
         </Link>
       </div>
     </>

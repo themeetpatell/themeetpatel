@@ -1,4 +1,4 @@
-import { supabaseAdmin } from '../../_supabase.js';
+import { supabaseAdmin } from '../_supabase.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'PUT') return res.status(405).end();

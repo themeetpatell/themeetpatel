@@ -7,6 +7,7 @@ import {
   Instagram, Youtube, TrendingUp, Target, Briefcase, Send
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { COMMUNITY } from '../data/pageVoice';
 import { personRef, buildBreadcrumb, buildFaqPage } from '../lib/seoEntity';
 import { submitCommunityFormData } from '../services/formService';
 import { capture, captureError, identifyUser } from '../lib/posthog';
@@ -40,29 +41,11 @@ const fadeUp = {
   visible: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.55, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] } }),
 };
 
-const benefits = [
-  { icon: TrendingUp, title: 'Exclusive Insights', desc: 'Daily market trends, startup signals, and curated intelligence you will not find anywhere else.' },
-  { icon: Users,      title: 'Expert Access',      desc: 'Direct line to seasoned mentors, domain experts, and operators who have built what you are building.' },
-  { icon: Heart,      title: 'Peer Network',        desc: 'Surround yourself with 500+ founders who understand the grind, share resources, and hold each other accountable.' },
-  { icon: Briefcase,  title: 'Funding Opportunities', desc: 'Early access to investor introductions, pitch prep sessions, and warm connections that move the needle.' },
-  { icon: BookOpen,   title: 'Masterclasses',       desc: 'Live workshops, deep-dive Q&As, and recorded sessions covering every stage of the startup journey.' },
-  { icon: Award,      title: 'Career Opportunities', desc: 'Exclusive job referrals, talent spotlights, and co-founder matching for builders inside the network.' },
-];
+// Copy comes from pageVoice.COMMUNITY.benefits; the icons are presentation.
+const benefitIcons = [TrendingUp, Users, Heart, Briefcase, BookOpen, Award];
+const benefits = COMMUNITY.benefits.map((b, i) => ({ ...b, icon: benefitIcons[i] }));
 
-const faqs = [
-  {
-    q: 'Who is the StartupOS community for?',
-    a: 'The StartupOS community is for serious startup founders, operators, and builders — early-stage entrepreneurs who want daily startup discussions, mentor access, investor introductions, and a peer network that understands the grind.',
-  },
-  {
-    q: 'Is it free to join?',
-    a: 'Yes, the StartupOS community is free to join. Every application is reviewed to keep the network high-signal and vetted, but there is no membership fee.',
-  },
-  {
-    q: 'Who runs the StartupOS community?',
-    a: "It's run by Meet Patel, a Dubai-based startup founder and operator, and the founder of Company 8.",
-  },
-];
+const faqs = COMMUNITY.faqs;
 
 export default function CommunityPage() {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -196,21 +179,21 @@ export default function CommunityPage() {
 
             <motion.p variants={fadeUp} initial="hidden" animate="visible" custom={2}
               style={{ fontSize: 20, color: COLORS.textSecondary, maxWidth: 520, margin: '0 auto 16px', lineHeight: 1.6 }}>
-              500+ entrepreneurs. Daily discussions. Exclusive access.
+              {COMMUNITY.sub}
             </motion.p>
 
             <motion.p variants={fadeUp} initial="hidden" animate="visible" custom={2.5}
               style={{ fontSize: 15, color: COLORS.textMuted, maxWidth: 520, margin: '0 auto 48px', lineHeight: 1.6 }}>
-              A founder community built by Meet Patel.
+              {COMMUNITY.byline}
             </motion.p>
 
             {/* Stat chips */}
             <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3}
               style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 12 }}>
               {[
-                { icon: Users, label: '500+ Members' },
-                { icon: MessageCircle, label: '50+ Daily Discussions' },
-                { icon: Zap, label: '24/7 Support' },
+                { icon: Users, label: `500+ ${COMMUNITY.statChipLabels.members}` },
+                { icon: MessageCircle, label: `50+ ${COMMUNITY.statChipLabels.discussions}` },
+                { icon: Zap, label: COMMUNITY.statChipLabels.support },
               ].map((item) => {
                 const IconComponent = item.icon;
                 return (
@@ -234,10 +217,10 @@ export default function CommunityPage() {
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}
             style={{ textAlign: 'center', marginBottom: 56 }}>
             <h2 style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: COLORS.textPrimary, margin: '0 0 12px', letterSpacing: '-0.02em' }}>
-              Why entrepreneurs love this community
+              {COMMUNITY.benefitsHeading}
             </h2>
             <p style={{ fontSize: 16, color: COLORS.textSecondary, margin: 0 }}>
-              Built for founders who are serious about building something real.
+              {COMMUNITY.benefitsSub}
             </p>
           </motion.div>
 
@@ -342,10 +325,10 @@ export default function CommunityPage() {
             </div>
 
             <h2 style={{ fontSize: 32, fontWeight: 800, color: COLORS.textPrimary, margin: '0 0 12px', letterSpacing: '-0.02em' }}>
-              Apply to Join
+              {COMMUNITY.applyHeading}
             </h2>
             <p style={{ fontSize: 15, color: COLORS.textSecondary, margin: '0 0 36px', lineHeight: 1.6 }}>
-              We review each application to maintain quality. Join 500+ founders building the future.
+              {COMMUNITY.applySub}
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 10, marginBottom: 32 }}>
@@ -408,9 +391,9 @@ export default function CommunityPage() {
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 28 }}>
                   <div>
                     <h2 style={{ fontSize: 22, fontWeight: 800, color: COLORS.textPrimary, margin: '0 0 4px', letterSpacing: '-0.02em' }}>
-                      Apply to Join
+                      {COMMUNITY.applyHeading}
                     </h2>
-                    <p style={{ fontSize: 13, color: COLORS.textMuted, margin: 0 }}>Fill in your details to send a WhatsApp message</p>
+                    <p style={{ fontSize: 13, color: COLORS.textMuted, margin: 0 }}>{COMMUNITY.formSub}</p>
                   </div>
                   <button onClick={() => setIsFormOpen(false)} style={{ background: COLORS.elevated, border: `1px solid ${COLORS.border}`, borderRadius: 8, padding: 8, cursor: 'pointer', color: COLORS.textSecondary, lineHeight: 0 }}>
                     <X size={16} />
@@ -452,7 +435,7 @@ export default function CommunityPage() {
                     <label style={labelStyle}>Business / Startup Name</label>
                     <input
                       type="text" name="businessName" value={formData.businessName}
-                      onChange={handleChange} required placeholder="Your company or idea"
+                      onChange={handleChange} required placeholder={COMMUNITY.placeholders.business}
                       style={inputStyle}
                       onFocus={e => e.target.style.borderColor = COLORS.violet}
                       onBlur={e => e.target.style.borderColor = COLORS.border}
@@ -462,7 +445,7 @@ export default function CommunityPage() {
                     <label style={labelStyle}>Your Role</label>
                     <input
                       type="text" name="role" value={formData.role}
-                      onChange={handleChange} required placeholder="Founder, CEO, CTO, etc."
+                      onChange={handleChange} required placeholder={COMMUNITY.placeholders.role}
                       style={inputStyle}
                       onFocus={e => e.target.style.borderColor = COLORS.violet}
                       onBlur={e => e.target.style.borderColor = COLORS.border}
@@ -473,7 +456,7 @@ export default function CommunityPage() {
                     <textarea
                       name="reason" value={formData.reason}
                       onChange={handleChange} required
-                      placeholder="Tell us briefly what you hope to get from the community..."
+                      placeholder={COMMUNITY.placeholders.reason}
                       rows={3}
                       style={{ ...inputStyle, resize: 'vertical', minHeight: 80 }}
                       onFocus={e => e.target.style.borderColor = COLORS.violet}

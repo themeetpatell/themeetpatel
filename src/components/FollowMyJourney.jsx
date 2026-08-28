@@ -1,16 +1,28 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Linkedin, Twitter, Github, Instagram, Youtube, Calendar, BookOpen as Medium } from 'lucide-react';
+import { Linkedin, Twitter, Github, Instagram, Youtube, Calendar, Building2 } from 'lucide-react';
+import { INVESTOR } from '../data/company8';
+import { liveSocials } from '../data/socials';
+import { SubstackIcon, MediumIcon } from './icons/BrandIcons';
 
 const FollowMyJourney = () => {
+  // Destinations come from src/data/socials.js, shared with the floating follow
+  // bubble and the footer. Icons live here because they are presentation.
+  const icons = {
+    linkedin: Linkedin,
+    'linkedin-company': Building2,
+    twitter: Twitter,
+    substack: SubstackIcon,
+    medium: MediumIcon,
+    instagram: Instagram,
+    youtube: Youtube,
+    github: Github,
+  };
   const socials = [
-    { icon: Linkedin,  href: 'https://www.linkedin.com/in/themeetpatel/', label: 'LinkedIn',  sub: 'Professional network' },
-    { icon: Twitter,   href: 'https://x.com/the_meetpatel',               label: 'Twitter',   sub: 'Thoughts & takes' },
-    { icon: Github,    href: 'https://github.com/themeetpatell',           label: 'GitHub',    sub: 'Open source work' },
-    { icon: Instagram, href: 'https://instagram.com/the.meetpatell/',       label: 'Instagram', sub: 'Behind the scenes' },
-    { icon: Youtube,   href: 'https://youtube.com/@themeetpatel',          label: 'YouTube',   sub: 'Video content' },
-    { icon: Medium,    href: 'https://medium.com/@themeetpatel',           label: 'Medium',    sub: 'Long-form writing' },
-    { icon: Calendar,  href: 'https://calendly.com/themeetpatell/quick-connect', label: 'Calendly', sub: 'Book a call' },
+    ...liveSocials().map((s) => ({ ...s, icon: icons[s.id] })),
+    // Not a social account, so it does not belong in socials.js — but it is the
+    // strongest thing to offer someone who got this far down the page.
+    { id: 'call', icon: Calendar, href: INVESTOR.calendly, label: 'Book a call', sub: '30-min quick connect' },
   ];
 
   return (
@@ -33,7 +45,7 @@ const FollowMyJourney = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           {socials.map((s, i) => (
             <motion.a
               key={s.label}

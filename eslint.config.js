@@ -6,6 +6,16 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 
 export default [
   { ignores: ['dist'] },
+  // Serverless functions and middleware run on Node: Buffer, process and
+  // console are globals there, not undefined identifiers.
+  {
+    files: ['api/**/*.js', 'middleware.js'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: globals.node,
+    },
+  },
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {

@@ -7,10 +7,13 @@ import {
   MessageSquare, ArrowRight, MapPin
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { ABOUT } from '../data/pageVoice';
 import { CATEGORY, PILLARS } from '../data/thesis';
+import { BRAND, STATS } from '../data/company8';
+import CapabilitiesTab from '../components/about/CapabilitiesTab';
 import FollowMyJourney from '../components/FollowMyJourney';
 import meetPatelImage from '../assets/themeetpatel.jpeg';
-import { meetPatelEntities, personRef, buildBreadcrumb, buildFaqPage } from '../lib/seoEntity';
+import { meetPatelEntities, personRef, buildBreadcrumb } from '../lib/seoEntity';
 
 void motion;
 
@@ -27,6 +30,10 @@ const T = {
   gold:    '#e8c36a',
 };
 
+/* System mono for figures only. No extra font request, so no layout
+   shift — the numbers just have to read as data, not as prose. */
+const MONO = 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace';
+
 /* ─── Reusable label ─── */
 const Label = ({ children }) => (
   <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: T.violet }}>
@@ -40,12 +47,12 @@ const AboutPage = () => {
 
   /* ── DATA ── */
   const personalInfo = {
-	    bio: "I’m the founder of Company 8, building Dan — the AI that lets any operator ask their business anything and get answers that lead to action. An operator who has built top teams and scaled ventures across fintech, hardware, and software, now all-in on Company 8.",
-	    about: [
-	      "I’ve worked across fintech, recruitment, ecommerce, IoT, automation, assistive technology, and software, including taking two ventures from zero to scale.",
-	      "The work I enjoy most sits in the messy middle of growth: bringing structure to ambition through GTM systems, OKR and KPI rhythms, SOPs, and product roadmaps teams can actually execute.",
-	      "My approach is operator-led and quietly hands-on, aligning product, people, partnerships, and process so companies grow with more clarity, stronger teams, and less friction."
-	    ],
+    bio: "I’m the founder of Company 8, building Dan — the AI that monitors a business, investigates what changed, and puts an evidence-backed decision in front of the people who run it. An operator who has built top teams and scaled ventures across fintech, hardware, and software, now all-in on Company 8.",
+    about: [
+      `${BRAND.company}, and ${BRAND.product} inside it — the layer that watches a business, works out what changed and why, and puts an evidence-backed decision in front of whoever has to act on it. Before this, ${STATS.venturesBuilt} ventures across fintech, hardware, edtech and software; two taken from zero to scale.`,
+      'I bring the company onto one operating rhythm, put a clear owner behind every number, and stay close enough to the work to see what dashboards miss. I’m direct when decisions are needed, steady when things go wrong, and focused on building systems that work without depending on me.',
+      'I spent years as the human version of Dan: the operator who had to notice what was moving, work out why, and say what to do about it. That is the job I am now building software for.'
+    ],
     interests: [
       "Business Strategy", "Branding", "Customer Experience", "Product Management", "Operations & Scaling",
       "Automation & AI Workflows", "Strategic Partnerships", "Growth & Marketing", 
@@ -59,7 +66,7 @@ const AboutPage = () => {
         duration: "Nov 2025 – Present",
         location: "Dubai, UAE",
         achievements: [
-          "Founder of Company 8, building Dan — the AI that lets any operator ask their business anything and get answers that lead to action.",
+          "Founder of Company 8, building Dan — the AI that monitors a business, investigates what changed, and puts an evidence-backed decision in front of the people who run it.",
           "Previously built and scaled 10+ ventures across AI, fintech, hardware, edtech, and software.",
           "ZeroHuman: CGO & Co-founder — AI human model platform for advertising, fashion, retail & entertainment.",
           "Mealverse: Investor & Mentor — Food technology platform revolutionizing the culinary experience."
@@ -67,14 +74,14 @@ const AboutPage = () => {
       },
       {
         company: "Finanshels.com",
-        position: "Head of COE / Chief of Staff (PMO) / Interim COO",
+        position: "Associate Vice President / Head – COE / Interim COO",
         duration: "Dec 2023 – Present",
         location: "Dubai, UAE",
         achievements: [
-          "Head of COE (Jul 2025 – Present): integrator across all functions, running the company on an EOS-driven operating system.",
-          "Chief of Staff / PMO (2024 – 25): led strategic projects, KPI & leadership reporting, SOPs, and accountability systems across departments.",
-          "Interim COO (2024): drove operational restructuring and built operations for scale — department-level KPIs, execution frameworks, and operating discipline.",
-          "Product & Growth Strategist (2023 – 24): owned product strategy, GTM planning, growth operations, and customer pain-point analysis."
+          "Associate Vice President (Jul 2025 – Present): scaling strategy, sales, growth, product, people, and company-wide execution as the integrator across all functions.",
+          "Head – COE (Aug 2024 – Jul 2025): led strategic projects, PMO systems, and cross-functional execution across departments — KPI and leadership reporting, SOPs, and accountability systems.",
+          "Interim COO (Mar 2024 – Jul 2024): stepped in during a restructuring phase to improve operating discipline, ownership, and execution clarity — department-level KPIs and execution frameworks.",
+          "Product & Growth Strategist (Dec 2023 – Feb 2024): product strategy, growth initiatives, GTM planning, and business process optimization."
         ]
       },
       {
@@ -149,24 +156,6 @@ const AboutPage = () => {
         description: "Diploma with CGPA 8.6 — focus on project management, manufacturing systems, and early leadership."
       }
     ],
-    skills: {
-      technical: [
-        "Operations Management", "Product Management", "CRM Systems", "Jira", "Zapier",
-        "Process Automation", "Supply Chain", "Agile/Scrum", "Product Roadmapping",
-        "UI/UX", "Design Thinking", "Engineering Management", "Software Architecture"
-      ],
-      business: [
-        "Strategic Planning", "Financial Modeling", "Revenue Optimization", "Cost Reduction",
-        "Market Analysis", "Business Development", "Investor Relations", "M&A",
-        "Strategic Partnerships", "Brand Management", "Product Marketing", "Digital Marketing",
-        "Customer Success", "Sales Operations", "GTM Strategy", "Lean Startup"
-      ],
-      leadership: [
-        "Team Management", "HR Leadership", "Cross-functional Leadership",
-        "Communication", "Decision Making", "Innovation", "Mentoring",
-        "Talent Management", "Entrepreneurship", "Critical Thinking", "Problem Solving"
-      ]
-    },
     achievements: [
       { title: "National Level Winner", year: "Aug 2014", org: "Nirma University", description: "National level poster presentation & elocution competition." },
       { title: "Published Author", year: "2025", org: "Independent", description: "Two love story novels: 'The Eternal Love' & 'The Endless Devotion'." },
@@ -199,53 +188,56 @@ const AboutPage = () => {
       { event: "IIM A Startup Summit", year: "2019", topic: "Smart Home Trends in India", location: "Ahmedabad, India" }
     ],
     certifications: [
-      { title: "Agile Project Management with Jira Cloud", issuer: "LinkedIn", date: "Apr 2025" },
+      { title: "Agile Project Management with Jira Cloud: 1 Projects, Boards, and Issues", issuer: "LinkedIn", date: "Apr 2025" },
+      { title: "Agile Project Management with Jira Cloud: 2 Lean and Agile Processes", issuer: "LinkedIn", date: "Apr 2025" },
       { title: "Scrum: The Basics", issuer: "LinkedIn", date: "Apr 2025" },
+      { title: "Accounting Foundations", issuer: "LinkedIn", date: "Jun 2024" },
+      { title: "Agile Software Development: Scrum for Developers", issuer: "LinkedIn", date: "Jun 2024" },
+      { title: "Critical Thinking for Better Judgment and Decision-Making", issuer: "LinkedIn", date: "Jun 2024" },
+      { title: "Digital Marketing Tools: Create a Marketing Campaign from Start to Finish", issuer: "LinkedIn", date: "Jun 2024" },
       { title: "Integrating Generative AI into Business Strategy", issuer: "LinkedIn", date: "Jun 2024" },
       { title: "Operational Excellence Foundations", issuer: "LinkedIn", date: "Jun 2024" },
+      { title: "SEO Foundations", issuer: "LinkedIn", date: "Jun 2024" },
       { title: "Software Architecture Foundations", issuer: "LinkedIn", date: "Jun 2024" },
       { title: "Talent Management", issuer: "LinkedIn", date: "Jun 2024" },
-      { title: "SEO Foundations", issuer: "LinkedIn", date: "Jun 2024" },
-      { title: "Business Development: Strategic Planning", issuer: "LinkedIn", date: "Dec 2023" },
-      { title: "Product Management: Building a Product Roadmap", issuer: "PMI", date: "Dec 2023" },
+      { title: "Unconscious Bias", issuer: "LinkedIn", date: "Jun 2024" },
       { title: "Product Strategy", issuer: "PMI", date: "Dec 2023" },
+      { title: "Product Management: Building a Product Roadmap", issuer: "PMI", date: "Dec 2023" },
+      { title: "Technology for Product Managers", issuer: "PMI", date: "Dec 2023" },
       { title: "Strategic Partnerships", issuer: "PMI", date: "Dec 2023" },
-      { title: "Design Thinking: Understanding the Process", issuer: "LinkedIn", date: "Dec 2023" },
-      { title: "Becoming a Product Manager", issuer: "IIBA", date: "Dec 2023" },
+      { title: "Becoming a Product Manager: A Complete Guide", issuer: "IIBA", date: "Dec 2023" },
       { title: "Business Analysis Foundations", issuer: "IIBA", date: "Dec 2023" },
-      { title: "Critical Thinking for Better Judgment", issuer: "LinkedIn", date: "Jun 2024" },
-      { title: "Digital Marketing Tools", issuer: "LinkedIn", date: "Jun 2024" },
+      { title: "Advanced Product Marketing", issuer: "LinkedIn", date: "Dec 2023" },
+      { title: "Agile Foundations", issuer: "LinkedIn", date: "Dec 2023" },
+      { title: "Agile Software Development", issuer: "LinkedIn", date: "Dec 2023" },
+      { title: "Business Development: Strategic Planning", issuer: "LinkedIn", date: "Dec 2023" },
+      { title: "Communication Foundations", issuer: "LinkedIn", date: "Dec 2023" },
+      { title: "Design Thinking: Understanding the Process", issuer: "LinkedIn", date: "Dec 2023" },
+      { title: "Email Marketing: Strategy and Optimization", issuer: "LinkedIn", date: "Dec 2023" },
+      { title: "Marketing: Customer Segmentation", issuer: "LinkedIn", date: "Dec 2023" },
+      { title: "Product Management: Building a Product Strategy", issuer: "LinkedIn", date: "Dec 2023" },
+      { title: "Product Management First Steps", issuer: "LinkedIn", date: "Dec 2023" },
+      { title: "Unlock Your Team's Creativity", issuer: "LinkedIn", date: "Dec 2023" },
     ]
   };
 
   const tabs = [
     { id: 'experience',      label: 'Experience',      icon: Briefcase },
-    { id: 'skills',          label: 'Skills',          icon: Target },
+    { id: 'skills',          label: 'Capabilities',    icon: Target },
     { id: 'achievements',    label: 'Achievements',    icon: Trophy },
     { id: 'books',           label: 'Books',           icon: BookOpen },
     { id: 'speaking',        label: 'Speaking',        icon: Mic },
     { id: 'certifications',  label: 'Certifications',  icon: FileText },
   ];
 
-  /* ── FAQ (third-person; drives both visible block + FAQPage JSON-LD) ── */
-  const aboutFaq = [
-    {
-      q: "Who is Meet Patel?",
-      a: "Meet Patel (also known as The Meet Patel and themeetpatel) is a Dubai-based startup founder and operator. He is the founder of Company 8, building Dan — the AI that lets any operator ask their business anything and get answers that lead to action."
-    },
-    {
-      q: "What did Meet Patel build before Company 8?",
-      a: "He built and scaled 10+ ventures across AI, fintech, hardware, edtech, and software, and led teams as Chief of Staff and interim COO inside a fintech. The full list is at themeetpatel.com/portfolio."
-    },
-    {
-      q: "What is Company 8?",
-      a: "Company 8 is the AI-native business intelligence company Meet Patel founded in Dubai in 2025. It builds Dan, which lets teams ask their business anything and get answers that lead to action. Company 8 is raising a pre-seed round."
-    }
-  ];
+  /* No FAQ on this page by design. Every crawler is routed to the
+     server-rendered version (middleware.js -> api/_renderPage.js), which
+     carries its own FAQ and FAQPage schema from api/_pageContent.js.
+     A visible copy here only repeated the hero, the cards and the
+     timeline to human readers. Edit the FAQ there, not here. */
 
   const structuredData = [
     ...meetPatelEntities,
-    buildFaqPage(aboutFaq),
     {
       '@context': 'https://schema.org',
       '@type': 'ProfilePage',
@@ -277,7 +269,7 @@ const AboutPage = () => {
     <div style={{ backgroundColor: T.bg, minHeight: '100vh' }}>
       <SEOHead
         title="About Meet Patel — Founder & Operator in Dubai"
-        description="Meet Patel (themeetpatel) is a Dubai-based founder and operator. He is the founder of Company 8, building Dan — ask your business anything, get answers that lead to action."
+        description="Meet Patel (themeetpatel) is a Dubai-based founder and operator. He is the founder of Company 8, building Dan — it monitors the business, investigates what changed, and puts an evidence-backed decision in front of the people who run it."
         keywords="About Meet Patel, Meet Patel, themeetpatel, meetpatel, Meet Patel Dubai, startup founder, operator, Company 8, Dan, useDan, entrepreneurship, startups, founders"
         canonical="/about"
         structuredData={structuredData}
@@ -667,7 +659,7 @@ const AboutPage = () => {
               <div className="space-y-4">
                 <div className="mb-10">
                   <Label>Career</Label>
-                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>Experience Timeline</h2>
+                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>{ABOUT.sectionTitles.experience}</h2>
                 </div>
 
                 {/* Experience cards */}
@@ -777,55 +769,14 @@ const AboutPage = () => {
             )}
 
             {/* ── SKILLS ── */}
-            {activeTab === 'skills' && (
-              <div>
-                <div className="mb-10">
-                  <Label>Capabilities</Label>
-                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>Skills & Expertise</h2>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {[
-                    { label: 'Technical', skills: personalInfo.skills.technical, accent: T.violet },
-                    { label: 'Business', skills: personalInfo.skills.business, accent: T.gold },
-                    { label: 'Leadership', skills: personalInfo.skills.leadership, accent: '#06b6d4' },
-                  ].map((cat, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      style={{ ...card, padding: '24px' }}
-                    >
-                      <div className="flex items-center gap-2 mb-5">
-                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: cat.accent }} />
-                        <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: cat.accent }}>{cat.label}</span>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {cat.skills.map((skill, j) => (
-                          <span
-                            key={j}
-                            style={{
-                              fontSize: '0.75rem', fontWeight: 600,
-                              padding: '5px 11px', borderRadius: '50px',
-                              background: `${cat.accent}0f`,
-                              color: T.sub,
-                              border: `1px solid ${cat.accent}22`
-                            }}
-                          >{skill}</span>
-                        ))}
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            )}
+            {activeTab === 'skills' && <CapabilitiesTab T={T} card={card} mono={MONO} />}
 
             {/* ── ACHIEVEMENTS ── */}
             {activeTab === 'achievements' && (
               <div>
                 <div className="mb-10">
                   <Label>Recognition</Label>
-                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>Awards & Milestones</h2>
+                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>{ABOUT.sectionTitles.awards}</h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {personalInfo.achievements.map((a, i) => (
@@ -859,7 +810,7 @@ const AboutPage = () => {
               <div>
                 <div className="mb-10">
                   <Label>Writing</Label>
-                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>Published Works</h2>
+                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>{ABOUT.sectionTitles.published}</h2>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   {personalInfo.books.map((book, i) => (
@@ -919,7 +870,7 @@ const AboutPage = () => {
               <div>
                 <div className="mb-10">
                   <Label>Talks</Label>
-                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>Speaking Engagements</h2>
+                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>{ABOUT.sectionTitles.speaking}</h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {personalInfo.speaking.map((s, i) => (
@@ -984,38 +935,6 @@ const AboutPage = () => {
         </AnimatePresence>
       </div>
 
-      {/* ═══ FAQ ═══ */}
-      <section style={{ backgroundColor: T.bg }} className="pb-4">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-10">
-          <div className="mb-8">
-            <Label>FAQ</Label>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 800, color: T.text, marginTop: '10px', letterSpacing: '-0.02em' }}>
-              Frequently Asked
-            </h2>
-          </div>
-          <div className="space-y-3">
-            {aboutFaq.map((item, i) => (
-              <details
-                key={i}
-                open={i === 0}
-                style={{ ...card, padding: '20px 24px' }}
-              >
-                <summary
-                  className="cursor-pointer list-none flex items-center justify-between gap-4"
-                  style={{ outline: 'none' }}
-                >
-                  <h3 style={{ fontSize: '1rem', fontWeight: 700, color: T.text, margin: 0 }}>{item.q}</h3>
-                  <ArrowRight className="w-4 h-4 flex-shrink-0" style={{ color: T.violet }} />
-                </summary>
-                <p style={{ fontSize: '0.9375rem', color: T.sub, lineHeight: 1.7, marginTop: '12px' }}>
-                  {item.a}
-                </p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ═══ CTA ═══ */}
       <section style={{ backgroundColor: T.bg }} className="py-20">
         <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-10">
@@ -1027,10 +946,10 @@ const AboutPage = () => {
             <div className="relative z-10">
               <Label>Let's Connect</Label>
               <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 800, color: T.text, marginTop: '10px', marginBottom: '12px', letterSpacing: '-0.02em' }}>
-                Want to work together?
+                {ABOUT.closing.h2}
               </h2>
               <p style={{ color: T.sub, fontSize: '1rem', marginBottom: '28px', maxWidth: '420px', margin: '0 auto 28px' }}>
-                Whether you're building a startup or need strategic guidance, I'm here.
+                {ABOUT.closing.sub}
               </p>
               <a
                 href="/contact"
@@ -1038,7 +957,7 @@ const AboutPage = () => {
                 style={{ background: T.violet, boxShadow: '0 4px 20px rgba(155,139,255,0.4)' }}
               >
                 <MessageSquare className="w-4 h-4" />
-                Get In Touch
+                {ABOUT.closing.cta}
               </a>
               <div className="flex items-center justify-center gap-x-6 gap-y-2 flex-wrap mt-7">
                 <a href="/portfolio" style={{ fontSize: '0.875rem', fontWeight: 600, color: T.violet, textDecoration: 'none' }}>

@@ -167,7 +167,7 @@ const ThesisPage = () => {
         <p style={{ fontSize: 17, lineHeight: 1.7, marginBottom: 22 }}>
           Every operator I meet wants more visibility into the business, so the company buys another
           dashboard. Six months later Monday still opens with someone asking which number is
-          correct. At that point the problem is not visibility — it is that nothing in the company is
+          correct. At that point the problem is that nothing in the company is
           responsible for noticing what matters.
         </p>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>

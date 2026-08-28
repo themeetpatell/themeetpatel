@@ -12,8 +12,10 @@ import {
   Zap,
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { PORTFOLIO } from '../data/pageVoice';
 import FollowMyJourney from '../components/FollowMyJourney';
 import { meetPatelEntities, personRef, buildBreadcrumb } from '../lib/seoEntity';
+import { TRACTION } from '../data/company8';
 
 void motion;
 
@@ -39,32 +41,33 @@ const PROJECTS = [
   {
     id: 5,
     title: 'Company 8',
-    description: 'AI-native business intelligence platform. Ask Dan anything about your business and get answers that lead to action.',
+    description: 'Autonomous decision intelligence. Dan connects your systems, reconciles conflicting data, and tells you what changed, why it matters and what to do next.',
     category: 'ai',
-    status: 'Live',
+    status: 'Pre-Revenue',
     featured: true,
     liveUrl: 'https://usedan.com',
-    tags: ['AI-Native BI', 'Analytics', 'Dan', 'Product Hunt'],
-    metrics: {},
+    tags: ['AI-Native BI', 'Analytics', 'Dan', 'First 10 weeks · zero paid'],
+    // Pre-seed deck (2026) slide 12, via TRACTION in src/data/company8.js.
+    metrics: TRACTION.chips,
   },
   {
-    id: 1,
-    title: 'BiggMate',
-    description: 'AI-powered co-foundership platform that matches entrepreneurs to build startups together. Successful startups earn a StartupOS Visa.',
-    category: 'social',
-    status: 'Pre-Launch',
-    featured: true,
-    liveUrl: 'https://biggmate.com',
-    internalUrl: '/biggmate',
-    tags: ['Co-Foundership', 'AI Matching', 'StartupOS Visa', 'Web Platform'],
-    metrics: { 'Waitlist': '547+', 'Founders': '50+', 'Matches': '10+' },
+    id: 13,
+    title: 'Finanshels',
+    description: 'UAE accounting, tax and compliance platform for SMEs. Joined as interim COO, then Head of COE, now Associate Vice President — scaled the company from 17 to 192 people and from 105 to 7,000+ SMEs served.',
+    category: 'fintech',
+    status: 'Live',
+    featured: false,
+    liveUrl: 'https://finanshels.com',
+    tags: ['Accounting', 'Tax & Compliance', 'SME', 'UAE'],
+    // Pre-seed deck (2026) slide 15, via POSITIONING.whyMe in src/data/company8.js.
+    metrics: { 'Team': '17 → 192', 'SMEs Served': '7,000+' },
   },
   {
     id: 3,
     title: 'ZeroHuman',
     description: 'AI human model platform offering photorealistic virtual models for brands. Eliminate costly photoshoots while scaling creative output.',
     category: 'ai',
-    status: 'Pre-Launch',
+    status: 'Building',
     featured: true,
     liveUrl: 'https://www.zerohuman.co',
     tags: ['AI Models', 'Generative AI', 'E-Commerce', 'Computer Vision'],
@@ -75,7 +78,7 @@ const PROJECTS = [
     title: 'MealVerse',
     description: 'Next-generation food tech platform reimagining how people discover, order, and experience food across India.',
     category: 'foodtech',
-    status: 'Pre-Launch',
+    status: 'Live',
     featured: true,
     liveUrl: 'https://www.mealverse.in',
     tags: ['FoodTech', 'Marketplace', 'Mobile', 'Logistics'],
@@ -86,7 +89,7 @@ const PROJECTS = [
     title: 'BAWES',
     description: 'Integrated business execution platform helping teams think, act, build, and grow faster with less operational friction.',
     category: 'technology',
-    status: 'Live',
+    status: 'Exited',
     featured: false,
     liveUrl: 'https://bawes.net/work',
     tags: ['Business OS', 'Execution', 'Growth Systems', 'Platform'],
@@ -97,7 +100,7 @@ const PROJECTS = [
     title: 'StudentHub',
     description: 'Student recruitment platform bridging the gap between top talent and leading companies, powering thousands of placements annually.',
     category: 'edtech',
-    status: 'Live',
+    status: 'Exited',
     featured: false,
     liveUrl: 'https://studenthub.co.in',
     tags: ['EdTech', 'Recruitment', 'Campus Hiring', 'Career Platform'],
@@ -108,7 +111,7 @@ const PROJECTS = [
     title: 'Plugn',
     description: 'Kuwait-based ecommerce platform enabling merchants to launch online stores fast, in the vein of Shopify and Dukaan.',
     category: 'technology',
-    status: 'Live',
+    status: 'Exited',
     featured: false,
     liveUrl: 'https://plugn.io/',
     tags: ['E-Commerce', 'Store Builder', 'Merchant Tools', 'Kuwait'],
@@ -119,7 +122,7 @@ const PROJECTS = [
     title: 'TorchIt',
     description: 'Award-winning assistive technology company building smart devices for the visually impaired. 1678% growth and global recognition.',
     category: 'hardware',
-    status: 'Live',
+    status: 'Exited',
     featured: false,
     liveUrl: 'https://torchit.in',
     tags: ['Hardware', 'AssistiveTech', 'IoT', 'Social Impact'],
@@ -144,6 +147,30 @@ const PROJECTS = [
     featured: false,
     tags: ['Smart Meters', 'EnergyTech', 'Manufacturing', 'IoT'],
     metrics: {'Meters Installed': '800+', 'Team': '15+', 'Revenue': 'INR 1M+'},
+  },
+  {
+    id: 12,
+    title: 'BiggDate',
+    description: 'AI-led dating app for intentional adults. Instead of a swipe feed, a relationship profiler named Maahi ran a 20-minute conversation, built a psychological profile, and surfaced a handful of high-fit matches a day.',
+    category: 'social',
+    status: 'Cancelled',
+    featured: false,
+    liveUrl: 'https://biggdate.com',
+    tags: ['AI Dating', 'Matchmaking', 'Psychology', 'India'],
+    // biggdate/docs/investor-due-diligence.md §16.1, dated 2026-05-03.
+    metrics: { 'Beta Users': '40', 'Maahi Modes': '16' },
+  },
+  {
+    id: 1,
+    title: 'BiggMate',
+    description: 'AI-powered co-foundership platform that matched entrepreneurs to build startups together. Successful startups earned a StartupOS Visa.',
+    category: 'social',
+    status: 'Cancelled',
+    featured: false,
+    liveUrl: 'https://biggmate.com',
+    internalUrl: '/biggmate',
+    tags: ['Co-Foundership', 'AI Matching', 'StartupOS Visa', 'Web Platform'],
+    metrics: { 'Waitlist': '547+', 'Founders': '50+', 'Matches': '10+' },
   },
 ];
 
@@ -455,8 +482,8 @@ const PortfolioPage = () => {
     <>
       <SEOHead
         title="Portfolio | The Meet Patel — Startups & Ventures Built by Meet Patel"
-        description="Meet Patel has built and scaled 10+ startups — Company 8, BiggMate, ZeroHuman, TorchIt & more. Explore the full venture portfolio."
-        keywords="The Meet Patel portfolio, Meet Patel startups, themeetpatel ventures, meetpatel portfolio, startup portfolio, BiggMate, ZeroHuman, TorchIt, Incsmart, BAWES, Plugn, startup builder, serial entrepreneur portfolio, ventures"
+        description="Meet Patel has built and scaled 10+ startups — Company 8, BiggDate, BiggMate, ZeroHuman, TorchIt & more. Explore the full venture portfolio."
+        keywords="The Meet Patel portfolio, Meet Patel startups, themeetpatel ventures, meetpatel portfolio, startup portfolio, Finanshels, BiggDate, BiggMate, ZeroHuman, TorchIt, Incsmart, BAWES, Plugn, startup builder, serial entrepreneur portfolio, ventures"
         canonical="/portfolio"
         structuredData={portfolioStructuredData}
       />
@@ -467,6 +494,29 @@ const PortfolioPage = () => {
           50% { opacity: 0.4; }
         }
         * { box-sizing: border-box; }
+
+        /* Hero lockup. Below 1024px everything stacks; above it the stats sit
+           beside the copy and bottom-align with it, so a wide viewport does not
+           leave half the hero empty. */
+        .pf-hero { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: end; }
+        .pf-hero-copy { min-width: 0; }
+        .pf-hero-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+        @media (min-width: 1024px) {
+          .pf-hero { grid-template-columns: minmax(0, 1.4fr) minmax(340px, 0.6fr); gap: 64px; }
+          .pf-hero-stats { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* The H1 is set as two explicit lines. Left to wrap on its own it broke
+           after "Ventures" and orphaned "by" on a line of its own, making three.
+           Each line still wraps internally on narrow screens. */
+        .pf-h1-line { display: block; }
+
+        /* Value and label stack, so the label gets the card's full inner width.
+           Sharing a row with the icon left ~68px and split every two-word label
+           across two lines. */
+        .pf-stat { display: flex; flex-direction: column; gap: 10px; }
+        .pf-stat-head { display: flex; align-items: center; gap: 12px; }
+        .pf-stat-label { white-space: nowrap; }
       `}</style>
 
       <div style={{ background: C.bg, minHeight: '100vh', color: C.primary, fontFamily: "'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
@@ -513,104 +563,106 @@ const PortfolioPage = () => {
               </span>
             </div>
 
-            {/* Heading */}
-            <h1 style={{
-              fontSize: 'clamp(40px, 6vw, 76px)',
-              fontWeight: 800,
-              letterSpacing: '-0.04em',
-              lineHeight: 0.98,
-              margin: '0 0 16px',
-              color: C.primary,
-            }}>
-              Startups &amp; Ventures by{' '}
-              <span style={{
-                background: 'linear-gradient(135deg, #9b8bff, #b7a6ff)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}>
-                Meet Patel
-              </span>
-            </h1>
+            <div className="pf-hero">
+              <div className="pf-hero-copy">
+                {/* Heading */}
+                <h1 style={{
+                  fontSize: 'clamp(40px, 6vw, 76px)',
+                  fontWeight: 800,
+                  letterSpacing: '-0.04em',
+                  lineHeight: 0.98,
+                  margin: '0 0 20px',
+                  color: C.primary,
+                }}>
+                  <span className="pf-h1-line">Startups &amp; Ventures</span>
+                  <span className="pf-h1-line">
+                    by{' '}
+                    <span style={{
+                      background: 'linear-gradient(135deg, #9b8bff, #b7a6ff)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}>
+                      Meet Patel
+                    </span>
+                  </span>
+                </h1>
 
-            {/* Built to Last — styled subline */}
-            <p style={{
-              fontSize: 'clamp(24px, 3.5vw, 40px)',
-              fontWeight: 800,
-              letterSpacing: '-0.03em',
-              lineHeight: 1,
-              margin: '0 0 24px',
-              color: C.primary,
-            }}>
-              Built to{' '}
-              <span style={{
-                background: 'linear-gradient(135deg, #9b8bff, #b7a6ff)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}>
-                Last.
-              </span>
-            </p>
+                {/* Styled subline — copy from pageVoice.PORTFOLIO */}
+                <p style={{
+                  fontSize: 'clamp(24px, 3.5vw, 40px)',
+                  fontWeight: 800,
+                  letterSpacing: '-0.03em',
+                  lineHeight: 1,
+                  margin: '0 0 28px',
+                  color: C.primary,
+                }}>
+                  {PORTFOLIO.sublineLead}{' '}
+                  <span style={{
+                    background: 'linear-gradient(135deg, #9b8bff, #b7a6ff)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}>
+                    {PORTFOLIO.sublineAccent}
+                  </span>
+                </p>
 
-            {/* Subtitle */}
-            <p style={{
-              fontSize: 'clamp(16px, 2vw, 20px)',
-              color: C.secondary,
-              maxWidth: '620px',
-              lineHeight: 1.65,
-              margin: '0 0 24px',
-            }}>
-              Ten ventures spanning AI, fintech, edtech, hardware, and social, each one built with conviction and a long-term horizon.
-            </p>
+                {/* Subtitle */}
+                <p style={{
+                  fontSize: 'clamp(16px, 2vw, 20px)',
+                  color: C.secondary,
+                  maxWidth: '58ch',
+                  lineHeight: 1.65,
+                  margin: '0 0 18px',
+                }}>
+                  {PORTFOLIO.sub}
+                </p>
 
-            {/* Where the work goes now */}
-            <p style={{
-              fontSize: 'clamp(15px, 1.7vw, 17px)',
-              color: C.secondary,
-              maxWidth: '620px',
-              lineHeight: 1.65,
-              margin: '0 0 56px',
-            }}>
-              Everything here is what came before{' '}
-              <span style={{ color: C.violet, fontWeight: 700 }}>Company 8</span>
-              {' '}— the company Meet Patel is all-in on now, building{' '}
-              <span style={{ color: C.violet, fontWeight: 700 }}>Dan</span>.
-            </p>
+                {/* Where the work goes now */}
+                <p style={{
+                  fontSize: 'clamp(15px, 1.7vw, 17px)',
+                  color: C.muted,
+                  maxWidth: '58ch',
+                  lineHeight: 1.65,
+                  margin: 0,
+                }}>
+                  {PORTFOLIO.nowLine.lead}{' '}
+                  <span style={{ color: C.violet, fontWeight: 700 }}>Company 8</span>
+                  {' '}{PORTFOLIO.nowLine.mid}{' '}
+                  <span style={{ color: C.violet, fontWeight: 700 }}>Dan</span>
+                  {PORTFOLIO.nowLine.tail}
+                </p>
 
-            {/* Stats row */}
-            <div style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '16px',
-            }}>
+              </div>
+
+              {/* Stats — beside the copy on desktop, stacked under it on mobile */}
+              <div className="pf-hero-stats">
               {STATS.map((stat) => {
                 const IconComponent = stat.icon;
                 return (
-                <div key={stat.label} style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
+                <div key={stat.label} className="pf-stat" style={{
                   background: C.surface,
                   border: `1px solid ${C.borderSub}`,
                   borderRadius: '12px',
-                  padding: '14px 20px',
+                  padding: '14px 16px',
                 }}>
-                  <div style={{
-                    width: '36px', height: '36px',
-                    background: C.violetDim,
-                    borderRadius: '8px',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  }}>
-                    {React.createElement(IconComponent, { size: 16, color: C.violet })}
-                  </div>
-                  <div>
+                  <div className="pf-stat-head">
+                    <div style={{
+                      width: '36px', height: '36px', flexShrink: 0,
+                      background: C.violetDim,
+                      borderRadius: '8px',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }}>
+                      {React.createElement(IconComponent, { size: 16, color: C.violet })}
+                    </div>
                     <div style={{ fontSize: '18px', fontWeight: 700, color: C.primary, lineHeight: 1 }}>{stat.value}</div>
-                    <div style={{ fontSize: '12px', color: C.muted, marginTop: '2px' }}>{stat.label}</div>
                   </div>
+                  <div className="pf-stat-label" style={{ fontSize: '12px', color: C.muted }}>{stat.label}</div>
                 </div>
                 );
               })}
+              </div>
             </div>
           </motion.div>
         </section>
@@ -638,7 +690,7 @@ const PortfolioPage = () => {
               />
               <input
                 type="text"
-                placeholder="Search projects…"
+                placeholder={PORTFOLIO.searchPlaceholder}
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
                 style={{
@@ -734,7 +786,7 @@ const PortfolioPage = () => {
                 }}
               >
                 <CheckCircle size={40} style={{ margin: '0 auto 16px', opacity: 0.3 }} />
-                <p style={{ fontSize: '16px' }}>No projects match your search.</p>
+                <p style={{ fontSize: '16px' }}>{PORTFOLIO.empty}</p>
               </motion.div>
             ) : (
               <motion.div

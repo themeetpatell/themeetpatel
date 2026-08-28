@@ -8,6 +8,7 @@ import logoImage from '../assets/logo for themeetpatel.png';
 import { trackButtonClick, trackSocialClick, trackFormSubmission } from '../utils/analytics';
 import { submitNewsletterFormData } from '../services/formService';
 import { INVESTOR } from '../data/company8';
+import { SOCIALS } from '../data/socials';
 
 const COPYRIGHT_YEAR = new Date().getFullYear();
 
@@ -37,34 +38,32 @@ const UltraFooter = () => {
 
   const ventures = [
     { name: 'Dan — by Company 8', href: 'https://usedan.com', external: true },
-    { name: 'BiggMate', href: 'https://www.biggmate.com', external: true },
     { name: 'ZeroHuman', href: 'https://www.zerohuman.co', external: true },
     { name: 'MealVerse', href: 'https://www.mealverse.in', external: true },
+    { name: 'Portfolio', href: '/portfolio', external: false },
+    { name: 'Mind', href: '/mind', external: false },
   ];
 
   const writing = [
-    { name: 'Blog Articles', href: '/blogs', external: false },
+    { name: 'Blog', href: '/blogs', external: false },
+    { name: 'Thesis', href: '/thesis', external: false },
+    { name: 'ACU — the agent org', href: '/acu', external: false },
     { name: 'LinkedIn Newsletter', href: 'https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7323218198735015937', external: true },
     { name: 'The Eternal Love (fiction)', href: '/The Eternal Love by The Meet Patel.pdf', external: false },
   ];
 
-  const navLinks = [
+  const importantLinks = [
+    { name: 'Home', href: '/' },
     { name: 'For investors', href: '/investors' },
-    { name: 'Thesis', href: '/thesis' },
     { name: 'About', href: '/about' },
-    { name: 'Portfolio', href: '/portfolio' },
     { name: 'Community', href: '/community' },
-    { name: 'Blog', href: '/blogs' },
     { name: 'Contact', href: '/contact' },
   ];
 
-  const socials = [
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/themeetpatel/', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://x.com/the_meetpatel', label: 'Twitter' },
-    { icon: Github, href: 'https://github.com/themeetpatell', label: 'GitHub' },
-    { icon: Instagram, href: 'https://instagram.com/the.meetpatell/', label: 'Instagram' },
-    { icon: Youtube, href: 'https://youtube.com/@themeetpatel', label: 'YouTube' },
-  ];
+  // Destinations come from src/data/socials.js so the footer and the floating
+  // follow strip can never drift apart. Icons stay here — they are presentation.
+  const socialIcons = { linkedin: Linkedin, twitter: Twitter, github: Github, instagram: Instagram, youtube: Youtube };
+  const socials = SOCIALS.map((s) => ({ ...s, icon: socialIcons[s.id] }));
 
   const muted = { color: '#5a5a6e', fontSize: '0.875rem' };
   const colHead = {
@@ -92,7 +91,7 @@ const UltraFooter = () => {
             </Link>
 
             <p style={{ color: '#5a5a6e', fontSize: '0.875rem', lineHeight: 1.75, maxWidth: '280px' }}>
-              Founder of Company 8, building Dan — the AI that lets any operator ask their business anything and get answers that lead to action. Operating from Dubai.
+              Founder of Company 8, building Dan — the AI that monitors a business, investigates what changed, and puts an evidence-backed decision in front of the people who run it. Operating from Dubai.
             </p>
 
             {/* Contact details */}
@@ -176,19 +175,31 @@ const UltraFooter = () => {
             </ul>
           </div>
 
-          {/* Navigation */}
+          {/* Important links */}
           <div>
-            <span style={colHead}>Navigate</span>
+            <span style={colHead}>Important links</span>
             <ul className="space-y-2.5">
-              {navLinks.map((l) => (
+              {importantLinks.map((l) => (
                 <li key={l.name}>
-                  <Link
-                    to={l.href}
-                    style={{ ...muted, display: 'block', transition: 'color 0.2s' }}
-                    onMouseEnter={e => e.target.style.color = '#f5f5f7'}
-                    onMouseLeave={e => e.target.style.color = '#5a5a6e'}
-                    onClick={() => trackButtonClick(`footer_${l.name.toLowerCase()}`, 'footer')}
-                  >{l.name}</Link>
+                  {l.external ? (
+                    <a
+                      href={l.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ ...muted, display: 'block', transition: 'color 0.2s' }}
+                      onMouseEnter={e => e.target.style.color = '#f5f5f7'}
+                      onMouseLeave={e => e.target.style.color = '#5a5a6e'}
+                      onClick={() => trackButtonClick(`footer_${l.name.toLowerCase()}`, 'footer')}
+                    >{l.name}</a>
+                  ) : (
+                    <Link
+                      to={l.href}
+                      style={{ ...muted, display: 'block', transition: 'color 0.2s' }}
+                      onMouseEnter={e => e.target.style.color = '#f5f5f7'}
+                      onMouseLeave={e => e.target.style.color = '#5a5a6e'}
+                      onClick={() => trackButtonClick(`footer_${l.name.toLowerCase()}`, 'footer')}
+                    >{l.name}</Link>
+                  )}
                 </li>
               ))}
             </ul>

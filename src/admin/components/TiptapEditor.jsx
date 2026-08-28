@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef, useEffect } from 'react';
+import React, { useCallback, useState, useRef } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { Image } from '@tiptap/extension-image';
@@ -30,7 +30,6 @@ const lowlight = createLowlight(common);
 const HtmlPaste = Extension.create({
   name: 'htmlPaste',
   addProseMirrorPlugins() {
-    const { editor } = this;
     return [
       new Plugin({
         key: new PluginKey('htmlPaste'),

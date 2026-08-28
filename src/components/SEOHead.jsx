@@ -34,7 +34,7 @@ const SEOHead = ({
   const fullOgImage    = resolveUrl(ogImage, `${baseUrl}/og-image.jpg`);
 
   const defaultTitle       = 'Meet Patel — Founder of Company 8, building Dan';
-  const defaultDescription = 'Meet Patel is a Dubai-based founder building Dan — the AI that lets any operator ask their business anything and get answers that lead to action. All-in on Company 8.';
+  const defaultDescription = 'Meet Patel is a Dubai-based founder building Dan — the AI that monitors a business, investigates what changed, and puts the decision in front of you. All-in on Company 8.';
   const defaultKeywords    = 'Meet Patel, themeetpatel, Company 8, Dan, useDan, AI business intelligence, founder Dubai, AI operator';
 
   const seoTitle       = title

@@ -18,6 +18,7 @@ import {
   Check,
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { CONTACT } from '../data/pageVoice';
 import { submitContactFormData } from '../services/formService';
 import { capture, captureError, identifyUser } from '../lib/posthog';
 import {
@@ -28,6 +29,7 @@ import {
   CONTACT_EMAIL,
   buildBreadcrumb,
 } from '../lib/seoEntity';
+import { INVESTOR } from '../data/company8';
 
 void motion;
 
@@ -387,7 +389,7 @@ export default function ContactPage() {
                 color:         C.textSec,
               }}
             >
-              Let's build something.
+              {CONTACT.subhead}
             </motion.h2>
 
             {/* Subtitle */}
@@ -403,7 +405,7 @@ export default function ContactPage() {
                 margin:     '0 auto 36px',
               }}
             >
-              Whether it's startups, Company 8, or Dan — or you simply want to connect — I'm open to meaningful conversations.
+              {CONTACT.sub}
             </motion.p>
 
             {/* Availability badge */}
@@ -470,7 +472,7 @@ export default function ContactPage() {
                     </a>
                     <CopyButton text="meet@company8.dev" itemKey="email" copiedItem={copiedItem} onCopy={handleCopy} />
                   </div>
-                  <div style={{ fontSize: 12, color: C.textMuted, marginTop: 4 }}>Typically responds within 24 hours</div>
+                  <div style={{ fontSize: 12, color: C.textMuted, marginTop: 4 }}>{CONTACT.responseNote}</div>
                 </InfoCard>
               </AnimatedSection>
 
@@ -515,7 +517,7 @@ export default function ContactPage() {
                     Book a 30-min quick connect
                   </div>
                   <a
-                    href="https://calendly.com/themeetpatell/quick-connect"
+                    href={INVESTOR.calendly}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
@@ -534,7 +536,7 @@ export default function ContactPage() {
                     }}
                   >
                     <Calendar size={14} />
-                    Book on Calendly
+                    Book a call
                     <ArrowRight size={13} />
                   </a>
                 </InfoCard>
@@ -545,7 +547,7 @@ export default function ContactPage() {
                 <InfoCard icon={MapPin} iconColor="#e879f9" iconBg="rgba(232,121,249,0.08)" title="Location">
                   <div style={{ fontSize: 15, fontWeight: 500, color: C.textPrimary }}>Dubai, UAE</div>
                   <div style={{ fontSize: 13, color: C.textMuted, marginTop: 3 }}>& Ahmedabad, India</div>
-                  <div style={{ fontSize: 12, color: C.textMuted, marginTop: 6 }}>Available for in-person meetings in both cities</div>
+                  <div style={{ fontSize: 12, color: C.textMuted, marginTop: 6 }}>{CONTACT.locationNote}</div>
                 </InfoCard>
               </AnimatedSection>
 
@@ -680,7 +682,7 @@ export default function ContactPage() {
                       <CheckCircle size={28} color={C.green} />
                     </div>
                     <div>
-                      <div style={{ fontSize: 18, fontWeight: 700, color: C.textPrimary, marginBottom: 8 }}>Message Sent!</div>
+                      <div style={{ fontSize: 18, fontWeight: 700, color: C.textPrimary, marginBottom: 8 }}>{CONTACT.sent}</div>
                       <div style={{ fontSize: 14, color: C.textSec, lineHeight: 1.6 }}>
                         Thanks for reaching out. I'll be in touch within 24 hours.
                       </div>
@@ -711,7 +713,7 @@ export default function ContactPage() {
                         id="name"
                         value={form.name}
                         onChange={setField('name')}
-                        placeholder="Meet Patel"
+                        placeholder={CONTACT.placeholders.name}
                         required
                       />
                       <FormInput
@@ -812,7 +814,7 @@ export default function ContactPage() {
                       id="subject"
                       value={form.subject}
                       onChange={setField('subject')}
-                      placeholder="What's this about?"
+                      placeholder={CONTACT.placeholders.subject}
                       required
                     />
 
@@ -822,7 +824,7 @@ export default function ContactPage() {
                       id="message"
                       value={form.message}
                       onChange={setField('message')}
-                      placeholder="Tell me about your project, idea, or how I can help..."
+                      placeholder={CONTACT.placeholders.message}
                       required
                     />
 

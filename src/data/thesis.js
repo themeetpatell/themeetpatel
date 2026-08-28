@@ -7,8 +7,9 @@
 // src/data/company8.js and must never be duplicated here.
 //
 // Why it exists: the site positioned Meet one layer below the territory he
-// wants to own. "Ask your business anything" is a product promise. It does not
-// tell a CEO, investor or operator that there is a thesis underneath it.
+// wants to own. Dan's promise — monitor, investigate, put the decision in front
+// of someone — is a product promise. It does not tell a CEO, investor or
+// operator that there is a thesis underneath it.
 //
 // Read by: /thesis (canonical page), /about, the homepage band, /blogs pillar
 // filters, and api/_pageContent.js for the crawler-facing versions.
@@ -21,7 +22,7 @@ export const CATEGORY = {
     'How AI changes the way companies are operated, decisions are made, and management systems are designed.',
   // The one sentence the whole body of work argues toward.
   thesis:
-    "The scarce resource inside a modern company is not data. It's organizational attention.",
+    'The scarce resource inside a modern company is organizational attention.',
   elaboration:
     'Companies have built systems for storing information, systems for visualising it, and now systems for querying it. What they still have not built is a system responsible for noticing what deserves management attention. That layer is what becomes interesting over the next decade.',
 };
@@ -85,7 +86,7 @@ export const MENTAL_MODELS = [
   {
     term: 'Organizational attention',
     definition:
-      'The finite capacity of a company to notice, prioritise and act on what is actually happening inside it. Unlike data, it does not scale by adding storage — and most tools consume it rather than protect it.',
+      'The finite capacity of a company to notice, prioritise and act on what is actually happening inside it. Storage buys none of it, and most tools spend it.',
   },
   {
     term: 'Decision debt',
@@ -95,17 +96,17 @@ export const MENTAL_MODELS = [
   {
     term: 'Management latency',
     definition:
-      'The elapsed time between something changing in a business and the person able to act on it knowing about it. Most companies measure system uptime to the second and management latency not at all.',
+      'The elapsed time between something changing in a business and the person able to act on it knowing about it. Most companies measure system uptime to the second and leave management latency unmeasured.',
   },
   {
     term: 'Decision infrastructure',
     definition:
-      'The systems, ownership and thresholds that determine how a company moves from information to a decision. Dashboards are reporting infrastructure; they are not this.',
+      'The systems, ownership and thresholds that determine how a company moves from information to a decision. Dashboards sit one layer below it, as reporting infrastructure.',
   },
   {
     term: 'Machine coworkers',
     definition:
-      'Software agents that hold responsibilities rather than execute tasks — which turns them into a management problem (scope, approval, escalation, review) long before it is a technology problem.',
+      'Software agents that hold responsibilities — which turns them into a management problem (scope, approval, escalation, review) long before it is a technology problem.',
   },
   {
     term: 'Evidence layer',
@@ -150,6 +151,6 @@ export const FRANCHISES = [
 
 /** How the thesis connects to what he is building, stated once, without pitching. */
 export const BRIDGE =
-  'Dan is what this thesis looks like as a product: not another place to ask questions, but a layer responsible for noticing what deserves attention. The thinking came first, and it is still the more interesting half.';
+  'Dan is what this thesis looks like as a product: a layer responsible for noticing what deserves attention. The thinking came first, and it is still the more interesting half.';
 
 export default { CATEGORY, PILLARS, PILLAR_STATE, MENTAL_MODELS, ENEMIES, FRANCHISES, BRIDGE };

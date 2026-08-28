@@ -47,16 +47,24 @@ const PAGE_ROUTES = new Set([
   '/community',
   '/mind',
   '/contact',
+  '/acu',
+]);
+
+/**
+ * Permanent path moves. Applied to humans and bots alike, before the
+ * filesystem, so the old URL never answers 200 with a client-side redirect —
+ * which is what a non-JS crawler would read as a real page.
+ */
+const MOVED_PATHS = new Map([
+  ['/labs', '/acu'],
 ]);
 
 /**
  * Real routes with no bot-rendered version. They must NOT 404 for crawlers —
- * they are noindex by design (legal pages, the /v2 variant, /labs), so the SPA
- * shell is the correct response and the page's own robots meta does the rest.
+ * they are noindex by design (the legal pages), so the SPA shell
+ * is the correct response and the page's own robots meta does the rest.
  */
 const KNOWN_NOINDEX_ROUTES = new Set([
-  '/labs',
-  '/v2',
   '/privacy-policy',
   '/cookie-policy',
   '/terms-of-service',
@@ -84,6 +92,13 @@ export default function middleware(request) {
         `https://${CANONICAL_HOST}${url.pathname}${url.search}`,
         308
       );
+    }
+
+    // 1b. Permanent path moves, before the user-agent split so humans and
+    //     crawlers get the same 308 rather than a JS-only redirect.
+    const moved = MOVED_PATHS.get(url.pathname.replace(/\/+$/, '') || '/');
+    if (moved) {
+      return Response.redirect(`https://${CANONICAL_HOST}${moved}${url.search}`, 308);
     }
 
     const userAgent = request.headers.get('user-agent') || '';

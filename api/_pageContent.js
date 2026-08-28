@@ -10,53 +10,40 @@
 // just lying to the systems you are trying to be quoted by. Facts come from
 // src/data/company8.js so a number can never disagree with the live page.
 
-import { BRAND, POSITIONING, PRODUCT, TRACTION, RAISE, INVESTOR, STATS, BACKGROUND } from '../src/data/company8.js';
+import { BRAND, POSITIONING, PRODUCT, LOOP, MARKET, TRACTION, RAISE, INVESTOR, STATS, BACKGROUND } from '../src/data/company8.js';
 import { CATEGORY, PILLARS, MENTAL_MODELS, ENEMIES, BRIDGE } from '../src/data/thesis.js';
+import { ACU, SCALE, THE_GATE, LAWS, DEPARTMENTS } from '../src/data/acu.js';
+import { BANDS, CAPABILITY_TOTAL, DOMAINS, STACK, INTERESTS } from '../src/data/capabilities.js';
+import { FAQ as HOME_FAQ } from '../src/data/homeVoice.js';
+
+/**
+ * Look up one homepage answer by its question. Positional indexing used to be
+ * how other pages borrowed these, and reordering the list silently swapped the
+ * wrong answer onto the wrong question. This throws instead.
+ */
+const homeAnswer = (question) => {
+  const hit = HOME_FAQ.find((item) => item.q === question);
+  if (!hit) throw new Error(`_pageContent: no homepage FAQ entry for "${question}"`);
+  return hit.a;
+};
 
 export const SITE = 'https://www.themeetpatel.com';
 
 const HOME_CRUMB = { name: 'Home', url: '/' };
 
-/** Q&A shown on the homepage FAQ section — must match what HomePage renders. */
-const HOME_FAQ = [
-  {
-    q: 'Who is Meet Patel?',
-    a: `Meet Patel (also known as themeetpatel or The Meet Patel) is a Dubai-based startup founder and business operator. He is the founder of ${BRAND.company}, building ${BRAND.product} (${BRAND.productUrl}) — an AI-native business intelligence engine — and has built and scaled over ${STATS.venturesBuilt} ventures across AI, fintech, hardware, and software.`,
-  },
-  {
-    q: 'Which Meet Patel is this?',
-    a: 'The Meet Patel who founded Company 8 and builds Dan (usedan.com) in Dubai, UAE — handle themeetpatel / @the_meetpatel. Not to be confused with other people named Meet Patel.',
-  },
-  {
-    q: 'What is Company 8?',
-    a: 'Company 8 (Company8) is the AI-native business intelligence company founded by Meet Patel in Dubai in 2025. It builds Dan (usedan.com), which lets business leaders query company operations in plain English and get actionable answers in real time. Company 8 is raising a pre-seed round.',
-  },
-  {
-    q: 'What is Dan (useDan.com)?',
-    a: 'Dan (useDan.com) is an AI business intelligence platform. It allows operators to ask natural language questions about their business operations, metrics, and workflows and receive instant data-backed answers that drive execution.',
-  },
-  {
-    q: 'What did Meet Patel build before Company 8?',
-    a: `He built and scaled ${STATS.venturesBuilt} ventures across AI, fintech, hardware, edtech, and software, and led teams as Chief of Staff and interim COO inside a fintech. The full list is at ${SITE}/portfolio.`,
-  },
-  {
-    q: 'Where is Meet Patel based?',
-    a: 'Meet Patel is based in Dubai, United Arab Emirates (UAE), operating internationally across global tech startup markets.',
-  },
-  {
-    q: 'How can investors or founders contact Meet Patel?',
-    a: `Investors and founders can contact Meet Patel directly by email at ${INVESTOR.email}, book time at ${INVESTOR.calendly}, or use the contact form at ${SITE}/contact.`,
-  },
-];
-
+/**
+ * Q&A shown on the homepage FAQ section. Imported, not copied: HomePage renders
+ * this exact list and emits it as schema.org FAQPage, so bots and humans cannot
+ * be served different answers.
+ */
 /** Every indexable route, keyed by pathname. */
 export const PAGES = {
   '/': {
     schemaType: 'ProfilePage',
     title: `Meet Patel — Founder of ${BRAND.company}, building ${BRAND.product}`,
-    description: `Meet Patel is a Dubai-based founder building ${BRAND.product} — the AI that lets any operator ask their business anything and get answers that lead to action. An operator who scaled teams and systems across fintech, hardware, and software, now all-in on ${BRAND.company}.`,
-    keywords: 'Meet Patel, themeetpatel, The Meet Patel, Company 8, Dan, useDan, AI business intelligence, founder Dubai, AI operator',
-    h1: POSITIONING.tagline,
+    description: `Meet Patel is a Dubai-based founder building ${BRAND.product} — ${POSITIONING.descriptor}. An operator who scaled teams and systems across fintech, hardware, and software, now all-in on ${BRAND.company}.`,
+    keywords: 'Meet Patel, themeetpatel, The Meet Patel, Company 8, Dan, useDan, autonomous decision intelligence, decision intelligence, AI business intelligence, founder Dubai, AI operator',
+    h1: POSITIONING.heroLines.join(' '), // must match the rendered <h1> on HomePage
     intro: `${POSITIONING.oneLiner} Meet Patel (themeetpatel) is the founder — a Dubai-based operator who has built and scaled ${STATS.venturesBuilt} ventures across AI, fintech, hardware, and software.`,
     breadcrumb: [HOME_CRUMB],
     sections: [
@@ -78,7 +65,7 @@ export const PAGES = {
         h2: `${BRAND.company} is raising ${RAISE.stage.toLowerCase()}`,
         paragraphs: [
           RAISE.thesis,
-          `${BRAND.product} is ${TRACTION.status} at ${BRAND.productUrl}, with ${TRACTION.activeUsers}. ${TRACTION.productHunt}.`,
+          `${BRAND.product} is ${TRACTION.status} at ${BRAND.productUrl}, with ${TRACTION.activeUsers} in ${TRACTION.window}. ${TRACTION.productHunt}.`,
           `Investor contact: ${INVESTOR.email} · ${SITE}/investors`,
         ],
       },
@@ -89,10 +76,13 @@ export const PAGES = {
   '/investors': {
     schemaType: 'WebPage',
     title: `${BRAND.company} — ${RAISE.stage} · For Investors`,
-    description: `${RAISE.stage} · ${BRAND.company} is building ${BRAND.product} — the AI that lets any operator ask their business anything and get answers that lead to action. Thesis, traction, and how to reach founder Meet Patel.`,
-    keywords: 'Company 8 pre-seed, Company 8 investors, Dan usedan, Meet Patel fundraising, AI business intelligence pre-seed, Dubai startup investment',
-    h1: POSITIONING.oneLiner,
-    intro: `${BRAND.company} is raising a ${RAISE.stage.toLowerCase()} round. ${RAISE.thesis}`,
+    description: `${RAISE.stage} · ${BRAND.company} is building ${BRAND.product} — ${POSITIONING.descriptor}. Thesis, traction, market and how to reach founder Meet Patel.`,
+    keywords: 'Company 8 pre-seed, Company 8 investors, Dan usedan, Meet Patel fundraising, autonomous decision intelligence, decision intelligence pre-seed, revenue intelligence, Dubai startup investment',
+    // Must match the rendered <h1> on InvestorsPage, which is the three held
+    // beats. The full positioning sentence follows immediately in `intro`,
+    // exactly as it does on the page.
+    h1: POSITIONING.investorBeats.join(' '),
+    intro: `${POSITIONING.oneLiner} ${BRAND.company} is raising a ${RAISE.stage.toLowerCase()} round. ${RAISE.thesis}`,
     breadcrumb: [HOME_CRUMB, { name: 'Investors', url: '/investors' }],
     sections: [
       { h2: 'The problem', paragraphs: [POSITIONING.problem] },
@@ -103,12 +93,33 @@ export const PAGES = {
         list: PRODUCT.capabilities.map((c) => `${c.title} — ${c.body}`),
       },
       {
+        h2: 'How it works',
+        paragraphs: [`${LOOP.stages.join(' → ')}. ${LOOP.evidence} ${LOOP.substitute}`],
+      },
+      {
         h2: 'Traction',
+        paragraphs: [
+          `${BRAND.product} is ${TRACTION.status} at ${BRAND.productUrl}. Every figure below is from ${TRACTION.window} — no paid growth, no sales motion, no marketing, no launch.`,
+        ],
         list: [
-          `${BRAND.product} is ${TRACTION.status} at ${BRAND.productUrl}`,
           TRACTION.activeUsers,
+          TRACTION.signups,
+          TRACTION.investigations,
+          TRACTION.interviews,
+          TRACTION.pilots,
+          TRACTION.usageStat,
           TRACTION.productHunt,
         ].filter(Boolean),
+      },
+      {
+        h2: 'The market',
+        list: [
+          `${MARKET.beachhead.value} — ${MARKET.beachhead.label}: ${MARKET.beachhead.detail}`,
+          `${MARKET.sam.value} — ${MARKET.sam.label}: ${MARKET.sam.detail}`,
+          `${MARKET.universe.value} — ${MARKET.universe.label}: ${MARKET.universe.detail}`,
+          `${MARKET.tam.value} — ${MARKET.tam.label}: ${MARKET.tam.detail}`,
+          `Sources: ${MARKET.sources.join(', ')}`,
+        ],
       },
       {
         h2: 'Operating track record',
@@ -133,7 +144,15 @@ export const PAGES = {
       },
       {
         q: 'What is the product?',
-        a: `${BRAND.product} (${BRAND.productUrl}) — the AI that lets any operator ask their business anything and get answers that lead to action. It is ${TRACTION.status}, with ${TRACTION.activeUsers}.`,
+        a: `${BRAND.product} (${BRAND.productUrl}) — ${POSITIONING.descriptor}. It is ${TRACTION.status}, with ${TRACTION.activeUsers} in ${TRACTION.window}.`,
+      },
+      {
+        q: `What category is ${BRAND.company} in?`,
+        a: `${POSITIONING.category}. ${BRAND.product} enters through ${POSITIONING.beachhead} — the team that already runs a recurring review where the CRM, the dashboard and finance disagree — and expands from there into finance, product, customer and operations.`,
+      },
+      {
+        q: `How is ${BRAND.product} different from a BI or revenue intelligence tool?`,
+        a: `BI answers a question someone thought to ask, and revenue intelligence scores a forecast. ${BRAND.product} runs the decision loop instead: ${LOOP.stages.join(', ').toLowerCase()}. ${LOOP.evidence}`,
       },
       {
         q: 'Why is this founder the right one to build it?',
@@ -159,7 +178,7 @@ export const PAGES = {
       {
         h2: 'Companies bought visibility. They still cannot decide.',
         paragraphs: [
-          'Every operator wants more visibility into the business, so the company buys another dashboard. Six months later Monday still opens with someone asking which number is correct. At that point the problem is not visibility — it is that nothing in the company is responsible for noticing what matters.',
+          'Every operator wants more visibility into the business, so the company buys another dashboard. Six months later Monday still opens with someone asking which number is correct. At that point the problem is that nothing in the company is responsible for noticing what matters.',
         ],
         list: ENEMIES,
       },
@@ -203,10 +222,31 @@ export const PAGES = {
         h2: 'By the numbers',
         list: [
           `${STATS.venturesBuilt} ventures built and scaled`,
-          `${STATS.teamLed} people led cumulatively`,
+          `${CAPABILITY_TOTAL.figure} ${CAPABILITY_TOTAL.label}`,
           `${STATS.yearsOperating} years operating`,
           `Based in ${BRAND.location}`,
         ],
+      },
+      // One h2 per band, so a crawler reads the same three-way split a
+      // human does: running a company, starting one, and everything else.
+      ...BANDS.map((band) => ({
+        h2: band.heading,
+        paragraphs: [band.frame],
+        list: band.cards.map(
+          (cap) =>
+            `${cap.title} — ${cap.body} Proof: ${cap.proof
+              .map((pr) => `${pr.figure} (${pr.source})`)
+              .join('; ')}.`
+        ),
+      })),
+      {
+        h2: 'Skills, domains and tools',
+        list: [...DOMAINS, ...STACK],
+      },
+      {
+        h2: 'Interests',
+        paragraphs: ['Carrying no claim and no proof — they are simply true.'],
+        list: INTERESTS,
       },
       {
         h2: 'What he is building now',
@@ -214,9 +254,9 @@ export const PAGES = {
       },
     ],
     faq: [
-      { q: 'Who is Meet Patel?', a: HOME_FAQ[0].a },
-      { q: 'Which Meet Patel is this?', a: HOME_FAQ[1].a },
-      { q: 'Where is Meet Patel based?', a: HOME_FAQ[5].a },
+      { q: 'Who is Meet Patel?', a: homeAnswer('Who is Meet Patel?') },
+      { q: 'Which Meet Patel is this?', a: homeAnswer('Which Meet Patel is this?') },
+      { q: 'Where is Meet Patel based?', a: homeAnswer('Where is Meet Patel based?') },
     ],
   },
 
@@ -224,9 +264,9 @@ export const PAGES = {
     schemaType: 'CollectionPage',
     title: 'Portfolio — ventures Meet Patel has built',
     description: `The ventures Meet Patel built and operated before ${BRAND.company}, across AI, fintech, hardware, edtech, and software — the operating record behind ${BRAND.product}.`,
-    keywords: 'Meet Patel portfolio, Meet Patel startups, Meet Patel ventures, TorchIt, Incsmart, BiggMate',
+    keywords: 'Meet Patel portfolio, Meet Patel startups, Meet Patel ventures, TorchIt, Incsmart, BiggDate, BiggMate',
     h1: 'Ventures Meet Patel has built',
-    intro: `${BACKGROUND.summary} ${STATS.venturesBuilt} ventures across AI, fintech, hardware, edtech, and software, built in Dubai before going all-in on ${BRAND.company}.`,
+    intro: `${BACKGROUND.summary} ${STATS.venturesBuilt} ventures across AI, fintech, hardware, edtech, and software, built in Dubai before going all-in on ${BRAND.company}. The list is complete rather than curated: ventures that exited, closed or were cancelled stay on the page alongside the ones still running.`,
     breadcrumb: [HOME_CRUMB, { name: 'Portfolio', url: '/portfolio' }],
     sections: [
       {
@@ -252,7 +292,7 @@ export const PAGES = {
   '/blogs': {
     schemaType: 'CollectionPage',
     title: 'Writing — essays on startup operations and scaling',
-    description: 'Essays by Meet Patel on startup operations, scaling systems, pricing, retention, hiring, and founder execution — written from operating, not theory.',
+    description: 'Essays by Meet Patel on startup operations, scaling systems, pricing, retention, hiring, and founder execution — written from operating experience.',
     keywords: 'Meet Patel blog, startup operations essays, scaling startups, founder writing, themeetpatel blog',
     h1: 'Essays on startup operations and scaling',
     intro: 'Meet Patel writes about what actually breaks when a company grows: pricing, retention, hiring, pivots, activation, and the operating systems underneath them. Every article below is published at themeetpatel.com/blogs.',
@@ -284,7 +324,7 @@ export const PAGES = {
     intro: 'A network of founders and operators building companies, run by Meet Patel out of Dubai.',
     breadcrumb: [HOME_CRUMB, { name: 'Community', url: '/community' }],
     sections: [
-      { h2: 'What it is', paragraphs: ['A place for founders and operators to compare notes on what actually works when scaling a company — hiring, pricing, retention, and the operating systems underneath.'] },
+      { h2: 'What it is', paragraphs: ['A place for founders and operators to compare notes on what actually works when scaling a company — hiring, pricing, retention, and the operating systems underneath. Free to join; every application is read by a person. Meet Patel is an active member rather than an absent owner.'] },
     ],
   },
 
@@ -294,10 +334,60 @@ export const PAGES = {
     description: 'A map of the ideas, models, and operating principles behind how Meet Patel builds and scales companies.',
     keywords: 'Meet Patel mental models, founder operating principles, how Meet Patel thinks',
     h1: 'Mind',
-    intro: 'The ideas and operating principles behind how Meet Patel builds companies, mapped and connected.',
+    intro: 'A live visualisation of Meet Patel’s second brain. Each dot is one note and the colours are life areas; no note content is shown, only the shape and volume of the thinking.',
     breadcrumb: [HOME_CRUMB, { name: 'Mind', url: '/mind' }],
     sections: [
-      { h2: 'What this is', paragraphs: ['A connected map of the models Meet Patel uses when operating — the reasoning behind the essays at themeetpatel.com/blogs.'] },
+      { h2: 'What this is', paragraphs: ['A graph view of the note-taking system behind the essays at themeetpatel.com/blogs. It shows how many notes exist and how they cluster across life areas — never what any note says. The reasoning itself is published as writing, not here.'] },
+    ],
+  },
+
+  // Derived from src/data/acu.js so a count here can never disagree with the
+  // React page. The old /acu path was /labs, which now 308s in middleware.js.
+  '/acu': {
+    schemaType: 'WebPage',
+    title: `${ACU.name} — the ${ACU.fullName}`,
+    description: `${ACU.tagline} The governed agent org Meet Patel runs his companies on — ${SCALE[0].value} specialist agents across ${SCALE[1].value} departments, one canon, one vault, and ${LAWS.length} laws that bind every one of them.`,
+    keywords: 'ACU, Agentic Cinematic Universe, Meet Patel, multi-agent orchestration, Claude Code plugins, governed AI agents, agent org',
+    h1: `${ACU.name} — the ${ACU.fullName}`,
+    intro: ACU.summary,
+    breadcrumb: [HOME_CRUMB, { name: ACU.name, url: '/acu' }],
+    sections: [
+      {
+        h2: 'Scale',
+        list: SCALE.map(({ value, label }) => `${label} — ${value}`),
+      },
+      {
+        h2: 'The gate on every agent',
+        paragraphs: [`"${THE_GATE.quote}" ${THE_GATE.detail}`],
+      },
+      {
+        h2: `The ${LAWS.length} laws that bind every agent`,
+        list: LAWS.map(({ n, title, body }) => `${n}. ${title} — ${body}`),
+      },
+      {
+        h2: 'The chart — departments and agents',
+        list: DEPARTMENTS.map(({ key, count, owns, agents }) =>
+          `${key} (${count === 0 ? 'skills only' : `${count} agents`}) — ${owns}${agents.length ? ` Agents: ${agents.join(', ')}.` : ''}`
+        ),
+      },
+      {
+        h2: 'Repository',
+        list: [`Source — ${ACU.repo}`],
+      },
+    ],
+    faq: [
+      {
+        q: `What is the ${ACU.name} (${ACU.fullName})?`,
+        a: `${ACU.summary} It runs ${SCALE[0].value} agents across ${SCALE[1].value} departments with ${SCALE[2].value} commands and ${SCALE[3].value} skills, all bound by ${LAWS.length} laws. Source: ${ACU.repo}`,
+      },
+      {
+        q: `What makes the ${ACU.name} different from a set of AI assistants?`,
+        a: `${THE_GATE.quote} ${THE_GATE.detail}`,
+      },
+      {
+        q: `Who built the ${ACU.name}?`,
+        a: `Meet Patel, founder of ${BRAND.company}, built it to operate his own companies. Details at ${SITE}/acu.`,
+      },
     ],
   },
 
@@ -322,7 +412,7 @@ export const PAGES = {
       },
     ],
     faq: [
-      { q: 'How can I contact Meet Patel?', a: HOME_FAQ[6].a },
+      { q: 'How can I contact Meet Patel?', a: homeAnswer('How can I contact Meet Patel?') },
       {
         q: 'How do investors reach Company 8?',
         a: `Email ${INVESTOR.email} or book time at ${INVESTOR.calendly}. The pre-seed details are at ${SITE}/investors.`,
@@ -339,6 +429,7 @@ export const SITE_LINKS = [
   { href: '/about', label: 'About Meet Patel' },
   { href: '/blogs', label: 'Writing — essays on startup operations' },
   { href: '/portfolio', label: 'Portfolio — ventures built' },
+  { href: '/acu', label: `${ACU.name} — the ${ACU.fullName}, the agent org behind the work` },
   { href: '/biggmate', label: 'BiggMate — co-founder matching' },
   { href: '/community', label: 'Community — founder network' },
   { href: '/contact', label: 'Contact Meet Patel' },

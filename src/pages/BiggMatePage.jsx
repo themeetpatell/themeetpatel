@@ -119,7 +119,7 @@ const FEATURES = [
   {
     icon: Bot,
     title: 'AI Matching',
-    subtitle: 'Deep compatibility, not just skills',
+    subtitle: 'Personality, communication style, ambition',
     body: 'Our algorithm goes beyond résumés — it maps personality, communication style, and long-term ambition to find your real match.',
     span: 1,
   },

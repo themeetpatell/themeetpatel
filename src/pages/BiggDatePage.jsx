@@ -42,7 +42,7 @@ const highlights = [
   { icon: Heart, title: 'Meaningful Matches', text: 'Compatibility-first matching based on values, lifestyle, and relationship goals.' },
   { icon: Shield, title: 'Safer Dating', text: 'Profile trust checks, smart moderation, and intent signals to reduce low-quality interactions.' },
   { icon: MessageCircle, title: 'Conversation Prompts', text: 'Context-rich prompts that help people start better conversations faster.' },
-  { icon: Sparkles, title: 'Quality Over Quantity', text: 'Fewer but stronger daily suggestions instead of infinite swiping loops.' },
+  { icon: Sparkles, title: 'Quality Over Quantity', text: 'A few strong suggestions a day, chosen for fit.' },
 ];
 
 const steps = [
@@ -83,7 +83,7 @@ const problems = [
     icon: Shield,
     title: 'Safety Feels Reactive',
     body: 'Users often deal with moderation after damage is done. Trust should be built into the matching experience.',
-    stat: 'Safer by design, not afterthought',
+    stat: 'Safe by design',
   },
 ];
 
@@ -134,7 +134,7 @@ const testimonials = [
 const faqs = [
   {
     q: 'Is BiggDate a swipe app?',
-    a: 'No. BiggDate focuses on curated compatibility-first suggestions instead of endless swiping loops.',
+    a: 'No. BiggDate focuses on curated, compatibility-first suggestions.',
   },
   {
     q: 'How do you improve match quality?',
@@ -171,7 +171,7 @@ const BiggDatePage = () => {
         keywords="BiggDate, dating app, meaningful dating, compatibility matching, safer dating, relationship app"
         canonical="/biggdate"
         ogTitle="BiggDate - Relationship-First Dating"
-        ogDescription="Meet people who match your values, not just your feed. Join BiggDate waitlist."
+        ogDescription="Meet people who match your values. Join BiggDate waitlist."
         structuredData={{
           '@context': 'https://schema.org',
           '@type': 'SoftwareApplication',
@@ -441,7 +441,7 @@ const BiggDatePage = () => {
               The Problem
             </span>
             <h2 style={{ margin: '10px 0 0', fontSize: 'clamp(30px, 5vw, 54px)', letterSpacing: '-0.03em', lineHeight: 1.06 }}>
-              Dating apps optimize activity, not outcomes.
+              Dating apps optimize for time spent.
             </h2>
           </motion.div>
 

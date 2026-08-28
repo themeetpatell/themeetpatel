@@ -1,6 +1,6 @@
-/* global process */
 import { Resend } from 'resend';
 import { captureServerEvent, captureServerError } from '../_posthog.js';
+import { enforceRateLimit } from '../_ratelimit.js';
 
 const DESTINATION_EMAIL = 'meet@company8.dev';
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
@@ -42,10 +42,15 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  // Anonymous POST that sends mail on our domain. Unbounded, this is a spam
+  // relay and a way to burn the Resend quota.
+  if (!enforceRateLimit(req, res, { name: 'forms-notify', limit: 5, windowMs: 10 * 60 * 1000 })) {
+    return;
+  }
+
   if (!RESEND_API_KEY || RESEND_API_KEY === 're_xxxxxxxxx') {
-    return res.status(500).json({
-      error: 'Resend is not configured. Replace re_xxxxxxxxx with your real API key.',
-    });
+    console.error('forms/notify blocked: RESEND_API_KEY is not configured');
+    return res.status(503).json({ error: 'Email delivery is not configured.' });
   }
 
   const resend = new Resend(RESEND_API_KEY);
@@ -132,8 +137,9 @@ export default async function handler(req, res) {
     );
     await captureServerError(req, error, { endpoint: 'forms/notify', form_type: formType });
 
-    return res.status(500).json({
-      error: error?.message || 'Failed to send email',
-    });
+    // The provider's message can name the account, the domain or the key.
+    // It belongs in the server log, not in a response to an anonymous POST.
+    console.error('forms/notify send failed:', error);
+    return res.status(500).json({ error: 'Could not send your message. Please try again.' });
   }
 }

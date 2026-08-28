@@ -7,7 +7,7 @@ import {
   Linkedin, Twitter, Github, Instagram, Youtube, ExternalLink,
   Award, Heart, Zap, Star, ArrowRight, Play, Quote, Calendar,
   MapPin, Phone, MessageSquare, Clock, Eye, ChevronRight, Briefcase,
-  BookOpen as Medium, Calendar as Calendly
+  BookOpen as Medium, Calendar as BookCall
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import {
@@ -19,8 +19,17 @@ import {
 } from '../lib/seoEntity';
 import FollowMyJourney from '../components/FollowMyJourney';
 import { submitContactFormData } from '../services/formService';
-import { BRAND, POSITIONING, PRODUCT, STATS } from '../data/company8';
-import { CATEGORY } from '../data/thesis';
+import { BRAND, STATS, INVESTOR, signupHref } from '../data/company8';
+import {
+  HERO,
+  PRODUCT_VOICE,
+  THESIS_VOICE,
+  SECTIONS,
+  STAT_LABELS,
+  ACHIEVEMENTS,
+  CONTACT_FORM,
+  FAQ,
+} from '../data/homeVoice';
 import meetPatelImage from '../assets/themeetpatel.jpeg';
 import meetPatelImage2 from '../assets/the meet patel.jpeg';
 
@@ -131,41 +140,35 @@ const HomePage = () => {
 
   const personalInfo = {
     name: "Meet Patel",
-    title: "I'm Meet Patel — founder of Company 8, building Dan.",
+    title: HERO.tagline,
     location: "Dubai, United Arab Emirates",
     email: "meet@company8.dev",
-    bio: "Founder of Company 8, building Dan — ask your business anything and get answers that lead to action. Years of operating and scaling technology companies taught me exactly why business intelligence is broken. Dan is the fix.",
+    bio: HERO.bio,
     
     projects: [
       {
         name: "Company 8",
-        description: "AI-native business intelligence company, maker of Dan. Ask your business anything and get answers that lead to action.",
+        problem: "Your CRM, your dashboard and finance all say a different number.",
         category: "AI",
         year: "2025"
       },
       {
-        name: "StudentHub",
-        description: "Recruitment technology platform connecting students with jobs and resources and companies with students.",
-        category: "EdTech",
-        year: "2021"
+        name: "Finanshels",
+        problem: "UAE SMEs still have to get accounting, tax and compliance right.",
+        category: "FinTech",
+        year: "2023"
       },
       {
         name: "ZeroHuman",
-        description: "AI-powered automation platform for Modelling industry and media creation.",
+        problem: "Photoshoots cost too much to scale creative output.",
         category: "AI",
         year: "2024"
       },
       {
         name: "MealVerse",
-        description: "Food technology platform revolutionizing home-cooked meal planning and delivery services.",
+        problem: "Home-cooked food is hard to get without cooking it yourself.",
         category: "FoodTech",
         year: "2024"
-      },
-      {
-        name: "TorchIt",
-        description: "An assistive-tech startup helping differently-abled people with smart devices.",
-        category: "Mobile",
-        year: "2020"
       }
     ],
     
@@ -176,32 +179,32 @@ const HomePage = () => {
       { label: "Instagram", href: "https://instagram.com/the.meetpatell/", icon: Instagram },
       { label: "YouTube", href: "https://youtube.com/@themeetpatel", icon: Youtube },
       { label: "Medium", href: "https://medium.com/@themeetpatel", icon: Medium },
-      { label: "Calendly", href: "https://calendly.com/themeetpatell/quick-connect", icon: Calendly }
+      { label: "Book a call", href: INVESTOR.calendly, icon: BookCall }
     ]
   };
 
   const stats = [
     {
       number: "8+",
-      label: "Years Experience",
+      label: STAT_LABELS.yearsOperating,
       icon: Target,
       color: "from-purple-500 to-indigo-500"
     },
     {
       number: "10+",
-      label: "Ventures Built",
+      label: STAT_LABELS.venturesBuilt,
       icon: Heart,
       color: "from-purple-400 to-indigo-500"
     },
     {
       number: "490+",
-      label: "Team Members Led",
+      label: STAT_LABELS.teamLed,
       icon: Users,
       color: "from-indigo-400 to-purple-500"
     },
     {
       number: "2",
-      label: "Books Written",
+      label: STAT_LABELS.books,
       icon: BookOpen,
       color: "from-purple-300 to-indigo-400"
     }
@@ -248,32 +251,15 @@ const HomePage = () => {
     }
   ];
 
-  const achievements = [
-    {
-      title: "500+ Members",
-      description: "Built a community of 500+ entrepreneurs and investors in StartupOS",
-      icon: Star,
-      color: "from-purple-300 to-purple-500"
-    },
-    {
-      title: "Building Leadership Team",
-      description: "Built the entire management team in 6 months at a million-dollar company",
-      icon: Award,
-      color: "from-purple-400 to-purple-500"
-    },
-    {
-      title: "Published Author",
-      description: "Author of romantic novels and business guides",
-      icon: BookOpen,
-      color: "from-indigo-500 to-indigo-600"
-    },
-    {
-      title: "Leadership & Management",
-      description: "Led 270+ team members at age of 26 remotely",
-      icon: Users,
-      color: "from-indigo-400 to-indigo-500"
-    }
+  // Copy lives in homeVoice.ACHIEVEMENTS; the icon and gradient stay here
+  // because they are presentation, not voice.
+  const achievementStyles = [
+    { icon: Star, color: "from-purple-300 to-purple-500" },
+    { icon: Award, color: "from-purple-400 to-purple-500" },
+    { icon: BookOpen, color: "from-indigo-500 to-indigo-600" },
+    { icon: Users, color: "from-indigo-400 to-indigo-500" }
   ];
+  const achievements = ACHIEVEMENTS.map((a, i) => ({ ...a, ...achievementStyles[i] }));
 
 
   const handleInputChange = (e) => {
@@ -307,46 +293,12 @@ const HomePage = () => {
   };
 
   // Visible + structured FAQ — third-person, answer-engine friendly.
-  const homepageFaq = [
-    {
-      q: 'Who is Meet Patel?',
-      a: 'Meet Patel (also known as The Meet Patel or themeetpatel) is a Dubai-based startup founder and operator. He is the founder of Company 8, building Dan — the AI that lets any operator ask their business anything and get answers that lead to action. Over 8+ years he has built and scaled 10+ ventures across AI, fintech, hardware, and software, and led teams of 490+ people across his ventures.',
-    },
-    {
-      q: 'What does Meet Patel believe about AI and companies?',
-      a: `${CATEGORY.thesis} ${CATEGORY.elaboration} The full argument is at themeetpatel.com/thesis.`,
-    },
-    {
-      q: 'Which Meet Patel is this?',
-      a: 'The Meet Patel who founded Company 8 and builds Dan (usedan.com) in Dubai, UAE — handle themeetpatel / @the_meetpatel. Not to be confused with other people named Meet Patel.',
-    },
-    {
-      q: 'What is Dan?',
-      a: 'Dan (usedan.com) is the product Company 8 is building — the AI that lets any operator ask their business anything and get answers that lead to action. No dashboards, no SQL, no waiting on an analyst: Dan tells you what is happening in the business and what to do about it.',
-    },
-    {
-      q: 'What is Company 8?',
-      a: 'Company 8 is the AI-native business intelligence company Meet Patel founded in Dubai in 2025. It builds Dan, which lets founders ask their business anything and get answers that lead to action. Company 8 is raising a pre-seed round.',
-    },
-    {
-      q: 'What companies has Meet Patel built?',
-      a: 'Meet Patel is the founder of Company 8, building Dan. Before that he built and scaled 10+ ventures — BiggMate, ZeroHuman, MealVerse, StudentHub, and TorchIt — across AI, fintech, edtech, hardware, and software.',
-    },
-    {
-      q: 'Where is Meet Patel based?',
-      a: 'Meet Patel is based in Dubai, United Arab Emirates, where he builds and scales startups and contributes to the wider startup ecosystem.',
-    },
-    {
-      q: 'How can I contact Meet Patel?',
-      a: 'You can reach Meet Patel through themeetpatel.com or by email at meet@company8.dev, and connect on LinkedIn at linkedin.com/in/themeetpatel. He works with founders on building, operating, and scaling startups.',
-    },
-  ];
 
   // One canonical Person entity + the venture graph (Person → Company 8 → Dan),
   // plus page-level WebPage / FAQ / Profile nodes. See src/lib/seoEntity.js.
   const homepageStructuredData = [
     ...meetPatelEntities,
-    buildFaqPage(homepageFaq),
+    buildFaqPage(FAQ),
     {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
@@ -374,7 +326,7 @@ const HomePage = () => {
     <div className="min-h-screen ultra-gradient-bg">
       <SEOHead 
         title="Meet Patel — Founder of Company 8, building Dan"
-        description="Meet Patel (themeetpatel) is a Dubai-based founder building Dan — the AI that lets any operator ask their business anything and get answers that lead to action. All-in on Company 8, after building 10+ ventures across AI, fintech, and software."
+        description="Meet Patel (themeetpatel) is a Dubai-based founder building Dan — the AI that monitors a business, investigates what changed, and puts the decision in front of you. All-in on Company 8, after building 10+ ventures across AI, fintech, and software."
         keywords="Meet Patel, The Meet Patel, themeetpatel, meet patel dubai, Company 8, Company8, Dan, useDan, AI business intelligence, startup founder, startup operator, Dubai entrepreneur"
         canonical="/"
         ogImage="/og-image.jpg"
@@ -458,7 +410,7 @@ const HomePage = () => {
                     transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                     className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
                   />
-                  <span className="text-sm sm:text-base text-purple-300">Hey, glad you're here</span>
+                  <span className="text-sm sm:text-base text-purple-300">{HERO.chip}</span>
                 </div>
               </motion.div>
 
@@ -468,13 +420,13 @@ const HomePage = () => {
                   initial={{ opacity: 0, y: 40 }}
                   animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.8, delay: 0.2 }}
-                  className="text-5xl sm:text-7xl lg:text-8xl font-black leading-tight tracking-tight"
+                  className="text-5xl sm:text-[clamp(2.5rem,7.1vw,5.25rem)] font-black leading-tight tracking-tight"
                 >
-                  <span className="block text-[#f7f7fb]">
-                    Ask your business anything.
+                  <span className="block text-[#f7f7fb] sm:whitespace-nowrap">
+                    {HERO.lines[0]}
                   </span>
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#c4b5fd] via-[#a78bfa] to-[#8b5cf6] mt-2">
-                    Get answers that lead to action.
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#c4b5fd] via-[#a78bfa] to-[#8b5cf6] mt-2 sm:whitespace-nowrap">
+                    {HERO.lines[1]}
                   </span>
                 </motion.h1>
 
@@ -521,13 +473,13 @@ const HomePage = () => {
               >
                 <div className="space-y-4 text-center text-[#a8a9c3]">
                   <p className="text-base sm:text-lg leading-relaxed">
-                    {POSITIONING.problem}
+                    {HERO.problem}
                   </p>
                   <p className="text-base sm:text-lg leading-relaxed">
-                    <span className="text-[#e6e7f5] font-semibold">{BRAND.company}</span> is building <span className="text-[#e6e7f5] font-semibold">{BRAND.product}</span> — the AI operator that answers any question about your business in plain English. I'm building it because I lived the problem, as Chief of Staff and interim COO inside a fintech.
+                    <span className="text-[#e6e7f5] font-semibold">{BRAND.company}</span> {HERO.build.connector} <span className="text-[#e6e7f5] font-semibold">{BRAND.product}</span> {HERO.build.tail}
                   </p>
                   <p className="text-base sm:text-lg leading-relaxed">
-                    See <a href="https://usedan.com" target="_blank" rel="noopener noreferrer" className="text-[#c4b5fd] hover:text-white font-semibold underline underline-offset-4 decoration-purple-400/40 hover:decoration-purple-300 transition-colors">Dan live</a>, or read the <Link to="/investors" className="text-[#c4b5fd] hover:text-white font-semibold underline underline-offset-4 decoration-purple-400/40 hover:decoration-purple-300 transition-colors">investor brief</Link>.
+                    <a href={signupHref('home_inline')} target="_blank" rel="noopener noreferrer" className="text-[#c4b5fd] hover:text-white font-semibold underline underline-offset-4 decoration-purple-400/40 hover:decoration-purple-300 transition-colors">{HERO.ctas.trial}</a>{HERO.ctaLine.mid}<Link to="/investors" className="text-[#c4b5fd] hover:text-white font-semibold underline underline-offset-4 decoration-purple-400/40 hover:decoration-purple-300 transition-colors">{HERO.ctas.brief}</Link>{HERO.ctaLine.tail}
                   </p>
                 </div>
               </motion.div>
@@ -540,7 +492,7 @@ const HomePage = () => {
                 className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8"
               >
                 <motion.a
-                  href="https://usedan.com"
+                  href={signupHref('home_hero')}
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05, y: -2 }}
@@ -549,7 +501,7 @@ const HomePage = () => {
                 >
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 via-violet-500 to-indigo-600 rounded-full opacity-60 group-hover:opacity-100 blur transition-all duration-300"></div>
                   <button className="relative px-10 py-4 bg-gray-900 rounded-full text-white font-bold text-lg flex items-center justify-center space-x-2 w-full sm:w-auto hover:bg-gray-800 transition-colors">
-                    <span>See Dan live</span>
+                    <span>{HERO.ctas.primary}</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </motion.a>
@@ -562,7 +514,7 @@ const HomePage = () => {
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 to-indigo-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <Briefcase className="w-5 h-5 relative z-10 group-hover:scale-110 transition-transform" />
-                  <span className="relative z-10">For investors</span>
+                  <span className="relative z-10">{HERO.ctas.secondary}</span>
                 </motion.a>
               </motion.div>
 
@@ -574,9 +526,9 @@ const HomePage = () => {
                 className="grid grid-cols-3 gap-4 sm:gap-8 pt-12 border-t border-purple-400/30 mt-12"
               >
                 {[
-                  { value: STATS.yearsOperating, label: "Years operating" },
-                  { value: STATS.venturesBuilt, label: "Ventures built" },
-                  { value: STATS.teamLed, label: "Team members led" }
+                  { value: STATS.yearsOperating, label: HERO.statLabels.yearsOperating },
+                  { value: STATS.venturesBuilt, label: HERO.statLabels.venturesBuilt },
+                  { value: STATS.teamLed, label: HERO.statLabels.teamLed }
                 ].map((stat, idx) => (
                   <motion.div
                     key={idx}
@@ -603,7 +555,7 @@ const HomePage = () => {
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
         >
           <div className="flex flex-col items-center space-y-2">
-            <span className="text-xs text-[#a8a9c3] uppercase tracking-widest">Scroll</span>
+            <span className="text-xs text-[#a8a9c3] uppercase tracking-widest">{HERO.scroll}</span>
             <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
@@ -622,18 +574,18 @@ const HomePage = () => {
             className="text-center max-w-3xl mx-auto"
           >
             <span className="inline-block text-sm font-semibold tracking-wide text-[#c4b5fd] uppercase mb-4">
-              {PRODUCT.eyebrow}
+              {PRODUCT_VOICE.eyebrow}
             </span>
             <h2 className="text-3xl sm:text-5xl font-bold text-[#f7f7fb] tracking-tight mb-5">
-              {PRODUCT.heading}
+              {PRODUCT_VOICE.heading}
             </h2>
             <p className="text-lg text-[#a8a9c3] leading-relaxed">
-              {POSITIONING.oneLiner}
+              {PRODUCT_VOICE.oneLiner}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
-            {PRODUCT.capabilities.map((cap, i) => (
+            {PRODUCT_VOICE.capabilities.map((cap, i) => (
               <motion.div
                 key={cap.title}
                 initial={{ opacity: 0, y: 24 }}
@@ -653,12 +605,12 @@ const HomePage = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
             <a
-              href="https://usedan.com"
+              href={signupHref('home_product')}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#8b5cf6] hover:bg-[#7c3aed] text-white font-bold transition-colors"
             >
-              See Dan live <ExternalLink className="w-4 h-4" />
+              Try Dan free <ExternalLink className="w-4 h-4" />
             </a>
             <Link
               to="/investors"
@@ -678,24 +630,24 @@ const HomePage = () => {
       <section className="py-16 sm:py-24 relative" aria-labelledby="thesis-heading">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-xs font-bold uppercase tracking-[0.14em]" style={{ color: '#c4b5fd' }}>
-            The thesis
+            {THESIS_VOICE.eyebrow}
           </div>
           <h2
             id="thesis-heading"
             className="mt-4 font-extrabold tracking-tight"
             style={{ fontSize: 'clamp(1.6rem, 3.6vw, 2.5rem)', color: '#f7f7fb', lineHeight: 1.18 }}
           >
-            {CATEGORY.thesis}
+            {THESIS_VOICE.statement}
           </h2>
           <p className="mt-5" style={{ fontSize: 17, lineHeight: 1.7, color: '#cfd0e6' }}>
-            {CATEGORY.elaboration}
+            {THESIS_VOICE.elaboration}
           </p>
           <Link
             to="/thesis"
             className="inline-block mt-7 font-semibold"
             style={{ color: '#8b5cf6', fontSize: 15.5 }}
           >
-            Read the full thesis &rarr;
+            {THESIS_VOICE.cta}
           </Link>
         </div>
       </section>
@@ -712,40 +664,26 @@ const HomePage = () => {
             >
               <div>
                 <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-4 sm:mb-6 tracking-tight">
-                  About Meet Patel
+                  {SECTIONS.about.h2}
                 </h2>
                 <p className="text-lg sm:text-xl text-[#cfd0e6] mb-4 sm:mb-6">
-                  The operator behind Dan — I lived the problem before I built it
+                  {SECTIONS.about.sub}
                 </p>
                   </div>
               <p className="text-base sm:text-lg text-[#a8a9c3] leading-relaxed mb-4 sm:mb-6">
-              Startups rarely move in straight lines. They bend, break, and demand decisions when the clock is ticking. A generalist with range who connects dots across people, products, processes, and performance.
+              {SECTIONS.about.body}
               </p>
               
               {/* Key Strengths */}
               <div className="space-y-4 mb-8">
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-[#a8a9c3]">Diagnosing messy problems, fast</p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-[#a8a9c3]">Building scalable systems that don't break under pressure</p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-[#a8a9c3]">Leading from the front in high-stakes, rapid-growth environments</p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-[#a8a9c3]">Saying the hard truths when they matter most</p>
-                </div>
+                {SECTIONS.about.strengths.map((strength) => (
+                  <div key={strength} className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-[#a8a9c3]">{strength}</p>
+                  </div>
+                ))}
               </div>
 
-              <p className="text-lg text-[#a8a9c3] leading-relaxed mb-6">
-                Founders trust me to push when needed, pivot when smart, and double down when it counts. I'm also a student of psychology, user-led growth, and storytelling.
-              </p>
-              
               {/* Stats */}
               <div className="grid grid-cols-2 gap-6 pt-4">
                 {stats.map((stat, index) => (
@@ -773,7 +711,7 @@ const HomePage = () => {
                 className="group relative inline-flex items-center bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-600 hover:from-purple-600 hover:via-indigo-600 hover:to-purple-700 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-500/40 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                <span className="relative z-10">Explore My Full Story</span>
+                <span className="relative z-10">{SECTIONS.about.cta}</span>
                 <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
               </motion.a>
           </motion.div>
@@ -812,15 +750,15 @@ const HomePage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
-              Checkout the Startups I've Built
+              {SECTIONS.ventures.h2}
             </h2>
             <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto">
-              A showcase of my projects, ventures, and the impact I've created in the startup ecosystem.
+              {SECTIONS.ventures.sub}
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {personalInfo.projects.slice(0, 6).map((project, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {personalInfo.projects.slice(0, 4).map((project, index) => (
           <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
@@ -834,7 +772,7 @@ const HomePage = () => {
                     <Briefcase className="w-7 h-7 text-white" />
                 </div>
                   <h3 className="text-xl font-bold text-[#f7f7fb] mb-3 group-hover:text-[#9b8bff] transition-colors">{project.name}</h3>
-                  <p className="text-[#a8a9c3] text-sm leading-relaxed mb-5 min-h-[3rem]">{project.description}</p>
+                  <p className="text-[#a8a9c3] text-sm leading-relaxed mb-5 min-h-[3rem]">{project.problem}</p>
                   <div className="flex items-center justify-between pt-4 border-t border-purple-500/15">
                     <span className="text-xs font-semibold bg-purple-500/20 text-purple-300 px-3 py-1.5 rounded-full">{project.category}</span>
                     <span className="text-xs text-[#70728d] font-medium">{project.year}</span>
@@ -857,7 +795,7 @@ const HomePage = () => {
               className="group relative inline-flex items-center bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 hover:from-purple-700 hover:via-indigo-700 hover:to-purple-800 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 shadow-2xl shadow-purple-500/40 hover:shadow-purple-600/50 overflow-hidden border-2 border-white/20"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-              <span className="relative z-10">View All Projects</span>
+              <span className="relative z-10">{SECTIONS.ventures.cta}</span>
               <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
             </motion.a>
           </motion.div>
@@ -874,25 +812,25 @@ const HomePage = () => {
             className="text-center mb-20"
           >
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
-              Read My Latest Insights Shared
+              {SECTIONS.blog.h2}
             </h2>
             <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto leading-relaxed mb-8">
-              Thoughts on entrepreneurship, leadership, and the journey of building meaningful things.
+              {SECTIONS.blog.sub}
             </p>
             
             {/* Blog Stats */}
             <div className="flex items-center justify-center space-x-8 text-[#70728d]">
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                <span className="text-sm">15+ Articles</span>
+                <span className="text-sm">15+ {SECTIONS.blog.metaLabels.articles}</span>
                   </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                <span className="text-sm">15K+ Views</span>
+                <span className="text-sm">15K+ {SECTIONS.blog.metaLabels.views}</span>
           </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                <span className="text-sm">800+ Likes</span>
+                <span className="text-sm">800+ {SECTIONS.blog.metaLabels.likes}</span>
         </div>
         </div>
           </motion.div>
@@ -1028,7 +966,7 @@ const HomePage = () => {
               className="group relative inline-flex items-center px-10 py-5 bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-600 text-white rounded-2xl font-bold text-lg hover:from-purple-600 hover:via-indigo-600 hover:to-purple-700 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-500/40 overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-              <span className="relative z-10">Read All My Articles</span>
+              <span className="relative z-10">{SECTIONS.blog.cta}</span>
               <ArrowRight className="w-6 h-6 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
             </motion.a>
           </motion.div>
@@ -1048,10 +986,10 @@ const HomePage = () => {
             className="text-center mb-20"
           >
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
-              Books Written
+              {SECTIONS.books.h2}
             </h2>
             <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto leading-relaxed">
-              Here's something special for you to freshen up! Few Love stories written by me 😲
+              {SECTIONS.books.sub}
             </p>
           </motion.div>
 
@@ -1109,7 +1047,7 @@ const HomePage = () => {
                         className="group relative block w-full text-center bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-600 text-white py-4 px-6 rounded-xl font-bold text-sm hover:from-purple-600 hover:via-indigo-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-500/30 overflow-hidden"
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                        <span className="relative z-10">Start Reading</span>
+                        <span className="relative z-10">{SECTIONS.books.readCta}</span>
                       </motion.a>
                     ) : (
                       <motion.a
@@ -1119,7 +1057,7 @@ const HomePage = () => {
                         className="group relative block w-full text-center bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-600 text-white py-4 px-6 rounded-xl font-bold text-sm hover:from-purple-600 hover:via-indigo-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-500/30 overflow-hidden"
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                        <span className="relative z-10">Get Early Access</span>
+                        <span className="relative z-10">{SECTIONS.books.earlyCta}</span>
                       </motion.a>
                     )}
                       </div>
@@ -1157,10 +1095,10 @@ const HomePage = () => {
               className="space-y-8 order-1 lg:order-2"
             >
               <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] tracking-tight">
-                Recognition & Impact
+                {SECTIONS.recognition.h2}
             </h2>
               <p className="text-xl text-[#cfd0e6] leading-relaxed">
-                From mechanical engineer to mentoring 10+ startups as business expert, my work has been recognized and has created real impact.
+                {SECTIONS.recognition.sub}
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {achievements.map((achievement) => (
@@ -1180,7 +1118,7 @@ const HomePage = () => {
                 className="group relative inline-flex items-center bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 hover:from-purple-700 hover:via-indigo-700 hover:to-purple-800 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-300 shadow-2xl shadow-purple-500/40 hover:shadow-purple-600/50 overflow-hidden border-2 border-white/20"
                 >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                <span className="relative z-10">Explore My Portfolio</span>
+                <span className="relative z-10">{SECTIONS.recognition.cta}</span>
                 <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
                 </motion.a>
           </motion.div>
@@ -1198,10 +1136,10 @@ const HomePage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
-              Let's Create Magic Together
+              {SECTIONS.contact.h2}
                 </h2>
             <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto leading-relaxed">
-              Ready to start your entrepreneurial journey or need guidance on your current venture? I'd love to hear from you.
+              {SECTIONS.contact.sub}
                 </p>
               </motion.div>
 
@@ -1222,7 +1160,7 @@ const HomePage = () => {
                     onChange={handleInputChange}
                     required
                     className="w-full bg-[#151725] border border-purple-500/20 rounded-xl p-4 text-[#f7f7fb] placeholder-[#70728d] focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-400 transition-all duration-300"
-                    placeholder="Enter your full name"
+                    placeholder={CONTACT_FORM.placeholders.name}
                   />
                 </div>
                 <div>
@@ -1234,7 +1172,7 @@ const HomePage = () => {
                     onChange={handleInputChange}
                     required
                     className="w-full bg-[#151725] border border-purple-500/20 rounded-xl p-4 text-[#f7f7fb] placeholder-[#70728d] focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-400 transition-all duration-300"
-                    placeholder="your.email@example.com"
+                    placeholder={CONTACT_FORM.placeholders.email}
                   />
                 </div>
                 </div>
@@ -1265,7 +1203,7 @@ const HomePage = () => {
                     value={formData.whatsapp}
                     onChange={handleInputChange}
                     className="flex-1 bg-[#151725] border border-purple-500/20 rounded-xl p-4 text-[#f7f7fb] placeholder-[#70728d] focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-400 transition-all duration-300"
-                    placeholder="Enter your WhatsApp number"
+                    placeholder={CONTACT_FORM.placeholders.whatsapp}
                   />
                 </div>
                   </div>
@@ -1279,7 +1217,7 @@ const HomePage = () => {
                   onChange={handleInputChange}
                   required
                   className="w-full bg-[#151725] border border-purple-500/20 rounded-xl p-4 text-[#f7f7fb] placeholder-[#70728d] focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-400 transition-all duration-300"
-                  placeholder="What would you like to discuss?"
+                  placeholder={CONTACT_FORM.placeholders.subject}
                 />
         </div>
 
@@ -1292,7 +1230,7 @@ const HomePage = () => {
                   required
                   rows={6}
                   className="w-full bg-[#151725] border border-purple-500/20 rounded-xl p-4 text-[#f7f7fb] placeholder-[#70728d] focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-400 transition-all duration-300 resize-none"
-                  placeholder="Share your thoughts, questions, or tell me about your project. I'd love to hear from you!"
+                  placeholder={CONTACT_FORM.placeholders.message}
                 />
                   </div>
 
@@ -1313,12 +1251,12 @@ const HomePage = () => {
                 {isSubmitting ? (
                   <>
                     <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    <span className="relative z-10">Sending Your Message...</span>
+                    <span className="relative z-10">{CONTACT_FORM.sending}</span>
                   </>
                 ) : (
                   <>
                     <Send className="w-6 h-6 relative z-10 group-hover:scale-110 transition-transform duration-300" />
-                    <span className="relative z-10">Send Message</span>
+                    <span className="relative z-10">{CONTACT_FORM.submit}</span>
                   </>
                 )}
               </motion.button>
@@ -1335,7 +1273,7 @@ const HomePage = () => {
                 >
                   <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
                   <span className="text-green-300">
-                    Thank you! Your message has been sent successfully. I'll get back to you within 24 hours.
+                    {CONTACT_FORM.success}
               </span>
                 </motion.div>
               )}
@@ -1353,9 +1291,9 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#f7f7fb] mb-4 tracking-tight">Join Our StartupOS Community</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#f7f7fb] mb-4 tracking-tight">{SECTIONS.community.h2}</h2>
             <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto leading-relaxed">
-              Connect with fellow entrepreneurs, get exclusive insights, and be part of a thriving startup ecosystem.
+              {SECTIONS.community.sub}
             </p>
           </motion.div>
 
@@ -1392,7 +1330,7 @@ const HomePage = () => {
                   className="text-center"
                 >
                   <div className="text-3xl font-bold text-purple-600 mb-2">500+</div>
-                  <div className="text-[#a8a9c3]">Active Members</div>
+                  <div className="text-[#a8a9c3]">{SECTIONS.community.statLabels.members}</div>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -1401,7 +1339,7 @@ const HomePage = () => {
                   className="text-center"
                 >
                   <div className="text-3xl font-bold text-purple-600 mb-2">50+</div>
-                  <div className="text-[#a8a9c3]">Daily Discussions</div>
+                  <div className="text-[#a8a9c3]">{SECTIONS.community.statLabels.discussions}</div>
               </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -1410,7 +1348,7 @@ const HomePage = () => {
                   className="text-center"
                 >
                   <div className="text-3xl font-bold text-purple-600 mb-2">24/7</div>
-                  <div className="text-[#a8a9c3]">Support & Networking</div>
+                  <div className="text-[#a8a9c3]">{SECTIONS.community.statLabels.support}</div>
                 </motion.div>
               </div>
 
@@ -1421,32 +1359,14 @@ const HomePage = () => {
                 transition={{ duration: 0.6, delay: 0.8 }}
                 className="mb-8"
               >
-                <h3 className="text-2xl font-bold text-[#f7f7fb] mb-6">What You'll Get:</h3>
+                <h3 className="text-2xl font-bold text-[#f7f7fb] mb-6">{SECTIONS.community.benefitsHeading}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-4xl mx-auto">
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                    <span className="text-[#a8a9c3]">Exclusive startup insights and market trends</span>
-                </div>
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                    <span className="text-[#a8a9c3]">Direct access to industry experts and mentors</span>
-                </div>
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                    <span className="text-[#a8a9c3]">Networking opportunities with fellow entrepreneurs</span>
-                </div>
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                    <span className="text-[#a8a9c3]">Early access to funding opportunities and partnerships</span>
-            </div>
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                    <span className="text-[#a8a9c3]">Periodic masterclasses and Q&A sessions</span>
-        </div>
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                    <span className="text-[#a8a9c3]">Job opportunities and talent referrals</span>
-        </div>
+                  {SECTIONS.community.benefits.map((benefit) => (
+                    <div key={benefit} className="flex items-start space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
+                      <span className="text-[#a8a9c3]">{benefit}</span>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
 
@@ -1462,7 +1382,7 @@ const HomePage = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                 <WhatsAppIcon className="w-6 h-6 mr-3 relative z-10 group-hover:scale-110 transition-transform duration-300" />
-                <span className="relative z-10">Join StartupOS Community</span>
+                <span className="relative z-10">{SECTIONS.community.cta}</span>
                 <ArrowRight className="w-5 h-5 ml-3 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
               </motion.a>
 
@@ -1473,7 +1393,7 @@ const HomePage = () => {
                 transition={{ duration: 0.6, delay: 1.0 }}
                 className="text-[#70728d] text-sm mt-4"
               >
-                Free to join • No spam • Instant access to 500+ entrepreneurs
+                {SECTIONS.community.footnote}
               </motion.p>
             </div>
           </motion.div>
@@ -1490,15 +1410,15 @@ const HomePage = () => {
             className="text-center mb-12"
           >
             <h2 id="faq-heading" className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-4 tracking-tight">
-              Frequently Asked Questions
+              {SECTIONS.faq.h2}
             </h2>
             <p className="text-lg text-[#a8a9c3] max-w-2xl mx-auto">
-              The quick version of who Meet Patel is and what he's building.
+              {SECTIONS.faq.sub}
             </p>
           </motion.div>
 
           <div className="space-y-4">
-            {homepageFaq.map((item, index) => (
+            {FAQ.map((item, index) => (
               <details
                 key={index}
                 open={index === 0}

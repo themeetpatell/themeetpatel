@@ -7,6 +7,7 @@ import {
   Award, Code, Settings, BarChart3, Handshake, FileText,
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { BLOG } from '../data/pageVoice';
 import { getPublishedArticles, getCategories } from '../lib/articleService';
 import FollowMyJourney from '../components/FollowMyJourney';
 
@@ -299,7 +300,7 @@ const BlogPage = () => {
           <div style={{ position: 'relative', maxWidth: 1200, margin: '0 auto' }}>
             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} style={{ marginBottom: 20 }}>
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: C.violet }}>
-                Insights & Ideas
+                {BLOG.eyebrow}
               </span>
             </motion.div>
 
@@ -321,7 +322,7 @@ const BlogPage = () => {
               transition={{ duration: 0.55, delay: 0.12 }}
               style={{ fontSize: 'clamp(16px, 2vw, 19px)', color: C.secondary, maxWidth: 500, lineHeight: 1.7, margin: '0 0 48px' }}
             >
-              Thoughts on entrepreneurship, personal growth, and the journey of building meaningful things from Dubai.
+              {BLOG.sub}
             </motion.p>
 
             <motion.div
@@ -337,10 +338,10 @@ const BlogPage = () => {
               }}
             >
               {[
-                { value: allArticles.length, label: 'Articles' },
-                { value: '100K+', label: 'Total Reach' },
-                { value: '6.5K+', label: 'Followers' },
-                { value: `${categories.length - 1}`, label: 'Categories' },
+                { value: allArticles.length, label: BLOG.statLabels.articles },
+                { value: '100K+', label: BLOG.statLabels.reach },
+                { value: '6.5K+', label: BLOG.statLabels.followers },
+                { value: `${categories.length - 1}`, label: BLOG.statLabels.categories },
               ].map(s => (
                 <div
                   key={s.label}
@@ -390,7 +391,7 @@ const BlogPage = () => {
             <Search size={14} style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', color: C.muted, pointerEvents: 'none' }} />
             <input
               type="text"
-              placeholder="Search articles…"
+              placeholder={BLOG.searchPlaceholder}
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
               style={{
@@ -451,7 +452,7 @@ const BlogPage = () => {
               }}>
                 <Search size={22} color={C.violet} />
               </div>
-              <p style={{ fontSize: 16, color: C.muted }}>No articles found. Try a different search or category.</p>
+              <p style={{ fontSize: 16, color: C.muted }}>{BLOG.empty}</p>
             </div>
           ) : (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))', gap: 20 }}>

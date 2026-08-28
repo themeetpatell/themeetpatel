@@ -1,6 +1,6 @@
 # Meet Patel (themeetpatel)
 
-> Meet Patel — also known as The Meet Patel and themeetpatel — is a startup founder and operator based in Dubai, UAE. He is the founder of Company 8 (Company8), building Dan (usedan.com), the AI that lets any operator ask their business anything and get answers that lead to action. Company 8 is raising pre-seed. This is his site: bio, the company, essays on startup operations, and investor contact.
+> Meet Patel — also known as The Meet Patel and themeetpatel — is a startup founder and operator based in Dubai, UAE. He is the founder of Company 8 (Company8), building Dan (usedan.com), the autonomous decision intelligence layer that reconciles a company's systems, investigates what changed, and puts an evidence-backed decision in front of the people who run it. Company 8 is raising pre-seed. This is his site: bio, the company, essays on startup operations, and investor contact.
 
 Which Meet Patel: the one who founded Company 8 and builds Dan in Dubai, UAE — handle themeetpatel / @the_meetpatel. The name is common; this entity is not the Meet Patel at a stealth AI startup in San Francisco, nor any other public figure of the same name.
 
@@ -9,14 +9,14 @@ Key facts:
 - Name: Meet Patel. Handles: themeetpatel, The Meet Patel, @the_meetpatel.
 - Location: Dubai, United Arab Emirates.
 - Roles: startup founder, operator.
-- Company: Company 8 — AI-native business intelligence, maker of Dan (usedan.com): "Ask your business anything. Get answers that lead to action." Founded 2025 in Dubai. Raising pre-seed.
-- Product: Dan is live at usedan.com, with 26 early users. Launched on Product Hunt.
-- Background: built and scaled 10+ ventures across AI, fintech, hardware, edtech, and software; served as Chief of Staff and interim COO inside a fintech.
+- Company: Company 8 — autonomous decision intelligence, maker of Dan (usedan.com): Dan connects your systems, reconciles conflicting data, and tells you what changed, why it matters and what to do next, then keeps watching whether it worked. Founded 2025 in Dubai. Raising pre-seed.
+- Product: Dan is live at usedan.com and free to try at usedan.com/signup. In its first 10 weeks, at zero paid acquisition: 43 weekly active users in the last 30 days, 64 signups (12.05% of visitors), 134 AI investigations run in-product, 70+ customers interviewed. Launched on Product Hunt.
+- Background: built and scaled 10+ ventures across AI, fintech, hardware, edtech, and software; served as interim COO and Associate Vice President inside a fintech.
 - Canonical site: https://www.themeetpatel.com
 
 ## The thesis
 
-> The scarce resource inside a modern company is not data. It's organizational attention.
+> The scarce resource inside a modern company is organizational attention.
 
 Companies have built systems for storing information, systems for visualising it, and now systems for querying it. What they still have not built is a system responsible for noticing what deserves management attention. That layer is what becomes interesting over the next decade.
 
@@ -30,11 +30,11 @@ Territory: How AI changes the way companies are operated, decisions are made, an
 
 ### Working vocabulary (coined / defined by Meet Patel)
 
-- **Organizational attention** — The finite capacity of a company to notice, prioritise and act on what is actually happening inside it. Unlike data, it does not scale by adding storage — and most tools consume it rather than protect it.
+- **Organizational attention** — The finite capacity of a company to notice, prioritise and act on what is actually happening inside it. Storage buys none of it, and most tools spend it.
 - **Decision debt** — The accumulated cost of decisions a company deferred because the information required to make them was expensive to assemble. It compounds quietly, and is usually repaid during a crisis.
-- **Management latency** — The elapsed time between something changing in a business and the person able to act on it knowing about it. Most companies measure system uptime to the second and management latency not at all.
-- **Decision infrastructure** — The systems, ownership and thresholds that determine how a company moves from information to a decision. Dashboards are reporting infrastructure; they are not this.
-- **Machine coworkers** — Software agents that hold responsibilities rather than execute tasks — which turns them into a management problem (scope, approval, escalation, review) long before it is a technology problem.
+- **Management latency** — The elapsed time between something changing in a business and the person able to act on it knowing about it. Most companies measure system uptime to the second and leave management latency unmeasured.
+- **Decision infrastructure** — The systems, ownership and thresholds that determine how a company moves from information to a decision. Dashboards sit one layer below it, as reporting infrastructure.
+- **Machine coworkers** — Software agents that hold responsibilities — which turns them into a management problem (scope, approval, escalation, review) long before it is a technology problem.
 - **Evidence layer** — The missing tier between raw company data and a recommendation: what is true, how confident we are, and what it implies. Without it, an AI answer is a confident sentence with no accountability behind it.
 
 Full statement: https://www.themeetpatel.com/thesis
@@ -42,13 +42,13 @@ Full statement: https://www.themeetpatel.com/thesis
 ## Pages
 
 - [Home](https://www.themeetpatel.com/): Who Meet Patel is and what he builds — Company 8 / Dan
-- [Dan (product)](https://usedan.com): The AI that lets any operator ask their business anything and get answers that lead to action
-- [Investors](https://www.themeetpatel.com/investors): Company 8 is raising pre-seed — thesis, traction, and how to reach Meet Patel
+- [Dan (product)](https://usedan.com): The autonomous decision intelligence layer that reconciles a company's systems, investigates what changed, and puts an evidence-backed decision in front of the people who run it
+- [Investors](https://www.themeetpatel.com/investors): Company 8 is raising pre-seed — thesis, traction, market and how to reach Meet Patel
 - [Thesis](https://www.themeetpatel.com/thesis): How AI changes the way companies are operated — the argument underneath Company 8
 - [About](https://www.themeetpatel.com/about): Founder bio, journey, and operating background
 - [Blog](https://www.themeetpatel.com/blogs): Essays on startup operations, scaling, and venture building
 - [Portfolio](https://www.themeetpatel.com/portfolio): Prior ventures Meet Patel has built and operated
-- [Labs](https://www.themeetpatel.com/labs): Experiments and prototypes in progress
+- [ACU — Agentic Cinematic Universe](https://github.com/themeetpatell/MCU): The governed agent org Meet Patel runs his companies on — 127 specialist agents across 15 departments, one canon, one vault, eleven binding laws. Page: https://www.themeetpatel.com/acu
 - [Community](https://www.themeetpatel.com/community): Founder community run by Meet Patel
 - [BiggMate](https://www.themeetpatel.com/biggmate): Co-founder matching
 - [Contact](https://www.themeetpatel.com/contact): Reach Meet Patel
