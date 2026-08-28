@@ -1,5 +1,7 @@
+import { waitUntil } from '@vercel/functions';
 import { supabaseAdmin } from '../../_supabase.js';
 import { requireAuth } from '../../_auth.js';
+import { submitToIndexNow, articleUrls } from '../../_indexnow.js';
 
 export default async function handler(req, res) {
   if (!requireAuth(req, res)) return;
@@ -42,6 +44,14 @@ export default async function handler(req, res) {
       .select()
       .single();
     if (error || !data) return res.status(404).json({ error: error?.message || 'Not found' });
+
+    // Tell IndexNow the URL changed. Only for published, indexable articles —
+    // submitting a draft or a noindex page is a wasted ping at best. Runs after
+    // the response so a slow third party never delays the editor.
+    if (data.status === 'published' && !data.robots_noindex && data.slug) {
+      waitUntil(submitToIndexNow(articleUrls(data.slug)));
+    }
+
     return res.json(data);
   }
 

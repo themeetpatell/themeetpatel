@@ -1,5 +1,7 @@
+import { waitUntil } from '@vercel/functions';
 import { supabaseAdmin } from '../_supabase.js';
 import { requireAuth } from '../_auth.js';
+import { submitToIndexNow, articleUrls } from '../_indexnow.js';
 
 export default async function handler(req, res) {
   if (!requireAuth(req, res)) return;
@@ -43,7 +45,9 @@ export default async function handler(req, res) {
         schema_type:        d.schema_type || 'BlogPosting',
         secondary_keywords: d.secondary_keywords || [],
         twitter_card:       d.twitter_card || 'summary_large_image',
-        twitter_creator:    d.twitter_creator || '@themeetpatel',
+        // Must match SEOHead's default and llms.txt. '@themeetpatel' is not the
+      // real handle and was emitting a twitter:creator that resolves to nobody.
+      twitter_creator:    d.twitter_creator || '@the_meetpatel',
         robots_noindex:     d.robots_noindex || false,
         robots_nofollow:    d.robots_nofollow || false,
         faq_items:          d.faq_items || [],
@@ -59,6 +63,12 @@ export default async function handler(req, res) {
       .select()
       .single();
     if (error) return res.status(500).json({ error: error.message });
+
+    // See the PUT handler in articles/[id].js — same rule, same reason.
+    if (data.status === 'published' && !data.robots_noindex && data.slug) {
+      waitUntil(submitToIndexNow(articleUrls(data.slug)));
+    }
+
     return res.status(201).json(data);
   }
 

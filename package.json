@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/check-function-count.mjs",
+    "prebuild": "node scripts/check-function-count.mjs && node scripts/check-route-sync.mjs",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
