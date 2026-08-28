@@ -20,10 +20,10 @@ dist/
 *.log
 npm-debug.log*
 
-# Vercel
+# Vercel & Playwright MCP
 .vercel
-node_modules
-node_modules
+.playwright-mcp/
 
 # Claude Code agent worktrees
 .claude/worktrees/
+
