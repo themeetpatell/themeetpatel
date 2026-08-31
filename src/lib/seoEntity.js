@@ -184,8 +184,38 @@ export const personEntity = {
   sameAs: SAME_AS,
 };
 
+/**
+ * The site itself. Lived only in index.html until now, which is precisely how
+ * that block drifted a full positioning generation behind this file — same
+ * @id, two different companies. It is defined here so scripts/sync-index-shell.mjs
+ * can regenerate the shell from one source.
+ */
+export const webSiteEntity = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE_URL}/#website`,
+  name: 'The Meet Patel',
+  url: SITE_URL,
+  description: 'The personal site of Meet Patel — founder of Company 8, building Dan.',
+  inLanguage: 'en-US',
+  copyrightYear: '2026',
+  author: personRef,
+  publisher: personRef,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${SITE_URL}/blogs?q={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
+};
+
 /** Complete entity graph nodes for pages. Company 8 is the root claim. */
 export const meetPatelEntities = [personEntity, company8Org, danSoftwareApp];
+
+/** The full site-wide @graph, as emitted in the index.html shell. */
+export const siteGraph = [personEntity, company8Org, danSoftwareApp, webSiteEntity];
 
 /**
  * Build a BreadcrumbList node.

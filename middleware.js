@@ -48,6 +48,14 @@ const PAGE_ROUTES = new Set([
   '/mind',
   '/contact',
   '/acu',
+  // Glossary. Listed one by one rather than pattern-matched: check-route-sync
+  // parses this literal, and a regex here would let a term ship in the sitemap
+  // with no prose behind it — the exact failure /acu already caused once.
+  '/glossary',
+  '/glossary/autonomous-decision-intelligence',
+  '/glossary/organizational-attention',
+  '/glossary/decision-debt',
+  '/glossary/management-latency',
 ]);
 
 /**

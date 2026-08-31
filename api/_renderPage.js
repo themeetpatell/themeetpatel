@@ -133,7 +133,11 @@ export async function renderPage(req, res) {
           {
             '@context': 'https://schema.org',
             '@type': 'DefinedTermSet',
-            '@id': `${canonical}#vocabulary`,
+            // A page may declare which set its terms belong to. The glossary
+            // pages point at one shared set so the vocabulary resolves as a
+            // single thing no matter which URL a crawler landed on; /thesis has
+            // no such field and keeps its own page-local set.
+            '@id': page.definedTermSetId || `${canonical}#vocabulary`,
             name: 'AI-native company operations — a working vocabulary',
             description:
               'Terms Meet Patel uses to describe how AI changes the way companies are operated and decisions are made.',
@@ -143,7 +147,7 @@ export async function renderPage(req, res) {
               '@id': `${canonical}#${term.term.toLowerCase().replace(/\s+/g, '-')}`,
               name: term.term,
               description: term.definition,
-              inDefinedTermSet: { '@id': `${canonical}#vocabulary` },
+              inDefinedTermSet: { '@id': page.definedTermSetId || `${canonical}#vocabulary` },
             })),
           },
         ]

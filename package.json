@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/check-function-count.mjs && node scripts/check-route-sync.mjs",
+    "prebuild": "node scripts/check-function-count.mjs && node scripts/check-route-sync.mjs && node scripts/sync-index-shell.mjs --check",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync:shell": "node scripts/sync-index-shell.mjs"
   },
   "dependencies": {
     "@posthog/react": "^1.10.3",

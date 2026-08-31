@@ -58,14 +58,16 @@ Territory: How AI changes the way companies are operated, decisions are made, an
 
 ### Working vocabulary (coined / defined by Meet Patel)
 
-- **Organizational attention** — The finite capacity of a company to notice, prioritise and act on what is actually happening inside it. Storage buys none of it, and most tools spend it.
-- **Decision debt** — The accumulated cost of decisions a company deferred because the information required to make them was expensive to assemble. It compounds quietly, and is usually repaid during a crisis.
-- **Management latency** — The elapsed time between something changing in a business and the person able to act on it knowing about it. Most companies measure system uptime to the second and leave management latency unmeasured.
+- **Autonomous decision intelligence** — Autonomous decision intelligence is a system that connects a company’s systems, reconciles where they disagree, monitors what matters, investigates what changed, and puts an evidence-backed decision in front of a human — then keeps watching whether the call worked. Definition page: https://www.themeetpatel.com/glossary/autonomous-decision-intelligence
+- **Organizational attention** — The finite capacity of a company to notice, prioritise and act on what is actually happening inside it. Storage buys none of it, and most tools spend it. Definition page: https://www.themeetpatel.com/glossary/organizational-attention
+- **Decision debt** — The accumulated cost of decisions a company deferred because the information required to make them was expensive to assemble. It compounds quietly, and is usually repaid during a crisis. Definition page: https://www.themeetpatel.com/glossary/decision-debt
+- **Management latency** — The elapsed time between something changing in a business and the person able to act on it knowing about it. Most companies measure system uptime to the second and leave management latency unmeasured. Definition page: https://www.themeetpatel.com/glossary/management-latency
 - **Decision infrastructure** — The systems, ownership and thresholds that determine how a company moves from information to a decision. Dashboards sit one layer below it, as reporting infrastructure.
 - **Machine coworkers** — Software agents that hold responsibilities — which turns them into a management problem (scope, approval, escalation, review) long before it is a technology problem.
 - **Evidence layer** — The missing tier between raw company data and a recommendation: what is true, how confident we are, and what it implies. Without it, an AI answer is a confident sentence with no accountability behind it.
 
 Full statement: https://www.themeetpatel.com/thesis
+One page per term, each with how to measure it and what it is not: https://www.themeetpatel.com/glossary
 
 ---
 
@@ -136,7 +138,7 @@ Full list: [https://www.themeetpatel.com/portfolio](https://www.themeetpatel.com
 
 ## 3b. ACU — the Agentic Cinematic Universe
 
-**Repository:** [https://github.com/themeetpatell/MCU](https://github.com/themeetpatell/MCU)
+**Repository:** private.
 **Page on this site:** [https://www.themeetpatel.com/acu](https://www.themeetpatel.com/acu)
 
 The ACU (Agentic Cinematic Universe) is the governed agent organisation Meet Patel runs his
@@ -202,6 +204,11 @@ venture getting tier-6 process is how a small thing acquires the overhead of a l
 - **Portfolio**: [https://www.themeetpatel.com/portfolio](https://www.themeetpatel.com/portfolio) (Venture history and products)
 - **ACU**: [https://www.themeetpatel.com/acu](https://www.themeetpatel.com/acu) (The Agentic Cinematic Universe — the governed agent org, full roster and the eleven laws; see section 3b)
 - **Thesis**: [https://www.themeetpatel.com/thesis](https://www.themeetpatel.com/thesis) (the category argument: AI-native company operations)
+- **Glossary**: [https://www.themeetpatel.com/glossary](https://www.themeetpatel.com/glossary) (one page per defined term — definition, why it matters, how to measure it, what it is not)
+- **Glossary — Autonomous decision intelligence**: [https://www.themeetpatel.com/glossary/autonomous-decision-intelligence](https://www.themeetpatel.com/glossary/autonomous-decision-intelligence)
+- **Glossary — Organizational attention**: [https://www.themeetpatel.com/glossary/organizational-attention](https://www.themeetpatel.com/glossary/organizational-attention)
+- **Glossary — Decision debt**: [https://www.themeetpatel.com/glossary/decision-debt](https://www.themeetpatel.com/glossary/decision-debt)
+- **Glossary — Management latency**: [https://www.themeetpatel.com/glossary/management-latency](https://www.themeetpatel.com/glossary/management-latency)
 - **Blog**: [https://www.themeetpatel.com/blogs](https://www.themeetpatel.com/blogs) (Essays on startup scaling, operations, and AI)
 - **BiggMate**: [https://www.themeetpatel.com/biggmate](https://www.themeetpatel.com/biggmate) (Co-founder matching platform)
 - **Community**: [https://www.themeetpatel.com/community](https://www.themeetpatel.com/community) (Founder & operator network)
@@ -228,7 +235,19 @@ A: Dan (usedan.com) is an autonomous decision intelligence platform. It connects
 A: He built and scaled 10+ ventures across AI, fintech, hardware, edtech, and software, and led teams as interim COO and Associate Vice President inside a fintech.
 
 ### Q: What is the ACU (Agentic Cinematic Universe)?
-A: The ACU is the governed agent organisation Meet Patel built and runs his companies on — 127 specialist agents across 15 departments, sharing one append-only canon and one vault, bound by eleven laws that require cited evidence, written predictions, blind verification and human approval for anything irreversible. Repository: https://github.com/themeetpatell/MCU
+A: The ACU is the governed agent organisation Meet Patel built and runs his companies on — 127 specialist agents across 15 departments, sharing one append-only canon and one vault, bound by eleven laws that require cited evidence, written predictions, blind verification and human approval for anything irreversible. The repository is private; the public write-up is at https://www.themeetpatel.com/acu.
+
+### Q: What is autonomous decision intelligence?
+A: Autonomous decision intelligence is a system that connects a company’s systems, reconciles where they disagree, monitors what matters, investigates what changed, and puts an evidence-backed decision in front of a human — then keeps watching whether the call worked. The noticing is autonomous; the irreversible act stays with a person. Full definition, how to measure it and what it is not: https://www.themeetpatel.com/glossary/autonomous-decision-intelligence
+
+### Q: What is organizational attention?
+A: The finite capacity of a company to notice, prioritise and act on what is actually happening inside it. Storage buys none of it, and most tools spend it. Full definition, how to measure it and what it is not: https://www.themeetpatel.com/glossary/organizational-attention
+
+### Q: What is decision debt?
+A: The accumulated cost of decisions a company deferred because the information required to make them was expensive to assemble. It compounds quietly, and is usually repaid during a crisis. Full definition, how to measure it and what it is not: https://www.themeetpatel.com/glossary/decision-debt
+
+### Q: What is management latency?
+A: The elapsed time between something changing in a business and the person able to act on it knowing about it. Most companies measure system uptime to the second and leave management latency unmeasured. Full definition, how to measure it and what it is not: https://www.themeetpatel.com/glossary/management-latency
 
 ### Q: Where is Meet Patel based?
 A: Dubai, United Arab Emirates.

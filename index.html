@@ -45,6 +45,7 @@
          assert a homepage FAQ on /privacy-policy.
          Source of truth: src/lib/seoEntity.js — keep the two in sync.
          ───────────────────────────────────────────────────────────────────── -->
+    <!-- BEGIN:generated-jsonld -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -53,32 +54,43 @@
           "@type": "Person",
           "@id": "https://www.themeetpatel.com/#person",
           "name": "Meet Patel",
-          "alternateName": ["The Meet Patel", "themeetpatel", "meetpatel", "Meet Patel Dubai"],
+          "alternateName": [
+            "The Meet Patel",
+            "themeetpatel",
+            "meetpatel",
+            "Meet Patel Dubai"
+          ],
           "disambiguatingDescription": "The Meet Patel who founded Company 8 and builds Dan (usedan.com) in Dubai, UAE — handle themeetpatel / @the_meetpatel. Not to be confused with other people named Meet Patel.",
+          "description": "Meet Patel (themeetpatel / The Meet Patel) is a Dubai-based startup founder and operator. He is the founder of Company 8, building Dan (usedan.com) — it monitors the business, investigates what changed, and puts an evidence-backed decision in front of the people who run it — and has built and scaled 10+ ventures across AI, fintech, hardware, and software.",
           "url": "https://www.themeetpatel.com",
           "mainEntityOfPage": "https://www.themeetpatel.com",
           "image": "https://www.themeetpatel.com/og-image.jpg",
-          "description": "Meet Patel (themeetpatel / The Meet Patel) is a Dubai-based startup founder and operator. He is the founder of Company 8, building Dan (usedan.com) — ask your business anything, get answers that lead to action — and has built and scaled 10+ ventures across AI, fintech, hardware, and software.",
           "jobTitle": "Founder, Company 8",
-          "homeLocation": { "@type": "Place", "name": "Dubai, United Arab Emirates" },
+          "homeLocation": {
+            "@type": "Place",
+            "name": "Dubai, United Arab Emirates"
+          },
+          "hasOccupation": {
+            "@type": "Occupation",
+            "name": "Startup Founder & Operator",
+            "occupationLocation": {
+              "@type": "City",
+              "name": "Dubai, UAE"
+            }
+          },
+          "email": "meet@company8.dev",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Dubai",
             "addressRegion": "Dubai",
             "addressCountry": "AE"
           },
-          "email": "meet@company8.dev",
-          "sameAs": [
-            "https://www.linkedin.com/in/themeetpatel/",
-            "https://x.com/the_meetpatel",
-            "https://github.com/themeetpatell",
-            "https://instagram.com/the.meetpatell/",
-            "https://youtube.com/@themeetpatel",
-            "https://medium.com/@themeetpatel",
-            "https://www.crunchbase.com/person/meet-patel",
-            "https://www.producthunt.com/products/usedan-by-company8",
-            "https://about.me/themeetpatel"
-          ],
+          "worksFor": {
+            "@id": "https://www.themeetpatel.com/#company8"
+          },
+          "founder": {
+            "@id": "https://www.themeetpatel.com/#company8"
+          },
           "knowsAbout": [
             "AI-native company operations",
             "Decision intelligence",
@@ -92,42 +104,65 @@
             "Startup scaling",
             "Product development"
           ],
-          "hasOccupation": {
-            "@type": "Occupation",
-            "name": "Startup Founder & Operator",
-            "description": "Building and scaling startups, systems, and growth operations",
-            "occupationLocation": { "@type": "City", "name": "Dubai, UAE" }
-          },
-          "worksFor": { "@id": "https://www.themeetpatel.com/#company8" },
-          "founder": { "@id": "https://www.themeetpatel.com/#company8" }
+          "sameAs": [
+            "https://www.linkedin.com/in/themeetpatel/",
+            "https://x.com/the_meetpatel",
+            "https://github.com/themeetpatell",
+            "https://instagram.com/the.meetpatell/",
+            "https://youtube.com/@themeetpatel",
+            "https://medium.com/@themeetpatel",
+            "https://www.crunchbase.com/person/meet-patel",
+            "https://www.producthunt.com/products/usedan-by-company8",
+            "https://about.me/themeetpatel"
+          ]
         },
         {
           "@type": "Organization",
           "@id": "https://www.themeetpatel.com/#company8",
           "name": "Company 8",
-          "alternateName": ["Company8"],
-          "description": "Company 8 is the company Meet Patel is building — an AI-native business intelligence company and the maker of Dan (usedan.com): ask your business anything, get answers that lead to action. Company 8 is raising a pre-seed round.",
+          "alternateName": [
+            "Company8"
+          ],
+          "description": "Company 8 is the company Meet Patel is building — an autonomous decision intelligence company and the maker of Dan (usedan.com): it connects the systems a company runs on, reconciles the places they disagree, and tells the people who run it what changed, why it matters and what to do next. Company 8 is raising a pre-seed round.",
           "url": "https://usedan.com",
           "foundingDate": "2025",
-          "foundingLocation": { "@type": "Place", "name": "Dubai, UAE" },
-          "founder": { "@id": "https://www.themeetpatel.com/#person" },
-          "sameAs": ["https://www.producthunt.com/products/usedan-by-company8"],
+          "foundingLocation": {
+            "@type": "Place",
+            "name": "Dubai, UAE"
+          },
+          "founder": {
+            "@id": "https://www.themeetpatel.com/#person"
+          },
+          "sameAs": [
+            "https://www.producthunt.com/products/usedan-by-company8"
+          ],
           "makesOffer": {
             "@type": "Offer",
-            "itemOffered": { "@id": "https://usedan.com/#dan-app" }
+            "itemOffered": {
+              "@id": "https://usedan.com/#dan-app"
+            }
           }
         },
         {
           "@type": "SoftwareApplication",
           "@id": "https://usedan.com/#dan-app",
           "name": "Dan",
-          "alternateName": ["useDan", "Dan AI"],
+          "alternateName": [
+            "useDan",
+            "Dan AI",
+            "Dan Business Intelligence",
+            "Dan by Company 8"
+          ],
           "url": "https://usedan.com",
           "applicationCategory": "BusinessApplication",
-          "operatingSystem": "Web",
-          "description": "Dan is the AI that lets any operator ask their business anything and get answers that lead to action. Built by Company 8.",
-          "publisher": { "@id": "https://www.themeetpatel.com/#company8" },
-          "author": { "@id": "https://www.themeetpatel.com/#person" }
+          "operatingSystem": "Web, Cloud",
+          "description": "Dan (usedan.com) is an autonomous decision intelligence platform built by Company 8. It connects to the warehouse, CRM, billing, product analytics and ads, reconciles the places they disagree, monitors what matters, investigates meaningful changes, and puts an evidence-backed decision in front of the team — then keeps watching the same signal after the call.",
+          "author": {
+            "@id": "https://www.themeetpatel.com/#person"
+          },
+          "publisher": {
+            "@id": "https://www.themeetpatel.com/#company8"
+          }
         },
         {
           "@type": "WebSite",
@@ -137,8 +172,12 @@
           "description": "The personal site of Meet Patel — founder of Company 8, building Dan.",
           "inLanguage": "en-US",
           "copyrightYear": "2026",
-          "author": { "@id": "https://www.themeetpatel.com/#person" },
-          "publisher": { "@id": "https://www.themeetpatel.com/#person" },
+          "author": {
+            "@id": "https://www.themeetpatel.com/#person"
+          },
+          "publisher": {
+            "@id": "https://www.themeetpatel.com/#person"
+          },
           "potentialAction": {
             "@type": "SearchAction",
             "target": {
@@ -151,8 +190,8 @@
       ]
     }
     </script>
-
-    <!-- Google Analytics -->
+    <!-- END:generated-jsonld -->
+ <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7F8NBDNKN"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -226,42 +265,74 @@
     <!-- Static entity content for crawlers and AI agents that do not execute JS.
          React renders the full site into #root; this block is the no-JS fallback. -->
     <noscript>
+      <!-- BEGIN:generated-noscript -->
       <main>
-        <h1>Meet Patel — Founder of Company 8, building Dan</h1>
-        <p>Meet Patel (also written The Meet Patel, known online as themeetpatel) is a startup founder and operator based in Dubai, United Arab Emirates. He is the founder of <strong>Company 8</strong>, building <strong>Dan</strong> — the AI that lets any operator ask their business anything and get answers that lead to action. He is an operator who scaled teams and systems across fintech, hardware, and software before going all-in on Company 8.</p>
-        <p><em>Which Meet Patel:</em> the one who founded Company 8 and builds Dan in Dubai, UAE — handle themeetpatel / @the_meetpatel. The name is common; this is not any other public figure of the same name.</p>
-        <h2>The thesis</h2>
-        <p>The scarce resource inside a modern company is not data. It&apos;s <strong>organizational attention</strong>. Companies have built systems for storing information, systems for visualising it, and now systems for querying it — but not a system responsible for noticing what deserves management attention. Full argument: <a href="/thesis">themeetpatel.com/thesis</a>.</p>
-        <h2>What Meet Patel builds</h2>
-        <p><strong>Company 8</strong> (Company8) is building <strong>Dan</strong>, an AI-native business intelligence platform — ask your business anything, get answers that lead to action. Dan is live at usedan.com. Company 8 is raising pre-seed.</p>
-        <h2>Company 8 — for investors</h2>
-        <p><strong>Company 8 is raising a pre-seed round.</strong> The thesis: every operator is flying blind between dashboards and analysts. Dan is the AI layer that answers any question about a business in plain English — and says what to do about it.</p>
+        <h1>What is your business already telling you?</h1>
+        <p>Company 8 is building Dan — the autonomous decision intelligence layer that connects a company’s systems, reconciles conflicting data, and tells the people who run it what changed, why it matters, and what to do next. Meet Patel (themeetpatel) is the founder — a Dubai-based operator who has built and scaled 10+ ventures across AI, fintech, hardware, and software.</p>
+        <p><em>Which Meet Patel:</em> The Meet Patel who founded Company 8 and builds Dan (usedan.com) in Dubai, UAE — handle themeetpatel / @the_meetpatel. Not to be confused with other people named Meet Patel.</p>
+        <h2>The layer that decides what deserves attention.</h2>
+        <p>By the time leadership sees the risk, the business has already paid for it. The CRM, the dashboard and finance each report a different number, and a person still has to reconcile the truth across tools, dashboards and spreadsheets — after the signal has already become costly.</p>
         <ul>
-          <li>Product: Dan is live at usedan.com, with early users on the platform.</li>
-          <li>Why now: AI finally lets anyone query their entire business in plain English and get an action, not a chart.</li>
-          <li>Why this founder: Meet Patel spent years as the human "Dan" — the operator everyone asked what was happening in the business and what to do — as Chief of Staff and interim COO inside a fintech. He lived the problem Dan solves and is going all-in on Company 8.</li>
-          <li>Contact for investors: meet@company8.dev · https://www.themeetpatel.com/investors</li>
+          <li>Reconciles before it reports — The CRM, the dashboard and finance rarely agree. Dan connects them, reconciles the conflict, and settles which number is right before anyone walks into the meeting.</li>
+          <li>Investigates without being asked — Material risks and opportunities are surfaced before someone remembers to look. Agents audit, monitor and publish findings on a schedule.</li>
+          <li>Shows the work, then stays on it — Every finding carries the evidence, business definition, source lineage and confidence needed to defend the decision — and Dan keeps watching the same signal after the call.</li>
         </ul>
+        <h2>Why now</h2>
+        <p>AI made answers cheap. Acting on the wrong answer became expensive. The valuable layer is no longer producing an answer — it is deciding what to trust, what to do about it, and whether it worked.</p>
+        <h2>Why this founder</h2>
+        <p>I spent years as the human &quot;Dan&quot; — the operator who had to notice what was moving in the business, work out why, and say what to do about it. As interim COO, then Head of COE and now Associate Vice President, I helped scale Finanshels from 17 to 192 people, and from 105 to over 7,000 SMEs served. I lived the problem Dan solves. Now I am going all-in on building it.</p>
+        <p>Previously built and scaled ventures across edtech, hardware, and fintech.</p>
+        <ul>
+          <li>TorchIt — Assistive-tech hardware, scaled production</li>
+          <li>Incsmart — Energy venture, exited</li>
+        </ul>
+        <h2>Company 8 is raising pre-seed</h2>
+        <p>Backing an operator-founder building the decision layer between a business and its own answers — the layer that says which number is right, what changed, and what to do about it.</p>
+        <p>Dan is live at https://usedan.com, with 43 weekly active users in the last 30 days in the first 10 weeks, at zero paid acquisition. Launched on Product Hunt.</p>
+        <p>Investor contact: meet@company8.dev · https://www.themeetpatel.com/investors</p>
         <h2>Explore</h2>
         <ul>
-          <li><a href="https://usedan.com">Dan — the product (usedan.com)</a></li>
+          <li><a href="/">Home — Meet Patel, founder of Company 8</a></li>
+          <li><a href="/investors">For investors — Company 8 pre-seed</a></li>
           <li><a href="/thesis">The thesis — how AI changes the way companies are run</a></li>
-          <li><a href="/investors">For investors — Company 8</a></li>
+          <li><a href="/glossary">Glossary — the defined terms, one page each</a></li>
           <li><a href="/about">About Meet Patel</a></li>
-          <li><a href="/blogs">Writing — essays on startup operations and scaling</a></li>
-          <li><a href="/portfolio">Background — prior ventures</a></li>
+          <li><a href="/blogs">Writing — essays on startup operations</a></li>
+          <li><a href="/portfolio">Portfolio — ventures built</a></li>
+          <li><a href="/acu">ACU — the Agentic Cinematic Universe, the agent org behind the work</a></li>
+          <li><a href="/biggmate">BiggMate — co-founder matching</a></li>
+          <li><a href="/community">Community — founder network</a></li>
           <li><a href="/contact">Contact Meet Patel</a></li>
         </ul>
         <h2>Elsewhere</h2>
         <ul>
+          <li><a href="https://usedan.com">Dan — the product</a></li>
           <li><a href="https://www.linkedin.com/in/themeetpatel/">LinkedIn</a></li>
           <li><a href="https://x.com/the_meetpatel">X (Twitter)</a></li>
           <li><a href="https://github.com/themeetpatell">GitHub</a></li>
-          <li><a href="https://youtube.com/@themeetpatel">YouTube</a></li>
           <li><a href="https://medium.com/@themeetpatel">Medium</a></li>
+          <li><a href="https://www.crunchbase.com/person/meet-patel">Crunchbase</a></li>
+          <li><a href="https://www.producthunt.com/products/usedan-by-company8">Product Hunt</a></li>
         </ul>
-        <p>Investors &amp; contact: https://www.themeetpatel.com/investors · Canonical site: https://www.themeetpatel.com</p>
+        <h2>Frequently asked questions</h2>
+        <h3>Who is Meet Patel?</h3>
+        <p>Me. Meet Patel — a founder and operator based in Dubai, UAE. I founded Company 8 and I’m building Dan. Before that: 8+ years, 10+ ventures across AI, fintech, hardware and software, and 490+ people who reported to me.</p>
+        <h3>Which Meet Patel is this?</h3>
+        <p>The one in Dubai, UAE who founded Company 8. Also written The Meet Patel; the handle is themeetpatel, or @the_meetpatel. There are a great many of us and we are not affiliated.</p>
+        <h3>What is Dan?</h3>
+        <p>Dan (usedan.com) is what Company 8 is building. It connects the systems you already run, decides which conflicting number is actually right, and tells you what changed, why it matters and what to do next. It doesn’t wait to be asked — monitoring is what starts the investigation, every finding arrives with its evidence, and Dan keeps watching that same signal after you’ve made the call.</p>
+        <h3>What is Company 8?</h3>
+        <p>Company 8 is the autonomous decision intelligence company I founded in Dubai, UAE in 2025. It builds Dan (usedan.com), which connects a company’s systems, reconciles where they disagree, and tells the team what changed, why it matters and what to do next. Company 8 is raising a pre-seed round, which is the polite phrase for “I would like to talk to you”.</p>
+        <h3>What does Meet Patel believe about AI and companies?</h3>
+        <p>The scarce resource inside a modern company is organizational attention. Companies have built systems for storing information, systems for visualising it, and now systems for querying it. What they still have not built is a system responsible for noticing what deserves management attention. That layer is what becomes interesting over the next decade. The unabridged and slightly more argumentative version is at https://www.themeetpatel.com/thesis.</p>
+        <h3>What companies has Meet Patel built?</h3>
+        <p>Company 8 is the current one, building Dan. Before it: 10+ ventures — BiggDate, BiggMate, ZeroHuman, MealVerse, StudentHub and TorchIt — across AI, fintech, edtech, hardware and software. Some exited, some closed, and all of them are still listed at https://www.themeetpatel.com/portfolio, because a portfolio with only the wins on it is a brochure.</p>
+        <h3>Where is Meet Patel based?</h3>
+        <p>Dubai, UAE — where I build and scale startups, and spend a slightly unreasonable amount of time on the wider startup ecosystem.</p>
+        <h3>How can I contact Meet Patel?</h3>
+        <p>Email meet@company8.dev, book time at https://calendar.app.google/Cc1ugo4Ffx5bqguP9, use the form at https://www.themeetpatel.com/contact, or find me on LinkedIn at linkedin.com/in/themeetpatel. Founders, investors and “this is broken and I don’t know why” all reach the same inbox, and I read it myself.</p>
       </main>
+    <!-- END:generated-noscript -->
     </noscript>
     <script>
       // Failsafe: never keep users on an infinite loading overlay.

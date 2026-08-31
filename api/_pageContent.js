@@ -12,6 +12,7 @@
 
 import { BRAND, POSITIONING, PRODUCT, LOOP, MARKET, TRACTION, RAISE, INVESTOR, STATS, BACKGROUND } from '../src/data/company8.js';
 import { CATEGORY, PILLARS, MENTAL_MODELS, ENEMIES, BRIDGE } from '../src/data/thesis.js';
+import { GLOSSARY, GLOSSARY_INTRO, findTerm } from '../src/data/glossary.js';
 import { ACU, SCALE, THE_GATE, LAWS, DEPARTMENTS } from '../src/data/acu.js';
 import { BANDS, CAPABILITY_TOTAL, DOMAINS, STACK, INTERESTS } from '../src/data/capabilities.js';
 import { FAQ as HOME_FAQ } from '../src/data/homeVoice.js';
@@ -28,6 +29,60 @@ const homeAnswer = (question) => {
 };
 
 export const SITE = 'https://www.themeetpatel.com';
+
+/**
+ * Build the crawler-facing version of one glossary term.
+ *
+ * Everything comes from src/data/glossary.js, so the bot render and the React
+ * page cannot disagree — serving a crawler a definition the page does not carry
+ * is cloaking, and it is also just lying to the systems you want quoting you.
+ *
+ * Throws on an unknown slug: a PAGES key with no data behind it would render an
+ * empty page at a URL already published in the sitemap.
+ *
+ * @param {string} slug
+ */
+const glossaryPage = (slug) => {
+  const t = findTerm(slug);
+  if (!t) throw new Error(`_pageContent: no glossary entry for "${slug}"`);
+
+  return {
+    schemaType: 'WebPage',
+    title: `${t.term} — what it means, and how to measure it`,
+    description: t.lede,
+    keywords: [...t.aliases, 'Meet Patel', 'decision intelligence', BRAND.company].join(', '),
+    // Must match the rendered <h1> on GlossaryTermPage.
+    h1: t.term,
+    intro: t.lede,
+    breadcrumb: [
+      HOME_CRUMB,
+      { name: 'Glossary', url: '/glossary' },
+      { name: t.term, url: `/glossary/${t.slug}` },
+    ],
+    sections: [
+      { h2: 'The part that costs money', paragraphs: t.why },
+      { h2: 'What it looks like', paragraphs: [t.scene] },
+      { h2: 'How you would actually measure this', list: t.measure },
+      {
+        h2: 'What it is not',
+        list: t.notThis.map(({ claim, correction }) => `${claim} — ${correction}`),
+      },
+      {
+        h2: 'Related terms',
+        list: t.related
+          .map(findTerm)
+          .filter(Boolean)
+          .map((r) => `${r.term} (${SITE}/glossary/${r.slug}) — ${r.lede}`),
+      },
+    ],
+    // One term, emitted into the shared set so every glossary URL resolves into
+    // the same vocabulary rather than declaring a set of one per page.
+    definedTerms: [{ term: t.term, definition: t.lede }],
+    definedTermSetId: `${SITE}/glossary#set`,
+    faq: t.faq,
+  };
+};
+
 
 const HOME_CRUMB = { name: 'Home', url: '/' };
 
@@ -207,6 +262,34 @@ export const PAGES = {
     ],
   },
 
+
+  '/glossary': {
+    schemaType: 'CollectionPage',
+    title: 'Glossary — decision debt, organizational attention, management latency',
+    description: GLOSSARY_INTRO.standfirst,
+    keywords:
+      'decision debt, organizational attention, management latency, autonomous decision intelligence, decision intelligence glossary, AI native operations vocabulary, Meet Patel',
+    h1: GLOSSARY_INTRO.h1,
+    intro: `${GLOSSARY_INTRO.standfirst} ${GLOSSARY_INTRO.bridge}`,
+    breadcrumb: [HOME_CRUMB, { name: 'Glossary', url: '/glossary' }],
+    sections: [
+      {
+        h2: 'The terms',
+        list: GLOSSARY.map((t) => `${t.term} (${SITE}/glossary/${t.slug}) — ${t.lede}`),
+      },
+    ],
+    definedTerms: GLOSSARY.map((t) => ({ term: t.term, definition: t.lede })),
+    definedTermSetId: `${SITE}/glossary#set`,
+    faq: GLOSSARY.map((t) => ({ q: t.question, a: t.lede })),
+  },
+
+  '/glossary/autonomous-decision-intelligence': glossaryPage('autonomous-decision-intelligence'),
+
+  '/glossary/organizational-attention': glossaryPage('organizational-attention'),
+
+  '/glossary/decision-debt': glossaryPage('decision-debt'),
+
+  '/glossary/management-latency': glossaryPage('management-latency'),
   '/about': {
     schemaType: 'AboutPage',
     title: 'About Meet Patel — operator, founder, Dubai',
@@ -370,15 +453,11 @@ export const PAGES = {
           `${key} (${count === 0 ? 'skills only' : `${count} agents`}) — ${owns}${agents.length ? ` Agents: ${agents.join(', ')}.` : ''}`
         ),
       },
-      {
-        h2: 'Repository',
-        list: [`Source — ${ACU.repo}`],
-      },
     ],
     faq: [
       {
         q: `What is the ${ACU.name} (${ACU.fullName})?`,
-        a: `${ACU.summary} It runs ${SCALE[0].value} agents across ${SCALE[1].value} departments with ${SCALE[2].value} commands and ${SCALE[3].value} skills, all bound by ${LAWS.length} laws. Source: ${ACU.repo}`,
+        a: `${ACU.summary} It runs ${SCALE[0].value} agents across ${SCALE[1].value} departments with ${SCALE[2].value} commands and ${SCALE[3].value} skills, all bound by ${LAWS.length} laws. Written up at ${SITE}/acu.`,
       },
       {
         q: `What makes the ${ACU.name} different from a set of AI assistants?`,
@@ -426,6 +505,7 @@ export const SITE_LINKS = [
   { href: '/', label: 'Home — Meet Patel, founder of Company 8' },
   { href: '/investors', label: `For investors — ${BRAND.company} ${RAISE.stage.toLowerCase()}` },
   { href: '/thesis', label: 'The thesis — how AI changes the way companies are run' },
+  { href: '/glossary', label: 'Glossary — the defined terms, one page each' },
   { href: '/about', label: 'About Meet Patel' },
   { href: '/blogs', label: 'Writing — essays on startup operations' },
   { href: '/portfolio', label: 'Portfolio — ventures built' },

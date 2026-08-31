@@ -25,7 +25,7 @@ const STRUCTURED_DATA = {
   name: `${ACU.name} — ${ACU.fullName}`,
   abstract: ACU.tagline,
   description: ACU.summary,
-  codeRepository: ACU.repo,
+  ...(ACU.repo ? { codeRepository: ACU.repo } : {}),
   programmingLanguage: 'Markdown',
   runtimePlatform: 'Claude Code',
   author: { '@type': 'Person', name: 'Meet Patel', url: 'https://www.themeetpatel.com' },
@@ -70,15 +70,18 @@ const ACUPage = () => (
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <a
-              href={ACU.repo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-purple-400/30 bg-gradient-to-br from-purple-500/25 to-indigo-500/10 px-5 py-3 text-sm font-semibold text-[#f7f7fb] transition-colors hover:border-purple-400/60 hover:bg-purple-500/20"
-            >
-              <Github className="h-4 w-4" aria-hidden="true" />
-              View the repository
-            </a>
+            {/* Only rendered when the repo is public — see ACU.repo in acu.js. */}
+            {ACU.repo && (
+              <a
+                href={ACU.repo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl border border-purple-400/30 bg-gradient-to-br from-purple-500/25 to-indigo-500/10 px-5 py-3 text-sm font-semibold text-[#f7f7fb] transition-colors hover:border-purple-400/60 hover:bg-purple-500/20"
+              >
+                <Github className="h-4 w-4" aria-hidden="true" />
+                View the repository
+              </a>
+            )}
             <span className="text-xs text-[#8b8da8]">
               Counts read off the repo.
             </span>

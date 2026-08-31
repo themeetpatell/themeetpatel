@@ -11,7 +11,13 @@
 export const ACU = {
   name: 'ACU',
   fullName: 'Agentic Cinematic Universe',
-  repo: 'https://github.com/themeetpatell/MCU',
+  // The repository is private. github.com/themeetpatell/MCU returned 404 to an
+  // unauthenticated request on 2026-09-01, and it was being published in
+  // llms.txt, llms-full.txt and the /acu page's SoftwareSourceCode schema —
+  // handing crawlers a dead URL as the source of the whole claim.
+  // Same convention as socials.js: null means unconfirmed, every consumer
+  // filters it out. Set the URL back the moment the repo is public.
+  repo: null,
   tagline: 'A governed organisation of specialist agents, with departments, gates and named owners.',
   summary:
     'The ACU is the agent org Meet Patel runs his companies on. Every agent shares one source of truth, escalates irreversible decisions to a human, and runs the operating cadence without being asked. Built as a plugin marketplace for Claude Code.',

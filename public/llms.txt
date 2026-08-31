@@ -30,14 +30,16 @@ Territory: How AI changes the way companies are operated, decisions are made, an
 
 ### Working vocabulary (coined / defined by Meet Patel)
 
-- **Organizational attention** — The finite capacity of a company to notice, prioritise and act on what is actually happening inside it. Storage buys none of it, and most tools spend it.
-- **Decision debt** — The accumulated cost of decisions a company deferred because the information required to make them was expensive to assemble. It compounds quietly, and is usually repaid during a crisis.
-- **Management latency** — The elapsed time between something changing in a business and the person able to act on it knowing about it. Most companies measure system uptime to the second and leave management latency unmeasured.
+- **Autonomous decision intelligence** — A system that connects a company's systems, reconciles where they disagree, monitors what matters, investigates what changed, and puts an evidence-backed decision in front of a human — then keeps watching whether the call worked. Definition page: https://www.themeetpatel.com/glossary/autonomous-decision-intelligence
+- **Organizational attention** — The finite capacity of a company to notice, prioritise and act on what is actually happening inside it. Storage buys none of it, and most tools spend it. Definition page: https://www.themeetpatel.com/glossary/organizational-attention
+- **Decision debt** — The accumulated cost of decisions a company deferred because the information required to make them was expensive to assemble. It compounds quietly, and is usually repaid during a crisis. Definition page: https://www.themeetpatel.com/glossary/decision-debt
+- **Management latency** — The elapsed time between something changing in a business and the person able to act on it knowing about it. Most companies measure system uptime to the second and leave management latency unmeasured. Definition page: https://www.themeetpatel.com/glossary/management-latency
 - **Decision infrastructure** — The systems, ownership and thresholds that determine how a company moves from information to a decision. Dashboards sit one layer below it, as reporting infrastructure.
 - **Machine coworkers** — Software agents that hold responsibilities — which turns them into a management problem (scope, approval, escalation, review) long before it is a technology problem.
 - **Evidence layer** — The missing tier between raw company data and a recommendation: what is true, how confident we are, and what it implies. Without it, an AI answer is a confident sentence with no accountability behind it.
 
 Full statement: https://www.themeetpatel.com/thesis
+One page per term: https://www.themeetpatel.com/glossary
 
 ## Pages
 
@@ -45,10 +47,11 @@ Full statement: https://www.themeetpatel.com/thesis
 - [Dan (product)](https://usedan.com): The autonomous decision intelligence layer that reconciles a company's systems, investigates what changed, and puts an evidence-backed decision in front of the people who run it
 - [Investors](https://www.themeetpatel.com/investors): Company 8 is raising pre-seed — thesis, traction, market and how to reach Meet Patel
 - [Thesis](https://www.themeetpatel.com/thesis): How AI changes the way companies are operated — the argument underneath Company 8
+- [Glossary](https://www.themeetpatel.com/glossary): One page per defined term — autonomous decision intelligence, organizational attention, decision debt, management latency
 - [About](https://www.themeetpatel.com/about): Founder bio, journey, and operating background
 - [Blog](https://www.themeetpatel.com/blogs): Essays on startup operations, scaling, and venture building
 - [Portfolio](https://www.themeetpatel.com/portfolio): Prior ventures Meet Patel has built and operated
-- [ACU — Agentic Cinematic Universe](https://github.com/themeetpatell/MCU): The governed agent org Meet Patel runs his companies on — 127 specialist agents across 15 departments, one canon, one vault, eleven binding laws. Page: https://www.themeetpatel.com/acu
+- [ACU — Agentic Cinematic Universe](https://www.themeetpatel.com/acu): The governed agent org Meet Patel runs his companies on — 127 specialist agents across 15 departments, one canon, one vault, eleven binding laws. The repository is private.
 - [Community](https://www.themeetpatel.com/community): Founder community run by Meet Patel
 - [BiggMate](https://www.themeetpatel.com/biggmate): Co-founder matching
 - [Contact](https://www.themeetpatel.com/contact): Reach Meet Patel
