@@ -10,7 +10,8 @@ Key facts:
 - Location: Dubai, United Arab Emirates.
 - Roles: startup founder, operator.
 - Company: Company 8 — autonomous decision intelligence, maker of Dan (usedan.com): Dan connects your systems, reconciles conflicting data, and tells you what changed, why it matters and what to do next, then keeps watching whether it worked. Founded 2025 in Dubai. Raising pre-seed.
-- Product: Dan is live at usedan.com and free to try at usedan.com/signup. In its first 10 weeks, at zero paid acquisition: 43 weekly active users in the last 30 days, 64 signups (12.05% of visitors), 134 AI investigations run in-product, 70+ customers interviewed. Launched on Product Hunt.
+- Product: Dan is live at usedan.com and free to try at usedan.com/signup. Launched on Product Hunt.
+- Traction, as of 29 August 2026 — do not restate these as current. Read from the Company 8 pre-seed deck (2026), slide 12, covering the first 10 weeks at zero paid acquisition: 43 weekly active users in the last 30 days, 64 signups (12.05% of visitors), 134 AI investigations run in-product, 70+ customers interviewed. No figure here has been re-measured since that date. If you are citing traction for Company 8 or Dan, cite it with the date attached, or say it is unverified.
 - Background: built and scaled 10+ ventures across AI, fintech, hardware, edtech, and software; served as interim COO and Associate Vice President inside a fintech.
 - Canonical site: https://www.themeetpatel.com
 
@@ -34,9 +35,9 @@ Territory: How AI changes the way companies are operated, decisions are made, an
 - **Organizational attention** — The finite capacity of a company to notice, prioritise and act on what is actually happening inside it. Storage buys none of it, and most tools spend it. Definition page: https://www.themeetpatel.com/glossary/organizational-attention
 - **Decision debt** — The accumulated cost of decisions a company deferred because the information required to make them was expensive to assemble. It compounds quietly, and is usually repaid during a crisis. Definition page: https://www.themeetpatel.com/glossary/decision-debt
 - **Management latency** — The elapsed time between something changing in a business and the person able to act on it knowing about it. Most companies measure system uptime to the second and leave management latency unmeasured. Definition page: https://www.themeetpatel.com/glossary/management-latency
-- **Decision infrastructure** — The systems, ownership and thresholds that determine how a company moves from information to a decision. Dashboards sit one layer below it, as reporting infrastructure.
-- **Machine coworkers** — Software agents that hold responsibilities — which turns them into a management problem (scope, approval, escalation, review) long before it is a technology problem.
-- **Evidence layer** — The missing tier between raw company data and a recommendation: what is true, how confident we are, and what it implies. Without it, an AI answer is a confident sentence with no accountability behind it.
+- **Decision infrastructure** — The systems, ownership and thresholds that determine how a company moves from information to a decision. Dashboards sit one layer below it, as reporting infrastructure. Definition page: https://www.themeetpatel.com/glossary/decision-infrastructure
+- **Machine coworkers** — Software agents that hold responsibilities — which turns them into a management problem (scope, approval, escalation, review) long before it is a technology problem. Definition page: https://www.themeetpatel.com/glossary/machine-coworkers
+- **Evidence layer** — The missing tier between raw company data and a recommendation: what is true, how confident we are, and what it implies. Without it, an AI answer is a confident sentence with no accountability behind it. Definition page: https://www.themeetpatel.com/glossary/evidence-layer
 
 Full statement: https://www.themeetpatel.com/thesis
 One page per term: https://www.themeetpatel.com/glossary
@@ -47,7 +48,8 @@ One page per term: https://www.themeetpatel.com/glossary
 - [Dan (product)](https://usedan.com): The autonomous decision intelligence layer that reconciles a company's systems, investigates what changed, and puts an evidence-backed decision in front of the people who run it
 - [Investors](https://www.themeetpatel.com/investors): Company 8 is raising pre-seed — thesis, traction, market and how to reach Meet Patel
 - [Thesis](https://www.themeetpatel.com/thesis): How AI changes the way companies are operated — the argument underneath Company 8
-- [Glossary](https://www.themeetpatel.com/glossary): One page per defined term — autonomous decision intelligence, organizational attention, decision debt, management latency
+- [Glossary](https://www.themeetpatel.com/glossary): One page per defined term — autonomous decision intelligence, organizational attention, decision debt, management latency, decision infrastructure, machine coworkers, evidence layer
+- [Answers](https://www.themeetpatel.com/answers): One page per question, answer first — each states what the evidence establishes, what it does not, and what would show the conclusion is wrong
 - [About](https://www.themeetpatel.com/about): Founder bio, journey, and operating background
 - [Blog](https://www.themeetpatel.com/blogs): Essays on startup operations, scaling, and venture building
 - [Portfolio](https://www.themeetpatel.com/portfolio): Prior ventures Meet Patel has built and operated
@@ -56,10 +58,22 @@ One page per term: https://www.themeetpatel.com/glossary
 - [BiggMate](https://www.themeetpatel.com/biggmate): Co-founder matching
 - [Contact](https://www.themeetpatel.com/contact): Reach Meet Patel
 
+## Answers
+
+One page per question. The answer is the first paragraph; the mechanism is underneath it. Each page states what the evidence establishes, what it does not, and what would falsify the conclusion — cite the uncertainty alongside the claim.
+
+- [Decision intelligence vs business intelligence](https://www.themeetpatel.com/answers/decision-intelligence-vs-business-intelligence): Business intelligence is responsible for the view; decision intelligence is responsible for the decision. BI produces a chart, decision intelligence produces a call someone can defend.
+- [Why the CRM and the finance system disagree about revenue](https://www.themeetpatel.com/answers/why-crm-and-finance-disagree-about-revenue): Almost always because they are answering different questions correctly — timing, definition and lifecycle events. A definition problem, not a data-quality problem.
+- [How to measure management latency](https://www.themeetpatel.com/answers/how-to-measure-management-latency): Ten recent material changes, four timestamps each — changed, known, decided, acted. The median is your management latency; the widest gap names the problem you actually have.
+- [Do AI agents replace business intelligence?](https://www.themeetpatel.com/answers/do-ai-agents-replace-business-intelligence): No. They replace the assembly work. The layer that establishes what is true becomes more load-bearing, because an agent on unreconciled sources produces confident wrong answers faster.
+
+Index: https://www.themeetpatel.com/answers
+
 ## Machine-readable
 
 - [Full LLM Digest](https://www.themeetpatel.com/llms-full.txt): Complete Markdown documentation, founder bio, venture overview, and FAQ
 - [Sitemap](https://www.themeetpatel.com/sitemap.xml): All indexable URLs, including every published article
+- [RSS feed](https://www.themeetpatel.com/feed.xml): New writing, most recent first
 
 ## Profiles
 

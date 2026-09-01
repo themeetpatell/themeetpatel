@@ -1,5 +1,6 @@
 import { supabase } from './_supabase.js';
 import { SITE_LINKS, PROFILE_LINKS } from './_pageContent.js';
+import { linkGlossaryTerms } from '../src/lib/glossaryLinker.js';
 import { meetPatelEntities, buildBreadcrumb, resolveCanonical } from '../src/lib/seoEntity.js';
 import { renderPage } from './_renderPage.js';
 
@@ -234,10 +235,15 @@ export default async function handler(req, res) {
     : '';
 
   // content_html is admin-authored rich text, rendered as-is on purpose so
-  // crawlers receive the full article body.
-  const bodyHtml =
-    article?.content_html ||
-    (article?.excerpt ? `<p>${esc(article.excerpt)}</p>` : `<p>${description}</p>`);
+  // crawlers receive the full article body — with the first mention of each
+  // defined term linked to its glossary page. BlogArticlePage.jsx applies the
+  // identical transform to the identical source, so this is not cloaking: bots
+  // and humans receive the same document.
+  const bodyHtml = article?.content_html
+    ? linkGlossaryTerms(article.content_html)
+    : article?.excerpt
+      ? `<p>${esc(article.excerpt)}</p>`
+      : `<p>${description}</p>`;
 
   const html = `<!DOCTYPE html>
 <html lang="en">

@@ -13,6 +13,7 @@
 import { BRAND, POSITIONING, PRODUCT, LOOP, MARKET, TRACTION, RAISE, INVESTOR, STATS, BACKGROUND } from '../src/data/company8.js';
 import { CATEGORY, PILLARS, MENTAL_MODELS, ENEMIES, BRIDGE } from '../src/data/thesis.js';
 import { GLOSSARY, GLOSSARY_INTRO, findTerm } from '../src/data/glossary.js';
+import { ANSWERS, ANSWERS_INTRO, findAnswer } from '../src/data/answers.js';
 import { ACU, SCALE, THE_GATE, LAWS, DEPARTMENTS } from '../src/data/acu.js';
 import { BANDS, CAPABILITY_TOTAL, DOMAINS, STACK, INTERESTS } from '../src/data/capabilities.js';
 import { FAQ as HOME_FAQ } from '../src/data/homeVoice.js';
@@ -84,6 +85,89 @@ const glossaryPage = (slug) => {
 };
 
 
+/**
+ * Build the crawler-facing version of one answer page.
+ *
+ * Same contract as glossaryPage: everything comes from src/data/answers.js so
+ * the bot render and the React page cannot disagree.
+ *
+ * The `established / does not establish / would falsify` triple is carried into
+ * the bot render deliberately. It is the part of these pages worth citing, and
+ * a crawler that only received the conclusion would be getting the weaker half.
+ *
+ * HowTo steps are rendered as an ordered list here rather than schema — the bot
+ * renderer has no HowTo emitter, and the React page already carries that node.
+ *
+ * @param {string} slug
+ */
+const answerPage = (slug) => {
+  const a = findAnswer(slug);
+  if (!a) throw new Error(`_pageContent: no answer entry for "${slug}"`);
+
+  const sections = [];
+
+  if (a.contrast) {
+    sections.push(
+      { h2: a.contrast.a.label, list: a.contrast.a.points },
+      { h2: a.contrast.b.label, list: a.contrast.b.points }
+    );
+  }
+
+  sections.push({ h2: 'Why it works this way', paragraphs: a.mechanism });
+
+  if (a.steps) {
+    sections.push({
+      h2: 'The measurement, step by step',
+      list: a.steps.map((step, i) => `${i + 1}. ${step.name} — ${step.text}`),
+    });
+  }
+
+  sections.push(
+    { h2: 'What it looks like', paragraphs: [a.scene] },
+    {
+      h2: 'What this establishes, and what it does not',
+      list: [
+        `What this establishes — ${a.established}`,
+        `What it does not — ${a.uncertain}`,
+        `What would show it is wrong — ${a.falsifies}`,
+      ],
+    },
+    {
+      h2: 'The words this answer uses',
+      list: a.terms
+        .map(findTerm)
+        .filter(Boolean)
+        .map((t) => `${t.term} (${SITE}/glossary/${t.slug}) — ${t.lede}`),
+    },
+    {
+      h2: 'Related questions',
+      list: a.related
+        .map(findAnswer)
+        .filter(Boolean)
+        .map((r) => `${r.question} (${SITE}/answers/${r.slug}) — ${r.shortAnswer}`),
+    }
+  );
+
+  return {
+    schemaType: 'WebPage',
+    title: a.question,
+    description: a.shortAnswer,
+    keywords: [...a.aliases, 'Meet Patel', BRAND.company].join(', '),
+    // Must match the rendered <h1> on AnswerPage.
+    h1: a.question,
+    intro: a.shortAnswer,
+    breadcrumb: [
+      HOME_CRUMB,
+      { name: 'Answers', url: '/answers' },
+      { name: a.question, url: `/answers/${a.slug}` },
+    ],
+    sections,
+    // The page's own question leads, so the short answer lands in FAQPage.
+    faq: [{ q: a.question, a: a.shortAnswer }, ...a.faq],
+  };
+};
+
+
 const HOME_CRUMB = { name: 'Home', url: '/' };
 
 /**
@@ -121,6 +205,7 @@ export const PAGES = {
         paragraphs: [
           RAISE.thesis,
           `${BRAND.product} is ${TRACTION.status} at ${BRAND.productUrl}, with ${TRACTION.activeUsers} in ${TRACTION.window}. ${TRACTION.productHunt}.`,
+          TRACTION.attribution,
           `Investor contact: ${INVESTOR.email} · ${SITE}/investors`,
         ],
       },
@@ -155,6 +240,7 @@ export const PAGES = {
         h2: 'Traction',
         paragraphs: [
           `${BRAND.product} is ${TRACTION.status} at ${BRAND.productUrl}. Every figure below is from ${TRACTION.window} — no paid growth, no sales motion, no marketing, no launch.`,
+          TRACTION.attribution,
         ],
         list: [
           TRACTION.activeUsers,
@@ -199,7 +285,7 @@ export const PAGES = {
       },
       {
         q: 'What is the product?',
-        a: `${BRAND.product} (${BRAND.productUrl}) — ${POSITIONING.descriptor}. It is ${TRACTION.status}, with ${TRACTION.activeUsers} in ${TRACTION.window}.`,
+        a: `${BRAND.product} (${BRAND.productUrl}) — ${POSITIONING.descriptor}. It is ${TRACTION.status}, with ${TRACTION.activeUsers} in ${TRACTION.window}. ${TRACTION.attribution}`,
       },
       {
         q: `What category is ${BRAND.company} in?`,
@@ -290,6 +376,44 @@ export const PAGES = {
   '/glossary/decision-debt': glossaryPage('decision-debt'),
 
   '/glossary/management-latency': glossaryPage('management-latency'),
+
+  '/glossary/decision-infrastructure': glossaryPage('decision-infrastructure'),
+
+  '/glossary/machine-coworkers': glossaryPage('machine-coworkers'),
+
+  '/glossary/evidence-layer': glossaryPage('evidence-layer'),
+
+  '/answers': {
+    schemaType: 'CollectionPage',
+    title: 'Answers — decision intelligence vs BI, revenue reconciliation, management latency',
+    description: ANSWERS_INTRO.standfirst,
+    keywords:
+      'decision intelligence vs business intelligence, why CRM and finance disagree about revenue, how to measure management latency, do AI agents replace business intelligence, Meet Patel',
+    h1: ANSWERS_INTRO.h1,
+    intro: `${ANSWERS_INTRO.standfirst} ${ANSWERS_INTRO.bridge}`,
+    breadcrumb: [HOME_CRUMB, { name: 'Answers', url: '/answers' }],
+    sections: [
+      {
+        h2: 'The questions',
+        list: ANSWERS.map((a) => `${a.question} (${SITE}/answers/${a.slug}) — ${a.shortAnswer}`),
+      },
+    ],
+    faq: ANSWERS.map((a) => ({ q: a.question, a: a.shortAnswer })),
+  },
+
+  '/answers/decision-intelligence-vs-business-intelligence': answerPage(
+    'decision-intelligence-vs-business-intelligence'
+  ),
+
+  '/answers/why-crm-and-finance-disagree-about-revenue': answerPage(
+    'why-crm-and-finance-disagree-about-revenue'
+  ),
+
+  '/answers/how-to-measure-management-latency': answerPage('how-to-measure-management-latency'),
+
+  '/answers/do-ai-agents-replace-business-intelligence': answerPage(
+    'do-ai-agents-replace-business-intelligence'
+  ),
   '/about': {
     schemaType: 'AboutPage',
     title: 'About Meet Patel — operator, founder, Dubai',
@@ -506,6 +630,7 @@ export const SITE_LINKS = [
   { href: '/investors', label: `For investors — ${BRAND.company} ${RAISE.stage.toLowerCase()}` },
   { href: '/thesis', label: 'The thesis — how AI changes the way companies are run' },
   { href: '/glossary', label: 'Glossary — the defined terms, one page each' },
+  { href: '/answers', label: 'Answers — the questions, worked through one page each' },
   { href: '/about', label: 'About Meet Patel' },
   { href: '/blogs', label: 'Writing — essays on startup operations' },
   { href: '/portfolio', label: 'Portfolio — ventures built' },

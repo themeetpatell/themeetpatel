@@ -70,6 +70,7 @@ export const GLOSSARY = Object.freeze([
     aliases: [
       'autonomous decision intelligence',
       'decision intelligence platform',
+      'autonomous business intelligence',
       'autonomous BI',
       'agentic business intelligence',
     ],
@@ -113,6 +114,10 @@ export const GLOSSARY = Object.freeze([
       {
         q: 'How is decision intelligence different from business intelligence?',
         a: 'Business intelligence reports what happened when you ask it. Decision intelligence is responsible for noticing what deserves attention without being asked, reconciling the systems that disagree about it, and carrying a recommendation with the evidence attached. BI produces a view; decision intelligence produces a decision someone can defend.',
+      },
+      {
+        q: 'Is autonomous business intelligence the same thing?',
+        a: `Same system, two registers. Autonomous business intelligence is the market-facing name — it tells a buyer which shelf the product sits on, next to the BI tools they already own. Autonomous decision intelligence is the precise one, and the distinction it holds is the whole argument: business intelligence is responsible for the view, and this is responsible for the decision. ${BRAND.product} is presented publicly as autonomous business intelligence; the category it is actually building is the one defined on this page.`,
       },
       {
         q: 'Who builds autonomous decision intelligence?',
@@ -291,6 +296,198 @@ export const GLOSSARY = Object.freeze([
       },
     ],
     related: ['organizational-attention', 'decision-debt', 'autonomous-decision-intelligence'],
+    updated: '2026-09-01',
+  },
+
+  {
+    slug: 'decision-infrastructure',
+    term: 'Decision infrastructure',
+    lede: fromThesis('Decision infrastructure'),
+    aliases: [
+      'decision infrastructure',
+      'decision-making infrastructure',
+      'decision operating system',
+      'decision systems',
+    ],
+    question: 'What is decision infrastructure?',
+    why: [
+      'Every company already has decision infrastructure. Almost none of it was designed. The threshold exists as a habit, the ownership exists as whoever spoke last, and the escalation path exists as a direct message to the founder at nine on a Sunday. Undesigned infrastructure still determines outcomes — it just does it inconsistently, and nobody can point at the part that failed.',
+      'The layer below it is reporting infrastructure: warehouse, pipeline, transformation, BI tool, dashboard. That stack answers what happened. None of it holds a threshold, carries an owner, or contains a rule about what happens when a number crosses a line. This is why a company can spend three years and a large budget upgrading the reporting layer and find that decisions did not get faster — nothing in that project touched the layer where decisions live.',
+      'Three components make it real: thresholds (what size of change is worth a decision), ownership (whose call it is before the meeting starts), and a review loop (when we find out whether the call was right). Most companies can produce none of the three in writing for their ten most repeated decisions, which is a more useful finding than any dashboard those decisions were made from.',
+    ],
+    scene:
+      'A company reforecasts when the CFO starts feeling uneasy. There is no written trigger for what pipeline movement causes a reforecast, no named owner for the call before the meeting begins, and no record of whether the last reforecast turned out to be right. The warehouse is excellent, current to the hour, and modelled properly. The decision infrastructure is a feeling.',
+    measure: [
+      'Take your ten most repeated decisions. For each, write down the threshold, the owner and the review date. Count how many of the thirty answers already existed in writing — that count is the honest starting number.',
+      'Share of recurring decisions that have a written trigger, versus ones made because somebody happened to notice.',
+      'Elapsed time from a threshold being crossed to the named owner knowing it was crossed.',
+      'Whether last quarter’s decisions have recorded outcomes, or only recorded rationales. Most companies keep the reasoning and lose the result.',
+    ],
+    notThis: [
+      {
+        claim: 'It is the data stack.',
+        correction:
+          'The warehouse, the pipeline and the BI tool are reporting infrastructure — they establish what happened. Decision infrastructure is the tier above: thresholds, ownership and review. Buying more of the first has never produced the second.',
+      },
+      {
+        claim: 'It is a governance document.',
+        correction:
+          'A policy nobody triggers is a document, not infrastructure. The test is whether something in the system actually fires when the threshold is crossed, and whether a named person receives it.',
+      },
+      {
+        claim: 'It is the same as a decision log.',
+        correction:
+          'A log records what was decided after the fact. Infrastructure determines what gets decided at all, by whom, and at what point. The log is one component of the review loop, not the thing itself.',
+      },
+    ],
+    faq: [
+      {
+        q: 'What is decision infrastructure?',
+        a: fromThesis('Decision infrastructure'),
+      },
+      {
+        q: 'How is decision infrastructure different from a data stack?',
+        a: 'The data stack is reporting infrastructure: it establishes what happened and presents it. Decision infrastructure sits one layer above and holds the thresholds, the ownership and the review loop — what change is worth a decision, whose call it is, and when we learn whether it was right. Upgrading the reporting layer does not create the decision layer, which is why better dashboards so rarely produce faster decisions.',
+      },
+      {
+        q: 'What are the components of decision infrastructure?',
+        a: 'Three: thresholds, which define what magnitude of change deserves a decision; ownership, which names who holds the call before the meeting starts; and the review loop, which records the outcome so the next decision of that type is better informed. A company that can write all three down for its recurring decisions has decision infrastructure. One that cannot has habits.',
+      },
+      {
+        q: 'Do small companies need decision infrastructure?',
+        a: 'A five-person company’s decision infrastructure is the founder’s attention, and that works genuinely well until it does not. The failure point is roughly where the founder stops being present for every decision — usually somewhere between twenty and forty people, or earlier if the company runs across several systems and time zones. Building it before that point is cheap; building it after a bad quarter is not.',
+      },
+    ],
+    related: ['decision-debt', 'evidence-layer', 'autonomous-decision-intelligence'],
+    updated: '2026-09-01',
+  },
+
+  {
+    slug: 'machine-coworkers',
+    term: 'Machine coworkers',
+    lede: fromThesis('Machine coworkers'),
+    aliases: [
+      'machine coworkers',
+      'AI coworkers',
+      'agents as coworkers',
+      'managing AI agents',
+      'agent governance',
+    ],
+    question: 'What are machine coworkers?',
+    why: [
+      'The moment an agent holds a responsibility rather than performing a task, every remaining question about it is a management question. What is it allowed to do on its own. Who approves the part that cannot be undone. What happens when it is wrong. Who finds out. None of those are model questions, and none of them are answered by picking a better model.',
+      'Companies are deploying agents into standing responsibilities with no written scope, no approval boundary and no review cadence. A human hired into that arrangement would be a governance incident within a month. The agent version passes without comment because the org chart has no row for it.',
+      'The failure asymmetry is what makes this urgent rather than tidy. A junior analyst who is unsure escalates, hedges, or asks. An agent that is unsure produces a fluent paragraph at the same confidence as everything else it has ever written. The organisation loses its most reliable early-warning signal — visible human hesitation — precisely where it is adding capacity fastest.',
+    ],
+    scene:
+      'An agent has been reconciling invoices for six weeks and doing it well. Nobody in the company can currently say what it is permitted to write back, who approved the tolerance it applies, or what it did last Tuesday. It holds a responsibility and has no manager. The first time anyone will examine any of this is after it gets one wrong.',
+    measure: [
+      'For every agent in production, four artefacts: a written scope, a named human owner, an explicit list of acts it may not take alone, and a review cadence. Count how many agents have all four. The first count is usually zero.',
+      'Share of agent outputs a human actually inspected in the last thirty days — not could have inspected, did.',
+      'Whether uncertainty survives to the output, or is flattened into confident prose somewhere in the chain.',
+      'Elapsed time from an agent being wrong to a human knowing it was wrong. This is management latency with a machine on the other end.',
+    ],
+    notThis: [
+      {
+        claim: 'It is an anthropomorphic marketing word.',
+        correction:
+          'The word coworker is carrying analytical weight, not warmth. It says the apparatus a company already owns for humans holding responsibilities — scope, approval, escalation, review — is exactly the apparatus currently missing for agents. Calling them tools is what lets a company skip all four.',
+      },
+      {
+        claim: 'It means agents replace employees.',
+        correction:
+          'The claim is narrower and more awkward: agents acquire responsibilities, and responsibilities require management. Whether headcount moves is a separate question with a separate answer per company.',
+      },
+      {
+        claim: 'It is a technology problem.',
+        correction:
+          'It becomes a technology problem only after the management questions are answered. Scope, approval thresholds and escalation paths are decisions a person makes and writes down; no amount of model capability produces them.',
+      },
+    ],
+    faq: [
+      {
+        q: 'What are machine coworkers?',
+        a: fromThesis('Machine coworkers'),
+      },
+      {
+        q: 'How do you manage AI agents in a company?',
+        a: 'The same way you manage anyone holding a responsibility: a written scope, a named human owner, an explicit boundary around irreversible acts, and a review cadence with recorded outcomes. The difference is that an agent will not signal uncertainty on its own, so the review has to be scheduled rather than triggered by someone looking hesitant.',
+      },
+      {
+        q: 'Do AI agents need performance reviews?',
+        a: 'They need outcome review, which is the useful half of a performance review and none of the ritual. Pull what the agent decided or recommended over a period, check it against what actually happened, and change the scope or the thresholds accordingly. Rating an agent is theatre; scoring its calls is how you find out whether to widen or narrow what it is allowed to do.',
+      },
+      {
+        q: 'Should an AI agent be allowed to act without a human?',
+        a: 'For reversible acts, frequently — that is where the leverage is. For irreversible ones — a payment, an external send, a price change, a production mutation — no, and a system that removes that boundary has not become more autonomous, it has removed the only place accountability could sit.',
+      },
+    ],
+    related: ['decision-infrastructure', 'evidence-layer', 'organizational-attention'],
+    updated: '2026-09-01',
+  },
+
+  {
+    slug: 'evidence-layer',
+    term: 'Evidence layer',
+    lede: fromThesis('Evidence layer'),
+    aliases: [
+      'evidence layer',
+      'AI evidence layer',
+      'evidence-backed AI',
+      'inspectable AI answers',
+      'data lineage for AI answers',
+    ],
+    question: 'What is an evidence layer?',
+    why: [
+      'A language model produces a sentence carrying a confidence tone and nothing behind it. The sentence may well be correct. The problem is that a correct sentence and a fabricated one arrive in the same format, at the same length, with the same steadiness, and the reader has no way to tell them apart from the text alone.',
+      'Three things have to be attached before a recommendation can be acted on by someone who will be held responsible for it. Lineage: which system, which field, read at what time. Reconciliation: what the other systems say about the same quantity, and why they differ. Confidence: what would have to be different for this conclusion to change. All three are cheap to produce and almost never shipped.',
+      'Without them, review collapses into one of two failures. The reviewer accepts on trust, which means the AI is now making the decision while a human absorbs the accountability for it. Or the reviewer redoes the work to check it, which costs more than not having the answer. Both outcomes destroy the value the system was bought for, and both look like adoption from the outside.',
+    ],
+    scene:
+      'Two answers to why net revenue retention fell. The first is a well-written paragraph. The second is the same paragraph plus the four systems it read, the NRR definition it applied, the two accounts that account for most of the movement, and a note that one source was nineteen hours stale at read time. Only the second one can be argued with, and being arguable is the entire point.',
+    measure: [
+      'Can a reader reconstruct the conclusion from what the output shows, without going back to the person or system that produced it?',
+      'Does every figure carry its source system, its field and the time it was read?',
+      'Are disagreements between systems surfaced, or quietly resolved in favour of one of them?',
+      'Does the output state what would change the conclusion? An answer that cannot be falsified cannot be reviewed.',
+      'Share of AI-produced recommendations a reviewer overturned or amended. Zero is not a good score — it usually means nobody is really checking.',
+    ],
+    notThis: [
+      {
+        claim: 'It is citations.',
+        correction:
+          'A link to a dashboard is a gesture at a source, not lineage. Lineage names the system, the field and the read time, so a reader can tell whether the number was current and whether it meant what the sentence assumed it meant.',
+      },
+      {
+        claim: 'It is the same as explainability.',
+        correction:
+          'Explainability describes how a model arrived at an output. The evidence layer is about whether the claim is true and where it came from. A perfectly explained conclusion drawn from a stale field is still wrong, and the explanation will not tell you so.',
+      },
+      {
+        claim: 'It is a UI feature you add later.',
+        correction:
+          'Lineage and reconciliation have to be captured while the answer is being assembled. Nothing can be attached afterwards that was not carried through, which is why this is an architecture decision rather than a display one.',
+      },
+    ],
+    faq: [
+      {
+        q: 'What is an evidence layer?',
+        a: fromThesis('Evidence layer'),
+      },
+      {
+        q: 'Why do AI answers need an evidence layer?',
+        a: 'Because a correct answer and a fabricated one look identical in prose. Without lineage, reconciliation and stated confidence, a reviewer can only accept on trust — which moves the decision to the model while leaving the accountability with the person — or redo the work, which costs more than not asking. The evidence layer is what makes a third option, actual review, possible.',
+      },
+      {
+        q: 'What belongs in an evidence layer?',
+        a: 'Source lineage (which system, which field, read when), reconciliation against the other systems that hold the same quantity, the business definition applied, a confidence statement, and what would change the conclusion. If a reader can rebuild your reasoning from the output alone, the layer is doing its job.',
+      },
+      {
+        q: 'Is an evidence layer the same as RAG?',
+        a: 'No. Retrieval is a technique for putting relevant text in front of a model. The evidence layer is a property of the output: that every claim it makes can be traced, reconciled and challenged. A retrieval-augmented system with no lineage in its answers has better inputs and exactly the same accountability gap.',
+      },
+    ],
+    related: ['autonomous-decision-intelligence', 'decision-infrastructure', 'machine-coworkers'],
     updated: '2026-09-01',
   },
 ]);

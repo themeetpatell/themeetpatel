@@ -11,6 +11,7 @@ import FollowMyJourney from '../components/FollowMyJourney';
 import SEOHead from '../components/SEOHead';
 import { SITE_URL, buildBreadcrumb, resolveCanonical } from '../lib/seoEntity';
 import { capture, captureError } from '../lib/posthog';
+import { linkGlossaryTerms } from '../lib/glossaryLinker';
 
 const C = {
   bg:           '#09090e',
@@ -655,9 +656,12 @@ const BlogArticlePage = () => {
                 )}
 
                 {/* ✅ FIXED: use content_html not content */}
+                {/* First mention of each defined term links to its glossary
+                    page. api/og.js applies the same transform to the same
+                    content_html, so bots and humans read one document. */}
                 <div
                   className="article-body"
-                  dangerouslySetInnerHTML={{ __html: article.content_html || '' }}
+                  dangerouslySetInnerHTML={{ __html: linkGlossaryTerms(article.content_html) }}
                 />
 
                 {/* Citations */}

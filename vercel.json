@@ -42,6 +42,10 @@
       "destination": "/api/sitemap"
     },
     {
+      "source": "/feed.xml",
+      "destination": "/api/sitemap?format=rss"
+    },
+    {
       "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
@@ -104,6 +108,19 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=3600, s-maxage=86400"
+        }
+      ]
+    },
+    {
+      "source": "/feed.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/rss+xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=1800, s-maxage=3600"
         }
       ]
     }

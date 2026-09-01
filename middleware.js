@@ -56,6 +56,16 @@ const PAGE_ROUTES = new Set([
   '/glossary/organizational-attention',
   '/glossary/decision-debt',
   '/glossary/management-latency',
+  '/glossary/decision-infrastructure',
+  '/glossary/machine-coworkers',
+  '/glossary/evidence-layer',
+  // Answer surface. Same rule as the glossary: listed one by one so a slug can
+  // never reach the sitemap without prose behind it.
+  '/answers',
+  '/answers/decision-intelligence-vs-business-intelligence',
+  '/answers/why-crm-and-finance-disagree-about-revenue',
+  '/answers/how-to-measure-management-latency',
+  '/answers/do-ai-agents-replace-business-intelligence',
 ]);
 
 /**

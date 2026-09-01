@@ -32,6 +32,8 @@ import ACUPage from './pages/ACUPage';
 import ThesisPage from './pages/ThesisPage';
 import GlossaryPage from './pages/GlossaryPage';
 import GlossaryTermPage from './pages/GlossaryTermPage';
+import AnswersPage from './pages/AnswersPage';
+import AnswerPage from './pages/AnswerPage';
 
 // /mind renders an interactive force-directed graph (react-force-graph + d3).
 // It's a single minor route, so it is lazy-loaded rather than taxing every
@@ -144,6 +146,8 @@ function App() {
           <Route path="/thesis" element={<PublicLayout><ThesisPage /></PublicLayout>} />
           <Route path="/glossary" element={<PublicLayout><GlossaryPage /></PublicLayout>} />
           <Route path="/glossary/:slug" element={<PublicLayout><GlossaryTermPage /></PublicLayout>} />
+          <Route path="/answers" element={<PublicLayout><AnswersPage /></PublicLayout>} />
+          <Route path="/answers/:slug" element={<PublicLayout><AnswerPage /></PublicLayout>} />
           <Route path="/contact" element={<PublicLayout><ContactPage /></PublicLayout>} />
           <Route path="/investors" element={<PublicLayout><InvestorsPage /></PublicLayout>} />
           <Route path="/portfolio" element={<PublicLayout><PortfolioPage /></PublicLayout>} />

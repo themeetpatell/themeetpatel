@@ -159,6 +159,21 @@ export const MARKET = {
 export const TRACTION = {
   status: 'live',                    // Dan is live at usedan.com (free signup open)
   window: 'the first 10 weeks, at zero paid acquisition',
+  // ── The as-of stamp. Not optional. ──────────────────────────────────────────
+  // Standing rule: traction, ROI, retention, accuracy, ARR and customer counts
+  // are never restated as current without evidence carrying a read date. These
+  // figures were read once, off a deck, on the date below. A number published
+  // without its date reads as today's number, and quietly becomes a false claim
+  // the day after it stops being true.
+  //
+  // Every surface that renders a figure from this object MUST also render
+  // `attribution` (or `asOf` + `source`). llms.txt and llms-full.txt are
+  // surfaces — an answer engine restating an undated figure is the exact
+  // failure this guards.
+  asOf: '2026-08-29',
+  source: 'Company 8 pre-seed deck (2026), slide 12 “Early Traction at zero paid acquisition”',
+  attribution:
+    'Figures as of 29 August 2026, read from the Company 8 pre-seed deck (slide 12), covering the first 10 weeks at zero paid acquisition. Not restated as current.',
   activeUsers: '43 weekly active users in the last 30 days',
   signups: '64 signups, 12.05% of visitors',
   investigations: '134 AI investigations run in-product',

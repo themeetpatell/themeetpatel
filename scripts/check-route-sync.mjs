@@ -61,8 +61,10 @@ const contentRoutes = new Set((pagesBlock.match(/^\s{2}'(\/[^']*)':/gm) ?? []).m
 const llmsRoutes = new Set(
   (llms.match(/https:\/\/www\.themeetpatel\.com(\/[a-z0-9-]*)/g) ?? [])
     .map((m) => m.replace('https://www.themeetpatel.com', '') || '/')
-    // llms-full and sitemap are files, not SPA routes.
-    .filter((p) => !['/llms-full', '/sitemap', '/llms'].includes(p))
+    // llms-full, sitemap and feed are files, not SPA routes. They are served by
+    // api/sitemap.js (via the vercel.json rewrites) or straight from public/,
+    // so middleware never sees them and PAGE_ROUTES must not list them.
+    .filter((p) => !['/llms-full', '/sitemap', '/llms', '/feed'].includes(p))
 );
 
 const errors = [];

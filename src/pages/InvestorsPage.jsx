@@ -417,6 +417,9 @@ const InvestorsPage = () => {
               Everything below is from {TRACTION.window}. No paid growth, no sales motion, no
               marketing, no launch.
             </Prose>
+            <p className="mt-4 text-sm" style={{ color: C.faint }}>
+              {TRACTION.attribution}
+            </p>
 
             <dl className="mt-12 grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-3" style={{ background: C.hair }}>
               {tractionStats.map(({ value, label }) => (

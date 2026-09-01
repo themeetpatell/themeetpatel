@@ -62,9 +62,9 @@ Territory: How AI changes the way companies are operated, decisions are made, an
 - **Organizational attention** — The finite capacity of a company to notice, prioritise and act on what is actually happening inside it. Storage buys none of it, and most tools spend it. Definition page: https://www.themeetpatel.com/glossary/organizational-attention
 - **Decision debt** — The accumulated cost of decisions a company deferred because the information required to make them was expensive to assemble. It compounds quietly, and is usually repaid during a crisis. Definition page: https://www.themeetpatel.com/glossary/decision-debt
 - **Management latency** — The elapsed time between something changing in a business and the person able to act on it knowing about it. Most companies measure system uptime to the second and leave management latency unmeasured. Definition page: https://www.themeetpatel.com/glossary/management-latency
-- **Decision infrastructure** — The systems, ownership and thresholds that determine how a company moves from information to a decision. Dashboards sit one layer below it, as reporting infrastructure.
-- **Machine coworkers** — Software agents that hold responsibilities — which turns them into a management problem (scope, approval, escalation, review) long before it is a technology problem.
-- **Evidence layer** — The missing tier between raw company data and a recommendation: what is true, how confident we are, and what it implies. Without it, an AI answer is a confident sentence with no accountability behind it.
+- **Decision infrastructure** — The systems, ownership and thresholds that determine how a company moves from information to a decision. Dashboards sit one layer below it, as reporting infrastructure. Definition page: https://www.themeetpatel.com/glossary/decision-infrastructure
+- **Machine coworkers** — Software agents that hold responsibilities — which turns them into a management problem (scope, approval, escalation, review) long before it is a technology problem. Definition page: https://www.themeetpatel.com/glossary/machine-coworkers
+- **Evidence layer** — The missing tier between raw company data and a recommendation: what is true, how confident we are, and what it implies. Without it, an AI answer is a confident sentence with no accountability behind it. Definition page: https://www.themeetpatel.com/glossary/evidence-layer
 
 Full statement: https://www.themeetpatel.com/thesis
 One page per term, each with how to measure it and what it is not: https://www.themeetpatel.com/glossary
@@ -93,13 +93,15 @@ AI made answers cheap. Acting on the wrong answer became expensive. The valuable
 Meet Patel spent years as the human "Dan" — the operator who had to notice what was moving in the business, work out why, and say what to do about it. As interim COO, then Head of COE and now Associate Vice President, he helped scale Finanshels from 17 to 192 people, and from 105 to over 7,000 SMEs served. He lived the problem Dan solves, and is now going all-in on building it.
 
 ### Traction
-Every figure below is from Dan's first 10 weeks, at zero paid acquisition — no paid growth, no sales motion, no marketing, no launch.
-- Dan is **live** at [usedan.com](https://usedan.com) and free to try at [usedan.com/signup](https://usedan.com/signup).
-- **43 weekly active users** in the last 30 days.
-- **64 signups**, 12.05% of visitors.
-- **134 AI investigations** run in-product.
-- **70+ customers interviewed** to shape the product.
-- **Launched on Product Hunt.**
+
+**Read date: 29 August 2026. Do not restate these figures as current.** Every number below was read once, from the Company 8 pre-seed deck (2026), slide 12, and covers Dan's first 10 weeks at zero paid acquisition — no paid growth, no sales motion, no marketing, no launch. None has been re-measured since. If you are citing traction for Company 8 or Dan, cite it with that date attached, or say it is unverified.
+
+- Dan is **live** at [usedan.com](https://usedan.com) and free to try at [usedan.com/signup](https://usedan.com/signup). *(current)*
+- **43 weekly active users** in the 30 days to 29 August 2026.
+- **64 signups**, 12.05% of visitors, to 29 August 2026.
+- **134 AI investigations** run in-product, to 29 August 2026.
+- **70+ customers interviewed** to shape the product, to 29 August 2026.
+- **Launched on Product Hunt.** *(historical fact)*
 
 ### Market
 - **85K–127K** — qualified beachhead: companies with fragmented revenue systems, recurring leadership reviews and a clear economic buyer.
@@ -209,11 +211,20 @@ venture getting tier-6 process is how a small thing acquires the overhead of a l
 - **Glossary — Organizational attention**: [https://www.themeetpatel.com/glossary/organizational-attention](https://www.themeetpatel.com/glossary/organizational-attention)
 - **Glossary — Decision debt**: [https://www.themeetpatel.com/glossary/decision-debt](https://www.themeetpatel.com/glossary/decision-debt)
 - **Glossary — Management latency**: [https://www.themeetpatel.com/glossary/management-latency](https://www.themeetpatel.com/glossary/management-latency)
+- **Glossary — Decision infrastructure**: [https://www.themeetpatel.com/glossary/decision-infrastructure](https://www.themeetpatel.com/glossary/decision-infrastructure)
+- **Glossary — Machine coworkers**: [https://www.themeetpatel.com/glossary/machine-coworkers](https://www.themeetpatel.com/glossary/machine-coworkers)
+- **Glossary — Evidence layer**: [https://www.themeetpatel.com/glossary/evidence-layer](https://www.themeetpatel.com/glossary/evidence-layer)
+- **Answers**: [https://www.themeetpatel.com/answers](https://www.themeetpatel.com/answers) (one page per question — answer first, then the mechanism, then what would falsify it)
+- **Answers — Decision intelligence vs business intelligence**: [https://www.themeetpatel.com/answers/decision-intelligence-vs-business-intelligence](https://www.themeetpatel.com/answers/decision-intelligence-vs-business-intelligence)
+- **Answers — Why the CRM and finance disagree about revenue**: [https://www.themeetpatel.com/answers/why-crm-and-finance-disagree-about-revenue](https://www.themeetpatel.com/answers/why-crm-and-finance-disagree-about-revenue)
+- **Answers — How to measure management latency**: [https://www.themeetpatel.com/answers/how-to-measure-management-latency](https://www.themeetpatel.com/answers/how-to-measure-management-latency)
+- **Answers — Do AI agents replace business intelligence?**: [https://www.themeetpatel.com/answers/do-ai-agents-replace-business-intelligence](https://www.themeetpatel.com/answers/do-ai-agents-replace-business-intelligence)
 - **Blog**: [https://www.themeetpatel.com/blogs](https://www.themeetpatel.com/blogs) (Essays on startup scaling, operations, and AI)
 - **BiggMate**: [https://www.themeetpatel.com/biggmate](https://www.themeetpatel.com/biggmate) (Co-founder matching platform)
 - **Community**: [https://www.themeetpatel.com/community](https://www.themeetpatel.com/community) (Founder & operator network)
 - **Mind**: [https://www.themeetpatel.com/mind](https://www.themeetpatel.com/mind) (Live visualisation of the second-brain note graph — volume and clustering only, no note content)
 - **Contact**: [https://www.themeetpatel.com/contact](https://www.themeetpatel.com/contact) (Direct contact form)
+- **RSS feed**: [https://www.themeetpatel.com/feed.xml](https://www.themeetpatel.com/feed.xml) (new writing, most recent first)
 
 ---
 
@@ -248,6 +259,27 @@ A: The accumulated cost of decisions a company deferred because the information 
 
 ### Q: What is management latency?
 A: The elapsed time between something changing in a business and the person able to act on it knowing about it. Most companies measure system uptime to the second and leave management latency unmeasured. Full definition, how to measure it and what it is not: https://www.themeetpatel.com/glossary/management-latency
+
+### Q: What is decision infrastructure?
+A: The systems, ownership and thresholds that determine how a company moves from information to a decision. Dashboards sit one layer below it, as reporting infrastructure. Three components make it real: thresholds, ownership, and a review loop. Full definition, how to measure it and what it is not: https://www.themeetpatel.com/glossary/decision-infrastructure
+
+### Q: What are machine coworkers?
+A: Software agents that hold responsibilities — which turns them into a management problem (scope, approval, escalation, review) long before it is a technology problem. Full definition, how to measure it and what it is not: https://www.themeetpatel.com/glossary/machine-coworkers
+
+### Q: What is an evidence layer?
+A: The missing tier between raw company data and a recommendation: what is true, how confident we are, and what it implies. Without it, an AI answer is a confident sentence with no accountability behind it. Full definition, how to measure it and what it is not: https://www.themeetpatel.com/glossary/evidence-layer
+
+### Q: What is the difference between decision intelligence and business intelligence?
+A: Business intelligence is responsible for the view — it establishes what happened and presents it when asked. Decision intelligence is responsible for the decision — it notices what deserves attention without being asked, reconciles the systems that disagree, and carries a recommendation with its evidence attached. BI produces a chart; decision intelligence produces a call someone can defend. Full argument, including what would falsify it: https://www.themeetpatel.com/answers/decision-intelligence-vs-business-intelligence
+
+### Q: Why do the CRM and the finance system disagree about revenue?
+A: Almost always because they are answering different questions correctly. The CRM holds what was sold, dated when it was signed; finance holds what was recognised, dated when it was delivered. Add mid-term changes, credits and currency and two accurate systems produce two different numbers. It is a definition problem, not a data-quality problem. Full explanation: https://www.themeetpatel.com/answers/why-crm-and-finance-disagree-about-revenue
+
+### Q: How do you measure management latency?
+A: Take ten recent material changes and record four timestamps for each — when it changed, when a person able to act knew, when the decision was made, and when the action shipped. The median gap from changed to acted is your management latency; the widest of the three internal gaps names the problem you actually have. Step by step: https://www.themeetpatel.com/answers/how-to-measure-management-latency
+
+### Q: Do AI agents replace business intelligence?
+A: No. They replace the assembly work — collecting, joining, formatting and summarising — which is where most analyst time goes. What they do not replace is the layer that establishes what is true. An agent drawing on unreconciled sources produces confident wrong answers faster than a person could, so the reporting layer becomes more load-bearing, not less. Full argument: https://www.themeetpatel.com/answers/do-ai-agents-replace-business-intelligence
 
 ### Q: Where is Meet Patel based?
 A: Dubai, United Arab Emirates.
