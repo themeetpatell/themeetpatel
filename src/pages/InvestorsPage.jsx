@@ -285,7 +285,7 @@ const InvestorsPage = () => {
           </Slug>
 
           <h1
-            className="mt-12 font-bold"
+            className="mt-12 font-semibold"
             style={{
               fontSize: 'clamp(2.75rem, 8.5vw, 6.25rem)',
               lineHeight: 0.96,
@@ -425,7 +425,7 @@ const InvestorsPage = () => {
               {tractionStats.map(({ value, label }) => (
                 <div key={`${value}-${label}`} className="px-6 py-8" style={{ background: C.bg }}>
                   <dt
-                    className="text-4xl font-bold tabular-nums"
+                    className="text-4xl font-semibold tabular-nums"
                     style={{ color: C.heading, letterSpacing: '-0.03em', lineHeight: 1 }}
                   >
                     {value}
@@ -451,7 +451,7 @@ const InvestorsPage = () => {
             {marketTiles.map(({ value, label, detail }) => (
               <div key={label} className="px-6 py-8" style={{ background: C.bg }}>
                 <div
-                  className="text-3xl font-bold tabular-nums"
+                  className="text-3xl font-semibold tabular-nums"
                   style={{ color: C.violetLight, letterSpacing: '-0.03em', lineHeight: 1 }}
                 >
                   {value}
@@ -532,7 +532,7 @@ const InvestorsPage = () => {
           <div className="relative">
             <Slug tone={C.gold}>{RAISE.isOpen ? 'The round is open' : 'Building toward the raise'}</Slug>
             <p
-              className="mt-8 max-w-[24ch] font-bold"
+              className="mt-8 max-w-[24ch] font-semibold"
               style={{
                 fontSize: 'clamp(1.75rem, 3.6vw, 2.75rem)',
                 lineHeight: 1.1,

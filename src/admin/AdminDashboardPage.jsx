@@ -44,7 +44,7 @@ function StatCard({ icon: Icon, label, value, color }) {
         <Icon size={18} color={color} />
       </div>
       <div>
-        <div style={{ fontSize: 24, fontWeight: 800, color: C.primary, lineHeight: 1 }}>{value}</div>
+        <div style={{ fontSize: 24, fontWeight: 700, color: C.primary, lineHeight: 1 }}>{value}</div>
         <div style={{ fontSize: 12, color: C.muted, marginTop: 4 }}>{label}</div>
       </div>
     </div>
@@ -87,7 +87,7 @@ export default function AdminDashboardPage() {
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32, flexWrap: 'wrap', gap: 12 }}>
         <div>
-          <h1 style={{ fontSize: 22, fontWeight: 800, margin: '0 0 4px', letterSpacing: '-0.02em' }}>Dashboard</h1>
+          <h1 style={{ fontSize: 22, fontWeight: 700, margin: '0 0 4px', letterSpacing: '-0.02em' }}>Dashboard</h1>
           <p style={{ fontSize: 13, color: C.muted, margin: 0 }}>Welcome back. Here's your content overview.</p>
         </div>
         <Link

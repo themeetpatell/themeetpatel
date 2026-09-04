@@ -334,7 +334,7 @@ const BiggMatePage = () => {
               {/* Headline */}
               <motion.h1 variants={fadeUp} style={{
                 fontSize: 'clamp(52px, 8vw, 96px)',
-                fontWeight: 800,
+                fontWeight: 600,
                 letterSpacing: '-0.045em',
                 lineHeight: 0.92,
                 margin: '0 0 28px',
@@ -466,7 +466,7 @@ const BiggMatePage = () => {
               </span>
               <h2 style={{
                 fontSize: 'clamp(32px, 4vw, 52px)',
-                fontWeight: 800,
+                fontWeight: 600,
                 letterSpacing: '-0.03em',
                 lineHeight: 1.1,
                 margin: '12px 0 16px',
@@ -505,7 +505,7 @@ const BiggMatePage = () => {
                       top: '-10px',
                       right: '20px',
                       fontSize: '80px',
-                      fontWeight: 900,
+                      fontWeight: 600,
                       color: 'rgba(255,255,255,0.03)',
                       lineHeight: 1,
                       userSelect: 'none',
@@ -578,7 +578,7 @@ const BiggMatePage = () => {
               }}>How It Works</span>
               <h2 style={{
                 fontSize: 'clamp(32px, 4vw, 52px)',
-                fontWeight: 800,
+                fontWeight: 600,
                 letterSpacing: '-0.03em',
                 lineHeight: 1.1,
                 margin: '12px 0 0',
@@ -691,7 +691,7 @@ const BiggMatePage = () => {
               }}>Features</span>
               <h2 style={{
                 fontSize: 'clamp(32px, 4vw, 52px)',
-                fontWeight: 800,
+                fontWeight: 600,
                 letterSpacing: '-0.03em',
                 lineHeight: 1.1,
                 margin: '12px 0 0',
@@ -804,7 +804,7 @@ const BiggMatePage = () => {
                 pointerEvents: 'none',
               }} />
               <div style={{ position: 'relative' }}>
-                <div style={{ fontSize: '40px', fontWeight: 800, color: C.violet, letterSpacing: '-0.04em', lineHeight: 1 }}>547+</div>
+                <div style={{ fontSize: '40px', fontWeight: 600, color: C.violet, letterSpacing: '-0.04em', lineHeight: 1 }}>547+</div>
                 <div style={{ fontSize: '13px', color: C.muted, marginTop: '6px' }}>founders already waiting</div>
               </div>
               <div style={{ width: '1px', background: C.borderSub, position: 'relative' }} />
@@ -824,7 +824,7 @@ const BiggMatePage = () => {
               </div>
               <div style={{ width: '1px', background: C.borderSub, position: 'relative' }} />
               <div style={{ position: 'relative' }}>
-                <div style={{ fontSize: '40px', fontWeight: 800, color: C.violet, letterSpacing: '-0.04em', lineHeight: 1 }}>10+</div>
+                <div style={{ fontSize: '40px', fontWeight: 600, color: C.violet, letterSpacing: '-0.04em', lineHeight: 1 }}>10+</div>
                 <div style={{ fontSize: '13px', color: C.muted, marginTop: '6px' }}>startups already forming</div>
               </div>
             </motion.div>
@@ -837,7 +837,7 @@ const BiggMatePage = () => {
               }}>Beta Voices</span>
               <h2 style={{
                 fontSize: 'clamp(28px, 3.5vw, 44px)',
-                fontWeight: 800,
+                fontWeight: 600,
                 letterSpacing: '-0.03em',
                 lineHeight: 1.1,
                 margin: '12px 0 40px',
@@ -948,7 +948,7 @@ const BiggMatePage = () => {
 
                 <h2 style={{
                   fontSize: 'clamp(32px, 5vw, 56px)',
-                  fontWeight: 800,
+                  fontWeight: 600,
                   letterSpacing: '-0.04em',
                   lineHeight: 1.05,
                   margin: '0 0 16px',

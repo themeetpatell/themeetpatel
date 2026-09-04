@@ -308,7 +308,7 @@ const BlogPage = () => {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.06 }}
-              style={{ fontSize: 'clamp(64px, 10vw, 120px)', fontWeight: 900, letterSpacing: '-0.045em', lineHeight: 0.9, margin: '0 0 32px', color: C.primary }}
+              style={{ fontSize: 'clamp(64px, 10vw, 120px)', fontWeight: 600, letterSpacing: '-0.045em', lineHeight: 0.9, margin: '0 0 32px', color: C.primary }}
             >
               <span style={{ position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0 }}>
                 Meet Patel's Blog — Startups, Founders &amp; Entrepreneurship.{' '}
@@ -357,7 +357,7 @@ const BlogPage = () => {
                   <div
                     style={{
                       fontSize: 'clamp(15px, 4.5vw, 22px)',
-                      fontWeight: 800,
+                      fontWeight: 700,
                       color: C.violet,
                       lineHeight: 1,
                       whiteSpace: 'nowrap',

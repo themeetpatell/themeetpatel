@@ -568,7 +568,7 @@ const PortfolioPage = () => {
                 {/* Heading */}
                 <h1 style={{
                   fontSize: 'clamp(40px, 6vw, 76px)',
-                  fontWeight: 800,
+                  fontWeight: 600,
                   letterSpacing: '-0.04em',
                   lineHeight: 0.98,
                   margin: '0 0 20px',
@@ -591,7 +591,7 @@ const PortfolioPage = () => {
                 {/* Styled subline — copy from pageVoice.PORTFOLIO */}
                 <p style={{
                   fontSize: 'clamp(24px, 3.5vw, 40px)',
-                  fontWeight: 800,
+                  fontWeight: 600,
                   letterSpacing: '-0.03em',
                   lineHeight: 1,
                   margin: '0 0 28px',
@@ -747,7 +747,7 @@ const PortfolioPage = () => {
           {/* Section heading */}
           <h2 style={{
             fontSize: 'clamp(26px, 3vw, 36px)',
-            fontWeight: 800,
+            fontWeight: 600,
             letterSpacing: '-0.03em',
             lineHeight: 1.1,
             margin: '0 0 8px',

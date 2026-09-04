@@ -171,7 +171,7 @@ export default function CommunityPage() {
             </motion.div>
 
             <motion.h1 variants={fadeUp} initial="hidden" animate="visible" custom={1}
-              style={{ fontSize: 'clamp(42px, 7vw, 80px)', fontWeight: 800, lineHeight: 1.08, margin: '0 0 24px', letterSpacing: '-0.03em', color: COLORS.textPrimary }}>
+              style={{ fontSize: 'clamp(42px, 7vw, 80px)', fontWeight: 600, lineHeight: 1.08, margin: '0 0 24px', letterSpacing: '-0.03em', color: COLORS.textPrimary }}>
               Join the{' '}
               <span style={{ color: COLORS.gold }}>StartupOS</span>{' '}
               Community
@@ -216,7 +216,7 @@ export default function CommunityPage() {
         <section style={{ maxWidth: 1120, margin: '0 auto', padding: '0 24px 100px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}
             style={{ textAlign: 'center', marginBottom: 56 }}>
-            <h2 style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: COLORS.textPrimary, margin: '0 0 12px', letterSpacing: '-0.02em' }}>
+            <h2 style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: COLORS.textPrimary, margin: '0 0 12px', letterSpacing: '-0.02em' }}>
               {COMMUNITY.benefitsHeading}
             </h2>
             <p style={{ fontSize: 16, color: COLORS.textSecondary, margin: 0 }}>
@@ -264,7 +264,7 @@ export default function CommunityPage() {
         <section style={{ maxWidth: 760, margin: '0 auto', padding: '90px 24px 20px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}
             style={{ textAlign: 'center', marginBottom: 40 }}>
-            <h2 style={{ fontSize: 'clamp(26px, 4vw, 38px)', fontWeight: 700, color: COLORS.textPrimary, margin: '0 0 10px', letterSpacing: '-0.02em' }}>
+            <h2 style={{ fontSize: 'clamp(26px, 4vw, 38px)', fontWeight: 600, color: COLORS.textPrimary, margin: '0 0 10px', letterSpacing: '-0.02em' }}>
               Frequently asked questions
             </h2>
             <p style={{ fontSize: 15, color: COLORS.textSecondary, margin: 0 }}>
@@ -324,7 +324,7 @@ export default function CommunityPage() {
               <WhatsAppIcon />
             </div>
 
-            <h2 style={{ fontSize: 32, fontWeight: 800, color: COLORS.textPrimary, margin: '0 0 12px', letterSpacing: '-0.02em' }}>
+            <h2 style={{ fontSize: 32, fontWeight: 600, color: COLORS.textPrimary, margin: '0 0 12px', letterSpacing: '-0.02em' }}>
               {COMMUNITY.applyHeading}
             </h2>
             <p style={{ fontSize: 15, color: COLORS.textSecondary, margin: '0 0 36px', lineHeight: 1.6 }}>
@@ -390,7 +390,7 @@ export default function CommunityPage() {
 
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 28 }}>
                   <div>
-                    <h2 style={{ fontSize: 22, fontWeight: 800, color: COLORS.textPrimary, margin: '0 0 4px', letterSpacing: '-0.02em' }}>
+                    <h2 style={{ fontSize: 22, fontWeight: 700, color: COLORS.textPrimary, margin: '0 0 4px', letterSpacing: '-0.02em' }}>
                       {COMMUNITY.applyHeading}
                     </h2>
                     <p style={{ fontSize: 13, color: COLORS.textMuted, margin: 0 }}>{COMMUNITY.formSub}</p>

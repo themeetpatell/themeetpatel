@@ -27,7 +27,7 @@ const FollowMyJourney = () => {
           <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8b5cf6' }}>
             Connect
           </span>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.025em', color: '#f5f5f7', marginTop: '10px' }}>
+          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 600, letterSpacing: '-0.025em', color: '#f5f5f7', marginTop: '10px' }}>
             Follow My Journey
           </h2>
           <p style={{ color: '#5a5a6e', fontSize: '1rem', marginTop: '8px' }}>

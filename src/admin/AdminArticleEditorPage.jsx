@@ -270,7 +270,7 @@ export default function AdminArticleEditorPage() {
             onChange={e => setForm(f => ({ ...f, title: e.target.value }))}
             placeholder="Article title…"
             style={{
-              width: '100%', fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 800,
+              width: '100%', fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 600,
               color: C.primary, background: 'transparent', border: 'none', outline: 'none',
               marginBottom: 12, letterSpacing: '-0.03em', fontFamily: 'inherit',
               borderBottom: `1px solid ${C.border}`, paddingBottom: 12,

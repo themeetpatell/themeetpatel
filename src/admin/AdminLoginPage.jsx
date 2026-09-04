@@ -92,7 +92,7 @@ export default function AdminLoginPage() {
           }}>
             <Lock size={24} color={C.violet} />
           </div>
-          <h1 style={{ fontSize: 22, fontWeight: 800, color: C.primary, margin: '0 0 6px', letterSpacing: '-0.02em' }}>
+          <h1 style={{ fontSize: 22, fontWeight: 700, color: C.primary, margin: '0 0 6px', letterSpacing: '-0.02em' }}>
             Admin Login
           </h1>
           <p style={{ fontSize: 13, color: C.muted, margin: 0 }}>themeetpatel.com CMS</p>

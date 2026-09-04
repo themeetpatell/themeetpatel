@@ -326,7 +326,7 @@ const AboutPage = () => {
                 transition={{ duration: 0.55, delay: 0.08 }}
               >
                 <Label>Meet Patel</Label>
-                <h1 style={{ fontSize: 'clamp(4.2rem, 10vw, 8.6rem)', fontWeight: 900, lineHeight: 0.9, letterSpacing: '-0.055em', color: T.text, marginTop: '14px' }}>
+                <h1 style={{ fontSize: 'clamp(4.2rem, 10vw, 8.6rem)', fontWeight: 600, lineHeight: 0.9, letterSpacing: '-0.055em', color: T.text, marginTop: '14px' }}>
                   <span style={{ display: 'block' }}>MEET</span>
                   <span style={{ display: 'block', color: T.violet }}>PATEL.</span>
                 </h1>
@@ -390,7 +390,7 @@ const AboutPage = () => {
               >
                 {heroStats.map((s) => (
                   <div key={s.label}>
-                    <div style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', fontWeight: 900, color: T.text, lineHeight: 1 }}>
+                    <div style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', fontWeight: 600, color: T.text, lineHeight: 1 }}>
                       {s.value}
                     </div>
                     <div style={{ fontSize: '0.8rem', color: T.muted, marginTop: '8px' }}>
@@ -564,7 +564,7 @@ const AboutPage = () => {
           <h2
             style={{
               fontSize: 'clamp(1.6rem, 3.4vw, 2.4rem)',
-              fontWeight: 800,
+              fontWeight: 600,
               letterSpacing: '-0.025em',
               color: T.text,
               margin: '14px 0 0',
@@ -588,7 +588,7 @@ const AboutPage = () => {
                   borderTop: `1px solid rgba(255,255,255,0.06)`,
                 }}
               >
-                <span style={{ color: T.violet, fontWeight: 800, fontSize: 15, minWidth: 34 }}>
+                <span style={{ color: T.violet, fontWeight: 700, fontSize: 15, minWidth: 34 }}>
                   {pillar.weight}%
                 </span>
                 <div>
@@ -659,7 +659,7 @@ const AboutPage = () => {
               <div className="space-y-4">
                 <div className="mb-10">
                   <Label>Career</Label>
-                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>{ABOUT.sectionTitles.experience}</h2>
+                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 600, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>{ABOUT.sectionTitles.experience}</h2>
                 </div>
 
                 {/* Experience cards */}
@@ -686,7 +686,7 @@ const AboutPage = () => {
                               className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
                               style={{ background: 'rgba(155,139,255,0.1)', border: '1px solid rgba(155,139,255,0.2)' }}
                             >
-                              <span style={{ fontSize: '0.75rem', fontWeight: 900, color: T.violet }}>
+                              <span style={{ fontSize: '0.75rem', fontWeight: 700, color: T.violet }}>
                                 {String(i + 1).padStart(2, '0')}
                               </span>
                             </div>
@@ -776,7 +776,7 @@ const AboutPage = () => {
               <div>
                 <div className="mb-10">
                   <Label>Recognition</Label>
-                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>{ABOUT.sectionTitles.awards}</h2>
+                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 600, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>{ABOUT.sectionTitles.awards}</h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {personalInfo.achievements.map((a, i) => (
@@ -810,7 +810,7 @@ const AboutPage = () => {
               <div>
                 <div className="mb-10">
                   <Label>Writing</Label>
-                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>{ABOUT.sectionTitles.published}</h2>
+                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 600, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>{ABOUT.sectionTitles.published}</h2>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   {personalInfo.books.map((book, i) => (
@@ -870,7 +870,7 @@ const AboutPage = () => {
               <div>
                 <div className="mb-10">
                   <Label>Talks</Label>
-                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>{ABOUT.sectionTitles.speaking}</h2>
+                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 600, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>{ABOUT.sectionTitles.speaking}</h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {personalInfo.speaking.map((s, i) => (
@@ -907,7 +907,7 @@ const AboutPage = () => {
               <div>
                 <div className="mb-10">
                   <Label>Learning</Label>
-                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>Certifications</h2>
+                  <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 600, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>Certifications</h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                   {personalInfo.certifications.map((cert, i) => (
@@ -945,7 +945,7 @@ const AboutPage = () => {
             <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(155,139,255,0.08) 0%, transparent 70%)' }} />
             <div className="relative z-10">
               <Label>Let's Connect</Label>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 800, color: T.text, marginTop: '10px', marginBottom: '12px', letterSpacing: '-0.02em' }}>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 600, color: T.text, marginTop: '10px', marginBottom: '12px', letterSpacing: '-0.02em' }}>
                 {ABOUT.closing.h2}
               </h2>
               <p style={{ color: T.sub, fontSize: '1rem', marginBottom: '28px', maxWidth: '420px', margin: '0 auto 28px' }}>

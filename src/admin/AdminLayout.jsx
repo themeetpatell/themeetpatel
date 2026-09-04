@@ -57,7 +57,7 @@ function SidebarContent({ onClose }) {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <div>
-          <div style={{ fontSize: 15, fontWeight: 800, color: C.primary, letterSpacing: '-0.02em' }}>
+          <div style={{ fontSize: 15, fontWeight: 700, color: C.primary, letterSpacing: '-0.02em' }}>
             Meet Patel
           </div>
           <div style={{ fontSize: 10, color: C.violet, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: 2 }}>

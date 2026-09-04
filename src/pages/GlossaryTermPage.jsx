@@ -54,7 +54,7 @@ const Section = ({ eyebrow, title, children }) => (
       <h2
         style={{
           fontSize: 'clamp(1.4rem, 3vw, 1.8rem)',
-          fontWeight: 800,
+          fontWeight: 700,
           color: C.heading,
           margin: '14px 0 18px',
           letterSpacing: '-0.02em',
@@ -148,7 +148,7 @@ const GlossaryTermPage = () => {
             transition={{ duration: 0.55 }}
             style={{
               fontSize: 'clamp(2rem, 5vw, 3rem)',
-              fontWeight: 800,
+              fontWeight: 600,
               lineHeight: 1.12,
               letterSpacing: '-0.03em',
               color: C.heading,

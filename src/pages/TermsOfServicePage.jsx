@@ -100,7 +100,7 @@ const TermsOfServicePage = () => (
               </div>
               <div>
                 <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8b5cf6', display: 'block', marginBottom: 4 }}>Legal</span>
-                <h1 style={{ fontSize: 'clamp(28px, 5vw, 44px)', fontWeight: 800, letterSpacing: '-0.03em', margin: 0, color: C.primary }}>Terms of Service</h1>
+                <h1 style={{ fontSize: 'clamp(28px, 5vw, 44px)', fontWeight: 600, letterSpacing: '-0.03em', margin: 0, color: C.primary }}>Terms of Service</h1>
               </div>
             </div>
             <p style={{ fontSize: 16, color: C.secondary, lineHeight: 1.65, maxWidth: 520, margin: '0 0 12px' }}>

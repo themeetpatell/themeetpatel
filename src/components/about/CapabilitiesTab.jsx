@@ -65,7 +65,7 @@ const CapabilitiesTab = ({ T, card, mono }) => {
         <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: T.violet }}>
           Capabilities
         </span>
-        <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>
+        <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 600, letterSpacing: '-0.025em', color: T.text, marginTop: '8px' }}>
           What I do — and the figure behind it
         </h2>
         <p style={{ fontSize: '1rem', color: T.sub, lineHeight: 1.7, marginTop: '14px', maxWidth: '640px' }}>

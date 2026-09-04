@@ -100,7 +100,7 @@ const GlossaryPage = () => {
             transition={{ duration: 0.55 }}
             style={{
               fontSize: 'clamp(2.1rem, 5vw, 3.2rem)',
-              fontWeight: 800,
+              fontWeight: 600,
               lineHeight: 1.12,
               letterSpacing: '-0.03em',
               color: C.heading,

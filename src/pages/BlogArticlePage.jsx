@@ -452,7 +452,7 @@ const BlogArticlePage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              style={{ fontSize: 'clamp(28px, 5vw, 52px)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.15, margin: '0 0 20px', color: C.primary }}
+              style={{ fontSize: 'clamp(28px, 5vw, 52px)', fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.15, margin: '0 0 20px', color: C.primary }}
             >
               {article.title}
             </motion.h1>
@@ -810,7 +810,7 @@ const BlogArticlePage = () => {
           <section style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px 80px' }}>
             <div style={{ marginBottom: 32 }}>
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: C.violet }}>Continue Reading</span>
-              <h2 style={{ fontSize: 'clamp(22px, 3vw, 34px)', fontWeight: 700, color: C.primary, margin: '8px 0 0', letterSpacing: '-0.02em' }}>
+              <h2 style={{ fontSize: 'clamp(22px, 3vw, 34px)', fontWeight: 600, color: C.primary, margin: '8px 0 0', letterSpacing: '-0.02em' }}>
                 Related Articles
               </h2>
             </div>
@@ -879,7 +879,7 @@ const BlogArticlePage = () => {
             <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.12), transparent 65%)', pointerEvents: 'none' }} />
             <div style={{ position: 'absolute', top: 0, left: '15%', right: '15%', height: 1, background: 'linear-gradient(90deg, transparent, rgba(139,92,246,0.5), transparent)' }} />
             <div style={{ position: 'relative' }}>
-              <h2 style={{ fontSize: 'clamp(22px, 4vw, 34px)', fontWeight: 800, color: C.primary, margin: '0 0 12px', letterSpacing: '-0.03em' }}>
+              <h2 style={{ fontSize: 'clamp(22px, 4vw, 34px)', fontWeight: 600, color: C.primary, margin: '0 0 12px', letterSpacing: '-0.03em' }}>
                 Enjoyed this article?
               </h2>
               <p style={{ fontSize: 16, color: C.secondary, lineHeight: 1.65, margin: '0 0 28px', maxWidth: 420, marginLeft: 'auto', marginRight: 'auto' }}>

@@ -92,7 +92,7 @@ export default function AdminMediaPage() {
     <div style={{ padding: 'clamp(20px, 3vw, 36px)', color: C.primary, background: C.surface, minHeight: '100vh' }}>
       <Toaster theme="dark" position="top-right" />
 
-      <h1 style={{ fontSize: 20, fontWeight: 800, margin: '0 0 24px', letterSpacing: '-0.02em' }}>Media Library</h1>
+      <h1 style={{ fontSize: 20, fontWeight: 700, margin: '0 0 24px', letterSpacing: '-0.02em' }}>Media Library</h1>
 
       {/* Upload zone */}
       <div

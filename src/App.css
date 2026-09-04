@@ -232,7 +232,7 @@ pre {
 
 .luxury-display {
   font-size: clamp(4.5rem, 11vw, 10rem);
-  font-weight: 900;
+  font-weight: 600;
   line-height: 0.92;
   letter-spacing: -0.04em;
   color: var(--text-primary);
@@ -241,7 +241,7 @@ pre {
 
 .luxury-heading {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.05;
   letter-spacing: -0.025em;
   color: var(--text-primary);
@@ -533,7 +533,7 @@ pre {
 .hero-name-line {
   display: block;
   font-size: clamp(4rem, 10vw, 9.5rem);
-  font-weight: 900;
+  font-weight: 600;
   line-height: 0.9;
   letter-spacing: -0.04em;
   color: var(--text-primary);
@@ -646,7 +646,7 @@ pre {
 
 .apple-heading-1 {
   font-size: clamp(3rem, 8vw, 8rem);
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1.0;
   letter-spacing: -0.03em;
   color: var(--text-primary);
@@ -655,7 +655,7 @@ pre {
 
 .apple-heading-2 {
   font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--text-primary);
@@ -684,7 +684,7 @@ pre {
 
 .ultra-heading {
   font-size: clamp(2rem, 8vw, 6rem);
-  font-weight: 900;
+  font-weight: 600;
   line-height: 0.95;
   letter-spacing: -0.03em;
   color: var(--text-primary);

@@ -60,7 +60,7 @@ const Section = ({ eyebrow, title, children }) => (
       <h2
         style={{
           fontSize: 'clamp(1.4rem, 3vw, 1.8rem)',
-          fontWeight: 800,
+          fontWeight: 700,
           color: C.heading,
           margin: '14px 0 18px',
           letterSpacing: '-0.02em',
@@ -95,7 +95,7 @@ const Contrast = ({ contrast }) => (
         <h3
           style={{
             fontSize: 17,
-            fontWeight: 800,
+            fontWeight: 700,
             color: i === 1 ? C.violetLight : C.heading,
             margin: '0 0 14px',
             letterSpacing: '-0.01em',
@@ -258,7 +258,7 @@ const AnswerPage = () => {
             transition={{ duration: 0.55 }}
             style={{
               fontSize: 'clamp(1.9rem, 4.4vw, 2.7rem)',
-              fontWeight: 800,
+              fontWeight: 600,
               lineHeight: 1.14,
               letterSpacing: '-0.03em',
               color: C.heading,
@@ -322,7 +322,7 @@ const AnswerPage = () => {
                     background: 'rgba(139,92,246,0.14)',
                     color: C.violetLight,
                     fontSize: 14,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',

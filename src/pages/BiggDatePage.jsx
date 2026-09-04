@@ -289,7 +289,7 @@ const BiggDatePage = () => {
                 fontSize: 'clamp(46px, 9vw, 92px)',
                 letterSpacing: '-0.045em',
                 margin: '0 0 20px',
-                fontWeight: 800,
+                fontWeight: 600,
                 lineHeight: 0.92,
               }}
             >
@@ -471,7 +471,7 @@ const BiggDatePage = () => {
                       top: '0',
                       fontSize: '68px',
                       color: 'rgba(255,255,255,0.03)',
-                      fontWeight: 800,
+                      fontWeight: 600,
                       lineHeight: 1,
                     }}
                   >
@@ -544,7 +544,7 @@ const BiggDatePage = () => {
                       right: '-16px',
                       top: '-16px',
                       fontSize: '84px',
-                      fontWeight: 800,
+                      fontWeight: 600,
                       color: 'rgba(255,255,255,0.03)',
                       lineHeight: 1,
                     }}
@@ -638,11 +638,11 @@ const BiggDatePage = () => {
             <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 0%, rgba(255,79,139,0.14), transparent 68%)', pointerEvents: 'none' }} />
             <div style={{ position: 'relative', display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'space-between' }}>
               <div style={{ minWidth: '180px' }}>
-                <div style={{ fontSize: '38px', fontWeight: 800, lineHeight: 1, color: C.rose }}>1K+</div>
+                <div style={{ fontSize: '38px', fontWeight: 600, lineHeight: 1, color: C.rose }}>1K+</div>
                 <div style={{ color: C.muted, fontSize: '13px', marginTop: '6px' }}>early waitlist signups</div>
               </div>
               <div style={{ minWidth: '180px' }}>
-                <div style={{ fontSize: '38px', fontWeight: 800, lineHeight: 1, color: C.coral }}>300+</div>
+                <div style={{ fontSize: '38px', fontWeight: 600, lineHeight: 1, color: C.coral }}>300+</div>
                 <div style={{ color: C.muted, fontSize: '13px', marginTop: '6px' }}>quality matches in pilot</div>
               </div>
               <div style={{ minWidth: '180px' }}>

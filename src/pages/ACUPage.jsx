@@ -62,7 +62,7 @@ const ACUPage = () => (
       <div className="relative z-10 mx-auto max-w-5xl">
         <motion.div {...rise} transition={{ duration: 0.6, ease: 'easeOut' }}>
           <Eyebrow icon={Network}>{ACU.fullName}</Eyebrow>
-          <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight text-[#f7f7fb] sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 text-4xl font-semibold leading-[1.08] tracking-tight text-[#f7f7fb] sm:text-5xl lg:text-6xl">
             Running a company takes an org chart.
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-[#cfd0e6] sm:text-xl">
@@ -99,7 +99,7 @@ const ACUPage = () => (
               <dt className="text-[11px] font-medium uppercase tracking-[0.16em] text-[#8b8da8]">
                 {label}
               </dt>
-              <dd className="mt-2 text-3xl font-bold tabular-nums text-[#f7f7fb]">{value}</dd>
+              <dd className="mt-2 text-3xl font-semibold tabular-nums text-[#f7f7fb]">{value}</dd>
             </div>
           ))}
         </motion.dl>
@@ -126,7 +126,7 @@ const ACUPage = () => (
       <div className="mx-auto max-w-6xl">
         <motion.div {...rise} transition={{ duration: 0.6, ease: 'easeOut' }}>
           <Eyebrow icon={Scale}>The eleven laws</Eyebrow>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-[#f7f7fb] sm:text-4xl">
+          <h2 className="mt-5 text-3xl font-semibold tracking-tight text-[#f7f7fb] sm:text-4xl">
             They bind every agent, whether or not the file cites them
           </h2>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-[#a8a9c3]">
@@ -155,7 +155,7 @@ const ACUPage = () => (
       <div className="mx-auto max-w-6xl">
         <motion.div {...rise} transition={{ duration: 0.6, ease: 'easeOut' }}>
           <Eyebrow icon={Layers}>The chart</Eyebrow>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-[#f7f7fb] sm:text-4xl">
+          <h2 className="mt-5 text-3xl font-semibold tracking-tight text-[#f7f7fb] sm:text-4xl">
             Fifteen departments, one hundred and twenty-seven agents
           </h2>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-[#a8a9c3]">

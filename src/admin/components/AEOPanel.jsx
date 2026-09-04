@@ -350,7 +350,7 @@ export default function AEOPanel({ data, onChange }) {
                     width: 22, height: 22, borderRadius: '50%',
                     background: C.violetDim, border: `1px solid ${C.violetBorder}`,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: 11, fontWeight: 800, color: C.violet,
+                    fontSize: 11, fontWeight: 700, color: C.violet,
                   }}>
                     {i + 1}
                   </div>

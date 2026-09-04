@@ -357,7 +357,7 @@ export default function ContactPage() {
               transition={{ duration: 0.6, delay: 0.08 }}
               style={{
                 fontSize:   'clamp(40px, 7vw, 80px)',
-                fontWeight: 800,
+                fontWeight: 600,
                 lineHeight: 1.05,
                 letterSpacing: '-0.03em',
                 margin:     '0 0 24px',

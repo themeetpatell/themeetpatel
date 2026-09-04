@@ -420,7 +420,7 @@ const HomePage = () => {
                   initial={{ opacity: 0, y: 40 }}
                   animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.8, delay: 0.2 }}
-                  className="text-5xl sm:text-[clamp(2.5rem,7.1vw,5.25rem)] font-black leading-tight tracking-tight"
+                  className="text-5xl sm:text-[clamp(2.5rem,7.1vw,5.25rem)] font-semibold leading-tight tracking-tight"
                 >
                   <span className="block text-[#f7f7fb] sm:whitespace-nowrap">
                     {HERO.lines[0]}
@@ -535,7 +535,7 @@ const HomePage = () => {
                     whileHover={{ y: -5, scale: 1.05 }}
                     className="text-center group cursor-default"
                   >
-                    <div className="text-3xl sm:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-500 group-hover:to-indigo-400 transition-all">
+                    <div className="text-3xl sm:text-4xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-500 group-hover:to-indigo-400 transition-all">
                       {stat.value}
                     </div>
                     <div className="text-xs sm:text-sm text-[#a8a9c3] mt-2 group-hover:text-[#a8a9c3] transition-colors">
@@ -576,7 +576,7 @@ const HomePage = () => {
             <span className="inline-block text-sm font-semibold tracking-wide text-[#c4b5fd] uppercase mb-4">
               {PRODUCT_VOICE.eyebrow}
             </span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-[#f7f7fb] tracking-tight mb-5">
+            <h2 className="text-3xl sm:text-5xl font-semibold text-[#f7f7fb] tracking-tight mb-5">
               {PRODUCT_VOICE.heading}
             </h2>
             <p className="text-lg text-[#a8a9c3] leading-relaxed">
@@ -634,7 +634,7 @@ const HomePage = () => {
           </div>
           <h2
             id="thesis-heading"
-            className="mt-4 font-extrabold tracking-tight"
+            className="mt-4 font-semibold tracking-tight"
             style={{ fontSize: 'clamp(1.6rem, 3.6vw, 2.5rem)', color: '#f7f7fb', lineHeight: 1.18 }}
           >
             {THESIS_VOICE.statement}
@@ -663,7 +663,7 @@ const HomePage = () => {
               className="space-y-8"
             >
               <div>
-                <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-4 sm:mb-6 tracking-tight">
+                <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-[#f7f7fb] mb-4 sm:mb-6 tracking-tight">
                   {SECTIONS.about.h2}
                 </h2>
                 <p className="text-lg sm:text-xl text-[#cfd0e6] mb-4 sm:mb-6">
@@ -694,7 +694,7 @@ const HomePage = () => {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="text-center p-4 bg-[#0d0e16]/80 rounded-xl border border-purple-500/20"
                   >
-                    <div className="text-3xl font-bold text-purple-600 mb-1">
+                    <div className="text-3xl font-semibold text-purple-600 mb-1">
                     {stat.number}
                   </div>
                     <div className="text-[#70728d] text-sm">
@@ -749,7 +749,7 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-[#f7f7fb] mb-6 tracking-tight">
               {SECTIONS.ventures.h2}
             </h2>
             <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto">
@@ -811,7 +811,7 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-20"
           >
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-[#f7f7fb] mb-6 tracking-tight">
               {SECTIONS.blog.h2}
             </h2>
             <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto leading-relaxed mb-8">
@@ -985,7 +985,7 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-20"
           >
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-[#f7f7fb] mb-6 tracking-tight">
               {SECTIONS.books.h2}
             </h2>
             <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto leading-relaxed">
@@ -1094,7 +1094,7 @@ const HomePage = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="space-y-8 order-1 lg:order-2"
             >
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] tracking-tight">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-[#f7f7fb] tracking-tight">
                 {SECTIONS.recognition.h2}
             </h2>
               <p className="text-xl text-[#cfd0e6] leading-relaxed">
@@ -1135,7 +1135,7 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-[#f7f7fb] mb-6 tracking-tight">
               {SECTIONS.contact.h2}
                 </h2>
             <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto leading-relaxed">
@@ -1291,7 +1291,7 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#f7f7fb] mb-4 tracking-tight">{SECTIONS.community.h2}</h2>
+            <h2 className="text-3xl sm:text-4xl font-semibold text-[#f7f7fb] mb-4 tracking-tight">{SECTIONS.community.h2}</h2>
             <p className="text-xl text-[#cfd0e6] max-w-3xl mx-auto leading-relaxed">
               {SECTIONS.community.sub}
             </p>
@@ -1329,7 +1329,7 @@ const HomePage = () => {
                   transition={{ duration: 0.6, delay: 0.5 }}
                   className="text-center"
                 >
-                  <div className="text-3xl font-bold text-purple-600 mb-2">500+</div>
+                  <div className="text-3xl font-semibold text-purple-600 mb-2">500+</div>
                   <div className="text-[#a8a9c3]">{SECTIONS.community.statLabels.members}</div>
                 </motion.div>
                 <motion.div
@@ -1338,7 +1338,7 @@ const HomePage = () => {
                   transition={{ duration: 0.6, delay: 0.6 }}
                   className="text-center"
                 >
-                  <div className="text-3xl font-bold text-purple-600 mb-2">50+</div>
+                  <div className="text-3xl font-semibold text-purple-600 mb-2">50+</div>
                   <div className="text-[#a8a9c3]">{SECTIONS.community.statLabels.discussions}</div>
               </motion.div>
                 <motion.div
@@ -1347,7 +1347,7 @@ const HomePage = () => {
                   transition={{ duration: 0.6, delay: 0.7 }}
                   className="text-center"
                 >
-                  <div className="text-3xl font-bold text-purple-600 mb-2">24/7</div>
+                  <div className="text-3xl font-semibold text-purple-600 mb-2">24/7</div>
                   <div className="text-[#a8a9c3]">{SECTIONS.community.statLabels.support}</div>
                 </motion.div>
               </div>
@@ -1409,7 +1409,7 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 id="faq-heading" className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#f7f7fb] mb-4 tracking-tight">
+            <h2 id="faq-heading" className="text-3xl sm:text-5xl md:text-6xl font-semibold text-[#f7f7fb] mb-4 tracking-tight">
               {SECTIONS.faq.h2}
             </h2>
             <p className="text-lg text-[#a8a9c3] max-w-2xl mx-auto">

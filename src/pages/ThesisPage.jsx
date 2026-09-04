@@ -131,7 +131,7 @@ const ThesisPage = () => {
             transition={{ duration: 0.55 }}
             style={{
               fontSize: 'clamp(2.1rem, 5vw, 3.4rem)',
-              fontWeight: 800,
+              fontWeight: 600,
               lineHeight: 1.12,
               letterSpacing: '-0.03em',
               color: C.heading,
@@ -156,7 +156,7 @@ const ThesisPage = () => {
         <h2
           style={{
             fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-            fontWeight: 800,
+            fontWeight: 600,
             color: C.heading,
             margin: '14px 0 20px',
             letterSpacing: '-0.02em',
@@ -198,7 +198,7 @@ const ThesisPage = () => {
         <h2
           style={{
             fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-            fontWeight: 800,
+            fontWeight: 600,
             color: C.heading,
             margin: '14px 0 24px',
             letterSpacing: '-0.02em',
@@ -255,7 +255,7 @@ const ThesisPage = () => {
         <h2
           style={{
             fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-            fontWeight: 800,
+            fontWeight: 600,
             color: C.heading,
             margin: '14px 0 12px',
             letterSpacing: '-0.02em',

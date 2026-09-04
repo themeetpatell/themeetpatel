@@ -32,7 +32,7 @@ export default function NotFoundPage() {
         padding: '60px 24px',
         textAlign: 'center',
       }}>
-        <div style={{ fontSize: 80, fontWeight: 900, color: C.violet, lineHeight: 1, marginBottom: 16 }}>
+        <div style={{ fontSize: 80, fontWeight: 600, color: C.violet, lineHeight: 1, marginBottom: 16 }}>
           404
         </div>
         <h1 style={{ fontSize: 28, fontWeight: 700, color: C.primary, marginBottom: 12 }}>

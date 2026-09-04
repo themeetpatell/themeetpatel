@@ -78,7 +78,7 @@ export default function AdminMigratePage() {
           <div style={{ width: 40, height: 40, borderRadius: 10, background: C.violetDim, border: `1px solid ${C.violetBorder}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Database size={18} color={C.violet} />
           </div>
-          <h1 style={{ fontSize: 20, fontWeight: 800, margin: 0, letterSpacing: '-0.02em' }}>Migrate Static Articles</h1>
+          <h1 style={{ fontSize: 20, fontWeight: 700, margin: 0, letterSpacing: '-0.02em' }}>Migrate Static Articles</h1>
         </div>
         <p style={{ fontSize: 14, color: C.secondary, lineHeight: 1.7, marginBottom: 28 }}>
           This one-time migration copies all {blogArticles.length} static articles from <code style={{ background: C.elevated, padding: '2px 6px', borderRadius: 4, fontSize: 12, color: '#a78bfa' }}>blogData.js</code> into your Supabase database.

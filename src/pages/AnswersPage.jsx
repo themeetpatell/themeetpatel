@@ -98,7 +98,7 @@ const AnswersPage = () => {
             transition={{ duration: 0.55 }}
             style={{
               fontSize: 'clamp(2rem, 5vw, 3rem)',
-              fontWeight: 800,
+              fontWeight: 600,
               lineHeight: 1.12,
               letterSpacing: '-0.03em',
               color: C.heading,
@@ -142,7 +142,7 @@ const AnswersPage = () => {
               <h2
                 style={{
                   fontSize: 'clamp(1.15rem, 2.4vw, 1.4rem)',
-                  fontWeight: 800,
+                  fontWeight: 700,
                   color: C.heading,
                   margin: '10px 0 0',
                   lineHeight: 1.35,
