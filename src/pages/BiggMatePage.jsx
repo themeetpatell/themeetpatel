@@ -268,7 +268,7 @@ const BiggMatePage = () => {
         background: C.bg,
         minHeight: '100vh',
         color: C.primary,
-        fontFamily: "'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        fontFamily: 'var(--font-sans-stack)',
         overflowX: 'hidden',
       }}>
 

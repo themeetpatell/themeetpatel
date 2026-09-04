@@ -79,7 +79,7 @@ const CookiePolicyPage = () => (
 
     <style>{`* { box-sizing: border-box; } * { -webkit-font-smoothing: antialiased; }`}</style>
 
-    <div style={{ background: C.bg, minHeight: '100vh', color: C.primary, fontFamily: "'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
+    <div style={{ background: C.bg, minHeight: '100vh', color: C.primary, fontFamily: 'var(--font-sans-stack)' }}>
 
       {/* ── Header ──────────────────────────────────────────────────────────── */}
       <section style={{

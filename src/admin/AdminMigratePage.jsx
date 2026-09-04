@@ -70,7 +70,7 @@ export default function AdminMigratePage() {
   const errors  = results.filter(r => r.status === 'error').length;
 
   return (
-    <div style={{ padding: 'clamp(24px, 3vw, 40px)', color: C.primary, background: C.surface, minHeight: '100vh', fontFamily: "'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
+    <div style={{ padding: 'clamp(24px, 3vw, 40px)', color: C.primary, background: C.surface, minHeight: '100vh', fontFamily: 'var(--font-sans-stack)' }}>
       <Toaster theme="dark" position="top-right" />
 
       <div style={{ maxWidth: 680 }}>

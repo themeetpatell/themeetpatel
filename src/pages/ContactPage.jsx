@@ -304,7 +304,7 @@ export default function ContactPage() {
         structuredData={structuredData}
       />
 
-      <div style={{ background: C.bg, minHeight: '100vh', color: C.textPrimary, fontFamily: "'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
+      <div style={{ background: C.bg, minHeight: '100vh', color: C.textPrimary, fontFamily: 'var(--font-sans-stack)' }}>
 
         {/* ── HERO ──────────────────────────────────────────────────────────── */}
         <section
@@ -936,7 +936,7 @@ function TextareaField({ label, id, value, onChange, placeholder, required }) {
           boxShadow:    focused ? '0 0 0 3px rgba(139,92,246,0.12)' : 'none',
           width:        '100%',
           boxSizing:    'border-box',
-          fontFamily:   "'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+          fontFamily:   'var(--font-sans-stack)',
         }}
       />
     </div>

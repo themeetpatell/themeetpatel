@@ -63,7 +63,7 @@ export default function AdminLoginPage() {
     <div style={{
       background: C.bg, minHeight: '100vh',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      padding: 24, fontFamily: "'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      padding: 24, fontFamily: 'var(--font-sans-stack)',
     }}>
       <div style={{
         background: C.surface,

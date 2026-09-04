@@ -16,7 +16,7 @@ export default function AppCrashFallback() {
         gap: 12,
         background: '#09090e',
         color: '#cfd0e6',
-        fontFamily: "'Nunito', system-ui, -apple-system, sans-serif",
+        fontFamily: "'Alan Sans', system-ui, -apple-system, sans-serif",
         padding: 24,
         textAlign: 'center',
       }}
